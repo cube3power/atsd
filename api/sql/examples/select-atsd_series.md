@@ -233,7 +233,7 @@ WITH INTERPOLATE(180 second, AUTO, OUTER, EXTEND, START_TIME)
 ```
 
 
-## Selecting Multiple Metric and Entities
+## Selecting Multiple Metrics and Entities
 
 Locate lagging series: series with data timestamped with the last 14 days, but which have stopped collecting data during the last 24 hours. 
 
