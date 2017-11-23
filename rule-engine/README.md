@@ -27,6 +27,7 @@ The condition can operate on values for one metric as well as correlation multip
 * [Filters](filters.md)
 * [Functions](functions.md)
 * [Placeholders](placeholders.md)
+* [Overrides](overrides.md)
 * [Web Notifications](web-notifications.md)
 * [Email Notifications](email-action.md)
 * [Editor](editor.md)
@@ -123,7 +124,7 @@ In order to minimize the number of rules with manual thresholds, the
 rule engine provides the following capabilities:
 
 -   Automated thresholds determined by the `forecast()` function.
--   Expression overrides.
+-   Expression [overrides](overrides.md).
 
 ###   Automated Thresholds
 
@@ -146,9 +147,8 @@ specific for each time series:
 ### Overrides
 
 The default expression can be superseded for a given entity or
-an entity group by adding an entry to the Overrides table. The
-override entry can also be created by clicking on the `Override` link under the Alerts tab
-or on a link in the email notification message.
+an entity group by adding an entry to the [Overrides](overrides.md) table. The
+override rule can also be created by clicking on the `Override` link under the Alerts tab or on the corresponding link in the email notification message.
 
 In the example below, an alert will be created when
 the `avg` of the `nur-entities-name` entity name is greater than 90.
@@ -186,13 +186,12 @@ Alerts can be [logged](alert-logging.md) in the database as well as in log files
 
 ## Alert Severity
 
-The severity of alerts raised by the rule engine is specified under the Alerts tab in the Rule Editor.
+The severity of alerts raised by the rule engine is specified on the 'Logging' tab in the rule editor.
 
-If an alert is raised by an expression defined in the Threshold table, its severity overrides the
-severity set on the Alert tab.
+If an alert is raised by an expression defined in the Overrides table, its severity supersedes the severity specified on the 'Logging' tab.
 
-> For 'message' rules, the alert severity can be inherited from the underlying message.
-To enable this behavior, set Severity on the Alerts tab to 'unknown'.
+> For rules operating on 'message' commands, the alert severity can be inherited from the underlying message.
+To enable this behavior, set Severity on the 'Logging' tab to 'unknown'.
 
 ## Rule Editor
 
@@ -200,17 +199,21 @@ The rules can be created and maintained using the built-in [Rule Editor](editor.
 
 ## Rule Configuration Example
 
-In this example, the expression refers to forecasts generated for the `metric_received_per_second` metric using built-in Forecasts.
+In this example, the expression refers to forecasts generated for the `metric_received_per_second` metric.
 
 ```javascript
 abs(forecast_deviation(wavg())) > 2
 ```
 
-The expression evaluates to `true` when the absolute forecast deviates from the
+The expression evaluates to `true` when the forecast deviates from the
 15 minute weighted average by more than 2 standard deviations for the given series.
 
-![](images/rule_engine_atsd_jmx1.png "rule_engine_atsd_jmx")
+## Examples
 
-![](images/alert_rules_rule_engine.png "alert_rules_rule_engine")
+* Open Alerts
 
-![](images/open_alerts_by_entity.png "open_alerts_by_entity")
+![](images/open-alerts.png)
+
+* Rule Editor
+
+![](images/rule-editor.png)
