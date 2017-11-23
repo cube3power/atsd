@@ -27,6 +27,8 @@ The condition can operate on values for one metric as well as correlation multip
 * [Filters](filters.md)
 * [Functions](functions.md)
 * [Placeholders](placeholders.md)
+* [Web Notifications](web-notifications.md)
+* [Email Notifications](email-action.md)
 * [Editor](editor.md)
 
 ## In-Memory Processing

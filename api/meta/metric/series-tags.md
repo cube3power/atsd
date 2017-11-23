@@ -21,7 +21,7 @@ Returns unique **series** tags values for the specified metric.
 | **Parameter** |**Type**| **Description** |
 |:---|:---|:---|
 | entity | string| Filter series for the specified entity name. |
-| tags.{tag-name} | string | Filter series with the specified series tag value.<br>Example: `&tags.site=ABC` or `&tags.site=ABC&tags.location=*` |
+| tags.{tag-name} | string | Filter series with the specified series tag value.<br>Supported wildcards: `*`.<br>Examples: `&tags.site=ABC` or `&tags.site=AB*&tags.location=*`. |
 | tags | string | Include specified series tags in the response.<br>Supported wildcards: `*`. Default value: `*` (all tags).<br>Example: `tags=si*` or `tags=site,location`|
 | minInsertDate |string|Include series with `lastInsertDate` equal or greater than `minInsertDate`.<br>`minInsertDate` can be specified in ISO format or using [endtime](../../../end-time-syntax.md) syntax.|
 | maxInsertDate |string|Include series with `lastInsertDate` less than `maxInsertDate`.<br>`maxInsertDate` can be specified in ISO format or using [endtime](../../../end-time-syntax.md) syntax.|
