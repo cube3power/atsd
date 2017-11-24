@@ -13,7 +13,7 @@
 ## Disk Space
 
 - Application files: 5 GB
-- Data Files: depends on the amount of collected data, compression settings, replication factor and the underlying file system type.
+- Data Files: depends on the amount of collected data, [compression](compaction/README.md) settings, and the replication factor.
 
 ## Architecture
 
