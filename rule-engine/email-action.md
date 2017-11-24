@@ -1,23 +1,23 @@
 # Email Action
 
 Email Action enables delivery of email messages to one or multiple
-subscribers on window state changes based on incoming data.
+subscribers on window status changes based on incoming data.
 
-## Window State
+## Window Status
 
-The email notifications are triggered on window state events.
+The email notifications are triggered on window status events.
 
 A [window](window.md) is an in-memory object created by the rule engine for each unique combination of metric, entity, and tags extracted from incoming commands.
 
-As the new data is received and old data is removed from the window, the rule engine re-evaluates the expression which can cause the state of the current window to change, triggering an email.
+As the new data is received and old data is removed from the window, the rule engine re-evaluates the expression which can cause the status of the current window to change, triggering an email.
 
-### Initial State
+### Initial Status
 
 New windows are created based on incoming data and no historical data is loaded from the database.
 
 The window for the given metric/entity/tags is created only when the first command for this series is received by the rule engine.
 
-The new windows are assigned initial state of `CANCEL` which is then updated based on results of the boolean expression (`true` or `false`).
+The new windows are assigned initial status of `CANCEL` which is then updated based on results of the boolean expression (`true` or `false`).
 
 ### Window Lifecycle
 
@@ -25,11 +25,11 @@ All windows for the current rule are deleted from memory if the rule is deleted 
 
 ### Triggers
 
-The email notification can be triggered whenever the window changes its state as well as at scheduled intervals when the state is `REPEAT`.
+The email notification can be triggered whenever the window changes its status as well as at scheduled intervals when the status is `REPEAT`.
 
-### State Events
+### Status Events
 
-| Previous State | New State | Previous Expression Value | New Expression Value | Trigger Supported |
+| Previous Status | New Status | Previous Expression Value | New Expression Value | Trigger Supported |
 | --- | --- | --- | --- | --- |
 | `CANCEL` | `OPEN` | `false` | `true` | Yes |
 | `OPEN`  | `REPEAT` | `true` | `true` | Yes |
@@ -38,21 +38,21 @@ The email notification can be triggered whenever the window changes its state as
 | `REPEAT` | `CANCEL` | `true` | `false` | Yes |
 | `CANCEL` | `CANCEL` | `false` | `false` | No |
 
-### `OPEN` State
+### `OPEN` Status
 
-The `OPEN` state is assigned to the window when the expression changes value from `false` to `true`.
+The `OPEN` status is assigned to the window when the expression changes value from `false` to `true`.
 
-### `REPEAT` State
+### `REPEAT` Status
 
-The `REPEAT` state is assigned to an `OPEN` window when the expression returns `true` based on the second received command.
+The `REPEAT` status is assigned to an `OPEN` window when the expression returns `true` based on the second received command.
 
-When the window is in `REPEAT` state, the email can be sent with the frequency specified in the rule editor.
+When the window is in `REPEAT` status, the email can be sent with the frequency specified in the rule editor.
 
-### `CANCEL` State
+### `CANCEL` Status
 
-`CANCEL` is the initial state assigned to new windows. It is also assigned to the window when the the boolean expression changes from `true` to `false` or when the window is deleted on rule modification.
+`CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the the boolean expression changes from `true` to `false` or when the window is deleted on rule modification.
 
-Triggering a repeat email notification in `CANCEL` state is not supported. Such behavior can be emulated by creating a separate rule with a negated expression which returns `true` instead of `false` for the same condition.
+Triggering a repeat email notification in `CANCEL` status is not supported. Such behavior can be emulated by creating a separate rule with a negated expression which returns `true` instead of `false` for the same condition.
 
 ## Creating a Rule
 
@@ -87,9 +87,9 @@ To enable notifications for the selected rule, open the Email Notifications
 tab, assign a name to the new configuration, and specify one or multiple
 email addresses.
 
-Enter Subject text and click 'Enabled' for each state change (`OPEN`,
+Enter Subject text and click 'Enabled' for each status change (`OPEN`,
 `REPEAT`, `CANCEL`) that you would like to receive. Additionally, to enable
-notifications on `REPEAT` state, set the 'Repeat Interval' to the desired
+notifications on `REPEAT` status, set the 'Repeat Interval' to the desired
 notification frequency, for example, every 10th sample or every 5 minutes.
 
 The default Subject text is
@@ -102,11 +102,11 @@ The default Subject text is
 | Setting | Description |
 | --- | --- |
 | Enabled | Enable or disable the configuration. |
-| Name | User-defined email configuration name. Each rule can have multiple configurations which are executed independently based on state changes. |
+| Name | User-defined email configuration name. Each rule can have multiple configurations which are executed independently based on status changes. |
 | Recipients | One or multiple email subscribers receiving the message. Use a comma or semi-colon to separate multiple addresses. |
 | Use In Overrides Only | If set to yes, the configuration will be activated only for override expressions specified under the Overrides tab. |
-| Delay on Open | Delay interval for sending notification for `OPEN` state. If the window changes to `CANCEL` state within the specified delay interval, no `OPEN` state email will be sent. Set this interval to prevent emails on short-lived spikes. |
-| Repeat Interval | Interval for sending `REPEAT` state notifications. If the Repeat Interval is set in time units, the exact interval may vary because the `REPEAT` notifications are triggered by incoming data. In particular, `REPEAT` notifications will not be sent if the data stops flowing in. |
+| Delay on Open | Delay interval for sending notification for `OPEN` status. If the window changes to `CANCEL` status within the specified delay interval, no `OPEN` status email will be sent. Set this interval to prevent emails on short-lived spikes. |
+| Repeat Interval | Interval for sending `REPEAT` status notifications. If the Repeat Interval is set in time units, the exact interval may vary because the `REPEAT` notifications are triggered by incoming data. In particular, `REPEAT` notifications will not be sent if the data stops flowing in. |
 | Merge Messages | Merge multiple notifications from different rules into one email for the same subscriber to prevent too many emails arriving within a short time span. Note that the message Subject is redefined for merged emails and reflects rule names, metric names, and the total number of merged notifications in the given message. For example: `Alerts(2)-cpu_busy: statistical-time, nmon_cpu`. |
 | Priority | Message priority field to differentiate messages in common email clients: `Low`, `Normal`, `High`. |
 | Message: Subject | Custom subject text for each status separately. List of supported placeholders is provided below. In addition to built-in placeholders you can use expressions containing built-in functions, for example: `${round(threshold_linear_time(99))/60}` or `${round(avg())}` |

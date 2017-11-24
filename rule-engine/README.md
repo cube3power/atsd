@@ -70,21 +70,21 @@ When a window is updated, the rule engine evaluates the expression that returns 
     percentile(95) > 80 && stdev() < 10
 ```
 
-The window changes its state once the expression returns a boolean value different from the previous iteration.
+The window changes its status once the expression returns a boolean value different from the previous iteration.
 
-## Window State
+## Window Status
 
 [Windows](window.md) are stateful. Once the expression for a given window evaluates
-to `true`, it is maintained in memory with state `OPEN`. On subsequent `true`
-evaluations for the same window, the state is changed to `REPEAT`. When the expression
-finally changes to `false`, the state is set to `CANCEL`. The window state is
+to `true`, it is maintained in memory with status `OPEN`. On subsequent `true`
+evaluations for the same window, the status is changed to `REPEAT`. When the expression
+finally changes to `false`, the status is set to `CANCEL`. The window status is
 not stored in the database and windows are recreated with new data if
-ATSD is restarted. Maintaining the state in memory while the condition
+ATSD is restarted. Maintaining the status in memory while the condition
 is `true` enables de-duplication and improves throughput.
 
 ## Actions
 
-Actions can be programmed to execute on window state changes, for example on `OPEN` state or on every n-th `REPEAT` state occurrence.
+Actions can be programmed to execute on window status changes, for example on `OPEN` status or on every n-th `REPEAT` status occurrence.
 
 Supported Response Actions
 

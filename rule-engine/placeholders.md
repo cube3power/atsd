@@ -1,13 +1,16 @@
 # Placeholders
 
-Placeholders can be used to include fields and function values into email notifications and alert messages.
-The placeholders are referenced using the `${name}` syntax.
+## Overview
 
-![](images/placeholders.png "placeholders")
+Placeholders can be used to include fields and function values into email notifications, web notifications, system commands, and logging messages.
 
-## Placeholder List
+The placeholders can be referenced using the `${name}` syntax.
 
-### Generic Placeholders
+![](images/placeholders.png)
+
+If the placholder doesn't exist, the expression `${name}` returns an empty string.
+
+## Generic Placeholders
 
 **Name**|**Example**
 :---|:---
@@ -42,26 +45,24 @@ value | 3103100000
 window | length(1)
 threshold | max() > 20
 
-### Series Placeholders
+## Series Placeholders
 
 * open_value
 * value
 
-### Message Placeholders
+## Message Placeholders
 
 * message
 * severity
 
-### Properties Placeholders
+## Properties Placeholders
 
 * properties
 * properties.key_name
 * properties.tag_name
 * type
 
-### Time Placeholders
-
-> `_time` placeholders contain time in local server timezone (2017-05-30 14:05:39 PST), `_datetime` - in ISO8601 UTC (2017-05-30T06:05:39Z)
+## Time Placeholders
 
 * alert_open_time
 * alert_open_datetime
@@ -72,15 +73,25 @@ threshold | max() > 20
 * window_first_time
 * window_first_datetime
 
-### Custom Variables
+> Placeholders ending with `_time` contain time in local server timezone, for example 2017-05-30 14:05:39 PST.
+> Placeholders ending with `_datetime` contain time in ISO 8601 format in UTC timezone, for example 2017-05-30T06:05:39Z.
 
-Variables defined on the Overview tab can be referenced by name (similar to built-in fields).
+## Link Placeholders
+
+* ruleLink
+* chartLink
+* csvExportLink
+* htmlExportLink
+
+## Placeholder for Custom Variables
+
+Variables defined on the 'Overview' tab can be referenced by name, similar to the built-in fields.
 
 ```sh
 ${idle}
 ```
 
-![](images/variables.png "variables")
+![](images/variables.png)
 
 ## Examples
 

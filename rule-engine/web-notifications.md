@@ -10,21 +10,21 @@ Example: **Slack Alert**
 
 ![](images/slack-alert.png)
 
-## Window State
+## Window Status
 
-The notifications are triggered on window state events.
+The notifications are triggered on window status events.
 
 A [window](window) is an in-memory object created by the rule engine for each unique combination of metric, entity, and tags extracted from incoming commands.
 
-As the new data is received and old data is removed from the window, the rule engine re-evaluates the expression which can cause the state of the current window to change, triggering a notification.
+As the new data is received and old data is removed from the window, the rule engine re-evaluates the expression which can cause the status of the current window to change, triggering a notification.
 
-### Initial State
+### Initial Status
 
 New windows are created based on incoming data and no historical data is loaded from the database.
 
 The window for the given metric/entity/tags is created only when the first command for this series is received by the rule engine.
 
-The new windows are assigned initial state of `CANCEL` which is then updated based on results of the boolean expression (`true` or `false`).
+The new windows are assigned initial status of `CANCEL` which is then updated based on results of the boolean expression (`true` or `false`).
 
 ### Window Lifecycle
 
@@ -32,11 +32,11 @@ All windows for the current rule are deleted from memory if the rule is deleted 
 
 ### Triggers
 
-The web notification can be triggered whenever the window changes its state as well as at scheduled intervals when the state is `REPEAT`.
+The web notification can be triggered whenever the window changes its status as well as at scheduled intervals when the status is `REPEAT`.
 
-### State Events
+### Status Events
 
-| Previous State | New State | Previous Expression Value | New Expression Value | Trigger Supported |
+| Previous Status | New Status | Previous Expression Value | New Expression Value | Trigger Supported |
 | --- | --- | --- | --- | --- |
 | `CANCEL` | `OPEN` | `false` | `true` | Yes |
 | `OPEN`  | `REPEAT` | `true` | `true` | Yes |
@@ -45,21 +45,21 @@ The web notification can be triggered whenever the window changes its state as w
 | `REPEAT` | `CANCEL` | `true` | `false` | Yes |
 | `CANCEL` | `CANCEL` | `false` | `false` | No |
 
-### `OPEN` State
+### `OPEN` Status
 
-The `OPEN` state is assigned to the window when the expression changes value from `false` to `true`.
+The `OPEN` status is assigned to the window when the expression changes value from `false` to `true`.
 
 ### `REPEAT` State
 
-The `REPEAT` state is assigned to an `OPEN` window when the expression returns `true` based on the second received command.
+The `REPEAT` status is assigned to an `OPEN` window when the expression returns `true` based on the second received command.
 
-When the window is in `REPEAT` state, the notification can be sent with the frequency specified in the rule editor.
+When the window is in `REPEAT` status, the notification can be sent with the frequency specified in the rule editor.
 
 ### `CANCEL` State
 
-`CANCEL` is the initial state assigned to new windows. It is also assigned to the window when the the boolean expression changes from `true` to `false` or when the window is deleted on rule modification.
+`CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the the boolean expression changes from `true` to `false` or when the window is deleted on rule modification.
 
-Triggering a repeat notification in `CANCEL` state is not supported. Such behavior can be emulated by creating a separate rule with a negated expression which returns `true` instead of `false` for the same condition.
+Triggering a repeat notification in `CANCEL` status is not supported. Such behavior can be emulated by creating a separate rule with a negated expression which returns `true` instead of `false` for the same condition.
 
 ## Notification Types
 
@@ -114,9 +114,13 @@ The administrator can specify which settings are fixed and which can be modified
 
 ## Testing Notification
 
-Fill out the required fields for the given notification type and click 'Test'.
+Select an existing configuration on the **Alerts > Web Notifications** page, or click 'Create' while on the same page.
 
-If the notification type supports sending charts, select one of the portals in the drop-down list and click 'Send Screenshot'.
+Open the web notification editor and fill out the required fields for the given type.
+
+Click 'Test' to verify delivery of the text payload.
+
+If the notification type supports sending charts, select one of the portals in the 'Test Portal' drop-down and click 'Send Screenshot'.
 
 The notification request is successful if the endpoint returns status `200` (OK).
 
@@ -130,23 +134,23 @@ Select a rule by name, open the 'Web Notifications' tab in the rule editor.
 
 Choose one of the notifications from the 'Endpoint' drop-down.
 
-Configure when the notification are triggered by enabling triggers for different state events: on `Open`, `Repeat`, and on `Cancel`.
+Configure when the notification are triggered by enabling triggers for different status events: on `Open`, `Repeat`, and on `Cancel`.
 
 ![](images/state-no-repeat.png)
 
 ### Jitter Control
 
-The `Delay on 'OPEN'` setting allows deferring the trigger fired for `OPEN` state. If the the rule quickly switches back to `CANCEL` state within the specified interval, the pending `OPEN` notification will be cancelled.
+The `Delay on 'OPEN'` setting allows deferring the trigger fired for `OPEN` status. If the the rule quickly switches back to `CANCEL` status within the specified interval, the pending `OPEN` notification will be cancelled.
 
-This setting can be used to reduce alert jitter when the window quickly alternates between `OPEN` and `CANCEL` states.
+This setting can be used to reduce alert jitter when the window quickly alternates between the `OPEN` and `CANCEL` status.
 
 ### Repeat Alerts
 
-If the window remains in the `REPEAT` state, it can be configured to repetitively trigger the notification with the following frequency:
+If the window remains in the `REPEAT` status, it can be configured to repetitively trigger the notification with the following frequency:
 
 | Frequency | Description |
 | --- | --- |
-| All | The notification is triggered each time the window is updated and remains in the `REPEAT` state (expression continues to be `true`). |
+| All | The notification is triggered each time the window is updated and remains in the `REPEAT` status (expression continues to be `true`). |
 | Every N events | The notification is triggered every Nth occurrence of the new data being added to the window. |
 | Every N minutes | The notification is triggered when the window is updated but no more frequently than the specified interval. |
 
@@ -168,7 +172,7 @@ Sending attachments such as chart screenshots or alert detail tables can be enab
 
 ### Multiple Endpoints
 
-In order to update multiple endpoints for the same state change event, create additional notifications, identified by unique name, by adding new configuration sections below.
+In order to update multiple endpoints for the same status change event, create additional notifications, identified by unique name, by adding new configuration sections below.
 
 ## Stopping Messages
 
