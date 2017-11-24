@@ -21,7 +21,6 @@
 * `exp(D)`
 * `log(D)`
 
-
 ## String Functions
 
 | **Name** | **Description** |
@@ -103,12 +102,15 @@ Refer to the database function [syntax and examples](functions-db.md).
 
 | **Name** | **Description** |
 | :--- | :--- |
+|`collection(S)` | Return a list of items for a named collection listed on **Data > Named Collections** page.<br>Example: `collection('ip_white_list')`|
+| `likeAny(S, List)` | Returns true if the text is contained in the named collection. The collection may include expressions with wildcards.<br>Example: `likeAny(tags.request_ip, collection('ip_white_list'))`|
+| `matchList(S, S)` | Same as `likeAny` except the second argument specifies collection by name.<br>Example: `matchList(tags.request_ip, 'ip_white_list')`|
 | `IN` | Returns true if collection contains the specified string. <br>`tags.location IN ('NUR', 'SVL')`|
 | `contains(S)` | Returns true if collection contains the specified string. <br>`properties['command'].toString().contains('java')`|
 | `isEmpty()` | Returns true if collection has no elements. <br>`entity.tags.isEmpty()`|
 | `size()` | Returns number of elements in the collection. <br>`entity.tags.size() > 1`|
 | `matches(S pattern, [S])` | Returns true if one of the collection elements matches the specified pattern. <br>`matches('*atsd*', property_values('docker.container::image'))`|
-| `lookup(S replacementTable, S key)` | Returns value by specified key in the given replacement table.|
+| `lookup(S replacementTable, S key)` | Returns value for the specified key in the given replacement table.|
 
 ## Time Functions
 

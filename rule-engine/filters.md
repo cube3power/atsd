@@ -4,7 +4,6 @@
 
 | **Name** | **Description** |
 | --- | --- |
-| Calendar | Discards commands if current server time doesn't match the specified cron calendar expression. |
 | Metric | Discards commands with metric name not equal to the metric name specified in the rule. |
 | Time | Discards commands with time that deviates by more than the specified interval from the current server time. |
 | Previous Value | Discards commands timestamped earlier than the time of the last (most recent) event in a given window. |
@@ -12,6 +11,11 @@
 | Entity Group | Discards commands for entities that do not belong to one of entity groups specified in the rule. |
 | Command | Discards commands for which the filter expression specified in the rule evaluates to false. |
 
+<!--
+| Calendar | Discards commands if current server time doesn't match the specified cron calendar expression. |
+-->
+
+<!--
 ## Calendar Filter
 
 The calendar filter can include a simple or composite cron expression to control when the rule is active.
@@ -28,6 +32,7 @@ The calendar filter can include a simple or composite cron expression to control
 | cron OR | `'* 0-7,19-23 * * MON-FRI' OR '* * * * SUN, SAT'` | Active during non-working hours and on weekends. |
 
 ![](images/filter-calendar.png)
+-->
 
 ## Metric Filter
 
