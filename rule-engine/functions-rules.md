@@ -24,7 +24,9 @@ If the current rule and the referenced rules have different grouping settings, t
   rule_open(S ruleName)
 ```
 
-  Example:
+> The function returns `false` if a matching window is not found.
+
+Example:
 
 ```java
   avg() > 10 && rule_open('disk_used_check')
@@ -42,7 +44,9 @@ The above expression will evaluate to `true` if the average value of samples in 
   Example:
 
 ```java
-  avg() > 10 && rule_window('disk_used_check') != null && (rule_window('disk_used_check').status != 'CANCEL')
+  avg() > 10 && rule_window('disk_used_check') != null && rule_window('disk_used_check').status != 'CANCEL'
 ```
+
+> The function returns `null` if a matching window is not found.
 
 The above expression will evaluate to `true` if the average value of samples in the current window exceeds 10 and if the first window for rule 'disk_used_check' and the same entity and tags as defined in this window has any other status except `CANCEL`.
