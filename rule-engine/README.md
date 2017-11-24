@@ -2,32 +2,32 @@
 
 ## Overview
 
-The Rule Engine enables automation of repetitive tasks based on the analysis of incoming data. Such tasks may include invoking a script to resolve a problem,  
-[sending an
-email](email-action.md),
-or raising a ticket in a service desk.
+The rule engine enables automation of repetitive tasks based on real-time statistical analysis of the incoming data.
 
-The rule engine evaluates a set of `IF-THEN` expressions on incoming data:
+Such tasks may include triggering a web hook, executing a system command, sending an alert to an [email](email-action.md) or [Slack channel](web-notifications.md), or generating derived metrics.
 
-```javascript
-    IF condition == true THEN action
-```
-
-If the condition specified in the rule evaluates to `true`, one or multiple automation procedures are triggered, for instance:
+The engine evaluates rule conditions against incoming series, message, and property commands and executes response actions when appropriate:
 
 ```javascript
-    IF avg() > 75 THEN create_ticket
+    IF condition == true THEN action-1,.,action-N
 ```
 
-The condition can operate on values for one metric as well as correlation multiple metrics using the [`db_last`](functions-db.md#db_last-function) and [`db_statistic`](functions-db.md#db_statistic-function) functions.
+Example
+
+```javascript
+    IF percentile(75) > 300 THEN alert_slack_devops_channel
+```
+
+The condition can operate on a single metric defined in the current rule or correlate multiple metrics using [`db functions`](functions-db.md) or [`rule functions`](functions-rules.md).
 
 ## References
 
+* [Window](window.md)
 * [Expressions](expression.md)
 * [Filters](filters.md)
 * [Functions](functions.md)
 * [Placeholders](placeholders.md)
-* [Overrides](overrides.md)
+* [Override Tables](overrides.md)
 * [Web Notifications](web-notifications.md)
 * [Email Notifications](email-action.md)
 * [Editor](editor.md)
@@ -36,7 +36,9 @@ The condition can operate on values for one metric as well as correlation multip
 
 The incoming data is processed by the rule engine in-memory, before the data is stored on disk.
 
-![](images/atsd_rule_engine.png "atsd_rule_engine")
+![](images/atsd_rule_engine.png)
+
+The data is maintained in [windows](window.md) which are in-memory structures initialized for each unique combination of metric, entity, and grouping tags extracted from incoming commands.
 
 ## Processing Stages
 
@@ -48,18 +50,18 @@ The incoming data samples are processed by a chain of filters prior to reaching 
 
 * **Status Filter**. Samples are discarded for metrics and entities that are disabled.
 
-* [Rule Filters](filters.md) ignore samples that do not match a specific metric, entity, or filter expression.
+* [Rule Filters](filters.md) accept only data that matches a specific metric, entity, and filter expression.
 
 ### Grouping
 
 Once the sample passes through the chain of filters, it is added to matching
-windows grouped by metric, entity, and optional tags. Each window maintains its own array of data samples.
+[windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples.
 
 > If the 'Disable Entity Grouping' option is checked, the window is grouped only by metric and optional tags.
 
 ### Evaluation
 
-Windows are continuously updated as new samples are added and old samples are
+[Windows](window.md) are continuously updated as new samples are added and old samples are
 removed to maintain the size of the given window at a constant interval length or sample count.
 
 When a window is updated, the rule engine evaluates the expression that returns a boolean value:
@@ -68,22 +70,28 @@ When a window is updated, the rule engine evaluates the expression that returns 
     percentile(95) > 80 && stdev() < 10
 ```
 
-The window changes its status once the expression returns a boolean value different from the previous iteration.
+The window changes its state once the expression returns a boolean value different from the previous iteration.
 
-## Window Status
+## Window State
 
-Windows are stateful. Once the expression for a given window evaluates
-to `TRUE`, it is maintained in memory with status `OPEN`. On subsequent `TRUE`
-evaluations for the same window, the status is changed to `REPEAT`. When the expression
-finally changes to `FALSE`, the status is set to `CANCEL`. The window state is
+[Windows](window.md) are stateful. Once the expression for a given window evaluates
+to `true`, it is maintained in memory with state `OPEN`. On subsequent `true`
+evaluations for the same window, the state is changed to `REPEAT`. When the expression
+finally changes to `false`, the state is set to `CANCEL`. The window state is
 not stored in the database and windows are recreated with new data if
-ATSD is restarted. Maintaining the status in memory while the condition
-is `TRUE` enables de-duplication and improves throughput.
+ATSD is restarted. Maintaining the state in memory while the condition
+is `true` enables de-duplication and improves throughput.
 
 ## Actions
 
-Actions can be programmed to execute on window status changes, for example on `OPEN`
-status or on every n-th `REPEAT` status occurrence.
+Actions can be programmed to execute on window state changes, for example on `OPEN` state or on every n-th `REPEAT` state occurrence.
+
+Supported Response Actions
+
+* Email Notification
+* Web Notification: webhook, Slack, Discord, Telegram, AWS SNS, custom endpoint.
+* System Command Execution
+* Logging: file, network, database
 
 ## Window Types
 
@@ -147,13 +155,13 @@ specific for each time series:
 ### Overrides
 
 The default expression can be superseded for a given entity or
-an entity group by adding an entry to the [Overrides](overrides.md) table. The
+an entity group by adding an entry to the [Override](overrides.md) table. The
 override rule can also be created by clicking on the `Override` link under the Alerts tab or on the corresponding link in the email notification message.
 
 In the example below, an alert will be created when
 the `avg` of the `nur-entities-name` entity name is greater than 90.
 
-![](images/threshold.png "threshold")
+![](images/override-example.png)
 
 ## Sliding Windows
 
@@ -197,7 +205,7 @@ To enable this behavior, set Severity on the 'Logging' tab to 'unknown'.
 
 The rules can be created and maintained using the built-in [Rule Editor](editor.md).
 
-## Rule Configuration Example
+## Configuration Example
 
 In this example, the expression refers to forecasts generated for the `metric_received_per_second` metric.
 
@@ -206,7 +214,7 @@ abs(forecast_deviation(wavg())) > 2
 ```
 
 The expression evaluates to `true` when the forecast deviates from the
-15 minute weighted average by more than 2 standard deviations for the given series.
+15 minute median by more than 2 standard deviations for the given series, subject to additional lower and upper value constraints.
 
 ## Examples
 

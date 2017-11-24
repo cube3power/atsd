@@ -14,7 +14,7 @@ Example: **Slack Alert**
 
 The notifications are triggered on window state events.
 
-A window is an in-memory object created by the rule engine for each unique combination of metric, entity, and tags extracted from incoming commands.
+A [window](window) is an in-memory object created by the rule engine for each unique combination of metric, entity, and tags extracted from incoming commands.
 
 As the new data is received and old data is removed from the window, the rule engine re-evaluates the expression which can cause the state of the current window to change, triggering a notification.
 
