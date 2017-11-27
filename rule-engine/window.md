@@ -4,6 +4,22 @@
 
 A window is an in-memory structure created by the rule engine for each unique combination of metric, entity, and tags extracted from incoming commands.
 
+## Window Length
+
+### Count Based Windows
+
+**Count-based** windows accumulate up to the specified number of samples. The samples are sorted in order of arrival, with the most recently received sample placed at the end of the array. If the window is full, the first (oldest by arrival time) sample is removed from the window to free up space at the end of the array for an incoming sample. 
+
+Example
+
+![Count Based Window](images/count_based_window3.png "count_based_window")
+
+### Time Based Windows
+
+**Time-based** windows store samples that were recorded within the specified interval of time, ending with the current time. The time-based window doesn't limit how many samples are held by the window. Its time range is continously updated. Old records are automically removed from the window once they're outside of the time range.
+
+![Time Based Window](images/time_based_window3.png "time_based_window")
+
 ## Window Status
 
 The response actions are triggered on window status events.
@@ -52,3 +68,4 @@ When the window is in `REPEAT` status, the actions can be executed with the freq
 `CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the the boolean expression changes from `true` to `false` or when the window is deleted on rule modification.
 
 Triggering a repeat action in `CANCEL` status is not supported. Such behavior can be emulated by creating a separate rule with a negated expression which returns `true` instead of `false` for the same condition.
+

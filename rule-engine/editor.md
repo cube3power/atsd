@@ -1,6 +1,11 @@
-# Editor
+# Rule Editor
 
-## Rule Editor Settings
+
+## Overview
+
+![](images/rule-editor.png)
+
+## Settings
 
 | **Setting** | **Description** |
 | --- | --- |

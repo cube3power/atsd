@@ -9,7 +9,7 @@ Such tasks may include triggering a web hook, executing a system command, sendin
 The engine evaluates rule conditions against incoming series, message, and property commands and executes response actions when appropriate:
 
 ```javascript
-    IF condition == true THEN action-1,.,action-N
+    IF condition == true THEN action-1, ... action-N
 ```
 
 Example
@@ -46,64 +46,68 @@ The data is maintained in [windows](window.md) which are in-memory structures in
 
 The incoming data samples are processed by a chain of filters prior to reaching the grouping stage. Such filters include:
 
-* **Input Filter**. All samples are discarded if the **Admin:Input Settings > Rule Engine** option is disabled.
+* **Input Filter**. All samples are discarded if the **Settings:Input Settings > Rule Engine** option is disabled.
 
 * **Status Filter**. Samples are discarded for metrics and entities that are disabled.
 
-* [Rule Filters](filters.md) accept only data that matches a specific metric, entity, and filter expression.
+* [Rule Filters](filters.md) accept only data that satisfies the metric, entity, and tag filters specified in the rule.
 
 ### Grouping
 
-Once the sample passes through the chain of filters, it is added to matching
+Once the sample passes through the filter chain, it is added to matching
 [windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples.
 
-> If the 'Disable Entity Grouping' option is checked, the window is grouped only by metric and optional tags.
+The windows can be mapped to series in a 1-to-1 fashion by enumerating all series tags as the grouping tags.
 
-### Evaluation
+![](images/grouping-tags.png)
+
+![](images/grouping-series-tags.png)
+
+If the 'Group by Entity' option is unchecked, the window is grouped only by metric and optional tags.
+
+## Window Length
+
+The rule engine supports two types of windows:
+
+* Count-based
+* Time-based
+
+**Count-based** windows accumulate up to the specified number of samples. The samples are sorted in order of arrival, with the most recently received sample placed at the end of the array. When the window becomes full, the first (oldest by arrival time) sample is removed from the window to free up space at the end of the array for an incoming sample.
+
+**Time-based** windows store samples that were recorded within the specified interval of time, ending with the current time. The time-based window doesn't limit how many samples are held by the window. Its time range is continuously updated. Old records are automatically removed from the window once they're outside of the time range.
+
+### Condition Checking
 
 [Windows](window.md) are continuously updated as new samples are added and old samples are
 removed to maintain the size of the given window at a constant interval length or sample count.
 
-When a window is updated, the rule engine evaluates the expression that returns a boolean value:
+When a window is updated, the rule engine evaluates the boolean expression that triggers changes in window status.
+
+Sample expression:
 
 ```javascript
-    percentile(95) > 80 && stdev() < 10
+    avg() > 80
 ```
-
-The window changes its status once the expression returns a boolean value different from the previous iteration.
 
 ## Window Status
 
 [Windows](window.md) are stateful. Once the expression for a given window evaluates
 to `true`, it is maintained in memory with status `OPEN`. On subsequent `true`
-evaluations for the same window, the status is changed to `REPEAT`. When the expression
-finally changes to `false`, the status is set to `CANCEL`. The window status is
-not stored in the database and windows are recreated with new data if
-ATSD is restarted. Maintaining the status in memory while the condition
-is `true` enables de-duplication and improves throughput.
+evaluations, the window status changes to `REPEAT`. If the expression
+returns `false`, the window status is set to `CANCEL`.
 
 ## Actions
 
-Actions can be programmed to execute on window status changes, for example on `OPEN` status or on every n-th `REPEAT` status occurrence.
+Actions are triggered on window status changes, for example on `OPEN` status or on every N-th `REPEAT` status occurrence.
 
 Supported Response Actions
 
-* Email Notification
-* Web Notification: webhook, Slack, Discord, Telegram, AWS SNS, custom endpoint.
+* [Email Notification](email-action.md)
+* [Web Notification](web-notifications.md)
 * System Command Execution
-* Logging: file, network, database
+* [Logging](alert-logging.md) to file, network, and database
 
-## Window Types
-
-Windows can be count-based or time-based. A count-based window maintains
-an ordered array of elements. Once the array reaches the specified
-length, new elements begin to replace older elements chronologically. A time-based window
-includes all elements that are timestamped within a time interval that
-ends with the current time and starts with the current time minus a specified
-interval. For example, a 5-minute time-based window includes all
-elements that arrived over the last 5 minutes. As the current time
-increases, the start time is incremented accordingly, as if the window is
-sliding along a timeline.
+The triggers for each action are configured separately. For example, it's possible to configure the rule such that logging events are generated on all repeat occurrences whereas the repeat email notification is triggered on every 10th sample.
 
 ## Correlation
 
@@ -163,65 +167,23 @@ the `avg` of the `nur-entities-name` entity name is greater than 90.
 
 ![](images/override-example.png)
 
-## Sliding Windows
-
-The Rule Engine supports two types of windows:
-
-* COUNT-based
-* TIME-based
-
-
-### Count Based Windows – 3 Event Window Example
-
-Count based windows analyze the last N sample regardless
-of when they occurred. The count window holds up to N samples, to which
-aggregate function such as `avg()` or `max()` can be applied as part of an expression. When the
-COUNT-based window becomes full, the oldest data sample is replaced with an incoming sample.
-
-![Count Based Window](images/count_based_window3.png "count_based_window")
-
-### Time Based Windows – 3 Second Window Example
-
-Time based windows analyze data samples that were recorded in the last N
-seconds, minutes, or hours. The time window doesn't limit how many samples can be held by the window. It automatically removes data samples that move
-outside of the time interval as time passes.
-
-![Time Based Window](images/time_based_window3.png "time_based_window")
-
 ## Alert Logging
 
-Alerts can be [logged](alert-logging.md) in the database as well as in log files for automation and audit.
+Status changes can be [logged](alert-logging.md) to the database as well as written into log files for integration and audit.
 
-## Alert Severity
-
-The severity of alerts raised by the rule engine is specified on the 'Logging' tab in the rule editor.
+Alert severity is specified on the 'Logging' tab in the rule editor.
 
 If an alert is raised by an expression defined in the Overrides table, its severity supersedes the severity specified on the 'Logging' tab.
 
-> For rules operating on 'message' commands, the alert severity can be inherited from the underlying message.
+> For rules operating on 'message' commands, the alert severity can be inherited from the 'severity' field of the underlying message.
 To enable this behavior, set Severity on the 'Logging' tab to 'unknown'.
 
 ## Rule Editor
 
 The rules can be created and maintained using the built-in [Rule Editor](editor.md).
 
-## Configuration Example
+## Viewing Open Alerts
 
-In this example, the expression refers to forecasts generated for the `metric_received_per_second` metric.
-
-```javascript
-abs(forecast_deviation(wavg())) > 2
-```
-
-The expression evaluates to `true` when the forecast deviates from the
-15 minute median by more than 2 standard deviations for the given series, subject to additional lower and upper value constraints.
-
-## Examples
-
-* Open Alerts
+Open alerts are displayed on the **Alerts > Open Alerts** page and can be incorporated into portals using the console widget.
 
 ![](images/open-alerts.png)
-
-* Rule Editor
-
-![](images/rule-editor.png)
