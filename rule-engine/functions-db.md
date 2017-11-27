@@ -2,10 +2,12 @@
 
 ## Overview
 
-The functions provide a way to retrieve the last detailed or averaged value stored in the database for a series which may be different from the series in the current window. The functions can be used to compare data between different series for correlation purposes.
+The `db_last` and `db_statistic` functions provide a way to retrieve the last detailed or averaged value stored in the database for a series which may be different from the series in the current window. The functions can be used to compare different series for correlation purposes.
 
 * The `db_last` function retrieves the last value stored in the database for the specified series.
 * The `db_statistic` function retrieves an aggregated value from the database for the specified series.
+
+The `db_message_count` and `db_message_last` functions allow one to correlate different types of data - time series and messages.
 
 ## `db_last` Function
 
@@ -243,4 +245,53 @@ In the example below, the `db_last('io_disk_percent_util')` function will search
   metric = io_disk_percent_util
   entity = nurswgvml007
   tags   = device = sda
+```
+
+---
+
+
+## `db_message_count` Function
+
+* Calculate the number of messages matching the specified parameters.
+
+```java
+  db_message_count(S interval, S type, S source [, S tags, [S entity]])
+```
+
+> `tags` and `entity` arguments are optional.
+> If the `type`, `source`, or `tags` fields are set to empty string, they are ignored when matching messages.
+> If the `entity` is not specified, the request retrieves messages for the current entity.
+
+  Example:
+
+```java
+  // Check if the average exceeds 20 and the 'compaction' message was not received within the last hour for the current entity.
+  avg() > 20 && db_message_count('1 hour', 'compaction', '') == 0
+```
+
+```java
+  // Check if the average exceeds 80 and there is an event with type=backup-error received within the last 15 minutes for entity 'nurswgvml006'.
+  avg() > 80 && db_message_count('15 minute', 'backup-error', '', '', 'nurswgvml006') > 0
+```
+
+## `db_message_last` Function
+
+* Return the most recent [message](../api/data/messages/query.md#fields-1) object matching the specified parameters.
+
+```java
+db_message_last(S interval, S type, S source[, S tags, [S entity]])
+```
+
+> `tags` and `entity` arguments are optional.
+> If the `type`, `source`, or `tags` fields are set to empty string, they are ignored when matching messages.
+> If the `entity` is not specified, the request retrieves messages for the current entity.
+
+The returned object contains `type`, `source`, and `tags.{name}` fields of string type and the `date` field of long data type. The `date` field is returned as epoch milliseconds.
+
+  Example:
+
+```java
+  last_msg = db_message_last('60 minute', 'logger', '')
+  // Check that the average exceeds 50 and the severity of the last message with type 'logger' for the current entity is greater or equal `ERROR`.
+  value > 50 && last_msg != null && last_msg.severity.toString() >= "6"
 ```

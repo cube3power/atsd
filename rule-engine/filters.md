@@ -69,6 +69,6 @@ The filter discards commands for entities that do not belong to one of entity gr
 
 ## Command Filter
 
-The filter evaluates the filter expression and discard values of the filter expression which evaluate to `FALSE`.
+The filter evaluates the filter expression and discards values if the filter expressions evaluates to `false`.
 
 ![](images/filter-expression.png)

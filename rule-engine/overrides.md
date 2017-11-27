@@ -6,7 +6,7 @@ The override table provides a convenient way to enumerate exceptions to the defa
 
 It allows you to minimize the number of rule variations created due to minor differences in the thresholds applicable to specific entity groups, entities or tags.
 
-For example, assuming that the default expression is `value > 50`, the below configuration applies a different threshold (`value > 70`) for entities starting with `nurswgvml0`.
+For example, assuming that the default condition is `value > 50`, the below configuration applies a different threshold (`value > 70`) for entities starting with `nurswgvml0`.
 
 ![](images/rule-row.png)
 
@@ -18,9 +18,9 @@ The table must have at least one rule where each row represents a single rule co
 
 The rules are processed from **top to bottom**. If the rule's filter matches the given window, the processing stops (subsequent rows are ignored) and the rule's thresholds are checked. An alert is triggered if the threshold condition for either `ERROR` or `WARNING` level is satisfied.
 
-In case no matching rules are found for the given window, the default expression, as specified on the 'Overview' tab, is evaluated.
+In case no matching rules are found for the given window, the default condition, as specified on the 'Overview' tab, is evaluated.
 
-> Note that the 'Depends On' condition, when enabled on the 'Overview' tab, is checked for both the override rule and the default expression.
+> Note that the 'Depends On' condition, when enabled on the 'Overview' tab, is checked for both the override rule and the default condition.
 
 ![](images/override-columns.png)
 

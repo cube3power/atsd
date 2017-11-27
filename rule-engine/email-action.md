@@ -9,7 +9,7 @@ The email notifications are triggered on window status events.
 
 A [window](window.md) is an in-memory object created by the rule engine for each unique combination of metric, entity, and tags extracted from incoming commands.
 
-As the new data is received and old data is removed from the window, the rule engine re-evaluates the expression which can cause the status of the current window to change, triggering an email.
+As the new data is received and old data is removed from the window, the rule engine re-evaluates the condition which can cause the status of the current window to change, triggering an email.
 
 ### Initial Status
 
@@ -17,7 +17,7 @@ New windows are created based on incoming data and no historical data is loaded 
 
 The window for the given metric/entity/tags is created only when the first command for this series is received by the rule engine.
 
-The new windows are assigned initial status of `CANCEL` which is then updated based on results of the boolean expression (`true` or `false`).
+The new windows are assigned initial status of `CANCEL` which is then updated based on condition checks.
 
 ### Window Lifecycle
 
@@ -29,7 +29,7 @@ The email notification can be triggered whenever the window changes its status a
 
 ### Status Events
 
-| Previous Status | New Status | Previous Expression Value | New Expression Value | Trigger Supported |
+| Previous Status | New Status | Previous Condition Value | New Condition Value | Trigger Supported |
 | --- | --- | --- | --- | --- |
 | `CANCEL` | `OPEN` | `false` | `true` | Yes |
 | `OPEN`  | `REPEAT` | `true` | `true` | Yes |
@@ -40,17 +40,17 @@ The email notification can be triggered whenever the window changes its status a
 
 ### `OPEN` Status
 
-The `OPEN` status is assigned to the window when the expression changes value from `false` to `true`.
+The `OPEN` status is assigned to the window when the condition changes value from `false` to `true`.
 
 ### `REPEAT` Status
 
-The `REPEAT` status is assigned to an `OPEN` window when the expression returns `true` based on the second received command.
+The `REPEAT` status is assigned to an `OPEN` window when the condition returns `true` based on the second received command.
 
 When the window is in `REPEAT` status, the email can be sent with the frequency specified in the rule editor.
 
 ### `CANCEL` Status
 
-`CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the the boolean expression changes from `true` to `false` or when the window is deleted on rule modification.
+`CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the the condition changes from `true` to `false` or when the window is deleted on rule modification.
 
 Triggering a repeat email notification in `CANCEL` status is not supported. Such behavior can be emulated by creating a separate rule with a negated expression which returns `true` instead of `false` for the same condition.
 
@@ -58,16 +58,16 @@ Triggering a repeat email notification in `CANCEL` status is not supported. Such
 
 To enable email notifications for a metric of interest, open the **Alerts > Rules** page and create a new rule.
 
-Specify the rule name, metric name, and an expression to evaluate incoming
+Specify the rule name, metric name, and a condition to evaluate incoming
 series samples. To receive an email message if a value exceeds the
 threshold, set window type to `count=1` and enter `value > {threshold}`
-as the expression.
+as the condition.
 
 ![email_alert_notags](images/email_alert_notags.png)
 
 Once the rule is active, you can verify its configuration by reviewing
 records listed on the **Alerts > Open** page. If the expected alerts are missing, verify that
-the data has been received and check the expression.
+the data has been received and check the condition.
 
 ## Grouping Windows by Tag
 

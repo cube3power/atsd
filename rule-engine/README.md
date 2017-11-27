@@ -23,7 +23,7 @@ The condition can operate on a single metric defined in the current rule or corr
 ## References
 
 * [Window](window.md)
-* [Expressions](expression.md)
+* [Condition](condition.md)
 * [Filters](filters.md)
 * [Functions](functions.md)
 * [Placeholders](placeholders.md)
@@ -81,9 +81,9 @@ The rule engine supports two types of windows:
 [Windows](window.md) are continuously updated as new samples are added and old samples are
 removed to maintain the size of the given window at a constant interval length or sample count.
 
-When a window is updated, the rule engine evaluates the boolean expression that triggers changes in window status.
+When a window is updated, the rule engine checks the condition that triggers response actions.
 
-Sample expression:
+Condition example:
 
 ```javascript
     avg() > 80
@@ -91,10 +91,11 @@ Sample expression:
 
 ## Window Status
 
-[Windows](window.md) are stateful. Once the expression for a given window evaluates
-to `true`, it is maintained in memory with status `OPEN`. On subsequent `true`
-evaluations, the window status changes to `REPEAT`. If the expression
-returns `false`, the window status is set to `CANCEL`.
+[Windows](window.md) are stateful. When the condition for a given window becomes `true`, it is maintained in memory with status `OPEN`. 
+
+On subsequent `true` evaluations, the window status changes to `REPEAT`. 
+
+When the condition returns `false`, the window status is reverted to `CANCEL`.
 
 ## Actions
 
@@ -136,11 +137,11 @@ In order to minimize the number of rules with manual thresholds, the
 rule engine provides the following capabilities:
 
 -   Automated thresholds determined by the `forecast()` function.
--   Expression [overrides](overrides.md).
+-   Condition [overrides](overrides.md).
 
 ###   Automated Thresholds
 
-Thresholds specified in expressions can be set manually or using the
+Thresholds specified in condition expressions can be set manually or using the
 `forecast` function. For example, the following rule fires if the observed
 moving average deviates from the expected forecast value by more than 25% in any direction.
 
@@ -158,7 +159,7 @@ specific for each time series:
 
 ### Overrides
 
-The default expression can be superseded for a given entity or
+The default condition can be superseded for a given entity or
 an entity group by adding an entry to the [Override](overrides.md) table. The
 override rule can also be created by clicking on the `Override` link under the Alerts tab or on the corresponding link in the email notification message.
 
@@ -173,7 +174,7 @@ Status changes can be [logged](alert-logging.md) to the database as well as writ
 
 Alert severity is specified on the 'Logging' tab in the rule editor.
 
-If an alert is raised by an expression defined in the Overrides table, its severity supersedes the severity specified on the 'Logging' tab.
+If an alert is raised by a condition defined in the Overrides table, its severity supersedes the severity specified on the 'Logging' tab.
 
 > For rules operating on 'message' commands, the alert severity can be inherited from the 'severity' field of the underlying message.
 To enable this behavior, set Severity on the 'Logging' tab to 'unknown'.

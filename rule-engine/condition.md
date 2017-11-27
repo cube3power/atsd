@@ -1,18 +1,15 @@
-# Expressions
+# Condition
 
-Expression is a condition which is entered in the Rule [editor](editor.md) and is evaluated each time a command is
-received by or removed from the window. For example, the expression **`value > 50`** returns `TRUE` if the newly received value is greater than 50.
+Condition is a boolean expression specified in the [rule editor](editor.md) which is evaluated when data is
+received by or removed from the window. For example, the condition `value > 50` returns `true` if the newly received value is greater than 50.
 
-If the expression evaluates to `TRUE`, the window status changes to `OPEN` and creates an alert, followed by
-the execution of triggers such as a system command and email notification. Once
-the expression returns `FALSE`, the alert is closed and another set of
-triggers is invoked.
+When the condition evaluates to `true` for the first time, the window status changes to `OPEN` causing the execution of triggers such as a system commands and email notifications. Once the condition becomes `false`, the window returns back to `CANCEL` status triggering a corresponding set of triggers.
 
-The expression consists of one or multiple conditions combined with `OR` (`||`) and `AND` (`&&`) operators.
+The condition consists of one or multiple boolean expressions combined with `OR` (`||`) and `AND` (`&&`) operators.
 
-The condition can reference fields, apply [functions](functions.md) to them, and compare them with operators. Function names are case-sensitive.
+The expressions can apply [functions](functions.md) to data and reference fields. Function names are case-sensitive.
 
-> Exceptions specified in the Thresholds table take precedence over the expression.
+> Exceptions specified in the Overrides table take precedence over the condition.
 
 ## Fields
 
@@ -70,4 +67,3 @@ Refer to [functions](functions.md).
 | range | none | `value > 50 AND value <= 75` | Raise an alert if value is outside of specified range. |
 | statistical-count | count(10) | `avg() > 75` | Raise an alert if average value of the last 10 samples exceeds threshold. |
 | statistical-time | time('15 min') | `avg() > 75` | Raise an alert if average value for the last 15 minutes exceeds threshold. |
-| statistical-ungrouped | time('15 min') | `avg() > 75` | Raise an alert if 15-minute average values for all entities in the group exceeds threshold. |

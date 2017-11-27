@@ -20,7 +20,7 @@ entity_label | Axibase TSD
 entity_tags | {version=community}
 entity_tags.tag_name | community
 event_tags | {location=dc-5}
-expression | value < 512*1024*1024
+condition | value < 512*1024*1024
 metric | jvm_memory_free
 min_interval_expired | true
 open_value | 3103100000
