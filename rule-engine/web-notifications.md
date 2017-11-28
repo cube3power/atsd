@@ -2,13 +2,31 @@
 
 ## Overview
 
-Web notifications allow the rule engine to send a `POST` or `GET` request to an HTTP endpoint.
+Web notifications allow the rule engine to intergate with external HTTP services by means of sending custom HTTP requests on window status events.
 
-They can be used for automation and integration tasks such as sending an alert into a Slack/Telegram/Discord channel, updating an issue tracker, starting a CI build, publishing to an AWS SNS topic, or even controlling IoT devices.
+They can be used to automate tasks such as sending an alert into a Slack/Telegram/Discord/HipChat channel, updating a bug tracker, starting a CI build, publishing to an AWS SNS topic, or controlling IoT devices.
 
 Example: **Slack Alert**
 
 ![](images/slack-alert.png)
+
+## Notification Types
+
+The rule engine supports various types of web notifications some of which encapsulate the integration details of the remote web services while [others](notifications/custom.md) provide maximum flexibility and control.
+
+| Type | Customizable Fields | Send Chart | Description |
+| --- | --- | --- | --- |
+| [WEBHOOK](notifications/webhook.md) | None | No | Send pre-defined fields as a JSON document or form to an HTTP endpoint. |
+| [CUSTOM](notifications/custom.md) | All fields | No | Send any text content and headers to an HTTP endpoint. |
+| [SLACK](notifications/slack.md) | Message | Yes | Send an alert and chart into a Slack channel or group using [Slack Bot API](https://api.slack.com/bot-users). |
+| [TELEGRAM](notifications/telegram.md) | Message | Yes | Send an alert and chart into a Telegram channel or group using [Telegram Bot API](https://core.telegram.org/bots/api). |
+| [DISCORD](notifications/discord.md) | Message | Yes | Send an alert and chart into a Discord channel or group using [Discord API](https://discordapp.com/developers/docs/intro). |
+| [HIPCHAT](notifications/hipchat.md) | Message | Yes | Send an alert and chart into a HipChat channel or group using [HipChat Data Center API](https://www.hipchat.com/docs/apiv2/). |
+| [AWS SNS](notifications/aws-sns.md) | Message and Subject | No | Publish a message to an [AWS SNS](http://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic. |
+
+The `WEBHOOK` type sends a pre-defined JSON or form payload to an endpoint capable of parsing and processing these parameters.
+
+The `CUSTOM` type enables sending any character content with custom HTTP headers. The payload format and field names are programmed by the administrator with the field values set using [placeholders](placeholders.md).
 
 ## Window Status
 
@@ -61,24 +79,7 @@ When the window is in `REPEAT` status, the notification can be sent with the fre
 
 Triggering a repeat notification in `CANCEL` status is not supported. Such behavior can be emulated by creating a separate rule with a negated expression which returns `true` instead of `false` for the same condition.
 
-## Notification Types
 
-The following notification types are implemented.
-
-| Type | Customizable Fields | Send Chart | Description |
-| --- | --- | --- | --- |
-| [WEBHOOK](notifications/webhook.md) | None | No | Send pre-defined fields as a JSON document or form to an HTTP endpoint. |
-| [CUSTOM](notifications/custom.md) | All fields | No | Send any text content and headers to an HTTP endpoint. |
-| [SLACK](notifications/slack.md) | Message | Yes | Send an alert and chart into a Slack channel or group using Slack Bot API. |
-| [TELEGRAM](notifications/telegram.md) | Message | Yes | Send an alert and chart into a Telegram channel or group using Telegram Bot API. |
-| [DISCORD](notifications/discord.md) | Message | Yes | Send an alert and chart into a Discord channel or group using Discord API. |
-| [AWS SNS](notifications/aws-sns.md) | Message and Subject | No | Publish a message to an AWS SNS topic. |
-
-The `WEBHOOK` type sends a pre-defined JSON or form payload to an endpoint capable of parsing and processing these parameters.
-
-The `CUSTOM` type enables sending any character content with custom HTTP headers. The payload format and field names are selected by the user with the field values set using [placeholders](placeholders.md).
-
-The remaining notification types implement specific integration details of the remote API in order to simplify configuration and to provide advanced functionality.
 
 ## Payload
 
@@ -112,15 +113,13 @@ For example, an API Bot identifier or authentication token is a fixed setting, w
 
 The administrator can specify which settings are fixed and which can be modified in the rule editor.
 
-## Testing Notification
+## Testing Notifications
 
-Select an existing configuration on the **Alerts > Web Notifications** page, or click 'Create' while on the same page.
+Fill out the required fields for the given notification type.
 
-Open the web notification editor and fill out the required fields for the given type.
+Click 'Test' to verify the delivery.
 
-Click 'Test' to verify delivery of the text payload.
-
-If the notification type supports sending charts, select one of the portals in the 'Test Portal' drop-down and click 'Send Screenshot'.
+If the notification type supports sending charts, select one of the portals from the 'Test Portal' drop-down and click 'Send Screenshot'.
 
 The notification request is successful if the endpoint returns status `200` (OK).
 
@@ -134,15 +133,17 @@ Select a rule by name, open the 'Web Notifications' tab in the rule editor.
 
 Choose one of the notifications from the 'Endpoint' drop-down.
 
-Configure when the notification are triggered by enabling triggers for different status events: on `Open`, `Repeat`, and on `Cancel`.
+Configure when the notification are triggered by enabling triggers for different status change events: on `Open`, `Repeat`, and on `Cancel`.
 
 ![](images/state-no-repeat.png)
 
+If multiple notifications are triggered for the same event, the order in which the notifications are delivered is not defined.
+
 ### Jitter Control
 
-The `Delay on 'OPEN'` setting allows deferring the trigger fired for `OPEN` status. If the the rule quickly switches back to `CANCEL` status within the specified interval, the pending `OPEN` notification will be cancelled.
+The `Delay on 'OPEN'` setting allows deferring the trigger fired for the `OPEN` status. This is accomplished by deferring an `OPEN` notification and cancelling it in case the window status reverts to `CANCEL` within the specified grace interval.
 
-This setting can be used to reduce alert jitter when the window quickly alternates between the `OPEN` and `CANCEL` status.
+This setting can be used to reduce alert jitter when the window alternates between the `OPEN` and `CANCEL` status.
 
 ### Repeat Alerts
 
@@ -176,7 +177,13 @@ In order to update multiple endpoints for the same status change event, create a
 
 ## Stopping Messages
 
+If the notification status is set to disabled, requests initiated by the rule engine through the notification are ignored.
+
 To temporarily disable sending all messages sent through the given notification, set its status to 'Disabled'.
+
+## Delivery Control
+
+Notification results are recorded in the database as messages and can be viewed under the 'notification' type on the Message Search page.
 
 ## Error Handling
 

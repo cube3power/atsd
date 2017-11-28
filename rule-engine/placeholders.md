@@ -4,7 +4,7 @@
 
 Placeholders can be used to include [window](window.md) fields and [function](function.md) values into email notifications, web notifications, system commands, and logging messages.
 
-The placeholders can be specified using the `${name}` syntax which is replaced with the actual value of the variable or the function at the time the trigger is executed.
+The placeholders can be specified using the `${name}` syntax which is replaced with the actual value of the named variable or the function at the time the trigger is executed.
 
 ![](images/placeholders.png)
 
