@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `TELEGRAM` notification type provides a built-in capability to send alert messages, alert detail tables, and charts into Telegram groups and channels. The integration is based on the [Telegram Bot API](https://core.telegram.org/bots/api).
+The `TELEGRAM` [notification](../web-notifications.md) provides a built-in capability to send alert messages, alert detail tables, and charts into Telegram groups and channels. The integration is based on the [Telegram Bot API](https://core.telegram.org/bots/api).
 
 ## Prerequisites
 

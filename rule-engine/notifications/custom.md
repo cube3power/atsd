@@ -2,7 +2,9 @@
 
 ## Overview
 
-The **custom** notification type provides a flexible way to integrate the ATSD rule engine with external HTTP services. The integration enables sending HTTP requests with customized content to the specified HTTP endpoint on window status events.
+The `CUSTOM` [notification](../web-notifications.md) provides a flexible mechanism to integrate the ATSD rule engine with external HTTP services.
+
+The integration enables sending HTTP requests with customized content to the specified HTTP endpoint on window status events.
 
 ## Supported HTTP Methods
 
@@ -31,6 +33,20 @@ The placeholders are substituted with actual field values when the request is in
 If the placeholder doesn't exist, it is substituted with an empty string.
 
 Placeholder values are automatically URL-encoded if they're included in the request URL.
+
+## Parameters
+
+The parameters section is displayed when the content type is set to `application/x-www-form-urlencoded`.
+
+If the checkbox on the left is disabled, the parameter is fixed and cannot be modified in the rule editor.
+
+Otherwise, if the checkbox enabled, the parameter will be displayed on the 'Web Notifications' tab in the rule editor.
+
+Both fixed and editable parameter values can include placeholders.
+
+![](images/custom_editable.png)
+
+![](images/custom-editable-editor.png)
 
 ## Example
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `SLACK` notification type provides a built-in capability to send alert messages, alert detail tables, and charts into Slack channels. The integration is based on the [Slack Bot API](https://api.slack.com/bot-users).
+The `SLACK` [notification](../web-notifications.md) provides a built-in capability to send alert messages, alert detail tables, and charts into Slack channels. The integration is based on the [Slack Bot API](https://api.slack.com/bot-users).
 
 ## Prerequisites
 

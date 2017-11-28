@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **webhook** notification type provides a simple way to send a pre-defined payload containing all window fields to an external HTTP service. The subscribing service is responsible for parsing, handling, and reacting to the received content.
+The **webhook** [notification](../web-notifications.md) provides a simple way to send a pre-defined payload containing all window fields to an external HTTP service. The subscribing service is responsible for parsing, handling, and reacting to the received content.
 
 ## Method
 
