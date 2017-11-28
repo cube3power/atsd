@@ -1,106 +1,129 @@
-# Slack
+# Slack Notifications
 
-https://slack.com/
+## Overview
+
+The `SLACK` notification type provides a built-in capability to send alert messages, alert detail tables, and charts into Slack channels. The integration is based on the [Slack Bot API](https://api.slack.com/bot-users).
 
 ## Prerequisites
 
-Install a [Web Driver binary](README.md#install-web-driver)
+Install and configure the [Web Driver](README.md#install-web-driver) in order to enable sending chart screenshots into Slack.
 
-## Create workspace and channel
+## Create Workspace
 
-* Go to https://slack.com/create and follow the prompts to create a new workspace
-* Create a new channel:
+If necessary, go to https://slack.com/create and follow the prompts to create a new workspace.
 
-    ![](images/create_channel.png)
-    
-    * check (enable) **Private** to restrict access
-    * invite members to receive notifications from ATSD (you can do it later)
-      
+## Create Channel
+
+* Click **Create a channel**
+
+  ![](images/create_channel.png)
+
+* Check (enable) **Private** option to restrict access to the channel.
+* Invite users to join the channel in order to receive alerts from the ATSD rule engine
+
     ![](images/create_channel2.png)   
-    
-    * click **Create Channel**
 
-## Add bot integration 
+* Click **Create Channel**.
 
-* Go to https://my.slack.com/services/new/bot 
-* Check Workspace 
+## Create ATSD Slack Bot
+
+* Open https://my.slack.com/services/new/bot
+* Check Workspace
 
     ![](images/check_workspace.png)  
 
-* Fill in the username field , click **Add bot integration**
+* Specify the username.
+* Click **Add bot integration**.
 
     ![](images/atsd_bot_slack.png)  
 
-* Review setup instructions
-* Copy API Token, click **Save Integration**
+* Review the setup instructions.
+* Copy the API Token for future reference. Click **Save Integration**.
 
-![](images/api_token.png) 
+    ![](images/api_token.png)
 
-* Invite bot to the channel: 
-    * go back to https://my.slack.com/
-    * click **Invite others to this private channel**
-    
-    ![](images/add_atsd_bot.png) 
-    
-    * choose any option for the channel
-    
-    ![](images/channel_option.png) 
-    
-    * enter bot name to the search field
-    
-    ![](images/add_atsd_bot_to_slack.png) 
-    
-    * click **Invite**
+* Invite the bot user to the channel.
 
-    ![](images/bot_joined.png) 
- 
-## Configure Web Notifications
+    * Go back to https://my.slack.com/
+    * Click **Invite others to this private channel**.
 
-* Log in to ATSD web UI
-* Go to **Admin > Web Notifications > Slack**
-* Specify `Auth Token` and `Channels`
-* Fill in the text field 
+    ![](images/add_atsd_bot.png)
 
-    ![](images/slack_parameters_new.png)
+    * Choose any option for the channel.
+
+    ![](images/channel_option.png)
+
+    * Enter the bot name into the search field.
+
+    ![](images/add_atsd_bot_to_slack.png)
+
+    * Click **Invite**.
+
+## Create Slack Notification in ATSD
+
+* Open **Alerts > Web Notifications** page.
+* Click on an existing `SLACK` template, or click the **Create** button below and switch the form to `SLACK` type.
+* Specify the `Auth Token` and `Channels` parameters. See parameter descriptions below.
+
+    ![](images/slack-settings.png)   
 
 * Click **Test**
 
    ![](images/slack_message_test.png)
-   
-* Select **Test Portal**
- 
+
+* Select **Test Portal** to verify screenshot delivery.
+
    ![](images/new_test_portal.png)   
-   
+
 * Click **Send Screenshot**
 
-   ![](images/slack_send_screen.png) 
-   
-The following parameters are supported:
+   ![](images/slack_send_screen.png)
 
-|**Parameter**|**Description**|
+* If tests are passing ok, check **Enable**, click **Save**.
+
+## Notification Settings
+
+|**Setting**|**Description**|
 |---|---|
-|Auth Token|Authentication token bearing required scopes.|
-|Channels|Comma-separated list of channels, private groups, or IM channels to send message to. Each entry can be an encoded ID, or a name.|
-|Text|Text of the message to be sent. This field is usually required, unless you're providing only alert details instead.|
-|Parse Mode|Change how messages are treated. See [Basic message formatting](https://api.slack.com/docs/message-formatting)|
-|Names as Links|Find and link channel names and usernames.|
+|Auth Token|Bot API authentication token (see above).|
 |Bot Username|Set your bot's user name.|
+|Channels|Comma-separated list of channels, private groups, or IM channels to send message to. Each entry can be a name or an encoded ID.|
+|Text|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
+|Parse Mode|Change how messages are formatted. See [Basic message formatting](https://api.slack.com/docs/message-formatting)|
+|Names as Links|Find and link channel names and usernames.|
 
-If tests are ok, check **Enable**, click **Save**   
+## Testing Notification Rule
 
-## Configure Rule
+### Create/import rule
 
-* Download the file [rules.xml](resources/rules.xml)
-* Open **Alerts > Rules > Import** 
-* Check (enable) **Auto-enable New Rules**, click on **Choose File**, select the downloaded XML file, click **Import**
-* Open the imported rule, go to the **Email Notifications** tab, replace **Recipients** field
-* Go to the **Web Notifications** tab, select Slack from **Endpoint** drop-down
-* Save the rule by clicking on the **Save** button
+* Create a new rule or import an existing rule for a built-in metric as described below.
+* Download the file [rules.xml](resources/rules.xml).
+* Open the **Alerts > Rules > Import** page.
+* Check (enable) **Auto-enable New Rules**, attach the `rules.xml` file, click **Import**.
 
-## Test
+### Configure notification
 
-* Wait a little, check the channel
+* Open **Alerts > Rules** page and select a rule.
+* Open the **Web Notifications** tab.
+* Select Slack from the **Endpoint** drop-down.
+* Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.
+* Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
-![](images/slack_test_1.png) 
+```ls
+    OPEN = [${status}] ${rule} for ${entity} ${tags}. ${ruleLink}
+    REPEAT = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
+    CANCEL = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
+```
+
+* Save the rule by clicking on the **Save** button.
+
+  ![](images/slack_notification.png)
+
+* The rule will create new windows based on incoming data.
+It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
+
+## Example
+
+![](images/slack_test_1.png)
 
 ![](images/slack_test_2.png)
