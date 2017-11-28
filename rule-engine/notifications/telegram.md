@@ -1,173 +1,191 @@
-# Telegram
+# Telegram Notifications
 
-https://telegram.org/
+## Overview
+
+The `TELEGRAM` notification type provides a built-in capability to send alert messages, alert detail tables, and charts into Telegram groups and channels. The integration is based on the [Telegram Bot API](https://core.telegram.org/bots/api).
 
 ## Prerequisites
 
-Install [WebDriver](README.md#install-web-driver)
+Install and configure the [Web Driver](README.md#install-web-driver) in order to enable sending chart screenshots into Telegram.
 
-## Create a bot
+## Create Bot
 
-* Open a conversation with the [BotFather](https://telegram.me/botfather)
+* Search for the `BotFather` user in the Telegram client.
+* Start a conversation with the [BotFather](https://telegram.me/botfather) user.
 
     ![](images/botfather.png)
 
-* Send the `/newbot` command and follow the prompts to create a bot user and obtain the token
+* Send the `/newbot` command and follow the prompts to create a bot user and obtain its token.
+* Send the `/mybots` command to the BotFather](https://telegram.me/botfather).
+* Select the current bot.
 
-> Note: the next step is required only if you want to send notifications to groups
+  ![](images/telegram-my-bots.png)
 
-* Enable groups for bot:
-  * send the `/mybots` command to the BotFather
-  * select recently created bot > **Bot Settings > Allow Groups? > Turn groups on** if required
+* Click on **Bot Settings > Allow Groups? > Turn groups on** to enable group notifications for this bot.
 
-## Create group or channel
+  ![](images/telegram-allow-groups.png)
+
+## Create Group or Channel
 
 ### Create Group
 
-* Go to profile settings > **New Group**
+* Open profile settings > **New Group**.
 
    ![](images/new_group.png)
 
-* Enter group name, click **Next**
-* Add the created bot, for example, `@atsd_bot`
+* Enter the group name, click **Next**.
+* Add the previously created bot as a member of this group, for example, `@atsd_bot`
 
    ![](images/atsd_bot.png)
 
-* Add other members to receive notifications from ATSD, click **Create**
+* Add other members to receive notifications from ATSD.
+* Click **Create**.
 
 ### Create Channel
 
-* Go to profile settings > **New Channel**
+* Open profile settings **New Channel**.
 
    ![](images/new_channel.png)
 
-* Enter channel name, click **Create**
-* Check (enable) type of channel, fill in the **Invite link** field if required, click **Save**
+* Enter the channel name. Click **Create**.
+* Select the channel type and click the **Invite link** field if necessary.
+* Click **Save**.
 
    ![](images/private_channel.png)
 
-* Add members to receive notifications from ATSD (you can do it later) > **Invite**
+* Add members to receive notifications from ATSD > **Invite**.
 * Click on **Channel Settings > View channel info**
 
    ![](images/channel_settings.png)       
 
    ![](images/channel_inf.png)
 
-* **N administrators > Add administrator** > enter bot name to the search field, for example `@atsd_bot` 
+* **N administrators > Add administrator** > enter bot name to the search field, for example `@atsd_bot`
 
    ![](images/add_admin.png)
 
-   Click on bot > **Ok**
+   Click on bot and confirm **OK**.
 
    ![](images/ok.png)
-   
-   Review settings and click **Save > Close**
+
+   Review the settings and click **Save > Close**.
 
    ![](images/admin_settings.png)
 
-## Get the chat id
+## Get Chat Id
 
-  * Log in [Telegram Web](https://web.telegram.org)
-  
-### 1-1 Chat
+The easiest way to locate the `chat id` for the group or channel is to log into [Telegram Web](https://web.telegram.org). The chart id is required for the Telegram notification to function properly.
+
+Lookup the chat id as described below and copy the chat id for future reference.
+
+### For Group  
+
+* Click on the group name and check its URL, for example `/#/im?p=g306974066`.
+
+  ![](images/id_group.png)
+
+* Substitute the `g` character with the minus sign, so that the number is like `-306974066`.
+
+### For Private Channel
+
+  * Click on the channel name and check its URL:
+
+   `/#/im?p=c1354757644_16698643680908793939`
+
+    ![](images/channel_url.png)
+
+  * Copy numbers before underscore and replace `c` with `-100`, so that the chat id looks like `-1001354757644`.
+
+#### For Public Channel
+
+  * Click on the channel name and check its URL: `/#/im?p=@atsd_notifications`
+
+     ![](images/public_channel_url.png)    
+
+  * Copy symbols after `=`, so the chat id looks like `@atsd_notifications`
+
+### For Direct Message Chat
 
   * Go to `https://t.me/BOT_NAME`, for example https://t.me/atsd_bot
-  * Click **Open in Web**
-  * Click **Start**
-  * Send some message to bot
-  * Go to https://api.telegram.org/botBOT_TOKEN/getUpdates
-  * Look at `Chat Object`
-  
+  * Click **Open in Web**.
+  * Click **Start**.
+  * Send a message to bot.
+  * Go to https://api.telegram.org/botBOT_TOKEN/getUpdates (replace BOT_TOKEN with the actual value).
+  * Review the `Chat Object`
+
     ![](images/chat_object.png)
-    
-  * Copy id
-  
-### Group  
 
-  * Click on group and look at URL: /#/im?p=g**306974066**
-  
-    ![](images/id_group.png)
-   
-  * Copy numbers and add prefix `-`, so the chat id will be like `-306974066`
+## Configure Web Notification in ATSD
 
-### Channel
+* Open **Alerts > Web Notifications** page.
+* Click on an existing `TELEGRAM` template, or click the **Create** button below and switch the form to `TELEGRAM` type.
+* Enter the `BOT_TOKEN` value into the `bot_id` field.
+* Enter the chat id into the `chat_id` field.
 
-#### Private
+  ![](images/telegram_config.png)
 
-  * Click on channel and look at URL: /#/im?p=c**1354757644**_16698643680908793939
-  
-    ![](images/channel_url.png)
-  
-  * Copy numbers before underscore and add prefix `-100`, so the chat id will be like `-1001354757644`
-  
-#### Public
-
-##### Option 1
-
-  * Click on channel and look at URL: /#/im?p=**@atsd_notifications**
-    
-     ![](images/public_channel_url.png)    
-     
-  * Copy symbols after `=`, so the chat id will be like `@atsd_notifications`
-
-##### Option 2
-  
-  * Click on **Channel Settings > View channel info**
-  
-     ![](images/public_channel.png) 
-     
-  * Copy words after `https://t.me/` in invite link and add prefix `@`, so the chat id will be like `@atsd_notifications`
-  
-## Configure Web Notifications
-
-* Log in ATSD web UI
-* Go to **Admin > Web Notifications > Telegram**
-* Specify `bot_id` with `BOT_TOKEN` and `chat_id` with chat id of group or channel
-* Fill the text field 
-   
-   ![](images/bot_test.png)
-
-* Click **Test**
+* Click **Test**.
 
    ![](images/test_message.png)
-   
-* Select **Test Portal**
- 
+
+* Select **Test Portal** to verify screenshot delivery.
+
    ![](images/new_test_portal.png)   
-   
-* Click **Send Screenshot**
 
-   ![](images/send_screen.png) 
-   
-The following parameters are supported:
+* Click **Send Screenshot**.
 
-|**Field**|**Description**|
+   ![](images/send_screen.png)
+
+* If tests are passing OK, check **Enable**, click **Save**.
+
+## Notification Settings
+
+|**Setting**|**Description**|
 |---|---|
 |Bot ID|Each bot is given a unique authentication token when it is created.|
 |Chat ID|Unique identifier for the target chat or the target channel.|
-|Text|Text of the message to be sent.|
+|Text|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
 |Parse Mode|Send [Markdown](https://core.telegram.org/bots/api#markdown-style) or [HTML](https://core.telegram.org/bots/api#html-style) if you want show bold, italic, fixed-width text or inline URLs in your message.|
 |Disable Notifications|Sends the message silently. Users will receive a notification with no sound.|
 |Disable Web Page Preview|Disables link previews for links in this message.|
 
-If tests are ok, check **Enable**, click **Save**
+## Testing Notification Rule
 
-## Configure Rule
+### Create/import rule
 
-* Download the file [rules.xml](resources/rules.xml)
-* Open **Alerts > Rules > Import** 
-* Check (enable) **Auto-enable New Rules**, click on **Choose File**, select the downloaded XML file, click **Import**
-* Open the imported rule, go to the **Email Notifications** tab, replace **Recipients** field
-* Go to the **Web Notifications** tab, select Telegram from **Endpoint** drop-down
-* Save the rule by clicking on the **Save** button
+* Create a new rule or import an existing rule for a built-in metric as described below.
+* Download the file [rules.xml](resources/rules.xml).
+* Open the **Alerts > Rules > Import** page.
+* Check (enable) **Auto-enable New Rules**, attach the `rules.xml` file, click **Import**.
+
+### Configure notification
+
+* Open **Alerts > Rules** page and select a rule.
+* Open the **Web Notifications** tab.
+* Select Telegram from the **Endpoint** drop-down.
+* Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.
+* Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
+
+```ls
+    OPEN = [${status}] ${rule} for ${entity} ${tags}. ${ruleLink}
+    REPEAT = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
+    CANCEL = [${status}] ${rule} for ${entity} ${tags}. Duration: ${alert_duration_interval}. ${ruleLink}
+```
+
+* Save the rule by clicking on the **Save** button.
+
+  ![](images/telegram_notification.png)
+
+* The rule will create new windows based on incoming data.
+It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Test
 
-* Wait a little, check the channel
+* Check the channel messages.
 
 ![](images/test_1.png)
 
-Content of _atsd.jvm.low_memory_atsd_open_20171123_1349355.txt_:
+Sample alert table file.
 
 ![](images/test_2.png)
 
@@ -178,4 +196,3 @@ Content of _atsd.jvm.low_memory_atsd_open_20171123_1349355.txt_:
 ![](images/example2.png)
 
 ![](images/example3.png)
-

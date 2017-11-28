@@ -79,7 +79,7 @@ If necessary, go to https://slack.com/create and follow the prompts to create a 
 
    ![](images/slack_send_screen.png)
 
-* If tests are passing ok, check **Enable**, click **Save**.
+* If tests are passing OK, check **Enable**, click **Save**.
 
 ## Notification Settings
 
