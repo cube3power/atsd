@@ -2,89 +2,91 @@
 
 ## Overview
 
-The `DISCORD` notification type provides a built-in capability to send alert messages, alert detail tables, and charts into Discord channels. The integration is based on the [Discord Webhook API](https://discordapp.com/developers/docs/resources/webhook).
+The `DISCORD` notification type allows sending alert messages, alert detail tables, and charts into Discord channels. The integration is based on the [Discord Webhook API](https://discordapp.com/developers/docs/resources/webhook).
 
 ## Prerequisites
 
 Install and configure the [Web Driver](README.md#install-web-driver) in order to enable sending chart screenshots into Discord.
 
-## Create server
+## Create Discord Server
 
-If necessary, create a new server.
+Configure a new Discord server, if necessary.
 
- * Click on the big plus at the left panel
+ * Click on the plus icon in the left panel.
 
      ![](images/create_server.png)
 
- * Click on **Create a Server**
+ * Click on **Create a Server**.
 
      ![](images/create_server2.png)
 
- * Fill in the field **Server Name**, click **Create**
+ * Specify **Server Name**. Click **Create**.
 
      ![](images/create_server3.png)
 
- * Invite members to receive notifications from ATSD (you can do it later), click **Done**
+ * Invite new members to the server, click **Done**.
 
-## Create channel
+## Create Channel
 
- * Click on **Create Channel**
+ * Click on **Create Channel**.
 
      ![](images/create_discord_channel.png)
 
- * Fill in the **Channel name** field, check (enable) **Text Channel**, click **Create Channel**
+ * Specify **Channel name**, check (enable) **Text Channel**, click **Create Channel**.
 
      ![](images/create_discord_channel2.png)
 
- * Click **Edit channel**
+ * Click **Edit channel**.
 
      ![](images/create_discord_channel3.png)
 
- * Go to **Permissions** tab and review settings
+ * Open the **Permissions** tab and review the settings.
 
      ![](images/create_discord_channel4.png)
 
-> At the **Invite** tab you can create invite link and send it to users.  To join server created for notifications user should click **Create new server**, select **Join** and paste received invite.
+On the **Invite** tab you can create an invitation link and distribute it to new users.  
 
-## Create webhook
+To join a server, the user should click **Create new server**, select **Join** and paste the received invitation link.
 
- * Open the **Webhook** tab, click **Create Webhook**, specify name, select channel
+## Create Webhook
+
+ * Open the **Webhook** tab, click **Create Webhook**, enter a name, select channel.
 
       ![](images/create_webhook.png)
 
- * Copy Webhook URL, click **Save**
+ * Copy the Webhook URL for future reference, click **Save**.
 
 ## Create Discord Notification in ATSD
 
-* Open **Alerts > Web Notifications** page.
-* Click on an existing `DISCORD` template, or click the **Create** button below and switch the form to `SLACK` type.
-* Specify `Webhook URL` parameter. See parameter descriptions below.
+* Open the **Alerts > Web Notifications** page.
+* Click on an existing `DISCORD` template, or click the **Create** button below the table and switch the form to `DISCORD` type.
+* Enter the `Webhook URL` parameter copied from the Discord client. See parameter descriptions below.
 
     ![](images/discord-settings.png)
 
-* Click **Test**
+* Click **Test**.
 
    ![](images/discord_message_test.png)
 
-* Select **Test Portal**
+* Select **Test Portal** to test the screenshot.
 
    ![](images/new_test_portal.png)   
 
-* Click **Send Screenshot**
+* Click **Send Screenshot**.
 
    ![](images/discord_send_screen.png)
+   
+* If tests are OK, set the status **Enabled** and click **Save**   
 
-The following parameters are supported:
+## Notification Parameters
 
 |**Parameter**|**Description**|
 |---|---|
-|Webhook URL|Webhook URL generated at **Webhook** tab at the channel settings.|
-|Content|Text of the message to be sent.|
+|Webhook URL|Webhook URL generated on **Webhook** tab in channel settings.|
 |Bot Username|Overwrite your bot's user name.|
+|Content|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
 
-If tests are ok, check **Enable**, click **Save**   
-
-## Testing Notification Rule
+## Testing Notification
 
 ### Create/import rule
 
