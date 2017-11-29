@@ -27,10 +27,11 @@ The condition can operate on a single metric defined in the current rule or corr
 * [Filters](filters.md)
 * [Functions](functions.md)
 * [Placeholders](placeholders.md)
-* [Override Tables](overrides.md)
+* [Overrides](overrides.md)
 * [Web Notifications](web-notifications.md)
 * [Email Notifications](email-action.md)
-* [Editor](editor.md)
+* [System Commands](commands.md)
+* [Logging](alert-logging.md)
 
 ## In-Memory Processing
 
@@ -91,9 +92,9 @@ Condition example:
 
 ## Window Status
 
-[Windows](window.md) are stateful. When the condition for a given window becomes `true`, it is maintained in memory with status `OPEN`. 
+[Windows](window.md) are stateful. When the condition for a given window becomes `true`, it is maintained in memory with status `OPEN`.
 
-On subsequent `true` evaluations, the window status changes to `REPEAT`. 
+On subsequent `true` evaluations, the window status changes to `REPEAT`.
 
 When the condition returns `false`, the window status is reverted to `CANCEL`.
 
@@ -101,11 +102,11 @@ When the condition returns `false`, the window status is reverted to `CANCEL`.
 
 Actions are triggered on window status changes, for example on `OPEN` status or on every N-th `REPEAT` status occurrence.
 
-Supported Response Actions
+Supported Response Actions:
 
 * [Email Notification](email-action.md)
 * [Web Notification](web-notifications.md)
-* System Command Execution
+* [System Command Execution](commands.md)
 * [Logging](alert-logging.md) to file, network, and database
 
 The triggers for each action are configured separately. For example, it's possible to configure the rule such that logging events are generated on all repeat occurrences whereas the repeat email notification is triggered on every 10th sample.
