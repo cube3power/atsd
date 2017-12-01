@@ -6,6 +6,11 @@ The `CUSTOM` [notification](../web-notifications.md) provides a flexible mechani
 
 The integration enables sending HTTP requests with customized content to the specified HTTP endpoint on window status events.
 
+## Examples
+
+* Triggering a [CircleCI project build](custom-circlecpi.md)
+* Starting a [Jenkins job](custom-jenkins.md)
+
 ## Supported HTTP Methods
 
 | Method | Payload Allowed |
