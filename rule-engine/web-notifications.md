@@ -4,7 +4,7 @@
 
 Web notifications allow the rule engine to intergate with external HTTP services by means of sending custom HTTP requests on window status events.
 
-They can be used to automate tasks such as sending an alert into a Slack/Telegram/Discord/HipChat channel, updating a bug tracker, starting a CI build, publishing to an AWS SNS topic, or controlling IoT devices.
+They can be used to automate tasks such as sending an alert into a Slack channel, updating a bug tracker, starting a CI build, publishing to an AWS SNS topic, or controlling IoT devices.
 
 Example: **Slack Alert**
 
@@ -12,21 +12,26 @@ Example: **Slack Alert**
 
 ## Notification Types
 
-The rule engine supports various types of web notifications some of which encapsulate the integration details of the remote web services while [others](notifications/custom.md) provide maximum flexibility and control.
+The rule engine supports various types of web notification types some of which encapsulate the integration details of the remote web services while [others](notifications/custom.md) provide maximum flexibility.
 
-| Type | Customizable Fields | Send Chart | Description |
-| --- | --- | --- | --- |
-| [WEBHOOK](notifications/webhook.md) | None | No | Send pre-defined fields as a JSON document or form to an HTTP endpoint. |
-| [CUSTOM](notifications/custom.md) | All fields | No | Send any text content and headers to an HTTP endpoint. |
-| [SLACK](notifications/slack.md) | Message | Yes | Send an alert and chart into a Slack channel or group using [Slack Bot API](https://api.slack.com/bot-users). |
-| [TELEGRAM](notifications/telegram.md) | Message | Yes | Send an alert and chart into a Telegram channel or group using [Telegram Bot API](https://core.telegram.org/bots/api). |
-| [DISCORD](notifications/discord.md) | Message | Yes | Send an alert and chart into a Discord channel or group using [Discord API](https://discordapp.com/developers/docs/intro). |
-| [HIPCHAT](notifications/hipchat.md) | Message | Yes | Send an alert and chart into a HipChat channel or group using [HipChat Data Center API](https://www.hipchat.com/docs/apiv2/). |
-| [AWS SNS](notifications/aws-sns.md) | Message and Subject | No | Publish a message to an [AWS SNS](http://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic. |
+### Collaboration Services
 
-The `WEBHOOK` type sends a pre-defined JSON or form payload to an endpoint capable of parsing and processing these parameters.
+The built-in notification types for chat and collaboration services deliver alert messages and contextual charts to a channel or group.
 
-The `CUSTOM` type enables sending any character content with custom HTTP headers. The payload format and field names are programmed by the administrator with the field values set using [placeholders](placeholders.md).
+| Type | Send Message | Send Chart | Integration Model | Hosting Model |
+| --- | --- | --- | --- | --- |
+| [SLACK](notifications/slack.md) | Yes | Yes | [Slack Bot API](https://api.slack.com/bot-users) | Cloud |
+| [TELEGRAM](notifications/telegram.md) | Yes | Yes | [Telegram Bot API](https://core.telegram.org/bots/api) | Cloud |
+| [DISCORD](notifications/discord.md) | Yes | Yes | [Discord API](https://discordapp.com/developers/docs/intro) | Cloud |
+| [HIPCHAT](notifications/hipchat.md) | Yes | Yes | [HipChat Data Center API](https://www.hipchat.com/docs/apiv2/) | Self-hosted |
+
+### Integration Services
+
+| Type | Customizable Fields | Description |
+| --- | --- | --- |
+| [WEBHOOK](notifications/webhook.md) | None | Send pre-defined fields as a JSON document or form to an HTTP endpoint. |
+| [CUSTOM](notifications/custom.md) | All | Send any JSON content or form parameters to an HTTP endpoint. |
+| [AWS SNS](notifications/aws-sns.md) | Message and Subject | Publish a message to an [AWS SNS](http://docs.aws.amazon.com/sns/latest/api/API_Publish.html) topic. |
 
 ## Window Status
 
