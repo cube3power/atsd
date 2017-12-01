@@ -2,7 +2,7 @@
 
 ## Overview
 
-Web notifications allow the rule engine to intergate with external HTTP services by means of sending custom HTTP requests on window status events.
+Web notifications provide a mechanism for event-driven integration of the ATSD rule engine with external HTTP services.
 
 They can be used to automate tasks such as sending an alert into a Slack channel, updating a bug tracker, starting a CI build, publishing to an AWS SNS topic, or controlling IoT devices.
 
