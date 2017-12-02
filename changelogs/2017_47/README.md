@@ -1,4 +1,4 @@
-Weekly Change Log: November 21, 2017 - November 27, 2017
+Weekly Change Log: November 20, 2017 - November 26, 2017
 ==================================================
 
 ## ATSD
