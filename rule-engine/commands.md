@@ -18,7 +18,7 @@ Specify the command name or absolute path to the executable, for example:
 /home/axibase/disk_cleanup.sh
 ```
 
-It is recommended that the full path is specified even for common commands such as `bash` or `find`. To lookup the command's path, execute `which {command}`, for example `which bash`:
+It is recommended that the full path is specified even for built-in utilities such as `bash` or `find`. To lookup the command's path, execute `which {command}`, for example `which bash`:
 
 ```
 $ which bash
@@ -53,9 +53,19 @@ The command can be configured to execute on `OPEN`, `CANCEL` and `REPEAT` status
 
 If the executable path is empty, no command will be executed for this status trigger.
 
-Only **one** command can be executed for each status change. If you need to execute multiple commands, create a launch script containing references to each command.
+Only **one** command can be executed for each status change. If you need to execute multiple commands, create a wrapper script with multiple commands or launch a spawned shell process with `bash -c` and chain commands using `&&`.
 
-The working directory for the process is specified in the `user.dir` setting on the **Settings > System Information** page.
+```
+/bin/bash
+-c
+docker restart prd_aer && docker exec -it -u axibase prd_aer /home/axibase/aer/start.sh
+```
+
+## Working Directory
+
+The working directory is set in the `user.dir` setting on the **Settings > System Information** page.
+
+Since the working directory path may change, use the absolute path in command arguments where appropriate.
 
 ## Security
 

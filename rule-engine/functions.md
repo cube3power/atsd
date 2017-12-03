@@ -1,6 +1,6 @@
 # Functions
 
-> For the purpose of this reference, arguments have the following data types: `D` - double, `L` - long, `I` - integer, `B` - boolean, `S` - string, `[S]` - array of strings.
+> For the purpose of this reference dicument, arguments have the following data types: `D` - double, `L` - long, `I` - integer, `B` - boolean, `S` - string, `[S]` - array of strings.
 
 > String literal arguments `S` must be enclosed in single quotes, for instance `diff('1 minute')`.
 

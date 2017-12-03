@@ -2,46 +2,109 @@
 
 ## Overview
 
+Filters determine which commands should be processed by the rule. Commands that satisfy all filters are allocated to the rule's [windows](window.md) for further processing such as adding data and evaluating the alert condition.
+
+### Built-in Filters
+
 | **Name** | **Description** |
 | --- | --- |
-| Metric | Discards commands with metric name not equal to the metric name specified in the rule. |
-| Time | Discards commands with time that deviates by more than the specified interval from the current server time. |
-| Previous Value | Discards commands timestamped earlier than the time of the last (most recent) event in a given window. |
-| Entity | Discards commands for an entity not equal to one of entities specified in the rule. |
-| Entity Group | Discards commands for entities that do not belong to one of entity groups specified in the rule. |
-| Command | Discards commands for which the filter expression specified in the rule evaluates to false. |
+| Data Type | Checks that the command is of the specified type: `series`, `property`, `message`. |
+| Metric | Checks that metric is equal to the metric name specified in the rule. |
 
-<!--
-| Calendar | Discards commands if current server time doesn't match the specified cron calendar expression. |
--->
+![](images/filter-dt-metric.png)
 
-<!--
-## Calendar Filter
+### User-Defined Filters
 
-The calendar filter can include a simple or composite cron expression to control when the rule is active.
+| **Name** | **Description** |
+| --- | --- |
+| Expression | Accepts commands for which the filter expression  returns `true`. |
+| Entity | Accepts commands only for entities selected in the rule. |
+| Entity Group | Accepts commands for entities that belong only to one of entity groups selected in the rule. |
+| Time | Accepts commands with timestamp that deviates by less than the specified interval from the current server time. |
 
-* The rule is active by default if no cron expressions are defined.
-* The schedule is evaluated based on local server time.
-* Multiple cron expressions can be combined using `AND` and `OR` operators, and each expression must be enclosed within single quotes.
-* Cron fields are specified in the following order: `minute hour day-of-month month day-of-week`.
+## Data Type Filter
 
-| **Name** | **Example** | **Description** |
-| --- | --- | --- |
-| cron | `* 8-18 * * MON-FRI` | Active between [08:00 and 19:00) on workdays. |
-| cron AND | `'* 8-10 * * MON-WED' AND '* 16-18 * * SAT'` | Active between [08:00 and 11:00) on Monday, Tuesday, Wednesday and between [16:00 and 19:00) on Saturday.
-| cron OR | `'* 0-7,19-23 * * MON-FRI' OR '* * * * SUN, SAT'` | Active during non-working hours and on weekends. |
-
-![](images/filter-calendar.png)
--->
+The filter ignores commands if their data type is different from what is specified in the rule.
+For example, a `series` rule ignores `message` and `property` commands.
 
 ## Metric Filter
 
-To match the rule, the incoming command must have the same metric name as the one specified in the Rule Editor.
+To match the rule, the incoming series command must have the same metric name as the one specified in the Rule Editor. This filter applies to `series` commands.
 
-* For `message` commands, the metric name is pre-defined as `message`.
-* for `property` commands, the metric name is pre-defined as `property`.
+## Filter Expression
 
-![](images/filter-metric.png)
+The filter allows commands for which the condition returns `true`.
+
+The expression must return a boolean value and may consist of nested boolean checks joined with `AND`, `OR`, and `NOT` operators.
+
+The expression may reference fields present in the command using [placeholders](placeholders.md) as well as apply string, formatting, and collection [functions](functions.md):
+
+* metric
+* entity
+* tags.tag-name
+* entity.tags.tag-name
+* entity.field
+* metric.tags.tag-name
+* metric.field
+
+For message commands:
+
+* severity
+* message
+
+For property commands:
+
+* properties
+* keys
+* type
+
+![](images/filter-expression.png)
+
+```javascript
+tags.method = 'get' AND tags.site = 'OperationsManager2007WebConsole' 	
+```
+
+```javascript
+tags.mount_point NOT LIKE '*u113452*'
+```
+
+```javascript
+tags.mount_point = '/'
+```
+
+```javascript
+type = 'activemq_service' and keys.service = 'health'
+```
+
+```javascript
+tags.type != 'security' && message NOT IN collection('linux-ignore-commands')
+```
+
+## Entity Filter
+
+The filter discards commands for an entity not equal to one of entities specified in the rule. The filter is applied only if the list of selected entities is not empty.
+
+![](images/filter-entity.png)
+
+As a more flexible alternative, the entity condition can be encoded in the filter expression:
+
+```javascript
+entity != 'nurswgvml007'
+```
+
+```javascript
+entity LIKE 'mib*'
+```
+
+```javascript
+entity.tags.location = 'SVL'
+```
+
+## Entity Group Filter
+
+The filter discards commands for entities that do not belong to one of entity groups specified in the rule. The filter is applied only if the list of selected entity groups is not empty.
+
+![](images/filter-entity-group.png)
 
 ## Time Filter
 
@@ -49,26 +112,10 @@ If set to a positive value, the filter discards commands with a timestamp that d
 
 ![](images/filter-time.png)
 
-## Previous Value Filter
+## Filter vs Condition
 
-The filter discards commands timestamped earlier than the time of the last (most recent) event in the given window. This filter is typically used to ignore out-of-order commands.
+While the same condition such as `tags.mount_point = '/'` can be evaluated both in the filter expression and the alert condition, it is recommended that the checks that refer to command fields are specified in the filter expression whereas checks that require the [window](window.md) object are specified in the alert condition. This will minimize the number of windows maintained by the rule engine.
 
-![](images/filter-previous-value.png)
+For example, `tags.mount_point = '/'` refers to the `tags` field which is present in the incoming command and therefore can be checked in the filter expression. As a result commands with other tag values (e.g. mount_point = /dev) will be discarded early in the process without causing extra windows to be created.
 
-## Entity Filter
-
-The filter discards commands for an entity not equal to one of entities specified in the rule. If no entity list is established in the rule, the filter is not applied.
-
-![](images/filter-entity.png)
-
-## Entity Group Filter
-
-The filter discards commands for entities that do not belong to one of entity groups specified in the rule. If no entity group list is established in the rule, the filter is not applied.
-
-![](images/filter-entity-group.png)
-
-## Command Filter
-
-The filter evaluates the filter expression and discards values if the filter expressions evaluates to `false`.
-
-![](images/filter-expression.png)
+The `avg()` function, on the other hand, operates on an array of values stored in the window object and should therefore be used in the alert condition, because the window object is not available at the filtering stage.

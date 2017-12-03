@@ -98,6 +98,10 @@ On subsequent `true` evaluations, the window status changes to `REPEAT`.
 
 When the condition returns `false`, the window status is reverted to `CANCEL`.
 
+Window status can be accessed on the **Alerts > Rule Windows** page.
+
+![](images/rule-windows.png)
+
 ## Actions
 
 Actions are triggered on window status changes, for example on `OPEN` status or on every N-th `REPEAT` status occurrence.
@@ -179,10 +183,6 @@ If an alert is raised by a condition defined in the Overrides table, its severit
 
 > For rules operating on 'message' commands, the alert severity can be inherited from the 'severity' field of the underlying message.
 To enable this behavior, set Severity on the 'Logging' tab to 'unknown'.
-
-## Rule Editor
-
-The rules can be created and maintained using the built-in [Rule Editor](editor.md).
 
 ## Viewing Open Alerts
 
