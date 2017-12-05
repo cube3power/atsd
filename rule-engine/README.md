@@ -15,14 +15,15 @@ The engine evaluates rule conditions against incoming series, message, and prope
 Example
 
 ```javascript
-    IF percentile(75) > 300 THEN alert_slack_devops_channel
+    IF percentile(75) > 300 THEN alert_slack_channel
 ```
 
 The condition can operate on a single metric defined in the current rule or correlate multiple metrics using [`db functions`](functions-db.md) or [`rule functions`](functions-rules.md).
 
-## References
+## Concepts
 
 * [Window](window.md)
+* [Grouping](grouping.md)
 * [Condition](condition.md)
 * [Filters](filters.md)
 * [Functions](functions.md)
@@ -58,7 +59,7 @@ The incoming data samples are processed by a chain of filters prior to reaching 
 Once the sample passes through the filter chain, it is added to matching
 [windows](window.md) grouped by metric, entity, and optional tags. Each window maintains its own array of data samples.
 
-The windows can be mapped to series in a 1-to-1 fashion by enumerating all series tags as the grouping tags.
+The commands can be associated with windows in a 1-to-1 fashion by enumerating all series tags as the [grouping](grouping.md) tags.
 
 ![](images/grouping-tags.png)
 
@@ -113,7 +114,7 @@ Supported Response Actions:
 * [System Command Execution](commands.md)
 * [Logging](alert-logging.md) to file, network, and database
 
-The triggers for each action are configured separately. For example, it's possible to configure the rule such that logging events are generated on all repeat occurrences whereas the repeat email notification is triggered on every 10th sample.
+The triggers for each action are configured separately. For example, it's possible to configure the rule so that logging events are generated on all repeat occurrences whereas email messages are sent every 6 hours.
 
 ## Correlation
 

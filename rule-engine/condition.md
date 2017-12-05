@@ -1,15 +1,15 @@
 # Condition
 
 Condition is a boolean expression specified in the [rule editor](editor.md) which is evaluated when data is
-received by or removed from the window. For example, the condition `value > 50` returns `true` if the newly received value is greater than 50.
+received by or removed from the window. For example, the condition `value > 50` returns `true` if the last received value exceeds 50.
 
-When the condition evaluates to `true` for the first time, the window status changes to `OPEN` causing the execution of triggers such as a system commands and email notifications. Once the condition becomes `false`, the window returns back to `CANCEL` status triggering a corresponding set of triggers.
+When the condition evaluates to `true` for the first time, the window status changes to `OPEN` causing the execution of 'On Open' triggers such as a system commands and email notifications. Once the condition becomes `false`, the window returns back to `CANCEL` status triggering a corresponding set of triggers.
 
-The condition consists of one or multiple boolean expressions combined with `OR` (`||`) and `AND` (`&&`) operators.
+The condition consists of one or multiple boolean checks combined with `OR` (`||`), `AND` (`&&`) and `NOT` (`!`) operators.
 
-The expressions can apply [functions](functions.md) to data and reference fields. Function names are case-sensitive.
+The expressions can reference rule, command, and window fields, user-defined variables and apply [functions](functions.md) to data. 
 
-> Exceptions specified in the Overrides table take precedence over the condition.
+> Exceptions specified in the `Overrides` table take precedence over the condition.
 
 ## Fields
 
@@ -58,6 +58,13 @@ The expressions can apply [functions](functions.md) to data and reference fields
 ## Functions
 
 Refer to [functions](functions.md).
+
+Function names are **case-sensitive**.
+
+## Variables
+
+Functions that return a primitive value (number, string, boolean) can be defined as a variable and included in the condition expression by name.
+
 
 ## Examples
 

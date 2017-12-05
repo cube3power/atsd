@@ -4,11 +4,15 @@
 
 A window is an in-memory structure created by the rule engine for each unique combination of metric, entity, and grouping tags extracted from incoming commands.
 
+Windows are displayed on the **Alerts > Rule Windows** page.
+
+![](images/rule-windows.png)
+
 ## Window Length
 
 ### Count Based Windows
 
-Count-based windows accumulate up to the specified number of samples. The samples are sorted in **order of arrival**, with the most recently received sample placed at the end of the array. If the window is full, the first (oldest by arrival time) sample is removed from the window to free up space at the end of the array for an incoming sample.
+Count-based windows accumulate up to the specified number of samples. The samples are sorted in **order of arrival**, with the most recently received sample placed at the end of the array. When the window is full, the first (oldest by arrival time) sample is removed from the window to free up space at the end of the array for an incoming sample.
 
 ![Count Based Window](images/count_based_window3.png "count_based_window")
 
@@ -63,6 +67,6 @@ When the window is in `REPEAT` status, the actions can be executed with the freq
 
 ### `CANCEL` Status
 
-`CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the the condition changes from `true` to `false` or when the window is deleted on rule modification.
+`CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the condition changes from `true` to `false` or when the window is destroyed on rule modification.
 
-Triggering a repeat action in `CANCEL` status is not supported. Such behavior can be emulated by creating a separate rule with a negated expression which returns `true` instead of `false` for the same condition.
+Windows in `CANCEL` status do not trigger repeat actions. Such behavior can be emulated by creating a rule with a negated expression which returns `true` instead of `false` for the same condition.
