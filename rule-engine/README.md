@@ -9,7 +9,7 @@ Such tasks may include triggering a web hook, executing a system command, sendin
 The engine evaluates rule conditions against incoming series, message, and property commands and executes response actions when appropriate:
 
 ```javascript
-    IF condition == true THEN action-1, ... action-N
+    IF condition = true THEN action-1, ... action-N
 ```
 
 Example
@@ -22,7 +22,7 @@ The condition can operate on a single metric defined in the current rule or corr
 
 ## Concepts
 
-* [Window](window.md)
+* [Windows](window.md)
 * [Grouping](grouping.md)
 * [Condition](condition.md)
 * [Filters](filters.md)
@@ -107,12 +107,14 @@ Window status can be accessed on the **Alerts > Rule Windows** page.
 
 Actions are triggered on window status changes, for example on `OPEN` status or on every N-th `REPEAT` status occurrence.
 
-Supported Response Actions:
+Supported response actions:
 
-* [Email Notification](email-action.md)
-* [Web Notification](web-notifications.md)
-* [System Command Execution](commands.md)
-* [Logging](alert-logging.md) to file, network, and database
+* [Send email](email-action.md)
+* [Send chat message](web-notifications.md#collaboration-services)
+* [Send webhook](notifications/webhook.md)
+* [Execute system command](commands.md)
+* [Generate derived metrics](derived.md)
+* [Log events to file](alert-logging.md)
 
 The triggers for each action are configured separately. For example, it's possible to configure the rule so that logging events are generated on all repeat occurrences whereas email messages are sent every 6 hours.
 
@@ -134,30 +136,49 @@ Each rule evaluates data received for only one specified metric. In order to cre
 
 ## Developing Rules
 
-Rules are typically developed by system engineers with specialized
-knowledge of the application domain. Rules are often
-created post-mortem to prevent newly discovered problems from
-re-occurring. Rules usually cover a small subset of key metrics to minimize the maintenance effort.
+Alerting rules usually cover only key metrics to minimize the maintenance effort and are typically created to prevent newly discovered problems from
+re-occurring.
 
-In order to minimize the number of rules with manual thresholds, the
-rule engine provides the following capabilities:
+In order to minimize the number of rules with manual thresholds, the rule engine provides the following capabilities:
 
--   Automated thresholds determined by the `forecast()` function.
--   Condition [overrides](overrides.md).
+- Condition [overrides](overrides.md).
+- Ability to compare windows of different length.
+- Automated thresholds determined by the `forecast()` function.
 
-###   Automated Thresholds
+## Setting Thresholds
 
-Thresholds specified in condition expressions can be set manually or using the
-`forecast` function. For example, the following rule fires if the observed
-moving average deviates from the expected forecast value by more than 25% in any direction.
+### Manual Thresholds
+
+Thresholds can be set manually.
+
+```javascript
+  avg() > 90
+```
+
+This approach requires some effort to discover and maintain thresholds at a level that strikes a balance between `false` positives and missed alerts.
+
+[`Overrides`](#overrides) can be used to handle exceptions to the default baseline.
+
+### Deviation Thresholds
+
+Short-term anomalies can be spotted by comparing statistical functions for different intervals.
+
+he condition below activates alerts if the 5-minute average exceeds the 1-hour average by more than `20` and by more than `10%`.
+
+```javascript
+  avg('5 minute') - avg() > 20 && avg('5 minute') / avg() > 1.1
+```
+
+### Forecast Thresholds
+
+The  `forecast` function returns an estimated value for the current series based on the Holt-Winters or ARIMA [forecasting](../forecasting/README.md) algorithms.
+The condition fires if the window average deviates from the expected value by more than `25%` in any direction.
 
 ```javascript
     abs(avg() - forecast()) > 25
 ```
 
-Alternatively, the `forecast_deviation` function can be utilized to
-compare actual and expected values as a ration of standard deviation
-specific for each time series:
+Similarly, the `forecast_deviation` function can be utilized to compare actual and expected values as a ratio of standard deviation.
 
 ```javascript
     abs(forecast_deviation(avg())) > 2
@@ -165,12 +186,7 @@ specific for each time series:
 
 ### Overrides
 
-The default condition can be superseded for a given entity or
-an entity group by adding an entry to the [Override](overrides.md) table. The
-override rule can also be created by clicking on the `Override` link under the Alerts tab or on the corresponding link in the email notification message.
-
-In the example below, an alert will be created when
-the `avg` of the `nur-entities-name` entity name is greater than 90.
+The default condition can be superseded for matching series by adding an entry to the [Overrides](overrides.md) table.
 
 ![](images/override-example.png)
 
@@ -180,13 +196,13 @@ Status changes can be [logged](alert-logging.md) to the database as well as writ
 
 Alert severity is specified on the 'Logging' tab in the rule editor.
 
-If an alert is raised by a condition defined in the Overrides table, its severity supersedes the severity specified on the 'Logging' tab.
+If an alert is raised by a condition defined in the `Overrides` table, its severity supersedes the severity specified on the 'Logging' tab.
 
 > For rules operating on 'message' commands, the alert severity can be inherited from the 'severity' field of the underlying message.
 To enable this behavior, set Severity on the 'Logging' tab to 'unknown'.
 
-## Viewing Open Alerts
+## Viewing Alerts and Windows
 
-Open alerts are displayed on the **Alerts > Open Alerts** page and can be incorporated into portals using the console widget.
+Open alerts are displayed on the **Alerts > Open Alerts** page. The list of alerts can be retrieved with [`Data API`](../api/data/alerts/README.md) and incorporated into portals using the console widget.
 
 ![](images/open-alerts.png)

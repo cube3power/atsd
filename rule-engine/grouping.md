@@ -2,7 +2,7 @@
 
 ## Overview
 
-The grouping task assigns incoming commands to in-memory [windows](window.md) based on the grouping key which consists from the following field values:
+Incoming commands are assigned to in-memory [windows](window.md) based on the grouping key which consists from the following field values:
 
 * Data Type (`series`, `message`, or `property`)
 * Metric Name

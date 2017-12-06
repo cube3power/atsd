@@ -1,40 +1,25 @@
 # Functions
 
-> For the purpose of this reference dicument, arguments have the following data types: `D` - double, `L` - long, `I` - integer, `B` - boolean, `S` - string, `[S]` - array of strings.
+## Overview
 
-> String literal arguments `S` must be enclosed in single quotes, for instance `diff('1 minute')`.
+For the purpose of this reference document, function arguments have the following data types:
 
-> Function names are **case-sensitive**.
+* `D` - double
+* `L` - long
+* `I` - integer
+* `B` - boolean
+* `S` - string
+* `[S]` - array of strings
 
-## Math Functions
+For example, `percentile(D)` function accepts one argument of the `double` type, such as `percentile(50.0)`.
 
-* `abs(D)`
-* `ceil(D)`
-* `floor(D)`
-* `pow(D, D)`
-* `round(D)`
-* `round(D, I)`
-* `random()`
-* `max(D, D)`
-* `min(D, D)`
-* `sqrt(D)`
-* `exp(D)`
-* `log(D)`
+String literal arguments `S` must be enclosed in single quotes, for instance `diff('1 minute')`.
 
-## String Functions
-
-| **Name** | **Description** |
-| :--- | :--- |
-| `upper(S)` | Convert string to upper case. |
-| `lower(S)` | Convert string to lower case. |
-| `t.contains(S)` | Check if field 't' contains the specified string. |
-| `t.startsWidth(S)` | Check if field 't' starts with the specified string. |
-| `t.endsWidth(S)` | Check if field 't' ends with the specified string. |
-| `coalesce([S])` | Return first non-empty string from the array of strings. See [examples](functions-coalesce.md).|
-| `urlencode(S)` | Encode string into the URL format where unsafe characters are replaced with "%" followed by 2 digits. |
-| `jsonencode(S)` | Escape special symbols with backslash to safely use the provided string within JSON object. |
+Function names are **case-sensitive**.
 
 ## Statistical Functions
+
+The statistical functions are applied to all samples present in the window. For example, the `avg()` function for a `5-minute` time-based window returns an average value for all samples received within this period of time.
 
 | **Name** | **Description** |
 | :--- | :--- |
@@ -90,6 +75,34 @@
 The database functions provide a way to retrieve values for a series which may be different from the series in the current window. The functions can be used to compare data between different series for correlation purposes.
 
 Refer to the database function [syntax and examples](functions-db.md).
+
+## Math Functions
+
+* `abs(D)`
+* `ceil(D)`
+* `floor(D)`
+* `pow(D, D)`
+* `round(D)`
+* `round(D, I)`
+* `random()`
+* `max(D, D)`
+* `min(D, D)`
+* `sqrt(D)`
+* `exp(D)`
+* `log(D)`
+
+## String Functions
+
+| **Name** | **Description** |
+| :--- | :--- |
+| `upper(S)` | Convert string to upper case. |
+| `lower(S)` | Convert string to lower case. |
+| `t.contains(S)` | Check if field 't' contains the specified string. |
+| `t.startsWidth(S)` | Check if field 't' starts with the specified string. |
+| `t.endsWidth(S)` | Check if field 't' ends with the specified string. |
+| `coalesce([S])` | Return first non-empty string from the array of strings. See [examples](functions-coalesce.md).|
+| `urlencode(S)` | Encode string into the URL format where unsafe characters are replaced with "%" followed by 2 digits. |
+| `jsonencode(S)` | Escape special symbols with backslash to safely use the provided string within JSON object. |
 
 ## Formatting Functions
 
