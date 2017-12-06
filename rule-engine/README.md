@@ -163,7 +163,7 @@ This approach requires some effort to discover and maintain thresholds at a leve
 
 Short-term anomalies can be spotted by comparing statistical functions for different intervals.
 
-he condition below activates alerts if the 5-minute average exceeds the 1-hour average by more than `20` and by more than `10%`.
+The condition below activates alerts if the 5-minute average exceeds the 1-hour average by more than `20` and by more than `10%`.
 
 ```javascript
   avg('5 minute') - avg() > 20 && avg('5 minute') / avg() > 1.1

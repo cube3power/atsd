@@ -2,7 +2,9 @@
 
 ## Overview
 
-For the purpose of this reference document, function arguments have the following data types:
+Function calls in expressions and placeholders are replaced during evaluation by the value of the function.
+
+Functions can accept arguments of the following data types:
 
 * `D` - double
 * `L` - long
@@ -11,15 +13,15 @@ For the purpose of this reference document, function arguments have the followin
 * `S` - string
 * `[S]` - array of strings
 
-For example, `percentile(D)` function accepts one argument of the `double` type, such as `percentile(50.0)`.
+For example, the `percentile(D)` function accepts one argument of the `double` type, such as `percentile(50.0)`.
 
-String literal arguments `S` must be enclosed in single quotes, for instance `diff('1 minute')`.
+String literal arguments (`S`) must be enclosed in single quotes, for instance `diff('1 minute')`.
 
-Function names are **case-sensitive**.
+Function names are case-**sensitive**.
 
 ## Statistical Functions
 
-The statistical functions are applied to all samples present in the window. For example, the `avg()` function for a `5-minute` time-based window returns an average value for all samples received within this period of time.
+Univariate statistical functions listed below perform a calculation on the array of numeric values stored in the window. For example, the `avg()` function for a `5-minute` time-based window returns an average value for all samples received within this period of time.
 
 | **Name** | **Description** |
 | :--- | :--- |
@@ -31,7 +33,7 @@ The statistical functions are applied to all samples present in the window. For 
 | `wavg()` | Weighted average. Weight = sample index which starts from 0 for the first sample. |
 | `wtavg()` | Weighted time average.<br>`Weight = (sample.time - first.time)/(last.time - first.time + 1)`. <br>Time measured in epoch seconds. |
 | `count()` | Count of values. |
-| `percentile(D)` | D-th percentile. D can be a fractional number. |
+| `percentile(D)` | N-th percentile. D can be a fractional number. |
 | `median()` | 50% percentile. Same as `percentile(50)`. |
 | `variance()` | Standard deviation. |
 | `stdev()` | Standard deviation. Aliases: `variance`, `stdev`, `std_dev`. |
@@ -55,6 +57,22 @@ The statistical functions are applied to all samples present in the window. For 
 | `slope_per_second()` | Same as` slope()`. |
 | `slope_per_minute()` | `slope_per_second()/60`. |
 | `slope_per_hour()` | `slope_per_second()/3600`. |
+
+### Interval Selection
+
+By default, the statistical functions operate on all samples stored in the window. The range of samples can be customized by passing an optional argument - specified as sample count (`I`) or interval (`S`) - in which case the function calculates the result based on the most recent samples.
+
+* `avg(5)` - Average value for the last 5 samples
+* `max('2 minute')` - Maximum value for the last 2 minutes
+* `percentile(95, '1 hour')` - 95% percentile for the last hour
+
+Example:
+
+The condition evaluates to `true` if the 1-minute average is greater than the 1-hour average by more than `20` and a maximum was reached in the last 5 samples.
+
+```javascript
+  avg('1 minute') - avg() > 20 && max(5) == max()
+```
 
 ## Statistical Forecast Functions
 
