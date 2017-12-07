@@ -102,11 +102,11 @@ Refer to the database function [syntax and examples](functions-db.md).
 | `ceil(D)` | Returns the smallest integer that is greater than or equal to the specified number. |
 | `floor(D)` | Returns the largest integer that is less than or equal to the specified number. |
 | `pow(D, D)`  | Number raised to the specified power (2nd argument). |
-| `round(D [,I])` | Returns the number rounded to the specified decimal places. <br>The precision argument `I` is 0 if omitted.<br>`round(D, 0) rounds the number to the nearest integer.<br>If `I` is less than 0, the number is rounded to the left of the decimal point.|
+| `round(D[,I])` | Returns the number rounded to the specified decimal places. <br>The precision argument `I` is 0 if omitted.<br>`round(D, 0)` rounds the number to the nearest integer.<br>If `I` is less than 0, the number is rounded to the left of the decimal point.|
 | `random()` | Returns a uniformly distributed double number, greater than or equal to 0.0 and less than 1.0.|
 | `max(D, D)` | Returns the greater of two double values.|
 | `min(D, D)` | Returns the smallest of two double values.|
-| `sqrt(D, D)` | Returns the square root of the specified number.|
+| `sqrt(D)` | Returns the square root of the specified number.|
 | `exp(D)` | `e` (2.71828183) raised to the power of the specified number. |
 | `log(D)`  | Base-`e` natural logarithm of the specified number. |
 
