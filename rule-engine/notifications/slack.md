@@ -59,6 +59,16 @@ If necessary, go to https://slack.com/create and follow the prompts to create a 
 
     * Click **Invite**.
 
+## Get Channel Id
+
+ * Click on the target IM/public/private channel to display the channel URL, for example `messages/D822261LK/team/U81D8UY64/`.
+ 
+     ![](images/slack_channel_id.png)
+     
+ * Copy the channel Id which is specified between the `messages/` and `/team` parts, for example `D822261LK`.
+ 
+In case of sending messages to a public or private channel you can just use the name of the channel instead of its Id, for example `devops` or `general`.
+
 ## Create Slack Notification in ATSD
 
 * Open **Alerts > Web Notifications** page.
