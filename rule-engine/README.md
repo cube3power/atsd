@@ -32,7 +32,7 @@ The condition can operate on a single metric defined in the current rule or corr
 * [Web Notifications](web-notifications.md)
 * [Email Notifications](email-action.md)
 * [System Commands](commands.md)
-* [Logging](alert-logging.md)
+* [Logging](logging.md)
 
 ## In-Memory Processing
 
@@ -114,7 +114,7 @@ Supported response actions:
 * [Send webhook](notifications/webhook.md)
 * [Execute system command](commands.md)
 * [Generate derived metrics](derived.md)
-* [Log events to file](alert-logging.md)
+* [Log events to file](logging.md)
 
 The triggers for each action are configured separately. For example, it's possible to configure the rule so that logging events are generated on all repeat occurrences whereas email messages are sent every 6 hours.
 
@@ -190,9 +190,7 @@ The default condition can be superseded for matching series by adding an entry t
 
 ![](images/override-example.png)
 
-## Alert Logging
-
-Status changes can be [logged](alert-logging.md) to the database as well as written into log files for integration and audit.
+## Alert Severity
 
 Alert severity is specified on the 'Logging' tab in the rule editor.
 
@@ -200,6 +198,10 @@ If an alert is raised by a condition defined in the `Overrides` table, its sever
 
 > For rules operating on 'message' commands, the alert severity can be inherited from the 'severity' field of the underlying message.
 To enable this behavior, set Severity on the 'Logging' tab to 'unknown'.
+
+## Logging
+
+Status changes can be [logged](logging.md) in a customizable format to log files for integration and audit.
 
 ## Viewing Alerts and Windows
 

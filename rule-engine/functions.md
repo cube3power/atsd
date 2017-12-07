@@ -60,7 +60,7 @@ Univariate statistical functions listed below perform a calculation on the array
 
 ### Interval Selection
 
-By default, the statistical functions operate on all samples stored in the window. The range of samples can be customized by passing an optional argument - specified as sample count (`I`) or interval (`S`) - in which case the function calculates the result based on the most recent samples.
+By default, the statistical functions calculate the result based on all samples stored in the window. The range of samples can be adjusted by passing an optional argument - specified as sample count (`I`) or interval (`S`) - in which case the function will calculate the result based on the most recent samples.
 
 * `avg(5)` - Average value for the last 5 samples
 * `max('2 minute')` - Maximum value for the last 2 minutes
@@ -71,7 +71,7 @@ Example:
 The condition evaluates to `true` if the 1-minute average is greater than the 1-hour average by more than `20` and a maximum was reached in the last 5 samples.
 
 ```javascript
-  avg('1 minute') - avg() > 20 && max(5) == max()
+  avg('1 minute') - avg() > 20 && max(5) = max()
 ```
 
 ## Statistical Forecast Functions
