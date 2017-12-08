@@ -190,6 +190,14 @@ To temporarily disable sending all messages sent through the given notification,
 
 Notification results are recorded in the database as messages and can be viewed under the 'notification' type on the Message Search page.
 
+## Monitoring
+
+The number of notifications sent per minute can be monitored with the [`web_service_notifications_per_minute`](../administration/monitoring.md#rule-engine) metric collected by the database.
+
+https://atsd_host:8443/portals/series?entity=atsd&metric=web_service_notifications_per_minute
+
+![](images/notifications-monitoring.png)
+
 ## Error Handling
 
 The notification request is delivered successfully if the endpoint returns `200` (OK) status code.
