@@ -180,9 +180,9 @@ Alternatively, use the `minimum` or a below-median percentile function with the 
 
 ### Deviation Thresholds
 
-Short-term anomalies can be spotted by comparing statistical functions for different intervals.
+Short-term anomalies can be spotted by comparing statistical functions for different overlapping intervals.
 
-The condition below activates alerts if the 5-minute average exceeds the 1-hour average by more than `20` and by more than `10%`.
+The condition below activates an alert if the 5-minute average exceeds the 1-hour average by more than `20` and by more than `10%`.
 
 ```javascript
   avg('5 minute') - avg() > 20 && avg('5 minute') / avg() > 1.1
@@ -201,6 +201,22 @@ Similarly, the `forecast_deviation` function can be utilized to compare actual a
 
 ```javascript
     abs(forecast_deviation(avg())) > 2
+```
+
+### Correlation Thresholds
+
+In cases where the analyzed metric is dependent on another measure, use the [database functions](functions-db.md) to identify abnormal behavior in one of the metrics.
+
+The primary metric is expected to be below `50` as long as the second metric remains below `100`. Raise an alert otherwise.
+
+```javascript
+    avg() > 50 && db_statistic('avg', '1 hour', 'page_views_per_minute') < 100
+```
+
+The same condition can be generalized with a ratio.
+
+```javascript
+    avg() / db_statistic('avg', '1 hour', 'page_views_per_minute') > 2
 ```
 
 ### Overrides
