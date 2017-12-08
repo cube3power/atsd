@@ -77,7 +77,7 @@ An alert is triggered if either `ERROR` or `WARNING` condition returns `true`.
 
 ### Alert Severity
 
-When one of the threshold condition is satisfied, the alert is assigned a severity level based on which threshold was met: `ERROR` or `WARNING`.
+When one of the threshold conditions is satisfied, the alert is assigned a severity level based on which threshold was met: `ERROR` or `WARNING`.
 
 ![](images/severity-rule.png)
 
@@ -85,7 +85,7 @@ If both `ERROR` and `WARNING` conditions are `true`, the `ERROR` level takes pre
 
 ![https://apps.axibase.com/chartlab/32fcae1a](images/severity-over.png)
 
-If no override rule matches the window and the alert is still triggered by the default expression, it is assigned the severity level specified on the 'Logging' tab.
+If no override rule matches the window and the alert is then triggered by the default condtion, it is assigned the severity specified on the 'Logging' tab.
 
 ![](images/logging-severity.png)
 
@@ -94,7 +94,7 @@ If no override rule matches the window and the alert is still triggered by the d
 
 The metric in this example measures disk space usage and is collected with 'file_system' and 'mount_point' tags. The numeric values range between 0% and 100%. The alert should be raised if disk utilization exceeds **80%** unless a custom threshold is found in the Overrides table.
 
-Default Expression
+Default Condition
 
 ```java
 value > 80
@@ -109,9 +109,9 @@ Rule Processing
 * Rules are processed from top to bottom. There are 4 rules in the table.
 * Row 1: Since the value cannot be greater than **100%**, this rule effectively disables alerts for 'tmp' file systems.
 * Row 2. This rule will raise `ERROR` alert if disk usage exceeds **50%** for entity 'nurswgvml010'.
-* Row 3. This rule will raise `ERROR` alert if disk usage on `/` mount point exceeds **90%** for entity 'nurswgvml007'. Note that once a rule is matched, the default expression is not evaluated for this window, and therefore an alert will not be raised for `/` on 'nurswgvml007' with disk usage of **85%**.
+* Row 3. This rule will raise `ERROR` alert if disk usage on `/` mount point exceeds **90%** for entity 'nurswgvml007'. Note that once a rule is matched, the default condition is not evaluated for this window, and therefore an alert will not be raised for `/` on 'nurswgvml007' with disk usage of **85%**.
 * Row 4. Raise `ERROR` alert if disk usage exceeds **60%** for any entity in the 'disk_prod' group. Otherwise, raise `WARNING` alert, if disk usage is greater than **30%** for the same entities.
-* If not rule was matched, evaluate the default expression.
+* If not rule was matched, evaluate the default condition.
 
 ## Multiple Override Tables
 

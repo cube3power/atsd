@@ -67,12 +67,18 @@
 ## Rule Engine
 
   * [Overview](rule-engine/README.md)
-  * [Expression](rule-engine/expression.md)
+  * [Windows](rule-engine/window.md)
+  * [Grouping](rule-engine/grouping.md)
+  * [Condition](rule-engine/condition.md)
   * [Filters](rule-engine/filters.md)
   * [Functions](rule-engine/functions.md)
   * [Placeholders](rule-engine/placeholders.md)
-  * [Editor](rule-engine/editor.md)
-  * [Email Action](rule-engine/email-action.md)
+  * [Overrides](rule-engine/overrides.md)
+  * [Web Notifications](rule-engine/web-notifications.md)
+  * [Email Notifications](rule-engine/email.md)
+  * [System Commands](rule-engine/commands.md)
+  * [Derived Commands](rule-engine/derived.md) 
+  * [Logging](rule-engine/logging.md)
 
 ## Installation
 

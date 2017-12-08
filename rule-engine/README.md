@@ -4,7 +4,7 @@
 
 The rule engine enables automation of repetitive tasks based on real-time statistical analysis of the incoming data.
 
-Such tasks may include triggering a web hook, executing a system command, sending an alert to an [email](email-action.md) or [Slack channel](web-notifications.md), or generating derived metrics.
+Such tasks may include triggering a web hook, executing a system command, sending an alert to an [email](email.md) or [Slack channel](web-notifications.md), or generating derived metrics.
 
 The engine evaluates rule conditions against incoming series, message, and property commands and executes response actions when appropriate:
 
@@ -30,8 +30,9 @@ The condition can operate on a single metric defined in the current rule or corr
 * [Placeholders](placeholders.md)
 * [Overrides](overrides.md)
 * [Web Notifications](web-notifications.md)
-* [Email Notifications](email-action.md)
+* [Email Notifications](email.md)
 * [System Commands](commands.md)
+* [Derived Commands](derived.md)
 * [Logging](logging.md)
 
 ## In-Memory Processing
@@ -109,7 +110,7 @@ Actions are triggered on window status changes, for example on `OPEN` status or 
 
 Supported response actions:
 
-* [Send email](email-action.md)
+* [Send email](email.md)
 * [Send chat message](web-notifications.md#collaboration-services)
 * [Send webhook](notifications/webhook.md)
 * [Execute system command](commands.md)
