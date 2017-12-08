@@ -10,17 +10,12 @@ To receive notifications from a given rule, open the `Email Notifications` tab i
 
 Set status to `Enabled` and enter one or multiple email addresses, separated by comma, semi-colon or whitespace.
 
-![email_alert_notags](images/email_alert_notags.png)
+Click 'Enabled' for each trigger (`OPEN`, `REPEAT`, `CANCEL`) that you would like to subscribe to and customize the Subject text using [placeholders](placeholders.md).
 
-Click 'Enabled' for each trigger (`OPEN`, `REPEAT`, `CANCEL`) that you would like to subscribe to and customize the Subject text if necessary:
+For the `REPEAT` status, adjust the 'Repeat Interval' to the desired notification frequency, for example, 6 hours.
 
 
-The subject and text may include [placeholders](placeholders.md).
-
-For the `REPEAT` status, adjust the 'Repeat Interval' to the desired
-notification frequency, for example, 6 hours.
-
-![email_config](images/email_config1.png)
+![](images/email_config_all.png)
 
 ## Notification Settings
 
