@@ -58,13 +58,31 @@ Univariate statistical functions listed below perform a calculation on the array
 | `slope_per_minute()` | `slope_per_second()/60`. |
 | `slope_per_hour()` | `slope_per_second()/3600`. |
 
+### Conditional Functions
+
+| **Name** | **Description** |
+| :--- | :--- |
+| `countIf(S condition [, S interval | I count])` | Count of elements matching the specified condition. |
+| `avgIf(S condition [, S interval | I count])` | Average of elements matching the specified condition. |
+| `sumIf(S condition [, S interval | I count])` | Sum of elements matching the specified condition. |
+
+The condition is a boolean expression that can refer to `value` field and compare it as a number.
+
+Example: `countIf('value > 10')`for values `[0, 15, 5, 40]` will return `2`.
+
 ### Interval Selection
 
 By default, the statistical functions calculate the result based on all samples stored in the window. The range of samples can be adjusted by passing an optional argument - specified as sample count (`I`) or interval (`S`) - in which case the function will calculate the result based on the most recent samples.
 
-* `avg(5)` - Average value for the last 5 samples
-* `max('2 minute')` - Maximum value for the last 2 minutes
-* `percentile(95, '1 hour')` - 95% percentile for the last hour
+```javascript
+avg([S interval | I count])
+```
+
+* `avg(5)` - Average value for the last 5 samples.
+* `avg('1 HOUR)` - Average value for the last 1 hour.
+* `max('2 minute')` - Maximum value for the last 2 minutes.
+* `percentile(95, '1 hour')` - 95% percentile for the last hour.
+* `countIf('value > 0', 10)` - Count of values exceeding 5 within the last 10 samples.
 
 Example:
 
@@ -103,7 +121,8 @@ Refer to the database function [syntax and examples](functions-db.md).
 | `floor(D)` | Returns the largest integer that is less than or equal to the specified number. |
 | `pow(D, D)`  | Number raised to the specified power (2nd argument). |
 | `round(D[,I])` | Returns the number rounded to the specified decimal places. <br>The precision argument `I` is 0 if omitted.<br>`round(D, 0)` rounds the number to the nearest integer.<br>If `I` is less than 0, the number is rounded to the left of the decimal point.|
-| `random()` | Returns a uniformly distributed double number, greater than or equal to 0.0 and less than 1.0.|
+| `random()` | Returns a uniformly distributed double number, greater than or equal to `0.0` and less than `1.0`.|
+| `randomNormal()` | Returns a normally distributed double number, with mean `0.0` and standard deviation `1.0`.|
 | `max(D, D)` | Returns the greater of two double values.|
 | `min(D, D)` | Returns the smallest of two double values.|
 | `sqrt(D)` | Returns the square root of the specified number.|
