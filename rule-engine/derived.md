@@ -14,6 +14,12 @@ series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 
 Multiple commands can be specified at the same time. Each command must be specified on a separate line.
 
+## Frequency
+
+The derived commands can be executed at the same frequency as incoming commands or increased by adjusting the repeat interval.
+
+![](images/derived_repeat.png)
+
 ## Condition
 
 If creating new data is the only purpose of the rule, set the `Condition` field to a static value `true` in order to minimize processing overhead.

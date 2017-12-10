@@ -1,15 +1,16 @@
 # Condition
 
-Condition is a boolean expression specified in the [rule editor](editor.md) which is evaluated when data is
-received by or removed from the window. For example, the condition `value > 50` returns `true` if the last received value exceeds 50.
-
-When the condition evaluates to `true` for the first time, the window status changes to `OPEN` causing the execution of 'On Open' triggers such as a system commands and email notifications. Once the condition becomes `false`, the window returns back to `CANCEL` status triggering a corresponding set of triggers.
+Condition is a boolean expression which is evaluated when data is received by or removed from the window. For example, the condition `value > 50` returns `true` if the last received value exceeds 50.
 
 The condition consists of one or multiple boolean checks combined with `OR` (`||`), `AND` (`&&`) and `NOT` (`!`) operators.
 
-The expressions can reference rule, command, and window fields, user-defined variables and apply [functions](functions.md) to data. 
+The expressions can reference the command, window, entity and metric fields, user-defined variables and apply [functions](functions.md) to data. 
 
-> Exceptions specified in the `Overrides` table take precedence over the condition.
+When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of 'On Open' triggers. Once the condition becomes `false`, the window returns back to `CANCEL` status triggering a corresponding set of triggers.
+
+## Overrides
+
+Exceptions specified in the [`Overrides`](overrides.md) table take precedence over the condition.
 
 ## Fields
 
@@ -53,7 +54,7 @@ The expressions can reference rule, command, and window fields, user-defined var
 | `=` | Equal. |
 | `!=` | Not equal. |
 
-> Note: `=` and `!=` operators are case-insensitive.
+* The operators `=` and `!=` are case-**insensitive** ('a' = 'A' equals `true`).
 
 ## Functions
 
@@ -65,12 +66,57 @@ Function names are **case-sensitive**.
 
 Functions that return a primitive value (number, string, boolean) can be defined as a variable and included in the condition expression by name.
 
-
 ## Examples
 
-| **Type** | **Window** | **Example** | **Description** |
-| --- | --- | --- | --- |
-| threshold | none | `value > 75` | Raise an alert if last metric value exceeds threshold. |
-| range | none | `value > 50 AND value <= 75` | Raise an alert if value is outside of specified range. |
-| statistical-count | count(10) | `avg() > 75` | Raise an alert if average value of the last 10 samples exceeds threshold. |
-| statistical-time | time('15 min') | `avg() > 75` | Raise an alert if average value for the last 15 minutes exceeds threshold. |
+### Basic Threshold
+
+The condition is `true` when the last value is greater than `75`.
+
+```javascript
+  value > 75
+```
+
+### Threshold Range
+
+The condition is `true` when the last value is between `75` and `90`, exclusive of the boundaries.
+
+```javascript
+  value > 75 && value < 90
+```
+
+### Last-N Average
+
+For a count-based window with the length of 5 samples, the condition is `true` when average of values in the window is greater than `75`. 
+
+```javascript
+  avg() > 75
+```
+
+The number of values in the window is less than `5` from the time the window is started and until it reaches the maximum capacity as new data arrives. For example, the `avg()` function will return the same result as `value` when the first sample arrives.
+
+### Latest-N Average
+
+For a time-based window with a duration of 5 minutes, the condition is `true` when average of values with timestamps greater than current time minus window duration exceeds `75`. 
+
+```javascript
+  avg() > 75
+```
+
+The number of samples in the window can range from 0 (when the oldest value exits the window) to unlimited.
+
+### All Values Are Above Threshold
+
+The condition is `true` when the all values in the window, both count- and time-based, exceed `50`.
+
+```javascript
+  min() > 50
+```
+
+### Last-N Static
+
+The condition is `true` when all values in the window are equal `50`.
+
+```javascript
+  max() - min() = 0
+```
+

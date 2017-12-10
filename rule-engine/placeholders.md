@@ -77,13 +77,14 @@ threshold | max() > 20
 * csvExportLink
 * htmlExportLink
 
-## Alert Table Placeholders
+## Details Table Placeholders
 
-* markdownDetailsTable
-* asciiDetailsTable
-* htmlDetailsTable
-* propertyDetailsTable 
-* csvDetailsTable
+* detailsTable('markdown')
+* detailsTable('ascii')
+* detailsTable('html')
+* detailsTable('property')
+* detailsTable('csv')
+* detailsTable('json')
 
 ## Placeholders for Custom Variables
 
