@@ -22,7 +22,7 @@ The template can include [placeholders](placeholders.md) and [functions](functio
 series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 ```
 
-The calculated metrics can reference other metrics using `db_last` and `db_statistic` functions.
+The calculated metrics can reference other metrics using [`db_last`](functions-db.md#db_last-function) and [`db_statistic`](functions-db.md#db_statistic-function) functions.
 
 ```ls
 series e:${entity} m:jvm_memory_used_bytes=${value * db_last('jvm_memory_total_bytes') / 100.0}
