@@ -196,7 +196,7 @@ WITH INTERPOLATE(30 SECOND, AUTO, OUTER)
 | metric2 | 2016-09-17T08:01:00.000Z | 4.400   | - interpolated with PREVIOUS
 ```
 
-### Fill: `NONE`
+### Fill: `FALSE`
 
 Missing periods that cannot be interpolated are ignored and not included in the result set.
 
@@ -204,7 +204,7 @@ Missing periods that cannot be interpolated are ignored and not included in the 
 SELECT datetime, value FROM metric1
   WHERE entity = 'e1'
 AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:01:30Z'
-  WITH INTERPOLATE(30 SECOND, LINEAR, INNER, NONE)
+  WITH INTERPOLATE(30 SECOND, LINEAR, INNER, FALSE)
 ```
 
 The value at 08:00:00 was excluded because the prior value in the `INNER` mode was not available for linear interpolation.
@@ -275,7 +275,7 @@ The default `CALENDAR` alignment defines regular timestamps according to the cal
 SELECT datetime, value FROM metric1
   WHERE entity = 'e1'
 AND datetime >= '2016-09-17T08:00:10Z' AND datetime < '2016-09-17T08:01:40Z'
-  WITH INTERPOLATE(30 SECOND, LINEAR, OUTER, NONE, CALENDAR)
+  WITH INTERPOLATE(30 SECOND, LINEAR, OUTER, FALSE, CALENDAR)
 ```
 
 ```ls
@@ -294,7 +294,7 @@ The `START_TIME` alignment defines regular timestamps according to the start tim
 SELECT datetime, value FROM metric1
   WHERE entity = 'e1'
 AND datetime >= '2016-09-17T08:00:10Z' AND datetime < '2016-09-17T08:01:40Z'
-  WITH INTERPOLATE(30 SECOND, LINEAR, OUTER, NONE, START_TIME)
+  WITH INTERPOLATE(30 SECOND, LINEAR, OUTER, FALSE, START_TIME)
 ```
 
 ```ls
@@ -555,7 +555,7 @@ SELECT entity, value,
   date_format(time, 'yyyy-MM-dd HH:mm z', 'US/Pacific') AS "Local datetime"
 FROM "mpstat.cpu_busy"
   WHERE datetime >= NOW - 2*DAY
-WITH INTERPOLATE(1 DAY, LINEAR, INNER, NONE, CALENDAR, 'US/Pacific')
+WITH INTERPOLATE(1 DAY, LINEAR, INNER, FALSE, CALENDAR, 'US/Pacific')
 ```
 
 ```ls
@@ -576,7 +576,7 @@ SELECT entity, entity.timeZone,
   date_format(time, 'yyyy-MM-dd HH:mm z', entity.timeZone) AS "Local datetime"
 FROM "mpstat.cpu_busy"
   WHERE datetime >= NOW - 2*DAY
-WITH INTERPOLATE(1 DAY, LINEAR, INNER, NONE, CALENDAR, entity.timeZone)
+WITH INTERPOLATE(1 DAY, LINEAR, INNER, FALSE, CALENDAR, entity.timeZone)
 ```
 
 ```ls

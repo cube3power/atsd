@@ -1231,7 +1231,7 @@ If the `WHERE` condition includes multiple date ranges, the interpolation is per
 **Example**:
 
 ```sql
-WITH INTERPOLATE (1 MINUTE, LINEAR, OUTER, NAN, START_TIME)
+WITH INTERPOLATE (1 MINUTE, LINEAR, OUTER, VALUE NAN, START_TIME)
 ```
 
 **Parameters**:
@@ -1241,7 +1241,7 @@ WITH INTERPOLATE (1 MINUTE, LINEAR, OUTER, NAN, START_TIME)
 | `period` | Regular interval for aligning interpolated values. |
 | `inter_func` | Interpolation function to calculate values at regular timestamps based on adjacent values. Default: `LINEAR`.|
 | `boundary` | Retrieval of raw values outside of the selection interval to interpolate leading and trailing values. Default: `INNER`. |
-| `fill` | Method for filling missing values at the beginning and the end of the selection interval. Default: `NONE`. |
+| `fill` | Method for filling missing values at the beginning and the end of the selection interval. Default: `FALSE`. |
 | `alignment` | Aligns regular timestamps based on calendar or start time. Default: `CALENDAR`. |
 | `timezone` | Time zone applied in `CALENDAR` alignment to periods equal or greater than 1 day. |
 
@@ -1278,15 +1278,13 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 | `INNER` | [**Default**] Performs calculations based on raw values located within the specified selection interval. |
 | `OUTER` | Retrieves prior and next raw values outside of the selection interval in order to interpolate leading and trailing values. |
 
-* In HBase 0.94.x the `OUTER` boundary mode fetches raw values up to 1 hour before and after the hour-rounded selection interval.
-
 ### Fill
 
 | **Name** | **Description**|
 |:---|:---|
-| `NONE` | [**Default**] Ignores rows (excludes them from results) for periods without interpolated values. |
-| `NAN` | Sets values to `NaN` (Not a Number) for periods without interpolated values. |
-| `EXTEND` | Missing values at the beginning of the interval are set to first raw value within the interval.<br>Missing values at the end of the interval are set to last raw value within the interval.<br>This option requires that both start and end time are specified in the query.|
+| `FALSE` | [**Default**] No missing values are filled. The rows for periods without interpolated values are not included in the result. |
+| `TRUE` | Missing values at the beginning of the interval are set to first raw value within the interval.<br>Missing values at the end of the interval are set to last raw value within the interval.<br>This option requires that both start and end time are specified in the query. |
+| `VALUE {n}` | Sets missing values to `{n}` which can be a decimal number or a `NAN` (Not a Number)<br>For example: `VALUE 0` or `VALUE NAN`. |
 
 ### Alignment
 

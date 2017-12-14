@@ -103,14 +103,25 @@ The condition evaluates to `true` if the 1-minute average is greater than the 1-
 
 ## Database Functions
 
+The database [functions](functions-db.md) provide a way to retrieve data from the database for complex comparisons and correlation.
+
+### Database Series Functions
+
+The functions retrieve values for a series which may be different from the series in the current window.
+
 | **Name** | **Description** |
 | :--- | :--- |
-| `db_last()` | Retrieves the last value stored in the database for the specified series. |
-| `db_statistic()` | Retrieves an aggregated value from the database for the specified series. |
+| [`db_last()`](functions-db.md#db_last-function) | Retrieves the last value stored in the database for the specified series. |
+| [`db_statistic()`](functions-db.md#db_last-function) | Retrieves an aggregated value from the database for the specified series. |
 
-The database functions provide a way to retrieve values for a series which may be different from the series in the current window. The functions can be used to compare data between different series for correlation purposes.
+### Database Message Functions
 
-Refer to the database function [syntax and examples](functions-db.md).
+The functions retrieve message counts or specific messages.
+
+| **Name** | **Description** |
+| :--- | :--- |
+| [`db_message_count()`](functions-db.md#db_message_count-function) | Retrieves message count for the specified filters. |
+| [`db_message_last()`](functions-db.md#db_message_last-function) | Retrieves the last message for the specified filters. |
 
 ## Mathematical Functions
 
