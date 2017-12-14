@@ -8,11 +8,12 @@ The integration enables sending HTTP requests with customized content to the spe
 
 ## Examples
 
-* Updating [Github issue](custom-github.md)
-* Posting comment to [Zendesk ticket](custom-zendesk.md)
-* Sending SMS via [IFTTT](custom-ifttt.md)
-* Triggering [CircleCI project build](custom-circlecpi.md)
-* Starting [Jenkins job](custom-jenkins.md)
+* Register service incident in [PagerDuty](custom-pagerduty.md)
+* Update [Github issue](custom-github.md)
+* Post comment to [Zendesk ticket](custom-zendesk.md)
+* Send SMS message via [IFTTT](custom-ifttt.md)
+* Trigger [CircleCI project build](custom-circlecpi.md)
+* Start [Jenkins job](custom-jenkins.md)
 
 ## Supported HTTP Methods
 
