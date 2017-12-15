@@ -4,7 +4,7 @@
 
 The rule engine enables automation of repetitive tasks based on real-time statistical analysis of the incoming data.
 
-Such tasks may include triggering a web hook, executing a system command, sending an alert to an [email](email.md) or [Slack channel](web-notifications.md), or generating derived metrics.
+Such tasks may include triggering a webhook, executing a system command, sending an alert to an [email](email.md) or [Slack channel](web-notifications.md), or generating derived metrics.
 
 The engine evaluates rule conditions against incoming series, message, and property commands and executes response actions when appropriate:
 
@@ -18,7 +18,7 @@ Example
     IF percentile(75) > 300 THEN alert_slack_channel
 ```
 
-The condition can operate on a single metric defined in the current rule or correlate multiple metrics using [`db functions`](functions-db.md) or [`rule functions`](functions-rules.md).
+The [condition](condition.md) can operate on a single metric defined in the current rule or correlate multiple metrics using [`value functions`](functions-value.md), [`database functions`](functions-db.md), and [`rule functions`](functions-rules.md).
 
 ## Concepts
 
@@ -84,7 +84,7 @@ The rule engine supports two types of windows:
 [Windows](window.md) are continuously updated as new samples are added and old samples are
 removed to maintain the size of the given window at a constant interval length or sample count.
 
-When a window is updated, the rule engine checks the condition that triggers response actions.
+When a window is updated, the rule engine checks the [condition](condition.md) that triggers response actions.
 
 Condition example:
 
@@ -121,7 +121,13 @@ The triggers for each action are configured separately. For example, it's possib
 
 ## Correlation
 
-Each rule evaluates data received for only one specified metric. In order to create conditions that check values for multiple metrics, use [database](functions-db.md) and [rule](functions-rules.md) functions.
+Each rule evaluates data received for only one specified metric. In order to create conditions that check values for multiple metrics, use [value](functions-value.md), [database](functions-db.md), and [rule](functions-rules.md) functions.
+
+* Value functions:
+
+```javascript
+    percentile(95) > 80 && values('metric2') != 0
+```
 
 * Database functions:
 
@@ -217,6 +223,12 @@ The same condition can be generalized with a ratio.
 
 ```javascript
     avg() / db_statistic('avg', '1 hour', 'page_views_per_minute') > 2
+```
+
+As an alternative, use the [`value(metric)`](functions-value.md) function to access the last value for metrics submitted within the same series command or parsed from the same row in CSV files.
+
+```javascript
+    value > 75 && value('page_views_per_minute') < 1000
 ```
 
 ### Overrides
