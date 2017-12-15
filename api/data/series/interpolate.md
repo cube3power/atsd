@@ -25,7 +25,7 @@ The transformation creates a regularized time series with the specified period b
 
 | **Name** | **Description**   |
 |:---|:---|
-| `LINEAR`  | [**Default**] Calculates the value by adding a difference between neighboring detailed values proportional to their time difference. |
+| `LINEAR`  | Calculates the value by adding a difference between neighboring detailed values proportional to their time difference. |
 | `PREVIOUS`  | Sets the value to equal the previous value. |
 | `AUTO`  | Applies the interpolation function specified in the metric's [interpolate](../../meta/metric/list.md#fields) field (set to `LINEAR` by default).  |
 
@@ -33,17 +33,11 @@ The transformation creates a regularized time series with the specified period b
 
 [Period](period.md) is a repeating time interval used to create evenly spaced timestamps.
 
-| **Name**  | **Type** | **Description** |
-|:---|:---|:---|
-| unit  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
-| count  | number | Number of time units contained in the period. |
-| align | string | Alignment of the first or last timestamp. Default: [`CALENDAR`](period.md#calendar-alignment).|
-| timezone | string | [Time Zone ID](../../network/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database timezone.|
-
 Examples:
 
 * `{ "count": 1, "unit": "HOUR" }`
 * `{ "count": 15, "unit": "MINUTE", "align": "END_TIME" }`
+* `{ "count": 1, "unit": "DAY", "align": "CALENDAR", "timezone": "US/Pacific" }`
 
 ### boundary
 

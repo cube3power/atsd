@@ -6,7 +6,8 @@ Period is a repeating time interval used to group samples occurred within each i
 |:---|:---|:---|
 | count  | number | Number of time units contained in the period. |
 | unit  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
-| align | string | Alignment of the period's start/end time. Default: `CALENDAR`. <br>Possible values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.|
+| align | string | Alignment of the period's start time. Default: `CALENDAR`. <br>Possible values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.|
+| timezone | string | [Time Zone ID](../../network/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database timezone.|
 
 ## Examples
 
@@ -20,6 +21,10 @@ Period is a repeating time interval used to group samples occurred within each i
 
 ```json
 "period": { "count": 5, "unit": "MINUTE", "align": "START_TIME" }
+```
+
+```json
+"period": { "count": 1, "unit": "DAY", "timezone": "US/Pacific" }
 ```
 
 ## Alignment
@@ -59,7 +64,7 @@ The `CALENDAR` alignment calculates the initial period according to the rules be
 
 For example, if period is `2 HOUR`, start date of `2016-06-20 15:08` will be rounded to `2016-06-20 00:00` as the **base** time, and the initial period will start at `2016-06-20 16:00`.
 
-Start of the day is determined according to the server timezone for `DAY`, `WEEK`, `MONTH`, `QUARTER`, and `YEAR` units.
+Start of the day for `DAY`, `WEEK`, `MONTH`, `QUARTER`, and `YEAR` units is determined according to the server timezone unless the `timezone` is specified explicitly.
 
 #### Example 1
 
