@@ -89,7 +89,7 @@ Lookup the chat id as described below and copy the chat id for future reference.
 ### For Private Channel
 
   * Click on the channel name and check its URL, for example `/#/im?p=c1354757644_16698643680908793939`
-    
+
    ![](images/channel_url.png)
 
   * Copy numbers before underscore and replace `c` with `-100`, so that the chat id looks like `-1001354757644`.
@@ -135,6 +135,18 @@ Lookup the chat id as described below and copy the chat id for future reference.
    ![](images/send_screen.png)
 
 * If tests are passing OK, check **Enable**, click **Save**.
+
+## Proxy Settings
+
+If the Telegram API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../web-notifications.md#network-settings).
+
+NGINX API Gateway Path for Telegram:
+
+```
+  location /bot {
+      proxy_pass https://api.telegram.org/bot;
+  }
+```
 
 ## Notification Settings
 

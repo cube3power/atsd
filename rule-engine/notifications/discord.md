@@ -81,6 +81,18 @@ To join a server, the user should click **Create new server**, select **Join** a
 
 * If tests are OK, set the status **Enabled** and click **Save**,  `Webhook URL` field will be cleared.  
 
+## Proxy Settings
+
+If the Discord API server is not directly accessible from the ATSD server, open the **Network Settings** and specify [proxy parameters](../web-notifications.md#network-settings).
+
+NGINX API Gateway Path for Discord:
+
+```
+  location /api/webhooks {
+      proxy_pass https://discordapp.com/api/webhooks;
+  }
+```
+
 ## Notification Parameters
 
 |**Parameter**|**Description**|

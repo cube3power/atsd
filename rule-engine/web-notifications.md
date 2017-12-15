@@ -6,7 +6,7 @@ Web notifications provide a mechanism for event-driven integration of the ATSD r
 
 They can be used to automate tasks such as sending an alert into a Slack channel, updating a bug tracker, starting a CI build, publishing to an AWS SNS topic, or controlling IoT devices.
 
-Example: **Slack Alert**
+Example: [Slack](notifications/slack.md) Alert
 
 ![](images/slack-alert.png)
 
@@ -29,10 +29,11 @@ The built-in notification types for chat and collaboration services deliver aler
 
 | Type | Customizable Fields | Description |
 | --- | --- | --- |
-| [WEBHOOK](notifications/webhook.md) | None | Send pre-defined fields as a JSON document or form to an HTTP endpoint. |
-| [CUSTOM](notifications/custom.md) | All | Send any JSON content or form parameters to an HTTP endpoint. |
 | [AWS-SNS](notifications/aws-sns.md) | Message and Subject | Publish a message to an [AWS SNS](https://aws.amazon.com/sns/?p=tile) topic. |
 | [AWS-SQS](notifications/aws-sqs.md) | Message | Send a message to an [AWS SQS](https://aws.amazon.com/sqs/?p=tile) queue. |
+| [WEBHOOK](notifications/webhook.md) | None | Send pre-defined fields as a JSON document or form to an HTTP endpoint. |
+| [CUSTOM](notifications/custom.md) | All | Send any JSON content or form parameters to an HTTP endpoint. Examples: [pagerduty](notifications/custom-pagerduty.md), [zendesk](notifications/custom-zendesk.md), [github](notifications/custom-github.md), [circleci](notifications/custom-circleci.md), [jenkins](notifications/custom-jenkins.md), [ifttt](notifications/custom-ifttt.md)|
+
 
 ## Window Status
 
@@ -85,15 +86,9 @@ When the window is in `REPEAT` status, the notification can be sent with the fre
 
 Triggering a repeat notification in `CANCEL` status is not supported. Such behavior can be emulated by creating a separate rule with a negated expression which returns `true` instead of `false` for the same condition.
 
-
-
 ## Payload
 
 The payload is determined by the notification type. Typically the payload is text content in the form of JSON document or form fields. Some built-in notification types support sending chart screenshots in addition to text content.
-
-* Example: **Travis CI Build**
-
-![](images/notification-custom-travis.png)
 
 ## Creating Notification
 
@@ -107,17 +102,24 @@ Enter a name by which the notification will be listed on the 'Web Notifications'
 
 > If the notification type supports sending charts as images, configure the web driver as described [here](notifications/web-driver.md).
 
-A notification can be re-used by multiple rules.
+The same notification can be re-used by multiple rules.
 
-Each notification has fixed settings that can not be customized in the rule editor, and user-defined settings which can be changed in the rule editor.
+### Parameters
+
+Each notification type has displays its own set of settings:
+
+* Fixed settings that can not be customized in the rule editor.
+* Editable which can be changed in the rule editor.
 
 The customizable settings are marked with an enabled checkbox.
 
 ![](images/slack-text-check.png)
 
-For example, an API Bot identifier or authentication token is a fixed setting, whereas the text message is customizable and is assembled dynamically based on the window status and placeholder values.
-
 The administrator can specify which settings are fixed and which can be modified in the rule editor.
+
+For example, an API Bot identifier or authentication token is a fixed setting, whereas the text message is customizable and is resolved dynamically based on the window status and placeholder values.
+
+
 
 ## Testing Notifications
 
@@ -141,9 +143,9 @@ Choose one of the notifications from the 'Endpoint' drop-down.
 
 Configure when the notification are triggered by enabling triggers for different status change events: on `Open`, `Repeat`, and on `Cancel`.
 
-![](images/state-no-repeat.png)
+![](images/notify-triggers.png)
 
-If multiple notifications are triggered for the same event, the order in which the notifications are delivered is not defined.
+Multiple notifications to different endpoints can be enabled for the same rule.
 
 ### Jitter Control
 
@@ -161,35 +163,43 @@ If the window remains in the `REPEAT` status, it can be configured to repetitive
 | Every N events | The notification is triggered every Nth occurrence of the new data being added to the window. |
 | Every N minutes | The notification is triggered when the window is updated but no more frequently than the specified interval. |
 
-![](images/repeat-trigger.png)
-
 ### Message Text
 
-The editor displays a Text field where the message can customized with [placeholders](placeholder.md).
+The editor displays a `Text` field where the alert message can be customized with [placeholders](placeholder.md).
 
 Sample alert message with placeholders:
 
 ```ls
-[${status}] for rule ${rule}. Entity: ${entity}. Tags: ${tags}
+[${status}] ${rule} for ${entity} ${tags}.
+```
+
+The alert message can include links to ATSD resources using [link placeholders](placeholders.md#link-placeholders) such as the `${chartLink}`.
+
+```javascript
+${chartLink}
 ```
 
 ### Attachments
 
-Sending attachments such as chart screenshots or alert detail tables can be enabled only for specific notification types.
+The option to attach chart screenshots and alert detail tables is enabled in the rule editor if the capability is implemented by the API of the receiving service.
+
+![](images/notify-attach.png)
 
 ### Multiple Endpoints
 
-In order to update multiple endpoints for the same status change event, create additional notifications, identified by unique name, by adding new configuration sections below.
+In order to update multiple endpoints for the same status change event, add notifications, identified by unique name, in the rule editor. The order in which notifications are delivered is non-deterministic.
 
 ## Stopping Messages
 
-If the notification status is set to disabled, requests initiated by the rule engine through the notification are ignored.
+The rule engine ignores alerts initiated for disabled notifications.
 
-To temporarily disable sending all messages sent through the given notification, set its status to 'Disabled'.
+To temporarily disable sending alerts from all rules through the selected notification, set its status to 'Disabled' on the **Alerts > Web Notifications** page.
 
 ## Delivery Control
 
 Notification results are recorded in the database as messages and can be viewed under the 'notification' type on the Message Search page.
+
+![](images/notify-error.png)
 
 ## Monitoring
 
@@ -203,6 +213,61 @@ https://atsd_host:8443/portals/series?entity=atsd&metric=web_service_notificatio
 
 The notification request is delivered successfully if the endpoint returns `200` (OK) status code.
 
-No retry is attempted in case of error. In case the notification fails, the rule engine writes an `ERROR` event in the `atsd.log`.
+**No retry** is attempted in case of error. If the notification fails, the rule engine writes an `ERROR` event in the `atsd.log` and stores a corresponding messages with `CRITICAL` severity in the database.
 
-If the error occurs during the chart screenshot preparation, the rule engine falls back to sending a text message containing the chart link and the error message, if available.
+If the error occurs during the chart preparation, the rule engine falls back to sending a text message containing the chart link and the error details, if available.
+
+## Network Settings
+
+If the ATSD server cannot connect to the remote API server directly due to network restrictions, use one of the following configuration options displayed in the **Network Settings** section.
+
+* **API Gateway**
+
+  In this configuration, an API gateway such as an [NGINX Reverse Proxy](https://www.nginx.com/resources/admin-guide/reverse-proxy/) accepts the request from ATSD on the specified path, sends the request to the remote API server, fetches the response, and sends it back to ATSD. This proxy maps particular paths to remote servers.
+
+  NGINX configuration for Slack:
+
+  ```
+    location /api/chat.postMessage {
+        proxy_pass https://slack.com/api/chat.postMessage;
+    }
+    location /api/files.upload {
+        proxy_pass https://slack.com/api/files.upload;
+    }
+  ```
+
+  NGINX configuration for Telegram:
+
+  ```
+    location /bot {
+        proxy_pass https://api.telegram.org/bot;
+    }
+  ```
+
+  NGINX configuration for Discord:
+
+  ```
+    location /api/webhooks {
+        proxy_pass https://discordapp.com/api/webhooks;
+    }
+  ```  
+
+  Modify the `Base URL` by replacing it with the corresponding API gateway URL.
+
+  ![](images/notify-network-base.png)
+
+* **HTTP/HTTPS/SOCKS Proxy**
+
+  A network proxy of this type doesn't explicitly map receive paths and remote URLs.
+
+  Keep the `Base URL` as originally specified and instead fill out the `Proxy URL` and optional client credentials fields.
+
+  ![](images/notify-proxy.png)
+
+  Supported protocols are HTTP/HTTPS and SOCKS v5.
+
+  Examples:
+
+  * `http://10.102.0.80/proxy`
+  * `https://10.102.0.80/proxy`
+  * `socks5://10.102.0.54`
