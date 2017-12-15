@@ -17,7 +17,7 @@ The transformation creates a regularized time series with the specified period b
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
 | [function](#function) | string | [**Required**] `PREVIOUS`, `LINEAR`, or `AUTO`. |
-| [period](#period) | object | [**Required**] [Period](#period). |
+| [period](#period) | object | [**Required**] Repeating time interval. |
 | [boundary](#boundary) | string | Controls if loading of values outside of the selection interval. |
 | [fill](#fill) | string | Creates missing leading and trailing values. |
 
@@ -37,8 +37,8 @@ The transformation creates a regularized time series with the specified period b
 |:---|:---|:---|
 | unit  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
 | count  | number | Number of time units contained in the period. |
-| align | string | Alignment of the first or last timestamp. Default: `CALENDAR`.|
-| timezone | string | [Time Zone ID](../../network/timezone-list.md) for aligning timestamps in `CALENDAR` mode.<br>The default value is equal to the database timezone.|
+| align | string | Alignment of the first or last timestamp. Default: [`CALENDAR`](period.md#calendar-alignment).|
+| timezone | string | [Time Zone ID](../../network/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database timezone.|
 
 Examples:
 
