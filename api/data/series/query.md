@@ -80,9 +80,9 @@ tags.location LIKE 'nur*'
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| limit   | integer | Maximum number of time:value samples returned for each series. Default: 0 (no limit).<br>The limit is applied from the beginning of the selection interval if the direction is `ASC` and from the end if the direction is `DESC`.<br>For example, `limit=1` with `direction=DESC` returns the most recent last value.<br>Limit is not applied if the parameter value <= 0. |
+| limit   | integer | Maximum number of `time:value` samples returned for each series. Default: 0 (no limit).<br>The limit is applied from the beginning of the selection interval if the direction is `ASC` and from the end if the direction is `DESC`.<br>For example, `limit=1` with `direction=DESC` returns the most recent last value.<br>Limit is not applied if the parameter value <= 0. |
 | direction| string | Order for applying the `limit` parameter: `ASC` - ascending, `DESC` - descending. Default: `DESC`. <br>The returned data values are sorted in ascending order regardless of direction.<br>`limit=10` means the most recent 10 values.|
-| seriesLimit   | integer | Maximum number of series returned. Default: 0 (no limit).<br>The database will raise a processing error if series count exceeds **10000** for queries that fetch data for an unversioned metric without `limit`.|
+| seriesLimit   | integer | Maximum number of series returned. Default: 0 (no limit).<br>The database will raise a processing error if series count exceeds **10000** for queries that fetch data for an non-versioned metric without `limit`.|
 | cache | boolean | If `true`, execute the query against the Last Insert table, which is the fastest way to retrieve the last value for a query. Default: `false`.<br>Values in the Last Insert table may be delayed up to 15 seconds , controlled with `last.insert.write.period.seconds` setting. Only 1 value is returned for each series.|
 | requestId | string | Optional identifier used to associate `query` object in request with one or multiple `series` objects in response. |
 | timeFormat |string| Time format for a data array. `iso` or `milliseconds`. Default: `iso`. |
@@ -92,7 +92,8 @@ tags.location LIKE 'nur*'
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| [aggregate](aggregate.md) | object | Group detailed values into periods and calculate statistics for each period. Default: `DETAIL` |
+| [interpolate](interpolate.md) | object | Fill missing values in the detailed data using a linear or step-like interpolation functions. |
+| [aggregate](aggregate.md) | object | Group detailed values into periods and calculate statistics for each period. |
 | [group](group.md) | object | Merge multiple series into one series. |
 | [rate](rate.md) | object | Compute difference between consecutive samples per unit of time (rate period). |
 
@@ -100,11 +101,14 @@ Transformation Sequence
 
 The default processing sequence is as follows:
 
-1. [group](group.md)
-2. [rate](rate.md)
-3. [aggregate](aggregate.md)
+1. [interpolate](interpolate.md)
+2. [group](group.md)
+3. [rate](rate.md)
+4. [aggregate](aggregate.md)
 
-The sequence can be modified by specifying an `order` field in each processor, in which case processor steps are executed in ascending order as specified in the `order` field.
+The [interpolate](interpolate.md) transformation, if specified, is applied to detailed data before it's passed to group/rate/aggregate stages.
+
+The default sequence of group/rate/aggregate transformations can be modified by specifying an `order` field in each processor, in which case processor steps are executed in ascending order as specified in the `order` field.
 
 ## Response
 
