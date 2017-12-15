@@ -101,9 +101,17 @@ The condition evaluates to `true` if the 1-minute average is greater than the 1-
 | `forecast(S)` | Named forecast value for the entity, metric, and tags in the current window, for example `forecast('ltm')` |
 | `forecast_deviation(D)` | Difference between a number (such as last value) and forecast, divided by forecast standard deviation.<br>Formula: `(number - forecast())/forecast_stdev()`.|
 
+## Value Functions
+
+The [value](functions-value.md) functions provide a way to retrieve values for other metrics contained in the same command.
+
+| **Name** | **Description** |
+| :--- | :--- |
+| [`value(S)`](functions-value.md) | Retrieve the value for the specified metric received in the same series command or parsed from the same row in the CSV file. |
+
 ## Database Functions
 
-The database [functions](functions-db.md) provide a way to retrieve data from the database for complex comparisons and correlation.
+The [database](functions-db.md) functions provide a way to retrieve data from the database for complex comparisons and correlation.
 
 ### Database Series Functions
 
