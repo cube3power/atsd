@@ -86,12 +86,12 @@ threshold | max() > 20
 
 ## Details Table Placeholders
 
-* detailsTable('markdown')
-* detailsTable('ascii')
-* detailsTable('html')
-* detailsTable('property')
-* detailsTable('csv')
-* detailsTable('json')
+* [detailsTable('markdown')](details-table.md#markdown)
+* [detailsTable('ascii')](details-table.md#ascii)
+* [detailsTable('html')](details-table.md#html)
+* [detailsTable('property')](details-table.md#property)
+* [detailsTable('csv')](details-table.md#csv)
+* [detailsTable('json')](details-table.md#json)
 
 ## Placeholders for Custom Variables
 

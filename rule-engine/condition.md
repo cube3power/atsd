@@ -4,9 +4,9 @@ Condition is a boolean expression which is evaluated when data is received by or
 
 The condition consists of one or multiple boolean checks combined with `OR` (`||`), `AND` (`&&`) and `NOT` (`!`) operators.
 
-The expressions can reference the command, window, entity and metric fields, user-defined variables and apply [functions](functions.md) to data.
+The expression can include fields from the command, window, entity and metric, user-defined variables and apply [functions](functions.md) to data.
 
-When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of 'On Open' triggers. Once the condition becomes `false`, the window returns back to `CANCEL` status triggering a corresponding set of triggers.
+When the condition evaluates to `true` for the first time, the [window](window.md) status changes to `OPEN` causing the execution of 'On Open' triggers. Once the condition becomes `false`, the window returns back to `CANCEL` status triggering a corresponding set of `On Cancel` triggers.
 
 ## Overrides
 
@@ -46,7 +46,7 @@ Exceptions specified in the [`Overrides`](overrides.md) table take precedence ov
 | `>=` | Greater than or equal.
 | `<` | Less than.
 | `<=` | Less than or equal.
-| `BETWEEN` | `a BETWEEN b AND c`.<br>The number `a` is between `b` and `c` (inclusive).<br>`b <= a <= c`.<br>Example: `avg() BETWEEN 10 and 20`.
+| `BETWEEN` | `n BETWEEN m AND p`.<br>The number `n` is between `m` and `p` (inclusive).<br>`m <= n <= p`.<br>Example: `avg() BETWEEN 10 and 20`.
 
 ## Text Operators
 
@@ -55,6 +55,10 @@ Exceptions specified in the [`Overrides`](overrides.md) table take precedence ov
 | `=` | Equal. The comparison is case-**insensitive** ('a' = 'A' equals `true`).|
 | `!=` | Not equal. The comparison is case-**insensitive** ('a' != 'A' equals `false`).|
 | `BETWEEN` | `a BETWEEN b AND c`.<br>String `a` is between `b` and `c` (inclusive) using lexicographical comparison.<br>The comparison is case-**sensitive**.<br>Example: `timeStr BETWEEN '18:00' AND '18:04'`.|
+
+## Collections
+
+The collections (lists of items) can be created inline, using square brackets, for example `['a', 'b', 'c']` or `[1, 2, 3]`, or retrieved with [lookup](../../rule-engine/functions.md#lookup-functions) functions.
 
 ## Functions
 
@@ -65,6 +69,8 @@ Function names are **case-sensitive**.
 ## Variables
 
 Functions that return a primitive value (number, string, boolean) can be defined as a variable and included in the condition expression by name.
+
+![](images/condition-variable.png)
 
 ## Examples
 
@@ -126,4 +132,18 @@ The condition is `true` when all values in the window are equal `50`.
 
 ```javascript
   max() - min() = 0 && avg() = 50
+```
+
+### Multiple metrics
+
+If metrics were submitted with the same 'series' command, their last value can be accessed with the `value(S name)` function.
+
+```javascript
+  value > 90 AND value('disk_used') < 1000000000
+```
+
+Alternatively, the metric's last value can be retrieved with the `db_last` and `db_statistic` functions.
+
+```javascript
+  value > 90 AND db_last('io_nodes_used_precent') < 80
 ```
