@@ -106,3 +106,82 @@ series e:${entity} m:jvm_memory_free_min_percent=${round(100 - max(), 3)}
 If creating new data is the rule's only purpose, set the `Condition` field to a static `true` value to minimize the processing overhead.
 
 ![](images/derived-condition.png)
+
+## Examples
+
+### Moving Average (Last N Count)
+
+* Window type: count-based
+* Window length: 10
+* Condition: `true`
+* Frequency: All
+* Command Template:
+
+```ls
+	series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
+```
+
+### Moving Average (Last N Time)
+
+* Window type: time-based
+* Window length: 10 minute
+* Condition: `true`
+* Frequency: All or Every N Minutes = 1 minute
+* Command Template:
+
+```ls
+	series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
+```
+
+### Rollup (all matching entities)
+
+* Window type: time-based
+* Window length: 1 minute
+* Group by entity: `NO`
+* Condition: `true`
+* Frequency: Every N Minutes = 1 minute
+* Command Template:
+
+```ls
+	series e:total m:${metric}_sum=${sum()}
+```
+
+### Reverse/Inverse Metric
+
+* Window type: count-based
+* Window length: 1
+* Condition: `true`
+* Frequency: All
+* Command Template:
+
+```ls
+	series e:${entity} m:${metric}_rev=${100-value} ${commandTags}
+```
+
+```ls
+	series e:${entity} m:${metric}_inv=${value = 0 ? 0 : 1/value} ${commandTags}
+```
+
+### Ratio / Percentage
+
+* Window type: count-based
+* Window length: 1
+* Condition: `true`
+* Frequency: All
+* Command Template:
+
+```ls
+	series e:${entity} m:${metric}_percent=${100 * value/value('total')} ${commandTags}
+```
+
+### Message to Series
+
+* Window type: count-based
+* Window length: 1
+* Condition: `true`
+* Frequency: All
+* Command Template:
+
+```ls
+	series e:${entity} m:job_execution_time=${tags.job_execution_time.replaceAll("[a-zA-Z]", "").trim()}
+```

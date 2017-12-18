@@ -28,6 +28,8 @@ The `db_message_count` and `db_message_last` functions allow one to correlate di
   value > 60 && db_last('temperature') < 30
 ```
 
+> As an alternative, if the specified metric was received in the same command, use [`value()`](functions-value.md) function. The `value()` function returns metric values set in the command, even if they're not yet stored in the database.
+
 * Retrieve the last value for the specified metric and entity. The entity can specified as a string or as `entity` placeholder.
 
 ```java

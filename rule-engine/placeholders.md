@@ -104,6 +104,46 @@ ${idle}
 
 ![](images/variables.png)
 
+The variables can be declared in one of the following types:
+
+### Number Variables
+
+  ```javascript
+  avar = 123
+  bvar = 3.1415
+  ```
+
+### String Variables
+
+  ```javascript
+  state = CA
+  ```
+
+### List Variables
+
+  ```javascript
+  alist = ['a', 'b', 'c']
+  blist = ["a", "b"]
+  ```
+
+### Map Variables
+
+  ```javascript
+  ['type' : 'park', 'state': 'CA']
+  ```
+
+### Function Variables
+
+  ```javascript
+  last_msg = db_message_last('1 week', 'alert', 'rule-engine', 'rule=abc')
+  ```
+
+### Expression Variables
+
+  ```javascript
+  last_place = last_msg == null ? '' : last_msg.message
+  ```
+
 ## Examples
 
 ```sh
