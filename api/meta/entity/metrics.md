@@ -59,26 +59,36 @@ curl https://atsd_host:8443/api/v1/entities/nurswgvml007/metrics?limit=2 \
 
 ```json
 [
-    {
-        "name": "mpstat.cpu_busy",
-        "enabled": true,
-        "dataType": "FLOAT",
-        "persistent": true,
-        "timePrecision": "MILLISECONDS",
-        "retentionDays": 0,
-        "invalidAction": "NONE",
-        "lastInsertDate": "2015-09-04T16:10:21.000Z"
-    },
-    {
-        "name": "df.disk_used",
-        "enabled": true,
-        "dataType": "FLOAT",
-        "persistent": true,
-        "timePrecision": "MILLISECONDS",
-        "retentionDays": 0,
-        "invalidAction": "NONE",
-        "lastInsertDate": "2015-09-04T16:10:21.000Z"
-    }
+  {
+    "name": "cpu_busy",
+    "enabled": true,
+    "dataType": "FLOAT",
+    "label": "CPU Busy %",
+    "persistent": true,
+    "timePrecision": "MILLISECONDS",
+    "retentionDays": 0,
+    "seriesRetentionDays": 0,
+    "minValue": 0,
+    "maxValue": 100,
+    "invalidAction": "TRANSFORM",
+    "lastInsertDate": "2017-12-18T12:17:04.000Z",
+    "versioned": false,
+    "interpolate": "LINEAR",
+    "timeZone": "US/Eastern"
+  },
+  {
+    "name": "cpu_idle",
+    "enabled": true,
+    "dataType": "FLOAT",
+    "persistent": true,
+    "timePrecision": "MILLISECONDS",
+    "retentionDays": 0,
+    "seriesRetentionDays": 0,
+    "invalidAction": "NONE",
+    "lastInsertDate": "2017-12-18T12:17:04.000Z",
+    "versioned": false,
+    "interpolate": "LINEAR"
+  }
 ]
 ```
 
