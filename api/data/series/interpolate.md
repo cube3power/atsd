@@ -6,11 +6,11 @@ The transformation creates a regularized time series with the specified period b
 
 The interpolation process consists of the following steps:
 
-1. Load detailed data for the selection interval.
+1. Load detailed data for the selection interval specified with `startDate` and `endDate` parameters.
 2. If `OUTER` boundary mode is enabled, also load one value before and one value after the selection interval in order to interpolate leading and trailing values.
-3. Create evenly spaced timestamps within the selection interval specified with `startDate` and `endDate` parameters. The timestamps can be aligned to the calendar or start/end time of the selection interval.
-4. For each timestamp, calculate the value from the two neighboring values using a linear or step interpolation function.
-5. If `fill` is enabled, add missing leading and trailing values.
+3. Create evenly spaced timestamps within the selection interval. The timestamps can be aligned to the calendar or start/end time of the selection interval.
+4. For each timestamp, calculate the value from the two neighboring samples using a linear or step interpolation function.
+5. If `fill` parameter is enabled, add missing leading and trailing values.
 
 ## Fields
 
