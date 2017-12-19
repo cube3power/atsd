@@ -255,3 +255,26 @@ Status changes can be [logged](logging.md) in a customizable format to log files
 Open alerts are displayed on the **Alerts > Open Alerts** page. The list of alerts can be retrieved with [`Data API`](../api/data/alerts/README.md) and incorporated into portals using the console widget.
 
 ![](images/open-alerts.png)
+
+## Analyzing Data with SQL
+
+In cases that require analysis of long-term data or flexible joining and grouping, it maybe more optimal to analyze and react to data using [Scheduled SQL](../api/sql/scheduled-sql.md) queries.
+
+In order to trigger a notification by an SQL query:
+
+* Develop a query such that it returns an empty result if the situation is normal.
+
+  ```sql
+    SELECT entity, tags, percentile(90, value) FROM page_views
+      WHERE datetime >= current_day
+      GROUP BY entity, tags, period(1 DAY)
+    HAVING percentile(90, value) > 1000 -- HAVING clause acts as a filter
+  ```
+
+* Create a scheduled SQL query.
+* Set **Send Empty Report** parameter to `No`.
+* Specify triggers such as an email notification or a file export.
+
+As a result, the query will trigger actions only when it returns at least one row.
+
+![](images/sql-scheduled.png)

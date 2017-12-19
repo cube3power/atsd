@@ -34,12 +34,24 @@ The integration enables sending HTTP requests with customized content to the spe
 
 If the selected HTTP method such as `GET` doesn't allow payload, the request parameters specified in the Parameters section are appended to the Endpoint URL a a query string.
 
-## Supported Authentication Types
+## Supported Authentication Mechanisms
 
 | Type | Description |
 |---|---|
-| Basic | The HTTP client sends the user name and password as unencrypted base64 encoded text. |
+| Basic | User name and password are sent as base64 encoded text. |
 | AWS Signature, v4 | The request is signed with [AWS Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html). |
+
+For other token-based authentication mechanisms, add a request header containing the token.
+
+```ls
+Authorization: Token OAUTH-TOKEN
+```
+
+```ls
+Authorization: Bearer YOUR_JWT
+```
+
+![](images/custom-token.png)
 
 ## Placeholders
 
