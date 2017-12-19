@@ -2,24 +2,26 @@
 
 ## Overview
 
-The transformation creates a regularized time series with the specified period by calculating values at each timestamp from neighboring samples using linear or step functions.
+The transformation creates a regularized time series with the specified period by calculating values at each timestamp from neighboring samples using a linear or step function.
 
-## Interpolation Process
+The interpolation process consists of the following steps:
 
-1. Create an array of evenly spaced timestamps with the specified period and aligned either to calendar or start/end time.
-2. Load detailed data for the selection interval specified with `startDate` and `endDate` parameters.
-3. If `OUTER` boundary mode is enabled, load one value before and one value after the selection interval in order to interpolate leading and trailing values.
-4. For each timestamp, calculate the value from the two neighboring values using the specified interpolation function.
+1. Load detailed data for the selection interval.
+2. If `OUTER` boundary mode is enabled, also load one value before and one value after the selection interval in order to interpolate leading and trailing values.
+3. Create evenly spaced timestamps within the selection interval specified with `startDate` and `endDate` parameters. The timestamps can be aligned to the calendar or start/end time of the selection interval.
+4. For each timestamp, calculate the value from the two neighboring values using a linear or step interpolation function.
 5. If `fill` is enabled, add missing leading and trailing values.
 
 ## Fields
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| [function](#function) | string | [**Required**] `PREVIOUS`, `LINEAR`, or `AUTO`. |
 | [period](#period) | object | [**Required**] Repeating time interval. |
-| [boundary](#boundary) | string | Controls if loading of values outside of the selection interval. |
+| [function](#function) | string | [**Required**] `PREVIOUS`, `LINEAR`, or `AUTO`. |
+| [boundary](#boundary) | string | Enables loading of values outside of the selection interval. |
 | [fill](#fill) | string | Creates missing leading and trailing values. |
+
+The purpose of the `boundary` and `fill` parameters is to eliminate gaps at the beginning and the end of the selection interval. If the `boundary` is `OUTER` and there values on both sides of the selection interval, the `fill` parameter is not applied.
 
 ### function
 
