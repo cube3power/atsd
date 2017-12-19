@@ -124,7 +124,7 @@ In the default `INNER` mode the values outside of the selection interval are ign
 ]}]
 ```
 
-### 30 Minutes Period LINEAR Interpolation
+### LINEAR Function: 30 Minute Period
 
 ```json
 [{
@@ -153,7 +153,7 @@ In the default `INNER` mode the values outside of the selection interval are ign
 | 2017-01-01 03:30 | 3.0   | 
 ```
 
-### Fill Gaps using PREVIOUS Function
+### Fill Gaps with PREVIOUS Function
 
 ```json
 [{
@@ -209,7 +209,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 | 2017-01-01 03:00 | 2.5   | 
 ```
 
-### LINEAR Interpolation with START_TIME Align
+### LINEAR Interpolation with START_TIME Alignment
 
 ```json
 [{
@@ -234,7 +234,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 | 2017-01-01 03:15 | 2.75  | 
 ```
 
-### LINEAR Interpolation with END_TIME Align
+### LINEAR Interpolation with END_TIME Alignment
 
 ```json
 [{
@@ -259,7 +259,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 | 2017-01-01 02:45 | 2.25  | 
 ```
 
-### LINEAR Interpolation with FIRST_VALUE_TIME Align
+### LINEAR Interpolation with FIRST_VALUE_TIME Alignment
 
 ```json
 [{
@@ -285,7 +285,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 | 2017-01-01 03:30 | 3.0   | 
 ```
 
-### LINEAR Interpolation with Missing Values Filling
+### LINEAR Interpolation, Leading/Trailing Values Filled
 
 ```json
 [{
@@ -313,7 +313,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 | 2017-01-01 04:00 | 3.0   | 
 ```
 
-### LINEAR Interpolation with Missing Values Filling with NaN
+### LINEAR Interpolation, Leading/Trailing Values Filled with NaN
 
 ```json
 [{
