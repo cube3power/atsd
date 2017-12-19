@@ -67,15 +67,274 @@ Examples:
 
 ## Examples
 
-* 5-minute linear interpolation
+**Dataset**
+
+```
+series e:nurswgvml007 m:cpu_busy=-1 d:2016-12-31T23:30:00Z
+series e:nurswgvml007 m:cpu_busy=0  d:2017-01-01T00:30:00Z
+series e:nurswgvml007 m:cpu_busy=2  d:2017-01-01T02:30:00Z
+series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
+```
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2016-12-31 23:30 | -1    | 
+| 2017-01-01 00:30 | 0     | 
+| 2017-01-01 01:30 | ...   | -- Sample at 01:30 is missing.
+| 2017-01-01 02:30 | 2     | 
+| 2017-01-01 03:30 | 3     | 
+```
+
+### Fill Gaps with LINEAR Function
 
 ```json
-{
-    "interpolate" : {
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+    "function": "LINEAR",
+    "period": {"count": 1, "unit": "HOUR"}
+  }
+}]
+```
+
+**Response**
+
+In the default `INNER` mode the values outside of the selection interval are ignored.
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 01:00 | 0.5   | 
+| 2017-01-01 02:00 | 1.5   | 
+| 2017-01-01 03:00 | 2.5   | 
+```
+
+```json
+[{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
+"data":[
+	{"d":"2017-01-01T01:00:00Z","v":0.5},
+	{"d":"2017-01-01T02:00:00Z","v":1.5},
+	{"d":"2017-01-01T03:00:00Z","v":2.5}
+]}]
+```
+
+### 30 Minutes Period LINEAR Interpolation
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
         "function": "LINEAR",
-        "period": {"count": 5, "unit": "MINUTE"},
-        "boundary": "OUTER",
-        "fill": false,
+        "period": {"count": 30, "unit": "MINUTE"}
     }
-}
+}]
+```
+
+**Response**
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:30 | 0.0   | 
+| 2017-01-01 01:00 | 0.5   | 
+| 2017-01-01 01:30 | 1.0   | 
+| 2017-01-01 02:00 | 1.5   |
+| 2017-01-01 02:30 | 2.0   | 
+| 2017-01-01 03:00 | 2.5   | 
+| 2017-01-01 03:30 | 3.0   | 
+```
+
+### Fill Gaps using PREVIOUS Function
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+    "interpolate" : {
+        "function": "PREVIOUS",
+        "period": {"count": 1, "unit": "HOUR"}
+    }
+}]
+```
+
+**Response**
+
+In the default `INNER` mode the values outside of the selection interval are ignored.
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 01:00 | 0.0   | 
+| 2017-01-01 02:00 | 0.0   | 
+| 2017-01-01 03:00 | 2.0   | 
+```
+
+### LINEAR Interpolation with OUTER Boundary
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+        "function": "LINEAR",
+        "period": {"count": 1, "unit": "HOUR"},
+        "boundary": "OUTER"
+    }
+}]
+```
+
+**Response**
+
+In the `OUTER` mode the values outside of the selection interval are used to interpolate leading and trailing values.
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:00 | -0.5  | 
+| 2017-01-01 01:00 | 0.5   | 
+| 2017-01-01 02:00 | 1.5   | 
+| 2017-01-01 03:00 | 2.5   | 
+```
+
+### LINEAR Interpolation with START_TIME Align
+
+```json
+[{
+  "startDate": "2017-01-01T00:15:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+        "function": "LINEAR",
+        "period": {"count": 1, "unit": "HOUR", "align": "START_TIME"}
+    }
+}]
+```
+
+**Response**
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 01:15 | 0.75  | 
+| 2017-01-01 02:15 | 1.75  | 
+| 2017-01-01 03:15 | 2.75  | 
+```
+
+### LINEAR Interpolation with END_TIME Align
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T04:45:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+        "function": "LINEAR",
+        "period": {"count": 1, "unit": "HOUR", "align": "END_TIME"}
+    }
+}]
+```
+
+**Response**
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:45 | 0.25  | 
+| 2017-01-01 01:45 | 1.25  | 
+| 2017-01-01 02:45 | 2.25  | 
+```
+
+### LINEAR Interpolation with FIRST_VALUE_TIME Align
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+        "function": "LINEAR",
+        "period": {"count": 1, "unit": "HOUR", "align": "FIRST_VALUE_TIME"}
+    }
+}]
+```
+
+**Response**
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:30 | 0.0   | 
+| 2017-01-01 01:30 | 1.0   | 
+| 2017-01-01 02:30 | 2.0   | 
+| 2017-01-01 03:30 | 3.0   | 
+```
+
+### LINEAR Interpolation with Missing Values Filling
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+        "function": "LINEAR",
+        "period": {"count": 1, "unit": "HOUR"},
+        "fill": true
+    }
+}]
+```
+
+**Response**
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:00 | 0.0   | 
+| 2017-01-01 01:00 | 0.5   | 
+| 2017-01-01 02:00 | 1.5   | 
+| 2017-01-01 03:00 | 2.5   | 
+| 2017-01-01 04:00 | 3.0   | 
+```
+
+### LINEAR Interpolation with Missing Values Filling with NaN
+
+```json
+[{
+  "startDate": "2017-01-01T00:00:00Z",
+  "endDate":   "2017-01-01T05:00:00Z",
+  "entity": "nurswgvml007",
+  "metric": "cpu_busy",
+  "interpolate" : {
+        "function": "LINEAR",
+        "period": {"count": 1, "unit": "HOUR"},
+        "fill": "NaN"
+    }
+}]
+```
+
+**Response**
+
+```ls
+| datetime         | value | 
+|------------------|-------| 
+| 2017-01-01 00:00 | null  | 
+| 2017-01-01 01:00 | 0.5   | 
+| 2017-01-01 02:00 | 1.5   | 
+| 2017-01-01 03:00 | 2.5   | 
+| 2017-01-01 04:00 | null  | 
 ```
