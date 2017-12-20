@@ -31,6 +31,8 @@ The purpose of the `boundary` and `fill` parameters is to eliminate gaps at the 
 | `PREVIOUS`  | Sets the value to equal the previous value. |
 | `AUTO`  | Applies the interpolation function specified in the metric's [interpolate](../../meta/metric/list.md#fields) field (set to `LINEAR` by default).  |
 
+> Both functions return interpolated values only if the previous and next values are present.
+
 ### period
 
 [Period](period.md) is a repeating time interval used to create evenly spaced timestamps.
