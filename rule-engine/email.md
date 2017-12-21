@@ -72,9 +72,9 @@ The override table below contains rules that will always return `false` for the 
 
 ![](images/email-message-composition-bottom.png)
 
-### Subject and Text
+### Subject
 
-The subject and text may include [placeholders](placeholders.md) which are substituted with actual values when the message is sent. If the placeholder is not found, it is replaced with an empty string.
+The subject may include [placeholders](placeholders.md) which are substituted with actual values when the message is sent. If the placeholder is not found, it is replaced with an empty string.
 
 Sample subject:
 
@@ -82,13 +82,22 @@ Sample subject:
   [${status}] Rule ${rule} for ${entity} ${tags}`
 ```
 
-Use `<br>` tag to split multi-line Text content into multiple lines in the message.
+When using placeholders that maybe replaced with arbitrarily long text, apply the `truncate()` function to limit the subject length.
+
+```
+  [${status}] Rule ${rule} for ${entity}: ${truncate(message, 100)}`
+```
+
+### Text
+
+The message text (body) may include [placeholders](placeholders.md).
+
+Use the html tag `<br>` to split content into multiple lines.
 
 ```html
   Window Start Time: ${windowStartTime}<br>
   Window Duration in ms: ${(timestamp / 1000 - windowStartTime) * 1000}
 ```
-
 
 ### Header and Footer
 

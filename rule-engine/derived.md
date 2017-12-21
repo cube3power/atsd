@@ -101,6 +101,18 @@ series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
 series e:${entity} m:jvm_memory_free_min_percent=${round(100 - max(), 3)}
 ```
 
+To create multiple metrics within the same command, use the `for` loop to iterate over a collection or an array.
+
+```ls
+series e:${entity} @{s = ""; for (stat : stats) {s = s + " m:" + stat.split(":")[0] + "=" + stat.split(":")[1];} return s;}
+```
+
+Assuming the `stats` collection is equal `['a:10', 'b:20', 'c:30']`, the produced command will look as follows:
+
+```ls
+series e:entity1 m:a=10 m:b=20 m:c=30
+```
+
 ## Condition
 
 If creating new data is the rule's only purpose, set the `Condition` field to a static `true` value to minimize the processing overhead.
