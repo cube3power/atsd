@@ -154,8 +154,8 @@ The functions retrieve message counts or specific messages.
 | `lower(S)` | Convert the input string to **lower** case. |
 | `truncate(S, I)` | Truncate the input string to the specified number of characters. |
 | `contains(S, S)` | Return `true` if the first string **contains** the second string. |
-| `startsWidth(S, S)` | Return `true` if the first string **starts** with the second string. |
-| `endsWidth(S, S)` | Return `true` if the first string **ends** with the second string. |
+| `startsWith(S, S)` | Return `true` if the first string **starts** with the second string. |
+| `endsWith(S, S)` | Return `true` if the first string **ends** with the second string. |
 | `coalesce([S])` | Return first non-empty string from the array of strings. See [examples](functions-coalesce.md).|
 | `urlencode(S)` | Encode string into the URL format where unsafe characters are replaced with "%" followed by 2 digits. |
 | `jsonencode(S)` | Escape special symbols with backslash to safely use the provided string within JSON object. |
@@ -242,3 +242,4 @@ Refer to time function [examples](functions-time.md).
 | **Name** | **Description** |
 | :--- | :--- |
 | `scriptOut(S, Collection args)` | Execute script in the `./atsd/conf/script` directory with the specified arguments and return its standard out or error.<br>Example: `${scriptOut('ping.sh', ['2', 'example.org'])}` |
+
