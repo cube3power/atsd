@@ -236,3 +236,9 @@ Refer to time function [examples](functions-time.md).
 | :--- | :--- |
 | `entity_tags(S entity)` | Returns entity tags' keys and values map for provided entity. |
 | `entity_tag(S entity, S tagName)` | Returns tag value for provided tag name and entity. |
+
+## Script Functions
+
+| **Name** | **Description** |
+| :--- | :--- |
+| `scriptOut(S, Collection args)` | Execute script in the `./atsd/conf/script` directory with the specified arguments and return its standard out or error.<br>Example: `${scriptOut('ping.sh', ['2', 'example.org'])}` |
