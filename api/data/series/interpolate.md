@@ -236,57 +236,6 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 | 2017-01-01 03:15 | 2.75  | 
 ```
 
-### LINEAR Interpolation with END_TIME Alignment
-
-```json
-[{
-  "startDate": "2017-01-01T00:00:00Z",
-  "endDate":   "2017-01-01T04:45:00Z",
-  "entity": "nurswgvml007",
-  "metric": "cpu_busy",
-  "interpolate" : {
-        "function": "LINEAR",
-        "period": {"count": 1, "unit": "HOUR", "align": "END_TIME"}
-    }
-}]
-```
-
-**Response**
-
-```ls
-| datetime         | value | 
-|------------------|-------| 
-| 2017-01-01 00:45 | 0.25  | 
-| 2017-01-01 01:45 | 1.25  | 
-| 2017-01-01 02:45 | 2.25  | 
-```
-
-### LINEAR Interpolation with FIRST_VALUE_TIME Alignment
-
-```json
-[{
-  "startDate": "2017-01-01T00:00:00Z",
-  "endDate":   "2017-01-01T05:00:00Z",
-  "entity": "nurswgvml007",
-  "metric": "cpu_busy",
-  "interpolate" : {
-        "function": "LINEAR",
-        "period": {"count": 1, "unit": "HOUR", "align": "FIRST_VALUE_TIME"}
-    }
-}]
-```
-
-**Response**
-
-```ls
-| datetime         | value | 
-|------------------|-------| 
-| 2017-01-01 00:30 | 0.0   | 
-| 2017-01-01 01:30 | 1.0   | 
-| 2017-01-01 02:30 | 2.0   | 
-| 2017-01-01 03:30 | 3.0   | 
-```
-
 ### LINEAR Interpolation, Leading/Trailing Values Filled
 
 ```json

@@ -12,46 +12,56 @@ Non-existing placeholders are substituted with empty strings.
 
 ## Base Placeholders
 
-**Name**|**Description**|**Example**
-:---|---|:---
-status | Window status | OPEN
-rule | Rule name | memory_low
-metric | Metric name | memory_free
-entity | Entity name | nurswgvml007
-tags | Command tags | memtype=buffered
-tags.memtype | Command tag by name | buffered
-value | Last value | 3.145
-message | Command message | Job started
-entity.tags | Entity tags | {version=community}
-entity.tags.version | Entity tag by name | community
-entity.label | Entity field by name | NURswgvml007
-metric.label | Entity field by name | Memory Free, Bytes
-condition | Rule condition | value < 75
-min_interval_expired | Window delay status | true
-open_value | First value | 2.897
-repeat_count | `REPEAT` status count | 0
-repeat_interval | Interval for repeats | 1 MINUTE
-rule_filter | Rule filter | entity != 'nurswghbs001'
-severity | Alert severity | warning
-window | Window type and duration | length(1)
-threshold | Override rule | max() > 20
+**Name**|**Type**|**Description**|**Example**
+:---|---|---|:---
+status | string | Window status | OPEN
+rule | string | Rule name | memory_low
+metric | string | Metric name | memory_free
+entity | string | Entity name | nurswgvml007
+tags | map | Command tags | memtype=buffered
+tags.memtype | string | Command tag by name | buffered
+entity.tags | map | Entity tags | {version=community}
+entity.tags.version | string | Entity tag by name | community
+entity.label | string | Entity field by name | NURswgvml007
+metric.label | string | Metric field by name | Memory Free, Bytes
+condition | string | Rule condition | value < 75
+min_interval_expired | boolean | Window delay status | true
+repeat_count | integer | `REPEAT` status count | 0
+repeat_interval | string | Interval for repeats | 1 MINUTE
+rule_filter | string | Rule filter | entity != 'nurswghbs001'
+severity | string | Alert severity | WARNING
+window | string | Window type and duration | length(1)
+threshold | string | Override rule | max() > 20
 
-## Series Placeholders
+## Series Command Placeholders
 
-* open_value
-* value
+|**Name**|**Type**|**Description**|**Example**|
+|---|---|---|--|
+| value | number | Last value | 3.1415 |
+| open_value | number | First value | 1.0 |
 
-## Message Placeholders
 
-* message
-* severity
+## Message Command Placeholders
 
-## Properties Placeholders
+|**Name**|**Type**|**Description**|
+|---|---|---|
+| type | string | Message type (also `tags.type`) |
+| source | string | Message type (also `tags.source`) |
+| message | string | Message text |
 
-* properties
-* properties.key_name
-* properties.tag_name
-* type
+> The `tags` map for the `message` command contains `type`, `source`, `severity`, and other command tags.
+
+> Alert `severity` value is inherited from message `severity` when the Logging: Severity is set to 'Undefined'.
+
+## Properties Command Placeholders
+
+|**Name**|**Type**|**Description**|
+|---|---|---|
+| type | string | Property type (same as `tags.type`) |
+| keys | map | Property keys. To retrieve key value, use `keys.{name}` |
+| properties | map | Property tags. To retrieve tag value, use `properties.{name}` |
+
+> The `tags` map for the `property` command contains the `keys` map and the `type` field.
 
 ## Time Placeholders
 
