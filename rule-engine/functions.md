@@ -150,14 +150,17 @@ The functions retrieve message counts or specific messages.
 
 | **Name** | **Description** |
 | :--- | :--- |
-| `upper(S)` | Convert string to upper case. |
-| `lower(S)` | Convert string to lower case. |
-| `t.contains(S)` | Check if field 't' contains the specified string. |
-| `t.startsWidth(S)` | Check if field 't' starts with the specified string. |
-| `t.endsWidth(S)` | Check if field 't' ends with the specified string. |
+| `upper(S)` | Convert the input string to **upper** case. |
+| `lower(S)` | Convert the input string to **lower** case. |
+| `truncate(S, I)` | Truncate the input string to the specified number of characters. |
+| `contains(S, S)` | Return `true` if the first string **contains** the second string. |
+| `startsWidth(S, S)` | Return `true` if the first string **starts** with the second string. |
+| `endsWidth(S, S)` | Return `true` if the first string **ends** with the second string. |
 | `coalesce([S])` | Return first non-empty string from the array of strings. See [examples](functions-coalesce.md).|
 | `urlencode(S)` | Encode string into the URL format where unsafe characters are replaced with "%" followed by 2 digits. |
 | `jsonencode(S)` | Escape special symbols with backslash to safely use the provided string within JSON object. |
+
+> The functions return `null` or `false` if the arguments are `null`.
 
 ## Formatting Functions
 
