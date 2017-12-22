@@ -9,7 +9,7 @@ The endpoint converts request parameters and JSON payload into a message and sto
 The endpoint accepts `POST` and `GET` requests.
 
 | **Method** | **Path** | **Payload** | **Content-Type Header** |
-|:---|:---|---:|
+|:---|:---|---|---:|
 | POST | `/api/v1/messages/webhook/*` | JSON | `application/json` |
 | GET | `/api/v1/messages/webhook/*` | None | - |
 
@@ -88,10 +88,10 @@ Since each message must be associated with an entity, the request should instruc
 
   ```json
   {
-  	"server": {
-  	  "name": "test-2",
-  	  "site": "NUR"
-  	}
+    "server": {
+      "name": "test-2",
+      "site": "NUR"
+    }
   }
   ```
 
@@ -167,8 +167,8 @@ Command parameters set message field values from JSON field values.
 
 ```json
   {
-  	"server": "test-2",
-  	"event": "deploy"
+    "server": "test-2",
+    "event": "deploy"
   }
 ```
 
@@ -194,10 +194,10 @@ Header parameters set message field values from header values.
 `/api/v1/messages/webhook/jenkins?entity=test-3&header.tag.event=X-GitHub-Event`
 
 ```json
-	User-Agent: GitHub-Hookshot/5ee1da1
-	X-GitHub-Delivery: 955bf180-e573-11e7-9438-56fe67d6b38d
-	X-GitHub-Event: watch
-	X-Hub-Signature: sha1=b0d4aa86d17c6b77e5b35e7482769955ad9aca4d
+  User-Agent: GitHub-Hookshot/5ee1da1
+  X-GitHub-Delivery: 955bf180-e573-11e7-9438-56fe67d6b38d
+  X-GitHub-Event: watch
+  X-Hub-Signature: sha1=b0d4aa86d17c6b77e5b35e7482769955ad9aca4d
 ```
 
 ```
@@ -226,7 +226,7 @@ Example:
 
   ```
 	exclude = repository.*
-	```
+  ```
 
   ```json
 	{
@@ -239,14 +239,14 @@ Example:
 	    "references": []
 	  }
 	}
-	```
+  ```
 
-	Message fields:
+  Message fields:
 
   ```
-	tag.event = commit
-	tag.result = ok
-	```
+    tag.event = commit
+    tag.result = ok
+  ```
 
 #### Control Parameters
 
