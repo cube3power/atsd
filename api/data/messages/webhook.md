@@ -35,7 +35,7 @@ Request parameters, except for reserved parameters, are converted into message *
 
 Request URL:
 
-`/api/v1/messages/webhook/incoming?action=started&Repeat=1`
+`/api/v1/messages/webhook/incoming?entity=test-1&action=started&Repeat=1`
 
 Message tags:
 
@@ -158,7 +158,7 @@ Command parameters set message field values from JSON field values.
 |---|---|
 | command.type | Message type. If not specified, set to `webhook`. |
 | command.source | Message source. If not specified, set to URL path after `./webhook/`. |
-| command.entity | [**Required**] Message entity |
+| command.entity | [**Required**] Message entity. |
 | command.date | Message datetime in ISO format. |
 | command.message | Message text. |
 | command.severity | Message severity specified as an integer or as a constant. |
@@ -185,7 +185,7 @@ Header parameters set message field values from header values.
 |---|---|
 | header.type | Message type. If not specified, set to `webhook`. |
 | header.source | Message source. If not specified, set to URL path after `./webhook/`. |
-| header.entity | [**Required**] Message entity |
+| header.entity | [**Required**] Message entity. |
 | header.date | Message datetime in ISO format. |
 | header.message | Message text. |
 | header.tag.{name} | Message tag. |
@@ -253,6 +253,48 @@ Example:
 | **Name** | **Description** |
 |---|---|
 | debug | If set to `true`, the response includes the message record in JSON format. |
+
+### Parameter Precedence
+
+The reserved parameters have the following precedence:
+
+1) Literal Value Parameters
+2) Command Parameters
+3) Header Parameters
+
+Example:
+
+* Request URL:
+
+  ```
+    /api/v1/messages/webhook/github?entity=test-1&header.entity=User-Agent&command.entity=server
+  ```
+
+* Request Headers:
+
+  ```
+    User-Agent: GitHub-Hookshot/5ee1da1
+  ```
+
+* Request Payload:
+
+  ```
+    {
+      "server": "test-2"
+    }
+  ```
+
+* Message Command:
+
+  ```
+	type=github
+	source=webhook
+	entity=test-1
+	tags:
+	    server=test-2
+	    request_ip=...
+  ```
+
 
 ## Example
 
