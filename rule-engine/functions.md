@@ -224,7 +224,7 @@ Refer to time function [examples](functions-time.md).
 
 | **Name** | **Description** |
 | :--- | :--- |
-| `property_values(S search)` | Returns a list of property tag values for the current entity given the property [search string](../property-search-syntax.md). |
+| `property_values(S search)` | Returns a list of property tag values for the current entity given the property [search string](property-search.md). |
 | `property_values(S entity, S search)` |  Same as `property_values`(string search) but for an explicitly specified entity.  |
 | `property(S search)` |  Returns the first value in a collection of strings returned by the `property_values()` function. The function returns an empty string if no property records are found.  |
 | `property_compare_except([S key])` | Compares previous and current property tags and returns a difference map containing the list of changed tag values.   |

@@ -15,8 +15,8 @@ Retrieve a list of entities matching the specified filters.
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
 | expression |string|Include entities that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators. Supported wildcards: `*` and `?`.|
-| minInsertDate |string|Include entities with `lastInsertDate` equal or greater than `minInsertDate`.<br>The parameter can be specified in ISO-8601 format or using [endtime](../../../end-time-syntax.md) syntax.|
-| maxInsertDate |string|Include entities with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>The parameter can be specified in ISO format or using [endtime](../../../end-time-syntax.md) syntax.|
+| minInsertDate |string|Include entities with `lastInsertDate` equal or greater than `minInsertDate`.<br>The parameter can be specified in ISO-8601 format or using [calendar](../../../shared/calendar.md) keywords.|
+| maxInsertDate |string|Include entities with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>The parameter can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
 | limit |integer|Maximum number of entities to retrieve, ordered by name.|
 | tags |string|Comma-separated list of entity tag names to include in the response, for example, `tags=OS,location`.<br>Specify `tags=*` to include all entity tags.<br>Specify `tags=env.*` to include all entity tags starting with `env.`.|
 

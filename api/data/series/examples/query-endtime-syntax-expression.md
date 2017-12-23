@@ -2,7 +2,7 @@
 
 ## Description
 
-`startDate` and `endDate` can be specified with [endtime](../../../../end-time-syntax.md) syntax which supports calendar expressions.
+`startDate` and `endDate` can be specified with [calendar](../../../../shared/calendar.md) keywords.
 
 The below example selects data between 23:00 of the previous day and now.
 

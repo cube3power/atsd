@@ -76,7 +76,7 @@ Common expressions:
 	hasMetric('mpstat.cpu_busy', 24*7)
 	```
 
-* Entity matches the given [property search](../property-search-syntax.md) expression
+* Entity matches the given [property search](../rule-engine/property-search.md) expression
 
 	```java
 	properties('cfg').prog != '' && properties('cfg').prog NOT LIKE 'topas*'

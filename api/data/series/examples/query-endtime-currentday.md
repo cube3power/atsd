@@ -2,9 +2,9 @@
 
 ## Description
 
-Select data between 00:00 today and now using [endtime](../../../../end-time-syntax.md) syntax.
+Select data between 00:00 today and now using [calendar](../../../../shared/calendar.md) keywords.
 
-Note that DAY, WEEK, MONTH, QUARTER, and YEAR start times are computed according to server timezone in endtime calculations.
+Note that DAY, WEEK, MONTH, QUARTER, and YEAR start times are computed according to server timezone in calendar calculations.
 
 ## Request
 

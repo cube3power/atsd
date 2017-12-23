@@ -1,14 +1,14 @@
-# End Time Syntax
+# Calendar Syntax
 
-## Description
+## Overview
 
-Endtime syntax implements convenient calendar [keywords](#keywords) and [arithmetic](#expressions) used as an alternative to ISO format in API requests, widget configurations, export settings, etc. to specify interval start and end time.
+Calendar syntax implements convenient [keywords](#keywords) and [arithmetic](#expressions) as an alternative to specifying literal dates in API requests, portal configurations, export settings, etc.
 
-Endtime [keyword](#keywords) are calculated based on the current server time and the server's [time zone](./api/network/timezone-list.md).
+Calendar [keyword](#keywords) are calculated based on the current server time and the server's [time zone](./api/network/timezone-list.md).
 
-For example, if current time is `May 15, 2016 15:28:44`, the expression `current_hour - 1 * day` would return `May 14, 2016 15:00:00`.
+For example, if the current time is `December 15, 2017 15:28:44`, the expression `current_hour - 1 * day` would return `December 14, 2016 15:00:00`.
 
-Calendar arithmetic such as adding or subtracting a time interval is implemented with [expressions](#expressions).
+Calendar arithmetic such as adding or subtracting an interval is implemented with [expressions](#expressions).
 
 ## Expressions
 

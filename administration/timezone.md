@@ -1,6 +1,6 @@
 # Timezone
 
-The timezone in which the database runs determines how [endtime](../end-time-syntax.md) keywords are evaluated and how the intervals are split into DAY-based [periods](../api/data/series/period.md).
+The timezone in which the database runs determines how [calendar](../shared/calendar.md) keywords are evaluated and how the intervals are split into DAY-based [periods](../api/data/series/period.md).
 
 By the default, the timezone is inherited from the timezone of the operating system on which ATSD is running.
 

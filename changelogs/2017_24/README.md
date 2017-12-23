@@ -9,7 +9,7 @@ Weekly Change Log: June 12, 2017 - June 18, 2017
 | 4275 | security | Bug | Enforce logout for the deleted user .|
 | [4273](#issue-4273) | UI | Bug | User Interface 'More' link drop-down replaced with icons. |
 | 4268 | core | Support | Java 8 startup validation added. |
-| 4262 | UI | Bug | Support for [EndTime](https://github.com/axibase/atsd/blob/master/end-time-syntax.md) expressions added to Rule Editor > Test tab. |
+| 4262 | UI | Bug | Support for [calendar](https://github.com/axibase/atsd/blob/master/shared/calendar.md) expressions added to Rule Editor > Test tab. |
 | 4260 | sql | Bug | Corrected [`ROUND`](https://github.com/axibase/atsd/tree/master/api/sql#mathematical-functions) function error with [`NaN`](https://github.com/axibase/atsd/tree/master/api/sql#not-a-number-nan) values.|
 | 4258 | sql | Bug | Fixed an error that occurred when using non-overlapping interval conditions from different metrics. |
 | [4247](#issue-4247) | sql | Feature | [`NaN`](https://github.com/axibase/atsd/tree/master/api/sql#not-a-number-nan) comparison logic changed. `NaN` is compared similar to `NULL`. |

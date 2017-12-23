@@ -827,7 +827,7 @@ GROUP BY PERIOD(1 YEAR)                    -- Recommended.
 
 ### Endtime Syntax
 
-The `time` and `datetime` columns support [endtime](../../end-time-syntax.md) syntax.
+The `time` and `datetime` columns support [calendar](../../shared/calendar.md) keywords.
 
 ```sql
 SELECT datetime, entity, value
@@ -1968,7 +1968,7 @@ ORDER BY base.datetime
 |-------------|-------------|-------------|-------------|
  ```
 
- The reserved keywords also include [endtime](../../end-time-syntax.md#keywords) keywords such as `NOW`, `PREVIOUS_HOUR` and [interval units](../../end-time-syntax.md#interval-units) such as `MINUTE`, `HOUR`.
+ The reserved keywords also include [calendar](../../shared/calendar.md#keywords) keywords such as `NOW`, `PREVIOUS_HOUR` and [interval units](../../shared/calendar.md#interval-units) such as `MINUTE`, `HOUR`.
 
 ## Aggregation Functions
 
@@ -2565,10 +2565,10 @@ ORDER BY datetime
 
 ### endtime()
 
-The `endtime()` function evaluates the specified [endtime](../../end-time-syntax.md#keywords) expression in the user-defined [time zone](../../api/network/timezone-list.md).
+The `endtime()` function evaluates the specified [calendar](../../shared/calendar.md) keywords in the user-defined [time zone](../../api/network/timezone-list.md).
 
 ```sql
-ENDTIME(endtimeExpression, string timeZone)
+ENDTIME(calendarExpression, string timeZone)
 ```
 
 The function can be used to perform calendar arithmetic in a time zone different from the server time zone.

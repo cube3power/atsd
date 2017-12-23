@@ -2,7 +2,7 @@
 
 ## Overview
 
-Filters determine which commands should be processed by the rule. Commands that satisfy all filters are allocated to the rule's [windows](window.md) for further processing such as adding data and evaluating the alert condition.
+Filters determine which commands should be processed by the rule. Commands that satisfy all filters are allocated to the rule [windows](window.md) for further processing such as adding data and evaluating the alert condition.
 
 ### Built-in Filters
 
@@ -35,7 +35,15 @@ To match the rule, the incoming series command must have the same metric name as
 
 The filter allows commands for which the condition returns `true`.
 
-The expression must return a boolean value and may consist of nested boolean checks joined with `AND`, `OR`, and `NOT` operators.
+The expression must return a boolean value and may consist of one or multiple boolean checks joined with `AND`, `OR`, and `NOT` operators.
+
+```javascript
+entity != 'nurswgvml007'
+```
+
+```javascript
+entity LIKE 'nurswgvml*' AND entity NOT IN ('nurswgvml007', 'nurswgvml006') 
+```
 
 The expression may reference fields present in the command using [placeholders](placeholders.md) as well as apply string, formatting, and collection [functions](functions.md):
 
@@ -49,14 +57,16 @@ The expression may reference fields present in the command using [placeholders](
 
 For message commands:
 
+* type
+* source
 * severity
 * message
 
 For property commands:
 
-* properties
-* keys
 * type
+* keys
+* properties
 
 ![](images/filter-expression.png)
 

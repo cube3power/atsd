@@ -2,7 +2,7 @@
 
 ## Description
 
-`startDate` and `endDate` can be specified with [endtime](../../../../end-time-syntax.md) syntax.
+`startDate` and `endDate` can be specified with [calendar](../../../../shared/calendar.md) keywords.
 
 ## Request
 

@@ -46,8 +46,8 @@ An array of objects containing fields for filtering records for deletion.
 |:---|:---|:---|
 | type | string | [**Required**] Property type name. <br>This method does not allow removal of the reserved `$entity_tags` type.|
 | entity | string | [**Required**] Entity name. <br>Set entity to `*` to delete records for all entities.|
-| startDate | string | [**Required**] ISO 8601 date or [endtime](../../../end-time-syntax.md) keyword. <br>Delete records updated at or after the specified time. |
-| endDate | string | [**Required**] ISO 8601 date or [endtime](../../../end-time-syntax.md) keyword.<br>Delete records updated before the specified time. |
+| startDate | string | [**Required**] ISO 8601 date or [calendar](../../../shared/calendar.md) keyword. <br>Delete records updated at or after the specified time. |
+| endDate | string | [**Required**] ISO 8601 date or [calendar](../../../shared/calendar.md) keyword.<br>Delete records updated before the specified time. |
 | key | object | Object with `name=value` fields, for example `{"file_system": "/"}`.<br>Deletes records with _exact_ or _partial_ key fields based on the `exactMatch` parameter below.|
 | exactMatch | boolean | `key` match operator. _Exact_ match if true, _partial_ match if false. Default: **true**.<br>_Exact_ match deletes a record with exactly the same `key` as requested.<br>_Partial_ match deletes records with key that contains requested fields but may also include other fields.|
 

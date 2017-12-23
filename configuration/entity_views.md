@@ -48,7 +48,7 @@ The table consists of multiple columns, one row per entity. Each cell displays a
 ---|---
 Type | Column type.
 Header | Column name.
-Value | Applicable to 'Entity Tag', 'Property Tag', and 'Series Value' [column types](#column-types). Contains entity tag name, [property search expression](../property-search-syntax.md) or metric name respectively.
+Value | Applicable to 'Entity Tag', 'Property Tag', and 'Series Value' [column types](#column-types). Contains entity tag name, [property search expression](../rule-engine/property-search.md) or metric name respectively.
 Link | Specifies if the cell value should also be clickable as a link. See [Links](#links) options.
 Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](http://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If Link is set to 'Entity Property', the text is resolved to the property expression value.
 Link Template | Path to a page in the user interface with support for placeholders: `${entity}` and `${value}` (current cell value).
@@ -59,7 +59,7 @@ Formatting | A [function](../rule-engine/functions.md#formatting-functions) to r
 **Name** | **Description**
 ---|---
 Entity Tag | Name of the entity tag.
-Property Tag | [Property search expression](../property-search-syntax.md) in the format of `type:{key-name=key-value}:tag-name`.
+Property Tag | [Property search expression](../rule-engine/property-search.md) in the format of `type:{key-name=key-value}:tag-name`.
 Series Value | Name of the metric for which the last value for this entity will be displayed.<br>If multiple series match the specified metric and entity, the value for first one will be displayed.
 Name Column | Entity name with a link to the editor page for the entity.
 Label Column | Entity label with a link to the editor page for the entity.

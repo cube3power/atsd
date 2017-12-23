@@ -4,13 +4,13 @@
 
 Property functions provide a set of convenience methods to retrieve and compare property keys and tags.
 
-Refer to [property search](../property-search-syntax.md) syntax.
+Refer to [property search](property-search.md) syntax.
 
 ## Examples
 
 #### `property_values(string search)`
 
-Returns a list of property tag values for the current entity given the property [search string](../property-search-syntax.md).
+Returns a list of property tag values for the current entity given the property [search string](property-search.md).
 
 The list is empty if the property or tag is not found.
 

@@ -40,7 +40,7 @@
 |  Auto Parameters  |  Automatic settings used by ATSD to select the best forecast.  | 
 |  Auto Averaging  |  Automatic averaging interval determined by ATSD.  | 
 |  Algorithm  |  Holt-Winters or Arima algorithms.  | 
-|  End Time  |  Used to calculate the forecast from an exact point in time. Useful when calculating a forecast for data that is not frequently updated. Possible values described on the [End Time](https://axibase.com/products/axibase-time-series-database/visualization/end-time/) page.<br>Important to select "Full Scan" when forecasting historical data that is no longer collected. If "Full Scan" is not set, then ATSD will automatically look for metric keys from the past 24 hours.  | 
+|  End Time  |  Used to calculate the forecast from an exact point in time. Useful when calculating a forecast for data that is not frequently updated. Accepts [calendar](../shared/calendar.md)keywords.<br>Choose "Full Scan" when forecasting historical data that is no longer collected. If "Full Scan" is not set, then ATSD will automatically look for metric keys from the past 24 hours.  | 
 |  Name  |  Unique forecast identifier.  | 
 
 

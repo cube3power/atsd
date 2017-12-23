@@ -2,7 +2,7 @@
 
 ## Description
 
-Select data for the last hour, ending with current time using [endtime](../../../../end-time-syntax.md) syntax.
+Select data for the last hour, ending with current time using [calendar](../../../../shared/calendar.md) keywords.
 
 ## Request
 
