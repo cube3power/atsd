@@ -10,7 +10,7 @@
 
 ## Verify System Time
 
-* Open the **Admin > System Information** tab in the ATSD web interface and verify the
+* Open the **Settings > System Information** tab in the ATSD web interface and verify the
 time and timezone information.
 * [Synchronize](../administration/timezone.md#changing-the-time-zone) system time or setup NTP in order to keep the server time accurate.
 

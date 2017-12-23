@@ -6,7 +6,7 @@ By the default, the timezone is inherited from the timezone of the operating sys
 
 ## Viewing the Time Zone
 
-The current timezone is displayed on the **Admin > System Information** page.
+The current timezone is displayed on the **Settings > System Information** page.
 
 ![](../installation/images/server_time.png)
 
@@ -29,4 +29,4 @@ export JAVA_PROPERTIES="-Duser.timezone=${TIME_ZONE} $JAVA_PROPERTIES"
 /opt/atsd/atsd/bin/start-atsd.sh
 ```
 
-* Open the **Admin > System Information** page and verify that the new timezone setting is set.
+* Open the **Settings > System Information** page and verify that the new timezone setting is set.

@@ -1,7 +1,7 @@
 # Monitoring Metrics using Database Tables
 
 Database Table statistics can be viewed directly in the ATSD user interface under
-**Admin > Database Tables**.
+**Settings > Storage > Database Tables**.
 
 Direct url: `atsd_hostname:8088/admin/database-tables`
 

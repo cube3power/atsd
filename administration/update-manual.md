@@ -8,7 +8,7 @@ su axibase
 
 ## Download the Latest ATSD Distribution Files
 
-Select an archive to download based on **HBase Version** displayed on the **Admin > System Information** page.
+Select an archive to download based on **HBase Version** displayed on the **Settings > System Information** page.
 
 * [hbase 1.2.5](https://www.axibase.com/public/atsd_update_latest.htm)
 

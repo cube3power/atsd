@@ -8,7 +8,7 @@ found in the rule engine editor.
 Below is a use case example of how the metric persistence filter can be
 used.
 
-To see which metrics have the most amount of inserts navigate to **Admin > Receive Statistics**:
+To see which metrics have the most amount of inserts navigate to **Settings > Receive Statistics**:
 
 ![](images/top_hourly_metrics.png "top_hourly_metrics")
 

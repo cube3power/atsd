@@ -344,7 +344,7 @@ Since major compactions may overload the cluster, it is recommended to trigger t
 
 ![](images/cm_major_compaction.png)
 
-To disable built-in compaction of data tables, adjust the following settings on the **Admin > Server Properties** page:
+To disable built-in compaction of data tables, adjust the following settings on the **Settings > Server Properties** page:
 
 ```
 #this will compact only 'entity' table once a week on Saturday
@@ -356,7 +356,7 @@ hbase.compaction.schedule = 0 0 12 * * SAT
 
 Configure Java Heap memory to ATSD java process as described [here](../administration/allocating-memory.md).
 
-Increase the number of worker threads and maximum queue size the **Admin > Server Properties** page:
+Increase the number of worker threads and maximum queue size the **Settings > Server Properties** page:
 
 ```ls
 # maximum number of concurrent HBase storage worker threads, default: 4

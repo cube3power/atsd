@@ -307,9 +307,9 @@ If necessary, add security group rules to open inbound access to ports 8081, 808
 
 ATSD requires a license file when connected to an HBase cluster.
 
-Open **Admin > License** page and generate a license request.
+Open **Settings > License** page and generate a license request.
 
-Once the license file is processed by Axibase, start ATSD, open **Admin > License** page and import the license.
+Once the license file is processed by Axibase, start ATSD, open **Settings > License** page and import the license.
 
 ```sh
 ./atsd/atsd/bin/start-atsd.sh
