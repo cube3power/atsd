@@ -4,8 +4,8 @@ Weekly Change Log: May 29, 2017 - June 04, 2017
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4236 | sql | Bug | Resolved error when using [`JOIN`](https://github.com/axibase/atsd/tree/master/api/sql#joins)  and [`INTERPOLATE(DETAIL)`](https://github.com/axibase/atsd/tree/master/api/sql#interpolation) clauses together. |
-| 4224 | sql | Bug | Fixed a bug which caused the `datetime` column to be rendered in milliseconds when referenced by the [`CONCAT`](https://github.com/axibase/atsd/tree/master/api/sql#string-functions) function.|
+| 4236 | sql | Bug | Resolved error when using [`JOIN`](../../sql#joins)  and [`INTERPOLATE(DETAIL)`](../../sql#interpolation) clauses together. |
+| 4224 | sql | Bug | Fixed a bug which caused the `datetime` column to be rendered in milliseconds when referenced by the [`CONCAT`](../../sql#string-functions) function.|
 | 4199 | admin | Bug | Fixed a bug which failed to update `HOSTNAME` and server URL in Admin: Server Properties at runtime. |
 | [4163](#issue-4163) | UI | Feature | Several enhancements to the User Interface: tooltips, column visibility, icons, auto-completes. |
 | [4144](#issue-4144) | rule engine | Feature | Add a page displaying all active email subscribers in the Rule Engine.|

@@ -545,7 +545,7 @@ The above queries return the same result:
 ## Time Zone
 
 In CALENDAR alignment and if the period specified is equal or greater than 1 DAY, the interpolated timestamps are set to 00:00 of each day based on the database time zone.
-The default time zone can be customized by specifying a [time zone identifier](../../../shared/timezone-list.md) or `entity.timeZone` and `metric.timeZone` columns.
+The default time zone can be customized by specifying a [time zone identifier](../../shared/timezone-list.md) or `entity.timeZone` and `metric.timeZone` columns.
 
 * Custom Time Zone
 

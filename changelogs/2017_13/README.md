@@ -6,16 +6,16 @@ Weekly Change Log: March 26 - April 2, 2017
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | 4052 | sql | Bug | Return human-readable errors for queries with unsupported syntax. |
-| [4050](#issue-4050) | sql | Feature | Add the [`date_parse`](../../api/sql/README.md#date-parsing-functions) function to parse datetime string into Unix milliseconds. |
+| [4050](#issue-4050) | sql | Feature | Add the [`date_parse`](../../sql/README.md#date-parsing-functions) function to parse datetime string into Unix milliseconds. |
 | 4039 | sql | Bug | Improve performance for queries with no entity specified in the `WHERE` clause. |
-| [4032](#issue-4032) | sql | Feature | Add support for [`LEAD`](../../api/sql/README.md#lead) and [`LAG`](../../api/sql/README.md#lag) functions in the `SELECT` expression. |
+| [4032](#issue-4032) | sql | Feature | Add support for [`LEAD`](../../sql/README.md#lead) and [`LAG`](../../sql/README.md#lag) functions in the `SELECT` expression. |
 | 4031 | UI | Feature | Add syntax highlighting to the `Data Entry` text area. |
 | 4020 | sql | Feature | Support implicit conversion to number in function arguments and `WHERE` clauses. |
 | 3998 | email | Bug | Add context information to error log on email send error. |
-| [3993](#issue-3993) | sql | Feature | Add the [`CORREL`](../../api/sql#correl) function to calculate the Pearsons correlation between two series. |
+| [3993](#issue-3993) | sql | Feature | Add the [`CORREL`](../../sql#correl) function to calculate the Pearsons correlation between two series. |
 | [3991](#issue-3991) | sql | Feature | Extend the `BETWEEN` operator to work with any literal values. |
 | 3939 | sql | Bug | Fix error with missing result rows in `JOIN USING ENTITY` query after inserting new series. |
-| 3935 | sql | Bug | Improve performance of queries with several [`JOIN USING ENTITY`](../../api/sql#join-with-using-entity) clauses. |
+| 3935 | sql | Bug | Improve performance of queries with several [`JOIN USING ENTITY`](../../sql#join-with-using-entity) clauses. |
 | 3856 | sql | Feature | Support implicit conversion to number in the `LAST` and `FIRST` aggregation functions. |
 | [2911](#issue-2911) | UI | Feature | Show user-specified parameters on the `Admin: CSV Tasks` page. |
 

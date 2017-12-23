@@ -260,7 +260,7 @@ GROUP BY metric, entity, tags
 
 ## Numeric Precedence
 
-If the `value` column in `atsd_series` query returns numbers for metrics with different [data types](../../../api/meta/metric/list.md#data-types), the prevailing data type is determined based on the following rules:
+If the `value` column in `atsd_series` query returns numbers for metrics with different [data types](../../api/meta/metric/list.md#data-types), the prevailing data type is determined based on the following rules:
 
 1. If all data types are integer (`short`, `integer`, `long`), return the prevailing **integer** type.
 2. If all data types are decimal (`float`, `double`, `decimal`), return the prevailing **decimal** type.

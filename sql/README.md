@@ -203,7 +203,7 @@ Operators with the same precedence level within an expression are processed from
 | TIMESTAMP | - |
 | JAVA_OBJECT | - |
 
-The data type returned by the database for a given `value` column depends on the data type of the [metric](../../api/meta/metric/list.md#data-types).
+The data type returned by the database for a given `value` column depends on the data type of the [metric](../api/meta/metric/list.md#data-types).
 
 The `NUMBER` (parent type for all numeric data types) and `STRING` type can be used to convert data types with the [`CAST`](#cast) function.
 
@@ -279,17 +279,17 @@ Virtual tables have the same pre-defined columns since all the the underlying da
 |`metric.tags.{name}` |string| Metric tag value. Returns `NULL` if the specified tag doesn't exist for this metric.|
 |`metric.tags`    |string   | All metric tags, concatenated to `name1=value;name2=value` format.|
 |`metric.tags.*`  |string   | Expands to multiple columns, each column containing a separate metric tag.|
-|`metric.dataType`|string   | [Data Type](../meta/metric/list.md#data-types).|
+|`metric.dataType`|string   | [Data Type](../api/meta/metric/list.md#data-types).|
 |`metric.timePrecision`|string| Time precision: SECONDS or MILLISECONDS.|
 |`metric.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled metrics.|
 |`metric.persistent`  |boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
-|`metric.filter`  |string   | Persistence filter [expression](../meta/expression.md). Discards series that do not match this filter.|
+|`metric.filter`  |string   | Persistence filter [expression](../api/meta/expression.md). Discards series that do not match this filter.|
 |`metric.lastInsertTime`|string | Last time a value was received for this metric by any series. ISO date.|
 |`metric.retentionIntervalDays`|integer | Number of days to retain values for this metric in the database.|
 |`metric.versioning`|boolean | If set to true, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
-|`metric.minValue`| double | Minimum value for [Invalid Action](../meta/metric/list.md#invalid-actions) trigger.|
-|`metric.maxValue`| double | Maximum value for [Invalid Action](../meta/metric/list.md#invalid-actions) trigger.|
-|`metric.invalidValueAction` | string | [Invalid Action](../meta/metric/list.md#invalid-actions) type.|
+|`metric.minValue`| double | Minimum value for [Invalid Action](../api/meta/metric/list.md#invalid-actions) trigger.|
+|`metric.maxValue`| double | Maximum value for [Invalid Action](../api/meta/metric/list.md#invalid-actions) trigger.|
+|`metric.invalidValueAction` | string | [Invalid Action](../api/meta/metric/list.md#invalid-actions) type.|
 |`metric.units`| string | Measurement units. |
 
 #### Entity Columns
@@ -395,7 +395,7 @@ Each series sample can contain a:
 * Numeric value, accessible with the `value` column.
 * String value, accessible with the `text` column.
 
-The text value can be inserted with [`series`](../../api/network/series.md#fields) command and the series [insert](../../api/data/series/insert.md) method in Data API.
+The text value can be inserted with [`series`](../api/network/series.md#fields) command and the series [insert](../api/data/series/insert.md) method in Data API.
 
 ```ls
 series d:2016-10-13T08:00:00Z e:sensor-1 m:temperature=20.3
@@ -419,7 +419,7 @@ WHERE metric IN ('temperature', 'status') AND datetime >= '2017-06-15T08:00:00Z'
 
 #### Numeric Precedence
 
-If the `value` column in an `atsd_series` query returns numbers for metrics with different [data types](../../api/meta/metric/list.md#data-types), the prevailing data type is determined based on the following rules:
+If the `value` column in an `atsd_series` query returns numbers for metrics with different [data types](../api/meta/metric/list.md#data-types), the prevailing data type is determined based on the following rules:
 
 1. If all data types are integers (`short`, `integer`, `long`), the prevailing integer type is returned.
 2. If all data types are decimals (`float`, `double`, `decimal`), the prevailing decimal type is returned.
@@ -827,7 +827,7 @@ GROUP BY PERIOD(1 YEAR)                    -- Recommended.
 
 ### Endtime Syntax
 
-The `time` and `datetime` columns support [calendar](../../shared/calendar.md) keywords.
+The `time` and `datetime` columns support [calendar](../shared/calendar.md) keywords.
 
 ```sql
 SELECT datetime, entity, value
@@ -836,7 +836,7 @@ WHERE time >= NOW - 15 * MINUTE
   AND datetime < CURRENT_MINUTE
 ```
 
-The `endtime` expressions are evaluated according to the server [time zone](../../shared/timezone-list.md) which can be customized using the [`endtime()`](#endtime) function.
+The `endtime` expressions are evaluated according to the server [time zone](../shared/timezone-list.md) which can be customized using the [`endtime()`](#endtime) function.
 
 ```sql
 SELECT value, datetime,
@@ -974,7 +974,7 @@ PERIOD({count} {unit} [, option])
 * `interpolate` = PREVIOUS | NEXT | LINEAR | VALUE {number}
 * `extend` = EXTEND
 * `align` = START_TIME, END_TIME, FIRST_VALUE_TIME, CALENDAR
-* `timezone` = [Time Zone ID](../../shared/timezone-list.md) as literal string, or `entity.timeZone`/`metric.timeZone` column.
+* `timezone` = [Time Zone ID](../shared/timezone-list.md) as literal string, or `entity.timeZone`/`metric.timeZone` column.
 
 The options are separated by a comma and can be specified in any order.
 
@@ -990,7 +990,7 @@ PERIOD(1 DAY, entity.timeZone)
 | **Name** | **Description** |
 |:---|:---|
 | count | [**Required**] Number of time units contained in the period. |
-| unit | [**Required**] [Time unit](../../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
+| unit | [**Required**] [Time unit](../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
 | interpolate | Apply an [interpolation function](#interpolation), such as `LINEAR` or `VALUE 0`, to add missing periods.|
 | extend | Add missing periods at the beginning and end of the selection interval using `VALUE {n}` or the `PREVIOUS` and `NEXT` interpolation functions.|
 | align | Align the period's start/end. Default: `CALENDAR`. <br>Possible values: `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`, `CALENDAR`.<br>Refer to [period alignment](#period-alignment).|
@@ -1256,7 +1256,7 @@ The interpolation period is specified as a `count unit`, for example `5 MINUTE`,
 | **Name** | **Description** |
 |:---|:---|
 | count | [**Required**] Number of time units contained in the period. |
-| unit | [**Required**] [Time unit](../../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
+| unit | [**Required**] [Time unit](../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
 
 The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` queries while retaining the original timestamps of the merged series.
 
@@ -1298,7 +1298,7 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 | **Name** | **Description**|
 |:---|:---|
 | `null` | [**Default**] The database time zone is used to split the selection interval into periods greater than 1 day. |
-| `timezone id` | The literal string with the time zone [identifier](../../shared/timezone-list.md). |
+| `timezone id` | The literal string with the time zone [identifier](../shared/timezone-list.md). |
 | `entity.timeZone` or<br>`metric.timeZone` | The time zone of the entity or metric. |
 
 ### Regularization Examples
@@ -1968,7 +1968,7 @@ ORDER BY base.datetime
 |-------------|-------------|-------------|-------------|
  ```
 
- The reserved keywords also include [calendar](../../shared/calendar.md#keywords) keywords such as `NOW`, `PREVIOUS_HOUR` and [interval units](../../shared/calendar.md#interval-units) such as `MINUTE`, `HOUR`.
+ The reserved keywords also include [calendar](../shared/calendar.md#keywords) keywords such as `NOW`, `PREVIOUS_HOUR` and [interval units](../shared/calendar.md#interval-units) such as `MINUTE`, `HOUR`.
 
 ## Aggregation Functions
 
@@ -2073,7 +2073,7 @@ date_format(long milliseconds[, string time_format[, string time_zone]])
 
 If the `time_format` argument is not provided, ISO 8601 format is applied.
 
-The `time_zone` parameter accepts GTM offset in the format of `GMT-hh:mm` or a [time zone name](../../shared/timezone-abnf.md) and can format dates in a time zone other than the database time zone.
+The `time_zone` parameter accepts GTM offset in the format of `GMT-hh:mm` or a [time zone name](../shared/timezone-abnf.md) and can format dates in a time zone other than the database time zone.
 
 In addition, the `time_zone` parameter can be specified as `AUTO` in which case the date is formatted with an entity-specific time zone. If an entity-specific time zone is not defined, a metric-specific time zone is used instead. If neither an entity-specific nor metric-specific time zone is specified, the database timezone is applied.
 
@@ -2565,7 +2565,7 @@ ORDER BY datetime
 
 ### endtime()
 
-The `endtime()` function evaluates the specified [calendar](../../shared/calendar.md) keywords in the user-defined [time zone](../../shared/timezone-list.md).
+The `endtime()` function evaluates the specified [calendar](../shared/calendar.md) keywords in the user-defined [time zone](../shared/timezone-list.md).
 
 ```sql
 ENDTIME(calendarExpression, string timeZone)
@@ -2884,11 +2884,11 @@ The result of comparing NaN with another number is indeterminate (NULL).
 
 ## Authorization
 
-The database filters returned records based on [entity read permissions](../../administration/user-authorization.md#entity-permissions) of the user executing the query.
+The database filters returned records based on [entity read permissions](../administration/user-authorization.md#entity-permissions) of the user executing the query.
 
 As a result, the same query executed by different users may produce [different result sets](permissions.md).
 
-Scheduled SQL queries are executed with [All Entities: Read](../../administration/user-authorization.md#all-entities-permissions) permission and are not filtered.
+Scheduled SQL queries are executed with [All Entities: Read](../administration/user-authorization.md#all-entities-permissions) permission and are not filtered.
 
 ## Options
 

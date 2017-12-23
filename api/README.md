@@ -31,17 +31,17 @@
 
 ## SQL
 
-* [Overview](sql#overview)  
-* [Syntax](sql#syntax)
-* [Grouping](sql#grouping)
-* [Partitioning](sql#partitioning)
-* [Ordering](sql#ordering)
-* [Limiting](sql#limiting)
-* [Interpolation](sql#interpolation)
-* [Regularization](sql#regularization)
-* [Joins](sql#joins)
-* [API Endpoint](sql/api.md#sql-query-api-endpoint)
-* [Examples](sql#examples)
+* [Overview](../sql#overview)  
+* [Syntax](../sql#syntax)
+* [Grouping](../sql#grouping)
+* [Partitioning](../sql#partitioning)
+* [Ordering](../sql#ordering)
+* [Limiting](../sql#limiting)
+* [Interpolation](../sql#interpolation)
+* [Regularization](../sql#regularization)
+* [Joins](../sql#joins)
+* [API Endpoint](../sql/api.md#sql-query-api-endpoint)
+* [Examples](../sql#examples)
 
 ## API Clients
 

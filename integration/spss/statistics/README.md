@@ -47,7 +47,7 @@ You can import ATSD data into SPSS by configuring an ODBC data source on a Windo
 
 #### Prerequisites
 
-* Configure an [ODBC-JDBC bridge](https://github.com/axibase/atsd/tree/master/integration/odbc) for ATSD:
+* Configure an [ODBC-JDBC bridge](../../../integration/odbc) for ATSD:
 
     - specify URL property `compatibility=odbc2`: `jdbc:atsd://ATSD_HOST:ATSD_PORT;compatibility=odbc2`.
 * Disable UNICODE mode:
@@ -295,7 +295,7 @@ SELECT entity, datetime, value FROM cpi_price
 
 ## Exporting Data from ATSD into CSV Files
 
-ATSD provides a web-based SQL console to export query results into various data formats including Excel, CSV, and JSON, with optional metadata composed according to the [W3C Model for Tabular Data](https://github.com/axibase/atsd/blob/master/api/sql/api.md#metadata).
+ATSD provides a web-based SQL console to export query results into various data formats including Excel, CSV, and JSON, with optional metadata composed according to the [W3C Model for Tabular Data](../../../sql/api.md#metadata).
 
 > If you don't have an ATSD instance available, [weights.csv](resources/weights.csv) and [prices.csv](resources/prices.csv) are provided for your convenience. These files contain the output of the SQL queries listed below.
 

@@ -4,7 +4,7 @@ Compaction is a scheduled procedure to store data for each time series in the mo
 
 By default, ATSD compaction runs every night.
 
-To trigger the compaction manually, open the **Admin > Diagnostics > Compaction** page.
+To trigger the compaction manually, open the **Settings > Diagnostics > Compaction** page.
 
 The space savings in ATSD are achieved by its built-in compression codes as well as by the file system compression in the underlying storage system (HBase).
 
@@ -12,7 +12,7 @@ The space savings in ATSD are achieved by its built-in compression codes as well
 
 ATSD compression codecs are built-in and are applied automatically when the data is copied from the raw column family to the compressed column family in a process called Compaction. 
 
-The compaction is executed daily on schedule and its status is available on the **Admin > Diagnostics > Compaction** page.
+The compaction is executed daily on schedule and its status is available on the **Settings > Diagnostics > Compaction** page.
 
 ## File System Compression
 
@@ -35,4 +35,4 @@ A change in codec requires ATSD restart.
 
 It's possible to also enable compression for the raw column family using the `hbase.compression.type.raw` setting.
 
-To verify that the codec is set correctly, review the settings on the **Admin > Server Properties** page.
+To verify that the codec is set correctly, review the settings on the **Settings > Server Properties** page.

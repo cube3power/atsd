@@ -29,7 +29,7 @@ GROUP BY entity, PERIOD(1 HOUR)
 
 ![](resources/sql-grouped.png)
 
-Review the [SQL syntax](../api/sql/README.md) and experiment by executing your own queries.
+Review the [SQL syntax](../sql/README.md) and experiment by executing your own queries.
 
 
 ### Summary

@@ -24,6 +24,7 @@
 | **Name** | **Method** | **Path** | **Content-Type** | **Description** |
 |:---|:---|:---|:---|:---|
 | [Insert](messages/insert.md) | POST | `/api/v1/messages/insert` | `application/json` | Insert an array of messages. |
+| [Webhook](messages/webhook.md) | POST | `/api/v1/messages/webhook/*` | `application/json` | Convert the request into a message and store it. |
 | [Query](messages/query.md) | POST | `/api/v1/messages/query` | `application/json` | Retrieve message records for the specified filters. |
 | [Statistics Query](messages/stats-query.md) | POST | `/api/v1/messages/stas/query` | `application/json` |  Retrieve message counters as series for the specified filters.  |
 
@@ -48,7 +49,7 @@
 
 | **Name** | **Method** | **Path** | **Content-Type** | **Description** |
 |:---|:---|:---|:---|:---|
-| [SQL Query](../../api/sql/api.md) | POST | `/api/sql` | `text/plain` | Execute an SQL query and retrieve results in CSV or JSON format. |
+| [SQL Query](../../sql/api.md) | POST | `/api/sql` | `text/plain` | Execute an SQL query and retrieve results in CSV or JSON format. |
 
 
 

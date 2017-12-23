@@ -228,7 +228,7 @@ The `[widget]` syntax provides a number of options to select series for multiple
   entity-group = nur-collectors
 ```
 
-Refer to the [Data API](https://github.com/axibase/atsd/blob/master/api/data/filter-entity.md#entity-filter-fields) for additional information about these settings.
+Refer to the [Data API](../api/data/filter-entity.md#entity-filter-fields) for additional information about these settings.
 
 ```ls
   # Retrieve series for entities starting with nurswgvml00

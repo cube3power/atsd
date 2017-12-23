@@ -100,7 +100,7 @@ SELECT entity ... FROM "my-table"
 
 ### Metadata Commands
 
-Columns starting with 'entity.tags.', 'metric.tags.', or 'metric.{field-name}' prefixes generate [`entity`](../../network/entity.md) and [`metric`](../../network/metric.md) metadata commands.
+Columns starting with 'entity.tags.', 'metric.tags.', or 'metric.{field-name}' prefixes generate [`entity`](../api/network/entity.md) and [`metric`](../api/network/metric.md) metadata commands.
 
 
 ```sql

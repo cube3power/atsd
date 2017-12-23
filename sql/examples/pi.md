@@ -131,7 +131,7 @@ WHERE entity = 'br-1211' AND (text = '800' OR LAG(text) = '800')
 | 2016-10-04T02:07:05Z | Inactive | 800       |
 ```
 
-* LEAD function [examples](../../README.md#lag)
+* LEAD function [examples](../README.md#lag)
 
 
 ## BETWEEN clause supports subqueries

@@ -11,7 +11,7 @@ Weekly Change Log: August 28, 2017 - September 03, 2017
 | [4525](#issue-4525) | UI | Feature | Summary Table added to **Database Tables** page to simplify data growth monitoring. |
 | 4519 | core | Feature | Licensing restrictions removed to allow all database editions to compress data with `gz` and `lzo` algorithms. |
 | 4503 | UI | Bug | Restrict access to **Rules** and **Entity Views** pages for users with an Editor role. |
-| 4502 | sql | Bug | Add the `encodeTags` parameter to [SQL API](https://github.com/axibase/atsd/tree/master/api/sql) method. |
+| 4502 | sql | Bug | Add the `encodeTags` parameter to [SQL API](../../sql) method. |
 | 4477 | core | Feature | Add HBase coprocessors to ATSD tables programmatically to avoid changing `hbase-site.xml`. |
 | 4410 | Bug | Java API | Add missing metric methods to the [Java API Client](https://github.com/axibase/atsd-api-java). |
 | [4351](#issue-4351) | jdbc | Feature | Add support for extended [tag methods](https://github.com/axibase/atsd-jdbc#tag-columns) in the JDBC driver. |

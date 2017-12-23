@@ -14,7 +14,7 @@ The scheduler executes a `SELECT` query specified according to the ATSD [SQL syn
 
 ## Authorization
 
-Scheduled SQL queries are executed with **administrative** permissions, no records are excluded from the result set unlike ad-hoc queries, which are filtered based on the user's [entity read permissions](../../administration/user-authorization.md#entity-permissions).
+Scheduled SQL queries are executed with **administrative** permissions, no records are excluded from the result set unlike ad-hoc queries, which are filtered based on the user's [entity read permissions](../administration/user-authorization.md#entity-permissions).
 
 ## Schedule
 

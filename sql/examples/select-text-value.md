@@ -4,7 +4,7 @@ The difference between series tags and text values is that tag names/values are 
 
 Series tags are part of each series composite primary key, whereas the text value is not.
 
-Since the total number of unique tag value identifiers is [limited](../../../api/network/README.md#schema) to `16,777,215`, series tag values are not well suited for values with high cardinality such as random values or continuously incrementing values (time, counters).
+Since the total number of unique tag value identifiers is [limited](../../api/network/README.md#schema) to `16,777,215`, series tag values are not well suited for values with high cardinality such as random values or continuously incrementing values (time, counters).
 
 The text value, on the other hand, is stored `as is`, without converting it to an identifier. It can be used as an annotation, or order to describe a numeric observation without changing it's primary key.
 
@@ -21,7 +21,7 @@ The text value can also be used to record observations for series that contain o
 series d:2016-10-13T10:30:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-5434"
 ```
 
-Unlike [message](../../../api/network/message.md) commands, series text values are available for SQL querying using the `text` column.
+Unlike [message](../../api/network/message.md) commands, series text values are available for SQL querying using the `text` column.
 
 ```sql
 SELECT entity, datetime, value, text

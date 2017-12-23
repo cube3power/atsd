@@ -4,7 +4,7 @@ Entity metadata contains entity tags with user-defined names as well as predefin
 
 Entity tags can be accessed with `entity.tags.{tag-name}` syntax whereas entity fields are accessible with `entity.{field-name}` syntax.
 
-The list of pre-defined columns is provided [here](../../../api/sql#predefined-columns).
+The list of pre-defined columns is provided [here](../README.md#predefined-columns).
 
 ## Query
 

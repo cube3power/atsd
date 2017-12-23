@@ -33,17 +33,17 @@
   * [Go](https://github.com/axibase/atsd-api-go)  
   * [Ruby](https://github.com/axibase/atsd-api-ruby)
 
-## [SQL](api/sql#overview)
+## [SQL](sql#overview)
 
-  * [Syntax](api/sql#syntax)
-  * [Grouping](api/sql#grouping)
-  * [Partitioning](api/sql#partitioning)
-  * [Ordering](api/sql#ordering)
-  * [Limiting](api/sql#limiting)
-  * [Interpolation](api/sql#interpolation)
-  * [Joins](api/sql#joins)
-  * [API Endpoint](api/sql/api.md#sql-query-api-endpoint)
-  * [Examples](api/sql#examples)
+  * [Syntax](sql#syntax)
+  * [Grouping](sql#grouping)
+  * [Partitioning](sql#partitioning)
+  * [Ordering](sql#ordering)
+  * [Limiting](sql#limiting)
+  * [Interpolation](sql#interpolation)
+  * [Joins](sql#joins)
+  * [API Endpoint](sql/api.md#sql-query-api-endpoint)
+  * [Examples](sql#examples)
 
 ## Drivers
 
@@ -62,7 +62,7 @@
   * [Tableau](integration/tableau/README.md)
   * [ODBC](integration/odbc/README.md)
   * [Grafana](https://github.com/axibase/grafana-data-source)
-  * [Graphite](https://github.com/axibase/atsd/tree/master/integration/graphite)
+  * [Graphite](integration/graphite/README.md)
 
 ## Rule Engine
 

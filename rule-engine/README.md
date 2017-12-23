@@ -258,7 +258,7 @@ Open alerts are displayed on the **Alerts > Open Alerts** page. The list of aler
 
 ## Analyzing Data with SQL
 
-In cases that require analysis of long-term data or flexible joining and grouping, it maybe more optimal to analyze and react to data using [Scheduled SQL](../api/sql/scheduled-sql.md) queries.
+In cases that require analysis of long-term data or flexible joining and grouping, it maybe more optimal to analyze and react to data using [Scheduled SQL](../sql/scheduled-sql.md) queries.
 
 In order to trigger a notification by an SQL query:
 

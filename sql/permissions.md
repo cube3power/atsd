@@ -2,7 +2,7 @@
 
 ## Overview
 
-ATSD implements row-level security by controlling that users can view only records that belong to an entity that they're authorized to access based on [entity permissions](../../administration/user-authorization.md#entity-permissions).
+ATSD implements row-level security by controlling that users can view only records that belong to an entity that they're authorized to access based on [entity permissions](../administration/user-authorization.md#entity-permissions).
 
 The row-level security is enforced in all types of queries by filtering rows at the time they're read from the database.
 

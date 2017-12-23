@@ -6,11 +6,11 @@ Weekly Change Log: May 15, 2017 - May 21, 2017
 | 4207 | core | Bug | Add missing `HOST` tags to all internal ATSD metrics.|
 | 4205 | UI | Bug | Refresh replacement table cache when it's modified. The cache is used in SQL queries to replace field values similar to a lookup table or a dictionary.|
 | 4202 | csv | Bug | Consolidate error log events when parsing CSV files for simplified troubleshooting. |
-| [4196](#issue-4196) | api-network | Feature | Enable support for gzip compression in [/api/v1/command](https://github.com/axibase/atsd/blob/master/api/data/ext/command.md) method. |
+| [4196](#issue-4196) | api-network | Feature | Enable support for gzip compression in [/api/v1/command](../../api/data/ext/command.md) method. |
 | 4191 | UI | Bug | Clone button in the scheduled SQL configuration fails to redirect to the new configuration. |
-| 4189 | sql | Bug | Fix [`LIKE`](https://github.com/axibase/atsd/tree/master/api/sql#where-clause) comparator when comparing tags using wildcards. |
+| 4189 | sql | Bug | Fix [`LIKE`](../../sql#where-clause) comparator when comparing tags using wildcards. |
 | [4184](#issue-4184) | core | Feature | Add support for comments (hash symbol) in replacement tables. |
-| 4182 | sql | Bug |Fix parsing error when [`CAST`](https://github.com/axibase/atsd/tree/master/api/sql/#cast) function is used within [`ISNULL`](https://github.com/axibase/atsd/blob/master/api/sql/README.md/#isnull) function with a string argument: `CAST(ISNULL(LOOKUP('tab-1', entity), '0') AS NUMBER)`.|
+| 4182 | sql | Bug |Fix parsing error when [`CAST`](../../sql/#cast) function is used within [`ISNULL`](../../sql/README.md/#isnull) function with a string argument: `CAST(ISNULL(LOOKUP('tab-1', entity), '0') AS NUMBER)`.|
 | [4179](#issue-4179) | sql | Feature | Add an option to exclude queries from the SQL query statistics page using `!` as the negation symbol. |
 | 4178 | export | Bug | Fixed a bug with email notifications when Output Path was not specified. |
 | 4175 | sql | Bug | Incorrect period start calculated for YEAR period and END_TIME alignment.  |

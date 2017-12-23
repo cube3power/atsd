@@ -21,22 +21,22 @@ Weekly Change Log: July 31, 2017 - August 06, 2017
 | 4385 | jdbc | Feature | Add `missingMetric` [connection property](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-connection-properties-supported-by-driver) to control driver behavior in case of unknown table.|
 | 4383 | jdbc | Bug | Include the reserved `atsd_series` if `tables=*` [connection property](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-connection-properties-supported-by-driver) selects all tables. |
 | 4379 | jdbc | Bug | Fixed an error with `NULL` values in [`INSERT`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md) statements. |
-| 4374 | sql | Feature | [SQL Metadata API](https://github.com/axibase/atsd/blob/master/api/sql/api-meta.md) method should return metadata for the pre-defined columns even if the metric doesn't exist.|
+| 4374 | sql | Feature | [SQL Metadata API](../../sql/api-meta.md) method should return metadata for the pre-defined columns even if the metric doesn't exist.|
 | [4373](#issue-4373) | jdbc | Bug | Raise exception if parameter data type is not valid.  |
 | [4372](#issue-4372) | jdbc | Bug | Add support for [inserting series tags](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#insert-syntax). |
 | 4371 | jdbc | Bug | Fix bug with `INSERT` statements if the table name is quoted. |
-| 4370 | jdbc | Bug | Avoid sending a duplicate [metadata](https://github.com/axibase/atsd/blob/master/api/sql/api-meta.md) query when inserting data. |
+| 4370 | jdbc | Bug | Avoid sending a duplicate [metadata](../../sql/api-meta.md) query when inserting data. |
 | 4369 | jdbc | Feature | Add support for [`timestamptz`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#time-zone) connection property to control how timestamps are parsed and formatted when inserting data. |
-| 4368 | sql | Bug | Handle placeholders in prepared statements in [SQL Metadata API](https://github.com/axibase/atsd/blob/master/api/sql/api-meta.md) method. |
+| 4368 | sql | Bug | Handle placeholders in prepared statements in [SQL Metadata API](../../sql/api-meta.md) method. |
 | 4366 | jdbc | Feature | Refactor [JDBC URL](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-url). |
-| 4365 | sql | Bug | Fixed a bug which caused the server to use an incorrect timezone in `GROUP BY PERIOD` [queries](https://github.com/axibase/atsd/tree/master/api/sql#period) if the database is running in a user-defined timezone. |
-| 4363 | sql | Feature | Implement an `/api/sql/meta` method to obtain [query metadata](https://github.com/axibase/atsd/blob/master/api/sql/api-meta.md) without executing the query. |
-| 4345 | forecast | Bug | Add support for tag wildcards in [series queries](https://github.com/axibase/atsd/blob/master/api/data/series/query.md#entity-filter-fields) for forecast data: `type=FORECAST`. |
-| [4328](#issue-4328) | sql | Feature | Add support for [`LAG`](https://github.com/axibase/atsd/blob/master/api/sql/README.md#lag) function in `JOIN` queries. |
+| 4365 | sql | Bug | Fixed a bug which caused the server to use an incorrect timezone in `GROUP BY PERIOD` [queries](../../sql#period) if the database is running in a user-defined timezone. |
+| 4363 | sql | Feature | Implement an `/api/sql/meta` method to obtain [query metadata](../../sql/api-meta.md) without executing the query. |
+| 4345 | forecast | Bug | Add support for tag wildcards in [series queries](../../api/data/series/query.md#entity-filter-fields) for forecast data: `type=FORECAST`. |
+| [4328](#issue-4328) | sql | Feature | Add support for [`LAG`](../../sql/README.md#lag) function in `JOIN` queries. |
 | [4303](#issue-4303) | jdbc | Feature | Add support for inserting data with JDBC driver using [`INSERT` and `UPDATE`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md) queries. |
 | 4278 | core | Bug | Fix a bug causing the data compaction to hang when multiple detailed column families are present. |
-| 3983 | api-rest	| Bug |	Data API: tags are incorrectly concatenated with [`group`](https://github.com/axibase/atsd/blob/master/api/data/series/group.md) processor. |
-| 3874 | api-network | Bug | Data API: series command fails to overwrite value when inserted in batch with [append flag](https://github.com/axibase/atsd/blob/master/api/network/series.md#text-append). |
+| 3983 | api-rest	| Bug |	Data API: tags are incorrectly concatenated with [`group`](../../api/data/series/group.md) processor. |
+| 3874 | api-network | Bug | Data API: series command fails to overwrite value when inserted in batch with [append flag](../../api/network/series.md#text-append). |
 
 ### ATSD
 
@@ -155,7 +155,7 @@ WHERE t1.tags.company_name = 'Mutual of Omaha Insurance Company'
 
 ##### Issue 4303
 
-The JDBC driver provides support for writing data into ATSD using INSERT and UPDATE statements. These statements are parsed by the driver into network commands which are inserted into the database with the Data API [command](https://github.com/axibase/atsd/blob/master/api/data/ext/command.md) method.
+The JDBC driver provides support for writing data into ATSD using INSERT and UPDATE statements. These statements are parsed by the driver into network commands which are inserted into the database with the Data API [command](../../api/data/ext/command.md) method.
 
 ```sql
 INSERT INTO temperature (entity, datetime, value, tags.surface)

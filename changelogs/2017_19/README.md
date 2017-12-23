@@ -13,7 +13,7 @@ Weekly Change Log: May 08, 2017 - May 14, 2017
 | 4165 | UI | Feature | Extend SQL syntax highlighter with extended ATSD keywords. |
 | 4159 | UI | Bug | Removed an unneeded sorting option on the Admin: System Information page. |
 | 4156 | sql | Bug | Ensure email delivery in case of file write errors in scheduled SQL queries. |
-| [4146](#issue-4146) | sql | Feature | Modified [`GROUP BY PERIOD`](https://github.com/axibase/atsd/tree/master/api/sql#grouping) processing to include all samples within the period. |
+| [4146](#issue-4146) | sql | Feature | Modified [`GROUP BY PERIOD`](../../sql#grouping) processing to include all samples within the period. |
 | [4140](#issue-4140) | UI | Feature | Replace named links with drop-down menus in record tables. |
 | [3838](#issue-3838) | sql | Feature | Add support for column aliases in the `ORDER BY` clause. |
 

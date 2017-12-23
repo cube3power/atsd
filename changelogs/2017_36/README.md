@@ -5,7 +5,7 @@ Weekly Change Log: September 04, 2017 - September 10, 2017
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| [4545](#issue-4545) | sql | Feature | Custom SQL wildcards '*' and '?' replaced with standard [wildcards](https://github.com/axibase/atsd/tree/master/api/sql#match-expressions) '%' and '_'. |
+| [4545](#issue-4545) | sql | Feature | Custom SQL wildcards '*' and '?' replaced with standard [wildcards](../../sql#match-expressions) '%' and '_'. |
 | 4537 | search | Bug | Fixed an IndexNotFoundException if the series search indexing is not ready immediately after the installation. |
 | [4533](#issue-4533) | UI | Feature | User Group membership form refactored to allow adding/removing multiple members at once. |
 | 4524 | core | Feature | Collect `table_size` metric before and after the compaction. |
@@ -15,8 +15,8 @@ Weekly Change Log: September 04, 2017 - September 10, 2017
 | 4501 | UI | Bug | UI: Format stack trace in SQL console. |
 | 4488 | csv | Bug | CSV Parser: fixed length split broken. |
 | 4307 | sql | Bug | Fix row ordering for samples timestamped before January 1, 1970. |
-| [4235](#issue-4235) | api-rest | Feature | `FIRST`, `LAST`, `MIN_VALUE_TIME`, `MAX_VALUE_TIME` aggregators added to series queries with [grouping](https://github.com/axibase/atsd/blob/master/api/data/series/group.md#grouping-functions). |
-| 2792 | api-rest | Support | `counter` field removed from [metric](https://github.com/axibase/atsd/blob/master/api/meta/metric/list.md#fields) schema. |
+| [4235](#issue-4235) | api-rest | Feature | `FIRST`, `LAST`, `MIN_VALUE_TIME`, `MAX_VALUE_TIME` aggregators added to series queries with [grouping](../../api/data/series/group.md#grouping-functions). |
+| 2792 | api-rest | Support | `counter` field removed from [metric](../../api/meta/metric/list.md#fields) schema. |
 | 2605 | UI | Bug | Rename old fields on the CSV parser editor form. |
 
 ### ATSD

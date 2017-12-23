@@ -17,7 +17,7 @@ Weekly Change Log: December 25, 2016 - January 08, 2017
 | [3721](#issue-3721)          | sql             | Feature | `LIKE` comparator optimized.                                                                |
 | [3711](#issue-3711)          | sql             | Bug     | Slow parsing of queries with 30+ arguments in arithmetic expressions in the `SELECT` clause. |
 | [3695](#issue-3695)          | sql             | Bug     | `GROUP BY` with join fails to return records.                                     |
-| [3661](#issue-3661)          | sql             | Feature | [`CAST`](../../api/sql#cast) function implemented. |
+| [3661](#issue-3661)          | sql             | Feature | [`CAST`](../../sql#cast) function implemented. |
 | 3527          | jdbc            | Bug     | DbVisualizer hangs after repetitive query cancellations with the ATSD JDBC driver.  |
 
 ### Collector
@@ -71,7 +71,7 @@ An error for `entityExpression` was addressed in [series](../../api/data/series/
 ### Issue 3749
 -------------
 
-The SQL parser was fixed to allow for the [`LOCATE`](../../api/sql#string-functions) function to be used in the `WHERE` clause.
+The SQL parser was fixed to allow for the [`LOCATE`](../../sql#string-functions) function to be used in the `WHERE` clause.
 
 ```sql
 SELECT sum(value)
@@ -83,7 +83,7 @@ WHERE datetime > now - 1 * minute
 ### Issue 3747
 -------------
 
-The [`CAST`](../../api/sql#cast) function now accepts output of the [`date_format`](../../api/sql#time-formatting-functions) function as the argument, for example:
+The [`CAST`](../../sql#cast) function now accepts output of the [`date_format`](../../sql#time-formatting-functions) function as the argument, for example:
 
 
 ```sql
@@ -113,7 +113,7 @@ GROUP BY date_format(time, 'u')
 ### Issue 3741
 -------------
 
-[`JOIN USING ENTITY`](../../api/sql#join-with-using-entity) didn't merge rows as expected if tag names had the same names but different values. For example, the same tag `tag1` with different values `a` and `b`.
+[`JOIN USING ENTITY`](../../sql#join-with-using-entity) didn't merge rows as expected if tag names had the same names but different values. For example, the same tag `tag1` with different values `a` and `b`.
 
 ```ls
 series d:2016-12-23T00:00:00.000Z e:e1 m:m3=1 t:tag1=a
