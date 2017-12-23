@@ -66,11 +66,11 @@ The ATSD user interface is accessible on port 8443/https.
 | **Name** | **Required** | **Description** |
 |:---|:---|:---|
 |`ADMIN_USER_NAME` | No | User name for the built-in administrator account. |
-|`ADMIN_USER_PASSWORD` | No | [Password](https://github.com/axibase/atsd-docs/blob/master/administration/user-authentication.md#password-requirements) for the built-in administrator.|
+|`ADMIN_USER_PASSWORD` | No | [Password](../administration/user-authentication.md#password-requirements) for the built-in administrator.|
 |`COLLECTOR_USER_NAME` | No | User name for a data collector account. |
-|`COLLECTOR_USER_PASSWORD` | No | [Password](https://github.com/axibase/atsd-docs/blob/master/administration/user-authentication.md#password-requirements) for a data collector account.|
+|`COLLECTOR_USER_PASSWORD` | No | [Password](../administration/user-authentication.md#password-requirements) for a data collector account.|
 |`COLLECTOR_USER_TYPE` | No | User group for a data collector account, default value is `writer`.|
-|`DB_TIMEZONE` | No | Database [timezone identifier](https://github.com/axibase/atsd/blob/master/api/network/timezone-list.md).|
+|`DB_TIMEZONE` | No | Database [timezone identifier](../shared/timezone-list.md).|
 |`JAVA_OPTS` | No | Additional arguments to be passed to ATSD JVM process. |
 |`HADOOP_OPTS` | No | Additional arguments to be passed to Hadoop/HDFS JVM processes. |
 |`HBASE_OPTS` | No | Additional arguments to be passed to HBase JVM processes. |

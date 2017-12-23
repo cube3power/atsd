@@ -4,7 +4,7 @@
 
 Calendar syntax implements convenient [keywords](#keywords) and [arithmetic](#expressions) as an alternative to specifying literal dates in API requests, portal configurations, export settings, etc.
 
-Calendar [keyword](#keywords) are calculated based on the current server time and the server's [time zone](./api/network/timezone-list.md).
+Calendar [keyword](#keywords) are calculated based on the current server time and the server's [time zone](timezone-list.md).
 
 For example, if the current time is `December 15, 2017 15:28:44`, the expression `current_hour - 1 * day` would return `December 14, 2016 15:00:00`.
 

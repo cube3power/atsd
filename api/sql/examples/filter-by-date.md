@@ -92,7 +92,7 @@ WHERE entity = 'nurswgvml007'
 
 ## Query with Endtime Syntax
 
-[Calendar](../../../shared/calendar.md) keywords are calculated based on the current server time and the server's [time zone](../../../api/network/timezone-list.md).
+[Calendar](../../../shared/calendar.md) keywords are calculated based on the current server time and the server's [time zone](../../../shared/timezone-list.md).
 
 If the server's time zone is `Europe/Berlin`, for example, the `current_day` keyword in the below query is evaluated to `2017-04-15T00:00:00+02:00` local time or `2017-04-14T22:00:00Z` UTC time.
 
@@ -123,7 +123,7 @@ series e:e1 d:2017-04-15T02:00:00Z m:m1=2
 
 ## Query with Endtime Syntax in Custom Timezone
 
-The `endtime()` function enables specifying a user-defined [time zone](../../../api/network/timezone-list.md) when evaluating [calendar](../../../shared/calendar.md) keywords and expressions.
+The `endtime()` function enables specifying a user-defined [time zone](../../../shared/timezone-list.md) when evaluating [calendar](../../../shared/calendar.md) keywords and expressions.
 
 The following example selects data between 0h:0m:0s of the previous day and 0h:0m:0s of the current day according to PST timezone, even though the server itself runs in UTC timezone.
 

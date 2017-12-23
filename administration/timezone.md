@@ -12,7 +12,7 @@ The current timezone is displayed on the **Admin > System Information** page.
 
 ## Changing the Time Zone
 
-* Select Timezone ID from the following [list](../api/network/timezone-list.md), for example, "US/Pacific".
+* Select Timezone ID from the following [list](../shared/timezone-list.md), for example, "US/Pacific".
 
 * Uncomment the `TIME_ZONE` line block in the ATSD environment settings file `/opt/atsd/atsd/conf/atsd-env.sh`.
 

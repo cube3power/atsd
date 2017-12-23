@@ -27,7 +27,7 @@ entity e:{entity} b:{enabled} l:{label} i:{interpolate} z:{timezone} t:{tag-1}={
 | b         | boolean          | Enabled status. If the entity is disabled, new data received for this entity is discarded. |
 | l         | string           | Label. |
 | i         | string           | Interpolation mode: linear, previous. Default is none. |
-| z         | string           | Time Zone ID, for example `America/New_York` or `EST`.<br>Refer to [Java Time Zone](timezone-list.md) table for a list of supported Time Zone IDs.<br>The timezone is applied by date-formatting functions to return local time in entity-specific timezone.<br>To reset the time zone to the default value, specify it as a double-quoted empty string `z:""`. |
+| z         | string           | Time Zone ID, for example `America/New_York` or `EST`.<br>Refer to [Time Zone](../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The timezone is applied by date-formatting functions to return local time in entity-specific timezone.<br>To reset the time zone to the default value, specify it as a double-quoted empty string `z:""`. |
 | t         | string           | Entity tag name and text value. Multiple. |
 
 ### ABNF Syntax

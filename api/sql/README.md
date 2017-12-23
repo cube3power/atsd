@@ -836,7 +836,7 @@ WHERE time >= NOW - 15 * MINUTE
   AND datetime < CURRENT_MINUTE
 ```
 
-The `endtime` expressions are evaluated according to the server [time zone](../../api/network/timezone-list.md) which can be customized using the [`endtime()`](#endtime) function.
+The `endtime` expressions are evaluated according to the server [time zone](../../shared/timezone-list.md) which can be customized using the [`endtime()`](#endtime) function.
 
 ```sql
 SELECT value, datetime,
@@ -974,7 +974,7 @@ PERIOD({count} {unit} [, option])
 * `interpolate` = PREVIOUS | NEXT | LINEAR | VALUE {number}
 * `extend` = EXTEND
 * `align` = START_TIME, END_TIME, FIRST_VALUE_TIME, CALENDAR
-* `timezone` = [Time Zone ID](../../api/network/timezone-list.md) as literal string, or `entity.timeZone`/`metric.timeZone` column.
+* `timezone` = [Time Zone ID](../../shared/timezone-list.md) as literal string, or `entity.timeZone`/`metric.timeZone` column.
 
 The options are separated by a comma and can be specified in any order.
 
@@ -1298,7 +1298,7 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 | **Name** | **Description**|
 |:---|:---|
 | `null` | [**Default**] The database time zone is used to split the selection interval into periods greater than 1 day. |
-| `timezone id` | The literal string with the time zone [identifier](../../api/network/timezone-list.md). |
+| `timezone id` | The literal string with the time zone [identifier](../../shared/timezone-list.md). |
 | `entity.timeZone` or<br>`metric.timeZone` | The time zone of the entity or metric. |
 
 ### Regularization Examples
@@ -2073,7 +2073,7 @@ date_format(long milliseconds[, string time_format[, string time_zone]])
 
 If the `time_format` argument is not provided, ISO 8601 format is applied.
 
-The `time_zone` parameter accepts GTM offset in the format of `GMT-hh:mm` or a [time zone name](../../api/network/timezone-abnf.md) and can format dates in a time zone other than the database time zone.
+The `time_zone` parameter accepts GTM offset in the format of `GMT-hh:mm` or a [time zone name](../../shared/timezone-abnf.md) and can format dates in a time zone other than the database time zone.
 
 In addition, the `time_zone` parameter can be specified as `AUTO` in which case the date is formatted with an entity-specific time zone. If an entity-specific time zone is not defined, a metric-specific time zone is used instead. If neither an entity-specific nor metric-specific time zone is specified, the database timezone is applied.
 
@@ -2565,7 +2565,7 @@ ORDER BY datetime
 
 ### endtime()
 
-The `endtime()` function evaluates the specified [calendar](../../shared/calendar.md) keywords in the user-defined [time zone](../../api/network/timezone-list.md).
+The `endtime()` function evaluates the specified [calendar](../../shared/calendar.md) keywords in the user-defined [time zone](../../shared/timezone-list.md).
 
 ```sql
 ENDTIME(calendarExpression, string timeZone)

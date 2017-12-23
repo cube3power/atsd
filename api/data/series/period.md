@@ -7,7 +7,7 @@ Period is a repeating time interval used to group samples occurred within each i
 | count  | number | Number of time units contained in the period. |
 | unit  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
 | align | string | Alignment of the period's start time. Default: `CALENDAR`. <br>Possible values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.|
-| timezone | string | [Time Zone ID](../../network/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database timezone.|
+| timezone | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database timezone.|
 
 ## Examples
 

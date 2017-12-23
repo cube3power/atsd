@@ -2,7 +2,7 @@
 
 ## Short List
 
-The list is comprised of timezone identifiers containing up to 3 characters. 
+The list is comprised of timezone identifiers consisting of up to 3 characters.
 
 | **Offset** | **Time Zone ID** | **Time Zone Name** |
 |:---|:---|:---|
@@ -275,7 +275,7 @@ The list is comprised of timezone identifiers containing up to 3 characters.
 | GMT-02:30 | CNT | Newfoundland Standard Time |
 | GMT-02:30 | Canada/Newfoundland | Newfoundland Standard Time |
 | GMT-02:00 | America/Godthab | Western Greenland Time |
-| GMT-02:00 | America/Miquelon | Pierre &amp; Miquelon Standard Time |
+| GMT-02:00 | America/Miquelon | Pierre & Miquelon Standard Time |
 | GMT-02:00 | America/Montevideo | Uruguay Time |
 | GMT-02:00 | America/Noronha | Fernando de Noronha Time |
 | GMT-02:00 | Atlantic/South_Georgia | South Georgia Standard Time |
@@ -474,7 +474,7 @@ The list is comprised of timezone identifiers containing up to 3 characters.
 | GMT+05:00 | Asia/Samarkand | Uzbekistan Time |
 | GMT+05:00 | Asia/Tashkent | Uzbekistan Time |
 | GMT+05:00 | Asia/Yekaterinburg | Yekaterinburg Time |
-| GMT+05:00 | Indian/Kerguelen | French Southern &amp; Antarctic Lands Time |
+| GMT+05:00 | Indian/Kerguelen | French Southern & Antarctic Lands Time |
 | GMT+05:00 | Indian/Maldives | Maldives Time |
 | GMT+05:00 | PLT | Pakistan Time |
 | GMT+05:30 | Asia/Calcutta | India Standard Time |
@@ -605,7 +605,7 @@ The list is comprised of timezone identifiers containing up to 3 characters.
 | GMT+12:00 | Pacific/Nauru | Nauru Time |
 | GMT+12:00 | Pacific/Tarawa | Gilbert Is. Time |
 | GMT+12:00 | Pacific/Wake | Wake Time |
-| GMT+12:00 | Pacific/Wallis | Wallis &amp; Futuna Time |
+| GMT+12:00 | Pacific/Wallis | Wallis & Futuna Time |
 | GMT+13:00 | Antarctica/McMurdo | New Zealand Standard Time |
 | GMT+13:00 | Antarctica/South_Pole | New Zealand Standard Time |
 | GMT+13:00 | NST | New Zealand Standard Time |

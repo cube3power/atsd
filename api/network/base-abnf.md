@@ -53,7 +53,7 @@ UNICODE = %x80-FF / ; Latin-1 Supplement
   ; UTC timezone (Z) = 2016-06-01T16:00:15.142Z
   ; Numeric timezone = 2016-06-01T12:00:15.142-04:00
 ISO_DATE = date-time 
-  ; inhereted from timezone-abnf.md
+  ; inhereted from /shared/timezone-abnf.md
 TIMEZONE = time-zone-code
 ```
 
