@@ -2,15 +2,19 @@
 
 ## Overview
 
-The `scriptOut` function provides a way to enrich notification messages by retrieving detailed information about the monitored object with a bash or a Python script. Only scripts stored on the local ATSD file system can be executed. The function executes the named script with the specified parameters and returns its standard output/error. 
+The `scriptOut` function provides a way to enrich notification messages with extended information about the monitored object retrieved with a bash or a Python script.
+
+The function executes the named script with the specified parameters and returns the script's response (stdout/stderr).
+
+> Only scripts located in the `./atsd/conf/script/` directory can be executed.
 
 ## Common Use Cases
 
-* Check the TCP availability of the remote host
-* Check that the remote host can be reached
-* Check that an HTTP/s request to a URL returns code `200`
-* Execute a diagnostics command on the remote host
-* Retrieve extended information about the device/host from an internal system
+* Check the TCP availability of the remote host.
+* Check that the remote host can be reached with ICMP ping.
+* Check that an HTTP/s request to a URL returns code `200`.
+* Execute a diagnostics command on the remote host.
+* Retrieve extended information about the device/host.
 
 ## Syntax
 
@@ -18,20 +22,26 @@ The `scriptOut` function provides a way to enrich notification messages by retri
 scriptOut(String scriptFileName, List arguments)
 ```
 
-* [**required**] `scriptFileName` is the name of the script file located in the `./atsd/conf/script/` directory.
-* [**required**] `arguments` is a collection of parameters passed to the script. 
+* [**required**] `scriptFileName` - Name of the script file located in the `./atsd/conf/script/` directory.
+* [**required**] `arguments` - Collection of parameters passed to the script.
 
-The parameters often include window placeholders such as the entity or a tag value.
+The parameters may include literal values or window [placeholders](placeholders.md) such as the `entity` or `tag` value.
+
+```javascript
+scriptOut('disk_size.sh', [entity, tags.file_system])
+```
+
+Literal string parameters must be enclosed in single quotes.
+
+```javascript
+scriptOut('ping.sh', ['axibase.com', 3])
+```
 
 If no parameters are expected by the script, an empty list `[]` must be passed as the second argument.
 
-String parameters must be enclosed in single quotes.
-
 ```javascript
-scriptOut('ping.sh', ['axibase.com', '3'])
+scriptOut('check_service.sh', [])
 ```
-
-The arguments are 
 
 ## Permissions
 
@@ -43,20 +53,34 @@ chmod u=rwx,g=rx,o=r ./atsd/conf/script/*
 
 The scripts are executed under the `axibase` user.
 
+## Formatting
+
+The output of the `scriptOut` function can be formatted with backticks in case of markdown (chat messages) or with `<pre>` tag in case of html (email).
+
+### Markdown Format
+
+ ![](images/script-osquery-bacticks.png)  
+
+### HTML Format
+
+ ![](images/script-format-html.png)  
+
+ ![](images/script-format-html-result.png)  
+
 ## Examples
 
 ### `ping`
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/ping.sh) to test ping of host n number of times.
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/ping.sh) to ping host `n` times.
 
 #### Script
 
 ```bash
 #!/usr/bin/env bash
- 
+
 host=${1}
 count=${2}
- 
+
 ping -c ${count} ${host}
 ```
 
@@ -71,7 +95,7 @@ Host ping report: ${scriptOut('ping.sh', ['axibase.com', '3'])}
 ```
 ping -c 3 axibase.com
 ```
-   
+
 #### Output
 
 ```bash
@@ -120,7 +144,7 @@ timeout ${kill_after} traceroute ${host}; echo $?
 ```javascript
 Trace report: ${scriptOut('traceroute.sh', ['3', 'axibase.com'])}
 ```
-    
+
 #### Command
 
 ```bash
@@ -142,20 +166,20 @@ traceroute to axibase.com (78.47.207.156), 30 hops max, 60 byte packets
 #### Notification
 
  Telegram:
- 
+
  ![](images/script-traceroute-telegram.png)
- 
+
  Discord:
- 
+
  ![](images/script-traceroute-discord.png)
- 
+
  Slack:
- 
+
  ![](images/script-traceroute-slack.png)
 
 ### `top`
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/top.sh) that returns output of top in batch mode from a remote server (using ssh with key authentication, key stored in a pre-defined location).
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/top.sh) that returns output of `top` in batch mode from a remote server (using ssh with key authentication, key stored in a pre-defined location).
 
 #### Script
 
@@ -169,7 +193,7 @@ delay=${4}
 rows_n=${5}
 
 
-ssh -i ${host} top -u ${user} -b -n ${count} -d ${delay} | head -n ${rows_n}
+ssh -i /home/axibase/.ssh/def.key ${host} top -u ${user} -b -n ${count} -d ${delay} | head -n ${rows_n}
 ```
 
 #### Function
@@ -207,21 +231,21 @@ KiB Swap:        0 total,        0 used,        0 free.  1363820 cached Mem
 #### Notification
 
  Telegram:
- 
+
  ![](images/script-top-telegram.png)
- 
+
  Discord:
- 
+
  ![](images/script-top-discord.png)
- 
+
  Slack:
- 
- ![](images/script-top-slack.png) 
-         
+
+ ![](images/script-top-slack.png)
+
 ### `ps`
 
 [Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/ps.sh) that returns `ps` output for the specified grep pattern from a remote server.
- 
+
 #### Script
 
 ```bash
@@ -252,19 +276,19 @@ axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/
 ```
 
 #### Notification   
- 
+
  Telegram:
- 
+
  ![](images/script-ps-telegram.png)
- 
+
  Discord:
- 
+
  ![](images/script-ps-discord.png)
- 
+
  Slack:
- 
+
  ![](images/script-ps-slack.png)   
-      
+
 ### URL availability
 
 [Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/url_avail.sh) that tests URL availability.
@@ -277,7 +301,7 @@ axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/
 url=${1}
 status=$(curl --head ${1} 2>/dev/null | head -n 1 | grep -oiE "[0-9]{3}[a-z ]*")
 if [[ $? == 0 ]] ; then
-  echo ${status} 
+  echo ${status}
 else
   echo "Incorrect url ${1}"
 fi
@@ -304,15 +328,15 @@ curl --head https://axibase.com 2>/dev/null | head -n 1 | grep -oiE "[0-9]{3}[a-
 #### Notification  
 
  Telegram:
- 
+
  ![](images/script-url_avail-telegram.png)
- 
+
  Discord:
- 
+
  ![](images/script-url_avail-discord.png)
- 
+
  Slack:
- 
+
  ![](images/script-url_avail-slack.png)   
 
 
@@ -332,7 +356,7 @@ port=${3}
 timeout ${kill_after} bash -c "</dev/tcp/${host}/${port}"
 
 if [[ $? -eq 0 ]]; then
-   echo "TCP port ${port} is available"	
+   echo "TCP port ${port} is available"
 else
    echo "TCP port ${port} is unavailable"
 fi
@@ -359,31 +383,30 @@ TCP port 443 is available
 #### Notification
 
  Telegram:
- 
+
  ![](images/script-tcp-telegram.png)
- 
+
  Discord:
- 
+
  ![](images/script-tcp-discord.png)
- 
+
  Slack:
- 
+
  ![](images/script-tcp-slack.png)  
 
 
 ### `osquery`
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/osquery.sh) that executes a [osquery](https://osquery.io/) query against a remote server via ssh command (key stored in a known location).
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/osquery.sh) that executes an [osquery](https://osquery.io/) request against a remote server.
 
 #### Script
 
 ```bash
 #!/usr/bin/env bash
 
-key_location=${1}
-host=${2}
+host=${1}
 
-ssh -i ${key_location} ${host} 'osqueryi "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
+ssh -i /home/axibase/.ssh/def.key ${host} 'osqueryi "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
 ```
 
 #### Function
@@ -392,11 +415,6 @@ ssh -i ${key_location} ${host} 'osqueryi "SELECT DISTINCT processes.name, listen
 ${scriptOut('osquery.sh', ['/home/axibase/ssh_host_rsa_key', 'axibase.com'])}
 ```
 
-`scriptOut` can be surrounded with backticks for output formatting:
-
- ![](images/script-osquery-bacticks.png)  
- 
- 
 #### Command
 
 ```bash
@@ -420,13 +438,13 @@ ssh -i /home/axibase/ssh_host_rsa_key axibase.com 'osqueryi "SELECT DISTINCT pro
 #### Notification
 
  Telegram:
- 
+
  ![](images/script-osquery-telegram.png)
- 
+
  Discord:
- 
+
  ![](images/script-osquery-discord.png)
- 
+
  Slack:
- 
+
  ![](images/script-osquery-slack.png)    
