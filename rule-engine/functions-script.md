@@ -2,8 +2,15 @@
 
 ## Overview
 
-Function `scriptOut` returns standard output/error of a bash or python script stored on the ATSD file system.
-For security purposes, the script must exist in the directory `./atsd/conf/script/`.
+The `scriptOut` function provides a way to enrich notification messages by retrieving detailed information about the monitored object with a bash or a Python script. Only scripts stored on the local ATSD file system can be executed. The function executes the named script with the specified parameters and returns its standard output/error. 
+
+## Common Use Cases
+
+* Check the TCP availability of the remote host
+* Check that the remote host can be reached
+* Check that an HTTP/s request to a URL returns code `200`
+* Execute a diagnostics command on the remote host
+* Retrieve extended information about the device/host from an internal system
 
 ## Syntax
 
@@ -11,13 +18,38 @@ For security purposes, the script must exist in the directory `./atsd/conf/scrip
 scriptOut(String scriptFileName, List arguments)
 ```
 
+* [**required**] `scriptFileName` is the name of the script file located in the `./atsd/conf/script/` directory.
+* [**required**] `arguments` is a collection of parameters passed to the script. 
+
+The parameters often include window placeholders such as the entity or a tag value.
+
+If no parameters are expected by the script, an empty list `[]` must be passed as the second argument.
+
+String parameters must be enclosed in single quotes.
+
+```javascript
+scriptOut('ping.sh', ['axibase.com', '3'])
+```
+
+The arguments are 
+
+## Permissions
+
+Only scripts in the  `./atsd/conf/script/` directory can be executed. The scripts should have the permission bit `+x` enabled.
+
+```bash
+chmod u=rwx,g=rx,o=r ./atsd/conf/script/*
+```
+
+The scripts are executed under the `axibase` user.
+
 ## Examples
 
-### ping
+### `ping`
 
 [Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/ping.sh) to test ping of host n number of times.
 
-#### Script text
+#### Script
 
 ```bash
 #!/usr/bin/env bash
@@ -26,15 +58,15 @@ host=${1}
 count=${2}
  
 ping -c ${count} ${host}
-
-```
-#### Function command
-
-```bash
-Output is: ${scriptOut('ping.sh', ['axibase.com','3'])}
 ```
 
-#### Launch command
+#### Function
+
+```javascript
+Host ping report: ${scriptOut('ping.sh', ['axibase.com', '3'])}
+```
+
+#### Command
 
 ```
 ping -c 3 axibase.com
@@ -53,7 +85,7 @@ PING axibase.com (78.47.207.156) 56(84) bytes of data.
 rtt min/avg/max/mdev = 40.078/43.189/45.588/2.305 ms
 ```
 
-#### Notification Example
+#### Notification
 
 Telegram:
 
@@ -68,11 +100,11 @@ Slack:
 ![](images/script-ping-slack.png)
 
 
-### traceroute
+### `traceroute`
 
 [Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/traceroute.sh) to return traceroute to host.
 
-#### Script text
+#### Script
 
 ```bash
 #!/usr/bin/env bash
@@ -81,20 +113,20 @@ kill_after=${1}
 host=${2}
 
 timeout ${kill_after} traceroute ${host}; echo $?
-
 ```
 
-#### Function command
+#### Function
 
-```bash
-Output is: ${scriptOut('traceroute.sh', ['3','axibase.com'])}
+```javascript
+Trace report: ${scriptOut('traceroute.sh', ['3', 'axibase.com'])}
 ```
     
-#### Launch command
+#### Command
 
 ```bash
 timeout 3 traceroute axibase.com; echo $?
 ```
+
 #### Output
 
 ```bash
@@ -107,7 +139,7 @@ traceroute to axibase.com (78.47.207.156), 30 hops max, 60 byte packets
  6  axibase.com (78.47.207.156)  0.348 ms  0.363 ms  0.308 ms
 ```
 
-#### Notification Example
+#### Notification
 
  Telegram:
  
@@ -121,36 +153,35 @@ traceroute to axibase.com (78.47.207.156), 30 hops max, 60 byte packets
  
  ![](images/script-traceroute-slack.png)
 
+### `top`
 
-### top
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/top.sh) that returns output of top in batch mode from a remote server (using ssh with key authentication, key stored in a pre-defined location).
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/top.sh) that returns output of top (in batch mode) from a remote server (using ssh with key authentication, key stored in a known location).
-
-#### Script text
+#### Script
 
 ```bash
 #!/usr/bin/env bash
 
-key_location=${1}
-host=${2}
-user=${3}
-count=${4}
-delay=${5}
-rows_n=${6}
+host=${1}
+user=${2}
+count=${3}
+delay=${4}
+rows_n=${5}
 
 
-ssh -i ${key_location} ${host} top -u ${user} -b -n ${count} -d ${delay} | head -n ${rows_n}
-
+ssh -i ${host} top -u ${user} -b -n ${count} -d ${delay} | head -n ${rows_n}
 ```
-#### Function command
+
+#### Function
+
+```javascript
+${scriptOut('top.sh', ['nurswgvml006','www-data', '1', '1', '15'])}
+```
+
+#### Command
 
 ```bash
-${scriptOut('remote_top_batch.sh', ['/home/axibase/ssh_host_rsa_key','axibase.com','www-data', '1', '1', '15'])}
-```
-#### Launch command
-
-```bash
-ssh -i /home/axibase/ssh_host_rsa_key axibase.com top -u www-data -b -n 1 -d 1 | head -n 15
+ssh -i /home/axibase/.ssh/def.key nurswgvml006 top -u www-data -b -n 1 -d 1 | head -n 15
 ```
 
 #### Output
@@ -173,7 +204,7 @@ KiB Swap:        0 total,        0 used,        0 free.  1363820 cached Mem
 28047 www-data  20   0  339860  57372  44236 S   0.0  2.8   0:02.34 php5-fpm
 ```
 
-#### Notification Example
+#### Notification
 
  Telegram:
  
@@ -186,13 +217,12 @@ KiB Swap:        0 total,        0 used,        0 free.  1363820 cached Mem
  Slack:
  
  ![](images/script-top-slack.png) 
-   
-      
-### ps
+         
+### `ps`
 
-[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/ps.sh) that returns ps output for the specified grep pattern
+[Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/ps.sh) that returns `ps` output for the specified grep pattern from a remote server.
  
-#### Script text
+#### Script
 
 ```bash
 #!/usr/bin/env bash
@@ -200,14 +230,15 @@ KiB Swap:        0 total,        0 used,        0 free.  1363820 cached Mem
 pattern=${1}
 
 ps aux | grep ${pattern}
-
 ```
-#### Function command
 
-```bash
+#### Function
+
+```javascript
 Output is: ${scriptOut('ps.sh', ['bash'])}
 ```
-#### Launch command
+
+#### Command
 
 ```bash
 ps aux | grep bash
@@ -218,11 +249,9 @@ ps aux | grep bash
 ```bash
 axibase      1  0.0  0.0  19712  3304 ?        Ss   11:07   0:00 /bin/bash /entrypoint.sh
 axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/hbase/bin/hbase-daemon.sh --config /opt/atsd/hbase/bin/../conf foreground_start master
-root      5993  0.0  0.0  19944  3736 ?        Ss   11:24   0:00 bash
-root      6015  0.0  0.0  12944  1016 ?        S+   11:24   0:00 grep --color=auto bash
 ```
 
-#### Notification Example   
+#### Notification   
  
  Telegram:
  
@@ -236,12 +265,11 @@ root      6015  0.0  0.0  12944  1016 ?        S+   11:24   0:00 grep --color=au
  
  ![](images/script-ps-slack.png)   
       
-
 ### URL availability
 
 [Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/url_avail.sh) that tests URL availability.
 
-#### Script text
+#### Script
 
 ```bash
 #!/usr/bin/env bash
@@ -255,22 +283,25 @@ else
 fi
 ```
 
-#### Function command
+#### Function
 
-```bash
+```javascript
 Status code is: ${scriptOut('url_avail.sh', ['https://axibase.com'])}
 ```
-#### Launch command
+
+#### Command
 
 ```bash
 curl --head https://axibase.com 2>/dev/null | head -n 1 | grep -oiE "[0-9]{3}[a-z ]*"
 ```
+
 #### Output
 
 ```bash
 200 OK
 ```
-#### Notification Example  
+
+#### Notification  
 
  Telegram:
  
@@ -289,7 +320,7 @@ curl --head https://axibase.com 2>/dev/null | head -n 1 | grep -oiE "[0-9]{3}[a-
 
 [Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/tcp.sh) that tests TCP availability.
 
-#### Script text
+#### Script
 
 ```bash
 #!/usr/bin/env bash
@@ -306,22 +337,26 @@ else
    echo "TCP port ${port} is unavailable"
 fi
 ```
-#### Function command
 
-```bash
+#### Function
+
+```javascript
 Output is: ${scriptOut('tcp.sh', ['2','axibase.com', '443'])}
 ```
-#### Launch command
+
+#### Command
 
 ```bash
 timeout 2 bash -c "</dev/tcp/axibase.com/443"
 ```
+
 #### Output
 
 ```bash
 TCP port 443 is available
 ```
-#### Notification Example
+
+#### Notification
 
  Telegram:
  
@@ -336,11 +371,11 @@ TCP port 443 is available
  ![](images/script-tcp-slack.png)  
 
 
-### osquery
+### `osquery`
 
 [Script](https://raw.githubusercontent.com/axibase/atsd/master/rule-engine/resources/osquery.sh) that executes a [osquery](https://osquery.io/) query against a remote server via ssh command (key stored in a known location).
 
-#### Script text
+#### Script
 
 ```bash
 #!/usr/bin/env bash
@@ -350,24 +385,27 @@ host=${2}
 
 ssh -i ${key_location} ${host} 'osqueryi "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
 ```
-#### Function command
 
-```bash
+#### Function
+
+```javascript
 ${scriptOut('osquery.sh', ['/home/axibase/ssh_host_rsa_key', 'axibase.com'])}
 ```
-`scriptOut` should be surrounded with backticks for output formatting:
+
+`scriptOut` can be surrounded with backticks for output formatting:
 
  ![](images/script-osquery-bacticks.png)  
  
  
-#### Launch command
+#### Command
 
 ```bash
 ssh -i /home/axibase/ssh_host_rsa_key axibase.com 'osqueryi "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
 ```
+
 #### Output
 
-```markdown
+```ls
 +------+-------+------+
 | name | port  | pid  |
 +------+-------+------+
@@ -378,7 +416,8 @@ ssh -i /home/axibase/ssh_host_rsa_key axibase.com 'osqueryi "SELECT DISTINCT pro
 | java | 50070 | 8921 |
 +------+-------+------+
 ```
-#### Notification Example
+
+#### Notification
 
  Telegram:
  

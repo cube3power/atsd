@@ -71,7 +71,9 @@ Since the working directory path may change, use the absolute path in command ar
 
 The commands are executed under the `axibase` user.
 
-Make sure that the `axibase` user has permissions to execute the command and that the script has the execution bit.
+Make sure that the `axibase` user has permissions to execute the command and that the script has the `+x` execution bit.
+
+To complete disable execution of system commands in the rule engine, set `system.commands.enabled` setting to `No` on **Settings > Server Properties** page.
 
 ## Logging
 
