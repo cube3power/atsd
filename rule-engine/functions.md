@@ -119,8 +119,8 @@ The functions retrieve values for a series which may be different from the serie
 
 | **Name** | **Description** |
 | :--- | :--- |
-| [`db_last()`](functions-db.md#db_last-function) | Retrieves the last value stored in the database for the specified series. |
-| [`db_statistic()`](functions-db.md#db_last-function) | Retrieves an aggregated value from the database for the specified series. |
+| [`db_last`](functions-db.md#db_last-function) | Retrieves the last value stored in the database for the specified series. |
+| [`db_statistic`](functions-db.md#db_last-function) | Retrieves an aggregated value from the database for the specified series. |
 
 ### Database Message Functions
 
@@ -128,39 +128,37 @@ The functions retrieve message counts or specific messages.
 
 | **Name** | **Description** |
 | :--- | :--- |
-| [`db_message_count()`](functions-db.md#db_message_count-function) | Retrieves message count for the specified filters. |
-| [`db_message_last()`](functions-db.md#db_message_last-function) | Retrieves the last message for the specified filters. |
+| [`db_message_count`](functions-db.md#db_message_count-function) | Retrieves message count for the specified filters. |
+| [`db_message_last`](functions-db.md#db_message_last-function) | Retrieves the last message for the specified filters. |
 
 ## Mathematical Functions
 
-| **Name** | **Description** |
-|:---|:---|
-| `abs(D)` | Returns the absolute value of the specified number. |
-| `ceil(D)` | Returns the smallest integer that is greater than or equal to the specified number. |
-| `floor(D)` | Returns the largest integer that is less than or equal to the specified number. |
-| `pow(D, D)`  | Number raised to the specified power (2nd argument). |
-| `round(D[,I])` | Returns the number rounded to the specified decimal places. <br>The precision argument `I` is 0 if omitted.<br>`round(D, 0)` rounds the number to the nearest integer.<br>If `I` is less than 0, the number is rounded to the left of the decimal point.|
-| `max(D, D)` | Returns the greater of two double values.|
-| `min(D, D)` | Returns the smallest of two double values.|
-| `sqrt(D)` | Returns the square root of the specified number.|
-| `exp(D)` | `e` (2.71828183) raised to the power of the specified number. |
-| `log(D)`  | Base-`e` natural logarithm of the specified number. |
+The math functions perform pre-defined calculations on an input number and return a number as the result.
 
-## String Functions
+* [abs](functions-math.md#abs)
+* [ceil](functions-math.md#ceil)
+* [floor](functions-math.md#floor)
+* [pow](functions-math.md#pow)
+* [round](functions-math.md#round)
+* [max](functions-math.md#max)
+* [min](functions-math.md#min)
+* [sqrt](functions-math.md#sqrt)
+* [exp](functions-math.md#exp)
+* [log](functions-math.md#log)
 
-| **Name** | **Description** |
-| :--- | :--- |
-| `upper(S)` | Convert the input string to **upper** case. |
-| `lower(S)` | Convert the input string to **lower** case. |
-| `truncate(S, I)` | Truncate the input string to the specified number of characters. |
-| `contains(S, S)` | Return `true` if the first string **contains** the second string. |
-| `startsWith(S, S)` | Return `true` if the first string **starts** with the second string. |
-| `endsWith(S, S)` | Return `true` if the first string **ends** with the second string. |
-| `coalesce([S])` | Return first non-empty string from the array of strings. See [examples](functions-coalesce.md).|
-| `urlencode(S)` | Encode string into the URL format where unsafe characters are replaced with "%" followed by 2 digits. |
-| `jsonencode(S)` | Escape special symbols with backslash to safely use the provided string within JSON object. |
+## Text Functions
 
-> The functions return `null` or `false` if the arguments are `null`.
+The text functions perform pre-defined tranformations of the input string and return new string as the result.
+
+* [upper](functions-text.md#upper)
+* [lower](functions-text.md#lower)
+* [truncate](functions-text.md#truncate)
+* [contains](functions-text.md#contains)
+* [startsWith](functions-text.md#startsWith)
+* [endsWith](functions-text.md#endsWith)
+* [coalesce](functions-text.md#coalesce)
+* [urlencode](functions-text.md#urlencode)
+* [jsonencode](functions-text.md#jsonencode)
 
 ## Formatting Functions
 

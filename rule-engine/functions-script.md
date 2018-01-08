@@ -2,9 +2,9 @@
 
 ## Overview
 
-The `scriptOut` function provides a way to enrich notification messages with extended information about the monitored object retrieved with a bash or a Python script.
+The `scriptOut` function provides a way to enrich notifications with extended information about the monitored object retrieved with a bash or a Python script.
 
-The function executes the named script with the specified parameters and returns the script's response (stdout/stderr).
+The function executes the named script with the specified parameters and returns the script's response (stdout/stderr). The parameters often include window [placeholders](placeholders.md) such as `entity` or `tags` so that the same rule can enrich alerts for different entities.
 
 > Only scripts located in the `./atsd/conf/script/` directory can be executed.
 
@@ -14,7 +14,7 @@ The function executes the named script with the specified parameters and returns
 * Check that the remote host can be reached with ICMP ping.
 * Check that an HTTP/s request to a URL returns code `200`.
 * Execute a diagnostics command on the remote host.
-* Retrieve extended information about the device/host.
+* Retrieve configuration information from the remote device/host.
 
 ## Syntax
 
