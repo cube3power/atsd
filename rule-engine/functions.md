@@ -133,7 +133,7 @@ The functions retrieve message counts or specific messages.
 
 ## Mathematical Functions
 
-The math functions perform pre-defined calculations on an input number and return a number as the result.
+The math functions perform basic numeric operations on the input number and return a number as the result.
 
 * [abs](functions-math.md#abs)
 * [ceil](functions-math.md#ceil)
@@ -148,7 +148,7 @@ The math functions perform pre-defined calculations on an input number and retur
 
 ## Text Functions
 
-The text functions perform pre-defined tranformations of the input string and return new string as the result.
+The text functions tranform or compare strings the input string.
 
 * [upper](functions-text.md#upper)
 * [lower](functions-text.md#lower)
@@ -169,18 +169,12 @@ The text functions perform pre-defined tranformations of the input string and re
 
 ## Collection Functions
 
-| **Name** | **Description** |
-| :--- | :--- |
-| `likeAny(S, Collection)` | Returns true if the text is contained in the named collection. The collection may include expressions with wildcards.<br>Example: `likeAny(tags.request_ip, collection('ip_white_list'))`|
-| `matchList(S, S)` | Same as `likeAny` except the second argument specifies collection by name.<br>Example: `matchList(tags.request_ip, 'ip_white_list')`|
-| `IN` | Returns true if collection contains the specified string. <br>`tags.location IN ('NUR', 'SVL')`|
-| `contains(S)` | Returns true if collection contains the specified string.|
-| `isEmpty()` | Returns true if collection has no elements. <br>`entity.tags.isEmpty()`|
-| `size()` | Returns number of elements in the collection. <br>`entity.tags.size() > 1`|
-| `matches(S pattern, [S])` | Returns true if one of the collection elements matches the specified pattern. <br>`matches('*atsd*', property_values('docker.container::image'))`|
-| `excludeKeys(Map map, Collection keysToExclude)` | Returns a copy of the input map without specified keys.|
-
-> The collections can be also created inline, using square brackets, for example `['a', 'b', 'c']` or `[1, 2, 3]`.
+* [collection](functions-collection.md#collection)
+* [IN](functions-collection.md#IN)
+* [likeAny](functions-collection.md#likeAny)
+* [matchList](functions-collection.md#matchList)
+* [matches](functions-collection.md#matches)
+* [excludeKeys](functions-collection.md#excludeKeys)
 
 ## Lookup Functions
 

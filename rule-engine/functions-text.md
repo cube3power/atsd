@@ -2,7 +2,7 @@
 
 ## Overview
 
-The text functions perform pre-defined tranformations of the input strng and return the result as a string.
+The text functions tranform or compare strings the input string.
 
 The functions return `null` or `false` if one of the inputs is `null`.
 
@@ -71,10 +71,10 @@ Returns `true` if `s` ends with `w`.
 ### `coalesce`
 
 ```javascript
-  coalesce([string s]) string
+  coalesce([string] c) string
 ```
 
-Returns first non-empty string from the array of strings. The function returns an empty string if all elements of the collection are null or empty.
+Returns first non-empty string from the collection (array) of strings `c`. The function returns an empty string if all elements of `c` are null or empty.
 
 Examples:
 

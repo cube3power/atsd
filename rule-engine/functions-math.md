@@ -2,7 +2,7 @@
 
 ## Overview
 
-The mathematical functions perform pre-defined calculations on an input number and return the result as a number.
+The math functions perform basic numeric operations on the input number and return a number as the result.
 
 ## Reference
 
