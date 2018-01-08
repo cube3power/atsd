@@ -154,8 +154,8 @@ The text functions tranform or compare strings the input string.
 * [lower](functions-text.md#lower)
 * [truncate](functions-text.md#truncate)
 * [contains](functions-text.md#contains)
-* [startsWith](functions-text.md#startsWith)
-* [endsWith](functions-text.md#endsWith)
+* [startsWith](functions-text.md#startswith)
+* [endsWith](functions-text.md#endswith)
 * [coalesce](functions-text.md#coalesce)
 * [urlencode](functions-text.md#urlencode)
 * [jsonencode](functions-text.md#jsonencode)
@@ -169,12 +169,14 @@ The text functions tranform or compare strings the input string.
 
 ## Collection Functions
 
+The collection functions return information about the collection or check it for the presence of the specified element.
+
 * [collection](functions-collection.md#collection)
-* [IN](functions-collection.md#IN)
-* [likeAny](functions-collection.md#likeAny)
-* [matchList](functions-collection.md#matchList)
+* [IN](functions-collection.md#in)
+* [likeAny](functions-collection.md#likeany)
+* [matchList](functions-collection.md#matchlist)
 * [matches](functions-collection.md#matches)
-* [excludeKeys](functions-collection.md#excludeKeys)
+* [excludeKeys](functions-collection.md#excludekeys)
 
 ## Lookup Functions
 

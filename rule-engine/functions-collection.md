@@ -1,4 +1,4 @@
-# Collections Functions
+# Collection Functions
 
 ## Overview
 
@@ -21,11 +21,11 @@ Alternatively, it can be loaded using the `collection()` or another [lookup](fun
 ## Reference
 
 * [collection](#collection)
-* [IN](#IN)
-* [likeAny](#likeAny)
-* [matchList](#matchList)
+* [IN](#in)
+* [likeAny](#likeany)
+* [matchList](#matchlist)
 * [matches](#matches)
-* [excludeKeys](#excludeKeys)
+* [excludeKeys](#excludekeys)
 
 ### `collection`
 
@@ -43,7 +43,7 @@ The named collections are listed on the **Data > Named Collections** page.
   string s IN (string a[, string b[...]]) boolean
 ```
 
-Returns `true` if `s` is contained in the collection of strings enclosed in rounded brackets.
+Returns `true` if `s` is contained in the collection of strings enclosed in round brackets.
 
 Examples:
 
