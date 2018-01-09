@@ -1,8 +1,8 @@
-# Math Functions
+# Text Functions
 
 ## Overview
 
-The text functions tranform or compare strings the input string.
+The functions transform or compare strings.
 
 The functions return `null` or `false` if one of the inputs is `null`.
 
