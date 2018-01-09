@@ -180,56 +180,43 @@ The collection functions return information about the collection or check it for
 
 ## Lookup Functions
 
-The lookup functions retrieve records from replacement tables and collections.
+The lookup functions retrieve records from replacement tables, collections, and other entities.
 
+* [entity_tag](functions-lookup.md#entity_tag)
+* [entity_tags](functions-lookup.md#entity_tags)
 * [collection](functions-lookup.md#collection)
 * [lookup](functions-lookup.md#lookup)
 * [replacementTable](functions-lookup.md#replacementtable)
 
 ## Random Distribution Functions
 
-| **Name** | **Description** |
-| :--- | :--- |
-| `random()` | Returns a uniformly distributed double number, greater than or equal to `0.0` and less than `1.0`.|
-| `randomNormal()` | Returns a normally distributed double number, with mean `0.0` and standard deviation `1.0`.|
-| [`randomItem(Collection values)`](functions-random.md#randomitem-function) | Returns a random element from the specified collection assuming uniform distribution.<br>Example: `randomItem(['a','b','c'])`|
-| [`randomKey(Map keyToProbabilityMap)`](functions-random.md#randomkey-function) | Returns a random key from the map based on numeric probabilities specified in map values.<br>Example: `randomKey(replacementTable('oncall-person'))`|
-
-Refer to random distribution [examples](functions-random.md).
+* [random](functions-random.md#random) 
+* [randomNormal](functions-random.md#randomnormal) 
+* [randomItem](functions-random.md#randomitem) 
+* [randomKey](functions-random.md#randomkey) 
 
 ## Time Functions
 
-| **Name** | **Description** |
-| :--- | :--- |
-| `window_length_time()` | Length of the time-based window in seconds, as configured. |
-| `window_length_count()` | Length of the count-based window, as configured. |
-| `windowStartTime()` | Time when the first command was received by the window, in UNIX milliseconds. |
-| `milliseconds(S datetime [,S format [,S timezone]])` | Convert the datetime string into UNIX time in milliseconds according to the specified format string and timezone (or offset from UTC). Available timezones and their standard offsets are listed in [time zones](../shared/timezone-list.md). If the timezone (or offset from UTC) is specified in the datetime string, and it differs from the timezone (offset) provided as the third argument, then the function will throw an exception. If the format is omitted, the datetime argument must be specified in ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ`. If the timezone is omitted, the server timezone is used. |
-| `seconds(S datetime [,S format [,S timezone]])` | Same arguments as the `milliseconds` function except the result is returned in UNIX time seconds. |
-| `date_parse(S datetime [,S format [,S timezone]])` | Same arguments as the `milliseconds` function except the result is returned as [Joda-time](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) DateTime object. |
-| `date_format(L timestamp, S pattern, S timezone)` | Convert timestamp to a formatted time string according to the format pattern and the timezone. Timestamp is an epoch timestamp in milliseconds. The format string syntax is described in the [datetime format](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html). List of available [time zones](../shared/timezone-list.md). |
-| `formatInterval(L interval)` | Convert millisecond interval to a formatted interval printing non-zero years, days, hours, minutes, and seconds. |
-| `formatIntervalShort(L interval)` | Convert millisecond interval to a formatted interval printing one or two greatest subsequent non-zero period type, where period type is one of: years, days, hours, minutes, and seconds. |
-| `elapsedTime(L timestamp)` | Calculate number of milliseconds since `timestamp` to current instant |
+Time functions perform varios operations on dates, timestamps and intervals.
 
-Refer to time function [examples](functions-time.md).
+* [window_length_time](functions-time.md#window_length_time)
+* [window_length_count](functions-time.md#window_length_count)
+* [windowStartTime](functions-time.md#windowstarttime)
+* [milliseconds](functions-time.md#milliseconds)
+* [seconds](functions-time.md#seconds)
+* [date_parse](functions-time.md#date_parse)
+* [date_format](functions-time.md#date_format)
+* [formatInterval](functions-time.md#formatinterval)
+* [formatIntervalShort](functions-time.md#formatintervalshort)
+* [elapsedTime](functions-time.md#elapsedtime)
 
 ## Property Functions
 
-| **Name** | **Description** |
-| :--- | :--- |
-| `property_values(S search)` | Returns a list of property tag values for the current entity given the property [search string](property-search.md). |
-| `property_values(S entity, S search)` |  Same as `property_values`(string search) but for an explicitly specified entity.  |
-| `property(S search)` |  Returns the first value in a collection of strings returned by the `property_values()` function. The function returns an empty string if no property records are found.  |
-| `property_compare_except([S key])` | Compares previous and current property tags and returns a difference map containing the list of changed tag values.   |
-| `property_compare_except([S key], [S prevValue])` |   Same as `property_compare_except([S key])`, which shows the list of previous values that are excluded from the difference map. |
+Property functions retrieve and compare property keys and tags.
 
-## Entity Tag Functions
-
-| **Name** | **Description** |
-| :--- | :--- |
-| `entity_tags(S entity)` | Returns entity tags' keys and values map for provided entity. |
-| `entity_tag(S entity, S tagName)` | Returns tag value for provided tag name and entity. |
+* [property_values](functions-property.md#property_valuesstring-s)
+* [property](functions-property.md#property)
+* [property_compare_except](functions-property.md#property_compare_exceptstring-k)
 
 ## Script Functions
 
