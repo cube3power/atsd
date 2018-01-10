@@ -48,7 +48,7 @@ If `s` length exceeds `i` characters, truncates `s` to the specified number of c
 ### `contains`
 
 ```javascript
-  truncate(string s, string w) boolean
+  contains(string s, string w) boolean
 ```
 
 Returns `true` if `s` contains `w`.
