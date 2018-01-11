@@ -18,8 +18,6 @@ The functions return a new string with the original input string left unchanged.
 * [endsWith](#endsWith)
 * [split](#split)
 * [coalesce](#coalesce)
-* [urlencode](#urlencode)
-* [jsonencode](#jsonencode)
 * [keepAfter](#keepafter)
 * [keepAfterLast](#keepafterlast)
 * [keepBefore](#keepbefore)
@@ -29,6 +27,8 @@ The functions return a new string with the original input string left unchanged.
 * [capitalize](#capitalize)
 * [removeBeginning](#removebeginning)
 * [removeEnding](#removeending)
+* [urlencode](#urlencode)
+* [jsonencode](#jsonencode)
 
 ### `upper`
 
@@ -124,22 +124,6 @@ Examples:
 
   Returns the value of the `entity.label` placeholder if it is not an empty string, otherwise the value of the `entity` placeholder will be returned.
   If both placeholders are empty, then an empty string is returned.
-
-### `urlencode`
-
-```javascript
-  urlencode(string s) string
-```
-
-Encodes `s` into the URL format by replacing unsafe characters with "%" followed by 2 digits.
-
-### `jsonencode`
-
-```javascript
-  jsonencode(string s) string
-```
-
-Escapes special symbols such as double-quote with backslash to safely use the input string within a JSON object.
 
 ### `keepAfter`
 
@@ -274,3 +258,20 @@ Examples:
   /* Return "abcabc" */
   removeEnding("abcabc", "ab")
 ```
+
+### `urlencode`
+
+```javascript
+  urlencode(string s) string
+```
+
+Encodes `s` into the URL format by replacing unsafe characters with "%" followed by 2 digits.
+
+### `jsonencode`
+
+```javascript
+  jsonencode(string s) string
+```
+
+Escapes special symbols such as double-quote with backslash to safely use the input string within a JSON object.
+

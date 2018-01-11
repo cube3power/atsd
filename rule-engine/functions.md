@@ -102,8 +102,11 @@ The math functions perform basic numeric operations on the input number and retu
 * [max](functions-math.md#max)
 * [min](functions-math.md#min)
 * [sqrt](functions-math.md#sqrt)
+* [cbrt](functions-math.md#cbrt)
 * [exp](functions-math.md#exp)
 * [log](functions-math.md#log)
+* [log10](functions-math.md#log10)
+* [signum](functions-math.md#signum)
 
 ## Text Functions
 
@@ -117,8 +120,6 @@ The text functions transform and compare strings.
 * [endsWith](functions-text.md#endswith)
 * [split](functions-text.md#split)
 * [coalesce](functions-text.md#coalesce)
-* [urlencode](functions-text.md#urlencode)
-* [jsonencode](functions-text.md#jsonencode)
 * [keepAfter](functions-text.md#keepafter)
 * [keepAfterLast](functions-text.md#keepafterlast)
 * [keepBefore](functions-text.md#keepbefore)
@@ -128,6 +129,8 @@ The text functions transform and compare strings.
 * [capitalize](functions-text.md#capitalize)
 * [removeBeginning](functions-text.md#removebeginning)
 * [removeEnding](functions-text.md#removeending)
+* [urlencode](functions-text.md#urlencode)
+* [jsonencode](functions-text.md#jsonencode)
 
 ## Formatting Functions
 

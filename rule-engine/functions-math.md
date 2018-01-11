@@ -13,9 +13,12 @@ The math functions perform basic numeric operations on the input number and retu
 * [round](#round)
 * [max](#max)
 * [min](#min)
+* [cbrt](#cbrt)
 * [sqrt](#sqrt)
 * [exp](#exp)
 * [log](#log)
+* [log10](#log10)
+* [signum](#signum)
 
 ### `abs`
 
@@ -79,6 +82,14 @@ Returns the greater of two numbers: `x` and `y`.
 
 Returns the smallest of two numbers: `x` and `y`.
 
+### `cbrt`
+
+```javascript
+  cbrt(double x) double
+```
+
+Returns the cube root of `x`. 
+
 ### `sqrt`
 
 ```javascript
@@ -93,7 +104,7 @@ Returns the square root of `x`.
   exp(double x) double
 ```
 
-Returns `e` (2.71828183) raised to the power of `x`.
+Returns Euler's constant `e` (2.718281828459045) raised to the power of `x`.
 
 ### `log`
 
@@ -101,7 +112,25 @@ Returns `e` (2.71828183) raised to the power of `x`.
   log(double x) double
 ```
 
-Base-`e` natural logarithm of `x`.
+Returns the natural logarithm (base `e` = 2.718281828459045) of `x`.
+
+### `log10`
+
+```javascript
+  log10(double x) double
+```
+
+Returns the base 10 logarithm of `x`.
+
+### `signum`
+
+```javascript
+  signum(double x) integer
+```
+
+Returns the signum function of the argument: `0` if the argument is `0`, `1` if the argument is greater than `1`, `-1` if the argument is less than `0`.
+
+ 	
 
 
 
