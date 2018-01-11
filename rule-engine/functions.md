@@ -154,10 +154,13 @@ The text functions transform and compare strings.
 
 ## Formatting Functions
 
-The functions format numbers to strings according to the specified pattern.
+The functions format dates and numbers to strings according to the specified pattern.
 
-* [convert](functions-formatting.md#convert)
-* [formatNumber](functions-formatting.md#formatnumber)
+* [convert](functions-format.md#convert)
+* [formatNumber](functions-format.md#formatnumber)
+* [date_format](functions-format.md#date_format)
+* [formatInterval](functions-format.md#formatinterval)
+* [formatIntervalShort](functions-format.md#formatintervalshort)
 
 ## Collection Functions
 
@@ -189,18 +192,15 @@ The lookup functions retrieve records from replacement tables, collections, and 
 
 ## Time Functions
 
-Time functions perform varios operations on dates, timestamps and intervals.
+Time functions perform various operations on dates, timestamps and intervals.
 
 * [window_length_time](functions-time.md#window_length_time)
 * [window_length_count](functions-time.md#window_length_count)
 * [windowStartTime](functions-time.md#windowstarttime)
+* [elapsedTime](functions-time.md#elapsedtime)
 * [milliseconds](functions-time.md#milliseconds)
 * [seconds](functions-time.md#seconds)
 * [date_parse](functions-time.md#date_parse)
-* [date_format](functions-time.md#date_format)
-* [formatInterval](functions-time.md#formatinterval)
-* [formatIntervalShort](functions-time.md#formatintervalshort)
-* [elapsedTime](functions-time.md#elapsedtime)
 
 ## Property Functions
 
