@@ -29,14 +29,14 @@ The parameters passed to the function in brackets are called arguments.
 Functions can accept arguments and return value in one of the following data types:
 
 | **Notation** | **Name** | **Example** |
-|---|---|
-| `double` | double | `percentile(99.5)` |
-| `long` | long | `percentile(99.5)` |
-| `integer` | integer | `round(value, 1)` |
+|---|:---|:---|
+| `double` | double number | `percentile(99.5)` |
+| `long` | long number | `elapsedTime(1515758392702)` |
+| `integer` | integer number | `round(value, 1)` |
 | `boolean` | boolean | `scriptOut('dsk.sh', [true])` |
 | `string` | string | `startsWith(entity, 'NUR')` |
-| `[]` | list | `randomItem([1, 2, 3])` |
-| `[string]` | string list | `coalesce([tags.location, 'SVL'])` |
+| `[]` | list of elements | `randomItem([1, 2, 3])` |
+| `[string]` | list of strings | `coalesce([tags.location, 'SVL'])` |
 | `[k: v]` | key-value map | `randomKey(['john': 0.8, 'sam': 0.2])` |
 | `object` | object | `rule_window('disk_check').status` |
 
