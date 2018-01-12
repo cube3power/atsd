@@ -30,41 +30,58 @@ Variables **cannot** be included in the [filter](filters.md) expression because 
 
 ## Data Types
 
-### number
+### double
 
   ```javascript
-  avar = 123
-  bvar = 3.1415
+  pival = 3.14
   ```
+
+### integer
+
+  ```javascript
+  kb = 1024
+  ```  
+
+### long
+
+  ```javascript
+  curtime = 1515758392702
+  ```  
 
 ### string
 
   ```javascript
-  state = CA
+  state = 'CA'
   ```
 
-  > Quotes are not necessary to declare a string variable.
+Single or double quotes must be used when declaring a string variable.
 
 ### list
 
+The list can include elements of different types.
+
   ```javascript
-  alist = ['a', 'b', 'c']
+  errorCodes = [401, 403, 404]
+  ```  
+
+Both single and double quote can be used to specify string elements.   
+
+  ```javascript
+  stateList = ['CA', 'WA']
   ```
 
   ```javascript
-  alist = ["a", "b", "c"]
+  stateList = ["CA", "WA"]
   ```  
-
-  > Both single and double quote can be used to specify list elements.  
 
 ### map
 
   ```javascript
-  ['type' : 'park', 'state': 'CA']
+  stateMap = ['CA': 0.8, 'WA': 0.2]
   ```
 
   ```javascript
-  ["type" : "park", "state": "CA"]
+  stateMap = ["CA": 0.8, "WA": 0.2]
   ```
 
   > Both single and double quote can be used to specify map keys and values.
@@ -72,11 +89,11 @@ Variables **cannot** be included in the [filter](filters.md) expression because 
 ### function
 
   ```javascript
-  last_msg = db_message_last('1 week', 'alert', 'rule-engine', 'rule=abc')
+  last_msg = db_message_last('1 week', 'alert', 'rule-engine')
   ```
 
   ```javascript
-  since_start = formatIntervalShort(elapsedTime(property('docker.container.state::startedat')))
+  since_start = formatIntervalShort(elapsedTime(property('dkr.state::started')))
   ```  
 
   ```javascript
@@ -86,15 +103,23 @@ Variables **cannot** be included in the [filter](filters.md) expression because 
 ### expression
 
   ```javascript
-  annotation = tags.note == null ? '' : tags.note
+  annotation = tags.note == null ? 'N/A' : tags.note
   ```
 
-### Execution
+## Cross-Reference
+
+The variables can refer to other variables declared in the same rule:
+
+![](images/variables-reference.png)
+
+## Execution
 
 The variables are evaluated for each incoming command regardless of the window status.
 
 If the variable invokes an external function such as [`scriptOut`](functions-script.md) it must execute quickly (less than a few seconds). The long-running functions should not be included in variables.
 
 The current value of variables can be accessed on the window detail page.
+
+![](images/variables-window-2.png)
 
 ![](images/variables-window.png)

@@ -2,24 +2,43 @@
 
 ## Overview
 
-Function calls in expressions and placeholders are replaced during evaluation by the value of the function.
+Functions are predefined procedures that perform a task or calculate a value.
 
-Functions can accept arguments of the following data types:
+They can be included by name in the condition and filter expressions as well as in placeholders.
 
-* `double`
-* `long`
-* `integer`
-* `boolean`
-* `string`
-* `[string]` - array of strings
-* `{}` - key-value map
-* `[]` - collection
+```javascript
+  avg() > 80
+```
 
-For example, the `percentile(double n)` function accepts one argument of the `double` type, such as `percentile(50.0)`.
+```javascript
+  lower(tags.location) == 'nur'
+```
 
-String literal arguments (`string`) must be enclosed in single quotes, for instance `diff('1 minute')`.
+```javascript
+  ${upper(tags.location)}
+```
 
 Function names are case-**sensitive**.
+
+Functions are invoked when the expression is evaluated and replaced with the value returned by the function.
+
+## Arguments
+
+The parameters passed to the function in brackets are called arguments.
+
+Functions can accept arguments and return value in one of the following data types:
+
+| **Notation** | **Name** | **Example** |
+|---|---|
+| `double` | double | `percentile(99.5)` |
+| `long` | long | `percentile(99.5)` |
+| `integer` | integer | `round(value, 1)` |
+| `boolean` | boolean | `scriptOut('dsk.sh', [true])` |
+| `string` | string | `startsWith(entity, 'NUR')` |
+| `[]` | list | `randomItem([1, 2, 3])` |
+| `[string]` | string list | `coalesce([tags.location, 'SVL'])` |
+| `[k: v]` | key-value map | `randomKey(['john': 0.8, 'sam': 0.2])` |
+| `object` | object | `rule_window('disk_check').status` |
 
 ## Statistical Functions
 
@@ -70,7 +89,7 @@ Univariate statistical functions listed below perform a calculation on the array
 
 The value functions provide a way to retrieve values for other metrics contained in the same command.
 
-* [value](functions-value.md) 
+* [value](functions-value.md)
 
 ## Database Functions
 
@@ -80,16 +99,16 @@ The [database](functions-db.md) functions provide a way to retrieve data from th
 
 The functions retrieve values for a series which may be different from the series in the current window.
 
-* [db_last](functions-db.md#db_laststring-m) 
+* [db_last](functions-db.md#db_laststring-m)
 * [db_statistic](functions-db.md#db_statistic)
 
 ### Database Message Functions
 
 The functions retrieve message counts or specific messages.
 
-* [db_message_count](functions-db.md#db_message_count) 
-* [db_message_last](functions-db.md#db_message_last) 
- 
+* [db_message_count](functions-db.md#db_message_count)
+* [db_message_last](functions-db.md#db_message_last)
+
 ## Mathematical Functions
 
 The math functions perform basic numeric operations on the input number and return a number as the result.
@@ -165,10 +184,10 @@ The lookup functions retrieve records from replacement tables, collections, and 
 
 ## Random Distribution Functions
 
-* [random](functions-random.md#random) 
-* [randomNormal](functions-random.md#randomnormal) 
-* [randomItem](functions-random.md#randomitem) 
-* [randomKey](functions-random.md#randomkey) 
+* [random](functions-random.md#random)
+* [randomNormal](functions-random.md#randomnormal)
+* [randomItem](functions-random.md#randomitem)
+* [randomKey](functions-random.md#randomkey)
 
 ## Time Functions
 
@@ -192,13 +211,13 @@ Property functions retrieve and compare property keys and tags.
 
 ## Script Functions
 
-Execute script in the `./atsd/conf/script` directory with the specified arguments and return its standard out or error.
+Execute the predefined script and return its output.
 
-* [scriptOut](functions-script.md) 
+* [scriptOut](functions-script.md)
 
 ## Rule Functions
 
-The rule functions provide a way to check the status of windows created by other rules. 
+The rule functions provide a way to check the status of windows created by other rules.
 
 * [rule_open](functions-rules.md#rule_open)
 * [rule_window](functions-rules.md#rule_window)
