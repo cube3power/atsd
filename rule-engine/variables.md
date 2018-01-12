@@ -108,9 +108,13 @@ Both single and double quote can be used to specify string elements.
 
 ## Cross-Reference
 
-The variables can refer to other variables declared in the same rule:
+The variables can refer to other variables declared in the same rule.
 
 ![](images/variables-reference.png)
+
+The variables are evaluated in the order defined on the **Overview** tab.
+
+The dependent variable must be declared **after** the variable that it refers to.
 
 ## Execution
 
