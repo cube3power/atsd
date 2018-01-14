@@ -56,15 +56,15 @@ Variables **cannot** be included in the [filter](filters.md) expression because 
 
 Single or double quotes must be used when declaring a string variable.
 
-### list
+### collection
 
-The list can include elements of different types.
+A collection can include elements of different types.
 
   ```javascript
   errorCodes = [401, 403, 404]
   ```  
 
-Both single and double quote can be used to specify string elements.   
+Both single and double quote can be used to specify elements of string type.   
 
   ```javascript
   stateList = ['CA', 'WA']
@@ -72,6 +72,15 @@ Both single and double quote can be used to specify string elements.
 
   ```javascript
   stateList = ["CA", "WA"]
+  ```  
+  
+To check the size of the collection, use the `.size()` method.
+
+To access the n-th element, use square brackets and index starting with `0` for the first element.
+
+  ```java
+  authors = split(tags.authors, ',')
+  authors.size() == 0 ? 'n/a' : authors[0]
   ```  
 
 ### map
