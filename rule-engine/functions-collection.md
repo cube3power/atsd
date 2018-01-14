@@ -37,6 +37,15 @@ Returns an array of strings loaded for the specified named collection `s`.
 
 The named collections are listed on the **Data > Named Collections** page.
 
+To check the size of the collection, use the `.size()` method.
+
+To access the n-th element, use square brackets and index starting with `0` for the first element.
+
+  ```java
+    authors = split(tags.authors, ',')
+    authors.size() == 0 ? 'n/a' : authors[0]
+  ```
+
 ### `IN`
 
 ```javascript
