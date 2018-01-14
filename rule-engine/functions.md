@@ -35,8 +35,8 @@ Functions can accept arguments and return value in one of the following data typ
 | `integer` | integer number | `round(value, 1)` |
 | `boolean` | boolean | `scriptOut('dsk.sh', [true])` |
 | `string` | string | `startsWith(entity, 'NUR')` |
-| `[]` | list of elements | `randomItem([1, 2, 3])` |
-| `[string]` | list of strings | `coalesce([tags.location, 'SVL'])` |
+| `[]` | collection | `randomItem([1, 2, 3])` |
+| `[string]` | collection of strings | `coalesce([tags.location, 'SVL'])` |
 | `[k: v]` | key-value map | `randomKey(['john': 0.8, 'sam': 0.2])` |
 | `object` | object | `rule_window('disk_check').status` |
 
