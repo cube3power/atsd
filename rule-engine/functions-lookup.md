@@ -37,15 +37,28 @@ Returns entity tags as a map for entity `e`.
   collection(string s) [string]
 ```
 
-Retrieves an array of strings for the specified named collection `s`. If the collection is not found, an empty array is returned.
+Retrieves an array of strings for the specified named collection `s`. 
+
+If the collection is not found, an empty array is returned.
 
 ### `lookup`
 
 ```javascript
-  lookup(string s, string k) string
+  lookup(string s, string k[, boolean b]) string
 ```
 
-Returns the value for key `k` from the replacement table `s`. The function returns `null` if the table is not found or if it doesn't contain the specified key.
+Returns the value for key `k` from the replacement table `s`. 
+
+The function returns `null` if the table is not found or if it doesn't contain the specified key.
+
+If the optional boolean `b` parameter is specified and is set to `true`, the function returns the original key `k` in case the table is not found or if the key is not found.
+
+Example:
+
+```javascript
+  lookup('oncall', 'john', true)
+  # returns 'john' if the oncall table doesn't contain an entry for 'john'
+```
 
 ### `replacementTable`
 
