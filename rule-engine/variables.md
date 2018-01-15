@@ -112,9 +112,19 @@ The variables can refer to other variables declared in the same rule.
 
 ![](images/variables-reference.png)
 
+### Order
+
 The variables are evaluated in the order defined on the **Overview** tab.
 
 The dependent variable must be declared **after** the variable that it refers to.
+
+### References
+
+Variables that are dependent on other variables cannot be included in the condition.
+
+The following example will cause a `PropertyAccessException` error.
+
+![](images/variables-refer-indirect.png)
 
 ## Execution
 

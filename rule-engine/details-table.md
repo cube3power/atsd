@@ -2,15 +2,34 @@
 
 ## Overview
 
-The `detailsTable` function assembles a table containing available window and command fields in a user-defined format.
+The `detailsTable` function assembles a table consisting of window and command fields printed in the specified format.
 
 Decimal numbers present in the table are rounded to 5 significant digits, except on the **Logging** and **Derived Commands** tabs.
 
 ## Syntax
 
 ```java
-detailsTable(S format)
+detailsTable(string format)
 ```
+
+## Contents
+
+* entity name
+* entity label
+* entity tags
+* window placeholders
+* command tags
+* values
+* statistical functions
+* variables
+
+## Formats
+
+* markdown
+* ascii
+* html
+* property
+* csv
 
 ## Examples
 

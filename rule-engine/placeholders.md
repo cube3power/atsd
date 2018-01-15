@@ -79,22 +79,24 @@ threshold | string | Override rule | max() > 20
 `alert_duration` | n/a | Interval between current time and alert open time, formatted as `days:hours:minutes:seconds`, for example `00:00:01:45`.
 `alert_duration_interval` | n/a | Interval between current time and alert open time, formatted as `alert_duration` with units, for example `1m:45s`.
 
-> Placeholders ending with `_time` contain time in local server timezone, for example 2017-05-30 14:05:39 PST.
+> Placeholders ending with `_time` contain time in local server timezone, for example `2017-05-30 14:05:39 PST`.
 
-> Placeholders ending with `_datetime` contain time in ISO 8601 format in UTC timezone, for example 2017-05-30T06:05:39Z.
+> Placeholders ending with `_datetime` contain time in ISO 8601 format in UTC timezone, for example `2017-05-30T06:05:39Z`.
 
 > If 'Check On Exit' option is enabled for time-based window, some of the events will be caused by exiting commands and the `timestamp` placeholder will return the time of the command being remove (oldest command), rounded to seconds.
 
-> `now` properties can be accessed with `get` methods, e.g. `now.getDayOfWeek() == 4`.
+> The `now` object's fields can be accessed with `get` methods, e.g. `now.getDayOfWeek() == 4`.
 
 ## Link Placeholders
 
-* ruleLink
-* chartLink
-* csvExportLink
-* htmlExportLink
+* `ruleLink`
+* `chartLink`
+* `csvExportLink`
+* `htmlExportLink`
 
 ## Details Table Placeholders
+
+The details table contains entity, entity label, entity tags, command tags, and variables.
 
 * [detailsTable('markdown')](details-table.md#markdown)
 * [detailsTable('ascii')](details-table.md#ascii)
