@@ -29,6 +29,9 @@ The functions return a new string with the original input string left unchanged.
 * [removeEnding](#removeending)
 * [urlencode](#urlencode)
 * [jsonencode](#jsonencode)
+* [unquote](#unquote)
+* [countMatches](#countmatches)
+* [abbreviate](#abbreviate)
 
 ### `upper`
 
@@ -140,7 +143,9 @@ Examples:
   keepAfter(string s, string p) string
 ```
 
-Removes part of the string `s` before the first occurrence of the given substring `p`.
+Removes part of the string `s` before the first occurrence of the given substring `p`. 
+
+If the parameter string `p` is empty `''`/ null / not found, it will return the original string `s` unchanged.
 
 Example:
 
@@ -157,6 +162,8 @@ Example:
 
 Removes part of the string `s` before the last occurrence of the given substring `p`.
 
+If the parameter string `p` is empty `''`/ null / not found, it will return the original string `s` unchanged.
+
 Example:
 
 ```javascript
@@ -170,6 +177,8 @@ Example:
   keepBefore(string s, string p) string
 ```
 Removes part of the string `s` that starts with the first occurrence of the given substring `p`.
+
+If the parameter string `p` is empty `''`/ null / not found, it will return the original string `s` unchanged.
 
 Example:
 
@@ -185,6 +194,8 @@ Example:
 ```
 Removes part of the string `s` that starts with the last occurrence of the given substring `p`.
 
+If the parameter string `p` is empty `''`/ null / not found, it will return the original string `s` unchanged.
+
 Example:
 
 ```javascript
@@ -199,7 +210,9 @@ Example:
 ```
 Replace all occurrences of the given string `p` in the original string `s` with another string `r`.
 
-Example:
+If the `p` parameter is empty `''`/ null / not found, it will return the original string `s` unchanged.
+
+Examples:
 
 ```javascript
   /* Return "adcadc" */
@@ -284,3 +297,45 @@ Encodes `s` into the URL format by replacing unsafe characters with "%" followed
 
 Escapes special symbols such as double-quote with backslash to safely use the input string within a JSON object.
 
+### `unquote`
+
+```javascript
+  unquote(string s) string
+```
+
+Removes leading and trailing double and single quotation marks from the string `s`.
+
+### `countMatches`
+
+```javascript
+  countMatches(string s, string p) int
+```
+Example:
+
+```javascript
+  /* Return 2 */
+  countMatches("abba", "a")
+```
+
+Counts how many times the substring `p` appears in the larger string `s`.
+
+### `abbreviate`
+
+```javascript
+  abbreviate(string s, integer n) string
+```
+
+Abbreviates a string `s` using ellipses. `n` is maximum length of result string, must be at least 4 otherwise an IllegalArgumentException is thrown.
+
+Examples:
+
+```javascript
+  /* Return "abc..." */
+  abbreviate("abcdefg", 6)
+  
+  /* Return "abcd..." */
+  abbreviate("abcdefghi", 7)
+  
+  /* IllegalArgumentException */
+  abbreviate("abcdefg", 3)  
+```
