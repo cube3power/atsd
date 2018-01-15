@@ -46,7 +46,11 @@ repeat=1
 
 ### Payload
 
-JSON fields of primitive data type (string, number, boolean) are converted into message **tags**, where tag name equals the field's full name (contains parent object names, separated by `.` character) and tag value equals field value.
+JSON fields of primitive type (string, number, boolean) are converted into message **tags**, where tag name equals the field's full name (contains parent object names, separated by `.` character) and tag value equals field value.
+
+`string` fields are automatically unquoted by removing leading and trailing single and double quotes, if present.
+
+Array elements are assigned names based on array name and element index, starting with `0` for the first element.
 
 Tag names are lowercased. Non-printable characters such as whitespace in tag names are replaced with underscore.
 
@@ -60,7 +64,8 @@ Input document:
     "name": "atsd",
     "public": true,
     "Full Name": "Axibase TSD",
-    "references": []
+    "references": [],
+    "authors": ["john", "sam"],
   }
 }
 ```
@@ -72,6 +77,8 @@ event = commit
 repository.name = atsd
 repository.public = true
 repository.full_name = Axibase TSD
+repository.authors[0] = john
+repository.authors[1] = sam
 ```
 
 ### Requirements
@@ -141,6 +148,7 @@ These parameters set message fields to literal values.
 | date | Message datetime in ISO format. |
 | message | Message text. |
 | severity | Message severity specified as an integer or as a string constant. |
+| datetimePattern | Datetime pattern applied to `command.date` field: `iso` (default), `seconds`, `milliseconds`, user-defined [pattern](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). |
 
 `/api/v1/messages/webhook/jenkins?entity=test-1&type=ci&severity=3`
 
@@ -159,7 +167,7 @@ Command parameters set message field values from JSON field values.
 | command.type | Message type. If not specified, set to `webhook`. |
 | command.source | Message source. If not specified, set to URL path after `./webhook/`. |
 | command.entity | [**Required**] Message entity. |
-| command.date | Message datetime in ISO format. |
+| command.date | Message time in ISO format, UNIX milliseconds/seconds, or user-defined format specified with `datetimePattern` parameter. |
 | command.message | Message text. |
 | command.severity | Message severity specified as an integer or as a constant. |
 
