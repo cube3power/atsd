@@ -84,14 +84,23 @@ Returns `true` if `s` ends with `w`.
   split(string s, string p) [string]
 ```
 
-Splits `s` into an array of strings using separator `p` while treating double quote as an escape character.
+Splits `s` into a collection of strings using separator `p` while treating double quote as an escape character.
 
-Examples:
+Example:
 
   * Returns ['Hello', 'brave new world']
 
   ```java
     split('hello "brave new world"', ' ')
+  ```
+  
+To check the size of the collection, use the `.size()` method.
+
+To access the n-th element in the collection, use square brackets and index (starting with 0 for the first element).
+
+  ```java
+    authors = split(tags.authors, ',')
+    authors.size() == 0 ? 'n/a' : authors[0]
   ```
 
 ### `coalesce`
