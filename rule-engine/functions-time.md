@@ -46,6 +46,8 @@ Time when the first command was received by the window, in UNIX milliseconds.
 
 Parses the datetime string `d` into UNIX milliseconds according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [timezone](http://joda-time.sourceforge.net/timezones.html) `z` (or offset from UTC).
 
+The function returns `0` if the datetime `d` is `null` or empty.
+
 Available timezones and their offsets are listed in [time zones](../shared/timezone-list.md).
 
 The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default timezone is the server timezone.
@@ -66,24 +68,32 @@ Example:
   seconds(string d [,string p [,string z]]) long
 ```
 
-Same as the `milliseconds` function except the result is returned in UNIX seconds.
+The function is implemented exactly as the `milliseconds` function except the result is returned in UNIX seconds.
 
 ### `elapsedTime`
 
 ```javascript
-  elapsedTime(long timestamp) long
+  elapsedTime(long t) long
 ```
 
-Calculates the number of milliseconds between the current time and the specified time. The function accepts time in UNIX milliseconds or the following format:
+```javascript
+  elapsedTime(string d) long
+```
+
+Calculates the number of milliseconds between the current time and time `t` which is specified in UNIX milliseconds.
+
+The function accepts time `t` in UNIX milliseconds or the datetime `d` in the following format:
 
 ```
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
 ```
 
+The function returns `0` if the datetime `d` is `null` or empty.
+
 Example:
 
 ```javascript
-  /* Assuming current time of 2017-08-15T00:01:30Z, return elapsed time: 90000 */
+  /* Assuming current time of 2017-08-15T00:01:30Z, returned elapsed time is 90000 */
   elapsedTime("2017-08-15T00:00:00Z")
 ```
 
