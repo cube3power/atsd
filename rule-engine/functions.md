@@ -208,9 +208,9 @@ Time functions perform various operations on dates, timestamps and intervals.
 
 Property functions retrieve and compare property keys and tags.
 
-* [property_values](functions-property.md#property_valuesstring-s)
 * [property](functions-property.md#property)
-* [property_compare_except](functions-property.md#property_compare_exceptstring-k)
+* [property_values](functions-property.md#property_values)
+* [property_compare_except](functions-property.md#property_compare_except)
 
 ## Script Functions
 
