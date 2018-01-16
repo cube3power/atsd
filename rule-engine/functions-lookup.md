@@ -15,6 +15,7 @@ The named collections are listed on the **Data > Named Collections** page.
 * [collection](#collection)
 * [lookup](#lookup)
 * [replacementTable](#replacementtable)
+* [property](#property)
 
 ### `entity_tag`
 
@@ -67,4 +68,22 @@ Example:
 ```
 
 Retrieves the replacement table identified by name `s` as a key-value map.
+
+### `property`
+
+```javascript
+  property(string s) string
+```
+
+Retrieves tag value for the entity in the current window given the [property search](property-search.md) expression `s`.
+
+The function returns an empty string is the expression matches no properties.
+
+Example:
+
+```javascript
+  property('docker.container::image')
+```
+
+Refer to [property functions](functions-property.md#property) for additional syntax options.
 
