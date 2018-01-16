@@ -6,11 +6,25 @@ Property functions provide a set of convenience methods to retrieve and compare 
 
 ## Reference
 
+* [property](#property)
 * [property_values(string s)](#property_valuesstring-s)
 * [property_values(string s, string e)](#property_valuesstring-s-string-e)
-* [property](#property)
 * [property_compare_except([string k])](#property_compare_exceptstring-k)
 * [property_compare_except([string k], [string e])](#property_compare_exceptstring-c-string-e)
+
+### `property`
+
+```javascript
+  property(string s) string
+```
+
+Returns the first value in the list of strings returned by the `property_values(string s)` function. 
+
+The function returns an empty string if no property records are found.
+
+```javascript
+  property('docker.container::image')
+```
 
 ### `property_values(string s)`
 
@@ -18,7 +32,7 @@ Property functions provide a set of convenience methods to retrieve and compare 
   property_values(string s) [string]
 ```
 
-Returns a list of property tag values for the current entity given the property [search string](property-search.md) `s`.
+Returns a list of property tag values for the current entity in the window for the specified [property search](property-search.md) expression `s`.
 
 The list is empty if the property or tag is not found.
 
@@ -35,10 +49,12 @@ Examples:
 ### `property_values(string s, string e)`
 
 ```javascript
-  property_values(string s, string e) [string]
+  property_values(string e, string s) [string]
 ```
 
-Same as `property_values(string s)`, except for an explicitly specified entity `e`.
+Same as `property_values(string s)`, except the entity `e` is specified as an argument.
+
+The returned list is empty if the entity or the searched property is not found.
 
 Examples:
 
@@ -47,19 +63,8 @@ Examples:
 ```
 
 ```javascript
+  // entity_tags.image contains identifier of the image entity
   property_values(entity_tags.image, 'docker.image.config::name').contains('atsd/latest')
-```
-
-### `property`
-
-```javascript
-  property(string s) string
-```
-
-Returns the first value in the list of strings returned by the `property_values(string s)` function. The function returns an empty string if no property records are found.
-
-```javascript
-  property('docker.container::image')
 ```
 
 ### `property_compare_except([string k])`
