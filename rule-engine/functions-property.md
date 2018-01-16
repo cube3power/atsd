@@ -7,10 +7,8 @@ Property functions provide a set of convenience methods to retrieve and compare 
 ## Reference
 
 * [property](#property)
-* [property_values(string s)](#property_valuesstring-s)
-* [property_values(string s, string e)](#property_valuesstring-s-string-e)
-* [property_compare_except([string k])](#property_compare_exceptstring-k)
-* [property_compare_except([string k], [string e])](#property_compare_exceptstring-c-string-e)
+* [property_values](#property_values)
+* [property_compare_except](#property_compare_except)
 
 ### `property`
 
@@ -26,85 +24,72 @@ The function returns an empty string if no property records are found.
   property('docker.container::image')
 ```
 
-### `property_values(string s)`
+### `property_values`
 
 ```javascript
-  property_values(string s) [string]
+  property_values([string e, ]string s) [string]
 ```
 
-Returns a list of property tag values for the current entity in the window for the specified [property search](property-search.md) expression `s`.
+Returns a list of property tag values for the given entity for the specified [property search](property-search.md) expression `s`.
 
-The list is empty if the property or tag is not found.
+By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
+
+The function returns an empty list if the entity, property or tag is not found.
 
 Examples:
 
 ```javascript
-  property_values('docker.container::image').contains('atsd/latest')
+  property_values('docker.container::image')
 ```
 
 ```javascript
   property_values('linux.disk:fstype=ext4:mount_point').contains('/')
 ```
 
-### `property_values(string s, string e)`
-
 ```javascript
-  property_values(string e, string s) [string]
+  property_values('nurswgvml007', 'docker.container::image')
 ```
 
-Same as `property_values(string s)`, except the entity `e` is specified as an argument.
+### `property_compare_except`
 
-The returned list is empty if the entity or the searched property is not found.
+* `property_compare_except([string k])`
 
-Examples:
+  ```javascript
+    property_compare_except([string k]) map
+  ```
 
-```javascript
-  property_values('nurswgvml007', 'docker.container::image').contains('atsd/latest')
-```
+  Compares previous and current property tags and returns a difference map containing a list of changed tag values.
 
-```javascript
-  // entity_tags.image contains identifier of the image entity
-  property_values(entity_tags.image, 'docker.image.config::name').contains('atsd/latest')
-```
+  Sample difference map:
 
-### `property_compare_except([string k])`
+  ```javascript
+    {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log' -> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
+  ```
 
-```javascript
-  property_compare_except([string k]) map
-```
+  The map includes tags that are not present in new property tags and tags that were deleted.
+  If the difference map is empty, this means that no changes were identified.
+  This comparison is case-insensitive.
 
-Compares previous and current property tags and returns a difference map containing a list of changed tag values.
+  ```java
+    NOT property_compare_except (['name', '*time']).isEmpty()
+  ```
 
-Sample difference map:
+  Returns `true` if property tags have changed except for the `name` tag and any tags that end with `time`.
 
-```javascript
-  {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log' -> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
-```
+* `property_compare_except([string c], [string e])`
 
-The map includes tags that are not present in new property tags and tags that were deleted.
-If the difference map is empty, this means that no changes were identified.
-This comparison is case-insensitive.
+  ```javascript
+    property_compare_except([string c], [string e]) map
+  ```
 
-```java
-  NOT property_compare_except (['name', '*time']).isEmpty()
-```
+  Same as `property_compare_except(keys)` with a list `e` of previous values that are excluded from the difference map.
 
-Returns true if property tags have changed except for the `name` tag and any tags that end with `time`.
+  ```java
+    NOT property_compare_except(['name', '*time'], ['*Xloggc*']).isEmpty()
+  ```
 
-### `property_compare_except([string c], [string e])`
+  Returns true if property tags have changed, except for the `name` tag, any tags that end with `time`, and any previous tags with value containing `Xloggc`. The pattern `*Xloggc*` would ignore changes such as:
 
-```javascript
-  property_compare_except([string c], [string e]) map
-```
-
-Same as `property_compare_except(keys)` with a list `e` of previous values that are excluded from the difference map.
-
-```java
-  NOT property_compare_except(['name', '*time'], ['*Xloggc*']).isEmpty()
-```
-
-Returns true if property tags have changed, except for the `name` tag, any tags that end with `time`, and any previous tags with value containing `Xloggc`. The pattern `*Xloggc*` would ignore changes such as:
-
-``` java
-  {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log'-> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
-```
+  ``` java
+    {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log'-> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
+  ```
