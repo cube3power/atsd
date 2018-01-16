@@ -25,6 +25,8 @@ The named collections are listed on the **Data > Named Collections** page.
 
 Returns value of tag `t` for entity `e`.
 
+If the tag or the entity is not found, an empty string is returned.
+
 ### `entity_tags`
 
 ```javascript
@@ -32,15 +34,17 @@ Returns value of tag `t` for entity `e`.
 ```
 Returns entity tags as a map for entity `e`.
 
+If the entity is not found, an empty map is returned.
+
 ### `collection`
 
 ```javascript
   collection(string s) [string]
 ```
 
-Retrieves an array of strings for the specified named collection `s`. 
+Retrieves a list of strings for the specified named collection `s`. 
 
-If the collection is not found, an empty array is returned.
+If the collection is not found, an empty list is returned.
 
 ### `lookup`
 
@@ -50,7 +54,7 @@ If the collection is not found, an empty array is returned.
 
 Returns the value for key `k` from the replacement table `s`. 
 
-The function returns `null` if the table is not found or if it doesn't contain the specified key.
+The function returns an empty string if the table is not found or if it doesn't contain the specified key.
 
 If the optional boolean `b` parameter is specified and is set to `true`, the function returns the original key `k` in case the table is not found or if the key is not found.
 
@@ -69,6 +73,8 @@ Example:
 
 Retrieves the replacement table identified by name `s` as a key-value map.
 
+If the table is not found, an empty map is returned.
+
 ### `property`
 
 ```javascript
@@ -77,7 +83,7 @@ Retrieves the replacement table identified by name `s` as a key-value map.
 
 Retrieves tag value for the entity in the current window given the [property search](property-search.md) expression `s`.
 
-The function returns an empty string is the expression matches no properties.
+The function returns an empty string if the expression matches no properties.
 
 Example:
 
