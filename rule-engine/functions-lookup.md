@@ -12,6 +12,7 @@ The named collections are listed on the **Data > Named Collections** page.
 
 * [entity_tag](#entity_tag)
 * [entity_tags](#entity_tags)
+* [getEntity](#getentity)
 * [collection](#collection)
 * [lookup](#lookup)
 * [replacementTable](#replacementtable)
@@ -35,6 +36,25 @@ If the tag or the entity is not found, an empty string is returned.
 Returns entity tags as a map for entity `e`.
 
 If the entity is not found, an empty map is returned.
+
+### `getEntity`
+
+```javascript
+  getEntity(string e) object
+```
+
+Retrieves an entity object by name. 
+
+The object's [fields](../api/meta/entity/list.md#fields) can be accessed using the dot notation, for example `getEntity('nurswgvml007').label`.
+
+The function returns `null` if the entity `e` is not found.
+
+Example:
+
+```javascript
+  /* Returns a label of 'nurswgvml007' entity object */
+  getEntity('nurswgvml007').label
+```
 
 ### `collection`
 
