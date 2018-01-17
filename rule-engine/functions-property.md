@@ -22,7 +22,7 @@ Returns the first value in the list of strings returned by the `property_values(
 
 By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
+An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
 
 The function returns an empty string if no matching roperty records are found.
 
@@ -45,7 +45,7 @@ Returns a list of property tag values for the given entity for the specified [pr
 
 By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
+An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
 
 The function returns an empty list if the entity, property or tag is not found.
 
@@ -121,13 +121,20 @@ Examples:
   property_map([string e,] string s[, string d]) map
 ```
 
-Returns a map containing tag names and values for the specified [property search](property-search.md) expression `s`.
+Returns a map containing keys and tags for the specified [property search](property-search.md) expression `s`. The map is composed as follows: sorted keys (if present) are followed by matching sorted tags.
 
 By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-Since the function loads all tags, the search expression `s` can either omit the <tag_name> or specify a string to match tags with `*` used as a wildcard.
+An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
 
-An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
+The search expression `s` can include only the property type (without key and tag parts), omit the `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags will be returned.
+
+Supported syntax options:
+
+* `<property_type>`
+* `<property_type>:[<key>=<value>[,<key>=<value>]]:`
+* `<property_type>:[<key>=<value>[,<key>=<value>]]:*`
+* `<property_type>:[<key>=<value>[,<key>=<value>]]:*abc*`
 
 The function returns an empty map if the entity, property or tag is not found.
 
@@ -150,11 +157,20 @@ Examples:
   property_maps([string e,] string s[, string d]) [map]
 ```
 
-Returns a list of maps to hold all matched property records for the specified [property search](property-search.md) expression `s`.
+Returns a list of maps, each map containing keys and tags for the specified [property search](property-search.md) expression `s`. The maps are composed as follows: sorted keys (if present) are followed by matching sorted tags.
 
-Since the function loads all tags, the search expression `s` can either omit the <tag_name> or specify a string to match tags with `*` used as a wildcard.
+By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
-An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
+An optional start date `d` argument controls which property records to include. If specified, only property records received on or after the start date are included. The start date `d` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords). If `d` is specified, the entity `e` argument must also be specified.
+
+The search expression `s` can include only the property type (without key and tag parts), omit the `<tag_name>` or specify a string to match tags with `*` used as a wildcard, in which case all keys and tags will be returned.
+
+Supported syntax options:
+
+* `<property_type>`
+* `<property_type>:[<key>=<value>[,<key>=<value>]]:`
+* `<property_type>:[<key>=<value>[,<key>=<value>]]:*`
+* `<property_type>:[<key>=<value>[,<key>=<value>]]:*abc*`
 
 The function returns an empty list if the entity, property or tag is not found.
 
