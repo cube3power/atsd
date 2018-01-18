@@ -266,15 +266,15 @@ In the example below, the `db_last('io_disk_percent_util')` function will search
 ### `db_message_count` 
 
 ```java
-  db_message_count(string i, string k, string s[, string t, [string e]]) long
+  db_message_count(string interval, string type, string source[, string tags, [string entity]]) long
 ```
-Calculate the number of messages matching the specified interval `i`, type `k`, source `s`, tags `t` and entity `e`.
+Calculate the number of messages matching the specified interval, message type, message source, tags, and entity.
 
-Tags `t` and entity `e` arguments are optional.
+Arguments `tags` and `entity` are optional.
 
-If the type `k`, source `s`, or tags `t` fields are set to empty string, they are ignored when matching messages.
+If the `type`, `source`, or `tags` arguments are set to `null` or empty string, they are ignored when matching messages.
 
-If the entity `e` is not specified, the request retrieves messages for the current entity.
+If the `entity` is not specified, the request retrieves messages for the current entity.
 
 Examples:
 
@@ -289,17 +289,17 @@ Examples:
 ### `db_message_last` 
 
 ```java
-db_message_last(string i, string k, string s[, string t, [string e]]) message object
+db_message_last(string interval, string type, string source[, string tags, [string entity]]) message object
 ```
-Return the most recent [message](../api/data/messages/query.md#fields-1) object matching the specified interval `i`, type `k`, source `s`, tags `t` and entity `e`.
+Return the most recent [message](../api/data/messages/query.md#fields-1) object matching the specified interval, message type, message source, tags, and entity.
 
-Tags `t` and entity `e` arguments are optional.
+Arguments `tags` and `entity` are optional.
 
-If the type `k`, source `s`, or tags `t` fields are set to empty string, they are ignored when matching messages.
+If the `type`, `source`, or `tags` arguments are set to `null` or empty string, they are ignored when matching messages.
 
-If the entity `e` is not specified, the request retrieves messages for the current entity.
+If the `entity` is not specified, the request retrieves messages for the current entity.
 
-The returned object contains `type`, `source`, and `tags.{name}` fields of string type and the `date` field of long data type. The `date` field is returned as epoch milliseconds.
+The returned object contains `type`, `source`, and `tags.{name}` fields of string type and the `date` long field which contains the record's time in Unix milliseconds.
 
 Example:
 
