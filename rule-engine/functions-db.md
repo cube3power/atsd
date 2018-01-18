@@ -135,7 +135,7 @@ In the example below, the `db_last('cpu_busy')` function ignores mount_point and
 ```
   metric = disk_used
   entity = nurswgvml007
-  tags   = mount_point = /, file_system = /sda
+  tags   = mount_point=/,file_system=/sda
 ```
 
 * Expression
@@ -169,7 +169,7 @@ In the example below, the `db_last('disk_used_percent')` function uses the same 
 ```
   metric = disk_used
   entity = nurswgvml007
-  tags   = mount_point = /, file_system = /sda
+  tags   = mount_point=/,file_system=/sda
 ```
 
 * Expression
@@ -183,7 +183,7 @@ In the example below, the `db_last('disk_used_percent')` function uses the same 
 ```
   metric = disk_used_percent
   entity = nurswgvml007
-  tags   = mount_point = /, file_system = /sda
+  tags   = mount_point=/,file_system=/sda
 ```
 
 * Matched Series
@@ -191,7 +191,7 @@ In the example below, the `db_last('disk_used_percent')` function uses the same 
 ```
   metric = cpu_busy
   entity = nurswgvml007
-  tags   = mount_point = /, file_system = /sda
+  tags   = mount_point=/,file_system=/sda
 ```
 
 #### Example `No Tags : Tags`
@@ -225,7 +225,7 @@ In the example below, the `db_last('disk_used_percent')` function will search fo
 ```
   metric = disk_used_percent
   entity = nurswgvml007
-  tags   = mount_point = /, file_system = /sda
+  tags   = mount_point=/,file_system=/sda
 ```
 
 #### Example `Different Tags`
@@ -237,7 +237,7 @@ In the example below, the `db_last('io_disk_percent_util')` function will search
 ```
   metric = disk_used_percent
   entity = nurswgvml007
-  tags   = mount_point = /, file_system = /sda
+  tags   = mount_point=/,file_system=/sda
 ```
 
 * Expression
@@ -259,7 +259,7 @@ In the example below, the `db_last('io_disk_percent_util')` function will search
 ```
   metric = io_disk_percent_util
   entity = nurswgvml007
-  tags   = device = sda
+  tags   = device=sda
 ```
 ---
 
