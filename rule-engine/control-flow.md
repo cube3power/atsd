@@ -10,8 +10,8 @@ The `if` and `else` branches accept boolean conditions.
 
 ```javascript
 @if{condition}
-	@else{condition}
-	@else{}
+  @else{condition}
+  @else{}
 @end{}
 ```
 
@@ -20,9 +20,9 @@ The result of applying this template is the original text without text contained
 The following example adds the table with entity tags only for `nurswgvml007` entity.
 
 ```javascript
-	@if{entity == 'nurswgvml007'}
-		${addTable(entity.tags, 'ascii')}
-	@end{}
+  @if{entity == 'nurswgvml007'}
+    ${addTable(entity.tags, 'ascii')}
+  @end{}
 ```
 
 ## Iteration
