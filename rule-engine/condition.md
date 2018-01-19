@@ -2,7 +2,7 @@
 
 Condition is a boolean expression which is evaluated when data is received by or removed from the window. For example, the condition `value > 50` returns `true` if the last received value exceeds 50.
 
-The condition consists of one or multiple boolean checks combined with `OR` (`||`), `AND` (`&&`) and `NOT` (`!`) operators.
+The condition consists of one or multiple boolean checks combined with [boolean operators](operators.md#boolean-operators) `AND` (`&&`), `OR` (`||`), and `NOT` (`!`).
 
 The expression can include fields from the command, window, entity and metric, user-defined variables and apply [functions](functions.md) to data.
 
