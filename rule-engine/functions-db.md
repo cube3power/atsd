@@ -2,7 +2,14 @@
 
 ## Overview
 
-The functions retrieve message counts or specific messages.
+The functions retrieve series and message records from database.
+
+The `db_last` and `db_statistic` functions provide a way to retrieve the last detailed or averaged value stored in the database for a series which may be different from the series in the current window. The functions can be used to compare different series for correlation purposes.
+
+* The `db_last` function retrieves the last value stored in the database for the specified series.
+* The `db_statistic` function retrieves an aggregated value from the database for the specified series.
+
+The `db_message_count` and `db_message_last` functions allow one to correlate different types of data - time series and messages.
 
 ## Reference
 
@@ -11,12 +18,7 @@ The functions retrieve message counts or specific messages.
 * [db_message_count](functions-db.md#db_message_count)
 * [db_message_last](functions-db.md#db_message_last)
 
-The `db_last` and `db_statistic` functions provide a way to retrieve the last detailed or averaged value stored in the database for a series which may be different from the series in the current window. The functions can be used to compare different series for correlation purposes.
-
-* The `db_last` function retrieves the last value stored in the database for the specified series.
-* The `db_statistic` function retrieves an aggregated value from the database for the specified series.
-
-The `db_message_count` and `db_message_last` functions allow one to correlate different types of data - time series and messages.
+## Series Functions
 
 ### `db_last(string m)` 
 
@@ -261,7 +263,8 @@ In the example below, the `db_last('io_disk_percent_util')` function will search
   entity = nurswgvml007
   tags   = device=sda
 ```
----
+
+## Message Functions
 
 ### `db_message_count` 
 
@@ -289,17 +292,22 @@ Examples:
 ### `db_message_last` 
 
 ```java
-db_message_last(string interval, string type, string source[, string tags, [string entity]]) message object
+db_message_last(string interval, string type, string source [, string tags, [string entity [, message]]]) message object
 ```
-Return the most recent [message](../api/data/messages/query.md#fields-1) object matching the specified interval, message type, message source, tags, and entity.
 
-Arguments `tags` and `entity` are optional.
+Return the most recent [message](../api/data/messages/query.md#fields-1) record matching the specified interval, message type, message source, tags, entity, and message text.
+
+Arguments `tags`, `entity`, and `message` are optional.
 
 If the `type`, `source`, or `tags` arguments are set to `null` or empty string, they are ignored when matching messages.
 
+The `tags` argument matches records that include the specified tags but may also include other tags.
+
 If the `entity` is not specified, the request retrieves messages for the current entity.
 
-The returned object contains `type`, `source`, and `tags.{name}` fields of string type and the `date` long field which contains the record's time in Unix milliseconds.
+The `message` argument supports wildcards `?` and `*`.
+
+The returned object contains `type`, `source`, and `tags.{name}` [fields](../api/data/messages/query.md#fields-1) of string type and the `date` long field which contains the record's time in Unix milliseconds.
 
 Example:
 
@@ -307,4 +315,8 @@ Example:
   last_msg = db_message_last('60 minute', 'logger', '')
   // Check that the average exceeds 50 and the severity of the last message with type 'logger' for the current entity is greater or equal `ERROR`.
   value > 50 && last_msg != null && last_msg.severity.toString() >= "6"
+```
+
+```java
+  db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 'slack', 'docker start sftp*')
 ```
