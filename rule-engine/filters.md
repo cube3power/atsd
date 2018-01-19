@@ -35,7 +35,7 @@ To match the rule, the incoming series command must have the same metric name as
 
 The filter matches commands for which the filter expression returns `true`.
 
-The expression may consists of one or multiple boolean checks joined with [boolean operators](operators.md#boolean- operators) `AND`, `OR`, and `NOT`.
+The expression may consists of one or multiple boolean checks joined with [boolean operators](operators.md#boolean-operators) `AND`, `OR`, and `NOT`.
 
 ```javascript
 entity != 'nurswgvml007'
