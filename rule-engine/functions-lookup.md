@@ -31,11 +31,47 @@ If the tag or the entity is not found, an empty string is returned.
 ### `entity_tags`
 
 ```javascript
-  entity_tags(string e) map
+  entity_tags(string e [, boolean f]) map
 ```
-Returns entity tags as a map for entity `e`.
+Returns entity tags for entity `e` as a map.
 
 If the entity is not found, an empty map is returned.
+
+If the optional `f` format parameter is set to `true`, the tag names in the map are converted to labels using applicable entity tag templates which are listed on **Settings > Tag Templates** page.
+
+Example:
+
+```javascript
+entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b')
+```
+
+```
++-------------------------+----------------------------------------------+
+| Name                    | Value                                        |
++-------------------------+----------------------------------------------+
+| hostname                | 08ac68c080bc                                 |
+| image-name              | jmeter                                       |
+| image-repotags          | axibase/jmeter:latest                        |
+| image-tags              | latest                                       |
+| ip-address              | 172.17.0.18                                  |
+...
+```
+
+```javascript
+entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b', true)
+```
+
+```
++-------------------------+----------------------------------------------+
+| Name                    | Value                                        |
++-------------------------+----------------------------------------------+
+| IP Address              | 172.17.0.18                                  |
+| Hostname                | 08ac68c080bc                                 |
+| Image Name              | jmeter                                       |
+| Image Tags              | latest                                       |
+| Image Repo Tags         | axibase/jmeter:latest                        |
+...
+```
 
 ### `getEntity`
 
