@@ -8,17 +8,17 @@
 | `AND` | Boolean AND, also `&&`. |
 | `NOT` | Boolean NOT, also `!`. |
 
-	```javascript
-		value > 90 && avg() > 50
-	```
+```javascript
+  value > 90 && avg() > 50
+```
 
-	```javascript
-		tags.file_system LIKE '/opt/*' OR tags.file_system LIKE '/mnt/*'
-	```
+```javascript
+  tags.file_system LIKE '/opt/*' OR tags.file_system LIKE '/mnt/*'
+```
 
-	```javascript
-		NOT tags.isEmpty()
-	```		
+```javascript
+  NOT tags.isEmpty()
+```		
 
 ## Ternary Operator
 
@@ -62,13 +62,13 @@ The above example is equivalent to:
 | `BETWEEN` | `n BETWEEN m AND p`.<br>The number `n` is between `m` and `p` (inclusive).<br>`m <= n <= p`.<br>Example: `avg() BETWEEN 10 and 20`. |
 | `IN` | Membership in collection. |
 
-  ```javascript
-    value*100 > 90
-  ```
+```javascript
+  value*100 > 90
+```
 
-	```javascript
-		max() BETWEEN 80 and 100
-	```
+```javascript
+  max() BETWEEN 80 and 100
+```
 
 ## Text Operators
 
@@ -80,10 +80,10 @@ The above example is equivalent to:
 | `LIKE` | Matches the string using `?` and `*` wildcards.|
 | `IN` | Membership in collection. |
 
-	```javascript
-		entity = 'nurswgvml007'
-	```
+```javascript
+  entity = 'nurswgvml007'
+```
 
-	```javascript
-		entity LIKE '*007'
-	```		
+```javascript
+  entity LIKE '*007'
+```		
