@@ -39,6 +39,12 @@ If the entity is not found, an empty map is returned.
 
 If the optional `f` format parameter is set to `true`, the tag names in the map are converted to labels using applicable entity tag templates which are listed on **Settings > Tag Templates** page.
 
+To exclude specific tags from the results, use the `excludeKeys()` function:
+
+```javascript
+excludeKeys(entity_tags(ent), ['image', 'java.home'])
+```
+
 Example:
 
 ```javascript
