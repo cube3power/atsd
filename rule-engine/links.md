@@ -123,7 +123,7 @@ https://atsd_host:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22
 ${entityLink}
 ```
 
-Link to current entity that is initialized in the rule window.
+Link to current entity that is initialized in the rule window. To retrieve the link for another entity, use the [`getEntityLink`](functions-link.md#getentitylink) function.
 
 Displayed as entity label in inline mode.
 
@@ -132,6 +132,8 @@ Example:
 ```elm
 https://atsd_host:8443/entities/nurswgvml007
 ```
+
+---
 
 ## Inline Links
 
