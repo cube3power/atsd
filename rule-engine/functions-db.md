@@ -40,7 +40,7 @@ Example:
 ```java
 db_last(string m, string e) number
 ```
-Retrieve the last value for the specified metric `m` and entity `e`. The entity can specified as a string or as `entity` placeholder.
+Retrieve the last value for the specified metric `m` and entity `e`. The entity can specified as a string or as `entity` field (current entity in the window).
 
 Example:
 
@@ -57,7 +57,7 @@ Example:
   db_last(string m, string e, string t) number
   db_last(string m, string e, [] t) number
 ```
-Retrieve the last value for the specified metric `m`, entity `e`, and series tags `t`. The tags can be specified as an empty string `''` (no tags), as `key1=value1,key2=value`, or as `tags` placeholder representing the tags of the current window.
+Retrieve the last value for the specified metric `m`, entity `e`, and series tags `t`. The tags can be specified as an empty string `''` (no tags), as `key1=value1,key2=value`, or as `tags` field representing the grouping tags of the current window.
 
 Example:
 
@@ -102,7 +102,7 @@ Example:
 ```java
   db_statistic(string s, string i, string m, string e) number
 ```
-Retrieve an aggregated value from the database for the specified metric `m` and entity `e`. The entity can specified as a string or as `entity` placeholder.
+Retrieve an aggregated value from the database for the specified metric `m` and entity `e`. The entity can specified as a string or as `entity` field  current entity in the window).
 
 Example:
 
@@ -116,7 +116,7 @@ Example:
   db_statistic(string s, string i, string m, string e, string t) number
   db_statistic(string s, string i, string m, string e, [] t) number
 ```
-Retrieve an aggregated value from the database for the specified metric `m`, entity `e`, and series tags `t`. The tags can be specified as an empty string `''` (no tags), as `key1=value1,key2=value`, or as `tags` placeholder representing the tags of the current window.
+Retrieve an aggregated value from the database for the specified metric `m`, entity `e`, and series tags `t`. The tags can be specified as an empty string `''` (no tags), as `key1=value1,key2=value`, or as `tags` field representing the grouping tags of the current window.
 
 Example:
 

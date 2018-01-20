@@ -46,7 +46,7 @@ The incoming data is [grouped](grouping.md) into windows by metric, entity, and 
 
 ![](images/email-group-settings.png)
 
-If the rule creates too many windows, tighten the rule [filter](filters.md) or add [`Override`](overrides.md) exceptions that effectively disable alerting for particular series.
+If the rule creates too many windows, restrict the rule [filter](filters.md) or add [`Override`](overrides.md) exceptions that disable alerting for particular series.
 
 ![](images/email-group-tags.png)
 
@@ -74,17 +74,17 @@ The override table below contains rules that will always return `false` for the 
 
 ### Subject
 
-The subject may include [placeholders](placeholders.md) which are substituted with actual values when the message is sent. If the placeholder is not found, it is replaced with an empty string.
+The subject may include [placeholders](placeholders.md) with expressions substituted with actual values when the message is sent. If the placeholder is not found, it is replaced with an empty string.
 
 Sample subject:
 
-```
+```css
   [${status}] Rule ${rule} for ${entity} ${tags}`
 ```
 
-When using placeholders that maybe replaced with arbitrarily long text, apply the `truncate()` function to limit the subject length.
+When using placeholders that maybe replaced with text of arbitrary length, apply the `truncate()` function to limit the subject length.
 
-```
+```css
   [${status}] Rule ${rule} for ${entity}: ${truncate(message, 100)}`
 ```
 
@@ -92,7 +92,7 @@ The subject can be customized using [control flow](control-flow.md) statements f
 
 ### Text
 
-The message text (body) may include [placeholders](placeholders.md).
+The message text (body) may include [placeholders](placeholders.md) as well.
 
 Use the html tag `<br>` to split content into multiple lines.
 
@@ -100,6 +100,8 @@ Use the html tag `<br>` to split content into multiple lines.
   Window Start Time: ${windowStartTime}<br>
   Window Duration in ms: ${(timestamp / 1000 - windowStartTime) * 1000}
 ```
+
+Placeholders with [link](links.md) fields are automatically inlined.
 
 The message text can include [control flow](control-flow.md) statements for conditional processing.
 
@@ -113,7 +115,9 @@ The message text can include [control flow](control-flow.md) statements for cond
 
 ### Header and Footer
 
-The header and footer can be enabled in the [email client](../administration/setting-up-email-client.md) settings and apply to all messages. These parts do not support any placeholders.
+The header and footer can be specified in both plain text and HTML format in the [email client](../administration/setting-up-email-client.md) settings and apply to all messages. 
+
+The header and footer do **not** support any placeholders.
 
 ```html
 <p style="color: #8db600; font-weight: bold; margin: 0px; padding: 0px;">Classification: UNCLASSIFIED</p>

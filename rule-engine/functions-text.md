@@ -136,8 +136,8 @@ Examples:
     coalesce([entity.label, entity])
   ```
 
-  Returns the value of the `entity.label` placeholder if it is not an empty string, otherwise the value of the `entity` placeholder will be returned.
-  If both placeholders are empty, then an empty string is returned.
+  Returns the value of the `entity.label` field if it is not an empty string, otherwise the value of the `entity` field will be returned.
+  If both fields are empty, an empty string is returned.
 
 ### `keepAfter`
 

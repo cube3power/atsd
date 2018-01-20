@@ -18,7 +18,7 @@ When configuring a command action, you need to specify a template consisting of 
 
 ### Fields
 
-The template can include text, [placeholders](placeholders.md) and [functions](functions.md).
+The template can include plain text and [placeholders](placeholders.md).
 
 ```ls
 series e:${entity} m:jvm_memory_free_avg_percent=${round(100 - avg(), 3)}
@@ -54,7 +54,7 @@ In order to store derived commands with the current server time, omit the date/t
 series e:${entity} m:disk_free=${100 - value} ${commandTags}
 ```
 
-Alternatively, use the [`now`](placeholders.md#time-placeholders) placeholder to access the current server time.
+Alternatively, use the [`now`](window.md##time-fields) placeholder to access the current server time.
 
 ```ls
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${now.getMillis()}
@@ -68,13 +68,13 @@ series e:${entity} m:disk_free=${100 - value} ${commandTags} s:${floor(now.getMi
 
 #### Received Time
 
-To store derived commands with exactly the same time as the incoming command, set the millisecond field `ms:` to the [`timestamp`](placeholders.md#time-placeholders) placeholder. The `timestamp` placeholder represents the timestamp of the command that caused the window status event.
+To store derived commands with exactly the same time as the incoming command, set the millisecond field `ms:` to the [`timestamp`](window.md##time-fields) field. The `timestamp` field represents the timestamp of the command that caused the window status event.
 
 ```ls
 series e:${entity} m:disk_free=${100 - value} ${commandTags} ms:${timestamp}
 ```
 
-> If 'Check On Exit' option is enabled for time-based window, some of the events will be caused by exiting commands and the `timestamp` placeholder will return the time of the oldest command, rounded to seconds.
+> If 'Check On Exit' option is enabled for time-based window, some of the events will be caused by exiting commands and the `timestamp` field will return the time of the oldest command, rounded to seconds.
 
 To round the input time to seconds, use the seconds field `s:` and the [`floor`](functions.md#mathematical-functions) function:
 

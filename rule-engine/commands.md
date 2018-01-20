@@ -41,9 +41,9 @@ The command interpreter in ATSD doesn't support piping, I/O redirection or shell
 
 ![](images/command-bash-c.png)
 
-### Placeholders
+### Window Fields
 
-The arguments may include [placeholders](placeholders.md) using `${name}` syntax, for example `${entity}`. If the placeholder is not found, it is resolved to an empty string.
+The arguments may include window [fields](window.md#window-fields) and [variables](variables.md) using [placeholder](placeholders.md) syntax, for example `${entity}`. If the placeholder is not found, it is resolved to an empty string.
 
 ![](images/command-placeholder.png)
 

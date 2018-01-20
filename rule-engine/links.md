@@ -23,7 +23,6 @@ The URLs are automatically [inlined](#inline-links) in email notifications and i
 * [htmlExportLink](#htmlexportlink)
 * [entityLink](#entitylink)
 
-
 ### `serverLink`
 
 ```php
@@ -150,7 +149,7 @@ The inline link mode improves readability by replacing URLs with user-friendly l
   ```
 
 * Link Label: `nmon_cpu`
-* Enabled in Email, HipChat with **Message Format** be set to *html*.
+* Enabled in Email message text, HipChat with **Message Format** be set to *html*.
 
 ### `markdown`
 
