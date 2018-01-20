@@ -6,7 +6,7 @@ Link fields contain URLs to ATSD pages based on the current [window](window.md) 
 
 The link fields can be included in email and web notification messages using placeholders:
 
-```php
+```css
 [${tags.status}] ${entityLink} on Docker host ${getEntityLink(tags.docker-host)}
 ```
 
@@ -26,7 +26,7 @@ The URLs are automatically [inlined](#inline-links) in email notifications and i
 
 ### `serverLink`
 
-```php
+```css
 ${serverLink}
 ```
 
@@ -40,7 +40,7 @@ https://atsd_host:8443/
 
 The `serverLink` field can be used to assemble custom links to various pages in the ATSD web interface:
 
-```php
+```css
 ${serverLink}/metrics/metric.xhtml?metricName=${metric}
 ```
 
@@ -48,7 +48,7 @@ The field is **not** replaced in inline mode.
 
 ### `ruleLink`
 
-```php
+```css
 ${ruleLink}
 ```
 
@@ -64,7 +64,7 @@ https://atsd_host:8443/rule/edit.xhtml?name=docker-container-lifecycle-restart
 
 ### `chartLink`
 
-```php
+```css
 ${chartLink}
 ```
 
@@ -82,7 +82,7 @@ https://atsd_host:8443/portals/series?metric=docker&entity=nurswgvml007&add%20pa
 
 ### `csvExportLink`
 
-```php
+```css
 ${csvExportLink}
 ```
 
@@ -100,7 +100,7 @@ https://atsd_host:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22
 
 ### `htmlExportLink`
 
-```php
+```css
 ${htmlExportLink}
 ```
 
@@ -119,11 +119,11 @@ https://atsd_host:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22
 
 ### `entityLink`
 
-```php
+```css
 ${entityLink}
 ```
 
-Link to current entity that is initialized in the rule window. To retrieve the link for another entity, use the [`getEntityLink`](functions-link.md#getentitylink) function.
+Link to current entity that is initialized in the rule window. 
 
 Displayed as entity label in inline mode.
 
@@ -131,6 +131,12 @@ Example:
 
 ```elm
 https://atsd_host:8443/entities/nurswgvml007
+```
+
+To retrieve the link for another entity, use the [`getEntityLink`](functions-link.md#getentitylink) function.
+
+```css
+${getEntityLink(tags.docker-host)}
 ```
 
 ---
@@ -148,7 +154,7 @@ The inline link mode improves readability by replacing URLs with user-friendly l
 
 * Inline Link
   ```elm
-  <a href="https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu"> nmon_cpu</a>
+  <a href="https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu">nmon_cpu</a>
   ```
 
 * Link Label: `nmon_cpu`
@@ -177,7 +183,7 @@ The inline link mode improves readability by replacing URLs with user-friendly l
   ```
 
 * Inline Link
-  ```
+  ```elm
   <https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu|nmon_cpu>
   ```
 
