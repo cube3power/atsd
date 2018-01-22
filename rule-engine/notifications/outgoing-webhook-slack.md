@@ -55,7 +55,7 @@ Slack Bot is a special account created specifically for automation purposes.
   The target ATSD server must be accessible and have a valid CA-signed [SSL certificate](/administration/ssl-ca-signed.md) installed. Self-signed certificates are not supported by Slack at this time.
 
    ```elm
-   https://user:password@atsd_host:port/api/v1/messages/webhook/slack?entity=slack
+   https://user:password@nur.axibase.com/api/v1/messages/webhook/slack?entity=slack&command.message=event.text&command.date=event.ts&exclude=event.event_ts&exclude=event_time&exclude=event.icons.image*&exclude=*thumb*&exclude=token&exclude=event_id&event.message.edited.ts&event.previous_message.ts
    ```
    
    *Verified* status should be displayed if the request evaluates correctly.
