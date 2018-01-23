@@ -2,14 +2,14 @@
 
 ## Overview
 
-Splits the interval into periods and calculates statistics for each periods.
+Splits the interval into periods and calculates statistics for each period.
 
-Aggregation process:
+The aggregation process is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` into each series separately. <br>`startDate` is inclusive and `endDate` is exclusive.
-2. Split each series' time:value array into periods based on [alignment](period.md#alignment) parameter.
+2. Split each series' `time:value` array into periods based on [alignment](period.md#alignment) parameter.
 3. Discard periods if its start time is earlier than `startDate`.
-4. Apply [statistical function](../../../api/data/aggregation.md) to values in each period and return a modified time:value array for each series where time is the period start time and value is the result of the statistical function.
+4. Apply [statistical function](../../../api/data/aggregation.md) to values in each period and return a modified `time:value` array for each series where time is the period start time and value is the result of the statistical function.
 
 ## Fields
 
@@ -22,7 +22,7 @@ Aggregation process:
 | threshold    | object  | Object containing minimum and and maximum range for a `THRESHOLD_*` aggregator.  |
 | calendar     | object  | Calendar settings for a `THRESHOLD_*` aggregator. |
 | workingMinutes | object | Working minutes settings for a `THRESHOLD_*` aggregator.  |
-| order         | number           | Change the order in which `aggregate` and `group` are executed, the higher the value of `order` the later in the sequence will it be executed.             |
+| order         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
 
 ### period
 
@@ -33,7 +33,7 @@ Aggregation process:
 | unit  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
 | count  | number | Number of time units contained in the period. |
 | align | string | Alignment of the period's start/end time. Default: `CALENDAR`.|
-
+| timezone | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database timezone displayed on the **Settings > System Information** page.|
 Example: `{ "count": 1, "unit": "HOUR" }` or `{ "count": 15, "unit": "MINUTE", "align": "END_TIME" }`.
 
 ### calendar
@@ -46,7 +46,7 @@ Example: `{ "name": "au-nsw-calendar" }`.
 
 ### threshold
 
-* Either `min` or `max` is **required**. 
+* Either `min` or `max` is **required**.
 
 | **Name** | **Type**| **Description** |
 |:---|:---|:---|
@@ -93,7 +93,7 @@ By the default, if the period doesn't contain any detailed values, it will be ex
 The behaviour can be changed by specifying an interpolation function.
 The interpolation function will add a missing period and calculate its value based on previous and next period values.
 
-> Note that missing period values are interpolated from aggregate values of neighbouring periods and not from raw values.
+> Note that missing period values are interpolated from aggregate values of neighboring periods and not from raw values.
 
 #### Interpolation Fields
 
