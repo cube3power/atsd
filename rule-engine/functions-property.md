@@ -11,6 +11,7 @@ Property functions provide a set of convenience methods to retrieve and compare 
 * [property_compare_except](#property_compare_except)
 * [property_map](#property_map)
 * [property_maps](#property_maps)
+* [getPropertyTypes](#getpropertytypes)
 
 ### `property`
 
@@ -185,4 +186,27 @@ Examples:
   
   /* Returns list of maps of propery records received later than 00:00:00 of the previous day */
   property_maps('nurswgvml007','configuration::', 'yesterday')
+```
+
+### `getPropertyTypes`
+
+```javascript
+  getPropertyTypes(string e[, string s[, string e]]) collection
+```
+
+Returns a sorted collection of property types for the specified entity `e`.
+
+Optional start date `s` and end date `e` arguments control the time range for selecting property records. The dates `s` and `e` can be an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
+
+Examples:
+
+```javascript
+  /* Returns property types for entity nurswgvml007*/
+  getPropertyTypes('nurswgvml007')
+  
+  /* Returns property types received after 2018-01-23T13:30:04.000Z */
+  getPropertyTypes('nurswgvml007','2018-01-23T13:30:04.000Z')
+  
+  /* Returns property types received after 00:00:00 of the previous day and before 00:00:00 of the current day*/
+  getPropertyTypes('nurswgvml007','yesterday', 'today')
 ```
