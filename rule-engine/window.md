@@ -73,7 +73,7 @@ Windows in `CANCEL` status do not trigger repeat actions. Such behavior can be e
 
 ## Window Fields
 
-The window fields can be accessed by the [condition](condition.md) and [filter](filters.md) expressions as well as by [placeholders](placeholder.md).
+The window fields can be included in the [condition](condition.md), [filter](filters.md) and [variables](variables.md).
 
 ### Base Fields
 
