@@ -73,7 +73,7 @@ Windows in `CANCEL` status do not trigger repeat actions. Such behavior can be e
 
 ## Window Fields
 
-The window fields can be included in the [condition](condition.md), [filter](filters.md) and [variables](variables.md).
+The window fields can be included in the [condition](condition.md), [filter](filters.md) and [variables](variables.md) according to [Fields Availability](#fields-availability) table.
 
 ### Base Fields
 
@@ -171,5 +171,33 @@ The details table contains entity, entity label, entity tags, command tags, and 
 * [detailsTable('property')](details-table.md#property)
 * [detailsTable('csv')](details-table.md#csv)
 * [detailsTable('json')](details-table.md#json)
+
+
+### Fields Availability
+
+The table shows which fields are available in expressions:
+
+**Field** | **Filter** | **Condition** | **Variables** | **Actions** 
+:---|---|---|---|:---
+status |-|-|-|+
+rule |+|+|+|+
+metric |+|+|+|+
+entity |+|+|+|+
+tags |+|+|+|+
+tags.host |+|+|+|+
+entity.tags |+|+|+|+
+entity.tags.url |+|+|+|+
+entity.label |+|+|+|+
+metric.label |+|+|+|+
+condition |-|-|-|-
+min_interval_expired |-|-|-|- (unexpected value)
+repeat_count |-|-|-|+
+repeat_interval |-|-|-|- (unexpected value)
+rule_filter |-|-|-|+
+severity |-|-|-|+
+window |-|-|-|+
+threshold |-|-|-|-
+value |+|+|+|+
+open_value|-|-|-|+
 
 
