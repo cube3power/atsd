@@ -16,6 +16,7 @@ The functions return a new string with the original input string left unchanged.
 * [startsWith](#startsWith)
 * [endsWith](#endsWith)
 * [split](#split)
+* [list](#list)
 * [coalesce](#coalesce)
 * [keepAfter](#keepafter)
 * [keepAfterLast](#keepafterlast)
@@ -28,6 +29,7 @@ The functions return a new string with the original input string left unchanged.
 * [removeEnding](#removeending)
 * [urlencode](#urlencode)
 * [jsonencode](#jsonencode)
+* [htmlDecode](#htmldecode)
 * [unquote](#unquote)
 * [countMatches](#countmatches)
 * [abbreviate](#abbreviate)
@@ -100,6 +102,23 @@ To access the n-th element in the collection, use square brackets and index (sta
     authors = split(tags.authors, ',')
     authors.size() == 0 ? 'n/a' : authors[0]
   ```
+
+### `list`
+
+```javascript
+  list(string s[, string p]) [string]
+```
+
+Splits string `s` using separator `p` (default is comma ',') into an array of string values. The function discards duplicate items by preserving the first occurrence of each element. 
+
+Unlike the `split()` function, `list()` doesn't handle quotes treating them as regular characters.
+
+Example:
+
+```javascript
+  /* Returns ['hello', '"brave', 'new', 'world"'] */
+  list('hello "brave new world" hello', ' ')
+```
 
 ### `coalesce`
 
@@ -292,6 +311,21 @@ Encodes `s` into the URL format by replacing unsafe characters with "%" followed
 
 Escapes special symbols such as double-quote with backslash to safely use the input string within a JSON object.
 
+### `htmlDecode`
+
+```javascript
+  htmlDecode(string s) string
+```
+
+Example:
+
+```javascript
+  /* Returns 'World > city' */
+  htmlDecode("World &gt; city")
+```
+
+Rethrn a new string with HTML entities in string `s` replaced with corresponding characters.
+
 ### `unquote`
 
 ```javascript
@@ -305,6 +339,7 @@ Removes leading and trailing double and single quotation marks from the string `
 ```javascript
   countMatches(string s, string p) int
 ```
+
 Example:
 
 ```javascript

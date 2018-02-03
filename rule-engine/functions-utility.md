@@ -116,3 +116,4 @@ Example:
     /* Returns "atsd_user:atsd_password" */  
     getURLUserInfo('https://atsd_user:atsd_password@axibase.com/en/products?type=database&status=1')
   ```
+  

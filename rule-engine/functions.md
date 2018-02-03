@@ -128,6 +128,10 @@ The functions retrieve message counts or specific messages.
 * [db_message_count](functions-db.md#db_message_count)
 * [db_message_last](functions-db.md#db_message_last)
 
+### Database SQL Functions
+
+* [executeSqlQuery](functions-db.md#executesqlquery)
+
 ## Mathematical Functions
 
 The math functions perform basic numeric operations on the input number and return a number as the result.
@@ -157,6 +161,7 @@ The text functions transform and compare strings.
 * [startsWith](functions-text.md#startswith)
 * [endsWith](functions-text.md#endswith)
 * [split](functions-text.md#split)
+* [list](functions-text.md#list)
 * [coalesce](functions-text.md#coalesce)
 * [keepAfter](functions-text.md#keepafter)
 * [keepAfterLast](functions-text.md#keepafterlast)
@@ -169,6 +174,7 @@ The text functions transform and compare strings.
 * [removeEnding](functions-text.md#removeending)
 * [urlencode](functions-text.md#urlencode)
 * [jsonencode](functions-text.md#jsonencode)
+* [htmlDecode](functions-text.md#htmldecode)
 * [unquote](functions-text.md#unquote)
 * [countMatches](functions-text.md#countmatches)
 * [abbreviate](functions-text.md#abbreviate)
@@ -186,6 +192,9 @@ The functions format dates and numbers to strings according to the specified pat
 * [date_format](functions-format.md#date_format)
 * [formatInterval](functions-format.md#formatinterval)
 * [formatIntervalShort](functions-format.md#formatintervalshort)
+* [addTable for map](functions-format.md#addtable-for-map)
+* [addTable for maps](functions-format.md#addtable-for-maps)
+* [addTable for list](functions-format.md#addtable-for-list)
 
 ## Collection Functions
 
@@ -266,7 +275,7 @@ The rule functions provide a way to check the status of windows created by other
 * [getURLQuery](functions-utility.md#geturlquery)
 * [getURLUserInfo](functions-utility.md#geturluserinfo)
 
-# Link functions
+## Link functions
 
 * [getEntityLink](functions-link.md#getentitylink)
 * [getPropertyLink](functions-link.md#getpropertylink)
