@@ -68,6 +68,26 @@ Portals Column | Link to the portals page for the entity.
 Properties Column | Link to the properties page for the entity.
 Last Insert | Last insert date for all or one metric collected by the entity with a link to the last insert table.<br>If the column value is not specified, the last insert date is calculated for all metrics. The column value accepts settings in the format of `metric:[lag]`, where the optional `lag` parameter denotes the maximum delay in seconds. If the last insert date for the entity is before `now - lag`, the cell is highlighted with orange background.
 
+#### Last Insert
+
+  * Highlight entitities if last insert date for **all** metrics is before `now - 900 seconds`
+
+  ```javascript
+  :900
+  ```
+  
+  * Highlight entitities if last insert date for the metric `cpu_busy` is before `now - 900 seconds`
+
+  ```javascript
+  cpu_busy:900
+  ```  
+  
+  * Display last insert date for the metric `cpu_busy` without highlighting. Note the terminating colon after the metric name. 
+
+  ```javascript
+  cpu_busy:
+  ```    
+
 ### Links
 
 **Name** | **Description**
