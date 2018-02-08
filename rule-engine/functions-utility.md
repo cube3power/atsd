@@ -3,6 +3,7 @@
 ## Reference
 
 * [ifEmpty](#ifempty)
+* [toBoolean](#toboolean)
 * [getURLHost](#geturlhost)
 * [getURLPort](#geturlport)
 * [getURLProtocol](#geturlprotocol)
@@ -27,6 +28,45 @@ Examples:
     /* Returns hello */  
     ifEmpty('hello', 'world')
   ```
+### `toBoolean`
+
+```javascript
+  toBoolean(object a) boolean
+```
+
+Converts the input string or number `a` to a boolean value. The `true` value is returned by the function if the input `a` is  a string "true", "yes", "on", "1" (case-INsensisitve) or if `a` equals number `1`.
+
+Value table:
+
+Input | Type | boolean
+----|---|---
+yes | string | true
+YES | string | true
+on | string | true
+1 | string | true
+1 | number | true
+no | string | false
+NO | string | false
+hello | string | false 
+0 | string | false
+0 | number | false
+3 | number | false
+  
+Examples:
+
+```javascript
+  // Returns false 
+  
+  toBoolean('hello')  
+  toBoolean(0)
+  toBoolean('off')  
+  
+  // Returns true 
+  
+  toBoolean('YES')    
+  toBoolean(1)  
+  toBoolean('On')
+```
 
 ### `getURLHost`
 
