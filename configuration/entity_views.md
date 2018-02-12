@@ -15,7 +15,7 @@ The view can be accessed by users with a 'read' permission for the entity group 
 Name | View name displayed in the [Entities] tab drop-down.
 Enabled | Enabled or disabled status. Disabled entity views are not visible in the [Entities] tab drop-down.
 Entity Group | Entity Group which members are included in the view.
-Entity Expression | A additional condition that entity group members must satisfy in order to be included in the view. The syntax is the same as supported by expression-based entity groups.
+Entity Expression | A optional boolean condition that members must satisfy in order to be included in the view. The syntax is the same as supported by expression-based entity groups.
 Dynamic Filter | The default [dynamic filter](#dynamic-filters) applied to entities on initial page load.
 Split Table by Column | Enter column header (name) or its value to group entities into separate tables.
 Display in Main Menu | If enabled, the view is accessible under its own tab in the main menu.
