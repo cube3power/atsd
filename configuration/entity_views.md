@@ -104,41 +104,41 @@ The following functions are available in 'Formatting' section:
 
 #### Text Functions 
 
-* [upper](functions-text.md#upper)
-* [lower](functions-text.md#lower)
-* [truncate](functions-text.md#truncate)
-* [coalesce](functions-text.md#coalesce)
-* [keepAfter](functions-text.md#keepafter)
-* [keepAfterLast](functions-text.md#keepafterlast)
-* [keepBefore](functions-text.md#keepbefore)
-* [keepBeforeLast](functions-text.md#keepbeforelast)
-* [replace](functions-text.md#replace)
-* [capFirst](functions-text.md#capfirst)
-* [capitalize](functions-text.md#capitalize)
-* [removeBeginning](functions-text.md#removebeginning)
-* [removeEnding](functions-text.md#removeending)
-* [urlencode](functions-text.md#urlencode)
-* [jsonencode](functions-text.md#jsonencode)
-* [htmlDecode](functions-text.md#htmldecode)
-* [unquote](functions-text.md#unquote)
-* [countMatches](functions-text.md#countmatches)
-* [abbreviate](functions-text.md#abbreviate)
-* [indexOf](functions-text.md#indexof)
-* [locate](functions-text.md#locate)
-* [trim](functions-text.md#trim)
-* [length](functions-text.md#length)
+* [upper](../rule-engine/functions-text.md#upper)
+* [lower](../rule-engine/functions-text.md#lower)
+* [truncate](../rule-engine/functions-text.md#truncate)
+* [coalesce](../rule-engine/functions-text.md#coalesce)
+* [keepAfter](../rule-engine/functions-text.md#keepafter)
+* [keepAfterLast](../rule-engine/functions-text.md#keepafterlast)
+* [keepBefore](../rule-engine/functions-text.md#keepbefore)
+* [keepBeforeLast](../rule-engine/functions-text.md#keepbeforelast)
+* [replace](../rule-engine/functions-text.md#replace)
+* [capFirst](../rule-engine/functions-text.md#capfirst)
+* [capitalize](../rule-engine/functions-text.md#capitalize)
+* [removeBeginning](../rule-engine/functions-text.md#removebeginning)
+* [removeEnding](../rule-engine/functions-text.md#removeending)
+* [urlencode](../rule-engine/functions-text.md#urlencode)
+* [jsonencode](../rule-engine/functions-text.md#jsonencode)
+* [htmlDecode](../rule-engine/functions-text.md#htmldecode)
+* [unquote](../rule-engine/functions-text.md#unquote)
+* [countMatches](../rule-engine/functions-text.md#countmatches)
+* [abbreviate](../rule-engine/functions-text.md#abbreviate)
+* [indexOf](../rule-engine/functions-text.md#indexof)
+* [locate](../rule-engine/functions-text.md#locate)
+* [trim](../rule-engine/functions-text.md#trim)
+* [length](../rule-engine/functions-text.md#length)
 
 #### Formatting Functions 
 
-* [convert](functions-format.md#convert)
-* [formatNumber](functions-format.md#formatnumber)
-* [date_format](functions-format.md#date_format)
-* [formatInterval](functions-format.md#formatinterval)
-* [formatIntervalShort](functions-format.md#formatintervalshort)
+* [convert](../rule-engine/functions-format.md#convert)
+* [formatNumber](../rule-engine/functions-format.md#formatnumber)
+* [date_format](../rule-engine/functions-format.md#date_format)
+* [formatInterval](../rule-engine/functions-format.md#formatinterval)
+* [formatIntervalShort](../rule-engine/functions-format.md#formatintervalshort)
 
 #### Time Functions
 
-* [elapsedTime](#elapsedtime)
+* [elapsedTime](../rule-engine/functions-time.md#elapsedtime)
 
 
 ## Dynamic Filters
@@ -170,14 +170,53 @@ lower(tags.app) LIKE '*hbase*'
 tags['configuration::codename'] = 'Santiago'
 ```
 
+## Split Table by Column
+
+If **Split Table by Column** is specified, the entities are grouped into multiple tables. 
+
+The **Split Table by Column** field accepts an existing column header or its value.
+
+### Split Examples
+
+Assuming there are five entities in the selected entity group:
+
+* Entity name starts with `server*`.
+* Each entity has entity tag `location`
+* Each entity has properties `start_time` and `status` of type `runtime_info`.
+
+Default entity view configuration:
+
+![](images/entity-view-split-config-empty.png)
+
+The entity view without table splitting is displayed as follows, with all entities places into one table:
+
+![](images/entity-view-split-empty.png)
+
+To split the table by entity tag 'location', specify the tag's name in the **Split Table by Column** field:
+
+![](images/entity-view-split-config-location.png)
+
+  ![](images/entity-view-split-location.png)
+
+To group entities by column **header**, set the header name in the **Split Table by Column** field:
+
+![](images/entity-view-split-config-state.png)
+
+  ![](images/entity-view-split-state.png)
+
+If splitting by column **header** is enabled, grouping is performed based on formatted values.
+
+![](images/entity-view-split-config-start-time.png)
+
+![](images/entity-view-split-start-time.png)
+
 ## Portal
 
-If the Multi-Entity Portal is defined manually or the entity view contains at least one 'Series Value' column, the statistics for entities can be viewed on a portal accessible with the [View Portal] button. 
+If the Multi-Entity Portal is assigned manually or the entity view contains 'Series Value' columns, the statistics for entities can be viewed on a portal accessible with the [View Portal] button. 
 
 If no portal is selected, the default portal displays metrics for columns of type 'Series Value'.
 
 The multi-entity portal is any portal that displays a metric for multiple entities using the `${entities}` placeholder.
-
 
 ```ls
 [widget]
