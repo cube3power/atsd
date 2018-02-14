@@ -4,11 +4,13 @@
 <property_type>:[<key>=<value>[,<key>=<value>]]:<tag_name>
 ```
 
-The expression returns a collection of unique tag values matching the specified property type, optional key-value pairs, and the tag name.
+The expression returns tag values for the specified property type, optional key-value pairs, and the tag name.
 
 * `<property_type>` is required.
-* `<key>=<value>` section is optional. Multiple key-value pairs must be separated with comma.
-* `<tag_name>` is required.
+* `<key>=<value>` section is optional. Multiple key-value pairs must be separated with comma. <br>`<value>` supports `?` and `*` wildcards.
+* `<tag_name>` is required, supports `?` and `*` wildcards.
+
+The returned set contains only distinct values.
 
 ## Examples
 
@@ -44,4 +46,24 @@ tag = mount_point
 */
 
 linux.disk:fstype=ext4,name=sda:mount_point
+```
+
+---
+
+```javascript
+/* 
+Returns all tags for disks with key 'id' starting with 'sd' 
+*/
+
+disk:id=sd*:*
+```
+
+---
+
+```javascript
+/*
+Returns tags ending with 'kb/s' for records with key 'id' starting with 'sd'
+*/
+
+disk:id=sd*:*kb/s
 ```
