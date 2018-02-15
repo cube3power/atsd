@@ -2,6 +2,10 @@
 
 ## Overview
 
+The document describes how to relay messages addressed to a Telegram Bot into ATSD for subsequent processing. Typical use cases include replying to information requests and executing predefined actions.
+
+The integration relies on the Telegram Bot API [setWebhook](https://core.telegram.org/bots/api#setwebhook) method to send messages and on the ATSD [webhook](../../api/data/messages/webhook.md) endpoint to receive HTTP requests from Telegram servers and to convert them into message commands that can be stored and processed by the rule engine.
+
 ## Create Telegram Bot
 
 The bot is special user account created for automation and integration purposes. You can use an existing bot or create a new one.
