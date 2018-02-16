@@ -18,13 +18,13 @@ Count-based windows accumulate up to the specified number of samples. The sample
 
 ### Time Based Windows
 
-Time-based windows store samples that were recorded within the specified interval of time and as such they don't limit how many samples are stored in the window. 
+Time-based windows store samples received within the specified time interval. The number of samples in such windows is note limited. 
 
-The start of the interval is initially set to current time minus the window length, and is constantly incremented as the time goes by. Such windows are often called _sliding_ windows. If the timestamp of the incoming command is equal or greater than the start time, the command is added to the window.
+The start of the interval is initially set to current time minus the window length, and is constantly incremented as the time goes by. Such windows are often called _sliding_ windows. If the timestamp of the incoming command is equal or greater than the window start time, the command is added to the window.
 
 > The **end** time in time-based windows is not set (in particular, it is not set to current time) and the window will accept commands with future timestamps unless they're discarded with the [Time filter](filters.md#time-filter) or [filter expression](filters.md#filter-expression) such as `timestamp <= now.getMillis() + 60000`.
 
-Old commands are automatically removed from the window once their timestamp is earlier than the window start time.
+Old commands are automatically removed from the window once their timestamp is before the window start time.
 
 ![Time Based Window](images/time_based_window3.png)
 
@@ -44,7 +44,7 @@ The new windows are assigned initial status of `CANCEL` which is then updated ba
 
 ### Lifecycle
 
-All windows for the current rule are deleted from memory if the rule is deleted as well as when it's modified and saved in the editor.
+When the rule is deleted as well as when it's modified and saved in the rule editor, all windows for the given rule are dropped. The windows are re-created when the new matching commands are received by the database.
 
 ### Triggers
 
@@ -78,6 +78,7 @@ When the window is in `REPEAT` status, the actions can be executed with the freq
 Windows in `CANCEL` status do not trigger _repeat_ actions. Such behavior can be emulated by creating a rule with a negated expression which returns `true` instead of `false` for the same condition.
 
 The window can change to `CANCEL` status when the condition changes from `true` to `false` as well as when the rule is modified, deleted, or the database is orderly shutdown. `On Cancel` triggers are not invoked, even if enabled, when the rule is modified/deleted or in case of shutdown.  This behavior is controlled with `cancel.on.rule.change` server property.
+
 
 ## Window Fields
 
@@ -122,7 +123,7 @@ threshold | string | Override rule | max() > 20
 | source | string | Message type (also `tags.source`) |
 | message | string | Message text |
 
-> The `tags` map for the `message` command contains `type`, `source`, `severity`, and other command tags.
+> The `tags` field for the `message` command contains `type`, `source`, `severity`, and other command tags.
 
 > Alert `severity` value is inherited from message `severity` when the Logging: Severity is set to 'Undefined'.
 
@@ -134,7 +135,7 @@ threshold | string | Override rule | max() > 20
 | keys | map | Property keys. To retrieve key value, use `keys.{name}` |
 | properties | map | Property tags. To retrieve tag value, use `properties.{name}` |
 
-> The `tags` map for the `property` command contains the `keys` map and the `type` field.
+> The `tags` field for the `property` command contains the `keys` map and the `type` field.
 
 ### Time Fields
 
@@ -157,7 +158,7 @@ threshold | string | Override rule | max() > 20
 
 > Fields ending with `_datetime` contain time in ISO 8601 format in UTC timezone, for example `2017-05-30T06:05:39Z`.
 
-> If 'Check On Exit' option is enabled for time-based window, some of the events will be caused by exiting commands and the `timestamp` placeholder will return the time of the command being remove (oldest command), rounded to seconds.
+> If 'Check On Exit' option is enabled for time-based window, some of the events will be caused by exiting commands and the `timestamp` placeholder will return the time of the command being removed (oldest command), rounded to seconds.
 
 > The `now` object's fields can be accessed with `get` methods, e.g. `now.getDayOfWeek() == 4`.
 
