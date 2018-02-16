@@ -113,9 +113,19 @@ If the entity cannot be found, the original input string `e` is returned.
   collection(string s) [string]
 ```
 
-Retrieves a list of strings for the specified named collection `s`. 
+Retrieves a list of strings for the specified named collection `s`. Named collections are defined on the **Data > Named Collections** page.
 
 If the collection is not found, an empty list is returned.
+
+Examples:
+
+```javascript
+tags.location NOT IN collection('dc-locations')
+```
+
+```javascript
+collection('dc-locations').contains(tags.location)
+```
 
 ### `lookup`
 
