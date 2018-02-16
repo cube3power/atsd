@@ -81,7 +81,9 @@ When the rule is deleted or modified with the rule editor, all windows for the g
 
 ## Timers
 
-The condition is re-evaluated each time a new matching command (allowed by the filter) is received by the database. As an alternative to reacting to external commands, you can create rules that are evaluated on schedule using internal **timer** metrics:
+The condition is re-evaluated each time a new matching command (allowed by the filter) is received by the database or removed from the window. 
+
+As an alternative to reacting to external commands, you can create rules that are evaluated on schedule using internal **timer** metrics:
 
 * `timer_15s` - Command is received every 15 seconds.
 * `timer_1m` - Command is received every 1 minute.
