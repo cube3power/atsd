@@ -4,26 +4,26 @@
 
 The functions return URLs to ATSD pages based on the database URL (set the `server.url` property) and the current [window](window.md) context.
 
-The URLs are automatically [inlined](#inline-links) in email notifications and in web notifications that support inline links.
+The URLs are automatically [inlined](links.md#inline-links) in email notifications and in web notifications that support inline links.
 
 The inline links can be also assembled manually using the syntax supported by the notification channel:
-
-* `markdown`
-
-```markdown
-[Error Messages](${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity})
-```
-
-* `pipe` (used by Slack)
-
-```ls
-<${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity}|Error Messages>
-```
-
-* HTML
-
-```html
-<a href="${serverLink}/messages?search=1&severity=CRITICAL&interval.intervalCount=1&interval.intervalUnit=DAY&entity=${entity}">Error Messages</a>
+	
+* `markdown`	
+	
+```markdown	
+[Error Messages](${serverLink}/messages?entity=${entity})	
+```	
+	
+* `pipe` (used by Slack)	
+	
+```ls	
+<${serverLink}/messages?entity=${entity}|Error Messages>	
+```	
+	
+* `html`
+	
+```html	
+<a href="${serverLink}/messages?entity=${entity}">Error Messages</a>	
 ```
 
 ## Reference
@@ -34,6 +34,7 @@ The inline links can be also assembled manually using the syntax supported by th
 * [getCsvExportLink](#getcsvexportlink)
 * [getHtmlExportLink](#gethtmlexportlink)
 * [getChartLink](#getchartlink)
+* [addLink](#addlink)
 
 ### `getEntityLink`
 
@@ -45,7 +46,7 @@ Returns the URL to the entity `e` page on the target ATSD instance. The entity n
 
 If match entity parameter `m` is set to `true`, the entity will be matched by label if it's not found by name.
 
-Optional `f` parameter creates an [inline link](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
+Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
 Example:
 
@@ -75,7 +76,7 @@ Returns the URL to the property table for entity `e` and property type `t` on th
 
 If match entity parameter `m` is set to `true`, the entity will be matched by label if it's not found by name.
 
-Optional `f` parameter creates an [inline link](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
+Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
 Displayed as the value of type `t` in inline mode.
 
@@ -99,7 +100,7 @@ Returned inline link:
 
 Returns the URL to the current rule.
 
-Optional `f` parameter creates an [inline link](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
+Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
 Displayed as rule name in inline mode.
 
@@ -111,7 +112,7 @@ Displayed as rule name in inline mode.
 
 Returns the URL to the **CSV** file with historical statistics for the current metric, entity, and tags.
 
-Optional `f` parameter creates an [inline link](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
+Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
 Displayed as 'CSV Export' link in inline mode.
 
@@ -125,7 +126,7 @@ Displayed as 'CSV Export' link in inline mode.
 
 Returns the URL to the **Data > Export** page for the current metric, entity, and tags.
 
-Optional `f` parameter creates an [inline link](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
+Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
 Displayed as 'HTML Export' link in inline mode.
 
@@ -139,7 +140,7 @@ Displayed as 'HTML Export' link in inline mode.
 
 Returns the URL to the default portal for the current metric, entity, and tags.
 
-Optional `f` parameter creates an [inline link](https://github.com/axibase/atsd/blob/master/rule-engine/links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
+Optional `f` parameter creates an [inline link](links.md#inline-links) in one of supported formats: 'html', 'markdown', and 'pipe' (used by Slack).
 
 Displayed as 'Default' link in inline mode.
 
@@ -154,4 +155,52 @@ The following inline link is returned:
 
 ```elm
 [Default](https://atsd_host:8443/portals/series?metric=docker&entity=nurswgvml007...)
+```
+
+### `addLink`
+
+```javascript
+  addLink(string l, string u) string
+```
+
+Returns the url `u` with a short name `l` based on the current endpoint settings.
+
+If no settings are available, the function returns the original url `u`.
+
+Examples:
+
+* `markdown` (Telegram):
+
+```javascript
+addLink('Error Messages', serverLink + '/messages?entity=' + entity)
+```
+
+The following inline link is returned:
+
+```markdown
+[Error Messages](https://atsd_host:8443/messages?entity=nurswgvml007)
+```
+
+* `pipe` (Slack):
+
+```javascript
+addLink('Error Messages', serverLink + '/messages?entity=' + entity)
+```
+
+The following inline link is returned:
+
+```ls
+<https://atsd_host:8443/messages?entity=nurswgvml007|Error Messages>
+```
+
+* `html` (Email, HipChat, Discord):
+
+```javascript
+addLink('Error Messages', serverLink + '/messages?entity=' + entity)
+```
+
+The following inline link is returned:
+
+```html
+<a href="https://atsd_host:8443/messages?entity=nurswgvml007">Error Messages</a>
 ```
