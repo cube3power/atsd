@@ -19,10 +19,11 @@ The replacements in the original input text, such as email subject, are performe
 
 The expression may refer to:
 
-* [window](window.md#window-fields) fields
-* [entity](../api/meta/entity/list.md#fields) fields
-* user-defined [variables](variables.md)
-* [function](functions.md) results
+* Literal values (constants) of different [data types](variable.md#data-types)
+* [Window](window.md#window-fields) fields
+* [Entity](../api/meta/entity/list.md#fields) fields
+* User-defined [variables](variables.md)
+* [Function](functions.md) results
 
 Unknown fields and variables are evaluated to `null`.
 

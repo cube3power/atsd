@@ -45,7 +45,7 @@ entity != 'nurswgvml007'
 entity LIKE 'nurswgvml*' AND entity IN ('nurswgvml007', 'nurswgvml006')
 ```
 
-The expression may include the below command [fields](window.md#window-fields) and apply [functions](functions.md) except [statistical functions](functions-statistical.md).
+The expression may include command fields listed below, literal values, and [functions](functions.md) except [statistical functions](functions-statistical.md).
 
 Base command fields:
 
