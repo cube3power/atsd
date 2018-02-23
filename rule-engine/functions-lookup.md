@@ -13,6 +13,8 @@ The named collections are listed on the **Data > Named Collections** page.
 * [entity_tag](#entity_tag)
 * [entity_tags](#entity_tags)
 * [getEntity](#getentity)
+* [getEntities](#getentities)
+* [getEntityCount](#getentitycount)
 * [getEntityName](#getentityname)
 * [collection](#collection)
 * [lookup](#lookup)
@@ -87,7 +89,7 @@ entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b', 
 ```
 Retrieves an entity object by name. If `l` set to `true` entity will be searched by label if it is not found by name. By default `l` is false.
 
-The object's [fields](../api/meta/entity/list.md#fields) can be accessed using the dot notation, for example `getEntity('nurswgvml007').label`.
+The object's [fields](entity-fields.md) can be accessed using the dot notation, for example `getEntity('nurswgvml007').label`.
 
 The function returns `null` if the entity `e` is not found.
 
@@ -97,6 +99,56 @@ Example:
   /* Returns an interpolation mode of 'nurswgvml007' entity object */
   getEntity('nurswgvml007').interpolate
 ```
+
+### `getEntities`
+
+```javascript
+  getEntities(string m, string s, string e, string p) [object]
+```
+Returns a list of entity **objects** with last insert date for metric `m` between `s` and `e` and matching the specified expression `p`. 
+
+Expression `p` can include entity [fields](../api/meta/entity/list.md#fields) (except `lastInsertDate`) and [window fields](window.md#window-fields). The entity [fields](entity-fields.md) can be refered to using the dot notation.
+
+Start date `s` and end date `e` is an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
+
+The elements in the list can be retrieved with `.get(index)` method. The first element has an index of `0`.
+
+Examples:
+
+```javascript
+  /* Variable 'ent1' will contain string with entity name and formatted lastInsertTime
+  for the first entity in list 'entities',e.g. 
+  'nurswgvml007 2017-06-21 13:24:52' */
+  entities = getEntities('docker.activecontainers', 'now - 1 * HOUR', 'now', "tags.status != 'deleted'")
+  // entities.get(0).name
+  // date_format(entities.get(0).lastInsertTime, "yyyy-MM-dd HH:mm:ss", "UTC")
+```
+
+* Match using entity object field
+
+```javascript
+  getEntities('df.inodes.used', '2018-01-13T18:08:04Z', '2018-02-13T18:08:04Z', "enabled=true")  
+```
+
+* Match using wildcard
+
+```javascript
+  getEntities('jvm_memory_used', 'now - 4*YEAR', 'now', "tags.alias LIKE '00*'")
+```
+
+* Match using window field 
+
+```javascript
+  getEntities('cpu_busy', 'yesterday', 'now', "interpolate = 'LINEAR' && tags.app = '" + entity.tags.app + "'")
+```
+
+### `getEntityCount`
+
+```javascript
+  getEntitiyCount(string m, string s, string e, object p) integer
+```
+
+Same as `getEntities(string m, string s, string e, object p).size()`.
 
 ### `getEntityName`
 
