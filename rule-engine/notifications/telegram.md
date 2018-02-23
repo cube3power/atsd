@@ -116,25 +116,22 @@ Lookup the chat id as described below and copy the chat id for future reference.
 ## Configure Web Notification in ATSD
 
 * Open **Alerts > Web Notifications** page.
-* Click on an existing `TELEGRAM` template, or click the **Create** button below and switch the form to `TELEGRAM` type.
-* Enter the `BOT_TOKEN` value into the `bot_id` field.
-* Enter the chat id into the `chat_id` field.
+* Click on an existing `TELEGRAM` template, or click the **Create** button below and select the `TELEGRAM` type.
+* Specify the unique `Name` of the notification.
+
+    ![](images/telegram_2.png)
+    
+* Enter the `BOT_TOKEN` value into the `Bot ID` field.
+* Enter the chat id into the `Chat ID` field.
+* Select **Test Portal** to verify screenshot delivery.
 
   ![](images/telegram_config.png)
 
-* Click **Test**.
+* Click **Test**.    
 
-   ![](images/test_message.png)
+  ![](images/telegram_1.png)
 
-* Select **Test Portal** to verify screenshot delivery.
-
-   ![](images/new_test_portal.png)   
-
-* Click **Send Screenshot**.
-
-   ![](images/send_screen.png)
-
-* If tests are passing OK, check **Enable**, click **Save**.
+* If test is passing OK, check **Enable**, click **Save**.
 
 ## Proxy Settings
 
@@ -158,6 +155,15 @@ NGINX API Gateway Path for Telegram:
 |Parse Mode|Send [Markdown](https://core.telegram.org/bots/api#markdown-style) or [HTML](https://core.telegram.org/bots/api#html-style) if you want show bold, italic, fixed-width text or inline URLs in your message.|
 |Disable Notifications|Sends the message silently. Users will receive a notification with no sound.|
 |Disable Web Page Preview|Disables link previews for links in this message.|
+|Details Table Format|The default format for the alerts detail table.|
+|Add Links to Portals|Send a follow up message with chart links after each message containing portal screenshots.|
+|Receive Updates|Poll for messages addressed to the bot user and process them in ATSD as messages.|
+
+## Reacting to Bot Messages
+
+The bot account can be used both to deliver notifications to end users, as well as to react to messages addressed to the bot itself. 
+
+In order to receive incoming messages, configure an [outgoing webhook](outgoing-webhook-telegram.md) or set **Receive Updates** setting to 'yes'. The [webhook](outgoing-webhook-telegram.md) integration requires ATSD server to be reachable from Telegram API servers.
 
 ## Testing Notification Rule
 
