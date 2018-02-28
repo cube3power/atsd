@@ -8,7 +8,7 @@ Enter the following query:
 
 ```sql
 SELECT entity, metric, datetime, value
-  FROM 'my-metric'
+  FROM "my-metric"
 WHERE entity = 'my-entity'
   AND datetime >= '2017-05-01T00:00:00Z'
 ORDER BY datetime
@@ -20,7 +20,7 @@ Modify the query to add aggregation and groupings:
 
 ```sql
 SELECT entity, datetime, MAX(value), COUNT(value)
-  FROM 'my-metric'
+  FROM "my-metric"
 WHERE entity = 'my-entity'
   AND datetime >= '2017-05-01T00:00:00Z'
 GROUP BY entity, PERIOD(1 HOUR)
