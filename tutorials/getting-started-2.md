@@ -2,17 +2,14 @@
 
 ### Create Portal
 
-* Open the **Portals** page:
+* Click on **Portals** link in the top menu.
+  
+  ![](resources/getting-started-2_1.png)
 
-    * click on **Portals** at right upper corner
-    * click on **Configure**
+* Click on **Create**.
 
-    ![](resources/getting-started-2_1.png)
-
-* Scroll down and click **Create**.
-
-    ![](resources/getting-started-2_2.png)
-
+  ![](resources/getting-started-2_2.png)
+  
 * Copy the following configuration into the **Content** area: 
 
     ```ls
