@@ -18,7 +18,9 @@
 * [Rule Functions](#rule-functions)
 * [Utility Functions](#rule-functions)
 * [Link Functions](#link-functions)
+* [Portal Functions](#portal-functions)
 * [Security Functions](#security-functions)
+
 
 ## Overview
 
@@ -291,6 +293,11 @@ The rule functions provide a way to check the status of windows created by other
 * [getChartLink](functions-link.md#getchartlink)
 * [addLink](functions-link.md#addlink)
 
+## Portal Functions
+
+Portal functions allow attaching custom portals to email and web notifications.
+
+* [addPortal](functions-portal.md#addportal)
 
 ## Security Functions
 
@@ -299,3 +306,4 @@ The rule functions provide a way to check the status of windows created by other
 * [userAllowEntity](functions-security.md#userallowentity)
 * [userAllowEntityGroup](functions-security.md#userallowentitygroup)
 * [userAllowPortal](functions-security.md#userallowportal)
+

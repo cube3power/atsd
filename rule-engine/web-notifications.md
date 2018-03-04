@@ -127,7 +127,7 @@ Fill out the required fields for the given notification type.
 
 Click 'Test' to verify the delivery.
 
-If the notification type supports sending charts, select one of the portals from the 'Test Portal' drop-down and click 'Send Screenshot'.
+If the notification type supports sending charts, select one of the portals from the 'Test Portal' drop-down.
 
 The notification request is successful if the endpoint returns status `200` (OK).
 
@@ -173,7 +173,7 @@ Sample alert message with placeholders:
 [${status}] ${rule} for ${entity} ${tags}.
 ```
 
-The alert message can include links to ATSD resources using [link placeholders](placeholders.md#link-placeholders) such as the `${chartLink}`.
+The alert message can include links to ATSD resources using [link placeholders](links.md) such as the `${chartLink}`.
 
 ```javascript
 ${chartLink}
@@ -191,9 +191,24 @@ The text can include [control flow](control-flow.md) statements for conditional 
 
 ### Attachments
 
-The option to attach chart screenshots and alert detail tables is enabled in the rule editor if the capability is implemented by the API of the receiving service.
+Attachments options are enabled in the rule editor if the capability is implemented by the API of the receiving service.
 
 ![](images/notify-attach.png)
+
+The option `Attach Portals` allows to send one or more portals. If a portal is a [template](../portals/creating-and-assigning-portals.md#template-portals), placeholders such as entity, metric, tags will be resolved from alert time series key.
+
+![](images/notify-attach-4.png)
+
+The option `Series Chart` allows to send default portal for the current metric, entity and tags as an image. 
+
+![](images/notify-attach-1.png)
+
+The option `Attach Details` allows to send alert details table. It is possible to specify the [format](details-table.md#formats) of the details table or the [Telegram](./notifications/telegram.md) endpoint.
+
+![](images/notify-attach-2.png)
+
+![](images/notify-attach-3.png)
+
 
 ### Multiple Endpoints
 
@@ -209,7 +224,9 @@ To temporarily disable sending alerts from all rules through the selected notifi
 
 Notification results are recorded in the database as messages and can be viewed under the 'notification' type on the Message Search page.
 
+```elm
 https://atsd_host:8443/messages?search=1&search=&type=notification&interval.intervalCount=1&interval.intervalUnit=WEEK
+```
 
 ![](images/notify-error.png)
 
@@ -217,7 +234,9 @@ https://atsd_host:8443/messages?search=1&search=&type=notification&interval.inte
 
 The number of notifications sent per minute can be monitored with the [`web_service_notifications_per_minute`](../administration/monitoring.md#rule-engine) metric collected by the database.
 
+```elm
 https://atsd_host:8443/portals/series?entity=atsd&metric=web_service_notifications_per_minute
+```
 
 ![](images/notifications-monitoring.png)
 
