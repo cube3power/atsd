@@ -304,7 +304,8 @@ Returns the number of message records matching the specified interval `i`, messa
 ```
 Returns the most recent [message](../api/data/messages/query.md#fields-1) record matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
 
-The returned object's [fields](../api/data/messages/query.md#fields-1) can be accessed using the dot notation, for example `db_message_last('1 hour', 'webhook', '').date`.
+The returned object's [fields](../api/data/messages/query.md#fields-1) can be accessed using the dot notation, for example `db_message_last('1 hour', 'webhook', '').timestamp`.
+> Note `date` is `null` due to milliseconds time format used by message object and stored in the `timestamp` field. 
 
 ---
 
@@ -326,6 +327,7 @@ The following matching rules apply:
 
 * Tags:
   * If the tags `t` argument is specified as `null` or empty string `''`, all tags are matched.
+  * To match records with empty tags use `'tags.isEmpty()=true'` or `'tags.size()=0'` in expression `p`.
   * The tags `t` argument matches records that include the specified tags but may also include other tags.
   * The tags `t` argument can be specified as follows:
     - String containing one or multiple `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
@@ -384,14 +386,17 @@ The following matching rules apply:
   Retrieve last message with text starting with 'docker start sftp*'
   */
   db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 'slack', 'message LIKE "docker start sftp*"')
-```
 
-```javascript 
   /* 
   Returns the most recent message within 1 day for the current entity,
   containg tag 'api_app_id=583' and regardless of type and source. 
   */
   db_message_last('1 day', null, null, ["api_app_id":"583"], entity)
+  
+  /*
+  Returns message with type 'webhook' and empty tags.
+  */
+  db_message_last('15 second', 'webhook', '',  '', '', "tags.isEmpty()=true")
 ```
 
 ## SQL Functions
