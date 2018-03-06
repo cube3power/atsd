@@ -1632,16 +1632,37 @@ GROUP BY entity
 LIMIT 1
 ```
 
-The above query would read all samples contained in the 'm-1' metric in the database, even though it would return only 1 record as instructed by the `LIMIT 1` clause.
+The above query retrieves all records for the 'm-1' metric, even though it returns only 1 record as instructed by the `LIMIT` clause.
 
 ## Inline Views
 
-Inline view is a subquery specified in the `FROM` clause. It defines a virtual table to be operated on by the containing or parent query. The inline view implements multi-stage processing. For example, a subquery can first calculate hourly maximums from which the parent query will compute an average hourly maximum for the days in the week.
+Inline view is a subquery specified in the `FROM` clause. It defines a virtual table to be processed by the parent query. 
+
+```sql
+-- parent query
+SELECT env, MAX(avg_val)
+FROM (
+  -- subquery acting as table
+  SELECT entity, entity.tags.environment AS env, avg(value) AS avg_val
+    FROM "cpu_busy" 
+    WHERE datetime >= CURRENT_DAY
+  GROUP BY entity
+)
+GROUP BY env
+```
+
+```ls
+| env  | max(avg_val) | 
+|------|--------------| 
+| prod |         24.1 | 
+| test |          8.2 | 
+```
+
+The example below calculates hourly maximums from which the parent query computes a daily average (average hourly maximum).
  
 ```sql
 SELECT datetime, AVG(value) AS "daily_average" 
-  FROM -- actual table replaced with subquery
-  (
+  FROM (
     SELECT datetime, MAX(value) AS "value"
       FROM "mpstat.cpu_busy" WHERE datetime >= CURRENT_WEEK
     GROUP BY PERIOD(1 HOUR)
@@ -1655,20 +1676,15 @@ GROUP BY PERIOD(1 DAY)
 | 2017-08-14 00:00:00 | 96.1          | 
 | 2017-08-15 00:00:00 | 96.6          | 
 | 2017-08-16 00:00:00 | 98.8          | 
-| 2017-08-17 00:00:00 | 95.4          | 
-| 2017-08-18 00:00:00 | 98.3          | 
-| 2017-08-19 00:00:00 | 96.1          | 
-| 2017-08-20 00:00:00 | 93.8          | 
 ```
 
-A subquery can contain only columns with [predefined](#predefined-columns) names such as 'metric', 'entity', 'value', 'datetime', etc.
-If the subquery column is based on an expression or function, assign one of the predefined names to rename it.
+If the subquery column is based on an expression or function, rename it with an alias that can be referenced in the parent query.
 
 ```sql
-MAX(value) AS "value"
+MAX(value) AS "mval"
 ```
 
-A subquery can include another, nested, subquery. Unlimited nested subqueries are supported. 
+A subquery can include a nested subquery. Unlimited nested subqueries are supported. 
 
 ```sql
 SELECT MAX(value) FROM (
