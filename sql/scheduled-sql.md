@@ -25,15 +25,17 @@ Scheduling frequency is controlled with the `Schedule` field containing a [`cron
 * CSV
 * JSON
 * Excel (xlsx)
+* HTML
 
 CSV files can be optionally archived with zip or gzip compression.
+
+The HTML format is optimized for broad compatibility with common deasktop and web-based email clients.
 
 ### Sample Reports
 
 * [sql-report.csv](examples/sql-report.csv)
 * [sql-report.json](examples/sql-report.json)
 * [sql-report.xlsx](examples/sql-report.xlsx)
-
 
 ## Decimal Precision
 
@@ -74,13 +76,15 @@ The date placeholder may include the following calendar units:
 
 ### Email
 
-To distribute report files via email, enable the **Export** section by the clicking on the header and specify an email subject and one or multiple email addresses, separated by comma or space.
+To distribute report files via email, enable the **Export** section, specify an email subject and one or multiple email addresses, separated by comma or space.
 
 ![File](images/sql-scheduled-email.png)
 
 The `Send Empty Report` and `Send Error Report` settings control whether the report should be emailed in case of an empty result or an error.
 
-The `Send Empty Report` option in particular, when disabled, can be used for alert purposes whereby a report is sent only if unexpected or abnormal results are found by the query.
+The `Send Empty Report` option in particular, when disabled, can be used for alert purposes whereby a report is sent only if the resultset is not empty.
+
+The email subject field support the date placeholder, for example `${yyyy-MM-dd}`.
 
 ### Link
 

@@ -1718,39 +1718,102 @@ GROUP BY PERIOD (1 HOUR)
 
 ## Joins
 
-Data for multiple virtual tables (metrics) can be merged with the `JOIN` and `FULL OUTER JOIN` clauses.
+Data for multiple virtual tables (metrics) can be merged by utilizing the join instructions:
 
-The syntax follows the SQL-92 notation using the `JOIN` clause as opposed to enumerating columns in the `WHERE` clause according to ANSI-89.
+* `JOIN`
+* `FULL OUTER JOIN`
 
-Since joined tables in ATSD always contain the same predefined columns, an `ON` condition does not have to be specified explicitly and can be omitted:
+### JOIN Syntax
 
-| **Compact Syntax** | **Standard Syntax** |
+The syntax follows the SQL-92 notation using the `JOIN ... ON` clause instead of enumerating columns in the `WHERE` clause per ANSI-89.
+
+```sql
+  FROM tbl t1 
+     JOIN tbl t2 
+      ON  t1.time AND t2.time 
+      AND t1.entity = t2.entity 
+      AND t1.tags = t2.tags
+```
+
+Because the schemas of the joined tables contain the same predefined columns, the `ON` condition can be omitted.
+
+The default `ON` condition can be modified with the `USING ENTITY` instruction in which case series tags are ignored, and records are joined on entity and time instead.
+
+| **Compact Syntax** | **SQL-92 Syntax** |
 |:---|---|
-| `... JOIN speed t2` | JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity AND t1.tags = t2.tags |
-| `... JOIN USING ENTITY speed t2` | JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity |
-| `... FULL OUTER JOIN speed t2` | FULL OUTER JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity AND t1.tags = t2.tags |
-| `... FULL OUTER JOIN USING ENTITY speed t2` | FULL OUTER JOIN speed t2 ON t1.time AND t2.time AND t1.entity = t2.entity |
+| `... tbl t1 JOIN tbl t2` | JOIN tbl t2 ON t1.time AND t2.time AND t1.entity = t2.entity AND t1.tags = t2.tags |
+| `... tbl t1 JOIN USING ENTITY tbl t2` | JOIN tbl t2 ON t1.time AND t2.time AND t1.entity = t2.entity |
+| `... tbl t1 FULL OUTER JOIN tbl t2` | FULL OUTER JOIN tbl t2 ON t1.time AND t2.time AND t1.entity = t2.entity AND t1.tags = t2.tags |
+| `... tbl t1 FULL OUTER JOIN USING ENTITY tbl t2` | FULL OUTER JOIN tbl t2 ON t1.time AND t2.time AND t1.entity = t2.entity |
 
 The `ON` condition, if specified, can refer only to `entity`, `time/datetime`, and `tags` columns.
 
-Because `JOIN` queries combine rows from multiple tables with the same columns, it is necessary to disambiguate references to these columns in the `SELECT` expression by prepending the table name followed by `.` before the column name.
+To disambiguate references in the `SELECT` expression, add the table name/alias followed by `.` before the column name.
+
+```sql
+  SELECT t1.entity ... FROM tbl t1
+```
+
+### `JOIN` with `USING ENTITY`
+
+The `USING ENTITY` clause modifies the default `JOIN` condition.
+
+When `USING ENTITY` is specified, rows are joined by entity and time instead of entity, time, and series tags.
+
+This allows merging of tables with different tag columns, including merging a series without tag columns with a series containing multiple tag columns.
+
+`USING ENTITY` is supported in both inner and outer `JOIN` queries.
+
+```sql
+SELECT t1.entity, t1.datetime, AVG(t1.value), AVG(t2.value), t1.tags.*, t2.tags.*
+  FROM "mpstat.cpu_busy" t1
+  JOIN USING ENTITY "df.disk_used" t2
+WHERE t1.datetime >= CURRENT_HOUR
+  AND t1.entity = 'nurswgvml007'
+GROUP BY t1.entity, t1.tags, t2.tags, t1.PERIOD(5 MINUTE)
+```
+
+```ls
+| entity       | datetime             | AVG(t1.value) | AVG(t2.value) | disk_used.tags.mount_point | disk_used.tags.file_system          |
+|--------------|----------------------|--------------:|--------------:|----------------------------|-------------------------------------|
+| nurswgvml007 | 2016-06-18T10:03:00Z | 100.0         | 1744011571.0  | /mnt/u113452               | //u113452.nurstr003/backup          |
+| nurswgvml007 | 2016-06-18T10:03:00Z | 100.0         | 8686400.0     | /                          | /dev/mapper/vg_nurswgvml007-lv_root |
+```
+
+### `JOIN` Filtering
+
+The filter condition specified in the `WHERE` clause is applied **before** executing the `JOIN` operation.
+
+```sql
+SELECT t1.datetime, t1.entity, t1.value, t2.datetime, t2.entity, t2.value, t2.tags
+  FROM "mpstat.cpu_busy" t1
+  FULL OUTER JOIN "df.disk_used" t2
+WHERE datetime BETWEEN '2018-03-09T07:07:00Z' AND '2018-03-09T07:08:00Z'
+  AND t1.entity = 'nurswghbs001'
+```
+
+Because join follows filtering, the results below contain rows with `NULL` values in the `t1.entity` column despite this column being checked in the `WHERE` condition.
+
+```
+| t1.datetime           | t1.entity     | t1.value  | t2.datetime           | t2.entity     | t2.value  | t2.tags                                | 
+|-----------------------|---------------|-----------|-----------------------|---------------|-----------|----------------------------------------| 
+| 2018-03-09T07:07:05Z  | nurswghbs001  | 4.4       | null                  | null          | null      | null                                   | 
+| null                  | null          | null      | 2018-03-09T07:07:42Z  | nurswghbs001  | 248909.0  | file_system=/dev/md2;mount_point=/     | 
+
+```
+
 
 ### JOIN
 
-The `JOIN` clause allows merging records for multiple metrics collected by the same entity into one result set, even if underlying series are not chronologically synchronized.
+The `JOIN` clause allows merging records in multiple tables for the **same** entity into one result set.
 
-The default `JOIN` condition includes entity, time, and series tags. The condition can be modified with the `USING ENTITY` clause in which case series tags are ignored, and records are joined on entity and time instead.
+The default `JOIN` condition includes:
+* `entity` column
+* `time` column
+* `tags` column
 
-```sql
-SELECT t1.datetime, t1.entity, t1.value, t2.value, t3.value
-  FROM "mpstat.cpu_system" t1
-  JOIN "mpstat.cpu_user" t2
-  JOIN "mpstat.cpu_iowait" t3
-WHERE t1.datetime >= '2016-06-16T13:00:00Z' AND t1.datetime < '2016-06-16T13:10:00Z'
-  AND t1.entity = 'nurswgvml006'
-```
 
-In this case, since timestamps for each of these metrics are identical and being collected by the same script, `JOIN` produces merged rows for all the detailed records. This is typically the case when multiple metrics are inserted with one command or when time is controlled externally.
+If the timestamps for joined metrics are identical, the `JOIN` operation merges rows for all the detailed records. This is typically the case when multiple metrics are inserted with one command.
 
 ```ls
 | datetime             | entity       | t1.value | t2.value | t3.value |
@@ -1760,9 +1823,15 @@ In this case, since timestamps for each of these metrics are identical and being
 | 2016-06-16T13:00:33Z | nurswgvml006 | 0.0      | 1.0      | 0.0      |
 ```
 
-As in the example above, 'cpu_system', 'cpu_user', 'cpu_iowait' measurements are obtained by invoking the `mpstat` command and are timestamped by the collecting script with the same time.
+As in the example above, 'cpu_system', 'cpu_user', 'cpu_iowait' were recorded by the collecting script with the same time.
 
-However, when merging records for irregular metrics collected by independent sources, `JOIN` results may contain only a subset of rows with identical times.
+```ls
+datetime d:2016-06-16T13:00:01Z e:nurswgvml006 m:mpstat.cpu_system=13.3 m.mpstat.cpu_user=21.0 m:mpstat.cpu_iowait=2.9
+datetime d:2016-06-16T13:00:17Z e:nurswgvml006 m:mpstat.cpu_system=1.0 m.mpstat.cpu_user=2.0 m:mpstat.cpu_iowait=13.0
+datetime d:2016-06-16T13:00:33Z e:nurswgvml006 m:mpstat.cpu_system=0.0 m.mpstat.cpu_user=1.0 m:mpstat.cpu_iowait=0.0
+```
+
+However, when merging records for irregular metrics, `JOIN` results may contain only a subset of rows with identical times.
 
 ```sql
 SELECT t1.datetime, t1.entity, t1.value AS cpu, t2.value AS mem
@@ -1822,31 +1891,6 @@ WHERE t1.datetime >= '2016-06-16T13:00:00Z' AND t1.datetime < '2016-06-16T13:10:
 | 2016-06-16T13:00:59Z | nurswgvml006 | 1743057408.0 | 83.1     | //u113452.nurstr003/backup      | /mnt/u113452        |
 ```
 
-### JOIN with USING ENTITY
-
-The `USING ENTITY` clause modifies the default `JOIN` condition.
-
-When `USING ENTITY` is specified, rows are joined by entity and time instead of entity, time, and series tags.
-
-This allows merging of tables with different tag columns, including merging a series without tag columns with a series containing multiple tag columns.
-
-`USING ENTITY` is supported in both inner and outer `JOIN` queries.
-
-```sql
-SELECT t1.entity, t1.datetime, AVG(t1.value), AVG(t2.value), t1.tags.*, t2.tags.*
-  FROM "mpstat.cpu_busy" t1
-  JOIN USING ENTITY "df.disk_used" t2
-WHERE t1.datetime >= CURRENT_HOUR
-  AND t1.entity = 'nurswgvml007'
-GROUP BY t1.entity, t1.tags, t2.tags, t1.PERIOD(5 MINUTE)
-```
-
-```ls
-| entity       | datetime             | AVG(t1.value) | AVG(t2.value) | disk_used.tags.mount_point | disk_used.tags.file_system          |
-|--------------|----------------------|--------------:|--------------:|----------------------------|-------------------------------------|
-| nurswgvml007 | 2016-06-18T10:03:00Z | 100.0         | 1744011571.0  | /mnt/u113452               | //u113452.nurstr003/backup          |
-| nurswgvml007 | 2016-06-18T10:03:00Z | 100.0         | 8686400.0     | /                          | /dev/mapper/vg_nurswgvml007-lv_root |
-```
 
 ### FULL OUTER JOIN
 
