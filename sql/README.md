@@ -1718,14 +1718,76 @@ GROUP BY PERIOD (1 HOUR)
 
 ## Joins
 
-Data for multiple virtual tables (metrics) can be merged by utilizing the join instructions:
+The `JOIN` clause merges records from multiple tables. The database implements inner and outer joins.
 
-* `JOIN`
-* `FULL OUTER JOIN`
+* Rows returned by an inner join contain equal values for joined columns.
+
+* Rows returned by an outer join contain equal or `null` values for joined columns.
+
+
+### JOIN Example
+
+Metric `m_1` records:
+
+```ls
+| m_1.datetime     | m_1.value  | m_1.entity | 
+|------------------|------------|------------| 
+| 2018-03-15 18:00 | 1.0        | e_1        | 
+| 2018-03-15 18:05 | 3.0        | e_1        | 
+```
+
+Metric `m_2` records:
+
+```ls
+| m_2.datetime     | m_2.value  | m_2.entity | 
+|------------------|------------|------------| 
+| 2018-03-15 18:01 | 2.0        | e_1        | 
+| 2018-03-15 18:05 | 4.0        | e_1        | 
+| 2018-03-15 18:10 | 6.0        | e_1        | 
+```
+
+* Inner Join Query
+
+```sql
+SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
+  FROM m_1
+  JOIN m_2 
+  /*  ON m_1.time = m_2.time
+       AND m_1.entity = m_2.entity
+       AND m_1.tags = m_2.tags */
+  WHERE datetime BETWEEN '2018-03-15 18:00:00' AND '2018-03-15 18:15:00'
+```
+
+```ls
+| m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value | 
+|-------------------|-------------------|------------|-----------| 
+| 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       | 
+```
+
+* Outer Join Query
+
+```sql
+SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
+  FROM m_1
+  OUTER JOIN m_2 
+  /*  ON m_1.time = m_2.time
+       AND m_1.entity = m_2.entity
+       AND m_1.tags = m_2.tags */
+  WHERE datetime BETWEEN '2018-03-15 18:00:00' AND '2018-03-15 18:15:00'
+```
+
+```ls
+| m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value | 
+|-------------------|-------------------|------------|-----------| 
+| 2018-03-15 18:00  | null              | 1.0        | null      | 
+| null              | 2018-03-15 18:01  | null       | 2.0       | 
+| 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       | 
+| null              | 2018-03-15 18:10  | null       | 6.0       | 
+```
 
 ### JOIN Syntax
 
-The syntax follows the SQL-92 notation using the `JOIN ... ON` clause instead of enumerating columns in the `WHERE` clause per ANSI-89.
+The syntax follows the `SQL-92` notation for enumerating the compared columns.
 
 ```sql
   FROM tbl t1 
@@ -1735,54 +1797,54 @@ The syntax follows the SQL-92 notation using the `JOIN ... ON` clause instead of
       AND t1.tags = t2.tags
 ```
 
-Because the schemas of the joined tables contain the same predefined columns, the `ON` condition can be omitted.
-
-The default `ON` condition can be modified with the `USING ENTITY` instruction in which case series tags are ignored, and records are joined on entity and time instead.
+The `ON` condition can compare only the predefined columns `entity`, `time/datetime`, and `tags`. Since the tables contain the same predefined columns, the `ON` condition is optional and can be omitted.
 
 | **Compact Syntax** | **SQL-92 Syntax** |
 |:---|---|
-| `... tbl t1 JOIN tbl t2` | JOIN tbl t2 ON t1.time AND t2.time AND t1.entity = t2.entity AND t1.tags = t2.tags |
-| `... tbl t1 JOIN USING ENTITY tbl t2` | JOIN tbl t2 ON t1.time AND t2.time AND t1.entity = t2.entity |
-| `... tbl t1 FULL OUTER JOIN tbl t2` | FULL OUTER JOIN tbl t2 ON t1.time AND t2.time AND t1.entity = t2.entity AND t1.tags = t2.tags |
-| `... tbl t1 FULL OUTER JOIN USING ENTITY tbl t2` | FULL OUTER JOIN tbl t2 ON t1.time AND t2.time AND t1.entity = t2.entity |
+| `FROM tbl_1 t1`<br>` JOIN tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl t2`<br>` ON t1.time AND t2.time`<br>` AND t1.entity = t2.entity AND t1.tags = t2.tags` |
+| `FROM tbl_1 t1`<br>` FULL OUTER JOIN tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>` ON t1.time AND t2.time`<br>` AND t1.entity = t2.entity AND t1.tags = t2.tags` |
 
-The `ON` condition, if specified, can refer only to `entity`, `time/datetime`, and `tags` columns.
+The `ON` condition can be modified with the `USING entity` instruction in which case series `tags` are ignored, and records are joined on `entity` and `time` columns instead.
 
-To disambiguate references in the `SELECT` expression, add the table name/alias followed by `.` before the column name.
+| **Compact Syntax** | **SQL-92 Syntax** |
+|:---|---|
+| `FROM tbl_1 t1`<br>` JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl_2 t2`<br>` ON t1.time AND t2.time`<br>` AND t1.entity = t2.entity` |
+| `FROM tbl_1 t1`<br>` FULL OUTER JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>` ON t1.time AND t2.time`<br>` AND t1.entity = t2.entity` |
+
+> Note that self-joins (table is merged with itself) is not supported.
+
+### JOIN Results
+
+To disambiguate column references in the join query, use qualified column names.
 
 ```sql
-  SELECT t1.entity ... FROM tbl t1
+  SELECT table_1.entity ... FROM table_1 t1
+  SELECT      t1.entity ... FROM table_1 t1
 ```
 
-### `JOIN` with `USING ENTITY`
+The `SELECT *` and `SELECT {table_name}.*` expressions in join queries include qualified column names such as `t1.datetime`.
 
-The `USING ENTITY` clause modifies the default `JOIN` condition.
-
-When `USING ENTITY` is specified, rows are joined by entity and time instead of entity, time, and series tags.
-
-This allows merging of tables with different tag columns, including merging a series without tag columns with a series containing multiple tag columns.
-
-`USING ENTITY` is supported in both inner and outer `JOIN` queries.
+In addition to default columns, the `JOIN` query results include `datetime` and `time` columns containing a row timestamp calculated as `COALESCE(t1.datetime, t2.datetime, ...)`.
 
 ```sql
-SELECT t1.entity, t1.datetime, AVG(t1.value), AVG(t2.value), t1.tags.*, t2.tags.*
-  FROM "mpstat.cpu_busy" t1
-  JOIN USING ENTITY "df.disk_used" t2
-WHERE t1.datetime >= CURRENT_HOUR
-  AND t1.entity = 'nurswgvml007'
-GROUP BY t1.entity, t1.tags, t2.tags, t1.PERIOD(5 MINUTE)
+SELECT datetime, m_1.datetime, m_2.datetime, m_1.value, m_2.value
+  FROM m_1
+  OUTER JOIN m_2 
+  WHERE datetime BETWEEN '2018-03-15 18:00:00' AND '2018-03-15 18:15:00'
 ```
 
 ```ls
-| entity       | datetime             | AVG(t1.value) | AVG(t2.value) | disk_used.tags.mount_point | disk_used.tags.file_system          |
-|--------------|----------------------|--------------:|--------------:|----------------------------|-------------------------------------|
-| nurswgvml007 | 2016-06-18T10:03:00Z | 100.0         | 1744011571.0  | /mnt/u113452               | //u113452.nurstr003/backup          |
-| nurswgvml007 | 2016-06-18T10:03:00Z | 100.0         | 8686400.0     | /                          | /dev/mapper/vg_nurswgvml007-lv_root |
+| datetime          | m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value | 
+|-------------------|-------------------|-------------------|------------|-----------| 
+| 2018-03-15 18:00  | 2018-03-15 18:00  | null              | 1.0        | null      | 
+| 2018-03-15 18:01  | null              | 2018-03-15 18:01  | null       | 2.0       | 
+| 2018-03-15 18:05  | 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       | 
+| 2018-03-15 18:10  | null              | 2018-03-15 18:10  | null       | 6.0       | 
 ```
 
 ### `JOIN` Filtering
 
-The filter condition specified in the `WHERE` clause is applied **before** executing the `JOIN` operation.
+The `WHERE` filter is applied **before** the `JOIN` operation.
 
 ```sql
 SELECT t1.datetime, t1.entity, t1.value, t2.datetime, t2.entity, t2.value, t2.tags
@@ -1792,7 +1854,7 @@ WHERE datetime BETWEEN '2018-03-09T07:07:00Z' AND '2018-03-09T07:08:00Z'
   AND t1.entity = 'nurswghbs001'
 ```
 
-Because join follows filtering, the results below contain rows with `NULL` values in the `t1.entity` column despite this column being checked in the `WHERE` condition.
+Note that the `t1.entity` column below contains rows with `null` values even though this column was checked in the `WHERE` condition. In this example, `null` values were created at the `OUTER JOIN` stage.
 
 ```
 | t1.datetime           | t1.entity     | t1.value  | t2.datetime           | t2.entity     | t2.value  | t2.tags                                | 
@@ -1802,18 +1864,11 @@ Because join follows filtering, the results below contain rows with `NULL` value
 
 ```
 
-
-### JOIN
+### Inner `JOIN`
 
 The `JOIN` clause allows merging records in multiple tables for the **same** entity into one result set.
 
-The default `JOIN` condition includes:
-* `entity` column
-* `time` column
-* `tags` column
-
-
-If the timestamps for joined metrics are identical, the `JOIN` operation merges rows for all the detailed records. This is typically the case when multiple metrics are inserted with one command.
+If the timestamps for joined metrics are identical, the `JOIN` operation merges rows for all the detailed records.
 
 ```ls
 | datetime             | entity       | t1.value | t2.value | t3.value |
@@ -1823,7 +1878,7 @@ If the timestamps for joined metrics are identical, the `JOIN` operation merges 
 | 2016-06-16T13:00:33Z | nurswgvml006 | 0.0      | 1.0      | 0.0      |
 ```
 
-As in the example above, 'cpu_system', 'cpu_user', 'cpu_iowait' were recorded by the collecting script with the same time.
+As in the example above, 'cpu_system', 'cpu_user', 'cpu_iowait' were recorded and inserted with the same time.
 
 ```ls
 datetime d:2016-06-16T13:00:01Z e:nurswgvml006 m:mpstat.cpu_system=13.3 m.mpstat.cpu_user=21.0 m:mpstat.cpu_iowait=2.9
@@ -1831,7 +1886,7 @@ datetime d:2016-06-16T13:00:17Z e:nurswgvml006 m:mpstat.cpu_system=1.0 m.mpstat.
 datetime d:2016-06-16T13:00:33Z e:nurswgvml006 m:mpstat.cpu_system=0.0 m.mpstat.cpu_user=1.0 m:mpstat.cpu_iowait=0.0
 ```
 
-However, when merging records for irregular metrics, `JOIN` results may contain only a subset of rows with identical times.
+However, when merging independent metrics, `JOIN` results may contain only rows with identical times.
 
 ```sql
 SELECT t1.datetime, t1.entity, t1.value AS cpu, t2.value AS mem
@@ -1841,7 +1896,7 @@ WHERE t1.datetime >= '2016-06-16T13:00:00Z' AND t1.datetime < '2016-06-16T13:10:
   AND t1.entity = 'nurswgvml006'
 ```
 
-The result contains only 2 records out of 75 total. This is because for `JOIN` to merge detailed records from multiple metrics into one row, the records should have the same time.
+The result contains only 2 records out of 75 total. This is because for `JOIN` to merge detailed records from multiple metrics into one row, the records must have the same time.
 
 ```ls
 | datetime             | entity       | cpu  | mem     |
@@ -1850,7 +1905,7 @@ The result contains only 2 records out of 75 total. This is because for `JOIN` t
 | 2016-06-16T13:07:17Z | nurswgvml006 | 16.0 | 73232.0 |
 ```
 
-To join irregular series use `GROUP BY PERIOD` or `WITH INTERPOLATE` clauses to align the timestamps.
+To join irregular series, use `GROUP BY PERIOD` or `WITH INTERPOLATE` clauses to equalize the timestamps.
 
 ```sql
 SELECT t1.entity, t1.datetime, t1.value,
@@ -1892,17 +1947,17 @@ WHERE t1.datetime >= '2016-06-16T13:00:00Z' AND t1.datetime < '2016-06-16T13:10:
 ```
 
 
-### FULL OUTER JOIN
+### OUTER JOIN
 
-To combine all records from joined tables, use `FULL OUTER JOIN` (synonyms `OUTER JOIN` or `FULL JOIN` are also allowed), which returns rows with equal time, entity, and tags as well as rows from one table for which no rows from the other table satisfy the join condition.
+To combine all records from joined tables, use `FULL OUTER JOIN` (synonyms `OUTER JOIN` or `FULL JOIN`), which returns rows with equal time, entity, and tags as well as rows from one table for which no rows from the other table satisfy the join condition.
 
 ```sql
 SELECT t1.datetime, t1.entity, t1.value AS cpu,
        t2.datetime, t2.entity, t2.value AS mem
   FROM "mpstat.cpu_busy" t1
   FULL OUTER JOIN "meminfo.memfree" t2
-  -- FULL JOIN "meminfo.memfree" t2
-  -- OUTER JOIN "meminfo.memfree" t2
+    -- FULL JOIN "meminfo.memfree" t2
+    -- OUTER JOIN "meminfo.memfree" t2
 WHERE t1.datetime >= '2016-06-16T13:00:00Z' AND t1.datetime < '2016-06-16T13:10:00Z'
   AND t1.entity = 'nurswgvml006'
 ```
@@ -1918,26 +1973,6 @@ WHERE t1.datetime >= '2016-06-16T13:00:00Z' AND t1.datetime < '2016-06-16T13:10:
 | null                 | null         | null | 2016-06-16T13:00:27Z | nurswgvml006 | 73620 |
 ```
 
-In addition to qualified column names such as `t1.datetime`, the JOIN queries expose `datetime` and `time` columns containing a row timestamp calculated as `COALESCE(t1.datetime, t2.datetime, ...)`.
-
-```sql
-SELECT datetime, isnull(t1.entity, t2.entity) AS server,
-  t1.datetime, t1.entity, t1.value AS cpu,
-  t2.datetime, t2.entity, t2.value AS mem
-  FROM "mpstat.cpu_busy" t1
-  FULL OUTER JOIN "meminfo.memfree" t2
-WHERE t1.datetime >= '2016-06-16T13:00:00Z' AND t1.datetime < '2016-06-16T13:10:00Z'
-  AND t1.entity = 'nurswgvml006'
-```
-
-```ls
-| datetime             | server       | t1.datetime          | t1.entity    | cpu  | t2.datetime          | t2.entity    | mem     |
-|----------------------|--------------|----------------------|--------------|------|----------------------|--------------|---------|
-| 2016-06-16T13:00:01Z | nurswgvml006 | 2016-06-16T13:00:01Z | nurswgvml006 | 37.1 | null                 | null         | null    |
-| 2016-06-16T13:00:12Z | nurswgvml006 | null                 | null         | null | 2016-06-16T13:00:12Z | nurswgvml006 | 67932.0 |
-| 2016-06-16T13:00:17Z | nurswgvml006 | 2016-06-16T13:00:17Z | nurswgvml006 | 16.0 | null                 | null         | null    |
-| 2016-06-16T13:00:27Z | nurswgvml006 | null                 | null         | null | 2016-06-16T13:00:27Z | nurswgvml006 | 73620.0 |
-```
 
 To regularize the merged series in join queries, apply interpolation or period aggregation using a statistical function.
 
@@ -1984,7 +2019,7 @@ GROUP BY PERIOD(1 MINUTE), server
 | 2016-06-16T13:01:00Z | nurswgvml007 | 3.5     | 252451.0 |
 ```
 
->  Note that records returned by a `JOIN USING ENTITY` condition include series with a last insert date greater than the start date specified in the query.
+>  Note that records returned by a `JOIN USING entity` condition include series with a last insert date greater than the start date specified in the query.
 
 ### JOIN with `atsd_series` table
 
