@@ -111,13 +111,13 @@ Expression `p` can include entity [fields](../api/meta/entity/list.md#fields) (e
 
 Start date `s` and end date `e` is an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
 
-The elements in the list can be retrieved with `.get(index)` method. The first element has an index of `0`.
+To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
 
 Examples:
 
 ```javascript
   entities = getEntities('docker.activecontainers', 'now - 1 * HOUR', 'now', "tags.status != 'deleted'")
-  // entities.get(0).name
+  // entities[0].name
   // date_format(entities.get(0).lastInsertTime, "yyyy-MM-dd HH:mm:ss", "UTC")
 ```
 
@@ -165,6 +165,8 @@ If the entity cannot be found, the original input string `e` is returned.
 Retrieves a list of strings for the specified named collection `s`. Named collections are defined on the **Data > Named Collections** page.
 
 If the collection is not found, an empty list is returned.
+
+To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
 
 Examples:
 

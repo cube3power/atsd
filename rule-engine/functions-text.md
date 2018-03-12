@@ -90,15 +90,15 @@ Example:
 
   * Returns ['Hello', 'brave new world']
 
-  ```java
+  ```javascript
     split('hello "brave new world"', ' ')
   ```
   
 To check the size of the collection, use the `.size()` method.
 
-To access the n-th element in the collection, use square brackets and index (starting with 0 for the first element).
+To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
 
-  ```java
+  ```javascript
     authors = split(tags.authors, ',')
     authors.size() == 0 ? 'n/a' : authors[0]
   ```
