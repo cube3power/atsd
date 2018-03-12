@@ -79,7 +79,6 @@ Issue| Category    | Type    | Subject
 
 Issue| Category    | Type    | Subject              
 -----|-------------|---------|----------------------
-5060 | [json](https://github.com/axibase/axibase-collector/blob/master/jobs/json.md) | Bug | NPE in Test.
 5052 | [docker](https://github.com/axibase/axibase-collector/blob/master/jobs/docker.md) | Bug | `docker.fs.total.size.rw` sampling frequency irregularity.
 5043 | core | Bug | Collector CPU is abnormally high.
 5035 | [jmx](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md) | Feature | Add "show password" button in configuration.
