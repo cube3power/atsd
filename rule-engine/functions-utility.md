@@ -150,6 +150,7 @@ windowStatus,OPEN
 ```javascript
   getURLHost(string u) string
 ```
+
 Retrieves the **host** from URL string `u`. If the URL `u` is null, empty or invalid, an exception is thrown.
 
 Example:
@@ -164,6 +165,7 @@ Example:
 ```javascript
   getURLPort(string u) integer
 ```
+
 Retrieves the **port** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
 
 If the the URL `u` doesn't contain a port, the function returns the default value for the protocol, for example port 443 for `https` and port 80 for `http`.
@@ -180,7 +182,7 @@ Example:
 ```javascript
   getURLProtocol(string u) string
 ```
-Retrieves the **protocol** part from URL string `u`. If the URL `u` is null, empty or invalid, exception is thrown.
+Retrieves the **protocol** from URL string `u`. If the URL `u` is null, empty or invalid, exception is thrown.
 
 Example:
 
@@ -194,7 +196,7 @@ Example:
 ```javascript
   getURLPath(string u) string
 ```
-Retrieves the **path** part from URL string `u`. If the URL `u` is null, empty or invalid, exception is thrown.
+Retrieves the **path** from URL string `u`. If the URL `u` is null, empty or invalid, an exception is thrown.
 
 Example:
 
@@ -222,7 +224,8 @@ Example:
 ```javascript
   getURLUserInfo(string u) string
 ```
-Retrieves the `user:password` from URL string `u`. If the URL `u` is null, empty or invalid, exception is thrown.
+
+Retrieves the `user:password` from URL string `u`. If the URL `u` is null, empty or invalid, an exception is thrown.
 
 Example:
 
