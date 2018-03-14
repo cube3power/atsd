@@ -20,6 +20,8 @@ Supported fields:
 
 * id (entity id)
 * name (entity id)
+* label
+* enabled
 * tags.tag-name or tags['tag-name']
 
 ### Supported Functions
@@ -61,6 +63,26 @@ Supported fields:
   for example 'nurswgvml001', 'nurswgvml772'.
   */
   id LIKE 'nurswgvml*'
+```
+
+### Entity Label Match
+
+```javascript
+  /*
+  Match entities whose label does not contain the 'nur' substring.
+  */
+  label NOT LIKE '*nur*'
+```
+
+### Enabled/Disabled Entity Match
+
+```javascript
+  /* Match enabled entities. */
+  enabled = true
+  
+  /* Match disabled entities. */
+  enabled = false
+  
 ```
 
 ### Entity Tag Match
