@@ -38,7 +38,7 @@ sudo chown -R axibase /home/axibase/phantomjs-2.1.1-linux-x86_64
     
 * Open Rules > Web Notifications page. Create and test one of TYPE-specific web notifications such as [Telegram](telegram.md) or [Slack](slack.md). Verify that screenshot was successfully received in the chat client.
     
-* Review Web Driver settings on **Settings > System** Information page, no error should be displayed.
+* Review Web Driver settings on **Settings > System Information** page, no error should be displayed.
 
     ![](images/webdriver-settings_1.png)
 
