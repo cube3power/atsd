@@ -1,8 +1,10 @@
-# Messages: WebHook
+# Messages: Webhook
 
 ## Description
 
-The endpoint converts request parameters and JSON payload into a message and stores it in the database.
+The endpoint converts request parameters and JSON payload into a message processed by the rule engine and stored it in the database. 
+
+The method can be used to react to event notifications triggered by external web services such as GitHub, AWS, Jenkins, Slack, Telegram, etc.
 
 ## Request
 
@@ -311,6 +313,38 @@ Example:
 ## Diagnostics
 
 The recently received webhooks are displayed on the **Settings > Diagnostics > Webhook Requests** page.
+
+## Sample URLs
+
+### GitHub
+
+```
+/api/v1/messages/webhook/github?type=webhook&entity=github&exclude=organization.*%3Brepository.*%3B*.signature%3B*.payload%3B.*.sha&header.tag.event=X-GitHub-Event&repo=atsd&excludeValues=http*
+```
+
+### Amazon WS
+
+```
+/api/v1/messages/webhook/aws-cw?type=webhook&entity=aws-cw&command.date=Timestamp&json.parse=Message&exclude=Signature;SignatureVersion;SigningCertURL;SignatureVersion;UnsubscribeURL;MessageId;Message.detail.instance-id;Message.time;Message.id;Message.version
+```
+
+### Jenkins
+
+```
+/api/v1/messages/webhook/jenkins?type=webhook&entity=jenkins&command.date=build.timestamp&datetimePattern=milliseconds&exclude=build.url;url;build.artifacts*
+```
+
+### Slack
+
+```
+/api/v1/messages/webhook/slack?type=webhook&entity=slack&command.message=event.text&command.date=event.ts&exclude=event.event_ts&exclude=event_time&exclude=event.icons.image*&exclude=*thumb*&exclude=token&exclude=event_id&exclude=event.message.edited.ts&exclude=*.ts
+```
+
+### Telegram
+
+```
+/api/v1/messages/webhook/telegram?type=webhook&entity=telegram&command.message=message.text
+```
 
 ## Example
 
