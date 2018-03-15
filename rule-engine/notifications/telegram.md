@@ -15,15 +15,13 @@ Install and configure the [Web Driver](web-driver.md) in order to send chart scr
 
     ![](images/botfather.png)
 
-* Send the `/newbot` command and follow the prompts to create a bot user and obtain its token.
-* Send the `/mybots` command to the [BotFather](https://telegram.me/botfather).
-* Select the current bot.
+* Send the `/newbot` command and follow the prompts to create a bot user and obtain its token. The bot's username must end with `_bot` and cannot contain dash `-` symbol.
 
-  ![](images/telegram-my-bots.png)
-
-* Click on **Bot Settings > Allow Groups? > Turn groups on** to enable group notifications for this bot.
-
-  ![](images/telegram-allow-groups.png)
+    ```
+    Use this token to access the HTTP API:
+    5555555555:AAHrB1gmYKaSvzsXjhbyDypOJlfu_FgdwrE
+    ```
+* Copy the API token for future reference.
 
 ## Create Group or Channel
 
