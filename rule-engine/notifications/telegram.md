@@ -58,11 +58,11 @@ Install and configure the [Web Driver](web-driver.md) in order to send chart scr
 
    ![](images/channel_inf.png)
 
-* **N administrators > Add administrator** > enter bot name to the search field, for example `@atsd_bot`
+* Channels allow publishing messages only to administrators. Add the bot user using **N administrators > Add administrator** > copy bot name into the search field.
 
    ![](images/add_admin.png)
 
-   Click on the bot and confirm > **OK**.
+   Click on the bot name and confirm.
 
    ![](images/ok.png)
 
