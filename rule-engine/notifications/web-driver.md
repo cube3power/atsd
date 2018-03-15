@@ -4,37 +4,33 @@
 
 There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/) and [Chrome Driver](https://sites.google.com/a/chromium.org/chromedriver/).
 
-> If you are installing the Web Driver in a Docker container, log in as `root` and execute the commands without `sudo`
+> If you are installing the Web Driver in a Docker container, log in as `root` and install `wget` prior to switching to the `axibase` user
 >
 > ```bash
 >   docker exec -it -u root atsd bash
+>   apt-get update && apt-get install wget
+>   su axibase
 > ```
 
 ## Option 1: PhantomJS
 
-* Install wget if necessary.
-
-```bash
-sudo apt-get update
-```
-
-```bash
-sudo apt-get install wget
-```
-
 * Download and install PhantomJS:
 
-```bash
-cd /home/axibase
-wget https://axibase.com/public/phantomjs-2.1.1-linux-x86_64.tar.gz
-tar xzf phantomjs-2.1.1-linux-x86_64.tar.gz
-```
+    ```bash
+    cd /home/axibase
+    wget https://axibase.com/public/phantomjs-2.1.1-linux-x86_64.tar.gz
+    tar xzf phantomjs-2.1.1-linux-x86_64.tar.gz
+    ```
 
-* Make phantomjs executable available to axibase user 
+* Make sure that `axibase` user is allowed to execute `phantomjs`
 
-```bash
-sudo chown -R axibase /home/axibase/phantomjs-2.1.1-linux-x86_64
-```
+    ```bash
+    ls -all /home/axibase | grep phantomjs-2.1.1-linux-x86_64
+    ```
+
+    ```
+    drwxr-xr-x 4 axibase axibase     4096 Jan 25  2016 phantomjs-2.1.1-linux-x86_64
+    ```
 
 * Set path to `/home/axibase/phantomjs-2.1.1-linux-x86_64/bin/phantomjs` in **Settings > Server Properties > webdriver.phantomjs.path**.
 
