@@ -114,6 +114,14 @@ NGINX API Gateway Path for Slack:
 |Parse Mode|Change how messages are formatted. See [Basic message formatting](https://api.slack.com/docs/message-formatting) for more information.|
 |Names as Links|Find and link channel names and usernames.|
 
+## Reacting to Bot Messages
+
+The bot account can be used both to deliver notifications to end users, as well as to react to messages received by the bot itself. 
+
+/rule-engine/notifications/outgoing-webhook-slack.md
+
+In order to receive incoming messages, configure an [outgoing webhook](outgoing-webhook-slack.md). The [webhook](outgoing-webhook-slack.md) integration requires ATSD server to be reachable from Slack API servers.
+
 ## Testing Notification Rule
 
 ### Create/import rule
