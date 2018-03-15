@@ -215,7 +215,7 @@ Header parameters set message field values from header values.
 
 #### Filter Parameters
 
-The filter parameters contain patterns that the converted message tags must satisfy in order to be included in the message command. The patterns support `*` as a wildcard.
+The filter parameters contain patterns that the converted message tags must satisfy in order to be included in the generated message command.
 
 | **Name** | **Description** |
 |---|---|
@@ -224,11 +224,16 @@ The filter parameters contain patterns that the converted message tags must sati
 | `includeValues` | Include only tags with **values** that satisfy the specified pattern. |
 | `excludeValues` | Exclude tags with **values** that satisfy the specified pattern. |
 
-> The `include` parameter takes precedence over the `exclude` parameter. If the `include` parameter is present, the `exclude` parameter is ignored.
+* The patterns support `*` as a wildcard.
+* Tag name match is case-**IN**sensitive.
+* The `include` parameter takes precedence over the `exclude` parameter. If the `include` parameter is present, the `exclude` parameter is ignored.
+* The `includeValues` parameter takes precedence over the `excludeValues` parameter. If the `includeValues` parameter is present, the `excludeValues` parameter is ignored.
+* The parameters may contain multiple patterns separated by semi-colon `;`. Alternatively, the parameters can be repeated in the query string.
 
-> The `includeValues` parameter takes precedence over the `excludeValues` parameter. If the `includeValues` parameter is present, the `excludeValues` parameter is ignored.
-
-> The above parameters may contain multiple patterns separated by semi-colon. Alternatively, they can be repeated in the query string: `&exclude=repository.*&exclude=sender.*`.
+```
+&exclude=repository.*;sender.location
+&exclude=repository.*&exclude=sender.location
+```
 
 Example:
 
@@ -303,6 +308,9 @@ Example:
 	    request_ip=...
   ```
 
+## Diagnostics
+
+The recently received webhooks are displayed on the **Settings > Diagnostics > Webhook Requests** page.
 
 ## Example
 
