@@ -4,10 +4,10 @@
 
 There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/) and [Chrome Driver](https://sites.google.com/a/chromium.org/chromedriver/).
 
-> If you are installing the Web Driver inside the Docker container, log in as root and execute the commands without `sudo`
+> If you are installing the Web Driver in a Docker container, log in as `root` and execute the commands without `sudo`
 >
 > ```bash
-> docker exec -it -u root atsd bash
+>   docker exec -it -u root atsd bash
 > ```
 
 ## Option 1: PhantomJS
@@ -15,7 +15,11 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
 * Install wget if necessary.
 
 ```bash
-sudo apt-get update && sudo apt-get install wget
+sudo apt-get update
+```
+
+```bash
+sudo apt-get install wget
 ```
 
 * Download and install PhantomJS:
