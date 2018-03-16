@@ -310,19 +310,19 @@ Example:
 	    request_ip=...
   ```
 
-## Diagnostics
-
-The recently received webhooks are displayed on the **Settings > Diagnostics > Webhook Requests** page.
-
 ## Sample URLs
 
 ### GitHub
 
+Subscribe to GitHub repository events.
+
 ```
-/api/v1/messages/webhook/github?type=webhook&entity=github&exclude=organization.*%3Brepository.*%3B*.signature%3B*.payload%3B.*.sha&header.tag.event=X-GitHub-Event&repo=atsd&excludeValues=http*
+/api/v1/messages/webhook/github?type=webhook&entity=github&exclude=organization.*%3Brepository.*%3B*.signature%3B*.payload%3B*.sha%3B*.ref%3B*_at%3B*.id&header.tag.event=X-GitHub-Event&repo=atsd&excludeValues=http*&debug=true
 ```
 
 ### Amazon WS
+
+Receive to AWS SNS subscription notifications.
 
 ```
 /api/v1/messages/webhook/aws-cw?type=webhook&entity=aws-cw&command.date=Timestamp&json.parse=Message&exclude=Signature;SignatureVersion;SigningCertURL;SignatureVersion;UnsubscribeURL;MessageId;Message.detail.instance-id;Message.time;Message.id;Message.version
@@ -330,17 +330,23 @@ The recently received webhooks are displayed on the **Settings > Diagnostics > W
 
 ### Jenkins
 
+Subscribe to build status events from Jenkins.
+
 ```
 /api/v1/messages/webhook/jenkins?type=webhook&entity=jenkins&command.date=build.timestamp&datetimePattern=milliseconds&exclude=build.url;url;build.artifacts*
 ```
 
 ### Slack
 
+Receive incoming bot events using Slack Event API. Refer to the Slack webhook configuration [instructions](../../../rule-engine/notifications/outgoing-webhook-slack.md).
+
 ```
 /api/v1/messages/webhook/slack?type=webhook&entity=slack&command.message=event.text&command.date=event.ts&exclude=event.event_ts&exclude=event_time&exclude=event.icons.image*&exclude=*thumb*&exclude=token&exclude=event_id&exclude=event.message.edited.ts&exclude=*.ts
 ```
 
 ### Telegram
+
+Receive incoming bot messages. Refer to the Telegram webhook configuration [instructions](../../../rule-engine/notifications/outgoing-webhook-telegram.md).
 
 ```
 /api/v1/messages/webhook/telegram?type=webhook&entity=telegram&command.message=message.text
@@ -480,3 +486,11 @@ Command:
 	"date": "2017-12-22T13:32:50.901Z"
 }
 ```
+
+## Diagnostics
+
+The recently received webhooks are displayed on the **Settings > Diagnostics > Webhook Requests** page.
+
+![](images/webhooks.png)
+
+![](images/webhook-detail.png)
