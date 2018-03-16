@@ -2,9 +2,9 @@
 
 ## Description
 
-The endpoint converts request parameters and JSON payload into a message processed by the rule engine and stored it in the database. 
+The method converts event notifications received from external web services such as GitHub, AWS, Jenkins, Slack, Telegram into messages which can be processed in the rule engine and stored in the database.
 
-The method can be used to react to event notifications triggered by external web services such as GitHub, AWS, Jenkins, Slack, Telegram, etc.
+The method provides a variety of parameters to map incoming JSON documents to message fields and to discard unnecessary data.
 
 ## Request
 
@@ -322,7 +322,7 @@ Subscribe to GitHub repository events.
 
 ### Amazon WS
 
-Receive to AWS SNS subscription notifications.
+Receive AWS SNS subscription notifications.
 
 ```
 /api/v1/messages/webhook/aws-cw?type=webhook&entity=aws-cw&command.date=Timestamp&json.parse=Message&exclude=Signature;SignatureVersion;SigningCertURL;SignatureVersion;UnsubscribeURL;MessageId;Message.detail.instance-id;Message.time;Message.id;Message.version
@@ -489,7 +489,7 @@ Command:
 
 ## Diagnostics
 
-The recently received webhooks are displayed on the **Settings > Diagnostics > Webhook Requests** page.
+The last 100 recently received webhooks are listed on the **Settings > Diagnostics > Webhook Requests** page.
 
 ![](images/webhooks.png)
 
