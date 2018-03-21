@@ -60,9 +60,9 @@ Click on the Versioning checkbox to view version history on the Ad-hoc Export pa
 - Click on the 'Revisions Only' checkbox to display only values with version history. Values that haven’t been modified will be hidden.
 - To display deleted values, enter `Double.isNaN(value)` into the Value Filter field.
 - To filter version history, enter an expression into the Version Filter containing the `version_source`, `version_status`, and `version_time` fields. Note that the `version_time` field supports endtime syntax with the `date()`` function.
-` version_source LIKE 'api*'`
-` version_status = 'revised'`
-` version_time > date('2015-08-13 00:00:00') AND version_time < date('previous_day')`
+`version_source LIKE 'api*'`
+`version_status = 'revised'`
+`version_time > date('2015-08-13 00:00:00') AND version_time < date('previous_day')`
 
 
 #### Updating Series Value
