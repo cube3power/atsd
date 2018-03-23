@@ -712,6 +712,23 @@ The modulo operator `%` returns the remainder of one number divided by another, 
 
 ## Match Expressions
 
+### IN Expression
+
+The `IN` expression returns `true` if the value on the left is equal to one of the comma-separated values enumerated in parentheses after the `IN` operator.
+
+```sql
+valueLeft [NOT] IN (valueRight [, valueRight])
+```
+
+The `IN` operator provides an alternative to multiple OR conditions.
+
+```sql
+SELECT datetime, entity, value
+  FROM "mpstat.cpu_busy"
+WHERE entity IN ('nurswgvml006', 'nurswgvml007', 'nurswgvml008')
+  -- entity = 'nurswgvml006' OR entity = 'nurswgvml007' OR entity = 'nurswgvml008'
+```
+
 ### LIKE Expression
 
 The `LIKE` expression returns true if the value matches the specified string pattern which supports `%` and `_` wildcards. 
