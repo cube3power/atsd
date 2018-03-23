@@ -614,12 +614,14 @@ WHERE datetime >= '2017-08-15T00:00:00Z'
 WHERE value < 75
 ```
 
-The string and datetime literals must be enclosed in **single quotation marks**.
+The string and datetime literals must be enclosed in **single** quotation marks.
 
 A literal value containing single quotes can be escaped by doubling the single quote symbol.
 
-```
--- string literal: yyyy-mm-dd'T'HH:mm:ss'Z'
+```sql
+-- literal = a'b
+WHERE entity LIKE '%a''b%'
+-- literal = yyyy-mm-dd'T'HH:mm:ss'Z'
 SELECT date_format(time, 'yyyy-mm-dd''T''HH:mm:ss''Z''')
 ```
 
@@ -801,19 +803,21 @@ An interval condition determines the selection interval and is specified in the 
 
 * The `datetime` column accepts literal dates in one of the following formats:
 
-| **Name** | **Pattern** | **Examples** |
+| **Time zone** | **Pattern** | **Examples** |
 |---|---|---|
-| ISO-8601 | `yyyy-MM-dd'T'HH:mm:ss[.NNN]'Z'` | 2017-12-10T15:30:00.077Z<br>2017-12-10T15:30:00Z |
-| Local | `yyyy-MM-dd HH:mm:ss[.NNNNNNNNN]` | 2017-12-10 15:30:00.077<br>2017-12-10 15:30:00 |
+| As specified | `yyyy-MM-dd'T'HH:mm:ss[.NNN](Z|±hh:mm)` | `2017-12-10T15:30:00.077Z`<br>`2017-12-10T15:30:00Z<br>`2017-12-10T15:30:00-05:00` |
+| Database | `yyyy-MM-dd HH:mm:ss[.NNNNNNNNN]` | `2017-12-10 15:30:00.077`<br>`2017-12-10 15:30:00` |
+| Database | `yyyy[-MM[-dd]]` | `2017`<br>`2017-12`<br>`2017-12-15` |
+
+The UTC time zone is specified as the `Z` suffix ("Zulu time") or as the zero UTC offset `+00:00`. If the time zone is not specified in the literal value, the database timezone is used to convert strings into date objects.
 
 ```sql
 SELECT datetime, entity, value
   FROM "mpstat.cpu_busy"
 WHERE datetime BETWEEN '2017-12-10T14:00:15Z' AND '2017-12-10T14:30:00.077Z'
 -- WHERE datetime BETWEEN '2017-12-10 14:00:15' AND '2017-12-11 14:30:00.077'
+-- WHERE datetime = '2017'
 ```
-
-The dates in the Local format are evaluated based on the server time zone.
 
 * The `time` column accepts Unix milliseconds:
 
@@ -826,25 +830,24 @@ WHERE time >= 1500300000000
 
 > Note that the `BETWEEN` operator is inclusive: `time BETWEEN 'a' AND 'b'` is equivalent to `time >= 'a' and time <= 'b'`.
 
-> Equality operators `!=` and `<>`  **cannot** be applied to `time` and `datetime` columns.
-
 ### Optimizing Interval Queries
 
 Using the [`date_format`](#date-formatting-functions) and [`EXTRACT`](#extract) functions in the `WHERE` condition and the `GROUP BY` clause may not be efficient as it causes the database to perform a full scan while comparing literal strings or numbers. Instead, filter dates using the indexed `time` or `datetime` column and apply the `PERIOD` function to aggregate records by interval.
 
 ```sql
-WHERE date_format(time, 'yyyy') > '2018'   -- Inefficient: Full scan with string comparison.
-WHERE YEAR(time) > 2018                    -- Inefficient: Full scan with number comparison.
-WHERE datetime >= '2018-01-01T00:00:00Z'  -- Recommended:  Date range scan using an indexed column.
+WHERE date_format(time, 'yyyy') > '2018'   -- Slow: full scan with string comparison.
+WHERE YEAR(time) > 2018                    -- Slow: full scan with number comparison.
+WHERE datetime >= '2018'                   -- Fast: date range scan using an indexed column.
+WHERE datetime >= '2018-01-01T00:00:00Z'   -- Fast: date range scan using an indexed column.
 
-GROUP BY date_format(time, 'yyyy')         -- Inefficient.
-GROUP BY YEAR(time)                        -- Inefficient.
-GROUP BY PERIOD(1 YEAR)                    -- Recommended.
+GROUP BY date_format(time, 'yyyy')         -- Slow.
+GROUP BY YEAR(time)                        -- Slow.
+GROUP BY PERIOD(1 YEAR)                    -- Fast.
 ```
 
-### Endtime Syntax
+### Calendar Expressions
 
-The `time` and `datetime` columns support [calendar](../shared/calendar.md) keywords.
+The `time` and `datetime` columns support [calendar](../shared/calendar.md) keywords and expressions.
 
 ```sql
 SELECT datetime, entity, value
@@ -853,7 +856,7 @@ WHERE time >= NOW - 15 * MINUTE
   AND datetime < CURRENT_MINUTE
 ```
 
-The `endtime` expressions are evaluated according to the server [time zone](../shared/timezone-list.md) which can be customized using the [`endtime()`](#endtime) function.
+The calendar expressions are evaluated according to the database [time zone](../shared/timezone-list.md) which can be customized using the [`endtime()`](#endtime) function.
 
 ```sql
 SELECT value, datetime,
@@ -1107,7 +1110,7 @@ Examples:
 | 1 WEEK     | 2017-06-01 00:00  | 2017-06-02 00:00  | 2017-06-06 00:00  | 2017-05-30 00:00  | -                 | -                |
 ```
 
-For `DAY`, `WEEK`, `MONTH`, `QUARTER`, and `YEAR` units, the start of the day is determined according to the **database timezone**, unless a user-defined timezone is specified as an option, for example `GROUP BY entity, PERIOD(1 MONTH, 'UTC')`.
+For `DAY`, `WEEK`, `MONTH`, `QUARTER`, and `YEAR` units, the start of the day is determined according to the **database time zone**, unless a user-defined time zone is specified as an option, for example `GROUP BY entity, PERIOD(1 MONTH, 'UTC')`.
 
 #### `END_TIME` Alignment
 
@@ -1545,7 +1548,7 @@ WITH last_time_expression comparision_operator time
 
 * `time` is the pre-defined time column which represents the timestamp of the sample.
 * A `comparision_operator` is one of the following operators: `>`, `>=`, `<`, `<=`, `=`.
-* A `last_time_expression` consists of the `last_time` keyword and an optional `endtime` expression.
+* A `last_time_expression` consists of the `last_time` keyword and an optional calendar expression.
 
 ```sql
 WITH time >= last_time - 1*MINUTE
@@ -2190,7 +2193,7 @@ If the `time_format` argument is not provided, ISO 8601 format is applied.
 
 The `time_zone` parameter accepts GTM offset in the format of `GMT-hh:mm` or a [time zone name](../shared/timezone-abnf.md) and can format dates in a time zone other than the database time zone.
 
-In addition, the `time_zone` parameter can be specified as `AUTO` in which case the date is formatted with an entity-specific time zone. If an entity-specific time zone is not defined, a metric-specific time zone is used instead. If neither an entity-specific nor metric-specific time zone is specified, the database timezone is applied.
+In addition, the `time_zone` parameter can be specified as `AUTO` in which case the date is formatted with an entity-specific time zone. If an entity-specific time zone is not defined, a metric-specific time zone is used instead. If neither an entity-specific nor metric-specific time zone is specified, the database time zone is applied.
 
 Examples:
 
@@ -2353,7 +2356,7 @@ EXTRACT(datepart FROM datetime | time | datetime expression)
 
 `datepart` can be YEAR, QUARTER, MONTH, DAY, HOUR, MINUTE, or SECOND.
 
-The evaluation is based on the server time zone. The date argument can refer to the `time` or `datetime` columns including support for the endtime syntax.
+The evaluation is based on the database time zone. The date argument can refer to the `time` or `datetime` columns including support for calendar expressions.
 
 ```sql
 SELECT datetime,
@@ -2457,7 +2460,7 @@ WHERE datetime > CURRENT_TIME - 1 * DAY
 
 ### DBTIMEZONE
 
-The `DBTIMEZONE` function returns the current database timezone name or offset.
+The `DBTIMEZONE` function returns the current database time zone name or offset.
 
 ```sql
 SELECT DBTIMEZONE
@@ -2709,7 +2712,7 @@ The `endtime()` function evaluates the specified [calendar](../shared/calendar.m
 ENDTIME(calendarExpression, string timeZone)
 ```
 
-The function can be used to perform calendar arithmetic in a time zone different from the server time zone.
+The function can be used to perform calendar arithmetic in a time zone different from the database time zone.
 
 ```sql
 SELECT value, datetime,
@@ -2717,7 +2720,7 @@ SELECT value, datetime,
   date_format(time, 'yyyy-MM-dd''T''HH:mm:ssz', 'US/Pacific') AS "PST_datetime"
 FROM "mpstat.cpu_busy"
   WHERE entity = 'nurswgvml007'
-  -- select data between 0h:0m:0s of the previous day and 0h:0m:0s of the current day according to PST timezone
+  -- select data between 0h:0m:0s of the previous day and 0h:0m:0s of the current day according to PST time zone
 AND datetime BETWEEN endtime(YESTERDAY, 'US/Pacific') AND endtime(CURRENT_DAY, 'US/Pacific')
   ORDER BY datetime
 ```
@@ -3059,7 +3062,7 @@ ORDER BY entity, tags.file_system, datetime
 
 If `{n}` is zero or negative, the results are processed using the local file system.
 
-This clause overrides the conditional allocation of shared memory established with the **Admin:Server Properties**:`sql.tmp.storage.max_rows_in_memory` setting which is set to `50*1024` rows by default.
+This clause overrides the conditional allocation of shared memory established with the **Settings:Server Properties**:`sql.tmp.storage.max_rows_in_memory` setting which is set to `50*1024` rows by default.
 
 The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executing queries. If a query selects more rows than remain in the shared memory, it will be processed using the local file system which may result in increased response times during heavy read activity.
 
