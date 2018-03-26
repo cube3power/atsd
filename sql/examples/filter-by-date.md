@@ -34,6 +34,25 @@ WHERE entity = 'nurswgvml007'
 | 2016-06-18T20:00:43.000Z | 6.1   |
 ```
 
+## Query with Short Local format
+
+```sql
+SELECT datetime, count(value)
+  FROM "mpstat.cpu_busy"
+WHERE entity = 'nurswgvml007'
+  AND datetime >= '2016-06' AND datetime < '2016-07'
+  GROUP BY PERIOD(1 DAY)
+```
+
+```ls
+| datetime             | count(value) |
+|----------------------|--------------|
+| 2016-06-01T00:00:00Z | 5383         |
+| 2016-06-02T00:00:00Z | 5378         |
+| ...                                 |
+| 2016-06-30T00:00:00Z | 5392         |
+```
+
 ## Query with Lower Limit
 
 ```sql
