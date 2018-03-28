@@ -2,7 +2,7 @@
 
 ## Overview
 
-SQL Scheduler allows SQL query results to be distributed to users in CSV, Excel, or JSON format.
+SQL Scheduler allows distributing query results via email, file system, and http URLs as well as to persist query results as calculated/derived metrics.
 
 ## Sample Configuration
 
@@ -10,26 +10,26 @@ SQL Scheduler allows SQL query results to be distributed to users in CSV, Excel,
 
 ## Query
 
-The scheduler executes a `SELECT` query specified according to the ATSD [SQL syntax](README.md).
-
-## Authorization
-
-Scheduled SQL queries are executed with **administrative** permissions, no records are excluded from the result set unlike ad-hoc queries, which are filtered based on the user's [entity read permissions](../administration/user-authorization.md#entity-permissions).
+The scheduler executes a `SELECT` [query](README.md) on schedule.
 
 ## Schedule
 
 Scheduling frequency is controlled with the `Schedule` field containing a [`cron` expression](scheduled-sql-cron.md) that determines when the task should be executed.
 
+## Authorization
+
+Scheduled queries are executed with **All Entities: Read** permission. No records are excluded from the result set unlike ad-hoc queries, which are filtered based on the user's [entity read permissions](../administration/user-authorization.md#entity-permissions).
+
 ## Formats
 
 * CSV
-* JSON
 * Excel (xlsx)
 * HTML
+* JSON
 
 CSV files can be optionally archived with zip or gzip compression.
 
-The HTML format is optimized for broad compatibility with common deasktop and web-based email clients.
+The HTML format is optimized for compatibility with common desktop and email clients.
 
 ### Sample Reports
 
