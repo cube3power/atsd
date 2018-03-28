@@ -58,23 +58,13 @@ Specify the absolute path including the file name.
 If the parent directory in the specified path does not exist, it will be created automatically.
 The file extension should match the export format, if the format is EXCEL the Output Path should end with ".xlsx".
 
-Output Path may contain date placeholders so that files or their parent directories are grouped by day or month.
+The **Output Path** field may contain date and form [placeholders](#placeholders) so that files or their parent directories are grouped by day or month.
 
 Example: `/opt/report/daily/${yyyy-MM-dd}.csv`
 
 An expression like `/opt/report/daily/${yyyy-MM-dd}.csv` creates the following file `/opt/report/daily/2017-06-10.csv` when executed.
 
-The date placeholder may include the following calendar units:
-
-* yyyy - 4-digit year
-* yy - 2-digit year
-* MM - 2-digit numeric month
-* dd - day of month
-* HH - hour of the day in 24-hour format
-* ss - seconds
-* SSS - milliseconds
-
-### Email
+### Email Delivery
 
 To distribute report files via email, enable the **Export** section, specify an email subject and one or multiple email addresses, separated by comma or space.
 
@@ -84,21 +74,59 @@ The `Send Empty Report` and `Send Error Report` settings control whether the rep
 
 The `Send Empty Report` option in particular, when disabled, can be used for alert purposes whereby a report is sent only if the resultset is not empty.
 
-The email subject field support the date placeholder, for example `${yyyy-MM-dd}`.
+The `Email Subject` field supports the date and form [placeholders](#placeholders), for example `${name} for ${yyyy-MM-dd}`.
 
-### Link
+### Publishing
 
 To make the report available for download by end-users, enable the **Publish** section. The report will contain rows that were prepared by the server when the task was last executed.
 
 ![File](images/sql-scheduled-publish.png)
 
-To allow users to download the updated results each time they click on the link, enable the `Allow Refresh` option. When enabled and if the url contains a `?refresh=true` parameter, the report is rebuilt by the database for each download request.
+To allow users to download the updated results each time they click on the link, enable the `Allow Refresh` option.
+
+When enabled and if the url contains a `?refresh=true` parameter, the report is rebuilt by the database for each download request.
 
 ```
 https://atsd_host:8443.co/sqlr/85/cpu-busy-total-query.csv?refresh=true
 ```
 
-To make links accessible to unauthenticated users, enable the `Guest Access` option. Additional download links for non-authenticated users will be displayed.
+To make links accessible for unauthenticated users, enable the `Guest Access` option. Additional download links for non-authenticated users will be displayed.
+
+
+### Placeholders
+
+The placeholders can be included in the `Output Path` and `Email Subject` fields.
+
+#### Date placeholder
+
+The date placeholder may include the following calendar units:
+
+- `yyyy` - 4-digit year
+- `yy` - 2-digit year
+- `MM` - 2-digit numeric month
+- `MMM` - 3-letter month, for example 'Jan'
+- `dd` - day of month
+- `HH` - hour of the day in 24-hour format
+- `ss` - seconds
+- `SSS` - milliseconds
+
+Examples:
+
+- `${yyyy-MM-dd}`
+- `${yyyy/MM/dd}`
+- `${yyyy-MM-dd-HH-mm-ss.SSS}`
+
+The date placeholder is evaluated **after** the query is completed.
+
+#### Form placeholders
+
+Form placeholders return an empty string if the requested field is not found or contains no text.
+
+- `${name}` - Report name as specified in the 'Name' field.
+- `${author}` - Report author as specified in the 'Author' field.
+- `${description}` - Report description as specified in the 'Description' field.
+- `${id}` - Report numeric identifier.
+- `${link}` - Report URL based on `server.url` setting, for example `https://atsd_host:8443/export/queries/query.xhtml?queryId=23`
 
 ## Metadata
 
