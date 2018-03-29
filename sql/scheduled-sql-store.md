@@ -19,9 +19,9 @@ Each row in the result set is converted into one or multiple derived series base
 After entity, datetime, and tag columns are mapped based on names, the remaining numeric columns are classified as metric name columns.
 
 ```sql
-SELECT datetime, 
+SELECT datetime,
   'DC-1' AS "entity",  
-  AVG(value) AS "temp_daily_avg", 
+  AVG(value) AS "temp_daily_avg",
   PERCENTILE(90, value) AS "temp_daily_perc_90"
   -- mapped to datetime, entity, for metric with name = temp_daily_avg and for metric with name = temp_daily_perc_90
   FROM temperature
@@ -104,10 +104,10 @@ Columns starting with 'entity.tags.', 'metric.tags.', or 'metric.{field-name}' p
 
 
 ```sql
-SELECT datetime, 
+SELECT datetime,
   'dc-1' AS "entity",  
-  'SVL' as "entity.tags.location", 
-  'Celcius' AS "metric.units", 
+  'SVL' as "entity.tags.location",
+  'Celcius' AS "metric.units",
   AVG(value) AS "temp_daily_avg"
   -- mapped to datetime, entity, entity.tag with name = location, metric field units, for metric with name = temp_daily_avg
   FROM temperature
@@ -139,7 +139,7 @@ If **Check Last Time** is enabled, the series command is inserted if its datetim
 
 ### Validation
 
-To test that a query complies with [requirements](#column-requirements), execute the query in the SQL console and click on the **Store** button. 
+To test that a query complies with [requirements](#column-requirements), execute the query in the SQL console and click on the **Store** button.
 
 Click **Test** to review the produced commands and resolve any errors.
 
@@ -154,3 +154,31 @@ Click **Schedule** to created a scheduled SQL job to create and store new record
 The results of scheduled SQL jobs with the **Store** option can be monitored by processing messages with `type=Application`, `source=atsd_export` and `report_type=sql`.
 
 ![SQL Store Messages](images/sql-store-messages.png)
+
+### Examples
+
+#### Summarizing Expiring Data
+
+Scheduled SQL queries with **Store** option can be used to calculate and retain statistical averages from expiring detailed data.
+
+Schedule such queries to execute before the raw data is deleted.
+
+In the example below, the query runs every night (at 00:15) to calculate hourly averages and maximums for each series in the underlying metrics.
+
+![](images/sql-scheduled-summarize.png)
+
+The derived metrics are then stored under new names. You can adopt a naming convention for derived metrics such as `{metric}_{function}_{period}`.
+
+![](images/sql-scheduled-summarize-result.png)
+
+```sql
+SELECT datetime, entity, tags.*,
+  -- specify derived metric names, e.g. {metric}_{function}_{period}
+  ROUND(AVG(value), 0) AS "disk_used_avg_1h",
+  ROUND(MAX(value), 0) AS "disk_used_max_1h"
+  -- specify metric with raw data to summarize
+FROM disk_used
+  WHERE datetime >= previous_day AND datetime < current_day
+  -- choose summarization period, such as 1-hour
+GROUP BY entity, tags, PERIOD(1 HOUR)
+```

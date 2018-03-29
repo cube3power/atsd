@@ -4,7 +4,7 @@ Retention settings provide a way to control database size by automatically remov
 
 ## Default Retention Settings
 
-| **Data Type** | **Data Table Name ** | **Retention** |
+| **Data Type** | **Data Table Name** | **Retention** |
 |---|---|---|
 | Series | `atsd_d` | Not deleted. |
 | Properties | `atsd_properties` | Not deleted. |
@@ -226,6 +226,32 @@ To trigger these tasks manually, open **Settings > Storage > Delete Tasks** and 
 
 * Refer to Python client [examples](https://github.com/axibase/atsd-api-python#record-cleanup)
 
+## Summarizing Expiring Data
+
+To retain statistical averages based on expiring detailed data, use [scheduled SQL](../sql/scheduled-sql-store.md) queries with the **Store** option.
+
+Schedule the queries to execute before the raw data is deleted.
+
+In the example below, the query runs every night (at 00:15) to calculate hourly averages and maximums for each series in the underlying metrics.
+
+![](images/retention-summarize.png)
+
+The derived metrics are then stored under new names.
+
+![](images/retention-summarize-result.png)
+
+```sql
+SELECT datetime, entity, tags.*,
+  -- specify derived metric names, e.g. {metric}_{function}_{period}
+  ROUND(AVG(value), 0) AS "disk_used_avg_1h",
+  ROUND(MAX(value), 0) AS "disk_used_max_1h"
+  -- specify metric with raw data to summarize
+FROM disk_used
+  WHERE datetime >= previous_day AND datetime < current_day
+  -- choose summarization period, such as 1-hour
+GROUP BY entity, tags, PERIOD(1 HOUR)
+```
+
 ## Understanding Data Growth
 
 In addition to more data being collected for existing series, data may be appear for new metrics, entities, and series.
@@ -245,8 +271,6 @@ The widget displays the current number of records as well as weekly change.
   entity = atsd
 
   column-entity = null
-  #column-metric = null
-  #column-value = null
   column-time = null
 
   [column]
