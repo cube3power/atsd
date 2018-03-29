@@ -50,19 +50,6 @@
   * [JDBC](https://github.com/axibase/atsd-jdbc)
   * [ODBC](integration/odbc/README.md)
   
-## Integrations
-
-  * [Alteryx Designer](integration/alteryx/README.md)
-  * [IBM SPSS Modeler](integration/spss/modeler/README.md)
-  * [IBM SPSS Statistics](integration/spss/statistics/README.md)
-  * [MatLab](integration/matlab/README.md)
-  * [Pentaho Data Integration](integration/pentaho/data-integration/README.md)
-  * [Pentaho Report Designer](integration/pentaho/report-designer/README.md)  
-  * [Stata](integration/stata/README.md)
-  * [Tableau](integration/tableau/README.md)
-  * [ODBC](integration/odbc/README.md)
-  * [Grafana](https://github.com/axibase/grafana-data-source)
-  * [Graphite](integration/graphite/README.md)
 
 ## Rule Engine
 
@@ -77,7 +64,7 @@
   * [Web Notifications](rule-engine/web-notifications.md)
   * [Email Notifications](rule-engine/email.md)
   * [System Commands](rule-engine/commands.md)
-  * [Derived Commands](rule-engine/derived.md) 
+  * [Derived Commands](rule-engine/derived.md)
   * [Logging](rule-engine/logging.md)
 
 ## Installation
@@ -100,8 +87,14 @@
 
 ## Security
 
-* [User Authentication](administration/user-authentication.md)
-* [User Authorization](administration/user-authorization.md)
+  * [User Authentication](administration/user-authentication.md)
+  * [User Authorization](administration/user-authorization.md)
+
+## Configuration
+
+  * [Entity Groups](configuration/entity_groups.md)
+  * [Entity Views](configuration/entity_views.md)
+  * [Data Retention](configuration/data_retention.md)
 
 ## Administration
 
@@ -120,6 +113,20 @@
   * [Monitoring](administration/monitoring.md)
   * [Replication](administration/replication.md)
   * [Restarting](administration/restarting.md)
+
+## Integrations
+
+  * [Alteryx Designer](integration/alteryx/README.md)
+  * [IBM SPSS Modeler](integration/spss/modeler/README.md)
+  * [IBM SPSS Statistics](integration/spss/statistics/README.md)
+  * [MatLab](integration/matlab/README.md)
+  * [Pentaho Data Integration](integration/pentaho/data-integration/README.md)
+  * [Pentaho Report Designer](integration/pentaho/report-designer/README.md)  
+  * [Stata](integration/stata/README.md)
+  * [Tableau](integration/tableau/README.md)
+  * [ODBC](integration/odbc/README.md)
+  * [Grafana](https://github.com/axibase/grafana-data-source)
+  * [Graphite](integration/graphite/README.md)  
 
 ## Data Collection Examples
 
