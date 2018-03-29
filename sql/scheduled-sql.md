@@ -38,12 +38,14 @@ HTML format is optimized for compatibility with common desktop and email clients
 * [sql-report.csv](examples/sql-report.csv)
 * [sql-report.json](examples/sql-report.json)
 * [sql-report.xlsx](examples/sql-report.xlsx)
+* [sql-report.html](examples/sql-report.html)
 
 ## Decimal Precision
 
 To round numeric values, set decimal precision to the desired number of fractional digits.
-`0` means that no fractional digits will be displayed.
-`-1` means that no rounding will be applied and numbers will be displayed with their original precision.
+
+* `0` means that no fractional digits will be displayed.
+* `-1` means that no rounding will be applied and numbers will be displayed with their original precision.
 
 ## Export Options
 
@@ -70,13 +72,26 @@ An expression like `/opt/report/daily/${yyyy-MM-dd}.csv` creates the following f
 
 To distribute report files via email, enable the **Export** section, specify an email subject and one or multiple email addresses, separated by comma or space.
 
-![File](images/sql-scheduled-email.png)
+The `Email Subject` field supports date and form [placeholders](#placeholders), for example `${name} on ${yyyy-MM-dd}`.
+
+![File](images/sql-scheduled-email-send.png)
 
 `Send Empty Report` and `Send Error Report` settings control whether a report should be emailed in case of an empty result or error.
 
-`Send Empty Report` option in particular, when disabled, can be used for alert purposes whereby a report is sent only if the resultset is not empty.
+`Send Empty Report` option in particular, when disabled, can be used for alert purposes whereby a report is sent only if the result set is not empty.
 
-The `Email Subject` field supports date and form [placeholders](#placeholders), for example `${name} for ${yyyy-MM-dd}`.
+```sql
+SELECT entity AS "Server", entity.tags.app AS "Application",
+  ROUND(AVG(value), 1) AS "Average CPU Used, %"
+FROM "cpu_busy"
+  WHERE datetime >= previous_day AND datetime < current_day
+GROUP BY entity
+  HAVING AVG(value) > 50
+```
+
+In the above example, the query relies on the `HAVING` clause to find servers with high CPU utilization. The report with unchecked `Send Empty Report` option will be sent only if at least one server with high CPU usage is found.
+
+`Fail on No Data` causes an error if the query finds no matching records in the database which maybe indicative of a breakdown in data collection.
 
 ### Publishing
 
