@@ -2,17 +2,17 @@
 
 ## Overview
 
-Entity Views provide a way to construct customized tables displaying key attributes for entities belonging to the same entity group. The views are listed under the **Entity Views** link in the main menu on the left.
+Entity Views provide a way to construct customized tables displaying key attributes for entities belonging to the same entity group. These views are listed under the **Entity Views** tab in the main menu on the left.
 
 ![](images/entity_views_5.png)
 
-An entity view table consists of columns of various types including icons, links, text, series values:
+An entity view table consists several columns: icons, links, text, series values:
 
 ![](images/entity-view-table.png)
 
 ## Reference
 
-* [Access Controls](#access-controls)
+* [Access Controls](#authorization)
 * [Settings](#settings)
 * [Filters](#filters)
 * [Search](#search)
@@ -20,10 +20,11 @@ An entity view table consists of columns of various types including icons, links
 * [Dynamic Filters](#dynamic-filters)
 * [Split Table by Column](#split-table-by-column)
 * [Portal](#portal)
+* [Column Examples](#column-examples)
 
 ## Authorization
 
-The view can be accessed by users with a [**READ**](user-authorization.md#entity-permissions) `read` permission for the [entity group](entity_groups.md#members) to which the view is linked.
+The view can be accessed by users with [`read`](user-authorization.md#entity-permissions) permission for the [entity group](entity_groups.md#members) to which the view is linked.
 
 ## Settings
 
@@ -117,7 +118,7 @@ Entity Tag | Displays the value of the specified entity tag for another entity, 
 
 ### Formatting
 
-The following functions are available in 'Formatting' section:
+The following functions are available in the 'Formatting' section:
 
 #### Text Functions
 
@@ -162,8 +163,8 @@ The following functions are available in 'Formatting' section:
 
 **Name** | **Description**
 ---|---
-Name | Filter name displayed in the drop-down.
-Expression | A condition that entities must satisfy when the filter is selected in the drop-down. The expression may refer to `name` and `tags.{name}` columns defined in the entity view.
+Name | Filter name displayed in the drop-down menu.
+Expression | A condition that entities must satisfy when the filter is selected in the drop-down menu. The expression may refer to `name` and `tags.{name}` columns defined in the entity view.
 
 Filter expression examples:
 
@@ -205,7 +206,7 @@ Default entity view configuration:
 
 ![](images/entity_views_1.png)
 
-The entity view without table splitting is displayed as follows, with all entities places into one table:
+The entity view without table splitting is displayed as follows, with all entities placed into one table:
 
 ![](images/entity-view-split-empty.png)
 
@@ -247,129 +248,20 @@ The multi-entity portal is any portal that displays a metric for [multiple entit
 
 ## Column Examples
 
-### Icon Link to Entity Portals
+Examples by Column Types:
 
-The icon opens a link to all template portals assigned to the selected entity. The order of portals is determined based on the portal's display index.
+  * [Entity Tag](#entity-tag-examples)
+  * [Property Tag](#property-tag-examples)
+  * [Series Value](#series-value-examples)
+  * [Name Column](#name-column-examples)
+  * [Label Column](#label-column-examples)
+  * [Portals Column](#portals-column-examples)
+  * [Properties Column](#properties-column-examples)
+  * [Last Insert](#last-insert-examples)
 
-* Configuration
+### Entity Tag Examples
 
-  ![](images/entity-view-column-portals.png)
-
-* View
-
-  ![](images/entity-view-column-portals-view.png)
-
-* On-click Target
-
-  ![](images/entity-view-column-portals-result.png)
-
-### Icon Link to Specific Entity Portal
-
-To display a particular portal by default, specify the portal's name in the 'Value' setting. Other portals assigned with the entity will be accessible in tabs.
-
-* Configuration
-
-  ![](images/entity-view-column-portals-specific.png)
-
-* Example
-
-  ![](images/entity-view-column-portals-specific-result.png)
-
-### Icon Link to All Entity Properties
-
-* Configuration
-
-  ![](images/entity-view-column-prop.png)
-
-* View
-
-  ![](images/entity-view-column-prop-view.png)
-
-* On-click Target
-
-  ![](images/entity-view-column-prop-result.png)
-
-### Icon Link to Specific Entity Property
-
-Specify the default entity type in the 'Value' setting.
-
-```ls
-  docker.container.config
-```
-
-* Configuration
-
-  ![](images/entity-view-column-prop-specific.png)
-
-
-* Result
-
-  ![](images/entity-view-column-prop-specific-result.png)
-
-  The property viewer displays the selected type on initial load:
-
-  ```elm
-  /entities/123456.../properties?type=docker.info
-  ```
-
-### Text Link to Entity Editor
-
-The text displays entity name with a link to the entity editor.
-
-The displayed entity name can be modified, for example shortened, by specifying an expression in the 'Formatting' setting:
-
-```javascript
-  length(value)<16 ? value : truncate(value,12)
-```
-
-* Configuration
-
-  ![](images/entity-view-column-name-format.png)
-
-* View
-
-  ![](images/entity-view-column-name-format-view.png)
-
-* On-click Target
-
-  ![](images/entity-view-column-name-format-result.png)
-
-### Text with Entity Label
-
-The text contains entity label if the label is set. Otherwise, entity name will be displayed.
-
-* Configuration
-
-  ![](images/entity-view-column-label.png)
-
-* View
-
-  ![](images/entity-view-column-label-view.png)
-
-### Text Link to Entity Editor with Entity Label
-
-The link displays entity label if the label is set. Otherwise, the link displays entity name.
-
-Specify the following URL in the 'Link Template' setting.
-
-```ls
-  /entities/${entity}
-```
-
-* Configuration
-
-  ![](images/entity-view-column-label-format.png)
-
-* View
-
-  ![](images/entity-view-column-label-format-view.png)
-
-* On-click Target
-
-  ![](images/entity-view-column-label-format-result.png)
-
-
-### Text Link to Entity Tag for a related Entity
+#### Text Link to Entity Tag for a related Entity
 
 The link displays the value of the entity tag of another entity, which name is set in the entity tag of the current entity.
 
@@ -391,3 +283,273 @@ The link displays the value of the entity tag of another entity, which name is s
   * On-click Target
 
     ![](images/entity-view-column-entity-tag-related-result.png)
+    
+#### Customized Entity Tag
+
+Tag value can be formatted for convenient representation.
+
+  * Configuration
+
+    ![](images/entity_views_19.png)
+
+  * View
+
+    ![](images/entity_views_20.png)
+
+### Property Tag Examples
+
+#### Text Link to Specific Entity Property
+
+Text displays property tag value with a link to property type.
+
+1. Set 'Type' setting to Property Tag.
+
+2. Specify [property search expression](../rule-engine/property-search.md) in the 'Value' setting, for example `docker.version::version`.
+
+3. Set 'Link' setting to Property.
+
+* Configuration
+
+  ![](images/entity_views_13.png)
+
+* View
+
+  ![](images/entity_views_14.png)
+
+* On-click Target
+
+  ![](images/entity_views_15.png)
+  
+#### Custom Icon Link to Message Search Page with Property Tag
+
+The message search link template contains tag value.  
+
+1. Set 'Type' setting to Property Tag.
+
+2. Specify [property search expression](../rule-engine/property-search.md) in the 'Value' setting, for example `docker.container.config::hostname`.
+
+3. Set 'Link Label' setting to [icon](http://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-search`.
+
+4. Specify a portal link in the 'Link Template' setting, for example `/messages?search&entity=${value}`.
+
+* Configuration
+
+  ![](images/entity_views_16.png)
+
+* View
+
+  ![](images/entity_views_17.png)
+
+* On-click Target
+
+  ![](images/entity_views_18.png)  
+
+### Series Value Examples
+
+#### Text Link to Series Chart with formatted Series Value
+
+The link displays the latest inserted value for the specific metric.
+
+1. Specify the metric name in the 'Value' setting.
+
+2. Apply the 'Link' setting to Chart.
+
+3. Specify an expression in the 'Formatting' setting to display one digit after dot:
+
+    ```ls
+    formatNumber(value, '0.0')
+    ```
+        
+  * Configuration
+  
+    ![](images/entity-view-column-series-chart-value-format.png)
+  
+  * View
+  
+    ![](images/entity-view-column-series-chart-value-view.png)
+  
+  * On-click Target
+  
+    ![](images/entity-view-column-series-chart-value-result.png)
+
+### Name Column Examples
+
+#### Text Link to Entity Editor
+
+The text displays entity name with a link to the entity editor.
+
+The displayed entity name can be modified, for example shortened, by specifying an expression in the 'Formatting' setting:
+
+```javascript
+  length(value)<16 ? value : truncate(value,12)
+```
+
+* Configuration
+
+  ![](images/entity-view-column-name-format.png)
+
+* View
+
+  ![](images/entity-view-column-name-format-view.png)
+
+* On-click Target
+
+  ![](images/entity-view-column-name-format-result.png)
+  
+  
+#### Custom Icon Link to Specific Entity Portal
+
+Use the following configuration to specify the custom icon which opens a link to template portal assigned to the selected entity. 
+
+1. Set 'Type' setting to Name Column.
+
+2. Set 'Link Label' setting to [icon](http://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-fire`.
+
+3. Specify a portal link in the 'Link Template' setting, for example `/portal/name/collectd?entity=${entity}`.
+
+* Configuration
+
+  ![](images/entity_views_7.png)
+
+* View
+
+  ![](images/entity_views_8.png)
+
+* On-click Target
+
+  ![](images/entity_views_9.png)
+    
+### Label Column Examples
+
+#### Text with Entity Label
+
+Entity labels may be defined for entries. Otherwise, entity name will be displayed.
+
+* Configuration
+
+  ![](images/entity-view-column-label.png)
+
+* View
+
+  ![](images/entity-view-column-label-view.png)
+  
+#### Text Link to Entity Editor with Entity Label
+
+The link displays entity label if the label is set. Otherwise, the link displays entity name.
+
+Specify the following URL in the 'Link Template' setting.
+
+```ls
+  /entities/${entity}
+```
+
+* Configuration
+
+  ![](images/entity-view-column-label-format.png)
+
+* View
+
+  ![](images/entity-view-column-label-format-view.png)
+
+* On-click Target
+
+  ![](images/entity-view-column-label-format-result.png)
+
+### Portals Column Examples
+
+#### Icon Link to Entity Portals
+
+The icon opens a link to all template portals assigned to the selected entity. The order of portals is determined based on the portal's display index.
+
+* Configuration
+
+  ![](images/entity-view-column-portals.png)
+
+* View
+
+  ![](images/entity-view-column-portals-view.png)
+
+* On-click Target
+
+  ![](images/entity-view-column-portals-result.png)
+
+#### Icon Link to Specific Entity Portal
+
+To display a particular portal by default, specify the portal's name in the 'Value' setting. Other portals assigned with the entity will be accessible in tabs.
+
+* Configuration
+
+  ![](images/entity-view-column-portals-specific.png)
+
+* Example
+
+  ![](images/entity-view-column-portals-specific-result.png)
+  
+  
+### Properties Column Examples
+
+#### Icon Link to All Entity Properties
+
+* Configuration
+
+  ![](images/entity-view-column-prop.png)
+
+* View
+
+  ![](images/entity-view-column-prop-view.png)
+
+* On-click Target
+
+  ![](images/entity-view-column-prop-result.png)
+  
+
+#### Icon Link to Specific Entity Property
+
+Specify the default property type in the 'Value' setting.
+
+```ls
+  docker.info
+```
+
+* Configuration
+
+  ![](images/entity-view-column-prop-specific.png)
+
+
+* Result
+
+  ![](images/entity-view-column-prop-specific-result.png)
+
+  The property viewer displays the selected type on initial load:
+
+  ```elm
+  /entities/123456.../properties?type=docker.info
+  ```
+
+### Last Insert Examples
+
+#### Text Link to Last Insert Page
+
+The text displays difference `now - lastInsertDate`. The entities are  highlighted if the last insert date for the specified metric is before `now - {lag} seconds`.
+
+1. Set 'Type' setting to Last Insert.
+
+2. Specify the metric name and the lag in the 'Value' setting, for example `docker.activecontainers:20`.
+
+3. Specify an expression in the 'Formatting' setting to display difference `now - lastInsertDate`:
+
+    ```ls
+    formatIntervalShort(elapsedTime(value))
+    ```
+        
+  * Configuration
+  
+    ![](images/entity_views_10.png)
+  
+  * View
+  
+    ![](images/entity_views_11.png)
+  
+  * On-click Target
+  
+    ![](images/entity_views_12.png)
