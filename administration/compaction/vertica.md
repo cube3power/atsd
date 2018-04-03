@@ -253,7 +253,7 @@ mkdir /tmp/test
 Download the dataset.
 
 ```sh
-curl -o /tmp/test/IBM_adjusted.txt \
+curl --compressed -o /tmp/test/IBM_adjusted.txt \
   "http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest"
 ```
 

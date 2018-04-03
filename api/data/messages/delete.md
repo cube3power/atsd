@@ -2,15 +2,23 @@
 
 ## Description
 
-Currently the ability to delete message records via the Data API is not implemented. 
+The ability to delete specific message records via the Data API is not implemented. 
 
-The messages are stored in the database within the TTL (time-to-live) interval, measured in seconds, specified on Admin: Server Properties `messages.timeToLive` setting. The message TTL is measured based on its insertion time, not the record datetime.
+## TTL
 
-### Modifying the Default TTL
+The messages are deleted from the database by background tasks once their insertion time is older than current time minus the time-to-live (TTL) interval.
 
-Convert the desired TTL to seconds, for example `3600 * 24 * 14 = 1209600` (14 days).
+The TTL is displayed on the **Settings: Server Properties** page, under the `messages.timeToLive` setting. It's measured in seconds.
 
-Execute the following administrative commands one by one to modify the TTL attribute:
+The message expiration time is calculated based on its **insertion** time, and not based on its **record** time.
+
+## Modifying the Default TTL
+
+Convert the desired TTL to seconds, for example `14 days` is `14 * 24 * 3600 = 1209600`.
+
+Login into the ATSD server and execute the following administrative commands in HBase shell one by one to modify the TTL attribute.
+
+> The procedure is different in distributed installations.
 
 ```bash
 echo "disable 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
@@ -106,9 +114,9 @@ major_compact 'atsd_message'
 0 row(s) in 0.2950 seconds
 ```
 
-### Deleting All Messages
+## Deleting All Messages
 
-Execute the following administrative command:
+Execute the following administrative command in HBase shell to truncate the 'atsd_message' table which will cause all records to be removed.
 
 ```bash
 echo "truncate 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell

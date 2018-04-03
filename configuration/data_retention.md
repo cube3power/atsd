@@ -8,7 +8,7 @@ Retention settings provide a way to control database size by automatically remov
 |---|---|---|
 | Series | `atsd_d` | Not deleted. |
 | Properties | `atsd_properties` | Not deleted. |
-| Messages | `atsd_message` | [Deleted](../api/data/messages/delete.md) after `messages.timeToLive` seconds.<br>Default is 2 weeks. |
+| Messages | `atsd_message` | [Deleted](../api/data/messages/delete.md) after `messages.timeToLive` seconds.<br>Default is 1 year. |
 
 ## Data Tables
 

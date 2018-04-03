@@ -57,7 +57,7 @@ The storage efficiency in ATSD is a product of standard compressions algorithms 
 Download the dataset.
 
 ```sh
-curl -o IBM_adjusted.txt \
+curl --compressed -o IBM_adjusted.txt \
   "http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest"
 ```
 
@@ -103,14 +103,14 @@ Download CSV parser.
 
 ```sh
 curl -o stock-parser.xml \
- "https://raw.githubusercontent.com/axibase/atsd/master/administration/compaction/stock-parser.xml
+ "https://raw.githubusercontent.com/axibase/atsd/master/administration/compaction/stock-parser.xml"
 ```
 
 Download the test script.
 
 ```sh
 curl -o atsd-test.sh \
- "https://raw.githubusercontent.com/axibase/atsd/master/administration/compaction/atsd-test.sh
+ "https://raw.githubusercontent.com/axibase/atsd/master/administration/compaction/atsd-test.sh"
 ```
 
 ```sh
