@@ -231,26 +231,28 @@ The filter parameters contain patterns that the converted message tags must sati
 
 | **Name** | **Description** |
 |---|---|
-| `include` | Include only tags with **names** that satisfy the specified pattern. |
-| `exclude` | Exclude tags with **names** that satisfy the specified pattern. |
-| `includeValues` | Include only tags with **values** that satisfy the specified pattern. |
-| `excludeValues` | Exclude tags with **values** that satisfy the specified pattern. |
+| `exclude` | Exclude tags with **names** that match the specified pattern. |
+| `excludeValues` | Exclude tags with **values** that match the specified pattern. |
+| `include` | Override `exclude` rules by including tags with **names** that match the specified pattern. |
+| `includeValues` | Override `excludeValues` rules by including tags with **values** that match the specified pattern. |
+
 
 * The patterns support `*` as a wildcard.
 * Tag name match is case-**IN**sensitive.
-* The `include` parameter takes precedence over the `exclude` parameter. If the `include` parameter is present, the `exclude` parameter is ignored.
-* The `includeValues` parameter takes precedence over the `excludeValues` parameter. If the `includeValues` parameter is present, the `excludeValues` parameter is ignored.
-* The parameters may contain multiple patterns separated by semi-colon `;`. Alternatively, the parameters can be repeated in the query string.
+* The parameters may contain multiple patterns separated by semi-colon `;`.
+  ```
+  &exclude=repository.*;sender.location
+  ```
 
-```
-&exclude=repository.*;sender.location
-&exclude=repository.*&exclude=sender.location
-```
+* The parameters can also be repeated in the query string.
+  ```
+  &exclude=repository.*&exclude=sender.location
+  ```
 
 Example:
 
   ```
-	exclude = repository.*
+	exclude=repository.*&include=repository.name
   ```
 
   ```json
@@ -271,6 +273,7 @@ Example:
   ```
     tag.event = commit
     tag.result = ok
+    repository.name = atsd
   ```
 
 #### Control Parameters
@@ -327,7 +330,7 @@ Example:
 Subscribe to GitHub repository events.
 
 ```
-/api/v1/messages/webhook/github?type=webhook&entity=github&exclude=organization.*%3Brepository.*%3B*.signature%3B*.payload%3B*.sha%3B*.ref%3B*_at%3B*.id&header.tag.event=X-GitHub-Event&repo=atsd&excludeValues=http*&debug=true
+/api/v1/messages/webhook/github?type=webhook&entity=github&exclude=organization.*%3Brepository.*%3B*.signature%3B*.payload%3B*.sha%3B*.ref%3B*_at%3B*.id&include=repository.name&header.tag.event=X-GitHub-Event&excludeValues=http*&debug=true
 ```
 
 ### Amazon WS
@@ -367,15 +370,15 @@ Receive incoming bot messages. Refer to the Telegram webhook configuration [inst
 Request:
 
 ```elm
-POST https://usr:pwd@atsd_host:8443/api/v1/messages/webhook/github?debug=true&entity=github&header.tag.event=X-GitHub-Event&repo=atsd&excludeValues=http*&exclude=organization.*%3Brepository.*
+POST https://usr:pwd@atsd_host:8443/api/v1/messages/webhook/github?debug=true&entity=github&header.tag.event=X-GitHub-Event&excludeValues=http*&exclude=organization.*%3Brepository.*&include=repository.name
 ```
 
 Notes:
 
 * Fields with name starting with `organization.` are excluded.
-* Fields with name starting with `repository.` are excluded.
+* Fields with name starting with `repository.` are excluded (except `repository.name`).
+* Field `repository.name` is included.
 * Fields with values starting with `http` are excluded.
-* Tag `repo` is set to `atsd` with a corresponding request parameter.
 * Tag `event` is retrieved from the `X-GitHub-Event` header.
 
 Payload:
@@ -486,7 +489,7 @@ Command:
 	"tags": {
 		"action": "started",
 		"event": "watch",
-		"repo": "atsd",
+		"repository.name": "atsd",
 		"request_ip": "192.30.253.29",
 		"sender.id": "2098022",
 		"sender.login": "rodionos",
