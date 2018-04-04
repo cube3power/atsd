@@ -51,7 +51,7 @@ Forecasts are accessible under the **Data > Forecasts** tab.
 |Tags  |Limit the selected historical data to specified series tags.| 
 |End Time  |End time of the _Data Selection Interval_ and _Series Selection Interval_. This field supports [calendar](../shared/calendar.md) syntax,for example 'current_day'. If End Time is not defined, it is set to current time at the time the job is run.| 
 |Data Selection Interval  |Time frame for selecting detailed data that will be used as forecast input. End of the _Selection Interval_ can be optionally specified in _End Time_ field, otherwise it is set to current time.| 
-|Series Selection Interval  |Ignore series with Last Insert Time different from _End Time_ by more than the specified interval. No series are discarded if the interval is '0'. The option can be used to ignore series which have not been updated for a long time.| 
+|Series Selection Interval  |Ignore series with Last Insert Time different from _End Time_ by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.| 
 |Calendar  |Ignore detailed values within the time intervals listed in the calendar.| 
 |Empty Period Threshold  |Ignore series if percentage of empty periods exceeds the specified threshold. Calculated as 100 * (number of empty periods before interpolation)/(total number of aggregation periods in _Data Selection Interval_).| 
 
@@ -63,7 +63,7 @@ Forecasts are accessible under the **Data > Forecasts** tab.
 | --- | --- | 
 |Group By |Grouping key for merging multiple series into one series. Detailed data for multiple series sharing the same grouping key are merged into one array prior to computing aggregate statistic.|
 |Auto Aggregate|Let server automatically identify an aggregation period that produces the most accurate forecast - forecast with minimal variance from observed historical data.| 
-|Aggregation Period |Period of time over which the detailed samples are aggregated. When using the ARIMA algorithm, the period cannot be set to less than 1 hour.| 
+|Aggregation Period |Period of time over which the detailed samples are aggregated.| 
 |Aggregate Statistic |Aggregation function applied to raw data in order to regularize the series. Aggregate values for empty periods without detailed data are interpolated as values of aggregate functions for previous periods.| 
 
 ### Algorithm Settings
@@ -136,9 +136,9 @@ _Create_ drop-down in the **Data > Forecasts** page allows to perform the follow
   
 ## View Forecast Data
 
-Forecast data can be retrieved on the [Ad-hoc Export](../reporting/ad-hoc-exporting.md) page, via a scheduled [Export Job](../reporting/scheduled-exporting.md) and using [Data API](#data-api).
+Forecast data can be retrieved on the [Ad hoc Export](../reporting/ad-hoc-exporting.md) page, via a scheduled [Export Job](../reporting/scheduled-exporting.md) and using [Data API](#data-api).
 
-### Ad-hoc Export page
+### Ad hoc Export page
 
 Set _Data Type_ setting to 'Forecast', optionally specify the forecast name:
 
@@ -181,7 +181,7 @@ To display forecast values in time charts use the following settings:
 ```ls
 [widget]
     type = chart
-	statistics = average    
+    statistics = average    
     forecast-style = stroke: magenta;
 ```
 |Name|Example|Description|Chart Lab|
