@@ -85,7 +85,7 @@
   * [Uninstalling](administration/uninstalling.md)
   * [Updating](administration/update.md)   
   
-## Tutotials
+## Tutorials
 
   * [Getting Started](tutorials/getting-started.md)
 
