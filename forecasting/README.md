@@ -117,11 +117,12 @@ Forecast Settings Editor provides a set of following tools:
    
    * **Show Meta**
    
-        This option displays meta information about ????:
+        This option displays values of the main settings by which this forecast is calculated:
         
         ![](resources/forecasts_16.png)  
    
-
+        Metadata is stored with the forecast. Collection interval is an interval within the real data were extracted to build the forecast.
+        
 _Create_ drop-down in the **Data > Forecasts** page allows to perform the following actions:
 
 ![](resources/forecasts_10.png) 
