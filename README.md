@@ -84,6 +84,10 @@
     * [AWS EMR](installation/aws-emr-s3.md)    
   * [Uninstalling](administration/uninstalling.md)
   * [Updating](administration/update.md)   
+  
+## Tutotials
+
+  * [Getting Started](tutorials/getting-started.md)
 
 ## Security
 
