@@ -14,10 +14,12 @@ When a property record is inserted into the database, it overwrites an existing 
 property e:{entity} t:{type} k:{key-1}={value} k:{key-2}={value} v:{tag-1}={text} v:{tag-2}={text} d:{time}
 ```
 
-* Entity name, property type, key names, and tag names are case-insensitive and are converted to lower case when stored.
-* Key values and tag values are case-sensitive and are stored as submitted.
-* Tag names may duplicate key names specified in the same command.
-* At least one tag is required.
+
+* Entity name, property type, key names, and tag names are case-**insensitive** and are converted to lower case when stored.
+* Key values and tag values are case-**sensitive** and are stored as submitted.
+* Tag names may duplicate key names, i.e. `{tag-1}` maybe equal to `{key-1}`.
+* At least one tag is required, for example, command `property e:e1 t:t1 k:k1=v1` is not valid.
+* Tags with empty values are ignored, i.e. `t2` will be ignored in command `property e:e1 t:t1 v:t1=v1 v:t2=""`.
 
 ```ls
 # input command
@@ -30,7 +32,7 @@ property e:nurswg t:disk-config k:fs_type=NFS v:initiator=Pre-fetch
 
 | **Type** | **Description** |
 |:---|:---|
-| `$entity_tags` | Insert entity tags for the specified entity from the included key and tag fields. |
+| `$entity_tags` | Insert [entity tags](../../api/meta/entity/list.md#fields) for the specified entity from the included key and tag fields. |
 
 ### Fields
 
