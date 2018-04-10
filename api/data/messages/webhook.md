@@ -344,7 +344,7 @@ Example:
 Subscribe to GitHub repository events.
 
 ```
-/api/v1/messages/webhook/github?exclude=organization.*%3Brepository.*%3B*.signature%3B*.payload%3B*.sha%3B*.ref%3B*_at%3B*.id&include=repository.name&header.tag.event=X-GitHub-Event&excludeValues=http*&debug=true
+/api/v1/messages/webhook/github?exclude=organization.*;repository.*;*.signature;*.payload;*.sha;*.ref;*_at;*.id&include=repository.name;repository.full_name&header.tag.event=X-GitHub-Event&excludeValues=http*&debug=true
 ```
 
 ### Amazon WS
@@ -384,14 +384,14 @@ Receive incoming bot messages. Refer to the Telegram webhook configuration [inst
 Request:
 
 ```elm
-POST https://usr:pwd@atsd_host:8443/api/v1/messages/webhook/github?debug=true&header.tag.event=X-GitHub-Event&excludeValues=http*&exclude=organization.*%3Brepository.*&include=repository.name
+POST https://usr:pwd@atsd_host:8443/api/v1/messages/webhook/github?exclude=organization.*;repository.*;*.signature;*.payload;*.sha;*.ref;*_at;*.id&include=repository.name;repository.full_name&header.tag.event=X-GitHub-Event&excludeValues=http*&debug=true
 ```
 
 Notes:
 
 * Fields with name starting with `organization.` are excluded.
 * Fields with name starting with `repository.` are excluded (except `repository.name`).
-* Field `repository.name` is included.
+* Fields `repository.name` and `repository.full_name` are included.
 * Fields with values starting with `http` are excluded.
 * Tag `event` is retrieved from the `X-GitHub-Event` header.
 
@@ -504,6 +504,7 @@ Command:
 		"action": "started",
 		"event": "watch",
 		"repository.name": "atsd",
+		"repository.full_name": "axibase/atsd",
 		"request_ip": "192.30.253.29",
 		"sender.id": "2098022",
 		"sender.login": "rodionos",
