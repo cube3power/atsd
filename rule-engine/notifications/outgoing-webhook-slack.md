@@ -57,7 +57,7 @@ Slack Bot is a special account created specifically for automation purposes.
   Replace [user credentials](../../api/data/messages/webhook.md#authentication) and the DNS name of the target ATSD instance in the webhook URL below.
 
    ```elm
-   https://slack:12345678@atsd_host:8443/api/v1/messages/webhook/slack?entity=slack&command.message=event.text&command.date=event.ts&exclude=event.event_ts&exclude=event_time&exclude=event.icons.image*&exclude=*thumb*&exclude=token&exclude=event_id&exclude=event.message.edited.ts&exclude=*.ts
+   https://slack:12345678@atsd_host:8443/api/v1/messages/webhook/slack?command.message=event.text&command.date=event.ts&exclude=event.event_ts&exclude=event_time&exclude=event.icons.image*&exclude=*thumb*&exclude=token&exclude=event_id&exclude=event.message.edited.ts&exclude=*.ts
    ```  
 
   > The receiving ATSD server (or the intermediate reverse proxy) must be externally accessible on the DNS name and have a valid CA-signed [SSL certificate](/administration/ssl-ca-signed.md) installed. Self-signed certificates are **not supported** by Slack at this time.
@@ -105,7 +105,6 @@ Slack Bot is a special account created specifically for automation purposes.
 
 ### Configure Notification
 
-* Create any of [Collaboration Services](https://github.com/axibase/atsd/blob/master/rule-engine/web-notifications.md#collaboration-services) notification or use existing.
 * Open **Alerts > Rules** page and select a rule.
 * Open the **Web Notifications** tab.
 * Select the notification from the **Endpoint** drop-down.

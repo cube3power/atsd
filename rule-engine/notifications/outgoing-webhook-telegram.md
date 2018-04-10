@@ -34,7 +34,7 @@ Prepare a request URL for accepting notifications from Telegram servers.
 * Replace [user credentials](../../api/data/messages/webhook.md#authentication) and the DNS name of the target ATSD instance in the webhook URL below.
 
    ```elm
-   https://telegram:12345678@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram&command.message=message.text
+   https://telegram:12345678@atsd_host:8443/api/v1/messages/webhook/telegram?command.message=message.text
    ```  
 
   The target ATSD server must be accessible on one of the supported ports (80, 88, 443, 8443).
@@ -48,7 +48,7 @@ Execute one of the following commands to setup a webhook.
   Set webhook by specifying the webhook URL
 
     ```bash
-    curl -F "url=https://telegram:12345678@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram&command.message=message.text" \
+    curl -F "url=https://telegram:12345678@atsd_host:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
       https://api.telegram.org/botBOT_TOKEN/setWebhook
     ```
 
@@ -67,7 +67,7 @@ Execute one of the following commands to setup a webhook.
     Set webhook by specifying the webhook URL and attaching the `server.keystore.pem` file.
 
     ```bash
-    curl -F "url=https://telegram:12345678@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram&command.message=message.text" \
+    curl -F "url=https://telegram:12345678@atsd_host:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
       -F "certificate=@/opt/atsd/atsd/conf/server.keystore.pem" \
       https://api.telegram.org/botBOT_TOKEN/setWebhook
     ```
@@ -83,7 +83,7 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 {
   "ok": true,
   "result": {
-    "url": "https://telegram:12345678@atsd_host:8443/api/v1/messages/webhook/telegram?entity=telegram&command.message=message.text",
+    "url": "https://telegram:12345678@atsd_host:8443/api/v1/messages/webhook/telegram?command.message=message.text",
     "has_custom_certificate": true,
     "pending_update_count": 0,
     "max_connections": 40
@@ -102,7 +102,6 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 
 ### Configure Notification
 
-* Create any of [Collaboration Services](https://github.com/axibase/atsd/blob/master/rule-engine/web-notifications.md#collaboration-services) notification or use existing.
 * Open **Alerts > Rules** page and select a rule.
 * Open the **Web Notifications** tab.
 * Select the notification from the **Endpoint** drop-down.
