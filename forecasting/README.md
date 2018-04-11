@@ -123,17 +123,9 @@ Forecast Settings Editor provides a set of following tools:
    
         Metadata is stored with the forecast. Collection interval is an interval within the real data were extracted to build the forecast.
         
-_Create_ drop-down in the **Data > Forecasts** page allows to perform the following actions:
+_Create_ drop-down in the **Data > Forecasts** page allows to specify [Exceptions](calendar_exceptions_testing.md#exceptions) and perform [Testing](calendar_exceptions_testing.md#testing):
 
-![](resources/forecasts_10.png) 
-
-   * **Exceptions**
-   
-   ![](resources/forecasts_17.png)  
-   
-   * **Testing**
-   
-   ![](resources/forecasts_18.png)  
+![](resources/forecasts_10.png)
   
 ## View Forecast Data
 
