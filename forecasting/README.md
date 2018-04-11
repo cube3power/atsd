@@ -179,4 +179,4 @@ To display forecast values in time charts use the following settings:
 ```
 |Name|Example|Description|Chart Lab|
 |---|---|---|---|
-|forecast-style|`forecast-style = stroke: magenta;`|CSS styles applied to forecasts in column and column-stack modes.|[View](https://apps.axibase.com/chartlab/37c39d18/3/?target=_blank)|
+|forecast-style|`forecast-style = stroke: magenta;`|CSS styles applied to forecasts in column and column-stack modes.|[View](https://apps.axibase.com/chartlab/37c39d18/3/)|
