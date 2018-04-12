@@ -17,9 +17,13 @@
 ```
 
 ```javascript
-  NOT tags.isEmpty()
-```		
+  tags.file_system NOT LIKE '/dev/*'
 ```
+
+```javascript
+  NOT tags.isEmpty()
+```
+
 ## Ternary Operator
 
 | **Name** | **Description** |
@@ -66,7 +70,7 @@ The above example is equivalent to:
 | `<` | Less than. |
 | `<=` | Less than or equal. |
 | `BETWEEN` | `n BETWEEN m AND p`.<br>The number `n` is between `m` and `p` (inclusive).<br>`m <= n <= p`.<br>Example: `avg() BETWEEN 10 and 20`. |
-| `IN` | Membership in collection. |
+| `IN` | Returns `true` if the number is contained in the numeric [collection](functions-collection.md#in). |
 
 ```javascript
   value*100 > 90
@@ -76,15 +80,19 @@ The above example is equivalent to:
   max() BETWEEN 80 and 100
 ```
 
+```javascript
+  value IN (0, 1, 12)
+```
+
 ## Text Operators
 
 | **Name** | **Description** |
 | :--- | :--- |
 | `=` | Also `==`. Equal. The comparison is case-**insensitive** ('a' = 'A' equals `true`).|
 | `!=` | Not equal. The comparison is case-**insensitive** ('a' != 'A' equals `false`).|
-| `BETWEEN` | `a BETWEEN b AND c`.<br>String `a` is between `b` and `c` (inclusive) using lexicographical comparison.<br>The comparison is case-**sensitive**.<br>Example: `timeStr BETWEEN '18:00' AND '18:04'`.|
-| `LIKE` | Matches the string using `?` and `*` wildcards.|
-| `IN` | Membership in collection. |
+| `BETWEEN` | Returns `true` if the left operand string is ordered between lower and upper strings on the right.<br>`a BETWEEN b AND c`.<br>String `a` is ordered between `b` and `c` (inclusive) using lexicographical comparison.<br>The comparison is case-**sensitive**.<br>Example: `timeStr BETWEEN '18:00' AND '18:04'`.|
+| `LIKE` | Returns `true` if the left operand string matches the pattern on the right. The pattern may include regular characters and  wildcards `?` and `*`.|
+| `IN` | Returns `true` if the left operand string is contained in the string [collection](functions-collection.md#in) specified in parenthesis on the right. |
 
 ```javascript
   entity = 'nurswgvml007'
@@ -93,3 +101,7 @@ The above example is equivalent to:
 ```javascript
   entity LIKE '*007'
 ```		
+
+```javascript
+  entity IN ('nurswgvml007', 'nurswgvml010')
+```
