@@ -83,8 +83,12 @@ Examples:
   ```
 
   ```javascript
-    likeAny(tags.request_ip, collection('ip_white_list'))
+    likeAny(tags.location, ['NUR', 'SVL*'])
   ```
+  
+  ```javascript
+    likeAny(tags.request_ip, collection('ip_white_list'))
+  ```  
 
 ### `matchList`
 
