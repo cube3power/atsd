@@ -73,7 +73,7 @@ Examples:
   string s LIKE (string a[, string b[...]]) boolean
 ```
 
-Returns `true` if `s` matches any pattern in the collection of strings enclosed in round brackets. The pattern supports `?` and `*` wildcards.
+Returns `true` if `s` matches any pattern in the collection of strings enclosed in round brackets. The pattern supports `?` and `*` wildcards. The collection may contain string literals and variables.
 
 Examples:
 
@@ -84,6 +84,10 @@ Examples:
   ```javascript
     tags.version LIKE ('1.2.*', '1.3.?')
   ``` 
+  
+  ```javascript
+    tags.location LIKE ('NUR*', entity.tags.location)
+  ```   
 
 ### `likeAny`
 
