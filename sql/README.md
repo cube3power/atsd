@@ -2952,9 +2952,9 @@ GROUP BY PERIOD(1 DAY)
 ## Case Sensitivity
 
 * SQL keywords are case-insensitive.
-* Entity column values, metric column values, and tag names are case-**in**sensitive, except in `LIKE` and `REGEX` operators.
-* Text column values are **case-sensitive**.
-* Tag column values are **case-sensitive**.
+* Entity column values, metric column values, and tag names are case-**insensitive**, except in `LIKE` and `REGEX` operators.
+* Text column values are case-**sensitive**.
+* Tag column values are case-**sensitive**.
 
 ```sql
 SELECT metric, entity, datetime, value, tags.*

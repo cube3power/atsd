@@ -30,7 +30,7 @@ Returns a normally distributed double number, with a mean value of `0.0` and sta
   randomItem([] c) string
 ```
 
-Returns a random element from collection `c` using the **uniform** distribution. \
+Returns a random element from collection `c` using the **uniform** distribution.
 
 The probability of each element to be selected is `1/c.size()`.
 
