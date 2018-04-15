@@ -44,15 +44,15 @@ Time when the first command was received by the window, in UNIX milliseconds.
   milliseconds(string d [,string p [,string z]]) long
 ```
 
-Parses the datetime string `d` into UNIX milliseconds according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [timezone](http://joda-time.sourceforge.net/timezones.html) `z` (or offset from UTC).
+Parses the date string `d` into UNIX milliseconds according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [timezone](http://joda-time.sourceforge.net/timezones.html) `z` (or offset from UTC).
 
-The function returns `0` if the datetime `d` is `null` or empty.
+The function returns `0` if the date `d` is `null` or empty.
 
 Available timezones and their offsets are listed in [timezones](../shared/timezone-list.md).
 
 The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default timezone is the server timezone.
 
-> The function will raise an error if the timezone (or offset from UTC) is specified in the datetime string `d` and it differs from the timezone (offset) `z`.
+> The function will raise an error if the timezone (or offset from UTC) is specified in the date string `d` and it differs from the timezone (offset) `z`.
 
 Example:
 
@@ -82,7 +82,7 @@ This function provides the same arguments as the [`milliseconds`](#milliseconds)
 
 Calculates the number of milliseconds between the current time and time `t` which is specified in UNIX milliseconds.
 
-The function accepts time `t` in UNIX milliseconds or the datetime `d` in the following format:
+The function accepts time `t` in UNIX milliseconds or the date `d` in the following format:
 
 ```
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
@@ -107,7 +107,7 @@ Parses the input string `d` into a [DateTime](http://joda-time.sourceforge.net/a
 
 The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default timezone is the server timezone.
 
-> The function will raise an error if the timezone (or offset from UTC) is specified in the datetime string `d` differs from the timezone (offset) `z`. See Exception Examples below.
+> The function will raise an error if the timezone (or offset from UTC) is specified in the date string `d` differs from the timezone (offset) `z`. See Exception Examples below.
 
 The fields of the `DateTime` object can be accessed using the following methods:
 
