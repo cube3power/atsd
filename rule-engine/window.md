@@ -87,14 +87,14 @@ Newly created windows contain only **new commands**, unless 'Load History' setti
 
 The condition is re-evaluated each time a new matching command is added to the window or removed from it.
 
-To evaluate the rule on schedule, regardless of external commands, create rules based on the following **timer** metrics:
+To evaluate the rule on schedule, regardless of external commands, create rules based on `timer` metrics:
 
 * `timer_15s` - Command is received every 15 seconds.
 * `timer_1m` - Command is received every 1 minute.
 * `timer_15m` - Command is received every 15 minutes.
 * `timer_1h` - Command is received every 1 hour.
 
-These metrics are produced by the built-in database scheduler and are always available.
+The [`timer`](scheduled-rules.md) metrics are produced by the built-in database scheduler and are always available.
 
 ## Window Fields
 

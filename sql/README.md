@@ -113,7 +113,7 @@ WHERE metric = 'mpstat.cpu_busy'
   AND datetime >= '2017-06-15T00:00:00Z'
 ```
 
-> The number of metrics retrieved with the `metric LIKE (expr)` condition is limited to 50.
+> The number of metrics retrieved with the `metric LIKE (expr)` condition is subject to a limit set by the `sql.metric.like.limit` setting. The default limit is `50`.
 
 > Note that `LIKE` operator is case-**sensitive**.
 

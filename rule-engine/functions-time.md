@@ -103,7 +103,7 @@ Example:
   date_parse(string d [,string p [,string z]]) DateTime
 ```
 
-Parses the input string `d` into a [DateTime](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) object according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [timezone](../shared/timezone-list.md) `z` (or offset from UTC).
+Parses the input string `d` into a [DateTime](object-datetime.md) object according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [timezone](../shared/timezone-list.md) `z` (or offset from UTC).
 
 The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default timezone is the server timezone.
 
@@ -114,29 +114,6 @@ The fields of the `DateTime` object can be accessed using the following methods:
 ```javascript
   date_parse('2018-01-13T16:45:22.303Z').getDayOfWeek()
 ```
-
-Results for sample date `2018-01-13T16:45:22.303Z` (Saturday):
-
-|**Method**| **Value** |
-|:---|:---|
-|getCenturyOfEra()|20|
-|getDayOfMonth()|13|
-|getDayOfWeek()|6|
-|getDayOfYear()|13|
-|getEra()|1|
-|getHourOfDay()|16|
-|getMillisOfDay()|60322303|
-|getMillisOfSecond()|303|
-|getMinuteOfDay()|1005|
-|getMinuteOfHour()|45|
-|getMonthOfYear()|1|
-|getSecondOfDay()|60322|
-|getSecondOfMinute()|22|
-|getWeekOfWeekyear()|2|
-|getWeekyear()|2018|
-|getYear()|2018|
-|getYearOfCentury()|18|
-|getYearOfEra()|2018|
 
 Examples:
 
