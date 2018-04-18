@@ -1,5 +1,4 @@
-﻿Overview
-==============================================
+﻿# Overview
 
 The Axibase Time Series Database supports Structured Query Language (SQL) for retrieving time series records from the database.
 
@@ -77,7 +76,7 @@ WHERE datetime >= '2017-06-15T00:00:00Z'    -- WHERE clause
 
 The statement may be terminated with a semicolon character.
 
-### SELECT expression
+### SELECT Expression
 
 The SELECT expression consists of one or multiple columns and expressions applied to the query results.
 
@@ -305,7 +304,6 @@ Virtual tables have the same pre-defined columns since all the the underlying da
 |`entity.tags`    |string   | All entity tags, concatenated to `name1=value;name2=value` format.|
 |`entity.groups`  |string   | List of entity groups, to which the entity belongs, separated by semi-colon `;`.|
 |`entity.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled entity.|
-
 
 New columns can be created by applying functions and arithmetic expressions to existing columns. The computed columns can be included both in the `SELECT` expression, as well as in the `WHERE`, `HAVING`, and `ORDER BY` clauses.
 
@@ -1883,7 +1881,7 @@ WHERE datetime BETWEEN '2018-03-09T07:07:00Z' AND '2018-03-09T07:08:00Z'
 
 Note that the `t1.entity` column below contains rows with `null` values even though this column was checked in the `WHERE` condition. In this example, `null` values were created at the `OUTER JOIN` stage.
 
-```
+```ls
 | t1.datetime           | t1.entity     | t1.value  | t2.datetime           | t2.entity     | t2.value  | t2.tags                                | 
 |-----------------------|---------------|-----------|-----------------------|---------------|-----------|----------------------------------------| 
 | 2018-03-09T07:07:05Z  | nurswghbs001  | 4.4       | null                  | null          | null      | null                                   | 
@@ -2096,7 +2094,7 @@ ORDER BY base.datetime
 
 The following functions aggregate values in a column by producing a single value from a list of values appearing in a column.
 
-```
+```ls
 |----------------|----------------|----------------|----------------|
 | AVG            | CORREL         | COUNT          | COUNTER        |
 | DELTA          | FIRST          | LAST           | MAX            |
@@ -2659,6 +2657,7 @@ The `CAST` function transforms a string into a number, or a number into a string
 CAST(inputString AS number)
 CAST(inputNumber AS string)
 ```
+
 The returned number can be used in arithmetic expressions, whereas the returned string can be passed as an argument into string functions.
 
 ```sql
@@ -3169,7 +3168,7 @@ Queries executed by the database are recorded in the main application log `atsd.
 
 Each query is assigned a unique identifier for correlating starting and closing events.
 
-```
+```sh
 2017-08-15 18:44:01,183;INFO;qtp1878912978-182;com.axibase.tsd.service.sql.SqlQueryServiceImpl;Starting sql query execution. [uid=218], user: user003, source: scheduled, sql: SELECT entity, AVG(value) AS "Average", median(value), MAX(value), count(*),
    percentile(50, value), percentile(75, value), percentile(90, value),  percentile(99, value) FROM "mpstat.cpu_busy"
   WHERE time BETWEEN PREVIOUS_DAY and CURRENT_DAY GROUP BY entity ORDER BY AVG(value) DESC
@@ -3209,13 +3208,13 @@ Given the massive amount of data stored in ATSD, it is possible to build a query
 
 Consider the following recommendations when developing queries:
 
-- Pre-test queries on a smaller dataset in an ATSD-development instance.
-- Avoid queries without any conditions. Apply `LIMIT` to reduce the number of rows returned.
-- Add the `WHERE` clause. Include as many conditions to the `WHERE` clause as possible, in particular add entity and [interval conditions](#interval-condition).
-- Make `WHERE` conditions narrow and specific, for example, specify a small time interval.
-- Avoid the `ORDER BY` clause since it may cause a full scan and a copy of data to a temporary table.
-- Add the `LIMIT 1` clause to reduce the number of rows returned. Note that `LIMIT` will not prevent expensive queries with `ORDER BY` and `GROUP BY` clauses because `LIMIT` is applied to final results and not to the number of rows read from the database.
-- Develop a simple query first. Adjust conditions gradually as you inspect the results. Add grouping, partitioning, and ordering to finalize the query.
+* Pre-test queries on a smaller dataset in an ATSD-development instance.
+* Avoid queries without any conditions. Apply `LIMIT` to reduce the number of rows returned.
+* Add the `WHERE` clause. Include as many conditions to the `WHERE` clause as possible, in particular add entity and [interval conditions](#interval-condition).
+* Make `WHERE` conditions narrow and specific, for example, specify a small time interval.
+* Avoid the `ORDER BY` clause since it may cause a full scan and a copy of data to a temporary table.
+* Add the `LIMIT 1` clause to reduce the number of rows returned. Note that `LIMIT` will not prevent expensive queries with `ORDER BY` and `GROUP BY` clauses because `LIMIT` is applied to final results and not to the number of rows read from the database.
+* Develop a simple query first. Adjust conditions gradually as you inspect the results. Add grouping, partitioning, and ordering to finalize the query.
 
 To assist in inspecting query results, the following `LIMIT 1` queries have been locally optimized to provide improved performance:
 
@@ -3236,7 +3235,6 @@ SELECT * FROM "mpstat.cpu_busy" WHERE datetime >= CURRENT_DAY ORDER BY time DESC
 SELECT * FROM "mpstat.cpu_busy" WHERE entity = 'nurswgvml007' ORDER BY datetime DESC LIMIT 1
 ```
 
-
 ## SQL Compatibility
 
 While the [differences](https://github.com/axibase/atsd-jdbc/blob/master/capabilities.md#database-capabilities) between SQL dialect implemented in ATSD and SQL specification standards are numerous, the following exceptions to widely used constructs are worth mentioning:
@@ -3251,107 +3249,107 @@ While the [differences](https://github.com/axibase/atsd-jdbc/blob/master/capabil
 
 ## Examples
 
-### Selecting
+### Selecting Examples
 
-- [All Columns](examples/select-all-columns.md)
-- [Defined Columns](examples/select-pre-defined-columns.md)
-- [All Series Tags](examples/select-all-tags.md)
-- [Text Value Column](examples/select-text-value.md)
-- [Field Columns](examples/select-field-columns.md)
-- [Entity Tag Columns](examples/select-entity-tag-columns.md)
-- [Entity Metadata](examples/select-metadata.md)
-- [Metric Tag Columns](examples/select-metric-tag-columns.md)
-- [Computed Columns](examples/select-computed-columns.md)
-- [Mathematical Functions](examples/select-math.md)
-- [String Functions](examples/string-functions.md)
-- [LOOKUP Function](examples/lookup.md)
-- [CASE Expression](examples/case.md)
-- [Interval Number](examples/select-interval-number.md)
-- [Column Alias](examples/alias-column.md)
-- [Table Alias](examples/alias-table.md)
-- [Escape Quotes](examples/select-escape-quote.md)
-- [atsd_series Table](examples/select-atsd_series.md)
-- [Datetime Format](examples/datetime-format.md)
-- [Date Extract Functions](examples/date-extract.md)
-- [Date Utility Functions](examples/date-functions.md)
-- [Limit Row Count](examples/limit.md)
-- [Limit by Partition](examples/limit-partition.md)
+* [All Columns](examples/select-all-columns.md)
+* [Defined Columns](examples/select-pre-defined-columns.md)
+* [All Series Tags](examples/select-all-tags.md)
+* [Text Value Column](examples/select-text-value.md)
+* [Field Columns](examples/select-field-columns.md)
+* [Entity Tag Columns](examples/select-entity-tag-columns.md)
+* [Entity Metadata](examples/select-metadata.md)
+* [Metric Tag Columns](examples/select-metric-tag-columns.md)
+* [Computed Columns](examples/select-computed-columns.md)
+* [Mathematical Functions](examples/select-math.md)
+* [String Functions](examples/string-functions.md)
+* [LOOKUP Function](examples/lookup.md)
+* [CASE Expression](examples/case.md)
+* [Interval Number](examples/select-interval-number.md)
+* [Column Alias](examples/alias-column.md)
+* [Table Alias](examples/alias-table.md)
+* [Escape Quotes](examples/select-escape-quote.md)
+* [atsd_series Table](examples/select-atsd_series.md)
+* [Datetime Format](examples/datetime-format.md)
+* [Date Extract Functions](examples/date-extract.md)
+* [Date Utility Functions](examples/date-functions.md)
+* [Limit Row Count](examples/limit.md)
+* [Limit by Partition](examples/limit-partition.md)
 
-### Filtering
+### Filtering Examples
 
-- [Filter by Date](examples/filter-by-date.md)
-- [Filter by Series Tag](examples/filter-by-series-tag.md)
-- [Filter by NULL Series Tag](examples/filter-null-tag.md)
-- [Filter by Series Tag with Comparison Operators](examples/filter-operators-string.md)
-- [Filter by Entity](examples/filter-by-entity.md)
-- [Filter by Entity Tag](examples/filter-by-entity-tag.md)
-- [Filter by Entity Group](examples/filter-by-entity-group.md)
-- [Filter Not-a-Number](examples/filter-not-a-number.md)
+* [Filter by Date](examples/filter-by-date.md)
+* [Filter by Series Tag](examples/filter-by-series-tag.md)
+* [Filter by NULL Series Tag](examples/filter-null-tag.md)
+* [Filter by Series Tag with Comparison Operators](examples/filter-operators-string.md)
+* [Filter by Entity](examples/filter-by-entity.md)
+* [Filter by Entity Tag](examples/filter-by-entity-tag.md)
+* [Filter by Entity Group](examples/filter-by-entity-group.md)
+* [Filter Not-a-Number](examples/filter-not-a-number.md)
 
-### Ordering
+### Ordering Examples
 
-- [Order By Time](examples/order-by-time.md)
-- [Order By Value](examples/order-by-value.md)
-- [Order By Multiple Columns](examples/order-by-multiple-columns.md)
-- [String Collation](examples/order-by-string-collation.md)
+* [Order By Time](examples/order-by-time.md)
+* [Order By Value](examples/order-by-value.md)
+* [Order By Multiple Columns](examples/order-by-multiple-columns.md)
+* [String Collation](examples/order-by-string-collation.md)
 
 ### Aggregation
 
-- [Average Value](examples/aggregate.md)
-- [Percentiles](examples/aggregate-percentiles.md)
-- [First/Last](examples/aggregate-first-last.md)
-- [Counter Aggregator](examples/aggregate-counter.md)
-- [Maximum Value Time](examples/aggregate-max-value-time.md)
-- [Period Aggregation](examples/aggregate-period.md)
-- [Sliding Window Statistics](examples/aggregate-sliding-window.md)
+* [Average Value](examples/aggregate.md)
+* [Percentiles](examples/aggregate-percentiles.md)
+* [First/Last](examples/aggregate-first-last.md)
+* [Counter Aggregator](examples/aggregate-counter.md)
+* [Maximum Value Time](examples/aggregate-max-value-time.md)
+* [Period Aggregation](examples/aggregate-period.md)
+* [Sliding Window Statistics](examples/aggregate-sliding-window.md)
 
-### Grouping
+### Grouping Examples
 
-- [Group by Query with Order By](examples/group-by-query-with-order-by.md)
-- [Grouped Average](examples/grouped-average.md)
-- [Group by Tags](examples/group-by-tags.md)
-- [Group with Having](examples/group-having.md)
-- [Grouped and Having](examples/grouped-having.md)
+* [Group by Query with Order By](examples/group-by-query-with-order-by.md)
+* [Grouped Average](examples/grouped-average.md)
+* [Group by Tags](examples/group-by-tags.md)
+* [Group with Having](examples/group-having.md)
+* [Grouped and Having](examples/grouped-having.md)
 
-### Interpolation
+### Interpolation Examples
 
-- [Interpolate](examples/interpolate.md)
-- [Interpolate with Extend](examples/interpolate-extend.md)
-- [Interpolate Edges](examples/interpolate-edges.md)
+* [Interpolate](examples/interpolate.md)
+* [Interpolate with Extend](examples/interpolate-extend.md)
+* [Interpolate Edges](examples/interpolate-edges.md)
 
-### Regularization
+### Regularization Examples
 
-- [Linear Function](examples/regularize.md#interpolation-function-linear)
-- [Previous (Step) Function](examples/regularize.md#interpolation-function-previous)
-- [Auto Function](examples/regularize.md#interpolation-function-auto)
-- [Fill](examples/regularize.md#fill-nan)
-- [Alignment](examples/regularize.md#alignment)
-- [Comparison with GROUP BY](examples/regularize.md#group-by-period-compared-to-with-interpolate)
-- [Join regularized series](examples/regularize.md#join-example)
-- [Interpolated Value Filter](examples/regularize.md#value-filter)
+* [Linear Function](examples/regularize.md#interpolation-function-linear)
+* [Previous (Step) Function](examples/regularize.md#interpolation-function-previous)
+* [Auto Function](examples/regularize.md#interpolation-function-auto)
+* [Fill](examples/regularize.md#fill-nan)
+* [Alignment](examples/regularize.md#alignment)
+* [Comparison with GROUP BY](examples/regularize.md#group-by-period-compared-to-with-interpolate)
+* [Join regularized series](examples/regularize.md#join-example)
+* [Interpolated Value Filter](examples/regularize.md#value-filter)
 
-### Partitioning
+### Partitioning Examples
 
-- [Partitioning using Row Number Function](examples/partition-row-number.md)
-- [Top-N Query using Row Number Function](examples/partition-row-number-top-N-tags.md)
-- [Last Time](examples/last-time.md)
+* [Partitioning using Row Number Function](examples/partition-row-number.md)
+* [Top-N Query using Row Number Function](examples/partition-row-number-top-N-tags.md)
+* [Last Time](examples/last-time.md)
 
-### Subqueries
+### Subquery Examples
 
-- [Inline Views](examples/inline-view.md)
+* [Inline Views](examples/inline-view.md)
 
-### Joins
+### Join Examples
 
-- [Join](examples/join.md)
-- [Join Using Entity](examples/join-using-entity.md)
-- [Join: Derived Series](examples/join-derived-series.md)
-- [Outer Join With Aggregation](examples/outer-join-with-aggregation.md)
-- [Outer Join](examples/outer-join.md)
+* [Join](examples/join.md)
+* [Join Using Entity](examples/join-using-entity.md)
+* [Join: Derived Series](examples/join-derived-series.md)
+* [Outer Join With Aggregation](examples/outer-join-with-aggregation.md)
+* [Outer Join](examples/outer-join.md)
 
-### Security
+### Security Examples
 
-- [Permissions](permissions.md)
+* [Permissions](permissions.md)
 
-### Consolidated
+### Consolidated Examples
 
-- [PI Compatibility](examples/pi.md)
+* [PI Compatibility](examples/pi.md)
