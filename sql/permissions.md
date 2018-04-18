@@ -18,7 +18,6 @@ The following example demonstrates how query results for different users are fil
 | jane.doe | users-aws | srv-aws | nurswg* (5 entities) |
 | john.doe | users-nur | srv-nur | awsswg* (3 entities) |
 
-
 The **'joe.bloggs'** user is a member of the user group that has **'Read: All Entities'** permissions.
 
 The **'jane.doe'** user is a member of the **'users-nur'** user group that is allowed to read data for **'srv-nur'** entity group.
@@ -33,11 +32,11 @@ The **'john.doe'** user is a member of the **'users-aws'** user group that is al
 
 * All users:
 
-![](images/users.png)
+![users](images/users.png)
 
 * User 'joe.bloggs':
 
-![](images/joe-bloggs-user.png)
+![joe-bloggs-user](images/joe-bloggs-user.png)
 
 * User 'jane.doe':
 
