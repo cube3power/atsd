@@ -1,4 +1,5 @@
 # Administration
+
 - [Setup Email Client](mail-client.md)
 - [Time Zone](timezone.md)
 - [User Authentication](user-authentication.md#user-authentication)
@@ -20,6 +21,7 @@
     - [Wildcard Requests](user-authorization.md#wildcard-requests)
   - [Implementation Notes](user-authorization.md#implementation-notes)
 - SSL
+  - [Installing Lets Encrypt Certificate](ssl-lets-encrypt.md)
   - [Installing CA-signed Certificate](ssl-ca-signed.md)
   - [Installing Self-signed SSL Certificate](ssl-self-signed.md)
 - [Restarting](restarting.md#restarting)

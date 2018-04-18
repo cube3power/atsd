@@ -2,7 +2,7 @@
 
 ## Overview
 
-The default certificate installed in ATSD is generated for DNS name 'atsd'. This document describes the process of creating and installing a self-signed SSL certificate to match the actual DNS name used by clients when accessing ATSD user interface and HTTP API. 
+The default certificate installed in ATSD is generated for DNS name 'atsd'. This document describes the process of creating and installing a self-signed SSL certificate to match the actual DNS name used by clients when accessing ATSD user interface and HTTP API.
 
 As with all self-signed certificates, the new certificate will still cause a security exception in user browsers and will require passing `-k/--insecure` parameter when connecting to ATSD using `curl` and similar tools in order to skip certificate validation.
 
@@ -13,6 +13,7 @@ Delete the current Java keystore file from the configuration directory.
 ```bash
 rm /opt/atsd/atsd/conf/server.keystore
 ```
+
 ## Generate Certificate
 
 Generate a new self-signed certificate using the [`keytool`](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) utility.
