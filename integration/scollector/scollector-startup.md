@@ -32,7 +32,7 @@ The default ATSD http port is `8088`, https port is `8443`.
  
 scollector does not support untrusted SSL certificates. If ATSD is running on a CA-signed SSL certificate, you can specify the secure connection.
 
- ```toml
+ ```sh
  echo 'Host = "https://username:password@atsd_hostname:8443/"' > scollector.toml
  ``` 
  
