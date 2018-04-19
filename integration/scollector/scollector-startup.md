@@ -2,34 +2,44 @@
 
 ## Linux
 
-### Script Installation
+### Manual Installation
+
+Download scollector binary for Linux.
 
  ```sh
  mkdir scollector
+ ```
+ 
+ ```sh
  cd scollector
+ ```
+ 
+ ```sh
  wget https://github.com/bosun-monitor/bosun/releases/download/0.6.0-beta1/scollector-linux-amd64
- # replace username and password with actual credentials
- echo 'Host = "http://username:password@atsd_hostname:8088/"' > scollector.toml
+ ```
+ 
+ ```sh
  chmod 700 scollector-linux-amd64
+ ```
+ 
+Replace username, password, hostname and port number with actual connection parameters. 
+ 
+ ```sh
+ echo 'Host = "http://username:password@atsd_hostname:8088/"' > scollector.toml
+ ```
+ 
+The default ATSD http port is `8088`, https port is `8443`. 
+ 
+scollector does not support untrusted SSL certificates. If ATSD is running on a CA-signed SSL certificate, you can specify the secure connection.
+
+ ```toml
+ echo 'Host = "https://username:password@atsd_hostname:8443/"' > scollector.toml
+ ``` 
+ 
+Start scollector.
+ 
+ ```sh
  nohup ./scollector-linux-amd64 &
- ```
-
-### Manual Installation
-
-Download the binary file from: [http://bosun.org/scollector/](http://bosun.org/scollector/).
-
-Navigate to the directory with binary files and create the `scollector.toml` file.
-
-Add `Host` setting to `scollector.toml`:
-
- ```toml
- Host = "http://username:password@atsd_hostname:8088/"
- ```
-
-scollector does not support untrusted SSL certificates. If you installed a CA-signed SSL certificate into ATSD, you can change the above setting to connect to the secure https endpoint.
-
- ```toml
- Host = "https://username:password@atsd_hostname:8443/"
  ```
 
 ### Auto-start under sudo user
