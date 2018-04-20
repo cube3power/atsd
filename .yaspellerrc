@@ -1,0 +1,42 @@
+{
+  "lang": "en",
+  "ignoreCapitalization": true,
+  "findRepeatWords": true,
+  "ignoreDigits": true,
+  "ignoreUppercase": true,
+  "ignoreUrls": true,
+  "format": "markdown",
+  "fileExtensions": [
+    ".md"
+  ],
+  "dictionary": [
+    "axibase",
+    "ATSD",
+    "ChartLab",
+    "dataset",
+    "dropdown",
+    "intraday",
+    "webhook",
+    "github",
+    "payload",
+    "endpoint",
+    "hostname",
+    "stateful",
+    "failover",
+    "percentile",
+    "subdomain",
+    "cron",
+    "keystore",
+    "nginx",
+    "MacOS",
+    "wildcard",
+    "timespan",
+    "CloudWatch",
+    "Redash",
+    "jsfiddle",
+    "vs",
+    "timestamp",
+    "hardcode",
+    "Hadoop"
+  ]
+}
