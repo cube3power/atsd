@@ -24,6 +24,7 @@ The built-in notification types for chat and collaboration services deliver aler
 | [TELEGRAM](notifications/telegram.md) | Yes | Yes | [Telegram Bot API](https://core.telegram.org/bots/api) | Cloud |
 | [DISCORD](notifications/discord.md) | Yes | Yes | [Discord API](https://discordapp.com/developers/docs/intro) | Cloud |
 | [HIPCHAT](notifications/hipchat.md) | Yes | Yes | [HipChat Data Center API](https://www.hipchat.com/docs/apiv2/) | Self-hosted |
+| [ROCKET.CHAT](notifications/rocket.chat.md) | Yes | Yes | [Rocket.Chat Integrations](https://rocket.chat/docs/administrator-guides/integrations/) | Self-hosted |
 
 ### Integration Services
 
