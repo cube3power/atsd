@@ -20,6 +20,10 @@ If necessary create a bot user as described [here](rocket.chat.md#create-bot).
 
 * Navigate to the **Administration > Integrations**.
 
+   ![](images/rocketchat_1.png)
+   
+   ![](images/outgoing_webhook_rocketchat_9.png)
+
 * Click on **New Integration**, select **Outgoing WebHook**.
 
 * Fill in the fields:
@@ -78,7 +82,7 @@ If necessary create a bot user as described [here](rocket.chat.md#create-bot).
 * Customize the alert message using [placeholders](../placeholders.md) as necessary, for example:
 
 ```ls
-  User ${tags.alias} /@${tags.user_name} said "${message}"
+  User ${tags.alias}/@${tags.user_name} said "${message}"
 ```
 
 * Save the rule by clicking on the **Save** button.
