@@ -115,6 +115,7 @@ WHERE tu.datetime >= NOW - 5 * MINUTE
 GROUP BY tu.entity
 ```
 
+```
 | tu.entity    | CORR-user-sys | CORR-user-iowait | CORR-sys-iowait | stddev(tu.value) | stddev(ts.value) | stddev(tw.value) |
 |--------------|---------------|------------------|-----------------|------------------|------------------|------------------|
 | nurswgvml007 | 0.92          | NaN              | NaN             | 7.64             | 2.50             | 0.00             |
@@ -122,6 +123,7 @@ GROUP BY tu.entity
 | nurswgvml010 | 0.76          | -0.09            | 0.03            | 7.42             | 0.44             | 1.10             |
 | nurswgvml502 | 0.59          | -0.14            | -0.08           | 0.53             | 0.53             | 0.59             |
 | nurswgvml301 | -0.17         | -0.11            | -0.17           | 0.32             | 0.42             | 0.64             |
+```
 
 ### Issue 3991
 --------------
@@ -138,7 +140,7 @@ WHERE t1.tags.name LIKE 'DK*st'
 LIMIT 10
 ```
 
-
+```
 | t1.datetime | t1.tags | wind power | sun power | total | 
 |-------------|---------|------------|-----------|-------|
 | 2016-12-13T09:00:00.000Z | name=DK-West | 443.4 | 3 | 446.4 |
@@ -151,6 +153,7 @@ LIMIT 10
 | 2016-12-13T12:00:00.000Z | name=DK-East | 64.7 | 6 | 70.7 |
 | 2016-12-13T13:00:00.000Z | name=DK-West | 402.4 | 21 | 423.4 |
 | 2016-12-13T13:00:00.000Z | name=DK-East | 65.6 | 5 | 70.6 |
+```
 
 ### Issue 3991
 --------------

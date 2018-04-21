@@ -83,14 +83,14 @@ The result should be the same as shown in the image below:
 
 jmx.access:
 
-```
+```txt
 # The "monitorRole" role has readonly access.
 monitorRole readonly
 ```
 
 jmx.password:
 
-```
+```txt
 # The "monitorRole" role password is "abc123".
 monitorRole abc123
 ```

@@ -90,21 +90,21 @@ Last Insert | Last insert date for all or one metric collected by the entity wit
 
   * Highlight entities if last insert date for **all** metrics is before `now - 900 seconds`
 
-  ```javascript
+```javascript
   :900
-  ```
+```
 
   * Highlight entities if last insert date for the metric `cpu_busy` is before `now - 900 seconds`
 
-  ```javascript
+```javascript
   cpu_busy:900
-  ```  
+```  
 
   * Display last insert date for the metric `cpu_busy` without highlighting. Note the terminating colon after the metric name.
 
-  ```javascript
+```javascript
   cpu_busy:
-  ```    
+```    
 
 ### Links
 
@@ -356,9 +356,9 @@ The link displays the latest inserted value for the specific metric.
 
 3. Specify an expression in the 'Formatting' setting to display one digit after dot:
 
-    ```ls
+```ls
     formatNumber(value, '0.0')
-    ```
+```
         
   * Configuration
   
@@ -522,9 +522,9 @@ Specify the default property type in the 'Value' setting.
 
   The property viewer displays the selected type on initial load:
 
-  ```elm
+```elm
   /entities/123456.../properties?type=docker.info
-  ```
+```
 
 ### Last Insert Examples
 
@@ -538,9 +538,9 @@ The text displays difference `now - lastInsertDate`. The entities are  highlight
 
 3. Specify an expression in the 'Formatting' setting to display difference `now - lastInsertDate`:
 
-    ```ls
+```ls
     formatIntervalShort(elapsedTime(value))
-    ```
+```
         
   * Configuration
   

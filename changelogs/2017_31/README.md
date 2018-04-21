@@ -47,15 +47,15 @@ SELECT time FROM jvm_memory_used LIMIT 1
 ```
 
 ```json
-        {
-          "columnIndex": 1,
-          "name": "time",
-          "titles": "time",
-          "datatype": "bigint",
-          "table": "jvm_memory_used",
-          "propertyUrl": "atsd:time",
-          "dc:description": "Sample time in epoch milliseconds"
-        }
+{
+  "columnIndex": 1,
+  "name": "time",
+  "titles": "time",
+  "datatype": "bigint",
+  "table": "jvm_memory_used",
+  "propertyUrl": "atsd:time",
+  "dc:description": "Sample time in epoch milliseconds"
+}
 ```
 
 Now all columns that returned `long` will be returning `bigint`.
@@ -65,13 +65,13 @@ SELECT COUNT(*) FROM test_m
 ```
 
 ```json
-        {
-          "columnIndex": 1,
-          "name": "count(*)",
-          "titles": "count(*)",
-          "datatype": "long",
-          "propertyUrl": "atsd:count"
-        }
+{
+  "columnIndex": 1,
+  "name": "count(*)",
+  "titles": "count(*)",
+  "datatype": "long",
+  "propertyUrl": "atsd:count"
+}
 ```
 
 ##### Issue 4406
@@ -85,8 +85,8 @@ SELECT COUNT(*) FROM test_m
 ```java
  // Match tables disk_used, disk_used_percent
  ResultSet rs = dmd.getTables(null, null, "_isk_%", null);
- ```
- 
+```
+
 ##### Issue 4389
 
 ```sql
@@ -123,12 +123,12 @@ tag1=abc;tag2=cde
 ```
 
 ```java
-                String query = "INSERT INTO minsert1 (datetime, entity, value, tags) VALUES (?, ?, ?, ?)";
-                PreparedStatement st = conn.prepareStatement(query);
-                st.setTimestamp(1, new Timestamp(time));
-                st.setString(2, entityName);
-                st.setDouble(3, val);
-                st.setString(4, "tag1=abc;tag2=cde");
+  String query = "INSERT INTO minsert1 (datetime, entity, value, tags) VALUES (?, ?, ?, ?)";
+  PreparedStatement st = conn.prepareStatement(query);
+  st.setTimestamp(1, new Timestamp(time));
+  st.setString(2, entityName);
+  st.setDouble(3, val);
+  st.setString(4, "tag1=abc;tag2=cde");
 ```
 
 ##### Issue 4365
@@ -160,9 +160,11 @@ The JDBC driver provides support for writing data into ATSD using INSERT and UPD
 ```sql
 INSERT INTO temperature (entity, datetime, value, tags.surface)
                  VALUES ('sensor-01', '2017-08-21T00:00:00Z', 24.5, 'Outer')
-                 
-UPDATE temperature SET value = 24.5 
-  WHERE entity = 'sensor-01' AND datetime = '2017-08-21T00:00:00Z' AND tags.surface = 'Outer'                 
+```
+
+```sql
+UPDATE temperature S```ET value = 24.5 
+  WHERE entity = 'sensor-01' AND datetime = '2017-08-21T00:00:00Z' AND tags.surface = 'Outer'
 ```
 
 ```ls

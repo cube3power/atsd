@@ -30,10 +30,11 @@ Install and configure the [Web Driver](web-driver.md) in order to send chart scr
 
 * Send the `/newbot` command and follow the prompts to create a bot user and obtain its token. The bot's username must end with `_bot` and cannot contain dash `-` symbol.
 
-    ```
+```txt
     Use this token to access the HTTP API:
     5555555555:AAHrB1gmYKaSvzsXjhbyDypOJlfu_FgdwrE
-    ```
+```
+
 * Copy the API token for future reference.
 
 ## Add Bot to Group or Channel

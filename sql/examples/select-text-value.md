@@ -238,7 +238,7 @@ WHERE t1.datetime >= '2016-10-04T02:00:00Z' AND t2.datetime <= '2016-10-04T02:10
   AND entity = 'br-1470'
   AND t5.text = '1414'
 WITH INTERPOLATE(60 SECOND, AUTO, OUTER, EXTEND, START_TIME)
- ```
+```
 
 ```ls
 | t1.datetime          | t1.entity | t1.value | t2.value | t3.value | t4.value | t5.value | t5.text | t6.text    |

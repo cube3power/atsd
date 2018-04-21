@@ -22,13 +22,14 @@ The function returns `b` if `a` is either `null` or an empty string.
 
 Examples:
 
-  ```javascript
+```javascript
     /* Returns 2 */  
     ifEmpty(null, 2)
 
     /* Returns hello */  
     ifEmpty('hello', 'world')
-  ```
+```
+
 ### `toBoolean`
 
 ```javascript
@@ -155,10 +156,10 @@ Retrieves the **host** from URL string `u`. If the URL `u` is null, empty or inv
 
 Example:
 
-  ```javascript
+```javascript
     /* Returns "axibase.com" */  
     getURLHost('https://axibase.com/en/products?type=database&status=1')
-  ```
+```
 
 ### `getURLPort`
 
@@ -172,52 +173,55 @@ If the URL `u` doesn't contain a port, the function returns the default value fo
 
 Example:
 
-  ```javascript
+```javascript
     /* Returns 443 */  
     getURLPort('https://axibase.com/en/products?type=database&status=1')
-  ```
+```
 
 ### `getURLProtocol`
 
 ```javascript
   getURLProtocol(string u) string
 ```
+
 Retrieves the **protocol** from URL string `u`. If the URL `u` is null, empty or invalid, exception is thrown.
 
 Example:
 
-  ```javascript
+```javascript
     /* Returns "https" */  
     getURLProtocol('https://axibase.com/en/products?type=database&status=1')
-  ```
+```
 
 ### `getURLPath`
 
 ```javascript
   getURLPath(string u) string
 ```
+
 Retrieves the **path** from URL string `u`. If the URL `u` is null, empty or invalid, an exception is thrown.
 
 Example:
 
-  ```javascript
+```javascript
     /* Returns "/en/products" */  
     getURLPath('https://axibase.com/en/products?type=database&status=1')
-  ```
+```
 
 ### `getURLQuery`
 
 ```javascript
   getURLQuery(string u) string
 ```
+
 Retrieves the **query string** from URL string `u`. If the URL `u` is null, empty or invalid, an exception is thrown.
 
 Example:
 
-  ```javascript
+```javascript
     /* Returns "type=database&status=1" */  
     getURLQuery('https://axibase.com/en/products?type=database&status=1')
-  ```
+```
 
 ### `getURLUserInfo`
 
@@ -229,10 +233,10 @@ Retrieves the `user:password` from URL string `u`. If the URL `u` is null, empty
 
 Example:
 
-  ```javascript
+```javascript
     /* Returns null */  
     getURLUserInfo('https://axibase.com/en/products?type=database&status=1')
 
     /* Returns "atsd_user:atsd_password" */  
     getURLUserInfo('https://atsd_user:atsd_password@axibase.com/en/products?type=database&status=1')
-  ```
+```

@@ -52,7 +52,7 @@ None.
 curl https://atsd_host:8443/api/v1/entity-groups/nur-entities-name/entities?tags=*&limit=3 \
   --insecure --verbose --user {username}:{password} \
   --request GET
-  ```
+```
 
 ### Response
 

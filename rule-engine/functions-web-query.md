@@ -16,7 +16,7 @@ content      | string   | Response body text.
 reasonPhrase | string   | Status line such as `OK`.
 contentType  | string   | Response content type, such as `application/json`.
 
-```
+```txt
 WebRequestResult(
   status=200,
   reasonPhrase=OK,
@@ -132,15 +132,15 @@ The function returns a `WebRequestResult` response object.
 
 The request URL consists of schema (http/https), optional user credentials, hostname, port, and path with query string.
 
-  ```ls
+```ls
   scheme:[//[user:password@]host[:port]][/path][?query]
-  ```
+```
 
 Sample URL:
 
-  ```ls
+```ls
   https://cuser:cpass@10.102.0.9:8443/service?load=true
-  ```
+```
 
 The configuration object `c` may contain the following fields:
 
@@ -162,15 +162,15 @@ The function returns a `WebRequestResult` response object.
 
 The request URL consists of schema (http/https), optional user credentials, hostname, port, and path with query string.
 
-  ```ls
+```ls
   scheme:[//[user:password@]host[:port]][/path][?query]
-  ```
+```
 
 Sample URL:
 
-  ```ls
+```ls
   https://cuser:cpass@10.102.0.9:8443/service?load=true
-  ```
+```
 
 The configuration object `c` may contain the following fields:
 

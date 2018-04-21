@@ -83,54 +83,54 @@ The expression may refer to entity properties and [functions](#supported-functio
 
 * Entity name contains the specified string
 
-	```java
+```java
 	name LIKE 'nur*vml*'
-	```
+```
 
 * Entity has the specified entity tag
 
-	```java
+```java
 	tags.docker-type != ''
-	```
+```
 
 * Entity has an entity tag equal to the specified value
 
-	```java
+```java
 	tags.docker-type = 'container'
-	```
+```
 
 * Entity has entity tags equal to the specified values
 
-	```java
+```java
 	tags.docker-type = 'container' && tags.status != 'deleted'
-	```
+```
 
 * Entity collects the specified property type
 
-	```java
+```java
 	properties('oem.oracle_database').size() > 0
-	```
+```
 
 * Entity collects the specified metric
 
-	```java
+```java
 	hasMetric('mpstat.cpu_busy')
-	```
+```
 
 * Entity collected the specified metric within N hours
 
-	```java
+```java
 	hasMetric('mpstat.cpu_busy', 24*7)
-	```
+```
 
 * Entity property tag value matches the given expression
 
-	```java
+```java
 	properties('cfg').prog != '' && properties('cfg').prog NOT LIKE 'topas*'
-	```
+```
 
 * Entity is a member of another group
 
-    ```java
+```java
 	 memberOf('all-linux-servers') && tags.location = 'SVL'
-    ```
+```

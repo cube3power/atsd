@@ -60,8 +60,8 @@ curl https://atsd_host:8443/api/v1/entity-groups/nmon-aix \
   --header "Content-Type: application/json" \
   --request PATCH \
   --data '{"tags": {"os_type": "AIX"}}
-  ```
-  
+```
+
 ### Response
 
 None.

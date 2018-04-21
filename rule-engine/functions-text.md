@@ -86,26 +86,26 @@ Returns `true` if `s` ends with `w`.
 
 Splits `s` into a collection of strings using separator `p`.
 
-  ```javascript
+```javascript
     // Returns ['Hello', 'world']
     split('Hello world', ' ')
-  ```
+```
 
 Use double quotes (`"escaped_text"`) as escape characters.
 
-  ```javascript
+```javascript
     // Returns ['Hello', 'new world']
     split('hello "new world"', ' ')
-  ```
+```
 
 To check the size of the returned collection, use the `.size()` method.
 
 To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with `0` for the first element).
 
-  ```javascript
+```javascript
     authors = split(tags.authors, ',')
     authors.size() == 0 ? 'n/a' : authors[0]
-  ```
+```
 
 ### `list`
 
@@ -136,23 +136,23 @@ The function returns an empty string if all elements of `c` are null or empty.
 
 Examples:
 
-  ```javascript
+```javascript
     // Returns 'string-3'.
     coalesce(['', null, 'string-3'])
-  ```
+```
 
-  ```javascript
+```javascript
     // Returns the value of `location` tag if it is a non-empty string, otherwise 'SVL' is returned.
     coalesce([tags.location, 'SVL'])
-  ```
+```
 
-  ```javascript
+```javascript
     /*
     Returns the value of the entity label if it is a non-empty string, otherwise the entity name is returned.
     If both fields are empty, an empty string is returned.
     */
     coalesce([entity.label, entity])
-  ```
+```
 
 ### `keepAfter`
 

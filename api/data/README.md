@@ -60,8 +60,8 @@ Status Code: 500
 
 Supported date input formats:
 
-* yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'
-* yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh:mm
+* `yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'`
+* `yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh:mm`
 
 Refer to [ISO 8601 date format examples](date-format.md).
 

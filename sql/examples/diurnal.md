@@ -2,12 +2,12 @@
 
 The date_format function can be used in the `WHERE`, `GROUP BY`, and `HAVING` clauses to filter and group dates by month name, day name, or hour number.
 
-* MMM - short, 3-letter, month name, for example, Jan
-* MMMMM - full month name, for example January
-* EEE - short, 3-letter, weekday name, for example Sat
-* EEEEE - full weekday name, for example Saturday
-* u - weekday number, starting with 1 for Monday
-* HH - hour of the day, 2 digit, 00 to 23.
+* `MMM` - short, 3-letter, month name, for example, Jan
+* `MMMMM` - full month name, for example January
+* `EEE` - short, 3-letter, weekday name, for example Sat
+* `EEEEE` - full weekday name, for example Saturday
+* `u` - weekday number, starting with 1 for Monday
+* `HH` - hour of the day, 2 digit, 00 to 23.
 
 For additional patterns, refer to Java [`SimpleDateFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html).
 
@@ -44,7 +44,7 @@ GROUP BY tags.region, period(1 MONTH)
 ## Example: Daily Averages
 
 To calculate averages or totals by day of the week, use `date_format(time, 'EEE')` or `date_format(time, 'u')` functions.
-The `EEE` pattern returns short day name for each sample: Mon, Tue, Wed, Thu, Fri, Sat, Sun, whereas `u` pattern returns day number starting with 1 for Monday.
+The `EEE` pattern returns short day name for each sample: `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`, `Sun`, whereas `u` pattern returns day number starting with `1` for Monday.
 
 ```sql
 SELECT date_format(time, 'u') AS day_of_week, avg(value) AS average

@@ -134,7 +134,7 @@ If the HBase Secure Authorization is disabled you can access HBase as is. Procee
 
 Otherwise, you need to allow the newly created `axibase` principal to access HBase using one of the following options:
 
-1. Add the `axibase` principal to the HBase superusers via HBase Configuration. 
+1. Add the `axibase` principal to the HBase super users via HBase Configuration.
 
 > Don't forget to deploy updated configuration and restart HBase.
 
@@ -242,7 +242,7 @@ Remove comments in the `/opt/atsd/atsd/conf/hbase-site.xml` file and replace the
 
 ### Authentication Log Messages
 
-```
+```txt
 2016-07-24 13:28:41,468;INFO;main;com.axibase.tsd.hbase.KerberosBean;Setting up kerberos auth: login:axibase@HADOOP.AXIBASE.COM keytab:/opt/atsd/atsd/conf/axibase.keytab
 2016-07-24 13:28:41,723;INFO;main;com.axibase.tsd.hbase.KerberosBean;Login user from keytab starting...
 2016-07-24 13:28:41,811;INFO;main;org.apache.hadoop.security.UserGroupInformation;Login successful for user axibase@HADOOP.AXIBASE.COM using keytab file /opt/atsd/atsd/conf/axibase.keytab
@@ -265,7 +265,7 @@ Kerberos debugging can be enabled in the ATSD environment settings file `/opt/at
 
 Kerberos debug output will be redirected to the `${outLog}` file, which is set to `/opt/atsd/atsd/logs/out.log` by default.
 
-```
+```txt
 5921 [main] INFO  com.axibase.tsd.hbase.KerberosBean - Setting up kerberos auth: login:axibase@HADOOP.AXIBASE.COM keytab:/opt/atsd/atsd/conf/axibase.keytab
 Java config name: null
 Native config name: /etc/krb5.conf
@@ -308,9 +308,9 @@ Copy `/opt/atsd/hbase/lib/atsd.jar` to the `/usr/lib/hbase/lib` directory on eac
 
 Open Cloudera Manager, select the target HBase cluster/service, open Configuration tab, search for the setting `hbase.coprocessor.region.classes` and enter the following names.
 
-* com.axibase.tsd.hbase.coprocessor.CompactRawDataEndpoint
-* com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint
-* com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint
+* `com.axibase.tsd.hbase.coprocessor.CompactRawDataEndpoint`
+* `com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint`
+* `com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint`
 
 ![](images/cloudera-manager-coprocessor-config.png)
 
@@ -322,13 +322,13 @@ Open Cloudera Manager, select the target HBase cluster/service, open Configurati
 
 ## Check for Port Conflicts
 
-```
+```sh
 sudo netstat -tulpn | grep "8081\|8082\|8084\|8088\|8443"
 ```
 
 If some of the above ports are taken, open the `/opt/atsd/atsd/conf/server.properties` file and change ATSD listening ports accordingly.
 
-```ls
+```txt
 http.port = 8088
 input.port = 8081
 udp.input.port = 8082
@@ -346,8 +346,8 @@ Since major compactions may overload the cluster, it is recommended to trigger t
 
 To disable built-in compaction of data tables, adjust the following settings on the **Settings > Server Properties** page:
 
-```
-#this will compact only 'entity' table once a week on Saturday
+```txt
+# this will compact only 'entity' table once a week on Saturday
 hbase.compaction.list = entity
 hbase.compaction.schedule = 0 0 12 * * SAT
 ```
@@ -383,13 +383,13 @@ Similarly, enable the `hbase.rpc.protection` property on the HBase cluster:
 
 ## Start ATSD
 
-```
+```sh
 /opt/atsd/atsd/bin/start-atsd.sh
 ```
 
 Review the start log for any errors:
 
-```
+```sh
 tail -f /opt/atsd/atsd/logs/atsd.log
 ```
 
@@ -401,7 +401,7 @@ Web interface is accessible on port 8088 (http) and 8443 (https).
 
 To configure ATSD for automated restart on server reboot, add the following line to `/etc/rc.local` before the `return 0` line.
 
-```
+```sh
 su - axibase -c /opt/atsd/atsd/bin/start-atsd.sh
 ```
 

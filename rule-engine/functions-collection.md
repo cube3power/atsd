@@ -45,9 +45,9 @@ To access the size of the array, use the `.size()` method.
 
 To access the n-th element in the collection, use square brackets as in `[index]` or the `get(index)` method. The index starts with `0` for the first element.
 
-  ```javascript
+```javascript
     author = (authors.size() == 0) ? 'n/a' : authors[0]
-  ```
+```
 
 ### `IN`
 
@@ -59,13 +59,13 @@ Returns `true` if `s` is contained in the collection of strings enclosed in roun
 
 Examples:
 
-  ```javascript
+```javascript
     entity IN ('nurswgvml007', 'nurswgvml008')
-  ```
+```
 
-  ```javascript
+```javascript
     tags.location IN ('NUR', 'SVL')
-  ```  
+```  
   
 ### `LIKE`
 
@@ -77,17 +77,17 @@ Returns `true` if `s` matches any pattern in the collection of strings enclosed 
 
 Examples:
 
-  ```javascript
+```javascript
     entity LIKE ('nurswgvml*', 'nurswghbs*')
-  ```
+```
 
-  ```javascript
+```javascript
     tags.version LIKE ('1.2.*', '1.3.?')
-  ``` 
+``` 
   
-  ```javascript
+```javascript
     tags.location LIKE ('NUR*', entity.tags.location)
-  ```   
+```   
 
 ### `likeAny`
 
@@ -101,17 +101,17 @@ The collection `c` can be initialized by referencing a named collection by name 
 
 Examples:
 
-  ```javascript
+```javascript
     likeAny(tags.request_ip, ['10.50.102.1', '10.50.102.2'])
-  ```
+```
 
-  ```javascript
+```javascript
     likeAny(tags.location, ['NUR', 'SVL*'])
-  ```
+```
   
-  ```javascript
+```javascript
     likeAny(tags.request_ip, collection('ip_white_list'))
-  ```  
+```  
 
 ### `matchList`
 
@@ -125,9 +125,9 @@ The collection `c` may include patterns with `?` and `*` wildcards.
 
 Example:
 
-  ```javascript
+```javascript
     matchList(tags.request_ip, 'ip_white_list')
-  ```
+```
 
 ### `matches`
 
@@ -141,9 +141,9 @@ The pattern supports `?` and `*` wildcards.
 
 Example:
 
-  ```javascript
+```javascript
     matches('*atsd*', property_values('docker.container::image'))
-  ```  
+```  
 
 ### `contains`
 
@@ -155,9 +155,9 @@ Returns `true` if `s` is contained in the collection.
 
 Example:
 
-  ```javascript
+```javascript
     collection('ip_white_list').contains(tags.request_ip)
-  ```
+```
 
 ### `size`
 
@@ -171,13 +171,13 @@ Returns the number of elements in the collection.
 
 Examples:
 
-  ```javascript
+```javascript
     collection('ip_white_list').size()
-  ```  
+```  
 
-  ```javascript
+```javascript
     entity.tags.size()
-  ```    
+```    
 
 ### `isEmpty`
 
@@ -191,9 +191,9 @@ Returns `true` if the number of elements in the collection is zero.
 
 Example:
 
-  ```javascript
+```javascript
     collection('ip_white_list').isEmpty()
-  ```  
+```  
 
 ### `excludeKeys`
 
@@ -207,9 +207,9 @@ The keys in collection `c` may contain wildcards ? and * to remove multiple matc
 
 Examples:
 
-  ```javascript
+```javascript
     excludeKeys(replacementTable('oncall-emails'),['a@a.org', 'b@b.org'])
     
     /* Returns ["b1": "w1", "b2": "w2"] */
     excludeKeys(["a1": "v1", "a2": "v2", "b1": "w1", "b2": "w2", "c1": "z1"], ['a*', 'c1'])
-  ```
+```

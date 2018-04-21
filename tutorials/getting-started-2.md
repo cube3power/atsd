@@ -12,7 +12,7 @@
   
 * Copy the following configuration into the **Content** area: 
 
-    ```ls
+```ls
     [configuration]
       height-units = 2
       width-units = 2
@@ -32,7 +32,7 @@
         [series]
           entity = my-entity
           metric = my-metric
-    ```
+```
 
 * Enter a portal name. 
 * Press **Save**.

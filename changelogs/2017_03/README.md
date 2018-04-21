@@ -226,7 +226,7 @@ FROM pipoint..pipoint2
 WHERE tag LIKE 'AB%'
 ```
 
-The last condition is typically constructred to select all remaining rows other than those fetched with previous conditions.
+The last condition is typically included to select all remaining rows other than those fetched with previous conditions.
 
 ![Figure 8](Images/Figure8.png)
 

@@ -118,23 +118,23 @@ Examples:
 
 * Match using wildcards
 
-    ```ls
+```ls
     version_source LIKE 'col*'
-    ```
+```
     ![](resources/5.png)
 
 * Match using date function
 
-    ```ls
+```ls
     version_time > date('2018-03-21 10:41:00') AND version_time < date('now')
-    ```
+```
     ![](resources/6.png)
     
 * Match using exact value
 
-    ```ls 
+```ls 
     version_status = 'OK'
-    ```
+```
     ![](resources/7.png)
     
 * Display only modified values

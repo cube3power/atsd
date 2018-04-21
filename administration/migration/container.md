@@ -113,7 +113,7 @@ Execute the `jps` command. Verify that the `Server` process is **not present** i
 
 Remove deprecated settings.
 
-```
+```sh
 sed -i '/^hbase.regionserver.lease.period/d' /opt/atsd/atsd/conf/hadoop.properties
 ```
 
@@ -127,18 +127,18 @@ Check HBase for consistency.
 
 The expected message is:
 
-  ```
+```
   0 inconsistencies detected.
   Status: OK
-  ```
+```
 
 > Follow [recovery](../corrupted-file-recovery.md#repair-hbase) procedures if inconsistencies are reported.
 
 Stop HBase.
 
-  ```sh
+```sh
   /opt/atsd/bin/atsd-hbase.sh stop
-  ```
+```
 
 Execute the `jps` command and verify that the `HMaster` process is **not present** in the output.
 
@@ -156,23 +156,23 @@ jps
 
 Check HDFS for consistency.
 
-  ```sh
+```sh
   /opt/atsd/hadoop/bin/hadoop fsck /hbase/
-  ```
+```
 
 The expected message is:
 
-  ```
+```txt
   The filesystem under path '/hbase/' is HEALTHY.
-  ```
+```
 
 > If corrupted files are reported, follow the [recovery](../corrupted-file-recovery.md#repair-hbase) procedure.
 
 Stop HDFS.
 
-  ```sh
+```sh
   /opt/atsd/bin/atsd-dfs.sh stop
-  ```
+```
 
 Execute the `jps` command and verify that the `NameNode`, `SecondaryNameNode`, and `DataNode` processes are **not  present** in the `jps` command output.
 
@@ -307,7 +307,7 @@ Perform HBase upgrade.
 /opt/atsd/hbase/bin/hbase upgrade -check
 ```
 
-Review the hbase.log file.
+Review the `hbase.log` file.
 
 ```sh
 tail /opt/atsd/hbase/logs/hbase.log
@@ -330,13 +330,13 @@ Start and stop Zookeeper in upgrade mode.
 /opt/atsd/hbase/bin/hbase upgrade -execute
 ```
 
-Review the hbase.log file:
+Review the `hbase.log` file:
 
 ```sh
 tail -n 20 /opt/atsd/hbase/logs/hbase.log
 ```
 
-```
+```txt
 ...
 2017-08-01 09:32:44,047 INFO  migration.UpgradeTo96 - Successfully completed Namespace upgrade
 2017-08-01 09:32:44,049 INFO  migration.UpgradeTo96 - Starting Znode upgrade
@@ -365,7 +365,7 @@ Check that ATSD tables are available in HBase:
 echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["
 ```
 
-```sh
+```txt
 ...
   TABLE                  
   atsd_calendar                                           
@@ -379,7 +379,8 @@ Execute a sample scan in HBase.
 ```sh
 echo "scan 'atsd_d', LIMIT => 1" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null
 ```
-```sh
+
+```txt
 ...
   ROW                  COLUMN+CELL
   ...
@@ -412,7 +413,7 @@ Start Job History server:
 
 Run the `jps` command to check that the following processes are running:
 
-```
+```txt
 9849 ResourceManager  # M/R
 25902 NameNode # HDFS
 26050 DataNode # HDFS
@@ -466,7 +467,7 @@ The task will create backups by appending a `'_backup'` suffix to the following 
 * 'atsd_forecast_backup'
 * 'atsd_delete_task_backup'
 
-```
+```txt
 ...
 Table 'atsd_li' successfully deleted.
 Snapshot 'atsd_metric_snapshot_1501582066133' of the table 'atsd_metric' created.
@@ -484,7 +485,7 @@ Table 'atsd_metric' successfully deleted.
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration -m 2
 ```
 
-```
+```txt
 ...
 17/08/01 10:14:27 INFO mapreduce.Job: Job job_1501581371115_0001 completed successfully
 17/08/01 10:14:27 INFO mapreduce.Job: Counters: 62
@@ -495,7 +496,7 @@ Table 'atsd_metric' successfully deleted.
 
 In case of insufficient virtual memory error, adjust Map-Reduce [settings](mr-settings.md) and retry the command with the `-r` flag.
 
-```
+```txt
 17/08/01 10:19:50 INFO mapreduce.Job: Task Id : attempt_1501581371115_0003_m_000000_0, Status : FAILED
 Container [...2] is running beyond virtual memory limits... Killing container.
 ```
@@ -547,7 +548,7 @@ Delete the diagnostics folder:
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DataMigrator -m 2
 ```
 
-```
+```txt
 ...
 17/08/01 10:44:31 INFO mapreduce.DataMigrator: HFiles loaded, data table migration job completed, elapsedTime: 15 minutes.
 ...

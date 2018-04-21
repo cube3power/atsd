@@ -15,11 +15,11 @@ This document describes how to reconfigure the ODBC data source if the list of t
   Builder. For example, `tables=%` displays all ATSD metrics as tables whereas `tables=infla%`
   shows only metrics that start with the characters 'infla'. 
 
-  ```text
+```text
     jdbc:atsd://ATSD_HOST:8443;tables=%
     jdbc:atsd://ATSD_HOST:8443;tables=infla%
     jdbc:atsd://ATSD_HOST:8443;tables=infla%,%finance%
-  ```
+```
   
 ![](images/table_config.png)
 

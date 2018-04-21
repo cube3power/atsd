@@ -60,7 +60,7 @@ curl https://atsd_host:8443/api/v1/entities/nurswgvml006 \
   --header "Content-Type: application/json" \
   --request PUT \
   --data '{"tags": {"alias": "vmware_host"}}'
-  ```
+```
 
 ### Response
 

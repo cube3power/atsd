@@ -1,11 +1,15 @@
-# Entity Tags for entityGroup
+# Entity Tags for Entity Group
 
 ## Request
+
 ### URI
+
 ```elm
 POST https://atsd_host:8443/api/v1/properties/query
 ```
+
 ### Payload
+
 ```json
 [
     {

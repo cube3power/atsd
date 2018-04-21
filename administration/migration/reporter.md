@@ -18,7 +18,7 @@ Execute the below steps on the server running YARN Resource Manager on the targe
 
 * Open **Hosts > All Hosts**, expand the **Roles**.
 
-  * Verify that ResourceManager, NodeManagers, and HistoryServer services are running on the cluster. 
+  * Verify that ResourceManager, NodeManager, and HistoryServer services are running on the cluster.
 
 * Open **Clusters > Cluster > YARN (MR2 Included) > Configuration**.
 

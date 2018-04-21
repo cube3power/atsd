@@ -115,7 +115,6 @@ Example:
 https://atsd_host:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22nurswgvml007%22%2C%22si%22%3A%221-HOUR%22%2C%22t%22%3A%22HISTORY%22%7D
 ```
 
-
 ### `entityLink`
 
 ```css
@@ -147,14 +146,16 @@ The inline link mode improves readability by replacing URLs with user-friendly l
 ### `html`
 
 * Base URL
-  ```elm
+
+```elm
   https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu
-  ```
+```
 
 * Inline Link
-  ```elm
+
+```elm
   <a href="https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu">nmon_cpu</a>
-  ```
+```
 
 * Link Label: `nmon_cpu`
 * Enabled in Email message text, HipChat with **Message Format** be set to *html*.
@@ -162,14 +163,16 @@ The inline link mode improves readability by replacing URLs with user-friendly l
 ### `markdown`
 
 * Base URL
-  ```elm
+
+```elm
   https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu
-  ```
+```
 
 * Inline Link
-  ```elm
+
+```elm
   [nmon_cpu](https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu)
-  ```
+```
 
 * Link Label: `nmon_cpu`
 * Enabled in Telegram
@@ -177,14 +180,16 @@ The inline link mode improves readability by replacing URLs with user-friendly l
 ### `pipe`
 
 * Base URL
-  ```elm
+
+```elm
   https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu
-  ```
+```
 
 * Inline Link
-  ```elm
+
+```elm
   <https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu|nmon_cpu>
-  ```
+```
 
 * Link Label: `nmon_cpu`
 * Enabled in Slack with **Parse Mode** set to *Default* or `false`.

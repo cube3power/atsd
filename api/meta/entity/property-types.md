@@ -54,7 +54,8 @@ None.
 curl https://atsd_host:8443/api/v1/entities/nurswgvml007/property-types \
   --insecure --verbose --user {username}:{password} \
   --request GET
-  ```
+```
+
 ### Response
 
 ```json

@@ -627,11 +627,9 @@ WHERE entity LIKE '%a''b%'
 SELECT date_format(time, 'yyyy-mm-dd''T''HH:mm:ss''Z''')
 ```
 
-
 ## Identifiers
 
 Use **double quotation marks** to enquote a table name, column name, and alias if it contains a reserved column name, a [keyword](#keywords), a function name, or a special character including whitespace, `.`,`+`,`-`,`*`,`/`,`,`,`"`,`'`.
-
 
 ```sql
 -- Special character
@@ -1018,7 +1016,6 @@ PERIOD(1 DAY, entity.timeZone)
 | align | Align the period's start/end. Default: `CALENDAR`. <br>Possible values: `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`, `CALENDAR`.<br>Refer to [period alignment](#period-alignment).|
 | time zone | Time zone for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default value: current database time zone.|
 
-
 ```sql
 SELECT entity, date_format(PERIOD(5 MINUTE, END_TIME)), AVG(value)
   FROM "mpstat.cpu_busy"
@@ -1240,7 +1237,7 @@ WITH INTERPOLATE(30 SECOND)
 
 ### Syntax
 
-```ls
+```sql
 WITH INTERPOLATE (period [, inter_func[, boundary[, fill [, alignment[, timezone]]]]])
 ```
 
@@ -1749,7 +1746,6 @@ The `JOIN` clause merges records from multiple tables. The database implements i
 
 * Rows returned by an outer join contain equal or `null` values for joined columns.
 
-
 ### JOIN Example
 
 Metric `m_1` records:
@@ -1971,7 +1967,6 @@ WHERE t1.datetime >= '2017-06-16T13:00:00Z' AND t1.datetime < '2017-06-16T13:10:
 | 2017-06-16T13:00:59Z | nurswgvml006 | 1743057408.0 | 83.1     | //u113452.nurstr003/backup      | /mnt/u113452        |
 ```
 
-
 ### OUTER JOIN
 
 To combine all records from joined tables, use `FULL OUTER JOIN` (synonyms `OUTER JOIN` or `FULL JOIN`), which returns rows with equal time, entity, and tags as well as rows from one table for which no rows from the other table satisfy the join condition.
@@ -2073,7 +2068,7 @@ ORDER BY base.datetime
 
 ## Keywords
 
-```
+```ls
 |-------------|-------------|-------------|-------------|
 | AND         | AS          | ASC         | BETWEEN     |
 | BY          | CASE        | CAST        | DESC        |
@@ -2086,7 +2081,7 @@ ORDER BY base.datetime
 | ROW_NUMBER  | SELECT      | THEN        | USING       |
 | VALUE       | WHEN        | WHERE       | WITH        |
 |-------------|-------------|-------------|-------------|
- ```
+```
 
  The reserved keywords also include [calendar](../shared/calendar.md#keywords) keywords such as `NOW`, `PREVIOUS_HOUR` and [interval units](../shared/calendar.md#interval-units) such as `MINUTE`, `HOUR`.
 
@@ -2761,7 +2756,7 @@ WHERE datetime >= NOW - 5*MINUTE
 
 If the searched key is a number provided by the `value` column or an arithmetic expression, it is formatted into a string with a `#.##` pattern.
 
-```
+```ls
 1.0     -> 1
 1.20    -> 1.2
 1.23    -> 1.23
@@ -3168,7 +3163,7 @@ Queries executed by the database are recorded in the main application log `atsd.
 
 Each query is assigned a unique identifier for correlating starting and closing events.
 
-```sh
+```txt
 2017-08-15 18:44:01,183;INFO;qtp1878912978-182;com.axibase.tsd.service.sql.SqlQueryServiceImpl;Starting sql query execution. [uid=218], user: user003, source: scheduled, sql: SELECT entity, AVG(value) AS "Average", median(value), MAX(value), count(*),
    percentile(50, value), percentile(75, value), percentile(90, value),  percentile(99, value) FROM "mpstat.cpu_busy"
   WHERE time BETWEEN PREVIOUS_DAY and CURRENT_DAY GROUP BY entity ORDER BY AVG(value) DESC

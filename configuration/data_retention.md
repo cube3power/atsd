@@ -106,52 +106,52 @@ Discarded commands for metrics with persistence filters are logged with a `FILTE
 
 #### Filter Examples
 
-* Discard (do not persist) series with tag 'site' equal to 'DefaultWebSite'
+* Discard (do not persist) series with tag 'site' equal to `DefaultWebSite`
 
-  ```javascript
+```javascript
   tags.site != 'DefaultWebSite'
-  ```
+```
 
 * Discard series with tag 'id' starting with 'lo'
 
-  ```javascript
+```javascript
   tags.id not like 'lo*'
-  ```
+```
 
 * Discard series with tag 'disk' equal `/boot` or starting with '/run'
 
-  ```javascript
+```javascript
   tags.disk != '/boot' && tags.disk NOT LIKE '/run*'
-  ```
+```
 
 * Discard series if tag 'mount_point' matches any element in named collection 'ignore-collector-mount-points'.
 
-  ```javascript
+```javascript
   !likeAny(tags.mount_point, collection('ignore-collector-mount-points'))
-  ```
+```
 
-  ```
+```txt
   /boot
   /dev*
   /proc*
   /run*
   /var*
   /sys/fs/cgroup
-  ```
+```
 
 * Discard series if tag 'id' is contained in named collection 'filesystem_ignore'.
 
-  ```javascript
+```javascript
   !collection('filesystem_ignore').contains(tags.id)
-  ```
+```
 
-  ```
+```txt
   /run
   /run/shm
   /dev
   /run/lock
   /boot
-  ```
+```
 
 ### Delete Expired Data
 
@@ -203,11 +203,11 @@ The expired data is deleted from the database on a schedule which is synchronize
 
 The sequence of tasks should be as follows:
 
-1. delete.schedule
-2. expired.series.removal.schedule
-3. expired.data.removal.schedule
-4. data.compaction.schedule
-5. hbase.compaction.schedule
+1. `delete.schedule`
+2. `expired.series.removal.schedule`
+3. `expired.data.removal.schedule`
+4. `data.compaction.schedule`
+5. `hbase.compaction.schedule`
 
 It is recommended that the tasks are executed once a day during off-peak/night-time hours. The `hbase.compaction` task should run once a week on large clusters.
 

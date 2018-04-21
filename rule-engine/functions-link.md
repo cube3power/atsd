@@ -7,23 +7,23 @@ These functions return URLs to ATSD pages based on the database URL (set the `se
 The URLs are automatically [inlined](links.md#inline-links) in email notifications and in web notifications that support inline links.
 
 The inline links can be also assembled manually using the syntax supported by the notification channel:
-	
-* `markdown`	
-	
-```markdown	
+
+* `markdown`
+
+```markdown
 [Error Messages](${serverLink}/messages?entity=${entity})	
-```	
-	
-* `pipe` (used by Slack)	
-	
-```ls	
-<${serverLink}/messages?entity=${entity}|Error Messages>	
-```	
-	
+```
+
+* `pipe` (used by Slack)
+
+```ls
+<${serverLink}/messages?entity=${entity}|Error Messages>
+```
+
 * `html`
-	
-```html	
-<a href="${serverLink}/messages?entity=${entity}">Error Messages</a>	
+
+```html
+<a href="${serverLink}/messages?entity=${entity}">Error Messages</a>
 ```
 
 ## Reference
@@ -151,6 +151,7 @@ Example:
 ```javascript
 getChartLink('markdown')
 ```
+
 The following inline link is returned:
 
 ```elm

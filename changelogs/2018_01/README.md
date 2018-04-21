@@ -42,13 +42,13 @@ Issue| Category    | Type    | Subject
 4865 | rule engine | Bug | The [`milliseconds`](../../rule-engine/functions-time.md#milliseconds) function fails if input is `null`.
 4864 | rule engine | Bug | Change behavior of [text](../../rule-engine/functions-text.md#keepafter) functions.
 4863 | rule engine | Feature | Default value argument for [`lookup`](../../rule-engine/functions-lookup.md#lookup) function.
-4861 | api-rest | Feature | Webhook: set [command time](../../api/data/messages/webhook.md#command-parameters) from (milli)seconds.
+4861 | api-rest | Feature | Webhook: set [command time](../../api/data/messages/webhook.md#command-parameters) from milliseconds and seconds.
 4858 | rule engine | Feature | Implement [`unquote`](../../rule-engine/functions-text.md#unquote) function.
 4857 | rule engine | Bug | Delete [open alerts](../../rule-engine/README.md#window-status) when entity is deleted.
 4856 | rule engine | Bug | Random [function](../../rule-engine/functions-random.md#random-functions) values are cached by subsequent invocations.
 4854 | rule engine | Feature | Implement additional [math](../../rule-engine/functions-math.md#reference) functions.
 4852 | rule engine | Bug | Rule window detail page shows incorrect results for windows with 'Property' data type.
-4851 | rule engine | Feature | Implement [freemarker-style](../../rule-engine/functions-text.md#reference) text functions.
+4851 | rule engine | Feature | Implement [Freemarker-style](../../rule-engine/functions-text.md#reference) text functions.
 4849 | rule engine | Bug | Error in [time](../../rule-engine/functions-format.md#reference) format functions.
 4848 | UI | Bug | Export page: FreeMarker error for forecast [export](../../reporting/ad-hoc-exporting.md).
 4846 | rule engine | Feature | [Web notifications](../../rule-engine/web-notifications.md): add status column.

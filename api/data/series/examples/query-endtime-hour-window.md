@@ -1,4 +1,4 @@
-# Series Query: EndTime - Hour Window
+# Series Query: `EndTime` - Hour Window
 
 ## Description
 

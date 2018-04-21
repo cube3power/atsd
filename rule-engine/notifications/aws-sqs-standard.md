@@ -11,7 +11,7 @@ Create a new rule and open the **Web Notifications** tab.
 
    - OPEN:
 
-       ```json
+```json
        {
           "status": "${status}",
            "entity": "${entity}",
@@ -19,11 +19,11 @@ Create a new rule and open the **Web Notifications** tab.
            "tags": "${tags}",
            "message": "The rule is open"
        }
-       ```
+```
 
    - REPEAT:
 
-       ```json
+```json
        {
            "status": "${status}",
            "entity": "${entity}",
@@ -32,11 +32,11 @@ Create a new rule and open the **Web Notifications** tab.
            "repeatCount": "${repeat_count}",
            "message": "The rule is still open"
        }
-       ```
+```
 
    - CANCEL:
 
-       ```json
+```json
        {
            "status": "${status}",
            "entity": "${entity}",
@@ -45,7 +45,7 @@ Create a new rule and open the **Web Notifications** tab.
            "repeatCount": "${repeat_count}",
            "message": "The rule is cancel"
        }
-       ```
+```
 
   ![](images/aws_sqs_web_notification_standard.png)
 

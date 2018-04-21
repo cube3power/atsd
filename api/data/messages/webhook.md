@@ -98,59 +98,59 @@ Since each message must be associated with an entity, the request should instruc
 
 1. By default, the entity will be set to the remainder of the path following the `/api/v1/messages/webhook/` prefix.
 
-  ```
+```
   /api/v1/messages/webhook/jenkins?hello=world
-  ```
+```
 
-  ```
+```
   entity = jenkins
-  ```
+```
 
 
 2. The entity may be specified literally by adding an `entity` parameter to the query string, for example `/api/v1/messages/webhook/jenkins?entity=test-1`
 
-  ```
+```
   entity = test-1
-  ```
+```
 
 3. The entity can be extracted from a JSON field by referencing the field's full name with `command.entity` parameter, for example `/api/v1/messages/webhook/jenkins?command.entity=server.name`
 
-  ```json
+```json
   {
     "server": {
       "name": "test-2",
       "site": "NUR"
     }
   }
-  ```
+```
 
-  ```
+```
   entity = test-2
-  ```
+```
 
 4. The entity can be extracted from request headers by specifying the header name, for example `/api/v1/messages/webhook/jenkins?header.entity=X-AXI-Region`
 
   HTTP request headers:
 
-  ```
+```
   ...
   X-AXI-Region: us-east-01
   ...
-  ```
+```
 
-  ```
+```
   entity = us-east-01
-  ```
+```
 
 ### Default Message Field Values
 
 * Message `type` is 'webhook'.
 * Message `source` is set to the remainder of the URL path after the `/webhook/` part (and before the query string). If the remainder is empty, the `source` is set to empty string.
 
-  ```ls
+```ls
   source = incoming for /api/v1/messages/webhook/incoming?entity=test
   source =          for /api/v1/messages/webhook?entity=test
-  ```
+```
 
 * Message `entity` is set to the remainder of the URL path after `/webhook/` (but before the query string). If the remainder is empty, the `entity` **must** be specified as described in the 'Entity Mapping' section above.
 * Message `severity` is undefined.
@@ -252,23 +252,23 @@ The filter parameters contain patterns that the converted message tags must sati
 * Tag name match is case-**IN**sensitive.
 * The parameters may contain multiple patterns separated by semi-colon `;`.
 
-  ```
+```
   &exclude=repository.*;sender.location
-  ```
+```
 
 * Parameters may be repeated in the query string.
 
-  ```
+```
   &exclude=repository.*&exclude=sender.location
-  ```
+```
 
 Example:
 
-  ```
+```
 	exclude=repository.*&include=repository.name
-  ```
+```
 
-  ```json
+```json
 	{
 	  "event": "commit",
 	  "result": "ok",
@@ -279,15 +279,15 @@ Example:
 	    "references": []
 	  }
 	}
-  ```
+```
 
   Message fields:
 
-  ```
+```
     tag.event = commit
     tag.result = ok
     repository.name = atsd
-  ```
+```
 
 #### Control Parameters
 
@@ -307,34 +307,34 @@ Example:
 
 * Request URL:
 
-  ```
+```
     /api/v1/messages/webhook/github?entity=test-1&header.entity=User-Agent&command.entity=server
-  ```
+```
 
 * Request Headers:
 
-  ```
+```
     User-Agent: GitHub-Hookshot/5ee1da1
-  ```
+```
 
 * Request Payload:
 
-  ```
+```
     {
       "server": "test-2"
     }
-  ```
+```
 
 * Message Command:
 
-  ```
+```
 	type=github
 	source=webhook
 	entity=test-1
 	tags:
 	    server=test-2
 	    request_ip=...
-  ```
+```
 
 ## Sample URLs
 

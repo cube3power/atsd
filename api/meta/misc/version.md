@@ -42,8 +42,8 @@ None.
 curl https://atsd_host:8443/version \
   --insecure --verbose --user {username}:{password} \
   --request GET 
-  ```
-  
+```
+
 ### Response
 
 ```json

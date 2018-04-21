@@ -48,7 +48,7 @@ Monthly Change Log: March 2018
 5063 | export | Bug | [Tag filter](../../reporting/ad-hoc-exporting.md#ad-hoc-exporting) with wildcard allows any tag values.
 5055 | csv | Bug | Incorrect version fields are stored from [uploaded](../../parsers/csv#uploading-csv-files-into-axibase-time-series-database) .csv file.
 5051 | export | Bug | [Scheduled Query](../../reporting/scheduled-exporting.md#scheduled-exporting): Output Path collision.
-5049 | api-rest | Bug | Data API: slow search by property in [entityExpression](../../api/data/filter-entity.md#entity-filter-fields).
+5049 | api-rest | Bug | Data API: slow search by property in [`entityExpression`](../../api/data/filter-entity.md#entity-filter-fields).
 5036 | admin | Feature | Backup multiple record types from zip/tar.gz archive.
 5018 | rule engine | Bug | Web Notifications: raw url presence breaks markdown format in [Telegram](../../rule-engine/notifications/telegram.md#telegram-notifications).
 5012 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | 'Entity Tag' link not applied to 'Entity Tag' column.

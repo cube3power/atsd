@@ -209,10 +209,9 @@ The option `Attach Details` sends an alert details table when active. It is poss
 
 ![](images/notify-attach-3.png)
 
-
 ### Multiple Endpoints
 
-In order to update multiple endpoints for the same status change event, add notifications, identified by unique name, in the rule editor. The order in which notifications are delivered is nondeterministic.
+To send requests to multiple endpoints for the same status change event, add multiple notifications in the rule editor. The order in which notifications are delivered is non-deterministic.
 
 ## Stopping Messages
 
@@ -258,30 +257,30 @@ If the ATSD server cannot connect to the remote API server directly due to netwo
 
   NGINX configuration for Slack:
 
-  ```
+```
     location /api/chat.postMessage {
         proxy_pass https://slack.com/api/chat.postMessage;
     }
     location /api/files.upload {
         proxy_pass https://slack.com/api/files.upload;
     }
-  ```
+```
 
   NGINX configuration for Telegram:
 
-  ```
+```
     location /bot {
         proxy_pass https://api.telegram.org/bot;
     }
-  ```
+```
 
   NGINX configuration for Discord:
 
-  ```
+```
     location /api/webhooks {
         proxy_pass https://discordapp.com/api/webhooks;
     }
-  ```  
+```  
 
   Modify the `Base URL` by replacing it with the corresponding API gateway URL.
 

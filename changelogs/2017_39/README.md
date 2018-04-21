@@ -23,7 +23,7 @@ Weekly Change Log: September 25, 2017 - October 1, 2017
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4596 | docker | Feature | Validate atsd_url and collector password in the entrypoint script prior to starting the collector. |
+| 4596 | docker | Feature | Validate atsd_url and collector password in the `entrypoint` script prior to starting the collector. |
 | 4577 | core | Bug | Update packages to latest stable versions without known security issues. |
 
 ---

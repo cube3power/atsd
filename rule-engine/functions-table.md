@@ -145,7 +145,7 @@ Examples:
   {id=/mnt/u113452, jfs_filespace_%used=34.9}, 
   {id=/run, jfs_filespace_%used=7.5}, 
   {id=/var/lib/lxcfs, jfs_filespace_%used=0.0}
-  ]
+]
 ```
 
 * `markdown` format
@@ -194,7 +194,7 @@ jfs_filespace_%used,12.7,0.0,34.9,7.5,0.0
   addTable(property_maps('nurswgvml007','jfs::', 'today'), 'html')
 ```
 
-```ls
+```html
 <table style="font-family: monospace, consolas, sans-serif; border-collapse: collapse; font-size: 12px; margin-top: 5px"><tbody><tr><th bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">Name</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 1</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 2</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 3</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 4</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 5</th></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">id</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/dev</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/mnt/u113452</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/run</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/var/lib/lxcfs</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">jfs_filespace_%used</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">12.8</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">0.0</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">34.9</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">7.5</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">0.0</td></tr>
@@ -273,7 +273,7 @@ date,count
 
 ```javascript
   addTable(executeSqlQuery(query), 'ascii', true)
-```  
+```
 
 ```ls
 +--------------------------+-------+
@@ -470,7 +470,7 @@ The examples below are based on the following JSON document which represents out
 ```
 
 ```json
-[ 
+[
   [ "url", "author.login", "mergeable", "baseRefName", "headRefName", "title" ],
   [ "https://github.com/axibase/atsd-api-test/pull/487", "unrealwork", "MERGEABLE", "master", "5208-series-tag-query-with-wildcard-without-entity", "5208: Series tags query with wildcard without entity" ],
   [ "https://github.com/axibase/atsd-api-test/pull/406", "vtols", "MERGEABLE", "master", "vtols-4397", "Test #4397" ]
@@ -481,7 +481,7 @@ The examples below are based on the following JSON document which represents out
   addTable(jsonToLists(json), 'ascii', true)
 ```
 
-```
+```txt
 +---------------------------------------------------+-----------------+-----------+-------------+----------------------------------------------------+--------------------------------------------------------------+
 | url                                               | author.login    | mergeable | baseRefName | headRefName                                        | title                                                        |
 +---------------------------------------------------+-----------------+-----------+-------------+----------------------------------------------------+--------------------------------------------------------------+

@@ -24,8 +24,8 @@ change over time and their history is visualized with different types of graphs.
 # Series 1 settings
   [series]
 # Series 2 settings
-  ```
-  
+```
+
 Each series is identified by a composite key which consists of an **metric**, **entity**, and optional key-value pairs 
 called **series tags**, or simply **tags**. 
 
@@ -143,7 +143,7 @@ To control how multiple matched series are processed, use the `'multiple-series 
 
 The `multiple-series` setting can be used to display all series without specifying any tags in widget configuration at all:
 
-```  
+```ls
    # Display all series without merging
      multiple-series = true
      [series]
@@ -253,8 +253,7 @@ Refer to the [Data API](../api/data/filter-entity.md#entity-filter-fields) for a
 
 ## Retrieving Series from the Database
 
-As an alternative to specifying the `[series]` settings manually and using wildcards, the widget syntax provides the `getSeries()` and 
-`getTags()` methods to retrieve the list of existing series from the database.
+As an alternative to specifying the `[series]` settings manually and using wildcards, the widget syntax provides the `getSeries()` and `getTags()` methods to retrieve the list of existing series from the database.
 
 `getTags()`:
 

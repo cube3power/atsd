@@ -28,13 +28,13 @@ Formats number `x` with the specified [DecimalFormat](https://docs.oracle.com/ja
 
 Example:
 
-  ```javascript
+```javascript
     // returns 3.14  
     formatNumber(3.14159, '#.##')
-  ```
-  
+```
+
 ### `formatBytes`
-  
+
 ```javascript
   formatBytes(number x, boolean si) string
 ```
@@ -43,7 +43,7 @@ The function returns the total number of bytes `x` in a human-readable format. T
 
 For example, if the unit is `1000` (`si` set to `true`):
 
-```
+```txt
  999 -> 999.0 B  (unit is byte)
 1000 ->   1.0 kB (unit is kilobyte)
 ```
@@ -52,7 +52,7 @@ The formatted number always contains one fractional digit.
 
 Examples:
 
-```
+```txt
                         si=false    si=true
                    0:        0 B        0 B
                   27:       27 B       27 B
@@ -80,27 +80,27 @@ The function divides the number `x` by the specified measurement unit `s` and fo
 
 The unit prefix is case-insensitive and should be one of the following:
 
-  * 'K', 'Kb' (1000)
-  * 'Ki', 'KiB' (1024)
-  * 'M', 'Mb' (1000^2)
-  * 'Mi', 'MiB' (1024^2)
-  * 'G', 'Gb' (1000^3)
-  * 'Gi', 'GiB' (1024^3)
-  * 'T', 'Tb' (1000^4)
-  * 'Ti', 'TiB' (1024^4)
-  * 'P', 'Pb' (1000^5)
-  * 'Pi', 'PiB' (1024^5)
-  * 'E', 'Eb' (1000^6)
-  * 'Ei', 'EiB' (1024^6)
-  
+  * `K`, `Kb` (1000)
+  * `Ki`, `KiB` (1024)
+  * `M`, `Mb` (1000^2)
+  * `Mi`, `MiB` (1024^2)
+  * `G`, `Gb` (1000^3)
+  * `Gi`, `GiB` (1024^3)
+  * `T`, `Tb` (1000^4)
+  * `Ti`, `TiB` (1024^4)
+  * `P`, `Pb` (1000^5)
+  * `Pi`, `PiB` (1024^5)
+  * `E`, `Eb` (1000^6)
+  * `Ei`, `EiB` (1024^6)
+
 Examples:
 
-  ```javascript
+```javascript
     // returns 20.0
     // same as formatNumber(20480/1024, '#.#')
     convert(20480, 'KiB') // 20.0
     convert(1000 * 1000, 'M') // 1.0
-  ```
+```
 
 ### `date_format`
 
@@ -121,7 +121,7 @@ Example:
 
 Date Pattern reference:
 
-  ```
+```txt
    Symbol  Meaning                      Presentation  Examples
    ------  -------                      ------------  -------
    G       era                          text          AD
@@ -153,7 +153,7 @@ Date Pattern reference:
 
    '       escape for text              delimiter
    ''      single quote                 literal       '
-  ```
+```
 
 ### `formatInterval`
 
@@ -186,5 +186,5 @@ Examples:
 
   /* Assuming current time of 2017-08-15T00:01:30Z, returns a short interval of elapsed time: 1m 30s */
   formatIntervalShort(elapsedTime("2017-08-15T00:00:00Z"))  
-```  
+```
 

@@ -80,7 +80,7 @@ The following match conditions are applied:
 
 Assume the following windows have status 'REPEAT' and the function is called from the rule 'test_rule_open':
 
-```
+```txt
 +----------------+------------------------------+
 | Entity         | nurswgvml007                 |
 | Entity Label   | NURswgvml007                 |
@@ -94,7 +94,8 @@ Assume the following windows have status 'REPEAT' and the function is called fro
 | Text Value	 | Starting sql query execution.|
 +----------------+------------------------------+
 ```
-```
+
+```txt
 +----------------+------------------------------+
 | Entity         | atsd                         |
 | Entity Label   | ATSD                         |
@@ -157,8 +158,8 @@ Assume the following windows have status 'REPEAT' and the function is called fro
   
   /* Returns 'true' */
   rule_open('jvm_derived', 'nurswgvml007', "tags.port != '23' && message LIKE 'Starting*'")
-  
 ```
+
 ### `rule_window` Examples
 
 ```javascript
@@ -182,7 +183,7 @@ Assume the following windows have status 'REPEAT' and the function is called fro
   Used the same entity as in the current window.
   */
   rule_window('slack-bot-cmd-confirm', entity, 'tags.event.user!="' + tags.event.user + '" AND message="' + message + '" AND status!="CANCEL"')
-  ```
+```
 
 ## `rule_windows`
 

@@ -16,21 +16,21 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
 
 * Download and install PhantomJS:
 
-    ```bash
+```sh
     cd /home/axibase
     wget https://axibase.com/public/phantomjs-2.1.1-linux-x86_64.tar.gz
     tar xzf phantomjs-2.1.1-linux-x86_64.tar.gz
-    ```
+```
 
 * Make sure that `axibase` user is allowed to execute `phantomjs`
 
-    ```bash
+```bash
     ls -all /home/axibase | grep phantomjs-2.1.1-linux-x86_64
-    ```
+```
 
-    ```
+```txt
     drwxr-xr-x 4 axibase axibase     4096 Jan 25  2016 phantomjs-2.1.1-linux-x86_64
-    ```
+```
 
 * Set path to `/home/axibase/phantomjs-2.1.1-linux-x86_64/bin/phantomjs` in **Settings > Server Properties > webdriver.phantomjs.path**.
 
@@ -82,7 +82,8 @@ wget https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
 sudo mv chromedriver /usr/bin/chromedriver
 ```
-* Set path to `/usr/bin/chromedriver` and `/usr/bin/google-chrome-stable` in **Settings > Server Properties > webdriver.chromedriver.path** and **webdriver.chromebrowser.path**.
+
+* Set path to `/usr/bin/chromedriver` and `/usr/bin/google-chrome-stable` in **Settings > Server Properties** `webdriver.chromedriver.path` and `webdriver.chromebrowser.path`.
 
     ![](images/webdriver-google.png)
 

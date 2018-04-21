@@ -197,6 +197,21 @@
     "grep",
     "deobfuscate",
     "Subqueries",
-    "jsonld"
+    "jsonld",
+    "NodeManager",
+    "jvm",
+    "grafana",
+    "Avatica",
+    "NullPointException",
+    "OutOfMemory",
+    "treemap",
+    "FileNotFoundException",
+    "OoM",
+    "IndexOutOfBoundsException",
+    "TableExistsException",
+    "IndexNotFoundException",
+    "Jxplorer",
+    "Django"
+
   ]
 }

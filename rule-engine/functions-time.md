@@ -117,51 +117,51 @@ The fields of the `DateTime` object can be accessed using the following methods:
 
 Examples:
 
-  ```javascript
+```javascript
     /* Returns true if the specified date is a working day. */
     date_parse(property('config::deleted')).getDayOfWeek() < 6
-  ```
+```
 
-  ```javascript
+```javascript
     /* Uses the server time zone to construct a DateTime object. */
     date_parse("31.01.2017 12:36:03:283", "dd.MM.yyyy HH:mm:ss:SSS")
-  ```
+```
 
-  ```javascript
+```javascript
     /* Uses the offset specified in the datetime string to construct a DateTime object. */
     date_parse("31.01.2017 12:36:03:283 -08:00", "dd.MM.yyyy HH:mm:ss:SSS ZZ")
-  ```
+```
 
-  ```javascript
+```javascript
     /* Uses the time zone specified in the datetime string to construct a DateTime object. */
     date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS ZZZ")
-  ```
+```
 
-  ```javascript
+```javascript
     /* Constructs a DateTime object from the time zone provided as the third argument. */
     date_parse("31.01.2017 12:36:03:283", "dd.MM.yyyy HH:mm:ss:SSS", "Europe/Berlin")
-  ```
+```
 
-  ```javascript
+```javascript
     /* Constructs a DateTime object from the UTC offset provided as the third argument. */
     date_parse("31.01.2017 12:36:03:283", "dd.MM.yyyy HH:mm:ss:SSS", "+01:00")
-  ```
+```
 
-  ```javascript
+```javascript
     /* If the time zone (offset) is specified in the datetime string,
     it should be exactly the same as provided by the third argument. */
     date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
-  ```
+```
 
-  ```javascript
+```javascript
     /* These expressions lead to exceptions. */
     date_parse("31.01.2017 12:36:03:283 +01:00", "dd.MM.yyyy HH:mm:ss:SSS ZZ", "Europe/Berlin")
     date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
-  ```
+```
 
 Date Pattern reference:
 
-  ```
+```txt
    Symbol  Meaning                      Presentation  Examples
    ------  -------                      ------------  -------
    G       era                          text          AD
@@ -193,4 +193,4 @@ Date Pattern reference:
 
    '       escape for text              delimiter
    ''      single quote                 literal       '
-  ```  
+```  

@@ -100,7 +100,7 @@ curl  https://atsd_host:8443/api/v1/messages/stats/query \
   --header "Content-Type: application/json" \
   --request POST \
   --data @file.json
-  ```
+```
   
 ### Response
 

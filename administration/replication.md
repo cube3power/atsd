@@ -52,7 +52,7 @@ sudo nano /etc/hosts
  127.0.0.1    localhost
  master_ip    master_hostname
  slave_ip     slave_hostname
- ```
+```
 
 > Note: the following lines should not be contained in the `hosts` file.
 This is the case for both master and slave.

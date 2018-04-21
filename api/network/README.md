@@ -56,13 +56,13 @@ Utilize the [HTTP command](../../api/data/ext/command.md) to send plain-text com
 
 To send a single command, connect to an ATSD server, send the command in plain text, and terminate the connection.
 
-* netcat: echo
+* netcat: `echo`
 
 ```ls
 echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z" | nc atsd_host 8081
 ```
 
-* netcat: printf
+* netcat: `printf`
 
 ```ls
 printf 'series e:station_2 m:temperature=32.2 m:humidity=81.4 s:1463271035' | nc atsd_host 8081
@@ -240,7 +240,7 @@ Field value:
 * If the field value contains a double-quote (") or equal (=) sign or a non-printable character, it must be enclosed in double quotes. For example: `v:os="Ubuntu 14.04"` or `v:os="Ubuntu=""14"""`
 * Any double quote character in the value must be escaped with another double quote.
 
-Use CSV escaping methods in core libraries where available, for example [StringEscapeUtils.escapeCsv](https://commons.apache.org/proper/commons-lang/javadocs/api-2.6/org/apache/commons/lang/StringEscapeUtils.html#escapeCsv%28java.io.Writer,%20java.lang.String%29) in Java.
+Use CSV escaping methods in core libraries where available, for example [`StringEscapeUtils.escapeCsv`](https://commons.apache.org/proper/commons-lang/javadocs/api-2.6/org/apache/commons/lang/StringEscapeUtils.html#escapeCsv%28java.io.Writer,%20java.lang.String%29) in Java.
 
 
 ### Case Sensitivity

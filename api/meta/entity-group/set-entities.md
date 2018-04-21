@@ -72,7 +72,8 @@ curl https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/set?createEnt
   --header "Content-Type: application/json" \
   --request POST \
   --data '["nurswgvml010", "nurswgvml011"]'
-  ```
+```
+
 ### Response
 
 None.

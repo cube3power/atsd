@@ -6,41 +6,41 @@
 
 Download scollector binary for Linux.
 
- ```sh
+```sh
  mkdir scollector
- ```
+```
  
- ```sh
+```sh
  cd scollector
- ```
+```
  
- ```sh
+```sh
  wget https://github.com/bosun-monitor/bosun/releases/download/0.6.0-beta1/scollector-linux-amd64
- ```
+```
  
- ```sh
+```sh
  chmod 700 scollector-linux-amd64
- ```
+```
  
 Replace username, password, hostname and port number with actual connection parameters. 
  
- ```sh
+```sh
  echo 'Host = "http://username:password@atsd_hostname:8088/"' > scollector.toml
- ```
+```
  
 The default ATSD http port is `8088`, https port is `8443`. 
  
 scollector does not support untrusted SSL certificates. If ATSD is running on a CA-signed SSL certificate, you can specify the secure connection.
 
- ```sh
+```sh
  echo 'Host = "https://username:password@atsd_hostname:8443/"' > scollector.toml
- ``` 
+``` 
  
 Start scollector.
  
- ```sh
+```sh
  nohup ./scollector-linux-amd64 &
- ```
+```
 
 ### Auto-start under sudo user
 
@@ -73,15 +73,15 @@ EOF
  
 Make the `/etc/init.d/scollector` file executable.
  
-  ```sh
+```sh
   chmod a+x /etc/init.d/scollector
-  ```
+```
 
 Enable scollector launch when the system is started.
 
-  ```sh
+```sh
   sudo update-rc.d scollector defaults 90 10
-  ```
+```
 
 #### Centos 6.x and RHEL 6.x
 
@@ -197,27 +197,27 @@ Navigate to the directory with the `exe` file and create a `scollector.toml` fil
 
 Add `Host` setting to `scollector.toml`:
 
- ```toml
+```toml
  Host = "http://username:password@atsd_hostname:8088/"
- ```
+```
 
 scollector does not support untrusted SSL certificates. If you installed a CA-signed SSL certificate into ATSD, you can change the above setting to connect to the secure https endpoint.
 
- ```toml
+```toml
  Host = "https://username:password@atsd_hostname:8443/"
- ```
+```
 
 Open the prompt as Administrator and create an scollector service with automated startup by executing the following command:
 
- ```
+```
  scollector-windows-amd64.exe -winsvc=install
- ```
+```
 
 Start scollector service by executing the following command:
 
- ```
+```
  scollector-windows-amd64.exe -winsvc=start
- ```
+```
 
 If the service exits a few seconds after startup, check the following:
 

@@ -10,7 +10,7 @@ Weekly Change Log: October 2, 2017 - October 8, 2017
 | 4613 | admin | Bug | Default alert logger is deleted when logback configuration is reloaded. |
 | 4607 | entity | Feature | Speed up adding new entities to expression-based groups. |
 | 4606 | jdbc | Bug | Remove 'commons-lang3' dependency conflict. |
-| 4606 | installation | Feature | Include default entity tag templates for 'docker*' entitiies in the distribution. |
+| 4606 | installation | Feature | Include default entity tag templates for 'docker*' entities in the distribution. |
 | [4589](#issue-4589) | core | Feature | Implement administrator interface to split and merge regions. |
 | 4580 | client | Feature | Upgrade the [Python client](https://github.com/axibase/atsd-api-python) with new methods and parameters. |
 

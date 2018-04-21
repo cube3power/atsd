@@ -102,7 +102,8 @@ curl  https://atsd_host:8443/api/v1/alerts/history \
   --header "Content-Type: application/json" \
   --request POST \
   --data @file.json
-  ```
+```
+
 ### Response
 
 ```json

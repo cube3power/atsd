@@ -208,11 +208,11 @@ curl http://localhost:8088/api/v1/series/query \
 * [ISO: All Data Range](examples/query-iso-range-all.md)
 * [Interval Window](examples/query-interval-window.md)
 * [End Date and Interval](examples/query-end-date-interval.md)
-* [EndTime Syntax](examples/query-endtime-syntax.md)
-* [EndTime Syntax with Expression](examples/query-endtime-syntax-expression.md)
-* [EndTime: Current Day](examples/query-endtime-currentday.md)
-* [EndTime: Previous Hour](examples/query-endtime-previousday.md)
-* [EndTime: Hour Window](examples/query-endtime-hour-window.md)
+* [`EndTime` Syntax](examples/query-endtime-syntax.md)
+* [`EndTime` Syntax with Expression](examples/query-endtime-syntax-expression.md)
+* [`EndTime`: Current Day](examples/query-endtime-currentday.md)
+* [`EndTime`: Previous Hour](examples/query-endtime-previousday.md)
+* [`EndTime`: Hour Window](examples/query-endtime-hour-window.md)
 * [Response Time Format](examples/query-response-time-format.md)
 * [Cache Range](examples/query-range-cache.md)
 
@@ -258,7 +258,7 @@ curl http://localhost:8088/api/v1/series/query \
 ### Regularize / Downsample
 
 * [Interpolate Transformation](interpolate.md)
-* [EndTime: Hour to now](examples/query-regularize.md)
+* [`EndTime`: Hour to now](examples/query-regularize.md)
 
 ### Aggregation
 
@@ -277,7 +277,7 @@ curl http://localhost:8088/api/v1/series/query \
 ### Period
 
 * [Multiple Periods](examples/query-period-multiple.md)
-* [Period Alignment: EndTime](examples/query-period-endtime.md)
+* [Period Alignment: `EndTime`](examples/query-period-endtime.md)
 * [Period Misalignment](examples/query-period-misalignment.md)
 
 ### Group

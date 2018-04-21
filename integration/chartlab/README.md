@@ -33,18 +33,18 @@ The widgets can be configured to load data from the following sources:
 
   Add the following setting:
 
-  ```properties
+```properties
   api.guest.access.enabled = true
-  ```
+```
 
   Save the file.
 
 * Restart the Database
 
-  ```
+```sh
   /opt/atsd/bin/atsd-tsd.sh stop
   /opt/atsd/bin/atsd-tsd.sh start
-  ```
+```
 
 * Open ChartLab on the plain text protocol to avoid security errors.
 
@@ -58,15 +58,15 @@ The widgets can be configured to load data from the following sources:
 
   Specify DNS name or IP address of the target ATSD instance.
 
-  ```
+```elm
   url = http://144.132.12.4:8088/
-  ```
+```
 
   User credentials are not required since ATSD is now configured for anonymous read-only access via Data and Meta API methods.
 
 * Verify that the data is displayed for the following example for a built-in entity/metric:
 
-  ```
+```
   [configuration]
     offset-right = 50
     height-units = 2
@@ -83,4 +83,4 @@ The widgets can be configured to load data from the following sources:
     [series]
       entity = atsd
       metric = jvm_memory_used
-  ```
+```

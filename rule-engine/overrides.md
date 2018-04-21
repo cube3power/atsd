@@ -38,7 +38,7 @@ The filter matches the window if it satisfies **all** filter columns including:
 
 ![](images/override-rule-filter.png)
 
-> In the example above, the rule matches entities with a name beginning with 'nurswg' that are members of the 'disk_prod' group and applies only to windows with  tag 'file_system' equal '/tmp'.
+> In the example above, the rule matches entities with a name beginning with `nurswg` that are members of the 'disk_prod' group and applies only to windows with  tag 'file_system' equal '/tmp'.
 
 The tag columns are present when the rule is grouped by tags on the 'Overview' tab.
 
@@ -56,7 +56,7 @@ The entity and the tag columns support `*` as the wildcard character.
 | prod | `*` | | The rule will match entities that are members of the 'prod' entity group.|
 | prod | `nur*`| | The rule will match entities with name starting with 'nur' and which are members of the 'prod' entity group.|
 |  | `*` | abc | The rule will match windows with 'Tag1' equal 'abc'.|
-| prod | `*` | `*cde*` | The rule will match windows for members of the 'prod' entity group **and** with 'Tag1' containing 'cde'.|
+| prod | `*` | `*cde*` | The rule will match windows for members of the 'prod' entity group **and** with 'Tag1' containing `cde`.|
 
 ### Thresholds
 
@@ -85,7 +85,7 @@ If both `ERROR` and `WARNING` conditions are `true`, the `ERROR` level takes pre
 
 ![https://apps.axibase.com/chartlab/32fcae1a](images/severity-over.png)
 
-If no override rule matches the window and the alert is then triggered by the default condtion, it is assigned the severity specified on the 'Logging' tab.
+If no override rule matches the window and the alert is then triggered by the default condition, it is assigned the severity specified on the 'Logging' tab.
 
 ![](images/logging-severity.png)
 
@@ -116,7 +116,6 @@ Rule Processing
 ## Multiple Override Tables
 
 Multiple override tables can be created to trigger different email or web notifications.
-
 
 ## Notifications
 

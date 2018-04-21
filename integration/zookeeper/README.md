@@ -108,14 +108,14 @@ Go to **Metrics** page and verify that `jmx.zookeeper.*` metrics are available.
 
  * To check `Zookeeper cluster high latency` send large latency values using `Data -> Data Entry` page. For example:
 
-```
+```txt
 series e:prod-zoo-host1 m:jmx.zookeeper.avgrequestlatency=1400 t:cluster=prod
 series e:prod-zoo-host2 m:jmx.zookeeper.avgrequestlatency=1500 t:cluster=prod
 ```
 
  * To check `Zookeeper node high latency` send large latency for single node 3 times using `Data Entry`
 
-```
+```txt
 series e:prod-zoo-host1 m:jmx.zookeeper.avgrequestlatency=1400 t:cluster=prod
 ```
 

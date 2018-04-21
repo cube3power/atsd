@@ -117,7 +117,7 @@ Enable graphite-web site configuration:
 sudo a2ensite graphite-web
 ```
 
-Setup django database schema:
+Setup Django database schema:
 
 ```sh
 sudo PYTHONPATH=/opt/graphite/webapp django-admin.py syncdb --settings=graphite.settings

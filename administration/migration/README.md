@@ -156,9 +156,9 @@ Check HDFS for consistency.
 
 The expected message is:
 
-  ```
+``` 
   The filesystem under path '/hbase/' is HEALTHY.
-  ```
+```
 
 > If corrupted files are reported, follow the [recovery](../corrupted-file-recovery.md#repair-hbase) procedure.
 

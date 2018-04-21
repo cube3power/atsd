@@ -65,7 +65,7 @@ curl https://atsd_host:8443/api/v1/entity-groups/nmon-collectors \
   --header "Content-Type: application/json" \
   --request PUT \
   --data '{"tags": {"collector": "nmon"}}
- ```
+```
 
 ### Response
 

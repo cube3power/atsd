@@ -104,7 +104,7 @@ Returns the square root of `x`.
   exp(double x) double
 ```
 
-Returns Euler's constant `e` (2.718281828459045) raised to the power of `x`.
+Returns Euler constant `e` (2.718281828459045) raised to the power of `x`.
 
 ### `log`
 
@@ -129,10 +129,3 @@ Returns the base 10 logarithm of `x`.
 ```
 
 Returns the signum function of the argument: `0` if the argument is `0`, `1` if the argument is greater than `1`, `-1` if the argument is less than `0`.
-
- 	
-
-
-
-
-

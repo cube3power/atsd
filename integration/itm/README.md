@@ -27,20 +27,21 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 
     * Change to the `/opt/ITM directory` and append the following settings to the `config/hd.ini` file:
 
-        ```ini
+```ini
         KHD_CSV_OUTPUT_ACTIVATE=Y
         KHD_CSV_OUTPUT=/tmp/itm/csv
         KHD_CSV_OUTPUT_TAGGED_ONLY=Y
         KHD_CSV_ISO_DATE_FORMAT=Y
         KHD_CSV_MAXSIZE=400
         KHD_CSV_EVAL_INTERVAL=60
-        ```
+```
+        
     * Restart WareHouse Proxy agent:
 
-        ```sh
+```sh
         bin/itmcmd stop hd
         bin/itmcmd start hd
-        ```
+```
 
 ### Configure ITM Agents
 
@@ -56,10 +57,10 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 
 * Restart the agent:
     
-    ```sh
+```sh
     bin/itmcmd stop ${PRODUCT_CODE}
     bin/itmcmd start ${PRODUCT_CODE}
-    ```
+```
 
 ### Download CSV Parsers for UX, VM, and MQ Product Codes
 
@@ -80,11 +81,11 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 
 * Specify the ATSD hostname by editing the following line:
 
-    ```sh
+```sh
     if [ "$url" = "" ]; then
         url="http://atsd_host:8088"
     fi
-    ```
+```
 	
 	
 * Set username and password in the `inotify_sender.sh` script
@@ -94,14 +95,14 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 ```
 
 * Set permissions to execute the script:
-    ```sh
+```sh
     chmod a+x inotify_sender.sh
-    ```
+```
 
 * Run the script with the following command:
-    ```sh
+```sh
     ./inotify_sender.sh
-    ```
+```
 * Review script logs in the `/tmp/itm/logs` directory.
 
 * Add script to auto-start. The auto-start configuration is dependent on your operating system.

@@ -14,6 +14,7 @@
 ```javascript
   random() double
 ```
+
 Returns a uniformly distributed double number, greater than or equal to `0.0` and less than `1.0`.
 
 ### `randomNormal`
@@ -40,25 +41,25 @@ An input collection can contain elements of any type, such as strings or numbers
 
 * Collection of strings
 
-	```javascript
+```javascript
 	  randomItem(['a', 'b', 'c'])
-	```
+```
 
 * Collection of numbers
 
-	```javascript
+```javascript
 	  randomItem([1, 2, 3])
-	```
+```
 
 Note that although the input collection contains numbers, the returned element will be a string which has to be parsed to a number if necessary.
 
-	```javascript
+```javascript
 	  randomItem([1, 2, 3]) = '2'
-	```
+```
 
-	```javascript
+```javascript
 	  Double.parseDouble(randomItem([1, 2, 3])) >= 2
-	```
+```
 
 * Named collection
 
@@ -66,16 +67,16 @@ Note that although the input collection contains numbers, the returned element w
 
 	Assuming the collection contains the following records and the 2nd entry is randomly selected:
 
-	```
+```txt
 		Kent
 		Thomas
 		Stacy
-	```
+```
 
-	```javascript
+```javascript
 	  randomItem(collection('oncall-person'))
 	  // returns Thomas
-	```
+```
 
 * Keys or values from an object map
 
@@ -83,26 +84,26 @@ Note that although the input collection contains numbers, the returned element w
 
 	Assuming the table contains the following records and the 2nd entry is randomly selected:
 
-	```
+```txt
 		Kent=415.555-0000
 		Thomas=415.555-0001
 		Stacy=415.555-0002
-	```
+```
 
-	```javascript
+```javascript
 	  randomItem(replacementTable('oncall-person').keySet())
 	  // returns Thomas
-	```
+```
 
-	```javascript
+```javascript
 	  randomItem(replacementTable('oncall-person').values())
 	  // returns 415.555-0001
-	```
+```
 
-	```javascript
+```javascript
 	  randomItem(replacementTable('oncall-person').entrySet())
 	  // returns Thomas=415.555-0001
-	```
+```
 
 ### `randomKey`
 
@@ -129,7 +130,7 @@ An input map can be obtained using the `replacementTable()` lookup function.
 
 Assuming the table contains the following records, the second element has a 20% chance of being selected:
 
-```
+```txt
   Kent=0.5
   Thomas=0.2
   Stacy=0.3

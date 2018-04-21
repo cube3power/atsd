@@ -82,45 +82,45 @@ Examples:
 
 * `property_compare_except([string k])`
 
-  ```javascript
+```javascript
     property_compare_except([string k]) map
-  ```
+```
 
   Compares previous and current property tags and returns a difference map containing a list of changed tag values.
 
   Sample difference map:
 
-  ```javascript
+```javascript
     {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log' -> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
-  ```
+```
 
   The map includes tags that are not present in new property tags and tags that were deleted.
   If the difference map is empty, this means that no changes were identified.
   This comparison is case-insensitive.
 
-  ```java
+```java
     NOT property_compare_except (['name', '*time']).isEmpty()
-  ```
+```
 
   Returns `true` if property tags have changed except for the `name` tag and any tags that end with `time`.
 
 * `property_compare_except([string c], [string e])`
 
-  ```javascript
+```javascript
     property_compare_except([string c], [string e]) map
-  ```
+```
 
   Same as `property_compare_except(keys)` with a list `e` of previous values that are excluded from the difference map.
 
-  ```java
+```java
     NOT property_compare_except(['name', '*time'], ['*Xloggc*']).isEmpty()
-  ```
+```
 
 Returns true if property tags have changed, except for the `name` tag, any tags that end with `time`, and any previous tags with value containing `Xloggc`. The pattern `*Xloggc*` would ignore changes such as:
 
-  ``` java
+``` java
     {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log'-> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
-  ```
+```
 
 ### `property_map`
 
