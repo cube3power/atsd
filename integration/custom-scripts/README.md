@@ -42,7 +42,7 @@ yum install nc
 
 ##### 'sysstat' utility
 
-mpstat and iostat are included in the 'sysstat' package. If this package is not installed in your system by default, install it.
+`mpstat` and `iostat` are included in the `sysstat` package. If this package is not installed in your system by default, install it.
 
 Ubuntu:
 
@@ -60,20 +60,20 @@ sudo yum install sysstat
 
 Download the [atsd_collectors.tar.gz](http://axibase.com/ftp/lz/atsd_collectors.tar.gz) archive with collector scripts to the target machine
 
-##### Unpack the archive:
+##### Unpack the archive
 
 ```sh
 tar xzf atsd_collectors.tar.gz
 ```
 
-##### Check that scripts have an executable flag:
+##### Check that scripts have an executable flag
 
 ```sh
 cd collectors
 chmod a+x *
 ```
 
-##### Set ATSD server options:
+##### Set ATSD server options
 
 Edit the script `immortal_nc.sh`. Set the following parameters:
 

@@ -113,7 +113,7 @@ series e:server001 m:cpu_used=72.0 m:memory_used=94.5 d:2015-03-04T15:14:40Z
 series e:server001 m:disk_used_percent=20.5 t:mount_point=/ t:disk_name=/sda1
 ```
 
-* Insert numeric values into two series (metrics 'disk_used_percent' and 'disk_size_md') for the same entity and tags as above.
+* Insert numeric values into two series (metrics `disk_used_percent` and `disk_size_md`) for the same entity and tags as above.
 
 ```ls
 series e:server001 m:disk_used_percent=20.5 m:disk_size_mb=10240 t:mount_point=/ t:disk_name=/sda1
@@ -125,7 +125,7 @@ series e:server001 m:disk_used_percent=20.5 m:disk_size_mb=10240 t:mount_point=/
 series d:2016-10-13T08:15:00Z e:sensor-1 m:temperature=24.4 x:temperature="Provisional"
 ```
 
-* Insert the text value 'Shutdown by adm-user, RFC-5434' for the metric 'status', from the entity 'sensor-1'.
+* Insert the text value `Shutdown by adm-user, RFC-5434` for the metric 'status', from the entity 'sensor-1'.
 
 ```ls
 series d:2016-10-13T10:30:00Z e:sensor-1 x:status="Shutdown by adm-user, RFC-5434"
@@ -207,7 +207,7 @@ series d:2017-01-20T08:00:00Z e:sensor-1 x:status="Restart" a:true
 
 The new value will be equal to:
 
-```
+```txt
 Shutdown by adm-user, RFC-5434;
 Restart
 ```

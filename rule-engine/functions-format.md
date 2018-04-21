@@ -24,7 +24,7 @@ Date formatting functions:
   formatNumber(double x, string s) string
 ```
 
-Formats number `x` with the specified [DecimalFormat](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) pattern `s` using the server locale (US/US).
+Formats number `x` with the specified [`DecimalFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) pattern `s` using the server locale (US/US).
 
 Example:
 

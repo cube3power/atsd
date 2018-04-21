@@ -34,7 +34,7 @@ Save changes.
 ### Import job
 
 1. Select the **Jobs** tab in the top menu and click **Import**.
-2. Import the [zookeeper-jmx](resources/jobs.xml) job.
+2. Import the [`zookeeper-jmx`](resources/jobs.xml) job.
 3. Locate the `zookeeper-jmx` job in the list of jobs.
 4. Adjust the cron expression if required. For more information on cron expressions, see [Scheduling](https://github.com/axibase/axibase-collector/blob/master/scheduling.md).
 5. Select a target ATSD database for storing data.
@@ -108,14 +108,14 @@ Go to **Metrics** page and verify that `jmx.zookeeper.*` metrics are available.
 
  * To check `Zookeeper cluster high latency` send large latency values using `Data -> Data Entry` page. For example:
 
-```txt
+```ls
 series e:prod-zoo-host1 m:jmx.zookeeper.avgrequestlatency=1400 t:cluster=prod
 series e:prod-zoo-host2 m:jmx.zookeeper.avgrequestlatency=1500 t:cluster=prod
 ```
 
  * To check `Zookeeper node high latency` send large latency for single node 3 times using `Data Entry`
 
-```txt
+```ls
 series e:prod-zoo-host1 m:jmx.zookeeper.avgrequestlatency=1400 t:cluster=prod
 ```
 

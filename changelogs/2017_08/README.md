@@ -6,9 +6,9 @@ Weekly Change Log: February 20 - February 26, 2017
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | 3951 | sql         | Feature | Granted permissions to USER role to cancel the user's own query.                             |
-| 3942 | core        | Bug     | Fixed PermGen Error by setting MaxPermGen in start script.                                   |
-| [3938](#issue-3938) | admin       | Bug     | Added PermGen memory usage metrics.                                     |
-| 3934 | admin       | Support | Set MaxPermGen to 128mb in start-atsd scripts.                           |
+| 3942 | core        | Bug     | Fixed `PermGen` Error by setting `MaxPermGen` in start script.                                   |
+| [3938](#issue-3938) | admin       | Bug     | Added `PermGen` memory usage metrics.                                     |
+| 3934 | admin       | Support | Set `MaxPermGen` to 128mb in start-atsd scripts.                           |
 | 3929 | api-rest    | Bug     | Fixed double/float datatype cast rounding error in `DELTA` and `COUNTER` aggregators. |
 
 ### Collector
@@ -32,7 +32,7 @@ Weekly Change Log: February 20 - February 26, 2017
 ### Issue 3938
 --------------
 
-The new metrics `jvm_permgen_max`, `jvm_permgen_used`, `jvm_permgen_used_percent` have been introduced to collect PermGen memory usage statistics.
+The new metrics `jvm_permgen_max`, `jvm_permgen_used`, `jvm_permgen_used_percent` have been introduced to collect `PermGen` memory usage statistics.
 The values can also be seen in atsd.log:
 
 ```

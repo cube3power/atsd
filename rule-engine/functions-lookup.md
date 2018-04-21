@@ -121,7 +121,7 @@ Example:
 
 Returns a list of entity **objects** with last insert date for metric `m` between `s` and `e` and matching the specified expression `p`. 
 
-Expression `p` can include entity [fields](../api/meta/entity/list.md#fields) (except `lastInsertDate`) and [window fields](window.md#window-fields). The entity [fields](entity-fields.md) can be refered to using the dot notation.
+Expression `p` can include entity [fields](../api/meta/entity/list.md#fields) (except `lastInsertDate`) and [window fields](window.md#window-fields). The entity [fields](entity-fields.md) can be referred to using the dot notation.
 
 Start date `s` and end date `e` is an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
 
@@ -207,9 +207,9 @@ If the optional boolean `b` parameter is specified and is set to `true`, the fun
 
 Example:
 
-```javascript  
-  /* Returns 'john' if the 'oncall' table doesn't contain an entry for 'john' */
-  lookup('oncall', 'john', true)
+```javascript
+  /* Returns 'john' if the 'on-call' table doesn't contain an entry for 'john' */
+  lookup('on-call', 'john', true)
 ```
 
 ### `replacementTable`

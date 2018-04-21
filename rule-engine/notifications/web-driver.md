@@ -14,7 +14,7 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
 
 ## Option 1: PhantomJS
 
-* Download and install PhantomJS:
+* Download and install PhantomJS
 
 ```sh
     cd /home/axibase
@@ -22,7 +22,7 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
     tar xzf phantomjs-2.1.1-linux-x86_64.tar.gz
 ```
 
-* Make sure that `axibase` user is allowed to execute `phantomjs`
+* Make sure that `axibase` user is allowed to execute the binary
 
 ```bash
     ls -all /home/axibase | grep phantomjs-2.1.1-linux-x86_64
@@ -32,7 +32,7 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
     drwxr-xr-x 4 axibase axibase     4096 Jan 25  2016 phantomjs-2.1.1-linux-x86_64
 ```
 
-* Set path to `/home/axibase/phantomjs-2.1.1-linux-x86_64/bin/phantomjs` in **Settings > Server Properties > webdriver.phantomjs.path**.
+* Set path to `/home/axibase/phantomjs-2.1.1-linux-x86_64/bin/phantomjs` in **Settings > Server Properties** `webdriver.phantomjs.path`.
 
     ![](images/webdriver.phantomjs.path.png)
     

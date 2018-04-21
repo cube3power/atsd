@@ -12,7 +12,7 @@ Weekly Change Log: March 26 - April 2, 2017
 | 4031 | UI | Feature | Add syntax highlighting to the `Data Entry` text area. |
 | 4020 | sql | Feature | Support implicit conversion to number in function arguments and `WHERE` clauses. |
 | 3998 | email | Bug | Add context information to error log on email send error. |
-| [3993](#issue-3993) | sql | Feature | Add the [`CORREL`](../../sql#correl) function to calculate the Pearsons correlation between two series. |
+| [3993](#issue-3993) | sql | Feature | Add the [`CORREL`](../../sql#correl) function to calculate the Pearson correlation between two series. |
 | [3991](#issue-3991) | sql | Feature | Extend the `BETWEEN` operator to work with any literal values. |
 | 3939 | sql | Bug | Fix error with missing result rows in `JOIN USING ENTITY` query after inserting new series. |
 | 3935 | sql | Bug | Improve performance of queries with several [`JOIN USING ENTITY`](../../sql#join-with-using-entity) clauses. |

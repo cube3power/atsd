@@ -163,7 +163,7 @@ Examples:
 
 * `csv` format
 
-```javascript  
+```javascript
   addTable(property_maps('nurswgvml007','jfs::', 'today'), 'csv')
 ```
 

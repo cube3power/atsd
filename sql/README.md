@@ -1899,7 +1899,7 @@ If the timestamps for joined metrics are identical, the `JOIN` operation merges 
 | 2017-06-16T13:00:33Z | nurswgvml006 | 0.0      | 1.0      | 0.0      |
 ```
 
-As in the example above, 'cpu_system', 'cpu_user', 'cpu_iowait' were recorded and inserted with the same time.
+As in the example above, the `cpu_system`, `cpu_user`, `cpu_iowait` metrics were recorded and inserted with the same time.
 
 ```ls
 datetime d:2017-06-16T13:00:01Z e:nurswgvml006 m:mpstat.cpu_system=13.3 m.mpstat.cpu_user=21.0 m:mpstat.cpu_iowait=2.9
@@ -3139,13 +3139,13 @@ Query Detail Fields:
 | Rows Fetched | Number of HBase rows. |
 | Result Bytes| Number of bytes in Result objects from HBase region servers. |
 | Remote Result Bytes | Number of bytes in Result objects from remote region servers. |
-| Millis between next() | Total number of milliseconds spent between sequential scan.next() calls. |
+| Millis` between next() | Total number of milliseconds spent between sequential scan.next() calls. |
 | RPC Calls | Number of RPC calls. |
 | RPC Remote Calls | Number of remote RPC calls. |
 | RPC Retries | Number of RPC retries. |
 | RPC Remote Retries | Number of remote RPC retries.  |
 | Regions Scanned | Number of regions scanned. |
-| Regions Not Serving | Number of NotServingRegionException caught. |
+| Regions Not Serving | Number of `NotServingRegionException` caught. |
 
 ![Query Details](images/sql-query-details.png)
 

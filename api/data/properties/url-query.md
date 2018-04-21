@@ -21,7 +21,7 @@ Retrieve property records for the specified entity and type.
 
 None.
 
-## Response 
+## Response
 
 An array of property objects.
 
@@ -41,7 +41,7 @@ An array of property objects.
 
 #### URI
 
-```elm 
+```elm
 GET https://atsd_server:8443/api/v1/properties/nurswgvml007/types/disk
 ```
 

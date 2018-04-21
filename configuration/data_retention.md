@@ -139,7 +139,7 @@ Discarded commands for metrics with persistence filters are logged with a `FILTE
   /sys/fs/cgroup
 ```
 
-* Discard series if tag 'id' is contained in named collection 'filesystem_ignore'.
+* Discard series if tag 'id' is contained in named collection `filesystem_ignore`.
 
 ```javascript
   !collection('filesystem_ignore').contains(tags.id)

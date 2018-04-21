@@ -107,7 +107,7 @@ Execute the `jps` command. Verify that the `Server` process is **not present** i
 
 Remove deprecated settings.
 
-```
+```sh
 sed -i '/^hbase.regionserver.lease.period/d' /opt/atsd/atsd/conf/hadoop.properties
 ```
 
@@ -121,7 +121,7 @@ Check HBase for consistency.
 
 The expected message is:
 
-```
+```txt
 0 inconsistencies detected.
 Status: OK
 ```
@@ -156,7 +156,7 @@ Check HDFS for consistency.
 
 The expected message is:
 
-``` 
+```txt
   The filesystem under path '/hbase/' is HEALTHY.
 ```
 
@@ -221,7 +221,7 @@ tail /opt/atsd/hadoop/logs/hadoop-axibase-namenode-*.log
 
 The expected output:
 
-```sh
+```txt
 2017-07-26 16:16:16,974 INFO org.apache.hadoop.util.ExitUtil: Exiting with status 0
 2017-07-26 16:16:16,959 INFO org.apache.hadoop.ipc.Server: IPC Server Responder: starting
 2017-07-26 16:16:16,962 INFO org.apache.hadoop.ipc.Server: IPC Server listener on 8020: starting
@@ -301,7 +301,7 @@ Review the `hbase.log` file:
 tail /opt/atsd/hbase/logs/hbase.log
 ```
 
-```
+```txt
 INFO  [main] util.HFileV1Detector: Count of HFileV1: 0
 INFO  [main] util.HFileV1Detector: Count of corrupted files: 0
 INFO  [main] util.HFileV1Detector: Count of Regions with HFileV1: 0
@@ -324,7 +324,7 @@ Review the `hbase.log` file:
 tail -n 20 /opt/atsd/hbase/logs/hbase.log
 ```
 
-```
+```txt
 ...
 2017-08-01 09:32:44,047 INFO  migration.UpgradeTo96 - Successfully completed Namespace upgrade
 2017-08-01 09:32:44,049 INFO  migration.UpgradeTo96 - Starting Znode upgrade
@@ -367,6 +367,7 @@ Execute a sample scan in HBase.
 ```sh
 echo "scan 'atsd_d', LIMIT => 1" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null
 ```
+
 ```sh
   ...
   ROW                  COLUMN+CELL
@@ -394,7 +395,7 @@ Start Job History server:
 
 Run the `jps` command to check that the following processes are running:
 
-```
+```txt
 9849 ResourceManager  # M/R
 25902 NameNode # HDFS
 6857 HQuorumPeer # HBase
@@ -450,7 +451,7 @@ The task will create backups by appending a `'_backup'` suffix to the following 
 * 'atsd_forecast_backup'
 * 'atsd_delete_task_backup'
 
-```
+```txt
 ...
 Table 'atsd_li' successfully deleted.
 Snapshot 'atsd_metric_snapshot_1501582066133' of the table 'atsd_metric' created.
@@ -464,7 +465,7 @@ Table 'atsd_metric' successfully deleted.
 
 When running Map/Reduce jobs specified in the next section, the system may encounter a virtual memory error.
 
-```
+```txt
 17/08/01 10:19:50 INFO mapreduce.Job: Task Id : attempt_1501581371115_0003_m_000000_0, Status : FAILED
 Container [...2] is running beyond virtual memory limits... Killing container.
 ```
@@ -485,7 +486,7 @@ In case of other errors, review job logs for the application ID displayed above:
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration -m 2
 ```
 
-```
+```txt
 ...
 17/08/01 10:14:27 INFO mapreduce.Job: Job job_1501581371115_0001 completed successfully
 17/08/01 10:14:27 INFO mapreduce.Job: Counters: 62
@@ -508,7 +509,7 @@ In case of other errors, review job logs for the application ID displayed above:
 
 This migration task will write intermediate results into a temporary directory for diagnostics.
 
-```sh
+```txt
 ...
 WARN mapreduce.LastInsertMigration: Deleting outputFolder hdfs://localhost:8020/user/axibase/copytable/1609980393918240854 failed!
 WARN mapreduce.LastInsertMigration: Data from outputFolder hdfs://localhost:8020/user/axibase/copytable/1609980393918240854 not needed any more, and you can delete this outputFolder via hdfs cli.
@@ -533,7 +534,7 @@ Delete the diagnostics folder manually:
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DataMigrator -m 2
 ```
 
-```
+```txt
 ...
 17/08/01 10:44:31 INFO mapreduce.DataMigrator: HFiles loaded, data table migration job completed, elapsedTime: 15 minutes.
 ...

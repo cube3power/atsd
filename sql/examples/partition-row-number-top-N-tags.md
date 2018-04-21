@@ -2,7 +2,7 @@
 
 ## Query using `ROW_NUMBER` partitioning with `ORDER BY` average
 
-Retrieve top-3 15-minute periods with maximum average disk usage, for each disk matching '/dev*' pattern.
+Retrieve top-3 15-minute periods with maximum average disk usage, for each disk matching `/dev*` pattern.
 
 ```sql
 SELECT entity, tags.*, datetime, avg(value)

@@ -279,9 +279,9 @@ Open ATSD user interface and navigate to **Configuration > Rules** page.
 Click the [CREATE] button to create a new rule. Complete the following
 fields as specified below:
 
-`Name` – testrule
+`Name` – `testrule`
 
-`Metric` – testrule
+`Metric` – `testrule`
 
 `Expression` – true
 
