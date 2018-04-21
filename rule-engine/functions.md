@@ -183,6 +183,8 @@ Text functions transform and compare strings.
 * [locate](functions-text.md#locate)
 * [trim](functions-text.md#trim)
 * [length](functions-text.md#length)
+* [concat](functions-text.md#concat)
+* [concatLines](functions-text.md#concatlines)
 
 ## Formatting Functions
 
@@ -202,6 +204,7 @@ These functions format dates and numbers to strings according to the specified p
 * [addTable for list](functions-table.md#addtable-for-list)
 * [jsonToMaps](functions-table.md#jsontomaps)
 * [jsonToLists](functions-table.md#jsontolists)
+* [flattenJson](functions-table.md#flattenjson)
 
 ## Collection Functions
 
@@ -304,6 +307,14 @@ The rule functions provide a way to check the status of windows created by other
 Portal functions allow attaching custom portals to email and web notifications.
 
 * [addPortal](functions-portal.md#addportal)
+
+## Web Query Functions
+
+Web Query functions allow to perform requests to external web services.
+
+* [queryConfig](functions-web-query.md#queryconfig)
+* [queryGet](functions-web-query.md#queryget)
+* [queryPost](functions-web-query.md#querypost)
 
 ## Security Functions
 

@@ -11,7 +11,7 @@ Table functions perform various operations on strings, lists, and maps to create
 * [addTable for list](#addtable-for-list)
 * [jsonToMaps](#jsontomaps)
 * [jsonToLists](#jsontolists)
-
+* [flattenJson](#flattenjson)
 
 ### `addTable` for map
 
@@ -150,7 +150,7 @@ Examples:
 
 * `markdown` format
 
-```javascript  
+```javascript
   addTable(property_maps('nurswgvml007','jfs::', 'today'), 'markdown')
 ```
 
@@ -302,6 +302,7 @@ date,count
 ```javascript
   addTable(executeSqlQuery(query), 'property')
 ```
+
 ```ls
 datetime=value
 2018-01-31T12:00:13.242Z=37
@@ -311,6 +312,7 @@ datetime=value
 ```javascript
   addTable(executeSqlQuery(query), 'property', true)
 ```
+
 ```ls
 2018-01-31T12:00:13.242Z=37
 2018-01-31T12:00:28.253Z=36
@@ -319,6 +321,7 @@ datetime=value
 ```javascript
   addTable(executeSqlQuery(query), 'property', false)
 ```
+
 ```ls
 datetime=value
 2018-01-31T12:00:13.242Z=37
@@ -331,7 +334,7 @@ datetime=value
   jsonToMaps(string s) [map]
 ```
 
-The function parses the input string `s` into a JSON document and returns a collection of maps containing keys and values from this ISON document.
+The function parses the input string `s` into a JSON document and returns a collection of maps containing keys and values from this JSON document.
 
 The collection contains as many maps as there are leaf objects in the JSON document. Each map contains keys and values of the leaf object itself as well as keys and values from the parent objects.
 
@@ -354,3 +357,156 @@ The key names are created by concatenating the current field name with field nam
 The common prefix until the first element array is discarded from key names.
 
 The subsequent lists in the collection contain field values of the associated leaf object itself as well as field values from the parent objects ordered by keys in the first list. If the key specified in the first list is absent in iterated object, the list on the given index will contain an empty string.
+
+### `flattenJson`
+
+```javascript
+  flattenJson(string j) map
+```
+
+The function converts a string representation of a JSON document `j` into a map consisting of keys and values.
+
+Processing rules:
+
+* String `j` is parsed into a JSON object. If `j` is not a valid JSON document, the function will raise an exception.
+* The JSON object is traversed to extract fields of primitive types: `number`, `string`, and `boolean`.
+* The field's value is added to the map with a key set to its full name, created by appending the field's local name to the full name of its parent object using `.` as a separator.
+* If the field is an array element, its local name is set to element index `[i]` (index `i` starts with `0`).
+* Fields with `null` and empty string values are ignored.
+
+Input JSON document:
+
+```json
+{
+  "event": "commit",
+  "merged": true,
+  "type": null,
+  "repo": {
+    "name": "atsd",
+    "Full Name": "Axibase TSD",
+    "authors": [
+      "john",
+      "sam",
+      ""
+    ]
+  }
+}
+```
+
+Output map:
+
+```json
+{
+  "event": "commit",
+  "merged": true,
+  "repo.name": "atsd",
+  "repo.Full Name": "Axibase TSD",
+  "repo.authors[0]": "john",
+  "repo.authors[1]": "sam"
+}
+```
+
+## Examples
+
+The examples below are based on the following JSON document which represents output of a GraphQL query:
+
+```json
+{
+  "data": {
+    "repository": {
+      "pullRequests": {
+        "nodes": [
+          {
+            "url": "https://github.com/axibase/atsd-api-test/pull/487",
+            "author": {
+              "login": "unrealwork"
+            },
+            "mergeable": "MERGEABLE",
+            "baseRefName": "master",
+            "headRefName": "5208-series-tag-query-with-wildcard-without-entity",
+            "title": "5208: Series tags query with wildcard without entity"
+          },
+          {
+            "url": "https://github.com/axibase/atsd-api-test/pull/406",
+            "author": {
+              "login": "vtols"
+            },
+            "mergeable": "MERGEABLE",
+            "baseRefName": "master",
+            "headRefName": "vtols-4397",
+            "title": "Test #4397"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+```javascript
+  jsonToMaps(json)
+```
+
+```json
+[ {
+  "url" : "https://github.com/axibase/atsd-api-test/pull/487",
+  "author.login" : "unrealwork",
+  "mergeable" : "MERGEABLE",
+  "baseRefName" : "master",
+  "headRefName" : "5208-series-tag-query-with-wildcard-without-entity",
+  "title" : "5208: Series tags query with wildcard without entity"
+}, {
+  "url" : "https://github.com/axibase/atsd-api-test/pull/406",
+  "author.login" : "vtols",
+  "mergeable" : "MERGEABLE",
+  "baseRefName" : "master",
+  "headRefName" : "vtols-4397",
+  "title" : "Test #4397"
+} ]
+```
+
+```javascript
+  jsonToLists(json)
+```
+
+```json
+[ 
+  [ "url", "author.login", "mergeable", "baseRefName", "headRefName", "title" ],
+  [ "https://github.com/axibase/atsd-api-test/pull/487", "unrealwork", "MERGEABLE", "master", "5208-series-tag-query-with-wildcard-without-entity", "5208: Series tags query with wildcard without entity" ],
+  [ "https://github.com/axibase/atsd-api-test/pull/406", "vtols", "MERGEABLE", "master", "vtols-4397", "Test #4397" ]
+]
+```
+
+```javascript
+  addTable(jsonToLists(json), 'ascii', true)
+```
+
+```
++---------------------------------------------------+-----------------+-----------+-------------+----------------------------------------------------+--------------------------------------------------------------+
+| url                                               | author.login    | mergeable | baseRefName | headRefName                                        | title                                                        |
++---------------------------------------------------+-----------------+-----------+-------------+----------------------------------------------------+--------------------------------------------------------------+
+| https://github.com/axibase/atsd-api-test/pull/487 | unrealwork      | MERGEABLE | master      | 5208-series-tag-query-with-wildcard-without-entity | 5208: Series tags query with wildcard without entity         |
+| https://github.com/axibase/atsd-api-test/pull/406 | vtols           | MERGEABLE | master      | vtols-4397                                       | Test #4397                                                   |
++---------------------------------------------------+-----------------+-----------+-------------+----------------------------------------------------+--------------------------------------------------------------+
+```
+
+```javascript
+  flattenJson(json)
+```
+
+```json
+{
+  "data.repository.pullRequests.nodes[0].url" : "https://github.com/axibase/atsd-api-test/pull/487",
+  "data.repository.pullRequests.nodes[0].author.login" : "unrealwork",
+  "data.repository.pullRequests.nodes[0].mergeable" : "MERGEABLE",
+  "data.repository.pullRequests.nodes[0].baseRefName" : "master",
+  "data.repository.pullRequests.nodes[0].headRefName" : "5208-series-tag-query-with-wildcard-without-entity",
+  "data.repository.pullRequests.nodes[0].title" : "5208: Series tags query with wildcard without entity",
+  "data.repository.pullRequests.nodes[1].url" : "https://github.com/axibase/atsd-api-test/pull/406",
+  "data.repository.pullRequests.nodes[1].author.login" : "vtols",
+  "data.repository.pullRequests.nodes[1].mergeable" : "MERGEABLE",
+  "data.repository.pullRequests.nodes[1].baseRefName" : "master",
+  "data.repository.pullRequests.nodes[1].headRefName" : "vtols-4397",
+  "data.repository.pullRequests.nodes[1].title" : "Test #4397"
+}
+```
