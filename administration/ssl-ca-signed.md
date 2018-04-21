@@ -4,13 +4,13 @@
 
 The following instructions assume that you have obtained certificate files in `PEM` format from a certificate authority.
 
-* `atsd.company.com.crt` - SSL сertificate for the DNS name
+* `atsd.company.com.crt` - SSL certificate for the DNS name
 * `atsd.company.com.ca-bundle` - Intermediate and Root CA SSL certificates
 * `atsd.company.com.key` - Private key file
 
 ## Combine the Chained Certificates
 
-Combine the SSL сertificates into one file to create a full certificate chain containing both the DNS and intermediate certificates.
+Combine the SSL certificates into one file to create a full certificate chain containing both the DNS and intermediate certificates.
 
 ```bash
 cat atsd.company.com.crt atsd.company.com.ca-bundle > atsd.company.com.fullchain
