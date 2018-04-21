@@ -17,7 +17,7 @@ Weekly Change Log: August 07, 2017 - August 13, 2017
 | 4434 | security | Feature | Add option for administrators to impersonate another user account. The **Impersonate** button is available on the user's settings page. |
 | 4424 | UI | Bug | Fix XML serialization in backup and export XML files if the database is using a file encoding other than UTF-8. |
 | 4407 | search | Bug | Fix a memory leak in HBase region servers during full search indexing. |
-| [4386](#issue-4386) | sql | Feature | Add support for querying datetime column using standard Timestamp format `yyyy-MM-dd[ HH:mm:SS`. |
+| [4386](#issue-4386) | sql | Feature | Add support for querying `datetime` column using standard Timestamp format `yyyy-MM-dd[ HH:mm:SS`. |
 | [4382](#issue-4382) | UI | Feature | Unique Values tab added to the Series Statistics page. |
 
 ### ATSD

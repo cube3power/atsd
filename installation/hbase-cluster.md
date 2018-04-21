@@ -155,7 +155,7 @@ You should see an **ATSD start completed** message at the end of the `start.log`
 
 Web interface is accessible on port 8088 (http) and 8443 (https).
 
-## Enable ATSD Autostart
+## Enable ATSD Auto-Start
 
 To configure ATSD for automated restart on server reboot, add the following line to `/etc/rc.local` before the `return 0` line.
 

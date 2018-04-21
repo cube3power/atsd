@@ -11,9 +11,9 @@
 /opt/nmon/nmon
 ```
 
-## Upload Files to ATSD by API with Wget
+## Upload Files to ATSD by API with `wget`
 
-Perform the following steps to start uploading files to ATSD every hour with Wget:
+Perform the following steps to start uploading files to ATSD every hour with `wget`
 
 ### Step 1.
 

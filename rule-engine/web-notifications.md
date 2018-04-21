@@ -53,7 +53,7 @@ The window for the given metric/entity/tags is created only when the first comma
 
 The new windows are assigned initial status of `CANCEL` which is then updated based on results of the condition (`true` or `false`).
 
-### Window Lifecycle
+### Window Life Cycle
 
 All windows for the current rule are deleted from memory if the rule is deleted or modified and saved in the editor.
 

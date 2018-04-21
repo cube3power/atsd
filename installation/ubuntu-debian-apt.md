@@ -12,7 +12,7 @@
 
 ## Installation Steps
 
-#### Add backports repository
+#### Add `backports` repository
 
 This step is required only for Debian 8.x (jessie)
 

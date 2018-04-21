@@ -46,12 +46,13 @@ UNICODE = %x80-FF / ; Latin-1 Supplement
 ```
 
 ## Date Rules
+
 ```properties
   ; ISO date defined in RFC-3339 Appendix-A. 
   ; Format yyyy-MM-dd'T'HH:mm:ss.SSSXX
   ; https://tools.ietf.org/html/rfc3339#appendix-A
-  ; UTC timezone (Z) = 2016-06-01T16:00:15.142Z
-  ; Numeric timezone = 2016-06-01T12:00:15.142-04:00
+  ; UTC time zone (Z) = 2016-06-01T16:00:15.142Z
+  ; Numeric time zone = 2016-06-01T12:00:15.142-04:00
 ISO_DATE = date-time 
   ; inhereted from /shared/timezone-abnf.md
 TIMEZONE = time-zone-code
@@ -60,8 +61,8 @@ TIMEZONE = time-zone-code
 ## Number Rules
 
 ```properties
-NUMBER = ["-"] (FRACTIONAL_NUMBER / REAL_NUMBER) / "NaN"           
-FRACTIONAL_NUMBER = ("0" / POSITIVE_INTEGER) ["." 1*DIGIT]                  
+NUMBER = ["-"] (FRACTIONAL_NUMBER / REAL_NUMBER) / "NaN"
+FRACTIONAL_NUMBER = ("0" / POSITIVE_INTEGER) ["." 1*DIGIT]
 POSITIVE_INTEGER = %x31-39 *DIGIT
   ; "0" to "9"
 DIGIT = %x30-39

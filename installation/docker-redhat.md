@@ -119,7 +119,7 @@ The ATSD web interface is accessible on port 8088/http and 8443/https.
 |`--env COLLECTOR_USER_NAME` | No | User name for a data collector account. |
 |`--env COLLECTOR_USER_PASSWORD` | No | [Password](../administration/user-authentication.md#password-requirements) for a data collector account.|
 |`--env COLLECTOR_USER_TYPE` | No | User group for a data collector account, default value is `writer`.|
-|`--env DB_TIMEZONE` | No | Database [timezone identifier](../shared/timezone-list.md).|
+|`--env DB_TIMEZONE` | No | Database [time zone identifier](../shared/timezone-list.md).|
 
 View additional launch examples [here](https://github.com/axibase/atsd-docs/blob/master/installation/docker.md#option-1-configure-collector-account-automatically).
 

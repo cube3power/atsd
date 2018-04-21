@@ -37,7 +37,7 @@ Examples:
 |:---|:---|
 | `LINEAR`  | Calculates the value by adding a difference between neighboring detailed values proportional to their time difference. |
 | `PREVIOUS`  | Sets the value equal to the previous value. |
-| `AUTO`  | Applies the interpolation function specified in the metric's [interpolate](../../meta/metric/list.md#fields) field (set to `LINEAR` by default).  |
+| `AUTO`  | Applies the interpolation function specified in the metric [interpolate](../../meta/metric/list.md#fields) field. Default: `LINEAR`.  |
 
 > Detailed values with timestamps that are equal interpolated timestamps are returned `as is`, without changes.
 

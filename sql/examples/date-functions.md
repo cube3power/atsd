@@ -39,7 +39,7 @@ WHERE datetime > CURRENT_TIMESTAMP - 1*DAY
 
 ## `DBTIMEZONE` Function
 
-The `DBTIMEZONE` returns the database timezone name.
+The `DBTIMEZONE` returns the database time zone name.
 
 ### Query
 

@@ -204,7 +204,7 @@ curl http://localhost:8088/api/v1/series/query \
 
 * [ISO Start/End Range](examples/query-iso-range.md)
 * [ISO Millisecond Precision](examples/query-iso-range-millis.md)
-* [ISO hh:mm Timezone](examples/query-iso-hhmm-timezone.md)
+* [ISO hh:mm Time Zone](examples/query-iso-hhmm-timezone.md)
 * [ISO: All Data Range](examples/query-iso-range-all.md)
 * [Interval Window](examples/query-interval-window.md)
 * [End Date and Interval](examples/query-end-date-interval.md)

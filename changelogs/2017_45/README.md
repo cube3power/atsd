@@ -15,7 +15,7 @@ Weekly Change Log: November 06, 2017 - November 12, 2017
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4673 | jdbc | Bug | Fix incorrect ATSD jdbc driver URL. |
+| 4673 | jdbc | Bug | Fix incorrect ATSD JDBC driver URL. |
 
 ## Charts
 
@@ -60,7 +60,7 @@ Successful user authentication requests are stored in the database and can be re
 
 ### Issue 3269
 
-Speed up SQL queries that select more than 1 row with descending datetime order.
+Speed up SQL queries that select more than 1 row with descending `datetime` order.
 
 ```sql
 SELECT *

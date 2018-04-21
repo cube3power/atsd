@@ -18,7 +18,7 @@ All AIX systems come with nmon pre-installed, but Linux systems need the nmon to
 ## nmon Resources
 
 - [IBM](https://www.ibm.com/developerworks/aix/library/au-analyze_aix/)
-- [Nmon Sourceforge](http://nmon.sourceforge.net/pmwiki.php?n=Main.HomePage)
+- [Nmon SourceForge](http://nmon.sourceforge.net/pmwiki.php?n=Main.HomePage)
 
 ### Install nmon
 

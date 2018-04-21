@@ -129,5 +129,5 @@ threshold | max() > 20
 * window_first_time
 * window_first_datetime
 
-> Placeholders ending with `_time` keep time in the local server timezone, for example 2017-05-30 14:05:39 PST.
-> Placeholders ending with `_datetime` keep time in ISO 8601 format in UTC timezone, for example 2017-05-30T06:05:39Z.
+> Placeholders ending with `_time` keep time in the local server time zone, for example `2017-05-30 14:05:39 PST`.
+> Placeholders ending with `_datetime` keep time in ISO 8601 format in UTC time zone, for example `2017-05-30T06:05:39Z`.

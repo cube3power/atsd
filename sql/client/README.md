@@ -34,14 +34,14 @@ password=********
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| -o, --output | string | Output file to store the result set. If not specified, results are printed to stdout. |
+| -o, --output | string | Output file to store the result set. If not specified, results are printed to `stdout`. |
 | -i, --input | string | Input file containing SQL query to execute. |
 | -q, --query | string | SQL query text enclosed with double quotes. Ignored if query is read from input file. <br>Double quotes contained in query text can be escaped with a backslash.|
 | -f, --format | string | Format. Default: `csv`. Supported options: `csv`, `json`. |
 
 ## Examples
 
-Execute inline query and print results to stdout.
+Execute inline query and print results to `stdout`.
 
 ```ls
 ./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE datetime > now - 1*minute LIMIT 3"

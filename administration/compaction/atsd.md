@@ -27,7 +27,7 @@ Date,Time,Open,High,Low,Close,Volume
 
 The records be downloaded from the following url: [http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest](http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest).
 
-The file contains over 2 million lines. The OHLC metrics contain values with up to four decimal places. The volume metric is an integer. The dates are recorded in the `US/Eastern` timezone.
+The file contains over 2 million lines. The OHLC metrics contain values with up to four decimal places. The volume metric is an integer. The dates are recorded in the `US/Eastern` time zone.
 
 Each row consists of 5 metrics for a given 1-minute interval:
 
@@ -80,7 +80,7 @@ docker run -d --name=atsd_test -p 8443:8443 \
     -e ADMIN_USER_NAME=axibase -e ADMIN_USER_PASSWORD=axibase axibase/atsd:latest
 ```
 
-Watch the startup log until the the list of open ports is displayed.
+Watch the startup log until the list of open ports is displayed.
 
 ```sh
 docker logs -f atsd_test

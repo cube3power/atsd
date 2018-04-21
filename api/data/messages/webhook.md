@@ -168,10 +168,10 @@ These parameters set message fields to literal values.
 | type | Message type.|
 | source | Message source. |
 | entity | Message entity. |
-| date | Message datetime in ISO format. |
+| date | Message date and time in ISO format. |
 | message | Message text. |
 | severity | Message severity specified as an integer or as a string constant. |
-| datetimePattern | Datetime pattern applied to `command.date` field: `iso` (default), `seconds`, `milliseconds`, user-defined [pattern](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). |
+| datetimePattern | Date pattern applied to `command.date` field: `iso` (default), `seconds`, `milliseconds`, user-defined [pattern](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). |
 
 `/api/v1/messages/webhook/jenkins?entity=test-1&type=ci&severity=3`
 
@@ -217,7 +217,7 @@ Header parameters set message field values from header values.
 | header.type | Message type.  |
 | header.source | Message source.  |
 | header.entity | Message entity.  |
-| header.date | Message datetime in ISO format. |
+| header.date | Message date and time in ISO format. |
 | header.message | Message text. |
 | header.tag.{name} | Message tag. |
 | header.severity | Message severity specified as an integer or as a constant. |

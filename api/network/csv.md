@@ -27,7 +27,7 @@ csv p:{parser} e:{entity} r:{metric_prefix} z:{timezone} t:{timeout}
 | m         | string       | Default metric name. |
 | mp        | string       | Metric prefix applied to all metric names in the file. |
 | mt        | string       | Metric tags.<br>Comma separated list of metric tags added as series, message, or property tags to parsed commands. |
-| z         | string       | Timezone applied when parsing dates specified in local time, for example GMT.<br>[Time Zone ID](../../shared/timezone-abnf.md)  |
+| z         | string       | Time zone applied when parsing dates specified in local time, for example GMT.<br>[Time Zone ID](../../shared/timezone-abnf.md)  |
 | o         | integer      | Server read timeout in seconds, for example `o:60` |
 | t         | string       | One or multiple series tag key=value pairs, for example: `t:location=SVL` |
 

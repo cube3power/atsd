@@ -12,4 +12,4 @@ The following fields may be accessed using dot notation, for example `getEntity(
 | lastInsertTime           | Timestamp of the most recent series insert for any metric of the entity.|
 | name                     | Entity name. |
 | tags                     | Custom attributes to store metadata about the entity.|
-| timeZone                 | Timezone in which the entity is located.|     
+| timeZone                 | Time zone in which the entity is located.|

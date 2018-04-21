@@ -23,14 +23,13 @@ Weekly Change Log: March 26 - April 2, 2017
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
-| 4048 | jdbc | Bug | Allow import of job xml files without a datasource. |
+| 4048 | jdbc | Bug | Allow import of job xml files without a data source. |
 | 4046 | jdbc | Bug | Consolidate series commands with the same time and different metrics into one command. |
 | 4045 | file | Bug | Fix NullPointerException in case of FTP connection timeout. |
-| [4041](#issue-4041) | data-source | Feature | Add the `PI OLEDB Enterprise` datasource. |
+| [4041](#issue-4041) | data-source | Feature | Add the `PI OLEDB Enterprise` data source. |
 | [4012](#issue-4012) | json | Feature | Add syntax highlighting to the `Custom Commands` text area and improve the ATSD network commands highlighting. |
 | 3987 | socrata | Bug | Add heuristics to automatically classify and ignore fields in Socrata data sources. |
 | 3973 | collection | Feature | Add the `URL` Item List type. |
-
 
 ### Charts
 

@@ -33,7 +33,7 @@ SUM (v(i) - v(i-1))
 
 If the difference between values is always non-negative, the `DELTA` aggregator will produce the same result as the `COUNTER` aggregator.
 
-View [Chartlab](https://apps.axibase.com/chartlab/2f607d1b/17/) examples illustrating the difference between the functions.
+View [ChartLab](https://apps.axibase.com/chartlab/2f607d1b/17/) examples illustrating the difference between the functions.
 
 ## Query - Detailed
 

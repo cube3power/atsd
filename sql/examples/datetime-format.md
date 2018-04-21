@@ -1,6 +1,6 @@
-# Datetime Format
+# Date Format
 
-A `datetime` column returns time in ISO format.
+A `datetime` column returns date and time in ISO format.
 
 ## Query
 
@@ -66,9 +66,9 @@ FROM "mpstat.cpu_busy"
 | date_format(time,'yyyy-MM-dd HH:mm:ssZZ','PST')                | 2016-07-13 05:07:55-07:00   | 
 ```
 
-## `AUTO` timezone
+## `AUTO` Time Zone
 
-The `AUTO` timezone parameter applies the time zone specified for the entity and metric.
+The `AUTO` time zone parameter applies the time zone specified for the entity and metric.
 
 The entity time zone overrides the metric time zone.
 
@@ -99,7 +99,7 @@ UTC
 
 ### Query
 
-Metric and entity timezone can be included in the `SELECT` expression using `metric.timezone` and `entity.timezone` columns.
+Metric and entity time zone can be included in the `SELECT` expression using `metric.timezone` and `entity.timezone` columns.
 
 ```sql
 SELECT t1.entity, t1.value AS "busy", t2.value AS "sys", t3.value AS "usr", 
@@ -126,9 +126,5 @@ AND t1.datetime >= '2016-10-10T10:00:00.000Z' and t1.datetime < '2016-10-10T10:0
 | nurswgvml006 | 32.3 | 6.4 | 24.7 | EST     | AEST   | null   | CST       | 2016-10-10T10:00:00.000Z | 2016-10-10 05:00:00 CDT | 2016-10-10 05:00:00 CDT  | 2016-10-10 05:00:00 CDT       | <- CDT
 | nurswgvml007 | 31.7 | 6.1 | 23.5 | EST     | AEST   | null   | PST       | 2016-10-10T10:00:00.000Z | 2016-10-10 03:00:00 PDT | 2016-10-10 03:00:00 PDT  | 2016-10-10 03:00:00 PDT       | <- PDT
 | nurswgvml009 | 57.0 | 3.0 | 6.0  | EST     | AEST   | null   | UTC       | 2016-10-10T10:00:00.000Z | 2016-10-10 10:00:00 UTC | 2016-10-10 10:00:00 UTC  | 2016-10-10 10:00:00 UTC       | <- UTC
-| nurswgvml010 | 21.1 | 0.9 | 20.2 | EST     | AEST   | null   | null      | 2016-10-10T10:00:00.000Z | 2016-10-10 06:00:00 EDT | 2016-10-10 21:00:00 AEDT | 2016-10-10 10:00:00 GMT+00:00 | <- nurswgvml010 time zone is undefined, hence apply metric timezone except `cpu_user` which has no t/z.
+| nurswgvml010 | 21.1 | 0.9 | 20.2 | EST     | AEST   | null   | null      | 2016-10-10T10:00:00.000Z | 2016-10-10 06:00:00 EDT | 2016-10-10 21:00:00 AEDT | 2016-10-10 10:00:00 GMT+00:00 | <- nurswgvml010 time zone is undefined, hence apply metric time zone except `cpu_user` which has no t/z.
 ```
-
-
-
-

@@ -15,7 +15,7 @@ Weekly Change Log: March 6 - March 12, 2017
 | 3931 | json | Bug | Add support for referencing field names containing dots by quoting the field name. |
 | 3828 | admin | Bug | Expose atsd-api-java request logging via logback configuration. |
 | [3827](#issue-3827) | file | Feature | Add support for [placeholders](https://github.com/axibase/axibase-collector/blob/master/jobs/placeholders.md#overview) in `First Line Contains` field. |
-| 3990 | collection | Bug | Ignore stderr when reading SCRIPT Item List. |
+| 3990 | collection | Bug | Ignore `stderr` when reading SCRIPT Item List. |
 
 ### Charts
 

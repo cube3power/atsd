@@ -90,7 +90,7 @@ Description of `write_atsd` plugin options below
 
 More information about collectd configuration in [collectd.conf.5](https://collectd.org/documentation/manpages/collectd.conf.5.shtml) manual page.
 
-## Autostart
+## Auto-Start
 
 Add collectd to autostart.
 

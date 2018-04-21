@@ -1,4 +1,4 @@
-# Series Query: Timezone Formats
+# Series Query: Time Zone Formats
 
 ## Description
 

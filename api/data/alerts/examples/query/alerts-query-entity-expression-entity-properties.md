@@ -1,4 +1,4 @@
-# AAlerts Query: Entity Expression with Properties
+# Alerts Query: Entity Expression with Properties
 
 ## Description
 

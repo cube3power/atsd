@@ -1,10 +1,10 @@
 # StatsD Backend
 
-ATSD backend for StatsD enables you to forward metrics collected by StatsD daemon into the Axibase Time Series Database for retention, analytics, visualization, and alerting.
+ATSD back-end for StatsD enables you to forward metrics collected by StatsD daemon into the Axibase Time Series Database for retention, analytics, visualization, and alerting.
 
 [Learn more about StatsD.](README.md)
 
-[Download the ATSD StatsD backend.](https://github.com/axibase/atsd-statsd-backend)
+[Download the ATSD StatsD back-end.](https://github.com/axibase/atsd-statsd-backend)
 
 #### Configuration
 
@@ -39,7 +39,7 @@ Possible variables:
 |  debug  |  Enable debug logging : `true` or `false`  |  `false`  |
 |  keyNameSanitize  |  Sanitizing metric names (removing forbidden characters): `true` or `false`  |  `true`  |
 |  flush_counts  |  Processing flush counts: `true` or `false`  |  true  |
-|  atsd  |  Container for all backend-specific options  |  –  |
+|  atsd  |  Container for options specific to ATSD back-end  |  –  |
 |  atsd.host  |  ATSD hostname  |  –  |
 |  atsd.port  |  ATSD port  |  8081  |
 |  atsd.user  |  Username  |    |

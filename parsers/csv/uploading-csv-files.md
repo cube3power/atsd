@@ -24,7 +24,7 @@ Parsing of CSV files occurs asynchronously in the background. The status of each
 |  time**  |  |  Timestamp applied to records contained in the file.<br>Parameter value must be URL-encoded.<br>If the `time=` parameter is specified in the url but is empty, the time is assumed to be current time.  |  ?time=2015-01-16T19%3A20%3A30.45%2B01%3A00  | 
 |  metric-prefix  |  |  Overwrites metric prefix in parser configuration.  |  ?metric-prefix=nmon.  | 
 |  default-entity  |  |  Overwrites default entity in parser configuration.  |  ?entity-prefix=oracle.  | 
-|  timezone  |  |  Overwrites default Timezone in parser configuration.  |  ?timezone=UTC  | 
+|  timezone  |  |  Overwrites default time zone in parser configuration.  |  ?timezone=UTC  | 
 
 
 > *required

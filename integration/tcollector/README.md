@@ -144,7 +144,7 @@ Start tcollector.
 sudo systemctl start tcollector
 ```
 
-### Autostart as a non-root user
+### Auto-Start as a non-root user
 
 Add `LOGFILE` and `PIDFILE` options to `tcollector.conf`.
 

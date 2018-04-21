@@ -44,7 +44,7 @@ these commands on the **Metrics > Data Entry** page.
 
 - Open the **ODBC Data Source Administrator** window by pressing the **ODBC Admin** button in the **ODBC Connection** dialog.
 
-- Configure the [datasource](../odbc/README.md#configure-odbc-data-source).
+- Configure the [data source](../odbc/README.md#configure-odbc-data-source).
 
 - Add the [`missingMetric=error`](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) property to the DSN URL to ensure that the driver functions properly.
 
@@ -183,7 +183,7 @@ The workflow consists of the following steps (nodes):
 
    ![](images/sort.png)
 
-9. **Formula** tool. Сreate a new column named `entity` with the **Formula** tool. Name it
+9. **Formula** tool. Create a new column named `entity` with the **Formula** tool. Name it
    `"bls.gov`. 
 
    ![](images/entity.png)

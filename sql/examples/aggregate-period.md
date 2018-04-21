@@ -54,9 +54,9 @@ GROUP BY PERIOD(1 HOUR)
 ```
 
 
-## Period Aligned to Custom Timezone
+## Period Aligned to Custom Time Zone
 
-The server timezone is "Europe/Berlin".
+The server time zone is "Europe/Berlin".
 
 * Default time zone. The day periods are aligned to 0:00 server time zone which is 2 hours ahead of UTC.
 
@@ -102,7 +102,7 @@ series e:e1 d:2017-04-15T02:00:00Z m:m1=2
 series e:e1 d:2017-04-15T03:00:00Z m:m1=3
 ```
 
-## Period Aligned to Custom Timezone
+## Period Aligned to Custom Time Zone
 
 ```sql
 SELECT datetime, date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'US/Pacific') AS local_datetime,
@@ -129,7 +129,7 @@ series e:e1 d:2017-04-15T02:00:00Z m:tmz1=2
 series e:e1 d:2017-04-15T03:00:00Z m:tmz1=3
 ```
 
-## Period Aligned to Entity Timezone
+## Period Aligned to Entity Time Zone
 
 ```sql
 SELECT entity, entity.timeZone,

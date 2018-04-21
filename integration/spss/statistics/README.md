@@ -75,7 +75,7 @@ You can import ATSD data into SPSS by configuring an ODBC data source on a Windo
 
 ![](images/select_weights.png)
 
-> Alternatively, you can execute [SPSS scripts](data-source.md) to load records from a datasources automatically.
+> Alternatively, you can execute [SPSS scripts](data-source.md) to load records from a data sources automatically.
 
 * Proceed to the [Merge Datasets](#merge-datasets) section below.
 

@@ -111,7 +111,7 @@ The _Database Browser_ would display a set of tables matching the expression:
 
 Select one or more columns to open the Data Preview window displaying the first N rows of the resultset (10 by default).
 
-An example with the datetime, value, and text fields selected:
+An example with the `datetime`, `value`, and `text` fields selected:
 
 ![](resources/prewiew_data.png)
 

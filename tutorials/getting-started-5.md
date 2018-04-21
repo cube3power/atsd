@@ -6,7 +6,7 @@ Open the SQL console:
 
 ![](resources/getting-started-5_1.png)
 
-Enter the following query, adjust datetime:
+Enter the following query, modify the `datetime` condition:
 
 ```sql
 SELECT entity, metric, datetime, value

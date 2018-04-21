@@ -27,7 +27,7 @@ Weekly Change Log: January 09 - January 15, 2017
 
 | Issue         | Category        | Type | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
-| [3481](#issue-3481) | widget-settings | Feature | Implemented a JavaScript replacement for the freemarker `getSeries` method. |
+| [3481](#issue-3481) | widget-settings | Feature | Implemented a JavaScript replacement for the Freemarker `getSeries` method. |
 | [3078](#issue-3078) | widget-settings | Feature | Added support for new series settings [`exact-match`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/) and [`interpolate-extend`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/). |
 | [2928](#issue-2928) | widget-settings | Feature | Changed setting name from `interpolate` to [`fill-value`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/) to prevent collision.|
 

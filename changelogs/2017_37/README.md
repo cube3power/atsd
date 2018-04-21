@@ -10,10 +10,10 @@ Weekly Change Log: September 11, 2017 - September 17, 2017
 | 4561 | meta-api | Bug | Requests to delete a non-existent entity should return 400 status code instead of code 200 (OK).  |
 | 4559 | core | Bug | Table size and region count may be underreported if metrics are sampled immediately after compaction.  |
 | 4546 | security | Bug | User with `USER` role can access unauthorized records via API requests to `/api/v1/metrics` and `/api/v1/metrics` methods. |
-| [4518](#issue-4518) | sql | Bug | Fix invalid expression error for time/datetime column in inline views. |
+| [4518](#issue-4518) | sql | Bug | Fix invalid expression error for `time`/`datetime` column in inline views. |
 | [4508](#issue-4508) | sql | Feature | Add support for joins in subqueries. |
 | [4397](#issue-4397) | sql | Feature | Allow `JOIN ON` syntax if the `ON` condition is the same as the implicit condition. |
-| [4272](#issue-4272) | sql | Bug | Incorrect datetime filtering if the between condition is grouped in parenthesis. |
+| [4272](#issue-4272) | sql | Bug | Incorrect `datetime` filtering if the between condition is grouped in parenthesis. |
 
 ### Issue 4518
 

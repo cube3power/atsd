@@ -31,7 +31,7 @@ The Meta API lets you query and update metadata about metrics, entities, and ent
     - [add entities](entity-group/add-entities.md)
     - [set entities](entity-group/set-entities.md)
     - [delete entities](entity-group/delete-entities.md)
-* [Misc](misc)
+* [Miscellaneous](misc)
     - [search](misc/search.md)
     - [ping](misc/ping.md)
     - [version](misc/version.md)
@@ -44,7 +44,7 @@ The API uses `GET`, `POST`, `PUT`, `PATCH`, and `DELETE` methods to read and wri
 
 When submitting payload with `POST`, `PUT`, and `PATCH` methods in JSON format, add the header `Content-Type: application/json`.
 
-For correct Unicode handling, specify the chartset `Content-Type: application/json;chartset=UTF-8`.
+For correct Unicode handling, specify the charset `Content-Type: application/json;charset=UTF-8`.
 
 ## URI Encoding
 

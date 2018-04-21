@@ -14,11 +14,11 @@ Monthly Change Log: March 2018
 5155 | export | Bug | [Scheduled Query](../../reporting/scheduled-exporting.md#scheduled-exporting): NPE on commands store.
 5153 | rule engine | Bug | [Rule Engine](../../rule-engine): Generic type is not resolved for TagsMap.
 5151 | core | Feature | Add User-Agent header in [outgoing](../../rule-engine/web-notifications.md#web-notifications) http requests.
-5150 | sql | Feature | Implement short ISO formats for [datetime](../../sql/README.md#interval-condition) literal.
+5150 | sql | Feature | Implement short ISO formats for [`datetime`](../../sql/README.md#interval-condition) literal.
 5146 | security | Bug | Rename built-in collector [groups](../../administration/user-authorization.md#collector-user).
 5144 | rule engine | Bug | [`entity_label`](../../rule-engine/functions-lookup.md#entity_label) function.
 5142 | rule editor | Bug | Check [placeholder](../../rule-engine/placeholders.md#placeholders) syntax for validity on save.
-5139 | sql | Bug | SQL: Сolumn name [sensitivity](../../sql#case-sensitivity) in subqueries.
+5139 | sql | Bug | SQL: Column name [sensitivity](../../sql#case-sensitivity) in subqueries.
 5132 | security | Bug | Disable [collector account](../../administration/collector-account.md#collector-account) creation without admin rights.
 5130 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | Import doesn't display warnings if group is not found.
 5128 | security | Feature | Add page for password [obfuscation](../../administration/passwords-obfuscation.md#password-obfuscation).
@@ -41,7 +41,7 @@ Monthly Change Log: March 2018
 5090 | rule engine | Bug | Access to [collection](../../rule-engine/functions-collection.md#collection-functions) objects.
 5081 | UI | Bug | Selected [entity group](../../configuration/entity_groups.md#entity-groups) is not remembered.
 5078 | installation | Bug | [Installation](../../installation#installation): apply nohup to default startup scripts.
-5070 | sql | Feature | [Inline queries](../../sql#inline-views): remove time/datetime column requirement.
+5070 | sql | Feature | [Inline queries](../../sql#inline-views): remove `time`/`datetime` column requirement.
 5067 | rule engine | Bug | [`getEntityLink`](../../rule-engine/functions-link.md#getentitylink) function raises NPE on empty entity.
 5066 | rule engine | Bug | [AWS API](../../rule-engine/web-notifications.md#integration-services): Fix test mode for configuration.
 5065 | rule engine | Feature | [Web Notifications](../../rule-engine/web-notifications.md#web-notifications): Add type, toggle fields.

@@ -19,7 +19,7 @@ Weekly Change Log: October 9, 2017 - October 15, 2017
 | 4554 | sql | Bug | Change behavior of `datetime !=` operator. |
 | 4489 | sql | Bug | Incorrect reference to the `value` column in the `WHERE` clause. |
 | [4353](#issue-4353) | sql | Feature | Allow column aliases to be the same as column names. |
-| 4103 | sql | Bug | Fix `WITH INTERPOLATE` clause with user-defined timezone. |
+| 4103 | sql | Bug | Fix `WITH INTERPOLATE` clause with user-defined time zone. |
 
 
 ## Axibase Collector

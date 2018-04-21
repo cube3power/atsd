@@ -1,7 +1,7 @@
 ## Re-configure ODBC Data Source
 
 
-This document describes how to reconfigure the ODBC datasource if the list of tables displayed in a client application needs to be updated.
+This document describes how to reconfigure the ODBC data source if the list of tables displayed in a client application needs to be updated.
 
 - Click on **Start** button, type `ODBC` and launch ODBC Data Source Manager under an Administrator account
 

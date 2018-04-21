@@ -108,7 +108,7 @@ Examples:
   date_format(long t, string p, string z) string
 ```
 
-Converts timestamp `t` to a string according to the specified [datetime pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and the [timezone](../shared/timezone-list.md) `z`.
+Converts timestamp `t` to a string according to the specified [date pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and the [time zone](../shared/timezone-list.md) `z`.
 
 The input timestamp is specified as UNIX milliseconds.
 
@@ -119,7 +119,7 @@ Example:
   date_format(milliseconds('2018-01-09T14:23:40Z'), "yyyy-MM-dd HH:mm:ss:SSS ZZZ", "Europe/Berlin")
 ```
 
-Datetime Pattern reference:
+Date Pattern reference:
 
   ```
    Symbol  Meaning                      Presentation  Examples

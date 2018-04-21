@@ -204,7 +204,7 @@ If the optional boolean `b` parameter is specified and is set to `true`, the fun
 Example:
 
 ```javascript  
-  /* Returns 'john' if the oncall table doesn't contain an entry for 'john' */
+  /* Returns 'john' if the 'oncall' table doesn't contain an entry for 'john' */
   lookup('oncall', 'john', true)
 ```
 

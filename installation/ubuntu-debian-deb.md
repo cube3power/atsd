@@ -24,7 +24,7 @@ Download deb package to the target server:
 
 ## Installation Steps
 
-#### Add backports repository
+#### Add `backports` repository
 
 This step is required only for Debian 8.x (jessie)
 

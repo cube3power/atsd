@@ -27,7 +27,7 @@ Ad hoc exporting provides an interactive interface for exporting historical data
 |  Row Limit  |  Maximum Number of Rows displayed in HTML format. Tables with greater than 10000 rows are not recommended for viewing in HTML format.  |
 |  Entity Tags  |  List of entity tags included as columns in the exported file/table.  |
 |  Decimal Precision  |  Number of fractional digits displayed. If a negative value such as -1 is specified, stored numbers are displayed 'as is' without any formatting.  |
-|  Time Format  |  Format for displaying series sample timestamps: Local Time (server timezone) or ISO (UTC time).<br>Local = `yyyy-MM-dd HH:mm:ss`<br>ISO = `yyyy-MM-dd'T'HH:mm:ss'Z'`  |
+|  Time Format  |  Format for displaying series sample timestamps: Local Time (server time zone) or ISO (UTC time).<br>Local = `yyyy-MM-dd HH:mm:ss`<br>ISO = `yyyy-MM-dd'T'HH:mm:ss'Z'`  |
 
 
 ![](images/export_job_test_button.png)

@@ -89,7 +89,7 @@ To calculate the category-weighted consumer price index (CPI) for each year, the
 
 - Create three `Table input` steps from ATSD: `Prices`, `Datetimes` and `Weights`.
 
-- `Prices` are weighted prices for categories from 2013-2017 for 10 categories:
+- `Prices` are weighted prices for categories from 2013-2017 for 10 categories
 
 ```sql
 SELECT value, tags.category, datetime
@@ -97,7 +97,7 @@ SELECT value, tags.category, datetime
 ORDER BY datetime, tags.category
 ```
 
-- `Datetimes` has datetime timestamps for 2013-2017 years:
+- `Datetimes` has timestamps for 2013-2017 years
 
 ```sql
 SELECT datetime
@@ -106,7 +106,7 @@ GROUP BY datetime
   ORDER BY datetime
 ```
 
-- `Weights` has weights for 10 categories for 2017 year:
+- `Weights` has weights for 10 categories for 2017 year
 
 ```sql
 SELECT tags.category, value
@@ -235,7 +235,7 @@ Group rows by `datetime` and sum weighted price values for each year.
 - Connect `Group by` step to `/1000` step.
 - Configure `Group by` as shown in the screenshot below:
 
-> The operation will group records by datetime and calculate the sum of `P*W/1000` values for each group.
+> The operation will group records by `datetime` and calculate the sum of `P*W/1000` values for each group.
 
 ![](resources/group_by.png)
 

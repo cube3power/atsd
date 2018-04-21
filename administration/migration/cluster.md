@@ -162,11 +162,11 @@ nohup yarn com.axibase.migration.mapreduce.DataMigrator --forced --drop_annotati
 
 The job may take several hours to complete. 
 
-Open **Clusters > Cluster > YARN > Web UI > ResourseManager Web UI** in Cloudera Manager.
+Open **Clusters > Cluster > YARN > Web UI > ResourceManager Web UI** in Cloudera Manager.
 
 Monitor the job progress.
 
-```
+```sh
 tail -f /tmp/migration/migration.log
 ```
 

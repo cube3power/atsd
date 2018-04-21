@@ -130,7 +130,7 @@ The new 'Series Retention Days' setting allows deleting series which have not be
       value = mm.multiplyBy('s1', 2)
 ```
 
-[Chartlab Example](https://apps.axibase.com/chartlab/bc36b341)
+[ChartLab Example](https://apps.axibase.com/chartlab/bc36b341)
 
 ---
 

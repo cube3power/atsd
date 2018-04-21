@@ -123,7 +123,7 @@ Preview `prices`:
 
 ![](resources/prices_desc.png)
 
-### Load and Save Datetimes
+### Load and Save `Datetimes`
 
 ```
 clear
@@ -144,7 +144,7 @@ odbc load, exec("SELECT tags.category as category, value as weight FROM inflatio
 
 Since the `Weights` are available for only one year, we will assume that the category weights are constant through the timespan and therefore can be repeated for each year from 2013 to 2017.
 
-Perform a cross join of weights with datetimes:
+Perform a cross join of weights with `datetimes`:
 
 ```
 cross using datetimes

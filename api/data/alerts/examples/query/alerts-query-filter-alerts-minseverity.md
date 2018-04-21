@@ -1,4 +1,4 @@
-# Filter Alerts for minSeverity
+# Filter Alerts for Minimum Severity
 
 ## Description
 

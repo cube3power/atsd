@@ -75,7 +75,7 @@ Windows in `CANCEL` status do not trigger _repeat_ actions upon subsequent `fals
 
 A window may assume the `CANCEL` status when the condition changes from `true` to `false` as well as when the rule is modified, deleted, or the database is orderly shutdown. `On Cancel` triggers are not invoked, even if enabled, when the rule is modified/deleted or in case of shutdown.  This behavior is controlled with `cancel.on.rule.change` server property.
 
-## Lifecycle
+## Life Cycle
 
 When the rule is deleted or modified with the rule editor, all windows for the given rule are dropped. The windows are re-created when the new matching commands are received by the database.
 

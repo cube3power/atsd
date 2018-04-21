@@ -1,4 +1,4 @@
-# Meta API: Misc Methods
+# Meta API: Miscellaneous Methods
 
 | **Name** | **Method** | **Path** | **Content-Type** | **Description** |
 |:---|:---|:---|:---|:---|

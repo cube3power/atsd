@@ -32,7 +32,7 @@ seconds minutes hours day-of-month month day-of-week year
 
 ## Time Zone
 
-The `cron` expression is evaluated based on the timezone of the server where the database is running. The timezone is displayed on the **Admin: System Information** page.
+The `cron` expression is evaluated based on the time zone of the server where the database is running. The time zone is displayed on the **Admin: System Information** page.
 
 ## Examples
 

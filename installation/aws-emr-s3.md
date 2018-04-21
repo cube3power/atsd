@@ -196,7 +196,7 @@ Log in to the server where ATSD will be installed.
 ssh -i /path/to/<key-name>.pem ec2-user@$PUBLIC_IP
 ```
 
-> For testing and development, you can install ATSD on the the HMaster node.
+> For testing and development, you can install ATSD on the HMaster node.
 
 Verify that [JDK 8](../administration/migration/install-java-8.md) is installed on the server.
 

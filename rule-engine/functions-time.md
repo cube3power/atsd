@@ -44,15 +44,15 @@ Time when the first command was received by the window, in UNIX milliseconds.
   milliseconds(string d [,string p [,string z]]) long
 ```
 
-Parses the date string `d` into UNIX milliseconds according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [timezone](http://joda-time.sourceforge.net/timezones.html) `z` (or offset from UTC).
+Parses the date string `d` into UNIX milliseconds according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [time zone](http://joda-time.sourceforge.net/timezones.html) `z` (or offset from UTC).
 
 The function returns `0` if the date `d` is `null` or empty.
 
-Available timezones and their offsets are listed in [timezones](../shared/timezone-list.md).
+Available time zones and their offsets are listed in [time zones](../shared/timezone-list.md).
 
-The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default timezone is the server timezone.
+The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default time zone is the server time zone.
 
-> The function will raise an error if the timezone (or offset from UTC) is specified in the date string `d` and it differs from the timezone (offset) `z`.
+> The function will raise an error if the time zone (or offset from UTC) is specified in the date string `d` and it differs from the time zone (offset) `z`.
 
 Example:
 
@@ -88,7 +88,7 @@ The function accepts time `t` in UNIX milliseconds or the date `d` in the follow
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
 ```
 
-The function returns `0` if the datetime `d` is `null` or empty.
+The function returns `0` if the date `d` is `null` or empty.
 
 Example:
 
@@ -103,11 +103,11 @@ Example:
   date_parse(string d [,string p [,string z]]) DateTime
 ```
 
-Parses the input string `d` into a [DateTime](object-datetime.md) object according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [timezone](../shared/timezone-list.md) `z` (or offset from UTC).
+Parses the input string `d` into a [DateTime](object-datetime.md) object according to the specified [date pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
 
-The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default timezone is the server timezone.
+The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default time zone is the server time zone.
 
-> The function will raise an error if the timezone (or offset from UTC) is specified in the date string `d` differs from the timezone (offset) `z`. See Exception Examples below.
+> The function will raise an error if the time zone (or offset from UTC) is specified in the date string `d` differs from the time zone (offset) `z`. See Exception Examples below.
 
 The fields of the `DateTime` object can be accessed using the following methods:
 
@@ -123,7 +123,7 @@ Examples:
   ```
 
   ```javascript
-    /* Uses the server timezone to construct a DateTime object. */
+    /* Uses the server time zone to construct a DateTime object. */
     date_parse("31.01.2017 12:36:03:283", "dd.MM.yyyy HH:mm:ss:SSS")
   ```
 
@@ -148,11 +148,10 @@ Examples:
   ```
 
   ```javascript
-    /* If the timezone (offset) is specified in the datetime string,
+    /* If the time zone (offset) is specified in the datetime string,
     it should be exactly the same as provided by the third argument. */
     date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
   ```
-Exception Examples:
 
   ```javascript
     /* These expressions lead to exceptions. */
@@ -160,7 +159,7 @@ Exception Examples:
     date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
   ```
 
-Datetime Pattern reference:
+Date Pattern reference:
 
   ```
    Symbol  Meaning                      Presentation  Examples

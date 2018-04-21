@@ -365,13 +365,13 @@ http://atsd.com/portal/1.xhtml?application=> value
 
 All entities, for which the application tag is > `value`, will be loaded into the portal.
 
-A single line of freemarker code can be used to easily customize the results of the portal by searching for entity tags rather that specific entities. This gives extensive possibilities to create flexible portals.
+Freemarker expressions can be used to customize the portal by searching for entity tags rather that specific entities. This gives extensive possibilities to create flexible portals.
 
-The freemarker search can be for any combination of tags. For example: > `application` > `data center` > `function`. Only entities that have all three specified tags will be loaded into the portal.
+The Freemarker search can be for any combination of tags. For example: > `application` > `data center` > `function`. Only entities that have all three specified tags will be loaded into the portal.
 
 In the response, the `freemarker` [series] are substituted with the matching entities, creating [series] for each of them.
 
-##### Example output of a `freemarker` [series]:
+##### Example output of a `freemarker` [series]
 
 ```
 [configuration]
@@ -408,7 +408,7 @@ entity = host1786
 metric = cpu_used
 ```
 
-Advanced functions and aggregations can be added to the freemarker portals to enhance the resulting data prior to loading it into the portal. Below are two examples:
+Advanced functions and aggregations can be added to the Freemarker portals to enhance the resulting data prior to loading it into the portal. Below are two examples:
 
 ##### The `freemarker` [series] is given an alias, that can then be used to sum the loaded data:
 
@@ -439,7 +439,7 @@ Advanced functions and aggregations can be added to the freemarker portals to en
 |  `tag('entity', 'tagKey')`  |  string  |  Entity tag value.  | 
 |  `memberOf('entity', 'group1', ..., 'groupN')`  |  boolean  |  Returns true if an entity belongs to any of specified entity groups.  | 
 |  `memberOfAll('entity', 'group1', ..., 'groupN')`  |  boolean  |  Returns true if an entity belongs to all of the entity groups.  | 
-|  `list('value' [, delimiter])`  |  string collection  |  Splits a string by a delimeter. Default delimiter is comma character.  | 
+|  `list('value' [, delimiter])`  |  string collection  |  Splits a string by a delimiter. Default delimiter is comma.  | 
 |  `getTags('metric', 'entity', 'tagKey'[, hours])`  |  string collection  |  Tag values for metric, entity, and tagKey.<br>[, hours] is an optional parameter, which specifies the time interval (in hours) for searching unique tag values.<br>Default interval is 24 hours.  | 
 |  `getEntitiesForTags(expression)`  |  string collection  |  Finds entities by expression.  | 
 |  `getEntitiesForGroup("group")`  |  string collection  |  Finds all entities in a particular entity group. This is useful when building portals that compare entities from the same entity group.  | 

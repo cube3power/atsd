@@ -63,7 +63,7 @@ Run the `jps` utility to display Java processes running under the current user.
 | HBase | HMaster |
 | ATSD | Server |
 
-> HBase installed in the ATSD Docker container is configured to run in non-distributed mode without `RegionServer` and `HQuorumPeer` processes.
+> HBase installed in the ATSD Docker container is configured to run in non-distributed mode without `HRegionServer` and `HQuorumPeer` processes.
 
 ## Restarting All Services
 

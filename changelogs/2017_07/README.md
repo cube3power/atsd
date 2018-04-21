@@ -15,7 +15,7 @@ Weekly Change Log: February 13 - February 19, 2017
 | Issue| Category        | Type    | Subject                                                                              |
 |------|-----------------|---------|--------------------------------------------------------------------------------------| 
 | 3895 | socrata         | Bug     | Added heuristics to automatically classify and ignore fields in Socrata data sources. |
-| 3891 | docker          | Bug     | Fixed missing `entity` command for a new container when 'Lifecycle event monitoring' is disabled.   |
+| 3891 | docker          | Bug     | Fixed missing `entity` command for a new container when 'Life Cycle event monitoring' is disabled.   |
 
 ### Charts
 

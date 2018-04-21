@@ -1,4 +1,4 @@
-# Alerts Query: Multiple Queries - Unknown Entitys
+# Alerts Query: Multiple Queries - Unknown Entities
 
 ## Description
 

@@ -1,14 +1,14 @@
 # Format
 
-[Snapshot Example](#extract)
+* [Snapshot Example](#extract)
 
-[Collected Metrics](#complete-list-of-collected-metrics)
+* [Collected Metrics](#complete-list-of-collected-metrics)
 
-[Derived Metrics](#derived-metrics)
+* [Derived Metrics](#derived-metrics)
 
 Below is a snapshot extract from an nmon file displaying its format and how it records the collected data:
-<a name="extract"></a>
-```csv
+
+```elm
 ZZZZ,T0009,23:02:43,14-OCT-2014
 CPU01,T0009,58.9,27.9,6.6,6.6
 CPU02,T0009,0.4,0.6,0.0,99.0
@@ -46,24 +46,252 @@ DISKRXFER,T0009,74.8,56.0,43.7,38.3,40.4,44.1,40.2,40.9,43.4,12.4,12.1,11.2,19.1
 DISKBSIZE,T0009,30.8,8.0,8.9,8.0,8.2,8.0,8.0,8.0,8.5,7.9,7.9,7.8,7.2,24.8,8.0,11.1,62.9,0.0,8.3,8.4,8.0,4.8,244.9,4.2,0.5,60.2,8.0,8
 ```
 
-#### Complete List of Collected Metrics:
+## Complete List of Collected Metrics
 
-| CPU Metrics | Memory Metrics | 
-| --- | --- | 
-|  asynchronous_i/o.aiocpu<br>asynchronous_i/o.aioprocs<br>asynchronous_i/o.aiorunning<br>cpu.idle%<br>cpu.sys%<br>cpu.user%<br>cpu.wait%<br>cpu_total.busy<br>cpu_total.idle%<br>cpu_total.sys%<br>cpu_total.user%<br>cpu_total.wait%<br>logical_partition.capped<br>logical_partition.ec_idle%<br>logical_partition.ec_sys%<br>logical_partition.ec_user%<br>logical_partition.ec_wait%<br>logical_partition.entitled<br>logical_partition.folded<br>logical_partition.logicalcpus<br>logical_partition.physicalcpu<br>logical_partition.pool_id<br>logical_partition.poolcpus<br>logical_partition.poolidle<br>logical_partition.sharedcpu<br>logical_partition.usedallcpu%<br>logical_partition.usedpoolcpu%<br>logical_partition.virtualcpus<br>logical_partition.vp_idle%<br>logical_partition.vp_sys%<br>logical_partition.vp_user%<br>logical_partition.vp_wait%<br>logical_partition.weight<br>pcpu.idle<br>pcpu.sys<br>pcpu.user<br>pcpu.wait<br>pcpu_total.entitled_capacity<br>pcpu_total.idle<br>pcpu_total.sys<br>pcpu_total.user<br>pcpu_total.wait<br>processes.asleep_bufio<br>processes.asleep_diocio<br>processes.asleep_rawio<br>processes.blocked<br>processes.exec<br>processes.fork<br>processes.msg<br>processes.pswitch<br>processes.read<br>processes.runnable<br>processes.sem<br>processes.swap-in<br>processes.syscall<br>processes.write<br>scpu.idle<br>scpu.sys<br>scpu.user<br>scpu.wait<br>scpu_total.idle<br>scpu_total.sys<br>scpu_total.user<br>scpu_total.wait<br>multiple_cpu_pools.entitled<br>multiple_cpu_pools.entitled_pool_capacity<br>multiple_cpu_pools.max_pool_capacity<br>multiple_cpu_pools.pool_busy_time<br>multiple_cpu_pools.pool_id<br>multiple_cpu_pools.pool_max_time<br>multiple_cpu_pools.shcpu_busy_time<br>multiple_cpu_pools.shcpu_tot_time<br>multiple_cpu_pools.shcpus_in_sys  |  memory.real_free(mb)<br>memory.real_free_%<br>memory.real_total(mb)<br>memory.virtual_free(mb)<br>memory.virtual_free_%<br>memory.virtual_total(mb)<br>memory_mb.active<br>memory_mb.bigfree<br>memory_mb.buffers<br>memory_mb.cached<br>memory_mb.highfree<br>memory_mb.hightotal<br>memory_mb.inactive<br>memory_mb.lowfree<br>memory_mb.lowtotal<br>memory_mb.memfree<br>memory_mb.memshared<br>memory_mb.memtotal<br>memory_mb.swapcached<br>memory_mb.swapfree<br>memory_mb.swaptotal<br>memory_new.free%<br>memory_new.fscache%<br>memory_new.pinned%<br>memory_new.process%<br>memory_new.system%<br>memory_new.user%<br>memory_use.%maxclient<br>memory_use.%maxperm<br>memory_use.%minperm<br>memory_use.%numclient<br>memory_use.%numperm<br>memory_use.lruable_pages<br>memory_use.maxfree<br>memory_use.minfree<br>memorypages.cycles<br>memorypages.exfills<br>memorypages.maxfree<br>memorypages.minfree<br>memorypages.nonsys_pgs<br>memorypages.numclient<br>memorypages.numclsegpin<br>memorypages.numclseguse<br>memorypages.numcompress<br>memorypages.numframes<br>memorypages.numfrb<br>memorypages.numiodone<br>memorypages.numperm<br>memorypages.numpermio<br>memorypages.numpgsp_pgs<br>memorypages.numpout<br>memorypages.numpsegpin<br>memorypages.numpseguse<br>memorypages.numralloc<br>memorypages.numremote<br>memorypages.numsios<br>memorypages.numvpages<br>memorypages.numwsegpin<br>memorypages.numwseguse<br>memorypages.pageins<br>memorypages.pageouts<br>memorypages.pfavail<br>memorypages.pfpinavail<br>memorypages.pfrsvdblks<br>memorypages.pgexct<br>memorypages.pgrclm<br>memorypages.pgspgins<br>memorypages.pgspgouts<br>memorypages.pgsteals<br>memorypages.scans<br>memorypages.system_pgs<br>memorypages.zerofills<br>paging_and_virtual.allocstall<br>paging_and_virtual.kswapd_inodesteal<br>paging_and_virtual.kswapd_steal<br>paging_and_virtual.nr_dirty<br>paging_and_virtual.nr_mapped<br>paging_and_virtual.nr_page_table_pages<br>paging_and_virtual.nr_slab<br>paging_and_virtual.nr_unstable<br>paging_and_virtual.nr_writeback<br>paging_and_virtual.pageoutrun<br>paging_and_virtual.pgactivate<br>paging_and_virtual.pgalloc_dma<br>paging_and_virtual.pgalloc_high<br>paging_and_virtual.pgalloc_normal<br>paging_and_virtual.pgdeactivate<br>paging_and_virtual.pgfault<br>paging_and_virtual.pgfree<br>paging_and_virtual.pginodesteal<br>paging_and_virtual.pgmajfault<br>paging_and_virtual.pgpgin<br>paging_and_virtual.pgpgout<br>paging_and_virtual.pgrefill_dma<br>paging_and_virtual.pgrefill_high<br>paging_and_virtual.pgrefill_normal<br>paging_and_virtual.pgrotated<br>paging_and_virtual.pgscan_direct_dma<br>paging_and_virtual.pgscan_direct_high<br>paging_and_virtual.pgscan_direct_normal<br>paging_and_virtual.pgscan_kswapd_dma<br>paging_and_virtual.pgscan_kswapd_high<br>paging_and_virtual.pgscan_kswapd_normal<br>paging_and_virtual.pgsteal_dma<br>paging_and_virtual.pgsteal_high<br>paging_and_virtual.pgsteal_normal<br>paging_and_virtual.pswpin<br>paging_and_virtual.pswpout<br>paging_and_virtual.slabs_scanned<br>paging.cycles<br>paging.faults<br>paging.pgin<br>paging.pgout<br>paging.pgsin<br>paging.pgsout<br>paging.reclaims<br>paging.scans  | 
+### CPU and Memory Metrics
 
+```txt
+asynchronous_i/o.aiocpu
+asynchronous_i/o.aioprocs
+asynchronous_i/o.aiorunning
+cpu.idle%
+cpu.sys%
+cpu.user%
+cpu.wait%
+cpu_total.busy
+cpu_total.idle%
+cpu_total.sys%
+cpu_total.user%
+cpu_total.wait%
+logical_partition.capped
+logical_partition.ec_idle%
+logical_partition.ec_sys%
+logical_partition.ec_user%
+logical_partition.ec_wait%
+logical_partition.entitled
+logical_partition.folded
+logical_partition.logicalcpus
+logical_partition.physicalcpu
+logical_partition.pool_id
+logical_partition.poolcpus
+logical_partition.poolidle
+logical_partition.sharedcpu
+logical_partition.usedallcpu%
+logical_partition.usedpoolcpu%
+logical_partition.virtualcpus
+logical_partition.vp_idle%
+logical_partition.vp_sys%
+logical_partition.vp_user%
+logical_partition.vp_wait%
+logical_partition.weight
+pcpu.idle
+pcpu.sys
+pcpu.user
+pcpu.wait
+pcpu_total.entitled_capacity
+pcpu_total.idle
+pcpu_total.sys
+pcpu_total.user
+pcpu_total.wait
+processes.asleep_bufio
+processes.asleep_diocio
+processes.asleep_rawio
+processes.blocked
+processes.exec
+processes.fork
+processes.msg
+processes.pswitch
+processes.read
+processes.runnable
+processes.sem
+processes.swap-in
+processes.syscall
+processes.write
+scpu.idle
+scpu.sys
+scpu.user
+scpu.wait
+scpu_total.idle
+scpu_total.sys
+scpu_total.user
+scpu_total.wait
+multiple_cpu_pools.entitled
+multiple_cpu_pools.entitled_pool_capacity
+multiple_cpu_pools.max_pool_capacity
+multiple_cpu_pools.pool_busy_time
+multiple_cpu_pools.pool_id
+multiple_cpu_pools.pool_max_time
+multiple_cpu_pools.shcpu_busy_time
+multiple_cpu_pools.shcpu_tot_time
+multiple_cpu_pools.shcpus_in_sys  |  memory.real_free(mb)
+memory.real_free_%
+memory.real_total(mb)
+memory.virtual_free(mb)
+memory.virtual_free_%
+memory.virtual_total(mb)
+memory_mb.active
+memory_mb.bigfree
+memory_mb.buffers
+memory_mb.cached
+memory_mb.highfree
+memory_mb.hightotal
+memory_mb.inactive
+memory_mb.lowfree
+memory_mb.lowtotal
+memory_mb.memfree
+memory_mb.memshared
+memory_mb.memtotal
+memory_mb.swapcached
+memory_mb.swapfree
+memory_mb.swaptotal
+memory_new.free%
+memory_new.fscache%
+memory_new.pinned%
+memory_new.process%
+memory_new.system%
+memory_new.user%
+memory_use.%maxclient
+memory_use.%maxperm
+memory_use.%minperm
+memory_use.%numclient
+memory_use.%numperm
+memory_use.lruable_pages
+memory_use.maxfree
+memory_use.minfree
+memorypages.cycles
+memorypages.exfills
+memorypages.maxfree
+memorypages.minfree
+memorypages.nonsys_pgs
+memorypages.numclient
+memorypages.numclsegpin
+memorypages.numclseguse
+memorypages.numcompress
+memorypages.numframes
+memorypages.numfrb
+memorypages.numiodone
+memorypages.numperm
+memorypages.numpermio
+memorypages.numpgsp_pgs
+memorypages.numpout
+memorypages.numpsegpin
+memorypages.numpseguse
+memorypages.numralloc
+memorypages.numremote
+memorypages.numsios
+memorypages.numvpages
+memorypages.numwsegpin
+memorypages.numwseguse
+memorypages.pageins
+memorypages.pageouts
+memorypages.pfavail
+memorypages.pfpinavail
+memorypages.pfrsvdblks
+memorypages.pgexct
+memorypages.pgrclm
+memorypages.pgspgins
+memorypages.pgspgouts
+memorypages.pgsteals
+memorypages.scans
+memorypages.system_pgs
+memorypages.zerofills
+paging_and_virtual.allocstall
+paging_and_virtual.kswapd_inodesteal
+paging_and_virtual.kswapd_steal
+paging_and_virtual.nr_dirty
+paging_and_virtual.nr_mapped
+paging_and_virtual.nr_page_table_pages
+paging_and_virtual.nr_slab
+paging_and_virtual.nr_unstable
+paging_and_virtual.nr_writeback
+paging_and_virtual.pageoutrun
+paging_and_virtual.pgactivate
+paging_and_virtual.pgalloc_dma
+paging_and_virtual.pgalloc_high
+paging_and_virtual.pgalloc_normal
+paging_and_virtual.pgdeactivate
+paging_and_virtual.pgfault
+paging_and_virtual.pgfree
+paging_and_virtual.pginodesteal
+paging_and_virtual.pgmajfault
+paging_and_virtual.pgpgin
+paging_and_virtual.pgpgout
+paging_and_virtual.pgrefill_dma
+paging_and_virtual.pgrefill_high
+paging_and_virtual.pgrefill_normal
+paging_and_virtual.pgrotated
+paging_and_virtual.pgscan_direct_dma
+paging_and_virtual.pgscan_direct_high
+paging_and_virtual.pgscan_direct_normal
+paging_and_virtual.pgscan_kswapd_dma
+paging_and_virtual.pgscan_kswapd_high
+paging_and_virtual.pgscan_kswapd_normal
+paging_and_virtual.pgsteal_dma
+paging_and_virtual.pgsteal_high
+paging_and_virtual.pgsteal_normal
+paging_and_virtual.pswpin
+paging_and_virtual.pswpout
+paging_and_virtual.slabs_scanned
+paging.cycles
+paging.faults
+paging.pgin
+paging.pgout
+paging.pgsin
+paging.pgsout
+paging.reclaims
+paging.scans
+```
 
-| Disk and i/o Metrics | Network Metrics | 
-| --- | --- | 
-|  disk_%busy<br>disk_adapter.kb/s<br>disk_adapter.tps<br>disk_block_size<br>disk_io_average_reads_per_second<br>disk_io_average_writes_per_second<br>disk_io_reads_per_second<br>disk_io_writes_per_second<br>disk_read_kb/s<br>disk_read_service_time_msec/xfer<br>disk_service_time_msec/xfer<br>disk_transfers_per_second<br>disk_wait_queue_time_msec/xfer<br>disk_write_kb/s<br>disk_write_service_time_msec/xfer<br>file_i/o.dirblk<br>file_i/o.iget<br>file_i/o.namei<br>file_i/o.readch<br>file_i/o.ttycanch<br>file_i/o.ttyoutch<br>file_i/o.ttyrawch<br>file_i/o.writech<br>jfs_filespace_%used<br>jfs_inode_%used<br>large_page_use.freepages<br>large_page_use.highwater<br>large_page_use.pages<br>large_page_use.sizemb<br>large_page_use.usedpages<br>transfers_from_disk_(reads)_per_second  |  network_errors.collisions<br>network_errors.ierrs<br>network_errors.oerrs<br>network_i/o.read-kb/s<br>network_i/o.write-kb/s<br>network_packets.read/s<br>network_packets.reads/s<br>network_packets.write/s<br>network_packets.writes/s<br>network_size.readsize<br>network_size.writesize  | 
+### Disk, I/O and Network Metrics
 
+```txt
+disk_%busy
+disk_adapter.kb/s
+disk_adapter.tps
+disk_block_size
+disk_io_average_reads_per_second
+disk_io_average_writes_per_second
+disk_io_reads_per_second
+disk_io_writes_per_second
+disk_read_kb/s
+disk_read_service_time_msec/xfer
+disk_service_time_msec/xfer
+disk_transfers_per_second
+disk_wait_queue_time_msec/xfer
+disk_write_kb/s
+disk_write_service_time_msec/xfer
+file_i/o.dirblk
+file_i/o.iget
+file_i/o.namei
+file_i/o.readch
+file_i/o.ttycanch
+file_i/o.ttyoutch
+file_i/o.ttyrawch
+file_i/o.writech
+jfs_filespace_%used
+jfs_inode_%used
+large_page_use.freepages
+large_page_use.highwater
+large_page_use.pages
+large_page_use.sizemb
+large_page_use.usedpages
+transfers_from_disk_(reads)_per_second  |  network_errors.collisions
+network_errors.ierrs
+network_errors.oerrs
+network_i/o.read-kb/s
+network_i/o.write-kb/s
+network_packets.read/s
+network_packets.reads/s
+network_packets.write/s
+network_packets.writes/s
+network_size.readsize
+network_size.writesize
+```
 
 #### Derived Metrics:
 
-
-- ATSD computes derived metrics to simplify downstream rule development and visualization tasks.
-- The derived metrics are stored similar to original metrics and are also available in rule expressions, forecasts, and widgets.
-
+- Derived metrics are calculated to simplify rule development and visualization tasks.
+- The derived metrics are stored similar to original metrics and are available in rule expressions, forecasts, and widgets.
 
 | Derived Metric | Original Metrics | 
 | --- | --- | 

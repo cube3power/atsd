@@ -61,7 +61,7 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 - Set _Datetime_ to the columns field
 - Set _Value_ to the rows field
 
-> Since _time_ and _datetime_ represent recorded times composed of different data types (long and timestamp), make sure you select only one of these columns in your queries. 
+> Since `time` and `datetime` represent recorded times composed of different data types (long and timestamp), make sure you select only one of these columns in your queries. 
 
 ![](images/sum_year.png)
 

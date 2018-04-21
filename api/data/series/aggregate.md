@@ -33,7 +33,7 @@ The aggregation process is implemented as follows:
 | unit  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
 | count  | number | Number of time units contained in the period. |
 | align | string | Alignment of the period's start/end time. Default: `CALENDAR`.|
-| timezone | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database timezone displayed on the **Settings > System Information** page.|
+| timezone | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database time zone displayed on the **Settings > System Information** page.|
 
 Example: `{ "count": 1, "unit": "HOUR" }` or `{ "count": 15, "unit": "MINUTE", "align": "END_TIME" }`.
 
@@ -161,6 +161,6 @@ Values added by the `extend` setting are determined as follows:
 
 [Additional Interpolation Examples](examples/query-aggr-interpolation.md)
 
-[Chartlab Examples](https://apps.axibase.com/chartlab/d8c03f11/3/)
+[ChartLab Examples](https://apps.axibase.com/chartlab/d8c03f11/3/)
 
 ![Interpolation Example](aggregate_interpolate.png)

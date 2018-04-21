@@ -39,7 +39,7 @@ Provide the following artifacts as part of your support request related to a ser
    
 * C. Screenshots from the **Portals: ATSD Metric Viewer** portal for a subset of relevant metrics.
    
-* D. CSV Export of the following query in the SQL console. Replace datetime to match the hour when the issue occurred.
+* D. CSV Export of the following query in the SQL console. Modify the `datetime` condition to match the hour when the issue occurred.
    
 ```sql
 SELECT t1.datetime, t1.value AS api_cm, t2.value AS dis_mtr, t3.value AS exp_mtr, t4.value AS flt_mtr, t5.value AS fwd_mtr, 

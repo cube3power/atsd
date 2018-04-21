@@ -4,7 +4,7 @@ The **WITH INTERPOLATE** clause provides a way to transform unevenly spaced time
 
 The underlying transformation calculates values at regular intervals using linear or step interpolation.
 
-Unlike the `GROUP BY PERIOD` clause with the `LINEAR` option, which interpolates missing periods, the `WITH INTERPOLATE` clause operates using raw values. Here is an example in [Chartlab](https://apps.axibase.com/chartlab/471a2a40) that illustrates the difference between interpolating raw and aggregated values.
+Unlike the `GROUP BY PERIOD` clause with the `LINEAR` option, which interpolates missing periods, the `WITH INTERPOLATE` clause operates using raw values. Here is an example in [ChartLab](https://apps.axibase.com/chartlab/471a2a40) that illustrates the difference between interpolating raw and aggregated values.
 
 Similar to the original series, the regularized series can be used in `JOIN` queries, `WHERE` condition, `ORDER BY` and `GROUP BY` clauses.
 
@@ -313,7 +313,7 @@ If the period doesn't have any values, the period is omitted from the results.
 
 An optional `LINEAR` directive for the `GROUP BY PERIOD()` clause changes the default behavior and returns results for missing periods by applying linear interpolation between values of the neighboring periods.
 
-* [Chartlab examples](https://apps.axibase.com/chartlab/471a2a40)
+* [ChartLab examples](https://apps.axibase.com/chartlab/471a2a40)
 
 ![Interpolation Options](../images/aggregation_vs_interpolation.png)
 

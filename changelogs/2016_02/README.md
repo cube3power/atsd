@@ -19,7 +19,7 @@ Weekly Change Log: November 21-27, 2016
 
 |Issue     | Category        | Type      | Subject                                                                    |
 |----------|-----------------|---------- |----------------------------------------------------------------------------|
-|  3443    | property        |   Bug     | Fixed an issue with time column formatting when timezone is set to UTC. |
+|  3443    | property        |   Bug     | Fixed an issue with time column formatting when time zone is set to UTC. |
 |  2454    | property        |   Feature | Implemented `format-numbers` and `format-headers` settings.|
 |  2335    | property        |   Bug     | Refactored configuration so that the `entity` setting can be specified in json and simplified no-json syntax. |                                                                                                                                                                                                                   
 
@@ -29,7 +29,7 @@ Weekly Change Log: November 21-27, 2016
 |-----------|-----------------|----------|----------------------------------------------------------------------------|                                                                                                                                                                                                    
 |  3635     |tcp              |  Feature | Added support for default port, applied if list item doesn't have a port number. |
 |  3633     |docker           |  Bug     | Removed the `collector-host` tag from series, property, and message commands. |
-|  3629     |data-source      |  Feature | Added ATSD to the list of supported datasources. The implementation relies on the [ATSD JDBC driver](https://github.com/axibase/atsd-jdbc). |
+|  3629     |data-source      |  Feature | Added ATSD to the list of supported data sources. The implementation relies on the [ATSD JDBC driver](https://github.com/axibase/atsd-jdbc). |
 |  3622     |tcp              |  Feature | Refactored the job configuration form: add metric prefix, use built-in metric names, and display test table with statuses. Added support for the `${ITEM}` placeholder similar to the FILE job. |
 |  3620     |docker           |  Feature | Enabled collection of data for the Docker host using the host's fully qualified name, passed with environment variable in the Docker container run command: "-e DOCKER_HOSTNAME=`hostname -f`". |
 |  3611     |collection       |  Feature | Added support for ATSD Property API in Item Lists. |

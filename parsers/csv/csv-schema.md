@@ -31,7 +31,6 @@ tag('status', cell(row, col+1).toLowerCase());
 
 Explanation:
 
-
 - `select("#row=2-*")` – RFC7111 selection. Read rows starting with 2nd row with step 1 > `'2015-10-29T00:00:00Z; 19.2; provis; 11.3; ok'`.
 - `select("#col=2-*!2")` – RFC7111 selection. Read columns in the current row starting with 2nd column with step 2: 2,4,6. etc. > `'19.2'`.
 - `timestamp(cell(row, 1))` – Set time to `'2015-10-29T00:00:00Z'` which is the value of the cell located in the current row, 1st column.
@@ -39,7 +38,6 @@ Explanation:
 - `metric('power_kwh')` - Set metric name to a predefined value.
 - `tag('status',cell(row, col+1).toLowerCase())` – Set tag `status` to `'provis'` which is the lowercased value of the cell located in the current row to the right of the current column `(col + 1)`.
 - Iterate to the next column with step 2, `select("#col=2-*!2")`, to cell `'11.3'`. Repeat chained functions after `addSeries()`.
-
 
 Commands:
 
@@ -61,14 +59,13 @@ If Schema parsing is enabled, only the following fields from the parser configu
 - Decimal Separator
 - Grouping Separator
 - Fields Lengths
-- Date fields: Time Pattern, Offset, Timezone
+- Date fields: Time Pattern, Offset, Time Zone
 - Replace Entities
 - Process Events
 - Discard NaN
 - Ignore Line Errors
 - Renamed Columns
 - Filter
-
 
 ### Schema Functions
 

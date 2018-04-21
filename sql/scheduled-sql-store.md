@@ -16,7 +16,9 @@ The **Store** option for scheduled SQL queries may be used to write the results 
 
 Each row in the result set is converted into one or multiple derived series based on column names and data types.
 
-After entity, datetime, and tag columns are mapped based on names, the remaining numeric columns are classified as metric name columns.
+`entity`, `datetime`, and `tag` columns are mapped based on names.
+
+The remaining numeric columns are classified as metric name columns.
 
 ```sql
 SELECT datetime,
@@ -135,7 +137,7 @@ series e:dc-1 d:2017-08-02T00:00:00Z m:temp_daily_perc_90=28.24
 
 Since a query can create series commands for dates that were already inserted, the **Check Last Time** option provides a way to control how duplicates are handled.
 
-If **Check Last Time** is enabled, the series command is inserted if its datetime is greater than the timestamp of the previously stored values for the given series key.
+If **Check Last Time** is enabled, the series command is inserted if its timestamp is greater than the timestamp of the previously stored values for the given series key.
 
 ### Validation
 

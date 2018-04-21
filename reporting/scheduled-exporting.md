@@ -91,7 +91,7 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 |  Entity Tags  |  List of entity tags that will be included as columns in the exported file.  |
 |  Metric Tags  |  List of metric tags that will be included as columns in the exported file.  |
 |  Decimal Precision  |  Number of fractional digits displayed. If a negative value such as -1 is specified, stored numbers are displayed 'as is' without any formatting.  |
-|  Time Format  |  Format for displaying series sample timestamps: Local Time (server timezone) or ISO (UTC time).<br>Local = `yyyy-MM-dd HH:mm:ss`<br>ISO = `yyyy-MM-dd'T'HH:mm:ss'Z'`  |
+|  Time Format  |  Format for displaying series sample timestamps: Local Time (server time zone) or ISO (UTC time).<br>Local = `yyyy-MM-dd HH:mm:ss`<br>ISO = `yyyy-MM-dd'T'HH:mm:ss'Z'`  |
 
 
 ##### Distribution

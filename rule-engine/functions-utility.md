@@ -79,11 +79,11 @@ The function prints the input object `o` as a two-column table in the specified 
 
 Supported formats:
 
-* 'markdown'
-* 'ascii'
-* 'property'
-* 'csv'
-* 'html'
+* `markdown`
+* `ascii`
+* `property`
+* `csv`
+* `html`
 
 The first column in the table contains field names, whereas the second column contains corresponding field values.
 
@@ -168,7 +168,7 @@ Example:
 
 Retrieves the **port** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
 
-If the the URL `u` doesn't contain a port, the function returns the default value for the protocol, for example port 443 for `https` and port 80 for `http`.
+If the URL `u` doesn't contain a port, the function returns the default value for the protocol, for example port 443 for `https` and port 80 for `http`.
 
 Example:
 

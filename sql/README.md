@@ -252,7 +252,7 @@ Comments are not allowed after the statement termination character `;`.
 
 ### Predefined Columns
 
-Virtual tables have the same pre-defined columns since all the the underlying data is physically stored in a single partitioned table.
+Virtual tables have the same pre-defined columns since all the underlying data is physically stored in a single partitioned table.
 
 #### Series Columns
 
@@ -811,7 +811,7 @@ An interval condition determines the selection interval and is specified in the 
 | `yyyy-MM-dd HH:mm:ss[.NNNNNNNNN]`| Database  | `2017-12-10 15:30:00.077`<br>`2017-12-10 15:30:00` |
 | `yyyy[-MM[-dd]]`| Database  | `2017`<br>`2017-12`<br>`2017-12-15` |
 
-The UTC time zone is specified as the `Z` suffix ("Zulu time") or as the zero UTC offset `+00:00`. If the time zone is not specified in the literal value, the database timezone is used to convert strings into date objects.
+The UTC time zone is specified as the `Z` suffix ("Zulu time") or as the zero UTC offset `+00:00`. If the time zone is not specified in the literal value, the database time zone is used to convert strings into date objects.
 
 ```sql
 SELECT datetime, entity, value
@@ -991,7 +991,7 @@ Period syntax:
 PERIOD({count} {unit} [, option])
 ```
 
-`option` = interpolate | align | extend | timezone
+`option` = `interpolate` | `align` | `extend` | `timezone`
 
 * `interpolate` = PREVIOUS | NEXT | LINEAR | VALUE {number}
 * `extend` = EXTEND
@@ -1016,7 +1016,7 @@ PERIOD(1 DAY, entity.timeZone)
 | interpolate | Apply an [interpolation function](#interpolation), such as `LINEAR` or `VALUE 0`, to add missing periods.|
 | extend | Add missing periods at the beginning and end of the selection interval using `VALUE {n}` or the `PREVIOUS` and `NEXT` interpolation functions.|
 | align | Align the period's start/end. Default: `CALENDAR`. <br>Possible values: `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`, `CALENDAR`.<br>Refer to [period alignment](#period-alignment).|
-| timezone | Time zone for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default value: current database timezone.|
+| time zone | Time zone for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default value: current database time zone.|
 
 
 ```sql
@@ -1213,7 +1213,7 @@ GROUP BY entity, period(5 MINUTE, LINEAR, EXTEND)
 - [Interpolate](examples/interpolate.md)
 - [Interpolate Edges](examples/interpolate-edges.md)
 - [Interpolate with Extend](examples/interpolate-extend.md)
-- [Chartlab](https://apps.axibase.com/chartlab/d8c03f11/3/)
+- [ChartLab](https://apps.axibase.com/chartlab/d8c03f11/3/)
 
 ## Regularization
 
@@ -1288,7 +1288,7 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 |:---|:---|
 | `LINEAR` | Calculates the value at the desired timestamp by linearly interpolating prior and next values.|
 | `PREVIOUS` | Sets the value at the desired timestamp based on the previously recorded raw value.<br>This step-like function is appropriate for metrics with discrete values (digital signals).|
-| `AUTO` | [**Default**] Applies an interpolation function (`LINEAR` or `PREVIOUS`) based on the metric's Interpolation setting.<br>If multiple metrics are specified in the query, `AUTO` applies its own interpolation mode for each metric.  |
+| `AUTO` | [**Default**] Applies an interpolation function (`LINEAR` or `PREVIOUS`) based on the metric Interpolation setting.<br>If multiple metrics are specified in the query, `AUTO` applies its own interpolation mode for each metric.  |
 
 * NaN (Not-A-Number) values are ignored from interpolation.
 * The `value` condition in the `WHERE` clause applies to interpolated series values instead of raw values. Filtering out raw values prior to interpolation is not supported.
@@ -2312,7 +2312,7 @@ GROUP BY PERIOD(1 hour)
 
 ### DATE_PARSE
 
-The `date_parse` function parses the datetime string into Unix milliseconds.
+The `date_parse` function parses the date and time string into Unix milliseconds.
 
 ```java
 date_parse(string datetime[, string time_format[, string time_zone]])
@@ -2930,7 +2930,7 @@ END AS "Tax Day"
 
 ## Interval Number
 
-The `INTERVAL_NUMBER()` function can be referenced in the `SELECT` expression. It returns an index, starting with 1, of the current time interval in queries selecting [multiple intervals](#interval-condition) using a datetime `OR` condition or datetime subquery.
+The `INTERVAL_NUMBER()` function can be referenced in the `SELECT` expression. It returns an index, starting with `1`, of the current time interval in queries selecting [multiple intervals](#interval-condition) using a `datetime` `OR` condition or `datetime` subquery.
 
 ```sql
 SELECT datetime, count(*), INTERVAL_NUMBER()
@@ -3269,7 +3269,7 @@ While the [differences](https://github.com/axibase/atsd-jdbc/blob/master/capabil
 * [Table Alias](examples/alias-table.md)
 * [Escape Quotes](examples/select-escape-quote.md)
 * [atsd_series Table](examples/select-atsd_series.md)
-* [Datetime Format](examples/datetime-format.md)
+* [Date Format](examples/datetime-format.md)
 * [Date Extract Functions](examples/date-extract.md)
 * [Date Utility Functions](examples/date-functions.md)
 * [Limit Row Count](examples/limit.md)

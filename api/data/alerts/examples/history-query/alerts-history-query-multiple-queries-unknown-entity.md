@@ -1,4 +1,4 @@
-# Alerts History-Query: Multiple Queries - Unknown Entitys
+# Alerts History-Query: Multiple Queries - Unknown Entities
 
 ## Description
 
