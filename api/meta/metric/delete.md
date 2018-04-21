@@ -16,7 +16,7 @@ Data collected for the metric will be removed asynchronously in the background.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| metric |string|Metric name.|
+| `metric` |string|Metric name.|
 
 ## Response
 

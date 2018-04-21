@@ -14,7 +14,7 @@ Returns an array of property types for the entity.
 
 | **Name** | **In** | **Description** |
 |:---|:---|:---|
-| entity | path | **[Required]** Entity name. |
+| `entity` | path | **[Required]** Entity name. |
 
 ## Response
 
@@ -24,7 +24,7 @@ An array of property type names.
 
 | **Field** | **Description** |
 |:---|:---|
-| type | Property type name. |
+| `type` | Property type name. |
 
 ### Errors
 

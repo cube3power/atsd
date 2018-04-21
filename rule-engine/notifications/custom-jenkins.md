@@ -11,7 +11,7 @@ The integration relies on the following [Jenkins API](https://wiki.jenkins.io/di
 
 ## Configuration
 
-Create a new `CUSTOM` web notification from scratch or import the following [template](resources/custom-jenkins-notification.xml), used in this example. 
+Create a new `CUSTOM` web notification from scratch or import the following [template](resources/custom-jenkins-notification.xml), used in this example.
 
 To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
@@ -96,9 +96,9 @@ Specify the same settings for the **Open** and **Repeat** triggers:
 
 | **Name** | **Value** |
 | :-------- | :---- |
-| job_name  | atsd-api-test |
-| run_extra_tests  | false |
-| timezone | Etc/UTC |
+| `job_name`  | atsd-api-test |
+| `run_extra_tests`  | false |
+| `timezone` | Etc/UTC |
 
 ![](images/jenkins_rule_notification.png)
 
@@ -108,7 +108,7 @@ When the notification is executed, all placeholders will be resolved as follows:
 
 `https://jenkins.example.org/job/atsd-api-test/buildWithParameters`
 
-```
+```txt
 timezone=Etc/UTC
 run_extra_tests=false
 ```
@@ -119,7 +119,7 @@ If the placeholder is not found, it will be replaced with an empty string.
 
 In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the page **Data > Data Entry** and submit the following command:
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 

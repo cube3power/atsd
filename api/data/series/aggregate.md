@@ -15,14 +15,14 @@ The aggregation process is implemented as follows:
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| type  | string        | [**Required**] [Statistical function](../../../api/data/aggregation.md) applied to detailed values in the period, such as `AVG`, `SUM`, or `COUNT`. |
-| types | array          | Array of [statistical functions](../../../api/data/aggregation.md). Either `type` or `types` field are required in each query. |
-| period  | object     | [**Required**] [Period](#period). |
-| interpolate  | object  | Generates aggregation periods in case of missing samples using an [interpolation function](#interpolation), for example, `PREVIOUS` or `LINEAR`   |
-| threshold    | object  | Object containing the minimum / maximum range for a `THRESHOLD_*` aggregator.  |
-| calendar     | object  | Calendar settings for a `THRESHOLD_*` aggregator. |
-| workingMinutes | object | Working minutes settings for a `THRESHOLD_*` aggregator.  |
-| order         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
+| `type`  | string        | [**Required**] [Statistical function](../../../api/data/aggregation.md) applied to detailed values in the period, such as `AVG`, `SUM`, or `COUNT`. |
+| `types` | array          | Array of [statistical functions](../../../api/data/aggregation.md). Either `type` or `types` field are required in each query. |
+| `period`  | object     | [**Required**] [Period](#period). |
+| `interpolate`  | object  | Generates aggregation periods in case of missing samples using an [interpolation function](#interpolation), for example, `PREVIOUS` or `LINEAR`   |
+| `threshold`    | object  | Object containing the minimum / maximum range for a `THRESHOLD_*` aggregator.  |
+| `calendar`     | object  | Calendar settings for a `THRESHOLD_*` aggregator. |
+| `workingMinutes` | object | Working minutes settings for a `THRESHOLD_*` aggregator.  |
+| `order`         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
 
 ### Period
 
@@ -30,10 +30,10 @@ The aggregation process is implemented as follows:
 
 | **Name**  | **Type** | **Description** |
 |:---|:---|:---|
-| unit  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
-| count  | number | Number of time units contained in the period. |
-| align | string | Alignment of the period's start/end time. Default: `CALENDAR`.|
-| timezone | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database time zone displayed on the **Settings > System Information** page.|
+| `unit`  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
+| `count`  | number | Number of time units contained in the period. |
+| `align` | string | Alignment of the period's start/end time. Default: `CALENDAR`.|
+| `timezone` | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database time zone displayed on the **Settings > System Information** page.|
 
 Example: `{ "count": 1, "unit": "HOUR" }` or `{ "count": 15, "unit": "MINUTE", "align": "END_TIME" }`.
 
@@ -41,7 +41,7 @@ Example: `{ "count": 1, "unit": "HOUR" }` or `{ "count": 15, "unit": "MINUTE", "
 
 | **Name** | **Type**| **Description** |
 |:---|:---|:---|
-| name | string | Custom calendar name |
+| `name` | string | Custom calendar name |
 
 Example: `{ "name": "au-nsw-calendar" }`.
 
@@ -51,8 +51,8 @@ Example: `{ "name": "au-nsw-calendar" }`.
 
 | **Name** | **Type**| **Description** |
 |:---|:---|:---|
-| min  | number | Minimum threshold. |
-| max  | number | Maximum threshold. |
+| `min`  | number | Minimum threshold. |
+| `max`  | number | Maximum threshold. |
 
 Example: `{ "max": 80 }` or `{ "min": 100, "max": 150 }`.
 
@@ -60,8 +60,8 @@ Example: `{ "max": 80 }` or `{ "min": 100, "max": 150 }`.
 
 | **Name** | **Type**| **Description** |
 |:---|:---|:---|
-| start | number | [**Required**] Working date start time, in minutes. If working day starts at 9:30 then `start` can be specified as `570` (9 * 60 + 30). |
-| end   | number | [**Required**] Working date end time, in minutes.  |
+| `start` | number | [**Required**] Working date start time, in minutes. If working day starts at 9:30 then `start` can be specified as `570` (9 * 60 + 30). |
+| `end`   | number | [**Required**] Working date end time, in minutes.  |
 
 ## Examples
 
@@ -100,9 +100,9 @@ The interpolation function will substitute the missing period and calculate its 
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| type  | string | [**Required**] Interpolation [function](#interpolation-functions). |
-| value | number | [**Required by `VALUE` function**] Constant number used to set value for the missing periods. |
-| extend  | boolean | Add missing periods at the beginning and the end of the selection interval. Default: `false`. |
+| `type`  | string | [**Required**] Interpolation [function](#interpolation-functions). |
+| `value` | number | [**Required by `VALUE` function**] Constant number used to set value for the missing periods. |
+| `extend`  | boolean | Add missing periods at the beginning and the end of the selection interval. Default: `false`. |
 
 Values added by the `extend` setting are determined as follows:
 
@@ -113,11 +113,11 @@ Values added by the `extend` setting are determined as follows:
 
 | **Type** | **Description** |
 |:---|:---|
-| NONE | No interpolation. Periods without any raw values are excluded from results. |
-| PREVIOUS | Set value for the period based on the previous period's value. |
-| NEXT | Set value for the period based on the next period's value. |
-| LINEAR | Calculate period value using linear interpolation between previous and next period values. |
-| VALUE| Set value for the period to a specific number. |
+| `NONE` | No interpolation. Periods without any raw values are excluded from results. |
+| `PREVIOUS` | Set value for the period based on the previous period's value. |
+| `NEXT` | Set value for the period based on the next period's value. |
+| `LINEAR` | Calculate period value using linear interpolation between previous and next period values. |
+| `VALUE` | Set value for the period to a specific number. |
 
 #### Examples
 

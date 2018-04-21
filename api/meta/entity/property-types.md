@@ -16,13 +16,13 @@ Retrieve a list property types for the entity.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| entity |string|Entity name.|
+| `entity` |string|Entity name.|
 
 ### Query Parameters 
 
 | **Parameter** | **Type** | **Description** |
 |:---|:---|:---|
-| minInsertDate | string | Include property types with last collection date at or after the specified date. <br>`minInsertDate` can be specified in ISO format or using the [calendar](../../../shared/calendar.md) keywords. |
+| `minInsertDate` | string | Include property types with last collection date at or after the specified date. <br>`minInsertDate` can be specified in ISO format or using the [calendar](../../../shared/calendar.md) keywords. |
 
 ## Response
 
@@ -32,7 +32,7 @@ An array of strings.
 
 | **Name**       | **Description** |
 |:---|:---|
-| type | Property type name |
+| `type` | Property type name |
 
 ## Example
 

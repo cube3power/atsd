@@ -16,8 +16,8 @@ The CSV header should include a leading time column and one or multiple numeric 
 
 | **Name** | **In** | **Description** |
 |:---|:---|:---|
-| entity | path | **[Required]** Entity name. |
-| tag | query | `tag=value` parameter pairs. |
+| `entity` | path | **[Required]** Entity name. |
+| `tag` | query | `tag=value` parameter pairs. |
 
 ### Payload
 

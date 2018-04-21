@@ -257,7 +257,7 @@ Boolean.
 
 Returns true if an entity belongs to all of the entity groups.
 
-```
+```txt
 <#if isMetricCollected("nmon.processes.blocked", "${entity}") >
     [series]        
         label = blocked
@@ -460,13 +460,13 @@ Advanced functions and aggregations can be added to the Freemarker portals to en
 
 | Name | Description | 
 | --- | --- | 
-|  entity  |  Entity  | 
-|  metric  |  Metric  | 
-|  tags  |  Tags  | 
-|  type  |  Aggregation Type  | 
-|  interval  |  Aggregation Interval  | 
-|  shift  |  Interval: endTime = now – shift  | 
-|  duration  |  Selection interval: startTime = endTime – duration  | 
+|  `entity`  |  Entity  | 
+|  `metric`  |  Metric  | 
+|  `tags`  |  Tags  | 
+|  `type`  |  Aggregation Type  | 
+|  `interval`  |  Aggregation Interval  | 
+|  `shift`  |  Interval: endTime = now – shift  | 
+|  `duration`  |  Selection interval: startTime = endTime – duration  | 
 
 
 #### atsd_values parameters

@@ -142,11 +142,10 @@ FROM "mpstat.cpu_busy"
 GROUP BY entity, PERIOD(1 DAY, entity.timeZone)
 ```
 
-```
+```ls
 | entity       | entity.timeZone | avg(value) | Period Start: UTC datetime | Period Start: Local datetime | 
 |--------------|-----------------|------------|----------------------------|------------------------------| 
 | nurswgvml007 | PST             | 12.3       | 2017-08-17 07:00 UTC       | 2017-08-17 00:00 PDT         | 
 | nurswgvml006 | US/Mountain     | 9.2        | 2017-08-17 06:00 UTC       | 2017-08-17 00:00 MDT         | 
 | nurswgvml010 | null            | 5.8        | 2017-08-17 00:00 UTC       | 2017-08-17 00:00 GMT         | 
 ```
-

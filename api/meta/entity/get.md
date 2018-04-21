@@ -14,7 +14,7 @@ Retrieve information about the specified entity including its tags.
 
 | **Name** | **Description** |
 |:---|:---|
-| entity | **[Required]** Entity name. |
+| `entity` | **[Required]** Entity name. |
 
 ## Response
 

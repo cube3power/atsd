@@ -56,10 +56,10 @@ Column aliases can be defined to ensure that the query results meet the followin
 
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
-| datetime | string | `0-1` | The date of the record in ISO-8601 format (1).|
-| time | long | `0-1` | The date of the record in UNIX milliseconds (1). |
-| entity | string | `1` | Name of the entity under which the new series will be stored. |
-| - any - | numeric | `1-*` | Metric name for the stored series (2). |
+| `datetime` | string | `0-1` | The date of the record in ISO-8601 format (1).|
+| `time` | long | `0-1` | The date of the record in UNIX milliseconds (1). |
+| `entity` | string | `1` | Name of the entity under which the new series will be stored. |
+| `- any -` | numeric | `1-*` | Metric name for the stored series (2). |
 
 * (1) Only one of the date columns, `datetime` or `time`, must be included in the results.
 * (2) The column is classified as a 'metric' if it has a numeric datatype and does not match the rules applicable to other column types.
@@ -68,24 +68,24 @@ Column aliases can be defined to ensure that the query results meet the followin
 
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
-| tags.{name} | string | `0-*` | Series tag for the stored series.<br>Tag name set by discarding `tags.` prefix.<br>Cell value contains tag value.|
-| tags | string | `0-*` | Series tags for the stored series, encoded as key=value separated by semi-colon.<br>Cell value contains tag names and values.|
+| `tags.{name}` | string | `0-*` | Series tag for the stored series.<br>Tag name set by discarding `tags.` prefix.<br>Cell value contains tag value.|
+| `tags` | string | `0-*` | Series tags for the stored series, encoded as key=value separated by semi-colon.<br>Cell value contains tag names and values.|
 
 #### Optional Metadata Tag Columns
 
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
-| metric.tags.{name} | string | `0-*` | Metric tag for each metric in the row. <br>Tag name set by discarding `metric.tags.` prefix.<br>Cell value contains metric tag value.|
-| metric.tags | string | `0-*` | Metric tags for each metric in the row, encoded as `key=value` separated by semi-colon. <br>Cell value contains metric tag names and values.|
-| entity.tags.{name} | string | `0-*` | Entity tag for the entity in the row. <br>Tag name set by discarding `entity.tags.` prefix.<br>Cell value contains entity tag value.|
-| entity.tags | string | `0-*` | Entity tags for the entity in the row, encoded as `key=value` separated by semi-colon. <br>Cell value contains entity tag names and values.|
+| `metric.tags.{name}` | string | `0-*` | Metric tag for each metric in the row. <br>Tag name set by discarding `metric.tags.` prefix.<br>Cell value contains metric tag value.|
+| `metric.tags` | string | `0-*` | Metric tags for each metric in the row, encoded as `key=value` separated by semi-colon. <br>Cell value contains metric tag names and values.|
+| `entity.tags.{name}` | string | `0-*` | Entity tag for the entity in the row. <br>Tag name set by discarding `entity.tags.` prefix.<br>Cell value contains entity tag value.|
+| `entity.tags` | string | `0-*` | Entity tags for the entity in the row, encoded as `key=value` separated by semi-colon. <br>Cell value contains entity tag names and values.|
 
 #### Optional Metadata Field Columns
 
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
-| metric.{field-name} | string | `0-*` | [Metric field](README.md#metric-columns) for each metric in the row.<br>Field name set by discarding `metric.` prefix.<br>Cell value contains metric field value.|
-| entity.{field-name} | string | `0-*` | [Entity field](README.md#entity-columns) for the entity in the row.<br>Field name set by discarding `entity.` prefix.<br>Cell value contains entity field value.|
+| `metric.{field-name}` | string | `0-*` | [Metric field](README.md#metric-columns) for each metric in the row.<br>Field name set by discarding `metric.` prefix.<br>Cell value contains metric field value.|
+| `entity.{field-name}` | string | `0-*` | [Entity field](README.md#entity-columns) for the entity in the row.<br>Field name set by discarding `entity.` prefix.<br>Cell value contains entity field value.|
 
 * The following metadata fields are read-only and cannot be set: 'metric.name', 'metric.lastInsertTime', 'entity. groups':
 

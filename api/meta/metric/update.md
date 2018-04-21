@@ -18,7 +18,7 @@ Similarly, fields that are set to `null` are ignored and are left unchanged.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| metric |string|Metric name.|
+| `metric` |string|Metric name.|
 
 ### Fields
 

@@ -28,9 +28,9 @@ Refer to message [query](query.md#message-filter-fields) fields.
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-|metric|string | [**Required**] Must be set to `message-count`. |
-|groupKeys|array | Array of message tags used for grouping: `type`, `source`, `entity`, etc, for example `"groupKeys": ["entity", "type"]` |
-|aggregate|object | Period [aggregator](../../../api/data/series/aggregate.md). Only `COUNT` type is supported. <br>`"aggregate":{"type":"COUNT", "period":{"count":1,"unit":"HOUR"}}` |
+|`metric`|string | [**Required**] Must be set to `message-count`. |
+|`groupKeys`|array | Array of message tags used for grouping: `type`, `source`, `entity`, etc, for example `"groupKeys": ["entity", "type"]` |
+|`aggregate`|object | Period [aggregator](../../../api/data/series/aggregate.md). Only `COUNT` type is supported. <br>`"aggregate":{"type":"COUNT", "period":{"count":1,"unit":"HOUR"}}` |
 
 #### Entity Filter Fields
 
@@ -46,8 +46,8 @@ Refer to message [query](query.md#message-filter-fields) fields.
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| requestId | string | Optional identifier used to associate `query` object in request with `series` objects in response. |
-| timeFormat |string| Time format for data array. `iso` or `milliseconds`. Default: `iso`. |
+| `requestId` | string | Optional identifier used to associate `query` object in request with `series` objects in response. |
+| `timeFormat` |string| Time format for data array. `iso` or `milliseconds`. Default: `iso`. |
 
 ## Response 
 

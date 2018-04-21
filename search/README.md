@@ -38,13 +38,13 @@ If the field is not specified, the search is performed for all fields.
 
 | **Field** | **Description** | **Example** |
 |---|---|---|
-| entity | Entity name. | `entity:nurswgvml007` |
-| entity.label | Entity label. | `entity.label:nur*007` |
-| metric | Metric name. | `metric:mpstat.cpu_busy` |
-| metric.label | Metric label. | `metric.label:"cpu busy"` |
-| date | Last insert date `yyyy-MM-dd`. | `date:2017-06-25` |
-| {tag.name} | Series/metric/entity tag name. | `location:nur` |
-| contents | All fields. | `nurswgvml007` or `contents:nurswgvml007` |
+| `entity` | Entity name. | `entity:nurswgvml007` |
+| `entity.label` | Entity label. | `entity.label:nur*007` |
+| `metric` | Metric name. | `metric:mpstat.cpu_busy` |
+| `metric.label` | Metric label. | `metric.label:"cpu busy"` |
+| `date` | Last insert date `yyyy-MM-dd`. | `date:2017-06-25` |
+| `{tag.name}` | Series/metric/entity tag name. | `location:nur` |
+| `contents` | All fields. | `nurswgvml007` or `contents:nurswgvml007` |
 
 ### Operators
 

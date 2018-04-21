@@ -40,11 +40,11 @@ ORDER BY datetime
 ## Results
 
 ```ls
-| time          | datetime             | value   | text | metric       | entity       | tags                                                          | 
-|---------------|----------------------|---------|------|--------------|--------------|---------------------------------------------------------------| 
-| 1499177539000 | 2017-07-04T14:12:19Z | 6652400 | null | df.disk_used | nurswgvml006 | file_system=/dev/mapper/vg_nurswgvml006-lv_root;mount_point=/ | 
-| 1499177554000 | 2017-07-04T14:12:34Z | 6652400 | null | df.disk_used | nurswgvml006 | file_system=/dev/mapper/vg_nurswgvml006-lv_root;mount_point=/ | 
-| 1499177569000 | 2017-07-04T14:12:49Z | 6652392 | null | df.disk_used | nurswgvml006 | file_system=/dev/mapper/vg_nurswgvml006-lv_root;mount_point=/ | 
+| time          | datetime             | value   | text | metric       | entity       | tags                                                          |
+|---------------|----------------------|---------|------|--------------|--------------|---------------------------------------------------------------|
+| 1499177539000 | 2017-07-04T14:12:19Z | 6652400 | null | df.disk_used | nurswgvml006 | file_system=/dev/mapper/vg_nurswgvml006-lv_root;mount_point=/ |
+| 1499177554000 | 2017-07-04T14:12:34Z | 6652400 | null | df.disk_used | nurswgvml006 | file_system=/dev/mapper/vg_nurswgvml006-lv_root;mount_point=/ |
+| 1499177569000 | 2017-07-04T14:12:49Z | 6652392 | null | df.disk_used | nurswgvml006 | file_system=/dev/mapper/vg_nurswgvml006-lv_root;mount_point=/ |
 ```
 
 ## Query - `JOIN`

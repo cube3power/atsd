@@ -22,7 +22,7 @@ The replace request for an existing metric doesn't affect any series data since 
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| metric |string|Metric name.|
+| `metric` |string|Metric name.|
 
 ### Fields
 

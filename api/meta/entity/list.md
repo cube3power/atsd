@@ -14,11 +14,11 @@ Retrieve a list of entities matching the specified filters.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| expression |string|Include entities that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators. Supported wildcards: `*` and `?`.|
-| minInsertDate |string|Include entities with `lastInsertDate` equal or greater than `minInsertDate`.<br>The parameter can be specified in ISO-8601 format or using [calendar](../../../shared/calendar.md) keywords.|
-| maxInsertDate |string|Include entities with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>The parameter can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
-| limit |integer|Maximum number of entities to retrieve, ordered by name.|
-| tags |string|Comma-separated list of entity tag names to include in the response, for example, `tags=OS,location`.<br>Specify `tags=*` to include all entity tags.<br>Specify `tags=env.*` to include all entity tags starting with `env.`.|
+| `expression` |string|Include entities that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators. Supported wildcards: `*` and `?`.|
+| `minInsertDate` |string|Include entities with `lastInsertDate` equal or greater than `minInsertDate`.<br>The parameter can be specified in ISO-8601 format or using [calendar](../../../shared/calendar.md) keywords.|
+| `maxInsertDate` |string|Include entities with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>The parameter can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
+| `limit` |integer|Maximum number of entities to retrieve, ordered by name.|
+| `tags` |string|Comma-separated list of entity tag names to include in the response, for example, `tags=OS,location`.<br>Specify `tags=*` to include all entity tags.<br>Specify `tags=env.*` to include all entity tags starting with `env.`.|
 
 #### Expression
 
@@ -43,28 +43,28 @@ The `lastInsertDate` field should be filtered using `minInsertDate` and `maxInse
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| name | string | Entity name. |
-| label | string | Entity label. |
-| enabled | boolean | Enabled status. Incoming data is discarded for disabled entities. |
-| interpolate | string | Interpolation mode: `LINEAR` or `PREVIOUS`. <br>Used in SQL `WITH INTERPOLATE` clause when interpolation mode is set to `AUTO`, for example, `WITH INTERPOLATE(1 MINUTE, AUTO)`.|
-| timeZone | string | Time Zone ID, for example `America/New_York` or `EST`.<br>Refer to the [Time Zone](../../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The time zone is applied by date-formatting functions to return local time in entity-specific time zone.|
-| createdDate| string | Date when this entity was created in ISO-8601 format.|
-| lastInsertDate | string |Last time, in ISO format, when a value was received by the database for this entity. |
-| tags | object | Entity tags, as requested with the `tags` parameter. |
+| `name` | string | Entity name. |
+| `label` | string | Entity label. |
+| `enabled` | boolean | Enabled status. Incoming data is discarded for disabled entities. |
+| `interpolate` | string | Interpolation mode: `LINEAR` or `PREVIOUS`. <br>Used in SQL `WITH INTERPOLATE` clause when interpolation mode is set to `AUTO`, for example, `WITH INTERPOLATE(1 MINUTE, AUTO)`.|
+| `timeZone` | string | Time Zone ID, for example `America/New_York` or `EST`.<br>Refer to the [Time Zone](../../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The time zone is applied by date-formatting functions to return local time in entity-specific time zone.|
+| `createdDate` | string | Date when this entity was created in ISO-8601 format.|
+| `lastInsertDate` | string |Last time, in ISO format, when a value was received by the database for this entity. |
+| `tags` | object | Entity tags, as requested with the `tags` parameter. |
 
 ### Interpolate
 
 |**Type**|
 |:---|
-|LINEAR|
-|PREVIOUS|
+|`LINEAR`|
+|`PREVIOUS`|
 
 ### Time Precision
 
 |**Precision**|
 |:---|
-|MILLISECONDS|
-|SECONDS|
+|`MILLISECONDS`|
+|`SECONDS`|
 
 ## Example 1
 

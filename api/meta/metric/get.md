@@ -14,7 +14,7 @@ Retrieve properties and tags for the specified metric.
 
 | **Name** | **Description** |
 |:---|:---|
-| metric | **[Required]** Metric name. |
+| `metric` | **[Required]** Metric name. |
 
 ## Response
 

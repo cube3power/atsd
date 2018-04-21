@@ -79,11 +79,11 @@ Specify the same settings for the **Open** and **Repeat** triggers:
 
 | **Name** | **Value** |
 | :-------- | :---- |
-| branch | master |
-| parallel | 4 |
-| project_name | atsd-api-java |
-| run_extra_tests  | false |
-| timezone  | Etc/UTC |
+| `branch` | master |
+| `parallel` | 4 |
+| `project_name` | atsd-api-java |
+| `run_extra_tests`  | false |
+| `timezone`  | Etc/UTC |
 
 ![](images/circle_rule_notification.png)
 

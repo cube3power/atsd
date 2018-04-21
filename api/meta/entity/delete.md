@@ -16,7 +16,7 @@ Data collected by the entity will be removed asynchronously in the background.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| entity |string|Entity name.|
+| `entity` |string|Entity name.|
 
 ## Response
 

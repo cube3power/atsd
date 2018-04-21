@@ -17,11 +17,11 @@ Each group has an ordered list of pairs: [timestamp | samples of several series 
 
 | **Parameter** | **Type** | **Description**  |
 |:---|:---|:---|
-| type          | string          | **[Required]** Grouping [function](#grouping-functions) applied to values of the input series. |
-| period      | object           | [Period](period.md). Splits the merged series into periods and applies the statistical function to values in each period separately. |
-| interpolate   | object           | [Interpolation](#interpolation) function to fill gaps in input series (no period) or in grouped series (if period is specified). |
-| truncate      | boolean           | Discards samples at the beginning of the interval until values for all input series are established. Default: false.  |
-| order         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
+| `type`          | string          | **[Required]** Grouping [function](#grouping-functions) applied to values of the input series. |
+| `period`      | object           | [Period](period.md). Splits the merged series into periods and applies the statistical function to values in each period separately. |
+| `interpolate`   | object           | [Interpolation](#interpolation) function to fill gaps in input series (no period) or in grouped series (if period is specified). |
+| `truncate`      | boolean           | Discards samples at the beginning of the interval until values for all input series are established. Default: false.  |
+| `order`         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
 
 ## Grouping Functions
 
@@ -56,9 +56,9 @@ Each group has an ordered list of pairs: [timestamp | samples of several series 
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| type  | string | [**Required**] Interpolation [function](#interpolation-functions). |
-| value | number | [**Required by `VALUE` function**] Constant number used to set value for the missing periods. |
-| extend  | boolean | Add missing periods at the beginning and the end of the selection interval. Default: `false`. |
+| `type`  | string | [**Required**] Interpolation [function](#interpolation-functions). |
+| `value` | number | [**Required by `VALUE` function**] Constant number used to set value for the missing periods. |
+| `extend`  | boolean | Add missing periods at the beginning and the end of the selection interval. Default: `false`. |
 
 Values added by `extend` setting are determined as follows:
 
@@ -69,11 +69,11 @@ Values added by `extend` setting are determined as follows:
 
 | **Type** | **Description** |
 |:---|:---|
-| NONE | No interpolation. Periods without any raw values are excluded from results. |
-| PREVIOUS | Set value for the period based on the previous period's value. |
-| NEXT | Set value for the period based on the next period's value. |
-| LINEAR | Calculate period value using linear interpolation between previous and next period values. |
-| VALUE| Set value for the period to a specific number. |
+| `NONE` | No interpolation. Periods without any raw values are excluded from results. |
+| `PREVIOUS` | Set value for the period based on the previous period's value. |
+| `NEXT` | Set value for the period based on the next period's value. |
+| `LINEAR` | Calculate period value using linear interpolation between previous and next period values. |
+| `VALUE` | Set value for the period to a specific number. |
 
 ## Examples
 

@@ -16,19 +16,19 @@ Retrieve series values for the specified entity, metric, and optional series tag
 
 | **Name** | **Description** |
 |:---|:---|
-| entity | **[Required]** Entity name. |
-| metric | **[Required]** Metric name. |
-| format | **[Required]** Response format: `csv` or `json`. |
+| `entity` | **[Required]** Entity name. |
+| `metric` | **[Required]** Metric name. |
+| `format` | **[Required]** Response format: `csv` or `json`. |
 
 #### Query String Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-|t:name|string|Tag name, prefixed by `t:`. Tag value specified as a parameter value, for example, `&t:file_system=/tmp`. <br>Multiple values for the same tag can be specified by repeating the parameter, for example, `&t:file_system=/tmp&&t:file_system=/home/export`|
-|aggregate|string|[Statistical function](../../../api/data/aggregation.md#statistical-functions) to compute aggregate results from detailed values in each period.|
-|period|string|Duration of the aggregation period specified as `count-timeunit`, for example, `1-hour`.|
-|limit|integer|Maximum number of samples returned in the response. Default value: 0 (unlimited). |
-|columns|string|Columns included in CSV format response. <br>Possible values: time, date (time in ISO), entity, metric, t:{name}, value. <br>Default: time, entity, metric, requested tag names, value
+|`t:name`|string|Tag name, prefixed by `t:`. Tag value specified as a parameter value, for example, `&t:file_system=/tmp`. <br>Multiple values for the same tag can be specified by repeating the parameter, for example, `&t:file_system=/tmp&&t:file_system=/home/export`|
+|`aggregate`|string|[Statistical function](../../../api/data/aggregation.md#statistical-functions) to compute aggregate results from detailed values in each period.|
+|`period`|string|Duration of the aggregation period specified as `count-timeunit`, for example, `1-hour`.|
+|`limit`|integer|Maximum number of samples returned in the response. Default value: 0 (unlimited). |
+|`columns`|string|Columns included in CSV format response. <br>Possible values: time, date (time in ISO), entity, metric, t:{name}, value. <br>Default: time, entity, metric, requested tag names, value
 
 #### Query String Date Parameters
 
@@ -36,9 +36,9 @@ Retrieve series values for the specified entity, metric, and optional series tag
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| startDate | string | Start date in ISO format or endtime syntax. |
-| endDate | string | End date in ISO format or endtime syntax. |
-| interval | string | Interval specified as `{count}-{timeunit}`, for example `1-hour`. |
+| `startDate` | string | Start date in ISO format or endtime syntax. |
+| `endDate` | string | End date in ISO format or endtime syntax. |
+| `interval` | string | Interval specified as `{count}-{timeunit}`, for example `1-hour`. |
 
 ## Response
 

@@ -22,7 +22,7 @@ The replace request for an existing entity doesn't affect any series, properties
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| entity |string|Entity name.|
+| `entity` |string|Entity name.|
 
 ### Fields
 

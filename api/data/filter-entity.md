@@ -7,10 +7,10 @@
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| entity   | string | Entity name or entity name pattern.<br>Example: `"entity":"nur007"` or `"entity":"svl*"` |
-| entities | array | Array of entity names or entity name patterns.<br>Example: `"entities":["nur007", "nur010", "svl*"]`|
-| entityGroup | string | Entity group name. <br>Example: `"entityGroup":"nur-prod-servers"`.<br>Returns records for members of the specified group.<br>The result is empty if the group doesn't exist or is empty.|
-| entityExpression | string | Matches entities by name, entity tag, and properties based on the specified [filter expression](#entityexpression-syntax). <br>Example: `"entityExpression":"tags.location = 'SVL'"`  |
+| `entity`   | string | Entity name or entity name pattern.<br>Example: `"entity":"nur007"` or `"entity":"svl*"` |
+| `entities` | array | Array of entity names or entity name patterns.<br>Example: `"entities":["nur007", "nur010", "svl*"]`|
+| `entityGroup` | string | Entity group name. <br>Example: `"entityGroup":"nur-prod-servers"`.<br>Returns records for members of the specified group.<br>The result is empty if the group doesn't exist or is empty.|
+| `entityExpression` | string | Matches entities by name, entity tag, and properties based on the specified [filter expression](#entityexpression-syntax). <br>Example: `"entityExpression":"tags.location = 'SVL'"`  |
 
 ## `entityExpression` Syntax
 
@@ -36,7 +36,7 @@ Supported fields:
 
    * [entity_tags(string e)](../../rule-engine/functions-lookup.md#entity_tags)
    * [collection](../../rule-engine/functions-lookup.md#collection)
-   
+
 * Collection Functions
 
    * [collection](../../rule-engine/functions-collection.md#collection)
@@ -46,7 +46,7 @@ Supported fields:
    * [contains](../../rule-engine/functions-collection.md#contains)
    * [size](../../rule-engine/functions-collection.md#size)
    * [isEmpty](../../rule-engine/functions-collection.md#isempty)
-  
+
 * Text Functions
 
    * [upper](../../rule-engine/functions-text.md#upper)

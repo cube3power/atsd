@@ -57,7 +57,7 @@ FROM df.disk_used
 LIMIT 1
 ```
 
-```
+```ls
 | metric | metric.dataType | metric.description | metric.enabled | metric.filter | metric.id | metric.interpolate | metric.invalidValueAction | metric.label | metric.lastInsertTime |
 |---|---|---|---|---|---|---|---|---|---|
 | df.disk_used | FLOAT | null | true | tags.file_system != 'none' | 35 | LINEAR | NONE | null | null |
@@ -79,7 +79,7 @@ FROM df.disk_used
 LIMIT 1
 ```
 
-```
+```ls
 | metric | metric.maxValue | metric.minValue | metric.name | metric.persistent | metric.retentionIntervalDays | metric.tags | metric.timePrecision | metric.timeZone | metric.units | metric.versioning |
 |---|---|---|---|---|---|---|---|---|---|---|
 | df.disk_used | null | null | df.disk_used | true | 0 | null | MILLISECONDS | null | null | false |

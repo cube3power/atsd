@@ -32,6 +32,7 @@ Configuration file example:
     debug: true
 }
 ```
+
 Possible variables:
 
 | Variable | Description | Default Value |

@@ -22,9 +22,9 @@ An array of query objects containing the following filtering fields:
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| rule       | string | Rule name.        |
-| rules       | array | An array of rule names. |
-| metric     | string | Metric name. |
+| `rule`       | string | Rule name.        |
+| `rules`       | array | An array of rule names. |
+| `metric`     | string | Metric name. |
 
 #### Entity Filter Fields
 
@@ -40,7 +40,7 @@ An array of query objects containing the following filtering fields:
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| limit   | integer | Maximum number of records to be returned. Default: 1000.<br>Limit is not applied if the parameter value <= 0. | 
+| `limit`   | integer | Maximum number of records to be returned. Default: 1000.<br>Limit is not applied if the parameter value <= 0. | 
 
 ## Response 
 
@@ -50,22 +50,22 @@ An array of matching alert objects containing the following fields:
 
 | **Field** | **Type** | **Description** |
 |:---|:---|:---|
-| entity | string | Entity name. |
-| metric | string | Metric name.  |
-| rule | string | Rule name. |
-| ruleExpression | string | Rule expression. |
-| ruleFilter | string | Rule filter. |
-| severity  | string | [Severity](../../../api/data/severity.md) code.  |
-| tags | string | Concatenated `name=value` pairs, for example `file_system=/dev/sda1;mount_point=/` |
-| repeatCount | integer | Number of times when the expression was evaluated to true sequentially.  |
-| alert | string | Alert message.  |
-| window | string | Window length. |
-| value | double | Last numeric value received. |
-| type | string | Alert state when closed: `OPEN`, `CANCEL`, `REPEAT`  |
-| date | string | ISO 8601 date.  |
-| alertOpenDate | string | ISO 8601 date when the alert was open.  |
-| alertDuration | number | Time in milliseconds when alert was in `OPEN` or `REPEAT` state.  |
-| receivedDate | string | ISO 8601 date when the last value was received.  |
+| `entity` | string | Entity name. |
+| `metric` | string | Metric name.  |
+| `rule` | string | Rule name. |
+| `ruleExpression` | string | Rule expression. |
+| `ruleFilter` | string | Rule filter. |
+| `severity`  | string | [Severity](../../../api/data/severity.md) code.  |
+| `tags` | string | Concatenated `name=value` pairs, for example `file_system=/dev/sda1;mount_point=/` |
+| `repeatCount` | integer | Number of times when the expression was evaluated to true sequentially.  |
+| `alert` | string | Alert message.  |
+| `window` | string | Window length. |
+| `value` | double | Last numeric value received. |
+| `type` | string | Alert state when closed: `OPEN`, `CANCEL`, `REPEAT`  |
+| `date` | string | ISO 8601 date.  |
+| `alertOpenDate` | string | ISO 8601 date when the alert was open.  |
+| `alertDuration` | number | Time in milliseconds when alert was in `OPEN` or `REPEAT` state.  |
+| `receivedDate` | string | ISO 8601 date when the last value was received.  |
 
 ### Errors
 
@@ -127,6 +127,7 @@ curl  https://atsd_host:8443/api/v1/alerts/history \
 ## Additional Examples
 
 ### Entity Filter
+
 * [Multiple Entities](examples/history-query/alerts-history-query-multiple-entity.md)
 * [Entity Wildcard](examples/history-query/alerts-history-query-entity-wildcard.md)
 * [Entity Expression: Name](examples/history-query/alerts-history-query-entity-expression-name.md)
@@ -135,11 +136,13 @@ curl  https://atsd_host:8443/api/v1/alerts/history \
 * [Entity Group](examples/history-query/alerts-history-query-entity-group.md)
 
 ### Rule Filter
+
 * [History-Alerts for Defined Rule](examples/history-query/alerts-history-query-defined-rule.md)
 * [Rules: All Value](examples/history-query/alerts-history-query-rules-all-value.md)
 * [Rule Wildcard](examples/history-query/alerts-history-query-rule-wildcard.md)
 
 ### Metric Filter
+
 * [History-Alerts for Defined Metric](examples/history-query/alerts-history-query-defined-metric.md)
 * [Metrics: All Value](examples/history-query/alerts-history-query-metrics-all-value.md)
 * [Metric Wildcard](examples/history-query/alerts-history-query-metric-wildcard.md)
@@ -147,13 +150,16 @@ curl  https://atsd_host:8443/api/v1/alerts/history \
 * [History-Alerts for Property Commands](examples/history-query/alerts-history-query-property-commands.md)
 
 ### Multiple Queries
+
 * [Multiple History-Queries](examples/history-query/alerts-history-query-multiple-queries.md)
 * [Multiple History-Queries for Unknown Entity](examples/history-query/alerts-history-query-multiple-queries-unknown-entity.md)
 * [Multiple History-Queries with Limit](examples/history-query/alerts-history-query-multiple-queries-limit.md)
 
 ### Date Filter
+
 * [History-Alerts for Last Day](examples/history-query/alerts-history-query-last-day.md)
 * [End Date and Interval](examples/history-query/alerts-history-query-enddate-interval.md)
 
 ### Control Fields
+
 * [Limit](examples/history-query/alerts-history-query-limit.md)

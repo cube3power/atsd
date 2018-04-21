@@ -14,7 +14,7 @@ Retrieve a list of entity groups to which the specified entity belongs.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| entity |string|Entity name.|
+| `entity` |string|Entity name.|
 
 ## Response
 
@@ -24,8 +24,8 @@ An array of objects containing the following fields describing an entity group.
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| name | string| Entity group name. |
-| tags | object | Entity group tags. |
+| `name` | string| Entity group name. |
+| `tags` | object | Entity group tags. |
 
 ## Example
 

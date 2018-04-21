@@ -18,7 +18,7 @@ Similarly, fields that are set to `null` are ignored and are left unchanged.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| entity |string|Entity name.|
+| `entity` |string|Entity name.|
 
 ### Fields
 

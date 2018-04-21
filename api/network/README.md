@@ -280,12 +280,12 @@ The number of tags included in the command cannot exceed the following limit:
 
 |**Type**| **Maximum Identifier**|
 |:---|:---|
-|metric| 16777215 |
-|entity| 16777215 |
-|tag_key| 65535|
-|tag_value| 16777215 |
-|message_type| 65535 |
-|message_source| 65535 |
+|`metric`| 16777215 |
+|`entity`| 16777215 |
+|`tag_key`| 65535|
+|`tag_value`| 16777215 |
+|`message_type`| 65535 |
+|`message_source`| 65535 |
 
 ### Time Field
 

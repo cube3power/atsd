@@ -6,8 +6,8 @@ When a metric is versioned, the database retains the history of series value cha
 
 | **Name** | **Description**   |
 |:---|:---|
-| versioned | Boolean. Returns version status, source, time/date if metric is versioned. |
-|versionFilter| Expression to filter value history (versions) by version status, source or time, for example: `version_status = 'Deleted'` or `version_source LIKE '*user*'`. To filter by version time, use the `date()` function, for example, `version_time > date('2015-08-11T16:00:00Z')` or `version_time > date('current_day')`. The `date()` function accepts End Time syntax.|
+| `versioned` | Boolean. Returns version status, source, time/date if metric is versioned. |
+| `versionFilter`| Expression to filter value history (versions) by version status, source or time, for example: `version_status = 'Deleted'` or `version_source LIKE '*user*'`. To filter by version time, use the `date()` function, for example, `version_time > date('2015-08-11T16:00:00Z')` or `version_time > date('current_day')`. The `date()` function accepts End Time syntax.|
 
 <aside class="notice">
 Versioned values are always returned with version time/date (t or d). Version time is the value change time (when this version was stored in ATSD).

@@ -79,21 +79,21 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 
 | **Name** | **Example** | **Description** | **ChartLab** | 
 | --- | --- | --- | --- | 
-|  title  |  `title = CPU Busy Portal`  |  Portal name.  |  | 
-|  dialog-maximize  |  `dialog-maximize = true`  |  If enabled, the dialog window will occupy the entire portal page.<br>Dialog window can be opened by clicking on the widget header.<br>Default value: true.  |  [View](https://apps.axibase.com/chartlab/808e5846/14/)  | 
-|  display-panels  |  `display-panels = true`  |  Display widget controls.<br>Possible values: true, false, hover.  |  [View](https://apps.axibase.com/chartlab/808e5846/16/)  | 
-|  expand-panels  |  `expand-panels = compact`  |  Expand widget controls.<br>Possible values: all, compact, none.  |  [View](https://apps.axibase.com/chartlab/808e5846/18/)  | 
-|  periods  |  `periods = 20 minute, 4 hour`  |  Add custom period(s) to aggregation controls in the top-right corner of the widget.  |  [View](http://apps.axibase.com/chartlab/fedaa42e/45/)  | 
-|  buttons  |  `buttons = update`  |  Add buttons to the widget header. The buttons are visible on mouse-over.<br>Possible values: update, reset.<br>`update` stops/resumes the loading of new data into the widget.<br>Reset is available only for the table widget. It resets column sorting to the initial order.  |  [View](https://apps.axibase.com/chartlab/808e5846/12/)  | 
+|  `title`  |  `title = CPU Busy Portal`  |  Portal name.  |  | 
+|  `dialog-maximize`  |  `dialog-maximize = true`  |  If enabled, the dialog window will occupy the entire portal page.<br>Dialog window can be opened by clicking on the widget header.<br>Default value: true.  |  [View](https://apps.axibase.com/chartlab/808e5846/14/)  | 
+|  `display-panels`  |  `display-panels = true`  |  Display widget controls.<br>Possible values: true, false, hover.  |  [View](https://apps.axibase.com/chartlab/808e5846/16/)  | 
+|  `expand-panels`  |  `expand-panels = compact`  |  Expand widget controls.<br>Possible values: all, compact, none.  |  [View](https://apps.axibase.com/chartlab/808e5846/18/)  | 
+|  `periods`  |  `periods = 20 minute, 4 hour`  |  Add custom period(s) to aggregation controls in the top-right corner of the widget.  |  [View](http://apps.axibase.com/chartlab/fedaa42e/45/)  | 
+|  `buttons`  |  `buttons = update`  |  Add buttons to the widget header. The buttons are visible on mouse-over.<br>Possible values: update, reset.<br>`update` stops/resumes the loading of new data into the widget.<br>Reset is available only for the table widget. It resets column sorting to the initial order.  |  [View](https://apps.axibase.com/chartlab/808e5846/12/)  | 
 
 ### Interval Settings
 
 | **Name** | **Example** | **Description** | **ChartLab** | 
 | --- | --- | --- | --- | 
-|  timespan  |  `timespan = 2 hour`  |  Specifies the timespan for which the data should be loaded for all widgets by default.<br>The setting can be overridden by each widget separately.  |  [View](https://apps.axibase.com/chartlab/808e5846/6/)  | 
-|  start-time  |  `start-time = 2017-04-01T10:15:00Z`  |  Specifies the date and time in local or ISO-8601 format from which the values for the series are loaded.<br>The setting can be overridden by each widget separately.<br>Note that `start-time` is **inclusive** and `end-time` is **exclusive**.<br>This means that `start-time = 2017-09-14 10:00:00` will include data points that occurred exactly at `10:00:00` and later whereas `end-time = 2017-09-14 11:00:00` will include data points that occurred up to `10:59:59`, excluding points that occurred at `11:00:00`.<br>The setting supports [calendar](../shared/calendar.md) keywords.  |  [View](https://apps.axibase.com/chartlab/ca5669c8)  | 
-|  end-time  |  `end-time = previous_working_day`  |  Specifies the date and time in local or ISO-8601 format until which the values for the series are loaded.<br>The setting can be overridden by each widget separately..<br>Note that `start-time` is **inclusive** and `end-time` is **exclusive**.<br>This means that `start-time = 2017-09-14 10:00:00` will include data points that occurred exactly at `10:00:00` and later whereas `end-time = 2017-09-14 11:00:00` will include data points that occurred up to `10:59:59`, excluding points that occurred at `11:00:00`.<br>The setting supports [calendar](../shared/calendar.md) keywords.  |  [View](https://apps.axibase.com/chartlab/808e5846/7/)  | 
-|  timezone  |  `timezone = UTC`  |  Set the time zone for the data being loaded into the portal. Only the 'UTC' option is supported. <br>If 'UTC' is not set, the portal displays dates in the local time zone. <br>If 'UTC' is set, `start-time` and `end-time` settings specified in local format are evaluated based on the UTC time zone. |  [View](https://apps.axibase.com/chartlab/808e5846/8/)  | 
+|  `timespan`  |  `timespan = 2 hour`  |  Specifies the timespan for which the data should be loaded for all widgets by default.<br>The setting can be overridden by each widget separately.  |  [View](https://apps.axibase.com/chartlab/808e5846/6/)  | 
+|  `start-time`  |  `start-time = 2017-04-01T10:15:00Z`  |  Specifies the date and time in local or ISO-8601 format from which the values for the series are loaded.<br>The setting can be overridden by each widget separately.<br>Note that `start-time` is **inclusive** and `end-time` is **exclusive**.<br>This means that `start-time = 2017-09-14 10:00:00` will include data points that occurred exactly at `10:00:00` and later whereas `end-time = 2017-09-14 11:00:00` will include data points that occurred up to `10:59:59`, excluding points that occurred at `11:00:00`.<br>The setting supports [calendar](../shared/calendar.md) keywords.  |  [View](https://apps.axibase.com/chartlab/ca5669c8)  | 
+|  `end-time`  |  `end-time = previous_working_day`  |  Specifies the date and time in local or ISO-8601 format until which the values for the series are loaded.<br>The setting can be overridden by each widget separately..<br>Note that `start-time` is **inclusive** and `end-time` is **exclusive**.<br>This means that `start-time = 2017-09-14 10:00:00` will include data points that occurred exactly at `10:00:00` and later whereas `end-time = 2017-09-14 11:00:00` will include data points that occurred up to `10:59:59`, excluding points that occurred at `11:00:00`.<br>The setting supports [calendar](../shared/calendar.md) keywords.  |  [View](https://apps.axibase.com/chartlab/808e5846/7/)  | 
+|  `timezone`  |  `timezone = UTC`  |  Set the time zone for the data being loaded into the portal. Only the 'UTC' option is supported. <br>If 'UTC' is not set, the portal displays dates in the local time zone. <br>If 'UTC' is set, `start-time` and `end-time` settings specified in local format are evaluated based on the UTC time zone. |  [View](https://apps.axibase.com/chartlab/808e5846/8/)  | 
 
 * Supported `datetime` formats:
   - ISO 8601: `yyyy-MM-ddTHH:mm:ss[.NNN]Z`, for example: `2017-07-01T00:00:00Z`
@@ -103,22 +103,22 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 
 | **Name** | **Example** | **Description** | **ChartLab** | 
 | --- | --- | --- | --- | 
-|  width-units   |  `width-units = 2`  |  Number of columns in the portal. Default: 6. |  [View](https://apps.axibase.com/chartlab/808e5846)  | 
-|  height-units  |  `height-units = 2`  |  	Number of rows in the portal. Default: 4.  |  [View](https://apps.axibase.com/chartlab/808e5846/2/)  | 
-|  offset-right  |  `offset-right = 50`  |  Offset from the right border, in pixels.<br>`offset-` can be used with: top, right, bottom, left.  |  [View](https://apps.axibase.com/chartlab/808e5846/10/)  | 
-| widgets-per-row  |  `widgets-per-row = 3`  | Maximum number of widgets in the [group] section. If the value is exceeded, extra widgets are automatically placed into a new row.  |  [View](https://apps.axibase.com/chartlab/a4b4182b) | 
+|  `width-units`   |  `width-units = 2`  |  Number of columns in the portal. Default: 6. |  [View](https://apps.axibase.com/chartlab/808e5846)  | 
+|  `height-units`  |  `height-units = 2`  |  	Number of rows in the portal. Default: 4.  |  [View](https://apps.axibase.com/chartlab/808e5846/2/)  | 
+|  `offset-right`  |  `offset-right = 50`  |  Offset from the right border, in pixels.<br>`offset-` can be used with: top, right, bottom, left.  |  [View](https://apps.axibase.com/chartlab/808e5846/10/)  | 
+| `widgets-per-row`  |  `widgets-per-row = 3`  | Maximum number of widgets in the [group] section. If the value is exceeded, extra widgets are automatically placed into a new row.  |  [View](https://apps.axibase.com/chartlab/a4b4182b) | 
 
 ### Connection Settings
 
 | **Name** | **Example** | **Description** | **ChartLab** | 
 | --- | --- | --- | --- | 
-|  url  |  `url = http://atsd_hostname:port`  |  URL of the ATSD server. The setting is necessary if the data is loaded from an ATSD server running on a different host.  |  | 
-|  context-path  |  `context-path = api/v2`  |  Context path. Default value is `api/v1`.  |  | 
-| method-path | `method-path = /series/query` | Data API method path. Default value is specific for each data type: `/series/query`, `/properties/query`, `/messages/query`, `/alerts/query`. | |
-|  url-parameters  |  `url-parameters = db=12&adapter=7`  |  Optional request parameters included in data API requests.<br>Parameter names and values must be URL-encoded if necessary and separated by ampersand. `?` at the start of the query string is optional. |  | 
-|  update-interval  |  `update-interval = 5 minute`  |  Polling interval at which new incremental data is requested from the server by widgets on the portal.<br>For example `update-interval = 5 minute`.<br>The default value is 1 minute.<br>The setting can be overridden by each widget separately.<br>Chart updates are disabled if the endtime parameter for the portal or the widget is set to a fixed date, for example: `endtime = 2016-06-27T00:00:00Z`.  |  [View](https://apps.axibase.com/chartlab/808e5846/3/)  | 
-|  batch-update  |  `batch-update = true`  |  Sending data queries to the server in batches with size specified in `batch-size` setting. Default: false.<br>If enabled, series for which the request has failed will be requested separately from successfully updated series.  |  [View](https://apps.axibase.com/chartlab/808e5846/4/)  | 
-|  batch-size  |  `batch-size = 1`  |  Maximum number of series in one batch request to the server. Default: 8.<br>If 0 is specified, the limit is not set.<br>Applies when `batch-update = true`.  |  [View](https://apps.axibase.com/chartlab/808e5846/5/)  | 
+|  `url`  |  `url = http://atsd_hostname:port`  |  URL of the ATSD server. The setting is necessary if the data is loaded from an ATSD server running on a different host.  |  | 
+|  `context-path`  |  `context-path = api/v2`  |  Context path. Default value is `api/v1`.  |  | 
+| `method-path` | `method-path = /series/query` | Data API method path. Default value is specific for each data type: `/series/query`, `/properties/query`, `/messages/query`, `/alerts/query`. | |
+| `url-parameters`  |  `url-parameters = db=12&adapter=7`  |  Optional request parameters included in data API requests.<br>Parameter names and values must be URL-encoded if necessary and separated by ampersand. `?` at the start of the query string is optional. |  | 
+|  `update-interval`  |  `update-interval = 5 minute`  |  Polling interval at which new incremental data is requested from the server by widgets on the portal.<br>For example `update-interval = 5 minute`.<br>The default value is 1 minute.<br>The setting can be overridden by each widget separately.<br>Chart updates are disabled if the endtime parameter for the portal or the widget is set to a fixed date, for example: `endtime = 2016-06-27T00:00:00Z`.  |  [View](https://apps.axibase.com/chartlab/808e5846/3/)  | 
+|  `batch-update`  |  `batch-update = true`  |  Sending data queries to the server in batches with size specified in `batch-size` setting. Default: false.<br>If enabled, series for which the request has failed will be requested separately from successfully updated series.  |  [View](https://apps.axibase.com/chartlab/808e5846/4/)  | 
+|  `batch-size`  |  `batch-size = 1`  |  Maximum number of series in one batch request to the server. Default: 8.<br>If 0 is specified, the limit is not set.<br>Applies when `batch-update = true`.  |  [View](https://apps.axibase.com/chartlab/808e5846/5/)  | 
 
 > The actual URL for data requests is assembled from `{url}{context-path}{method-path}{url-parameters}`. For example, the default URL for loading series data is `https://atsd_host:8443/api/v1/series/query`.
 

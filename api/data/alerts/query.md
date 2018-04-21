@@ -22,11 +22,11 @@ An array of query objects containing the following fields:
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| rules       | array | Array of rules which produced the alerts.        |
-| metrics     | array | Array of metric names for which the alerts were created. |
-| severities  | array | Array of [severity names](../../../api/data/severity.md)   |
-| minSeverity |  string   | Minimal severity [name](../../../api/data/severity.md) filter.  |
-| acknowledged |  boolean   | Acknowledgement status. If set, filters alerts for the specified status. |
+| `rules`       | array | Array of rules which produced the alerts.        |
+| `metrics`     | array | Array of metric names for which the alerts were created. |
+| `severities`  | array | Array of [severity names](../../../api/data/severity.md)   |
+| `minSeverity` |  string   | Minimal severity [name](../../../api/data/severity.md) filter.  |
+| `acknowledged` |  boolean   | Acknowledgement status. If set, filters alerts for the specified status. |
 
 > Note that the `tags` filter is not supported.
 
@@ -45,7 +45,7 @@ An array of query objects containing the following fields:
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| limit   | integer | Maximum number of records to be returned. Default: -1.<br>Limit is not applied if the parameter value <= 0. | 
+| `limit`   | integer | Maximum number of records to be returned. Default: -1.<br>Limit is not applied if the parameter value <= 0. | 
 
 ## Response 
 
@@ -55,19 +55,19 @@ An array of matching alert objects containing the following fields:
 
 | **Field** | **Type** | **Description** |
 |:---|:---|:---|
-| id    | integer | Alert id.|
-| acknowledged | boolean | Acknowledgement status.|
-| entity | string | Entity name. |
-| metric | string | Metric name.  |
-| rule | string | Rule name. |
-| severity  | string | [Severity](../../../api/data/severity.md) name.  |
-| tags | object | Object containing `name=value` pairs, for example `tags: {"path": "/", "name": "sda"}` |
-| repeatCount | integer | Number of times when the expression was evaluated to true sequentially.  |
-| textValue | string | Text value.  |
-| value | double | Last numeric value received. |
-| openValue | double | First numeric value received.  |
-| openDate | string | ISO 8601 date when the alert was open.  |
-| lastEventDate | string | ISO 8601 date when the last record was received.  |
+| `id`    | integer | Alert id.|
+| `acknowledged` | boolean | Acknowledgement status.|
+| `entity` | string | Entity name. |
+| `metric` | string | Metric name.  |
+| `rule` | string | Rule name. |
+| `severity`  | string | [Severity](../../../api/data/severity.md) name.  |
+| `tags` | object | Object containing `name=value` pairs, for example `tags: {"path": "/", "name": "sda"}` |
+| `repeatCount` | integer | Number of times when the expression was evaluated to true sequentially.  |
+| `textValue` | string | Text value.  |
+| `value` | double | Last numeric value received. |
+| `openValue` | double | First numeric value received.  |
+| `openDate` | string | ISO 8601 date when the alert was open.  |
+| `lastEventDate` | string | ISO 8601 date when the last record was received.  |
 
 ### Errors
 
@@ -140,6 +140,7 @@ curl https://atsd_host:8443/api/v1/alerts/query \
 ## Additional Examples
 
 ### Entity Filter
+
 * [Multiple Entities](examples/query/alerts-query-multiple-entity.md)
 * [Entity Wildcard](examples/query/alerts-query-entity-wildcard.md)
 * [Entity Expression: Name](examples/query/alerts-query-entity-expression-name.md)
@@ -148,11 +149,13 @@ curl https://atsd_host:8443/api/v1/alerts/query \
 * [Entity Group](examples/query/alerts-query-entity-group.md)
 
 ### Rule Filter
+
 * [Alerts for Specified Rule](examples/query/alerts-query-defined-rule.md)
 * [Multiple Rules for Specified Entity](examples/query/alerts-query-multiple-rules-specified-entity.md)
 * [All Rules](examples/query/alerts-query-rules-all-value.md)
 
 ### Metric Filter
+
 * [Alerts for Specified Metric](examples/query/alerts-query-defined-metric.md)
 * [Multiple Metrics for Specified Entity](examples/query/alerts-query-multiple-metrics-specified-entity.md)
 * [All Metrics](examples/query/alerts-query-metrics-all-value.md)
@@ -160,16 +163,20 @@ curl https://atsd_host:8443/api/v1/alerts/query \
 * [Alerts for `property` Command](examples/query/alerts-query-property-commands.md)
 
 ### Multiple Queries
+
 * [Multiple Queries](examples/query/alerts-query-multiple-queries.md)
 * [Multiple Queries for Unknown Entity](examples/query/alerts-query-multiple-queries-unknown-entity.md)
 
 ### Time Range
+
 * [Alerts for Last Hour](examples/query/alerts-query-last-hour.md)
 
 ### Alerts Severity
+
 * [Alerts for Specified Severities](examples/query/alerts-query-filter-alerts-severities.md)
 * [Alerts for Minimum Severity](examples/query/alerts-query-filter-alerts-minseverity.md)
 
 ### Filter Status
+
 * [Unacknowledged Alerts](examples/query/alerts-query-filter-unacknowledged-status.md)
 * [Acknowledged Alerts](examples/query/alerts-query-filter-acknowledged-status.md)

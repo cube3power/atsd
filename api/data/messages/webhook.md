@@ -165,13 +165,13 @@ These parameters set message fields to literal values.
 
 | **Name** | **Description** |
 |---|---|
-| type | Message type.|
-| source | Message source. |
-| entity | Message entity. |
-| date | Message date and time in ISO format. |
-| message | Message text. |
-| severity | Message severity specified as an integer or as a string constant. |
-| datetimePattern | Date pattern applied to `command.date` field: `iso` (default), `seconds`, `milliseconds`, user-defined [date pattern](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). |
+| `type` | Message type.|
+| `source` | Message source. |
+| `entity` | Message entity. |
+| `date` | Message date and time in ISO format. |
+| `message` | Message text. |
+| `severity` | Message severity specified as an integer or as a string constant. |
+| `datetimePattern` | Date pattern applied to `command.date` field: `iso` (default), `seconds`, `milliseconds`, user-defined [date pattern](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). |
 
 `/api/v1/messages/webhook/jenkins?entity=test-1&type=ci&severity=3`
 
@@ -187,12 +187,12 @@ Command parameters set message field values from JSON field values.
 
 | **Name** | **Description** |
 |---|---|
-| command.type | Message type.  |
-| command.source | Message source.  |
-| command.entity | Message entity.  |
-| command.date | Message time in ISO format, UNIX milliseconds/seconds, or user-defined format specified with `datetimePattern` parameter. |
-| command.message | Message text. |
-| command.severity | Message severity specified as an integer or as a constant. |
+| `command.type` | Message type.  |
+| `command.source` | Message source.  |
+| `command.entity` | Message entity.  |
+| `command.date` | Message time in ISO format, UNIX milliseconds/seconds, or user-defined format specified with `datetimePattern` parameter. |
+| `command.message` | Message text. |
+| `command.severity` | Message severity specified as an integer or as a constant. |
 
 `/api/v1/messages/webhook/jenkins?command.entity=server&command.type=event`
 
@@ -214,13 +214,13 @@ Header parameters set message field values from header values.
 
 | **Name** | **Description** |
 |---|---|
-| header.type | Message type.  |
-| header.source | Message source.  |
-| header.entity | Message entity.  |
-| header.date | Message date and time in ISO format. |
-| header.message | Message text. |
-| header.tag.{name} | Message tag. |
-| header.severity | Message severity specified as an integer or as a constant. |
+| `header.type` | Message type.  |
+| `header.source` | Message source.  |
+| `header.entity` | Message entity.  |
+| `header.date` | Message date and time in ISO format. |
+| `header.message` | Message text. |
+| `header.tag.{name}` | Message tag. |
+| `header.severity` | Message severity specified as an integer or as a constant. |
 
 `/api/v1/messages/webhook/github?header.tag.event=X-GitHub-Event`
 

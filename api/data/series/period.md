@@ -4,10 +4,10 @@ Period is a repeating time interval used to group samples occurred within each i
 
 | **Name**  | **Type** | **Description** |
 |:---|:---|:---|
-| count  | number | Number of time units contained in the period. |
-| unit  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
-| align | string | Alignment of the period's start time. Default: `CALENDAR`. <br>Possible values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.|
-| timezone | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database time zone.|
+| `count`  | number | Number of time units contained in the period. |
+| `unit`  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
+| `align` | string | Alignment of the period's start time. Default: `CALENDAR`. <br>Possible values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.|
+| `timezone` | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database time zone.|
 
 ## Examples
 
@@ -35,10 +35,10 @@ For example, `1 HOUR` initializes 1-hour long periods starting at `0` minutes of
 
 | **Alignment** | **Description**|
 |:---|:---|
-| CALENDAR | Period start is rounded down to the nearest time unit. |
-| START_TIME | First period begins at start time specified in the query. |
-| FIRST_VALUE_TIME | First period begins at the time of first retrieved value. |
-| END_TIME | Last period ends on end time specified in the query. |
+| `CALENDAR` | Period start is rounded down to the nearest time unit. |
+| `START_TIME` | First period begins at start time specified in the query. |
+| `FIRST_VALUE_TIM`E` | First period begins at the time of first retrieved value. |
+| `END_TIME` | Last period ends on end time specified in the query. |
 
 ### `CALENDAR` Alignment
 

@@ -1009,12 +1009,12 @@ PERIOD(1 DAY, entity.timeZone)
 
 | **Name** | **Description** |
 |:---|:---|
-| count | [**Required**] Number of time units contained in the period. |
-| unit | [**Required**] [Time unit](../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
-| interpolate | Apply an [interpolation function](#interpolation), such as `LINEAR` or `VALUE 0`, to add missing periods.|
-| extend | Add missing periods at the beginning and end of the selection interval using `VALUE {n}` or the `PREVIOUS` and `NEXT` interpolation functions.|
-| align | Align the period's start/end. Default: `CALENDAR`. <br>Possible values: `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`, `CALENDAR`.<br>Refer to [period alignment](#period-alignment).|
-| time zone | Time zone for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default value: current database time zone.|
+| `count` | [**Required**] Number of time units contained in the period. |
+| `unit` | [**Required**] [Time unit](../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
+| `interpolate` | Apply an [interpolation function](#interpolation), such as `LINEAR` or `VALUE 0`, to add missing periods.|
+| `extend` | Add missing periods at the beginning and end of the selection interval using `VALUE {n}` or the `PREVIOUS` and `NEXT` interpolation functions.|
+| `align` | Align the period's start/end. Default: `CALENDAR`. <br>Possible values: `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`, `CALENDAR`.<br>Refer to [period alignment](#period-alignment).|
+| `timezone` | Time zone for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default value: current database time zone.|
 
 ```sql
 SELECT entity, date_format(PERIOD(5 MINUTE, END_TIME)), AVG(value)
@@ -1049,10 +1049,10 @@ For example, `period(1 HOUR)` initializes 1-hour long periods starting at `0` mi
 
 | **Alignment** | **Description**|
 |:---|:---|
-| CALENDAR | Period starts are aligned to the calendar. |
-| START_TIME | First period begins at start time specified in the query. |
-| FIRST_VALUE_TIME | First period begins at the time of first retrieved value. |
-| END_TIME | Last period ends on end time specified in the query. |
+| `CALENDAR` | Period starts are aligned to the calendar. |
+| `START_TIME` | First period begins at start time specified in the query. |
+| `FIRST_VALUE_TIME` | First period begins at the time of first retrieved value. |
+| `END_TIME` | Last period ends on end time specified in the query. |
 
 * For the `START_TIME` and `END_TIME` options, the `WHERE` clause must contain the start and end time of the selection interval, respectively.
 
