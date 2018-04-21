@@ -1,4 +1,4 @@
-# List Metrics by minInsertDate
+# List Metrics by Min Insert Date
 
 List metrics with `lastInsertDate` equal or greater than 2016-05-18T22:13:40.000Z
 

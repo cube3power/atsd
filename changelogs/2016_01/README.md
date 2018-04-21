@@ -3,11 +3,11 @@ Weekly Change Log: November 14-20, 2016
 
 ### ATSD
 
-| Issue     | Category        | Type     | Subject                                                                    |
-|-----------|-----------------|----------|----------------------------------------------------------------------------|      
+| Issue     | Category        | Type     | Subject                                                          |
+|-----------|-----------------|----------|----------------------------------------------------------------------------|
 | 3614      |   sql           | Feature  | Support for arithmetic expressions in the `COUNT` function. |
 | 3612      |   test          | Support  | API tests for [property(path)](../../api/data/filter-entity.md#function-propertypath) function. |
-| 3609      |   sql           | Bug      | Server errors inconsistent when queries are executed via an ../sql`](../../sql/api.md) endpoint. |
+| 3609      |   sql           | Bug      | Server errors inconsistent when queries are executed via an [../sql`](../../sql/api.md) endpoint. |
 | 3606      |   api-rest      | Bug      | `entityExpression` not applied in [property query](../../api/data/properties/query.md) method. |
 | 3605      |   UI            | Bug      | Removed header capitalization from the embedded property widget. |
 | 3604      |   test          | Support  | API tests for the `entityExpression` field. |
@@ -15,7 +15,7 @@ Weekly Change Log: November 14-20, 2016
 | 3602      |   core          | Feature  | Migrated to Spring 4. |
 | 3584      |   security      | Feature  | Implemented encryption for the LDAP bind password stored in the database. |
 | 3557      |   sql           | Bug      | Fixed incorrect empty string handling by the [`ISNULL`](../../sql#isnull) function. |
-| 3502      |   sql           | Bug      | Replaced CSV generator to speed up response generation for SQL queries executed via an ../sql`](../../sql/api.md) endpoint. |
+| 3502      |   sql           | Bug      | Replaced CSV generator to speed up response generation for SQL queries executed via an [../sql`](../../sql/api.md) endpoint. |
 
 ### Collector
 

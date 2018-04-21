@@ -465,8 +465,8 @@ Advanced functions and aggregations can be added to the Freemarker portals to en
 |  `tags`  |  Tags  | 
 |  `type`  |  Aggregation Type  | 
 |  `interval`  |  Aggregation Interval  | 
-|  `shift`  |  Interval: endTime = now – shift  | 
-|  `duration`  |  Selection interval: startTime = endTime – duration  | 
+|  `shift`  |  Interval: `endTime = now – shift`  | 
+|  `duration`  |  Selection interval: `startTime = endTime – duration`  | 
 
 
 #### atsd_values parameters

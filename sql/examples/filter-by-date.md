@@ -90,7 +90,7 @@ WHERE entity = 'nurswgvml007'
 | 1466100035000 | 4.0   |
 ```
 
-## Query with Endtime Syntax
+## Query with End Time Syntax
 
 Both `time` and `datetime` columns support [calendar](../../shared/calendar.md) keywords.
 
@@ -109,7 +109,7 @@ WHERE entity = 'nurswgvml007'
 | 2016-06-18T20:00:43.000Z | 6.1   |
 ```
 
-## Query with Endtime Syntax
+## Query with End Time Syntax
 
 [Calendar](../../shared/calendar.md) keywords are calculated based on the current server time and the server's [time zone](../../shared/timezone-list.md).
 
@@ -140,7 +140,7 @@ series e:e1 d:2017-04-15T01:00:00Z m:m1=1
 series e:e1 d:2017-04-15T02:00:00Z m:m1=2
 ```
 
-## Query with Endtime Syntax in Custom Time Zone
+## Query with End Time Syntax in Custom Time Zone
 
 The `endtime()` function enables specifying a user-defined [time zone](../../shared/timezone-list.md) when evaluating [calendar](../../shared/calendar.md) keywords and expressions.
 

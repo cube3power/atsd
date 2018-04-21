@@ -17,24 +17,24 @@ picomp2 z:{timezone} e:{entity} i:{ignore-defaults} t:{tag-name}={tag-value}
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| e         | string       | [**Required**] Default entity name. |
-| i         | boolean      | Ignore default values: `status` = `0`, `status_test` = `GOOD`, flags = `false`, `annotations` = `null` or empty. <br>Default value = `true` (ignore defaults).|
-| z         | string       | [Time Zone](../../shared/timezone-abnf.md) applied when parsing dates, for example EST.<br>Default time zone = `UTC`. Default date format is `yyyy-MM-dd HH:mm:ss`.|
-| t         | string       | One or multiple series or message tag key=value pairs, for example: `t:location=SVL`. |
+| `e`         | string       | [**Required**] Default entity name. |
+| `i`         | boolean      | Ignore default values: `status` = `0`, `status_test` = `GOOD`, flags = `false`, `annotations` = `null` or empty. <br>Default value = `true` (ignore defaults).|
+| `z`         | string       | [Time Zone](../../shared/timezone-abnf.md) applied when parsing dates, for example EST.<br>Default time zone = `UTC`. Default date format is `yyyy-MM-dd HH:mm:ss`.|
+| `t`         | string       | One or multiple series or message tag key=value pairs, for example: `t:location=SVL`. |
 
 ### Columns
 
-1. pointtypex
-2. tag
-3. time
-4. _index
-5. value
-6. status
-7. status_text
-8. questionable
-9. substituted
-10. annotated
-11. annotations
+1. `pointtypex`
+2. `tag`
+3. `time`
+4. `_index`
+5. `value`
+6. `status`
+7. `status_text`
+8. `questionable`
+9. `substituted`
+10. `annotated`
+11. `annotations`
 
 ### Data Types
 

@@ -20,13 +20,13 @@ If the array in the request is empty, all entities are **removed** from the grou
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| group |string|Entity group name.|
+| `group` |string|Entity group name.|
 
 ### Query Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| createEntities | boolean | Automatically create new entities from the submitted list if such entities don't exist. Default: true. |
+| `createEntities` | boolean | Automatically create new entities from the submitted list if such entities don't exist. Default: true. |
 
 ### Payload
 

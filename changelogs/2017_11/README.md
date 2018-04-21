@@ -15,7 +15,7 @@ Weekly Change Log: March 13 - March 19, 2017
 | 4010 | core | Bug | Prevent HBase filters from entering an infinite loop if metric id overflows. |
 | 3950 | sql | Bug | `SUM` function fails to accept arguments. |
 | 3913 | sql | Feature | Add support [`CASE`](../../sql#case) expression as part of another expression. |
-| 3888 | sql | Bug | Add support for entity fields (label, timeZone) in the `WHERE` clause. |
+| 3888 | sql | Bug | Add support for entity fields `label`, `timeZone` in the `WHERE` clause. |
 | 3881 | sql | Bug | Fixed NullPointerException in queries with aggregation of metrics with decimal datatype. |
 | 3842 | sql | Feature | Add support for column alias in [`CAST`](../../sql#cast) and [ROW_NUMBER](../../sql#row_number-syntax) functions. |
 | 3838 | sql | Bug | Add support for column alias in `ORDER BY` clause |

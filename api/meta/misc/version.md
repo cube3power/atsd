@@ -16,9 +16,9 @@ Returns database version including licensing details as well as a `date` object 
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| buildInfo  | object | Database version information. |
-| license | object | Database license details.  |
-| date | object | Current date, start date, time zone, and offset information.  |
+| `buildInfo`  | object | Database version information. |
+| `license` | object | Database license details.  |
+| `date` | object | Current date, start date, time zone, and offset information.  |
 
 ### Errors
 

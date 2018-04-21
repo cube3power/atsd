@@ -1,8 +1,8 @@
-# Series Query: Period Endtime
+# Series Query: Period End Time
 
 ## Description
 
-By default, period start time is based on calendar. 
+By default, period start time is based on calendar.
 
 For a 1-minute period, each period starts at 0 seconds of each minute. For a 1-hour period, the period starts at 0 minute and 0 seconds of each hour, etc.
 

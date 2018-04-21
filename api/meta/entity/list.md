@@ -150,8 +150,8 @@ curl https://atsd_host:8443/api/v1/entities?expression=label!=%22%22%20and%20ena
 
 ## Additional examples
 * [List entities by name](./examples/list-entities-by-name.md)
-* [List entities by maxInsertDate](./examples/list-entities-by-maxinsertdate.md)
-* [List entities by minInsertDate](./examples/list-entities-by-mininsertdate.md)
+* [List entities by Max Insert Date](./examples/list-entities-by-maxinsertdate.md)
+* [List entities by Min Insert Date](./examples/list-entities-by-mininsertdate.md)
 * [List all tags for all entities starting with name](examples/list-all-tags-for-all-entities-with-name.md)
 * [List entities by name and tag](examples/list-entities-by-tag-containing-hbase.md)
 * [List entities for last insert range](examples/list-entities-for-last-insert-range.md)

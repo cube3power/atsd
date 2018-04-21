@@ -1,8 +1,11 @@
-# List Metrics by maxInsertDate
+# List Metrics by Max Insert Date
 
 List metrics with `lastInsertDate` less than 2016-05-19T08:13:40.000Z
+
 ## Request
+
 ### URI
+
 ```elm
 GET https://atsd_host:8443/api/v1/metrics?maxInsertDate=2016-05-19T08:13:40.000Z
 ```

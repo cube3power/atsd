@@ -56,7 +56,7 @@ Example: `{ "name": "au-nsw-calendar" }`.
 
 Example: `{ "max": 80 }` or `{ "min": 100, "max": 150 }`.
 
-### workingMinutes
+### Working Minutes
 
 | **Name** | **Type**| **Description** |
 |:---|:---|:---|
