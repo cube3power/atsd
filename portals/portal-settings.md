@@ -84,7 +84,7 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 |  display-panels  |  `display-panels = true`  |  Display widget controls.<br>Possible values: true, false, hover.  |  [View](https://apps.axibase.com/chartlab/808e5846/16/)  | 
 |  expand-panels  |  `expand-panels = compact`  |  Expand widget controls.<br>Possible values: all, compact, none.  |  [View](https://apps.axibase.com/chartlab/808e5846/18/)  | 
 |  periods  |  `periods = 20 minute, 4 hour`  |  Add custom period(s) to aggregation controls in the top-right corner of the widget.  |  [View](http://apps.axibase.com/chartlab/fedaa42e/45/)  | 
-|  buttons  |  `buttons = update`  |  Add buttons to the widget header. The buttons are visible on mouse-over.<br>Possible values: update, reset.<br>`update` stops/resumes the loading of new data into the widget.<br>Reset is available only for the table widget. It resets column sorting to the inital order.  |  [View](https://apps.axibase.com/chartlab/808e5846/12/)  | 
+|  buttons  |  `buttons = update`  |  Add buttons to the widget header. The buttons are visible on mouse-over.<br>Possible values: update, reset.<br>`update` stops/resumes the loading of new data into the widget.<br>Reset is available only for the table widget. It resets column sorting to the initial order.  |  [View](https://apps.axibase.com/chartlab/808e5846/12/)  | 
 
 ### Interval Settings
 
@@ -182,4 +182,4 @@ Invoked with `?p_id=nurswgvml002`, the above configuration is converted into the
 
 ## Freemarker Expressions
 
-Refer to [freemarker expressions in ATSD portals](freemarker.md).
+Refer to [Freemarker expressions in ATSD portals](freemarker.md).

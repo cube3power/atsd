@@ -168,7 +168,7 @@ Stop HDFS.
 /opt/atsd/bin/atsd-dfs.sh stop
 ```
 
-Execute the `jps` command and verify that the the `NameNode`, `SecondaryNameNode`, and `DataNode` processes are **not  present** in the `jps` command output.
+Execute the `jps` command and verify that the `NameNode`, `SecondaryNameNode`, and `DataNode` processes are **not  present** in the `jps` command output.
 
 ## Backup
 
@@ -237,7 +237,7 @@ Start HDFS.
 /opt/atsd/hadoop/sbin/start-dfs.sh
 ```
 
-Check that HDFS daemons were succeessfully started.
+Check that HDFS daemons were successfully started.
 
 ```sh
 /opt/atsd/hadoop/bin/hdfs dfsadmin -report
@@ -295,7 +295,7 @@ Upgrade HBase.
 /opt/atsd/hbase/bin/hbase upgrade -check
 ```
 
-Review the hbase.log file:
+Review the `hbase.log` file:
 
 ```sh
 tail /opt/atsd/hbase/logs/hbase.log
@@ -308,7 +308,7 @@ INFO  [main] util.HFileV1Detector: Count of Regions with HFileV1: 0
 INFO  [main] migration.UpgradeTo96: No HFileV1 found.
 ```
 
-Start and stop Zookeper in upgrade mode.
+Start and stop Zookeeper in upgrade mode.
 
 ```sh
 /opt/atsd/hbase/bin/hbase-daemon.sh start zookeeper
@@ -318,7 +318,7 @@ Start and stop Zookeper in upgrade mode.
 /opt/atsd/hbase/bin/hbase upgrade -execute
 ```
 
-Review the hbase.log file:
+Review the `hbase.log` file:
 
 ```sh
 tail -n 20 /opt/atsd/hbase/logs/hbase.log
@@ -333,7 +333,7 @@ tail -n 20 /opt/atsd/hbase/logs/hbase.log
 ...
 ```
 
-Stop Zookeeper:
+Stop Zookeeper.
 
 ```sh
 /opt/atsd/hbase/bin/hbase-daemon.sh stop zookeeper

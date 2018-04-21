@@ -82,13 +82,16 @@ The result should be the same as shown in the image below:
 * Modify JMX security credential files in `./conf` directory.
 
 jmx.access:
+
 ```
 # The "monitorRole" role has readonly access.
 monitorRole readonly
 ```
+
 jmx.password:
+
 ```
-# The "monitorRole" role has password "abc123".
+# The "monitorRole" role password is "abc123".
 monitorRole abc123
 ```
 
@@ -141,7 +144,7 @@ If the `activemq_hostname` cannot be resolved, add it to `/etc/hosts` manually.
 
    **Host** — ActiveMQ hostname. Must be the same as the `activemq_hostname`.  
    **Port** — JMX port.  
-   **User Name** — JMX user name such as monitorRole. Read-only permissions are sufficient.  
+   **User Name** — JMX user name such as `monitorRole`. Read-only permissions are sufficient.  
    **Password** — Password for JMX user.  
    **Entity** — Optionally, specify the output of the hostname command on the ActiveMQ server if it’s different from `activemq_hostname` (for example if `activemq_hostname` represents a fully qualified name).  
 Other parameters are optional. For more information on JMX configuration, see [JMX](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md).   

@@ -238,7 +238,7 @@ hasMetric('mpstat.cpu_busy', 24*7)
 ### `memberOf`
 
 ```javascript  
-  memberOf(string|[sring] g) boolean
+  memberOf(string|[string] g) boolean
 ```
 Returns `true` if an entity belongs to **at least one** of the specified entity groups.
 

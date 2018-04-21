@@ -18,7 +18,7 @@
 
 Each window status event can produce only one message.
 
-The message is submitted to the specified Google Cloud Pub/Sub endpoint using the `POST` method with `application/json` content type. The request uses [AOuth 2.0 authorization](https://developers.google.com/identity/protocols/OAuth2ServiceAccount).
+The message is submitted to the specified Google Cloud Pub/Sub endpoint using the `POST` method with `application/json` content type. The request uses [OAuth 2.0 authorization](https://developers.google.com/identity/protocols/OAuth2ServiceAccount).
 
 The default message includes all fields, including entity and metric metadata.
 

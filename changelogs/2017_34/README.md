@@ -4,7 +4,7 @@ Weekly Change Log: August 21, 2017 - August 28, 2017
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4512 | core | Bug | Normalize compression algorithm names supported by <br>`hbase.compression.type` and `hbase.compression.type.raw` settings: `none`, `gz`, `lzo`. |
-| 4493 | core | Bug | Fixed an issue with region bounderies in the [Migration Reporter](../../administration/migration/reporter.md). |
+| 4493 | core | Bug | Fixed an issue with region boundaries in the [Migration Reporter](../../administration/migration/reporter.md). |
 | 4459 | UI | Bug | Apply syntax highlighting in the **Configuration > Replacement Table** editor. |
 | 4451 | UI | Bug | Standardize form button order throughout user interface. |
 | 4444 | sql | Bug | Fix metadata error which caused negative integers to be classified as Double columns. |

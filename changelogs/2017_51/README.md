@@ -6,7 +6,7 @@ Weekly Change Log: December 18, 2017 - December 25, 2017
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4831	| security	| Support	| Update dependencies to next minor versions. |
-| 4829	| rule engine	| Bug	| Rule Engine: ElUtils.preProcess fails while processing empty list. |
+| 4829	| rule engine	| Bug	| `ElUtils.preProcess` fails while processing empty list. |
 | 4824	| email	| Bug	| [Enforce max limit](../../rule-engine/functions-text.md#truncate) to the message subject. |
 | 4819	| api-rest	| Feature	| Implement incoming [webhook](../../api/data/messages/webhook.md) functionality. |
 | 4817	| rule engine	| Feature	| Add administrative setting to allow command execution. |

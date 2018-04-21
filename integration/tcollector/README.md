@@ -47,7 +47,7 @@ Start tcollector from the installation directory. Replace `atsd_hostname` with t
 sudo ./tcollector start --host atsd_hostname --port 8081
 ```
 
-### Autostart
+### Auto-Start
 
 Create `tcollector.conf` file in the tcollector home directory.
 
@@ -73,7 +73,7 @@ Make the script executable.
 sudo chmod u+x /etc/init.d/tcollector
 ```
 
-Add tcollector to autostart.
+Enable auto-start for tcollector.
 
 ```sh
 sudo update-rc.d tcollector defaults
@@ -100,7 +100,7 @@ Make the script executable.
 sudo chmod u+x /etc/init.d/tcollector
 ```
 
-Add tcollector to autostart.
+Enable auto-start for tcollector.
 
 ```sh
 sudo chkconfig --add tcollector
@@ -132,7 +132,7 @@ ExecStop=/home/axibase/tcollector/tcollector-wrapper stop
 ExecReload=/home/axibase/tcollector/tcollector-wrapper restart
 ```
 
-Enable autostart.
+Enable auto-start.
 
 ```sh
 sudo systemctl enable tcollector

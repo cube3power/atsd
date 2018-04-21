@@ -10,7 +10,7 @@ The reporter makes no changes to the data.
 
 ## Running Reporter
 
-Execute the below steps on the server running YARN Resourse Manager on the target cluster.
+Execute the below steps on the server running YARN Resource Manager on the target cluster.
 
 ### Check Services
 
@@ -18,7 +18,7 @@ Execute the below steps on the server running YARN Resourse Manager on the targe
 
 * Open **Hosts > All Hosts**, expand the **Roles**.
 
-  * Verify that ResourceManager, NodeManagers and HistoryServer services are running on the cluster. 
+  * Verify that ResourceManager, NodeManagers, and HistoryServer services are running on the cluster. 
 
 * Open **Clusters > Cluster > YARN (MR2 Included) > Configuration**.
 
@@ -183,5 +183,5 @@ The report includes memory required by the mapper. This maximum is reported for 
 * There are `5761` different series for the given combination of metric, entity, and day. These series differ by tags, so there are `5761` different combinations of tags.
 * Total number of time series samples for the given metric, entity , and day are `11520`.
 * There are no annotations and non-versioned samples.
-* The `atsd_d` table stores data for the displayed metric, the entity, and the day in rows from the specifed `start key` (inclusive) to `stop key` (exclusive).
+* The `atsd_d` table stores data for the displayed metric, the entity, and the day in rows from the specified `start key` (inclusive) to `stop key` (exclusive).
 

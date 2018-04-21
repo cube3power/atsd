@@ -84,7 +84,7 @@ While the window is in `REPEAT` status, a notification can be sent with the freq
 
 ### `CANCEL` State
 
-`CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the the condition changes from `true` to `false` or when the window is deleted on rule modification.
+`CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the condition changes from `true` to `false` or when the window is deleted on rule modification.
 
 Triggering a repeat notification in `CANCEL` status is not supported. Such behavior can be emulated by creating a separate rule with a negated expression which returns `true` instead of `false` for the same condition.
 

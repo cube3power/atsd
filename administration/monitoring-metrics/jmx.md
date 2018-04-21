@@ -7,7 +7,7 @@ any other application that support JMX.
 #### Setup JMX in ATSD
 
 In `/etc/hosts` change `127.0.1.1 atsd_hostname` to `atsd_ip atsd_hostname`
-where `atsd_ip` is the ip v4 adress of the ATSD host.
+where `atsd_ip` is the ip v4 address of the ATSD host.
 
 Configure the jmx username and password in two separate files located in
 the `/opt/atsd/atsd/conf/` directory: `jmx.access` and `jmx.password`

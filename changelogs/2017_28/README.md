@@ -38,7 +38,7 @@ Displays the maximum value during a period.
 
 ###### MIN
 
-Displays the minimum value dueing a period.
+Displays the minimum value during a period.
 
 ![](Images/4360.3.png)
 

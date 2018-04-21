@@ -102,7 +102,7 @@ Go to **Metrics** page and verify that `jmx.zookeeper.*` metrics are available.
 
 ![](images/rule_dead_node_test.png)
 
- * To check `Zookeeper cluster not serving requests` rule stop more than 50% of all active nodes (in this case 2 of 3, if zookeeper quorum is default).
+ * To check `Zookeeper cluster not serving requests` rule stop more than 50% of all active nodes (in this case 2 of 3, if Zookeeper quorum is default).
 
  * To check `Zookeeper dead cluster` stop all nodes.
 

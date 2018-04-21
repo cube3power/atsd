@@ -131,7 +131,7 @@ GROUP BY entity.tags.app
 ### Issue 3691
 --------------
 
-Implemented useful [date functions](../../rule-engine/expression.md#time-functions) in the rule engine to convert an ISO8601 date string into a numeric epoch time or into a [Joda-time](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) date object. These functions can be used in rule expressions.
+Implemented useful [date functions](../../rule-engine/expression.md#time-functions) in the rule engine to convert an ISO8601 date string into a numeric epoch time or into a [`DateTime`](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) date object. These functions can be used in rule expressions.
 
 ```javascript
 /**
@@ -151,21 +151,15 @@ property('config::deleted')).dayOfWeek().get() < 6
 ### Issue 3680
 --------------
 
-The series list now inludes a 'Statistics' link to characterize the selected series.
+The series list now includes a 'Statistics' link to characterize the selected series.
 
 The following characteristics are available.
 
-* Value Statistics: provides summary statistics for values of the time series for the specified time interval. There are three tables included within this tab: **Timespan**, **Value Statistics**, and **Value
-  Percentiles**. **Timespan** provides the dates for the the first and last value of the time series and their respective values. **Value Statistics** provides the Count (total number of samples), NaN count (number of Not-a-Number samples), as well as the Average, Standard Deviation, and Sum of all values. **Value Percentiles** provides a list of the maximum and minimum values of the
-  series, with the corresponding percentages of observations which fall beneath the specific listed value (ie 75% of all values in this series fall below 7.1).
+* Value Statistics: provides summary statistics for values of the time series for the specified time interval. There are three tables included within this tab: **Timespan**, **Value Statistics**, and **Value Percentiles**. **Timespan** provides the dates for the first and last value of the time series and their respective values. **Value Statistics** provides the Count (total number of samples), NaN count (number of Not-a-Number samples), as well as the Average, Standard Deviation, and Sum of all values. **Value Percentiles** provides a list of the maximum and minimum values of the series, with the corresponding percentages of observations which fall beneath the specific listed value (ie 75% of all values in this series fall below 7.1).
 
   ![Figure 1](Images/Figure1.png)
 
-* Interval Statistics: provides time duration statistics for values included in the specific time interval. All values are presented in two forms: as milliseconds and in a human readable
-  format (ie, 1d 2h 3m 4s). Two tables are included in under this tab: **Interval Statistics, ms** and **Interval Percentiles, ms**. The **Interval Statistics** table provides a concise
-  summary of the time characteristics of the series, including the Count (number of intervals between the samples), the average interval time, the total time range for the series (difference betweeb last and first value), among
-  several other points. The **Interval Percentiles, ms** table provides a list of the maximum and minimum time intervals of the series, with the corresponding percentages of
-  observations which fall beneath the specific listed value (ie 99.9% of all time intervals in this series fall under 18 seconds).
+* Interval Statistics: provides time duration statistics for values included in the specific time interval. All values are presented in two forms: as milliseconds and in a human readable format (ie, 1d 2h 3m 4s). Two tables are included in under this tab: **Interval Statistics, ms** and **Interval Percentiles, ms**. The **Interval Statistics** table provides a concise summary of the time characteristics of the series, including the Count (number of intervals between the samples), the average interval time, the total time range for the series (difference between last and first value), among several other points. The **Interval Percentiles, ms** table provides a list of the maximum and minimum time intervals of the series, with the corresponding percentages of observations which fall beneath the specific listed value (ie 99.9% of all time intervals in this series fall under 18 seconds).
 
   ![Figure 2](Images/Figure2.png)
 

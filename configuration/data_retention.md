@@ -161,7 +161,7 @@ To disable deletion, set the **Retention Days** field back to zero.
 
 ![](images/retention-metrics-edit.png)
 
-This will cause expired data, older than current time minus the specified retention period, to be deleted by a [background task](#scheduled-tasks) which is executed once a day during nighttime hours.
+This will cause expired data, older than current time minus the specified retention period, to be deleted by a [background task](#scheduled-tasks) which is executed once a day during night-time hours.
 
 #### Group Editor
 
@@ -209,7 +209,7 @@ The sequence of tasks should be as follows:
 4. data.compaction.schedule
 5. hbase.compaction.schedule
 
-It is recommended that the tasks are executed once a day during off-peak/nighttime hours. The `hbase.compaction` task should run once a week on large clusters.
+It is recommended that the tasks are executed once a day during off-peak/night-time hours. The `hbase.compaction` task should run once a week on large clusters.
 
 To trigger these tasks manually, open **Settings > Storage > Delete Tasks** and execute them manually.
 
@@ -232,7 +232,7 @@ To retain statistical averages based on expiring detailed data, use [scheduled S
 
 Schedule the queries to execute before the raw data is deleted.
 
-In the example below, the query runs every night (at 00:15) to calculate hourly averages and maximums for each series in the underlying metrics.
+In the example below, the query runs every night (at 00:15) to calculate hourly average and maximum for each series in the underlying metrics.
 
 ![](images/retention-summarize.png)
 

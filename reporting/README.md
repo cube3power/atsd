@@ -6,7 +6,7 @@ ATSD provides the following built-in facilities to export data:
 
 | **Type** | **Interface** | **Formats** | **Distribution** | **Compression** | **Scope** |
 |---|---|---|---|---|---|
-| [Adhoc](ad-hoc-exporting.md) | **Export** tab | CSV, HTML | - Web Page<br>- File Download | No | Single metric |
+| [Ad-hoc](ad-hoc-exporting.md) | **Export** tab | CSV, HTML | - Web Page<br>- File Download | No | Single metric |
 | [Scheduled](scheduled-exporting.md) | **Configuration > <br>Export Jobs** tab | CSV, Excel | - File System<br>- Email | Optional | Single metric |
 | [Scheduled SQL](../sql/scheduled-sql.md) |  **Configuration > <br>SQL Queries** tab | CSV, Excel | - File System<br>- Email<br>- Publish to URL | No | Any number of metrics with [SQL JOINs](../sql/README.md#joins) |
 

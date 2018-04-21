@@ -19,7 +19,7 @@ If the search expression contains a tag name, such tags are displayed in the res
 ## Wildcards
 
 * `*` matches any number of characters.
-* `?` matches any one characher.
+* `?` matches any one character.
 
 ## Match
 

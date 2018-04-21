@@ -29,7 +29,7 @@
 
 Each window status event can produce only one AWS request.
 
-The request is submitted to the specified AWS endpoint using the selected method with `application/x-www-form-urlencoded` content type. The request includes additional AWS headers (Authorization, X-Amz-Date) and is signed with [AWS Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+The request is submitted to the specified AWS endpoint using the selected method with `application/x-www-form-urlencoded` content type. The request includes additional AWS headers (`Authorization`, `X-Amz-Date`) and is signed with [AWS Signature Version 4](http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 ## Response
 

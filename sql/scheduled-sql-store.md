@@ -149,7 +149,7 @@ Click **Test** to review the produced commands and resolve any errors.
 
 Click **Store** to load the new derived series in the database.
 
-Click **Schedule** to created a scheduled SQL job to create and store new records for derived series continously.
+Click **Schedule** to created a scheduled SQL job to create and store new records for derived series continuously.
 
 ### Monitoring
 
@@ -165,7 +165,7 @@ Scheduled SQL queries with **Store** option can be used to calculate and retain 
 
 Schedule such queries to execute before the raw data is deleted.
 
-In the example below, the query runs every night (at 00:15) to calculate hourly averages and maximums for each series in the underlying metrics.
+In the example below, the query runs every night (at 00:15) to calculate hourly average and maximum for each series in the underlying metrics.
 
 ![](images/sql-scheduled-summarize.png)
 

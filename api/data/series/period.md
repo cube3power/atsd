@@ -46,7 +46,7 @@ The `CALENDAR` alignment calculates the initial period according to the rules be
 
 * `startDate` of the selection interval is rounded to calculate the _base time_ using the rule table below.
 * If the _base time_ is within the selection interval, it becomes the initial period.
-* Otherwise, the period starting with _base time_ is incremented (decremented if _base time_ exceeds start time) to find the earliest period starting withing the selection interval. This period becomes the initial period.
+* Otherwise, the period starting with _base time_ is incremented (decremented if _base time_ exceeds start time) to find the earliest period starting within the selection interval. This period becomes the initial period.
 
 **`startDate` Rounding Rules**
 

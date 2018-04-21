@@ -218,7 +218,7 @@ java.lang.RuntimeException: Master not active after 30 seconds
 
 Verify that no HBase processes are running with `jps`. 
 
-Remove the Zookeper data directory.
+Remove the Zookeeper data directory.
 
 ```
 rm -rf /opt/atsd/hbase/zookeeper

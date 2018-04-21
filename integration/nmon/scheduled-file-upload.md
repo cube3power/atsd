@@ -25,7 +25,7 @@ Create a file script `/opt/nmon/nmon_script.sh` and add the following row to the
 
 ### Step 2.
 
-After that, add the following content to the file scipt `/opt/nmon/nmon_script.sh` replacing `atsd_user`, `atsd_password`, and `atsd_server` with actual credentials.
+After that, add the following content to the file script `/opt/nmon/nmon_script.sh` replacing `atsd_user`, `atsd_password`, and `atsd_server` with actual credentials.
 
 ## Upload Files to ATSD with UNIX Socket
 

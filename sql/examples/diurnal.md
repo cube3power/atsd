@@ -9,7 +9,7 @@ The date_format function can be used in the `WHERE`, `GROUP BY`, and `HAVING` cl
 * u - weekday number, starting with 1 for Monday
 * HH - hour of the day, 2 digit, 00 to 23.
 
-For additional patterns, refer to Java [SimpleDateFormat](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html).
+For additional patterns, refer to Java [`SimpleDateFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html).
 
 ## Example: Filter by calendar
 

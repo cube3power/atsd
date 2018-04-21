@@ -8,7 +8,7 @@ Issue| Category    | Type    | Subject
 5047 | rule engine | Bug | [`CANCEL`](../../rule-engine/window.md#cancel-status) window doesn't display user variables.
 5044 | security | Feature | User [permissions](../../administration/user-authorization.md#user-authorization) page: add group-level details.
 5041 | rule engine | Bug | [Telegram](../../rule-engine/notifications/telegram.md) doesn't support `<br>` when parse_mode is `html`.
-5040 | rule engine | Bug | [Entity-ungrouped](../../rule-engine/grouping.md) rule windows are missing.
+5040 | rule engine | Bug | [Entity non-grouped](../../rule-engine/grouping.md) rule windows are missing.
 5039 | rule engine | Feature | Modify [convert](../../rule-engine/functions-format.md#convert) function unit processing, implement [`formatBytes`](../../rule-engine/functions-format.md#formatbytes) function.
 5036 | admin | Feature | Restore multiple record types from archived XML backup files.
 5034 | data-in | Feature | Internal [timer](../../rule-engine/window.md#timers) metrics.

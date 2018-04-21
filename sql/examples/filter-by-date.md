@@ -280,7 +280,7 @@ WHERE t1.datetime BETWEEN (SELECT datetime FROM "TV6.Unit_BatchID" WHERE entity 
 | 2016-10-04T02:07:05Z | 2nd interval end
 ```
 
-The above subquert result is equivalent to:
+The above subquery result is equivalent to:
 
 ```sql
 WHERE t1.datetime BETWEEN '2016-10-04T02:01:20Z' AND '2016-10-04T02:03:05Z'

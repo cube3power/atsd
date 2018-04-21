@@ -128,7 +128,7 @@ The resulting workflow will be implemented as follows:
 
 ![](images/workflow.png)
 
-You can download [this workflow](resources/atsd-workflow.yxmd) for review in your own Alterix Designer installation.
+You can download [this workflow](resources/atsd-workflow.yxmd) for review in your own Alteryx Designer installation.
 
 The workflow consists of the following steps (nodes):
 

@@ -123,7 +123,7 @@ The minimum number of nodes in each instance group is 1, therefore the smallest 
 
 ### Enable Consistent S3 View
 
-For long-running production clusters, enable [EMR Consistent View](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-consistent-view.html) which identifies inconsistencies in S3 object listings and resolves them using retries with expotential timeouts. When this option is enabled, the HBase metadata is also stored in a [DynamoDB](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emrfs-metadata.html) table.
+For long-running production clusters, enable [EMR Consistent View](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-consistent-view.html) which identifies inconsistencies in S3 object listings and resolves them using retries with exponential timeouts. When this option is enabled, the HBase metadata is also stored in a [DynamoDB](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emrfs-metadata.html) table.
 
 The checks are enabled by adding the `Consistent` setting to the launch command.
 
@@ -301,7 +301,7 @@ Login to the ATSD web interface on https://atsd_hostname:8443. Modify the port t
 
 Make sure that the Security Group associated with the EC2 instance where ATSD is running allows access to ATSD listening ports.
 
-If necessary, add security group rules to open inbound access to ports 8081, 8082/udp, 8084, 8088, 8443 or 9081, 9082/udp, 9084, 9088, 9443 respectively.
+If necessary, add security group rules to open inbound access to ports `8081`, `8082/udp`, `8084`, `8088`, `8443` or `9081`, `9082/udp`, `9084`, `9088`, `9443` respectively.
 
 ### ATSD Shutdown
 

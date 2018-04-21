@@ -92,7 +92,7 @@ More information about collectd configuration in [collectd.conf.5](https://colle
 
 ## Auto-Start
 
-Add collectd to autostart.
+Enable auto-start for collectd.
 
 On Ubuntu 14.04
 

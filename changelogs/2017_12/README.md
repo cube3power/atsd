@@ -11,7 +11,7 @@ Weekly Change Log: March 20 - March 26, 2017
 | 4008 | sql | Feature | Implement a custom serializer for external sorting. |
 | 3924 | UI | Feature | Add syntax highlighting to configuration files in the [Configuration Files Editor](../../administration/editing-configuration-files.md). |
 | 3852 | sql | Feature | Add support for [column alias](../../sql/examples/alias-column.md) for columns created with [`CASE`](../../sql#case) expression. |
-| 4034 | sql | Bug | Incorrect filterting of rows with multiple [`LIKE` expressions](../../sql#like-expression) combined with OR operator. |
+| 4034 | sql | Bug | Incorrect filtering of rows with multiple [`LIKE` expressions](../../sql#like-expression) combined with OR operator. |
 | 4030 | sql | Bug | Add support for metric [`LIKE` expression](../../sql#like-expression) in `FROM atsd_series` queries. |
 | [4029](#issue-4029) | UI | Feature | Consolidate diagnostic tool links on the **Admin: Diagnostics** page. |
 | 4027 | sql | Bug | Metric tags and fields are set to `null` in [`JOIN`](../../sql#joins) queries.|

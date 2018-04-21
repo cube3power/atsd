@@ -2,9 +2,9 @@
 
 ## Overview
 
-The following example demonstrates how to send a message to a a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic using a [`GCP PS`](gcp-ps.md) web notification.
+The following example demonstrates how to send a message to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic using a [`GCP PS`](gcp-ps.md) web notification.
 
-The example invokes the [Coogle Cloud Pub/Sub API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) `projects.topics.publish` method.
+The example invokes the [Google Cloud Pub/Sub API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) `projects.topics.publish` method.
 
 ## Configuration
 

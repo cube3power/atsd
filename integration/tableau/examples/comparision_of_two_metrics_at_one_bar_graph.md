@@ -1,4 +1,4 @@
-# Comparision of Two Metrics in One Bar Graph
+# Comparison of Two Metrics in One Bar Graph
 
 ## Overview
 

@@ -23,9 +23,9 @@ Provide the following artifacts as part of your support request related to a ser
 
 * A. Archive (tar.gz) of `*.log` and `*.zip` files in the `/opt/atsd/atsd/logs` directory.
    
-* B. Archive (tar.gz) of the local `/opt/atsd/hadoop/logs/` directory or from the HBase RegionServer(s).
+* B. Archive (tar.gz) of the local `/opt/atsd/hadoop/logs/` directory or from the HBase HRegionServers.
    
-* C. Archive (tar.gz) of the local `/opt/atsd/hadoop/logs/` directory or from the HDFS Data Nodes(s).
+* C. Archive (tar.gz) of the local `/opt/atsd/hadoop/logs/` directory or from the HDFS DataNodes.
    
 ## 4. Heap Dump File
 

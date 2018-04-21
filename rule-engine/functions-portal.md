@@ -32,7 +32,7 @@ The function is supported in:
 * [Telegram](notifications/telegram.md)
 * [Slack](notifications/slack.md)
 * [Discord](notifications/discord.md)
-* [Hipchat](notifications/hipchat.md)
+* [HipChat](notifications/hipchat.md)
 
 When used with other configurations, the function will return an empty string.
 

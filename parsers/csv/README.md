@@ -33,7 +33,7 @@ series e:nurswgvml001 d:2015-11-15T00:00:00Z m:space_used_%=14.4 t:disk=/dev/sda
 |  Name  |  Unique parser name used as identifier when uploading files.  |
 |  Command Type  |  Type of data contained in the file: time series, properties, messages.  |
 |  Write Property  |  Enable writing data both as series and as properties.  |
-|  Entity Column  |  Name of column in CSV file containing the entities. For example: host or node.<br>Multiple columns can be specified in the Entity Column field in order to concatenate their values into a composite entity name using a dash symbol `–` as a token.<br>For example:<br>Souce CSV file:<br>`Year,Source,Destination,Travelers`<br>`1995,Moscow,Berlin,2000000`<br>Entity Columns:<br>`Source,Destination`<br>Resulting Entity:<br>`Moscow-Berlin`  |
+|  Entity Column  |  Name of column in CSV file containing the entities. For example: host or node.<br>Multiple columns can be specified in the Entity Column field in order to concatenate their values into a composite entity name using a dash symbol `–` as a token.<br>For example:<br>Source CSV file:<br>`Year,Source,Destination,Travelers`<br>`1995,Moscow,Berlin,2000000`<br>Entity Columns:<br>`Source,Destination`<br>Resulting Entity:<br>`Moscow-Berlin`  |
 |  Entity Prefix  |  Prefix added to entity names.  |
 |  Default Entity  |  All data written to specific entity.  |
 |  Replace Entities  |  Replace entity names in the input file with their aliases from the selected Replacement Table|

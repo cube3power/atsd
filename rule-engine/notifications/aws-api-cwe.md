@@ -39,8 +39,8 @@ Add required headers for `PutEvents` action:
 
 | **Name** | **Value** |
 | :--- | :--- |
-| Content-Type | `application/x-amz-json-1.1` |
-| X-Amz-Target | `AWSEvents.PutEvents` |
+| `Content-Type` | `application/x-amz-json-1.1` |
+| `X-Amz-Target` | `AWSEvents.PutEvents` |
 
 Modify the `Body` by replacing the `<MESSAGE_TEXT>` value with your text, for example:
 

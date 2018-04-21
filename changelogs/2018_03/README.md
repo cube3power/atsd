@@ -40,7 +40,7 @@ Monthly Change Log: March 2018
 5093 | rule engine | Bug | Resolve generic type parameter of returned collections by [property](../../rule-engine/functions-property.md#property-functions) functions.
 5090 | rule engine | Bug | Access to [collection](../../rule-engine/functions-collection.md#collection-functions) objects.
 5081 | UI | Bug | Selected [entity group](../../configuration/entity_groups.md#entity-groups) is not remembered.
-5078 | installation | Bug | [Installation](../../installation#installation): apply nohup to default startup scripts.
+5078 | installation | Bug | [Installation](../../installation#installation): apply `nohup` to default startup scripts.
 5070 | sql | Feature | [Inline queries](../../sql#inline-views): remove `time`/`datetime` column requirement.
 5067 | rule engine | Bug | [`getEntityLink`](../../rule-engine/functions-link.md#getentitylink) function raises NPE on empty entity.
 5066 | rule engine | Bug | [AWS API](../../rule-engine/web-notifications.md#integration-services): Fix test mode for configuration.

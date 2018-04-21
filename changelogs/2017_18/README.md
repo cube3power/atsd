@@ -9,7 +9,7 @@ Weekly Change Log: May 01, 2017 - May 07, 2017
 | 4131 | Test | Bug | Fixed an error caused by ignoring Daylight Savings Time when using a [`GROUP BY PERIOD`](../../sql#calendar-alignment) clause with a user-defined timezone.|
 | 4130 | sql | Bug | Fixed an error causing the display of duplicate rows when aggregation was performed without grouping.|
 | 4112 | sql | Bug | Fixed [`ISNULL`](../../sql#isnull) function evaluation that ignored the first condition unless another condition was presented in the `WHERE` clause.|
-| 4105 | sql | Bug | Fixed an error causing missing rows in [sub-qeuries](../../sql/examples/filter-by-date.md#query-using-between-subquery) containing the `WHERE` condition.|
+| 4105 | sql | Bug | Fixed an error causing missing rows in [sub-queries](../../sql/examples/filter-by-date.md#query-using-between-subquery) containing the `WHERE` condition.|
 | 4097 | UI | Bug | Fixed a concurrency problem causing multiple queries to be terminated with a single cancel request. |
 
 ### Collector

@@ -8,7 +8,7 @@ Weekly Change Log: April 3 - April 9, 2017
 | 4000 | sql | Bug | Standardize NaN and NULL processing in aggregation functions: [`min_value_time`](../../sql#aggregation-functions) and [`max_value_time`](../../sql#aggregation-functions). |
 | [4057](#issue-4057) | sql | Feature | Add support for conditions containings multiple expressions in `CASE`. |
 | [4083](#issue-4083) | sql | Feature | Allow `metric LIKE` condition in [`atsd_series`](../../sql#atsd_series-table) queries. |
-| 4082 | sql | Bug | Fix issued with failin query cancellation requests. |
+| 4082 | sql | Bug | Fix issued with failing query cancellation requests. |
 | 4081 | api-network | Bug | Fix processing of commands with multiline text containing lines starting with `time` keyword. |
 | 4075 | sql | Bug | Optimize queries with [`metrics()`](../../sql#metrics) function by pushing down predicates into the subquery. |
 | 4079 | sql | Bug | Metric/entity `timeZone` field should return time zone name instead of toString output. |
@@ -24,7 +24,7 @@ Weekly Change Log: April 3 - April 9, 2017
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
-| 4090 | jdbc | Bug | Don't log error if InterpolateType value is NULL. |
+| 4090 | jdbc | Bug | Don't log error if `InterpolateType` value is `NULL`. |
 | 4078 | core | Bug | Fix parsing series commands with '=' symbol in the text field.  |
 | 4061 | file | Bug | Save error messages if FTP connection fails. |
 

@@ -85,8 +85,7 @@ To display values for a specific series, the `[series]` section should specify t
 
 ## Selecting Multiple Series with Tags
 
-By default, the database will return all series matching the request, including series with extra tags not enumerated in 
-the request.
+By default, the database will return all series matching the request, including series with extra tags not enumerated in the request.
 
 This enables loading series using only a subset of tags that are still sufficient to uniquely identify the series:
 

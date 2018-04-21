@@ -106,7 +106,7 @@ ATSD Schema can be viewed in SQL Query Designer tool:
 - Select fields inside the table (these fields will be included in `SELECT` clause of a Query)
 - Optionally add `WHERE`, `GROUP BY` and `HAVING` or `ORDER BY`
 - Click `OK` so your Query will be built and shown in text field
-> Remove newline symbol after `SELECT` keyword  
+> Remove new line symbol after `SELECT` keyword
 > Remove quotes around column names
 
 ## Import Data

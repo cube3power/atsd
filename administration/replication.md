@@ -206,7 +206,6 @@ master machine.**
 
 Write the table schema to a file:
 
-
 ```sh
 /opt/atsd/hbase_util/configure_replication.sh schema atsd_new > atsd_new_schema.txt
 ```

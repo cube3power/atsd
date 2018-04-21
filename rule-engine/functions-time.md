@@ -44,7 +44,7 @@ Time when the first command was received by the window, in UNIX milliseconds.
   milliseconds(string d [,string p [,string z]]) long
 ```
 
-Parses the date string `d` into UNIX milliseconds according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [time zone](http://joda-time.sourceforge.net/timezones.html) `z` (or offset from UTC).
+Parses the date string `d` into UNIX milliseconds according to the specified [date pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [time zone](http://joda-time.sourceforge.net/timezones.html) `z` (or offset from UTC).
 
 The function returns `0` if the date `d` is `null` or empty.
 
@@ -103,7 +103,7 @@ Example:
   date_parse(string d [,string p [,string z]]) DateTime
 ```
 
-Parses the input string `d` into a [DateTime](object-datetime.md) object according to the specified [date pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
+Parses the input string `d` into a [`DateTime`](object-datetime.md) object according to the specified [date pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
 
 The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default time zone is the server time zone.
 

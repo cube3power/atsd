@@ -16,7 +16,7 @@ Let's build a report illustrating average monthly imports each year.
 - Drag-and-drop _Value_ onto the rows field.
 - Change value aggregation from **SUM** to **AVG**: right click > **Measure** > **Average**
 - Select _Line_ in the dropdown on Marks Card
-- Optionally add [drop lines](comparision_of_two_metrics_at_one_bar_graph.md#drop-lines)
+- Optionally add [drop lines](comparison_of_two_metrics_at_one_bar_graph.md#drop-lines)
 
 ## Results
 

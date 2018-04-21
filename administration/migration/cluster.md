@@ -17,7 +17,7 @@ For non-distributed installations, refer to the following [migration guide](READ
 
 The migration procedure requires up to 30% of the current `atsd_d` table size to store new records before old data can be deleted.
 
-Open **Clusters > Cluster > HDFS > Status** page in Clouder Manager.
+Open **Clusters > Cluster > HDFS > Status** page in Cloudera Manager.
 
 Be sure that enough configured capacity is available in HDFS.
 
@@ -132,7 +132,7 @@ Run the `TableCloner` task to rename `atsd_d` table as `atsd_d_backup`.
 java com.axibase.migration.admin.TableCloner --table_name=atsd_d
 ```
 
-If a custom table prefix is specifed in the `server.properties` file, for example it is set to 'atsd_custom_', change the `table_name` parameter accordingly:
+If a custom table prefix is specified in the `server.properties` file, for example it is set to 'atsd_custom_', change the `table_name` parameter accordingly:
 
 ```sh
 java com.axibase.migration.admin.TableCloner --table_name=atsd_custom_d

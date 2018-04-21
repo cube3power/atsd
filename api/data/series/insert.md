@@ -78,12 +78,12 @@ None.
 
 |  **Status Code**  | **Description** |
 |:---|:---|
-| 400 | IllegalArgumentException: Empty entity.|
-| 400 | IllegalArgumentException: Negative timestamp.|
-| 400 | IllegalArgumentException: No data. |
-| 400 | IllegalArgumentException: BigDecimal significand overflows the long type. |
-| 500 | JsonParseException: Unexpected character "}" |
-| 500 | JsonMappingException: No enum constant in field type.|
+| 400 | `IllegalArgumentException: Empty entity.`|
+| 400 | `IllegalArgumentException: Negative timestamp.`|
+| 400 | `IllegalArgumentException: No data.` |
+| 400 | `IllegalArgumentException: BigDecimal significand overflows the long type.` |
+| 500 | `JsonParseException: Unexpected character "}"` |
+| 500 | `JsonMappingException: No enum constant in field type.`|
 
 ## Example
 

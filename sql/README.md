@@ -880,7 +880,7 @@ AND datetime BETWEEN endtime(YESTERDAY, 'US/Pacific') AND endtime(CURRENT_DAY, '
 | 2.97  | 2017-06-17T06:59:45Z | 2017-06-17T06:59:45UTC | 2017-06-16T23:59:45PDT |
 ```
 
-### Local Time Bounderies
+### Local Time Boundaries
 
 To specify the interval range in local time, use the `date_parse` function to convert the string datetime into Unix milliseconds.
 
@@ -1069,7 +1069,7 @@ GROUP BY entity, PERIOD(5 MINUTE, END_TIME)
 
 #### `CALENDAR` Alignment
 
-The `CALENDAR` alignment calculates the initial period according to the rules below and creates subsequent periods by incrementing the duration specified by the `PERIOD` function. The inital period is defined as the earliest period that intersects with the selection interval.
+The `CALENDAR` alignment calculates the initial period according to the rules below and creates subsequent periods by incrementing the duration specified by the `PERIOD` function. The initial period is defined as the earliest period that intersects with the selection interval.
 
 * The start time of a selection interval is rounded to calculate the _base time_ using the rule table below.
 * If the period starting with the _base time_ intersects with the selection interval, it becomes the initial period.
@@ -1683,8 +1683,8 @@ GROUP BY env
 | test |          8.2 | 
 ```
 
-The example below calculates hourly maximums from which the parent query computes a daily average (average hourly maximum).
- 
+The example below calculates hourly maximum from which the parent query computes a daily average (average hourly maximum).
+
 ```sql
 SELECT datetime, AVG(value) AS "daily_average" 
   FROM (

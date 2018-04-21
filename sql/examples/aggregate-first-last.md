@@ -1,6 +1,6 @@
-# Aggregate Functions: FIRST and LAST 
+# Aggregate Functions: FIRST and LAST
 
-FIRST and LAST functions return the first and last value within a set of the grouped records which are ordered by time ascendingly.
+FIRST and LAST functions return the first and last value within a set of the grouped records which are sorted by time in ascending order.
 
 ## Data
 

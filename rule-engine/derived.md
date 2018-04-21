@@ -145,7 +145,7 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 	series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
 ```
 
-### Rollup (all matching entities)
+### Roll-up (all matching entities)
 
 * Window type: time-based
 * Window length: 1 minute

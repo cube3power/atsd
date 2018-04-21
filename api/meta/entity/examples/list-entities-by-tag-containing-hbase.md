@@ -29,7 +29,7 @@ name LIKE 'nur*' and lower(tags.app) LIKE '*hbase*'
     "name": "nurswgvml203",
     "enabled": true,
     "tags": {
-        "app": "Hadoop/Hbase master node"
+        "app": "Hadoop/HBase master node"
     }
 }]
 ```
