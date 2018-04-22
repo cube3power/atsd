@@ -766,7 +766,7 @@ In the example above, the underscore is evaluated as a regular character (not as
 
 ### REGEX Expression
 
-The `REGEX` expression matches column value against a [regulat expresssion](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html) and returns `true` if the text is matched.
+The `REGEX` expression matches column value against a [regular expression](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html) and returns `true` if the text is matched.
 
 The comparison is case-sensitive, even for entity and metric names.
 

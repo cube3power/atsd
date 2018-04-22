@@ -117,10 +117,10 @@ Sample URL:
 
 The configuration object `c` may contain the following fields:
 
-* `contentType` - Content type of the request. Default contentType is `application/json`.
+* `contentType` - Content type of the request. Default content type is `application/json`.
 * `content` - request body text. Either `content` or `params` may be specified.
 * `headers` - Map of request headers keys and values, or a collection of header entries separated by `:`.
-* `params` - Map of request parameters serialized to text payload depending on the `contentType`.
+* `params` - Map of request parameters serialized to text payload depending on the content type`.
 * `ignoreSsl` - Boolean field that controls SSL certificate validation. Default is `true`.
 
 The `params` map is serialized as a JSON document if content type is `application/json`. Otherwise it is converted to URL-encoded form format.
@@ -199,7 +199,7 @@ Retrieve results of a GraphQL query into [GitHub API v4](https://developer.githu
 **Field**    | **Type** | **Description**
 -------------|----------|----------------
 `content`      | string   | Response body text.
-`status`       | int      | Status code, such as `200` or `401`.
+`status`       | integer      | Status code, such as `200` or `401`.
 `headers`      | map      | Response headers. Header values with the same name are separated by a comma.
 `duration`     | long     | Time, in milliseconds, between initiating a request and downloading the response.
 `content`      | string   | Response body text.

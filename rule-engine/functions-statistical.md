@@ -200,7 +200,7 @@ Difference between `last(integer i)` and `first(integer i)` values. Same as` las
   diff(string i) double
 ```
 
-Difference between the last value and value at 'currentTime - interval'.
+Difference between the last value and value at `currentTime - interval`.
 
 Interval `i` specified as 'count unit', for example '5 minute'.
 

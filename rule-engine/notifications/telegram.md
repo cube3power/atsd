@@ -67,7 +67,7 @@ There are two options to obtain chat id:
 ### View Updates
   
   * Send any message to the channel (for private/public channel) or start conversation with the bot (for direct message chat). No action is required for the group.
-  * Go to https://api.telegram.org/botBOT_TOKEN/getUpdates (replace BOT_TOKEN with the actual value).
+  * Open `https://api.telegram.org/botBOT_TOKEN/getUpdates` link (replace BOT_TOKEN with the actual value).
   * Review the `Chat Object` and copy `id` value.
 
     ![](images/chat_object.png)

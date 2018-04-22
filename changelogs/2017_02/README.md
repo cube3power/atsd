@@ -91,7 +91,7 @@ FROM 'ba:active.1'
 ### Issue 3767
 --------------
 
-The [`CAST`](../../sql#cast) function can now convert both a string into a number, as well as a number into a string. `CAST`-ing numbers to strings is required to pass it as an argument into a string function. Applying `CAST` to a string returns a string for a numeric value formatted with a `#.##` pattern.
+The [`CAST`](../../sql#cast) function can now convert both a string into a number, as well as a number into a string. Casting numbers (modifying data type) to strings is required to pass it as an argument into a string function. Applying `CAST` to a string returns a string for a numeric value formatted with a `#.##` pattern.
 
 ```sql
 SELECT datetime, value, metric

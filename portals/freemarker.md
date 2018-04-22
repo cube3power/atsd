@@ -4,7 +4,7 @@ Freemarker expressions are supported in portal creation.
 
 #### Freemarker Functions
 
-##### getTags
+##### `getTags`
 
 ```javascript
 getTags('metric', 'entity', 'tagKey'[, hours])
@@ -44,7 +44,7 @@ Entity tag value.
 tag('nurswgvml007', 'location')
 ```
 
-##### groupTag
+##### `groupTag`
 
 ```javascript
 groupTag('entity', 'tagKey')
@@ -58,7 +58,7 @@ Returns collection of tag values for tagKey of all entity groups to which the en
 groupTag('nurswgvml007', 'cpu_busy_avg_15_min')
 ```
 
-##### getMetrics
+##### `getMetrics`
 
 ```javascript
 getMetrics('entity')
@@ -68,7 +68,7 @@ String collection.
 
 Returns collected metrics for a particular entity.
 
-```
+```freemarker
 <#assign metrics = getMetrics("${entity}") >      
 <#list metrics as metric>
     [series]
@@ -80,7 +80,7 @@ Returns collected metrics for a particular entity.
 </#list
 ```
 
-```
+```freemarker
 <#assign metrics = getMetrics("${entity}") >      
 <#list metrics as metric>
 <#if metric?index_of("cpu") gte 0>
@@ -97,7 +97,7 @@ Returns collected metrics for a particular entity.
 </#list>
 ```
 
-##### isMetric
+##### `isMetric`
 
 ```javascript
 isMetric('metric')
@@ -107,7 +107,7 @@ Boolean.
 
 Returns true if a metric exists.
 
-```
+```freemarker
 <#if isMetric("nmon.processes.blocked") >
     [series]        
         label = blocked
@@ -115,25 +115,27 @@ Returns true if a metric exists.
         metric = nmon.processes.blocked
 </#if>   
 ```
-##### isMetricCollected
+
+##### `isMetricCollected`
 
 ```javascript
-isMetricCollected('metric', 'entity')
+`isMetricCollected('metric', 'entity')`
 ```
 
 Boolean.
 
 Returns true if there is some data for metric and entity inserted in the last 24 hours.
 
-```
+```freemarker
 <#if isMetricCollected("nmon.processes.blocked", "${entity}") >
     [series]        
         label = blocked
         entity = ${entity}
         metric = nmon.processes.blocked
-</#if>  
+</#if>
 ```
-##### getProperty
+
+##### `getProperty`
 
 ```javascript
 getProperty('entity', 'property_type', 'tagKey')
@@ -143,8 +145,7 @@ Returns a string collection.
 
 Retrieve a collection of property objects for a specified entity, property type, and tag.
 
-
-```
+```freemarker
 <#if isMetricCollected("nmon.processes.blocked", "${entity}") >
     [series]        
         label = blocked
@@ -152,7 +153,8 @@ Retrieve a collection of property objects for a specified entity, property type,
         metric = nmon.processes.blocked
 </#if>
 ```
-##### getSeriesProperties
+
+##### `getSeriesProperties`
 
 ```javascript
 getSeriesProperties("{entity}", "{property_type}")
@@ -163,7 +165,7 @@ Returns property objects for a specified entity and property type.
 Retrieve a collection of property objects for a specified entity and property type.
 If no entity is specified, then the schema retrieves a collection of property objects for all entities with the specified property type.
 
-```
+```freemarker
 <#assign ebs_volume_tags = getSeriesProperties(volume, "aws_ec2.attachmentset") >
 <#list ebs_volume_tags as volume_tags>
   <#if volume_tags.entity == volume>
@@ -176,7 +178,7 @@ If no entity is specified, then the schema retrieves a collection of property ob
 </#list>
 ```
 
-##### getTagMaps
+##### `getTagMaps`
 
 ```javascript
 getTagMaps('metric', 'entity'[, hours])
@@ -187,7 +189,7 @@ Returns collection of maps(string, string).
 Retrieve a collection of unique tag maps for metric and entity.
 `[, hours]` is an optional parameter, which specifies the time interval (in hours) for searching unique tag values. The default interval is 24 hours.
 
-```
+```freemarker
 <#assign procMaps = getTagMaps("nmon.process.%cpu", "${entity}") >  
 <#list procMaps as procMap>
     [series]
@@ -202,6 +204,7 @@ Retrieve a collection of unique tag maps for metric and entity.
             value = ${procMap['command']}
 </#list>
 ```
+
 ##### atsd_last
 
 ```javascript
@@ -224,7 +227,7 @@ atsd_last("nurswgvml007", "cpu_busy")
 
 The returned value is formatted according to server locale. For example 13325 is formatted as 13,325. To remove formatting append `?c` at the end of the function or assigned variable.
 
-```javascript
+```freemarker
 <#assign total = atsd_last("nurswgvml007", "disk_size", "mount_point=/,file_system=/dev/mapper/vg_nurswgvml007-lv_root") >
   total-value = ${total?c}
 ```
@@ -239,12 +242,12 @@ Boolean.
 
 Returns true if an entity belongs to any of the specified entity groups.
 
-```
+```freemarker
 <#if memberOf("nurswgvml007", "aix-servers") >
     [series]        
         entity = ${entity}
         metric = lpar.used_units
-</#if> 
+</#if>
 ```
 
 ##### memberOfAll
@@ -257,9 +260,9 @@ Boolean.
 
 Returns true if an entity belongs to all of the entity groups.
 
-```txt
+```freemarker
 <#if isMetricCollected("nmon.processes.blocked", "${entity}") >
-    [series]        
+    [series]
         label = blocked
         entity = ${entity}
         metric = nmon.processes.blocked
@@ -280,7 +283,7 @@ Double.
 
 Returns the last insert time for the entity or entity/metric combination in milliseconds (Time) or ISO format (Date). Metric is an optional parameter.
 
-```
+```freemarker
 <#assign ebs_volume_tags = getSeriesProperties(volume, "aws_ec2.attachmentset") >
    <#list ebs_volume_tags as volume_tags>
       <#if volume_tags.entity == volume>
@@ -293,7 +296,7 @@ Returns the last insert time for the entity or entity/metric combination in mill
    </#list
 ```
 
-```
+```javascript
 lastInsertDate('nurswgvml007', 'cpu_busy')
 ```
 
@@ -313,7 +316,7 @@ Finds all entities in a particular entity group. This can be useful when buildin
 If hours are not specified or are non-positive, all group members are returned.
 
 ```freemarker
-<#assign servers = getEntitiesForGroup("VMware Hosts") >   
+<#assign servers = getEntitiesForGroup("VMware Hosts") >
 <#list servers as server>
     [series]
         entity = ${server}
@@ -326,7 +329,7 @@ If hours are not specified or are non-positive, all group members are returned.
 </#list>
 ```
 
-##### getEntitiesForTags
+##### `getEntitiesForTags`
 
 ```javascript
 getEntitiesForTags(expression)

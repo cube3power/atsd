@@ -87,7 +87,7 @@ Open the **Web Notifications** tab.
 
 Set **Enabled** to **Yes** and choose the previously created web notification from the **Endpoint** drop-down.
 
-Enable **Open**, **Repeat** and **Cancel** triggers. Set the **Repeat Interval** to **All**. Leave **detailsTable('ascii')** empty.
+Enable **Open**, **Repeat** and **Cancel** triggers. Set the **Repeat Interval** to **All**. Leave `detailsTable('ascii')` empty.
 
 Specify the following settings for the **Open** trigger:
 

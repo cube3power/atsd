@@ -17,7 +17,7 @@ Weekly Change Log: July 31, 2017 - August 06, 2017
 | 4405 | UI | Feature | Add support for exporting and importing tag templates into XML on **Configuration > Tag Templates** page. |
 | [4395](#issue-4395) | jdbc | Feature | Add support for [wildcards](https://github.com/axibase/atsd-jdbc/blob/master/README.md#database-metadata) in `getTables` and `getColumns` methods. |
 | [4389](#issue-4389) | jdbc | Feature | Add support for inserting metric and entity [tags and fields](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#metric-metadata-columns) in `INSERT` statements. |
-| [4388](#issue-4388) | jdbc | Feature | Add support for local [datetime](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#date) format `yyyy-MM-dd HH:mm:ss[.fffffffff]` in `INSERT` statements. |
+| [4388](#issue-4388) | jdbc | Feature | Add support for local [timestamp](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#date) format `yyyy-MM-dd HH:mm:ss[.fffffffff]` in `INSERT` statements. |
 | 4385 | jdbc | Feature | Add `missingMetric` [connection property](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-connection-properties-supported-by-driver) to control driver behavior in case of unknown table.|
 | 4383 | jdbc | Bug | Include the reserved `atsd_series` if `tables=*` [connection property](https://github.com/axibase/atsd-jdbc/blob/master/README.md#jdbc-connection-properties-supported-by-driver) selects all tables. |
 | 4379 | jdbc | Bug | Fixed an error with `NULL` values in [`INSERT`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md) statements. |

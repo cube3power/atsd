@@ -6,19 +6,19 @@ Math functions perform basic numeric operations on the input number and return a
 
 ## Reference
 
-* [abs](#abs)
-* [ceil](#ceil)
-* [floor](#floor)
-* [pow](#pow)
-* [round](#round)
-* [max](#max)
-* [min](#min)
-* [cbrt](#cbrt)
-* [sqrt](#sqrt)
-* [exp](#exp)
-* [log](#log)
-* [log10](#log10)
-* [signum](#signum)
+* [`abs`](#abs)
+* [`ceil`](#ceil)
+* [`floor`](#floor)
+* [`pow`](#pow)
+* [`round`](#round)
+* [`max`](#max)
+* [`min`](#min)
+* [`cbrt`](#cbrt)
+* [`sqrt`](#sqrt)
+* [`exp`](#exp)
+* [`log`](#log)
+* [`log10`](#log10)
+* [`signum`](#signum)
 
 ### `abs`
 
@@ -128,4 +128,4 @@ Returns the base 10 logarithm of `x`.
   signum(double x) integer
 ```
 
-Returns the signum function of the argument: `0` if the argument is `0`, `1` if the argument is greater than `1`, `-1` if the argument is less than `0`.
+Returns the `signum` function of the argument: `0` if the argument is `0`, `1` if the argument is greater than `1`, `-1` if the argument is less than `0`.

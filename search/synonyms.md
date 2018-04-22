@@ -47,8 +47,8 @@ The same results will be displayed if the 'currency' keyword is searched as well
 location => place, site, Ort, место
 ```
 
-Searching for 'location' would match the below series since it has an entity tag 'location'.
-Likewise, searching for 'ort' would match the same series since 'ort' is a synonym of 'location', which is one of the entity tags.
+Searching for `location` would match the below series since it has an entity tag `location`.
+Likewise, searching for `ort` would match the same series since `ort` is a synonym of `location`, which is one of the entity tags.
 
 ```sql
 student_count         -- metric

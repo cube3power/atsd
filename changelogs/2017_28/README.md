@@ -16,7 +16,7 @@ Weekly Change Log: July 10, 2017 - July 16, 2017
 The `CURRENT_TIMESTAMP` function returns current database date and time in the ISO 8601 format. It is analogous to the [`NOW`](../../sql#keywords)
 function which returns current database time in Unix milliseconds.
 
-The [`DBTIMEZONE`](../../sql#dbtimezone) function returns the current database timezone name or GMT offset.
+The [`DBTIMEZONE`](../../sql#dbtimezone) function returns the current database time zone name or GMT offset.
 
 ![](Images/4375.png)
 

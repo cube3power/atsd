@@ -53,10 +53,10 @@ The entity and the tag columns support `*` as the wildcard character.
 | Entity Group | Entity | Tag1 | Description |
 |---|---|---|---|
 | | `*` | | The rule will match **all** windows.|
-| prod | `*` | | The rule will match entities that are members of the 'prod' entity group.|
-| prod | `nur*`| | The rule will match entities with name starting with 'nur' and which are members of the 'prod' entity group.|
-|  | `*` | abc | The rule will match windows with 'Tag1' equal 'abc'.|
-| prod | `*` | `*cde*` | The rule will match windows for members of the 'prod' entity group **and** with 'Tag1' containing `cde`.|
+| `prod` | `*` | | The rule will match entities that are members of the `prod` entity group.|
+| `prod` | `nur*`| | The rule will match entities with name starting with `nur` and which are members of the `prod` entity group.|
+|  | `*` | abc | The rule will match windows with `Tag1` equal `abc`.|
+| `prod` | `*` | `*cde*` | The rule will match windows for members of the `prod` entity group **and** with `Tag1` containing `cde`.|
 
 ### Thresholds
 
@@ -108,8 +108,8 @@ Rule Processing
 
 * Rules are processed from top to bottom. There are 4 rules in the table.
 * Row 1: Since the value cannot be greater than **100%**, this rule effectively disables alerts for `tmp` file systems.
-* Row 2. This rule will raise `ERROR` alert if disk usage exceeds **50%** for entity 'nurswgvml010'.
-* Row 3. This rule will raise `ERROR` alert if disk usage on `/` mount point exceeds **90%** for entity 'nurswgvml007'. Note that once a rule is matched, the default condition is not evaluated for this window, and therefore an alert will not be raised for `/` on 'nurswgvml007' with disk usage of **85%**.
+* Row 2. This rule will raise `ERROR` alert if disk usage exceeds **50%** for entity `nurswgvml010`.
+* Row 3. This rule will raise `ERROR` alert if disk usage on `/` mount point exceeds **90%** for entity `nurswgvml007`. Note that once a rule is matched, the default condition is not evaluated for this window, and therefore an alert will not be raised for `/` on `nurswgvml007` with disk usage of **85%**.
 * Row 4. Raise `ERROR` alert if disk usage exceeds **60%** for any entity in the 'disk_prod' group. Otherwise, raise `WARNING` alert, if disk usage is greater than **30%** for the same entities.
 * If not rule was matched, evaluate the default condition.
 

@@ -10,7 +10,7 @@
     ".md"
   ],
   "excludeFiles": [
-    "timezone-list.md"
+    "shared/timezone-list.md"
   ], 
   "dictionary": [
     "axibase",
@@ -216,7 +216,8 @@
     "Django",
     "regex",
     "OpenLink",
-    "Pearson"
+    "Pearson",
+    "format"
 
   ]
 }

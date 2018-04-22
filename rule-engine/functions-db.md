@@ -15,17 +15,17 @@ The `db_message_count` and `db_message_last` functions allow one to correlate di
 
 Series functions:
 
-* [db_last](functions-db.md#db_laststring-m)
-* [db_statistic](functions-db.md#db_statistic)
+* [`db_last`](functions-db.md#db_laststring-m)
+* [`db_statistic`](functions-db.md#db_statistic)
 
 Message functions:
 
-* [db_message_count](functions-db.md#db_message_count)
-* [db_message_last](functions-db.md#db_message_last)
+* [`db_message_count`](functions-db.md#db_message_count)
+* [`db_message_last`](functions-db.md#db_message_last)
 
 SQL functions:
 
-* [executeSqlQuery](functions-db.md#executesqlquery)
+* [`executeSqlQuery`](functions-db.md#executesqlquery)
 
 ## Series Functions
 
@@ -259,7 +259,7 @@ In the example below, the `db_last('disk_used_percent')` function will search fo
 
 #### Example `Different Tags`
 
-In the example below, the `db_last('io_disk_percent_util')` function will search for the first series with **any** tags (including no tags) because the io_disk_percent_util and disk_used metrics have different non-intersecting tag sets. This search will likely match multiple series, the first of which will be used to return the value. To better control which series is matched, use `db_last('io_disk_percent_util', entity, 'device=sda')` syntax option.
+In the example below, the `db_last('io_disk_percent_util')` function will search for the first series with **any** tags (including no tags) because the `io_disk_percent_util` and `disk_used metrics` have different non-intersecting tag sets. This search will likely match multiple series, the first of which will be used to return the value. To better control which series is matched, use `db_last('io_disk_percent_util', entity, 'device=sda')` syntax option.
 
 * Current Window
 
@@ -437,7 +437,7 @@ executeSqlQuery("SELECT entity, avg(value) AS \"Average Value\" FROM jvm_memory_
 
 ```css
   [
-    [entity, Average Value], 
+    [entity, Average Value],
     [atsd, 467675162.105]
   ]
 ```

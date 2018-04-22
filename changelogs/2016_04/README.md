@@ -6,7 +6,7 @@ Weekly Change Log: December 5-11, 2016
 | Issue| Category    | Type    | Subject                         |
 |------|-------------|---------|---------------------------------|
 | 3698 | admin       | Support     | Increased the default maximum Java heap value from 512Mb to 1G. This change is required to accommodate increased requirements for in-memory processing by the SQL engine. |
-| [3690](#issue-3690) | security    | Feature | Modified how role/membership/permission changes are applied. When changes are made to a user's account, current active sessions are now automatically invalidated. The user cannot continue using sessions with previously cached ACLs. |
+| [3690](#issue-3690) | security    | Feature | Modified how role/membership/permission changes are applied. When changes are made to a user's account, current active sessions are now automatically invalidated. The user cannot continue using sessions with previously cached `ACLs`. |
 | [3688](#issue-3688) | sql         | Feature     | Added support for `GROUP BY value` to calculate unique occurrences of the `value` over the specified timespan. This could be useful for metrics that measure discrete characteristics, such as status codes, error codes, digital states etc. |
 | 3679 | email       | Feature     | Cleaned up the email notification template to hide irrelevant statistics if the sample in the window is less than 1. |
 | 3678 | UI          | Bug     | Placed the Name and Label fields on separate lines in the metric and entity forms to account for long names. |
@@ -26,7 +26,7 @@ Weekly Change Log: December 5-11, 2016
 | Issue| Category    | Type    | Subject                         |
 |------|-------------|---------|---------------------------------|
 | [3664](#issue-3664) | docker      | Feature | Added new Docker container metrics for process count monitoring: `docker.process.all` and `docker.process.filtered`. |  
-| [3559](#issue-3559) | jdbc        | Feature | Extended JDBC job so that PI server PIPoint metadata can be offloaded into ATSD. |
+| [3559](#issue-3559) | jdbc        | Feature | Extended JDBC job so that PI server `PIPoint` metadata can be offloaded into ATSD. |
 
 ## ATSD
 
@@ -71,7 +71,7 @@ The administrative interface in ATSD has been simplified by consolidating multip
    incrementing counter, meaning it doesn't adhere to semantic versioning. Each change to the ATSD code will increment the revision number. Note that the revision number of the ATSD
    HBase jar file deployed on the HBase region server in the `/hbase/lib` directory is incremented separately from the ATSD revision number. When upgrading a distributed version of ATSD,
    follow [these steps](../../installation/cloudera.md#updating-atsd). If you're installing an ATSD version with a higher revision number and
-   if the atsd-hbase.*.jar version is the same, skip the region server deployment stage altogether and upgrade just ATSD itself, without restarting your region servers.
+   if the `atsd-hbase.*.jar` version is the same, skip the region server deployment stage altogether and upgrade just ATSD itself, without restarting your region servers.
 
 2. **JVM System Properties**
 
