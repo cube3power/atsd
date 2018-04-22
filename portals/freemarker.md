@@ -12,7 +12,7 @@ getTags('metric', 'entity', 'tagKey'[, hours])
 
 Returns a string collection.
 
-Tag values for metric, entity, and tagKey.
+Tag values for metric, entity, and `tagKey`.
 `[, hours]` is an optional parameter, which specifies the time interval (in hours) for searching unique tag values. The default interval is 24 hours.
 
 ```freemarker
@@ -52,7 +52,7 @@ groupTag('entity', 'tagKey')
 
 Returns a string collection.
 
-Returns collection of tag values for tagKey of all entity groups to which the entity belongs to.
+Returns collection of tag values for `tagKey` of all entity groups to which the entity belongs to.
 
 ```javascript
 groupTag('nurswgvml007', 'cpu_busy_avg_15_min')
