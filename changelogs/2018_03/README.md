@@ -6,13 +6,13 @@ Monthly Change Log: March 2018
 **Issue**| **Category**    | **Type**    | **Subject**              
 -----|-------------|---------|----------------------
 5170 | forecast | Bug | NPE in [forecast](../../forecasting#data-forecasting) settings.
-5169 | export | Bug | [Scheduled Query](../../reporting/scheduled-exporting.md#scheduled-exporting): Tmp files not deleted if Store enabled and no other output specified.
+5169 | export | Bug | [Scheduled Query](../../reporting/scheduled-exporting.md#scheduled-exporting): Temporary files not deleted if Store enabled and no other output specified.
 5165 | entity_views | Bug | Grouping column error if [view](../../configuration/entity_views.md#entity-views) is empty.
 5164 | [log_aggregator](https://github.com/axibase/aggregation-log-filter) | Bug | Replace sun.misc.BASE64Encoder.
 5161 | export | Bug | Refer to portal by name instead of ID for [entity groups](../../configuration/entity_groups.md#entity-groups).
 5159 | sql | Feature | Add name, author and description placeholders in [scheduled SQL](../../sql/scheduled-sql.md#sql-scheduler) queries.
 5155 | export | Bug | [Scheduled Query](../../reporting/scheduled-exporting.md#scheduled-exporting): NPE on commands store.
-5153 | rule engine | Bug | [Rule Engine](../../rule-engine): Generic type is not resolved for TagsMap.
+5153 | rule engine | Bug | [Rule Engine](../../rule-engine): Generic type is not resolved for `TagsMap`.
 5151 | core | Feature | Add User-Agent header in [outgoing](../../rule-engine/web-notifications.md#web-notifications) http requests.
 5150 | sql | Feature | Implement short ISO formats for [`datetime`](../../sql/README.md#interval-condition) literal.
 5146 | security | Bug | Rename built-in collector [groups](../../administration/user-authorization.md#collector-user).
@@ -52,7 +52,7 @@ Monthly Change Log: March 2018
 5036 | admin | Feature | Backup multiple record types from zip/tar.gz archive.
 5018 | rule engine | Bug | Web Notifications: raw url presence breaks markdown format in [Telegram](../../rule-engine/notifications/telegram.md#telegram-notifications).
 5012 | [entity_views](../../configuration/entity_views.md#entity-views) | Bug | 'Entity Tag' link not applied to 'Entity Tag' column.
-5001 | rule engine | Feature | Telegram: [getUpdates](../../rule-engine/notifications/telegram.md#reacting-to-bot-messages) message retriever as an alternative to webhook.
+5001 | rule engine | Feature | Telegram: [`getUpdates`](../../rule-engine/notifications/telegram.md#reacting-to-bot-messages) message retriever as an alternative to webhook.
 4957 | sql | Bug | [Period](../../sql#period) query now takes long time to execute.
 4925 | rule engine | Feature | Rule Engine: [rule_window](../../rule-engine/functions-rules.md#rule_window) function.
 4909 | security | Support | Install DV SSL certificate from Lets Encrypt CA.
@@ -66,12 +66,12 @@ Monthly Change Log: March 2018
 5141 | [jdbc](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) | Support | Timestamp format error in JDBC job.
 5140 | UI | Bug | Empty page on opening simon console.
 5114 | core | Bug | Collector CPU is abnormally high.
-5099 | [aws](https://github.com/axibase/axibase-collector/blob/master/jobs/aws.md#aws-job) | Bug | Entity create error.
+5099 | [`aws`](https://github.com/axibase/axibase-collector/blob/master/jobs/aws.md#aws-job) | Bug | Entity create error.
 5089 | UI | Bug | Add 'Execution Time' column to [job](https://github.com/axibase/axibase-collector/tree/master/jobs#jobs) list.
-5084 | [aws](https://github.com/axibase/axibase-collector/blob/master/jobs/aws.md#aws-job) | Bug | Job without pool is hanging.
+5084 | [`aws`](https://github.com/axibase/axibase-collector/blob/master/jobs/aws.md#aws-job) | Bug | Job without pool is hanging.
 5079 | [json](https://github.com/axibase/axibase-collector/blob/master/jobs/json.md#json-job) | Bug | Not all commands arrive in ATSD.
-5074 | [aws](https://github.com/axibase/axibase-collector/blob/master/jobs/aws.md#aws-job) | Bug | Cloud front metrics not collected.
-5071 | [aws](https://github.com/axibase/axibase-collector/blob/master/jobs/aws.md#aws-job) | Bug | 403 error caused by pagination.
+5074 | [`aws`](https://github.com/axibase/axibase-collector/blob/master/jobs/aws.md#aws-job) | Bug | Cloud front metrics not collected.
+5071 | [`aws`](https://github.com/axibase/axibase-collector/blob/master/jobs/aws.md#aws-job) | Bug | 403 error caused by pagination.
 5069 | [jmx](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md#jmx-job) | Bug | Non-existing attributes in log.
-5062 | [aws](https://github.com/axibase/axibase-collector/blob/master/jobs/aws.md#aws-job) | Bug | AWS region issues.
+5062 | [`aws`](https://github.com/axibase/axibase-collector/blob/master/jobs/aws.md#aws-job) | Bug | AWS region issues.
 5056 | [docker](https://github.com/axibase/axibase-collector/blob/master/jobs/docker.md#docker-job) | Feature | Extract Apache Mesos container labels.

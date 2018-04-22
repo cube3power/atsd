@@ -1,4 +1,4 @@
-# DateTime Object
+# `DateTime` Object
 
 ## Overview
 

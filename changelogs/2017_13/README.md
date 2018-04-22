@@ -43,9 +43,9 @@ Weekly Change Log: March 26 - April 2, 2017
 ### Issue 4050
 --------------
 
-The `date_parse` function parses the datetime string into Unix milliseconds.
+The `date_parse` function parses the literal timestamp string into Unix milliseconds.
 
-```
+```javascript
 date_parse(string datetime[, string time_format[, string time_zone]])
 ```
 
@@ -62,10 +62,10 @@ date_parse("2017-03-31T12:36:03Z", "yyyy-MM-dd'T'HH:mm:ssZZ")
 /* Parse date using the server time zone. */
 date_parse("31.03.2017 12:36:03.283", "dd.MM.yyyy HH:mm:ss.SSS")
 
-/* Parse date using the offset specified in the datetime string. */
+/* Parse date using the offset specified in the timestamp string. */
 date_parse("31.03.2017 12:36:03.283 -08:00", "dd.MM.yyyy HH:mm:ss.SSS ZZ")
 
-/* Parse date using the time zone specified in the datetime string. */
+/* Parse date using the time zone specified in the timestamp string. */
 date_parse("31.03.2017 12:36:03.283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss.SSS ZZZ")
 
 /* Parse date using the time zone provided as the third argument. */
@@ -74,13 +74,14 @@ date_parse("31.01.2017 12:36:03.283", "dd.MM.yyyy HH:mm:ss.SSS", "Europe/Berlin"
 /* Parse date using the UTC offset provided as the third argument. */
 date_parse("31.01.2017 12:36:03.283", "dd.MM.yyyy HH:mm:ss.SSS", "+01:00")
 
-/* If the time zone (offset) is specified in the datetime string,
+/* If the time zone (offset) is specified in the timestamp string,
 it should be exactly the same as provided by the third argument. */
 date_parse("31.01.2017 12:36:03.283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss.SSS ZZZ", "Europe/Berlin")
 ```
 
 ### Issue 4032
 --------------
+
 ```sql
 SELECT date_format(datetime, 'yyyy') AS 'Date',
   SUM(value) AS 'Current Period',
@@ -115,7 +116,7 @@ WHERE tu.datetime >= NOW - 5 * MINUTE
 GROUP BY tu.entity
 ```
 
-```
+```ls
 | tu.entity    | CORR-user-sys | CORR-user-iowait | CORR-sys-iowait | stddev(tu.value) | stddev(ts.value) | stddev(tw.value) |
 |--------------|---------------|------------------|-----------------|------------------|------------------|------------------|
 | nurswgvml007 | 0.92          | NaN              | NaN             | 7.64             | 2.50             | 0.00             |
@@ -140,7 +141,7 @@ WHERE t1.tags.name LIKE 'DK*st'
 LIMIT 10
 ```
 
-```
+```ls
 | t1.datetime | t1.tags | wind power | sun power | total | 
 |-------------|---------|------------|-----------|-------|
 | 2016-12-13T09:00:00.000Z | name=DK-West | 443.4 | 3 | 446.4 |

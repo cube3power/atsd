@@ -218,7 +218,7 @@ Resultset description:
 
 ![](resources/resultset_desc.png)
 
-#### datetime as NUMBER
+#### `datetime` as NUMBER
 
 ```txt
 replace datetime = datetime - tC(01jan1970 00:00:00)
@@ -226,7 +226,7 @@ set odbcdriver ansi
 odbc insert entity datetime value, as("entity datetime value") table("inflation.cpi.composite.price") dsn("ODBC_JDBC_SAMPLE") block
 ```
 
-#### datetime as STRING
+#### `datetime` as STRING
 
 ```txt
 generate datetime_str = string(datetime, "%tcCCYY-NN-DD!THH:MM:SS.sss!Z")

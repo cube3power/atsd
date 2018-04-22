@@ -16,7 +16,7 @@ Weekly Change Log: August 21, 2017 - August 28, 2017
 
 * [Inline View](../../sql#inline-views) allows a nested sub-query to be operated on by the containing query.
 
-* Sub-query values must use reserved column names such as "datetime" and "value."
+* Sub-query values must use reserved column names such as `datetime` and `value`.
 
 * Unlimited sub-queries are supported.
 

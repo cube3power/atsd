@@ -10,7 +10,7 @@ Weekly Change Log: September 18, 2017 - September 24, 2017
 | 4574 | admin | Bug | Reduce excessive ATSD at startup. |
 | 4571 | ui | Bug | Fix missing suggestions in auto-complete if entries contain non-ASCII characters. |
 | 4569 | ui | Feature | Standardize available fields for filtering in the API and UI. |
-| [4555](#issue-4555) | sql | Bug | Time/datetime `NOT BETWEEN` filter error. |
+| [4555](#issue-4555) | sql | Bug | `time`/`datetime` `NOT BETWEEN` filter error. |
 | [4554](#issue-4554) | sql | Feature | Add support for `datetime !=` condition in the `WHERE` clause. |
 | [4499](#issue-4499) | ui | Feature | Add support for Enabled/Disabled field for Entity Groups. |
 | 4475 | ui | Bug | Display warnings if the entity record is missing in the last insert table. |

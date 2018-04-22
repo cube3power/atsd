@@ -8,32 +8,32 @@ Each window maintains a set of continuously updated fields that can be included 
 
 **Name**|**Type**|**Description**|**Example**
 :---|---|---|:---
-`status` | string | Window status | OPEN
-`rule` | string | Rule name | memory_low
-`metric` | string | Metric name | memory_free
-`entity` | string | Entity name | nurswgvml007
-`tags` | map | Command tags | memtype=buffered
-`tags.memtype` | string | Command tag by name | buffered
-`entity.displayName` | string | Label, if not empty. Name otherwise | NURswgvml007
-`entity.tags` | map | Entity tags | {version=community}
-`entity.tags.version` | string | Entity tag by name | community
-`entity.label` | string | Entity field by name | NURswgvml007
-`metric.label` | string | Metric field by name | Memory Free, Bytes
-`condition` | string | Rule condition | value < 75
-`min_interval_expired` | boolean | Window delay status | true
-`repeat_count` | integer | `REPEAT` status count | 0
-`repeat_interval` | string | Interval for repeats | 1 MINUTE
-`rule_filter` | string | Rule filter | entity != 'nurswghbs001'
-`severity` | string | Alert severity | WARNING
-`window` | string | Window type and duration | length(1)
-`threshold` | string | Override rule | max() > 20
+`status` | string | Window status | `OPEN`
+`rule` | string | Rule name | `memory_low`
+`metric` | string | Metric name | `memory_free`
+`entity` | string | Entity name | `nurswgvml007`
+`tags` | map | Command tags | `memtype=buffered`
+`tags.memtype` | string | Command tag by name | `buffered`
+`entity.displayName` | string | Label, if not empty. Name otherwise | `NURswgvml007`
+`entity.tags` | map | Entity tags | `{version=community}`
+`entity.tags.version` | string | Entity tag by name | `community`
+`entity.label` | string | Entity field by name | `NURswgvml007`
+`metric.label` | string | Metric field by name | `Memory Free, Bytes`
+`condition` | string | Rule condition | `value < 75`
+`min_interval_expired` | boolean | Window delay status | `true`
+`repeat_count` | integer | `REPEAT` status count | `0`
+`repeat_interval` | string | Interval for repeats | `1 MINUTE`
+`rule_filter` | string | Rule filter | `entity != 'nurswghbs001'`
+`severity` | string | Alert severity | `WARNING`
+`window` | string | Window type and duration | `length(1)`
+`threshold` | string | Override rule | `max() > 20`
 
 ### Series Fields
 
 |**Name**|**Type**|**Description**|**Example**|
 |---|---|---|--|
-| `value` | number | Last value | 3.1415 |
-| `open_value` | number | First value | 1.0 |
+| `value` | number | Last value | `3.1415` |
+| `open_value` | number | First value | `1.0` |
 
 ### Message Fields
 

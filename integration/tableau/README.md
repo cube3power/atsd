@@ -27,7 +27,7 @@ To load the data, log in to ATSD and submit these commands on the **Metrics > Da
 
 ### Install ODBC-JDBC Bridge
 
-- Install [ODBC-JDBC gateway](../odbc/README.md)  
+- Install [ODBC-JDBC gateway](../odbc/README.md)
 - Make sure that the **'Strip Escape'** checkbox is enabled and **'Strip Quote'** is **disabled**
 
 If your ATSD installation has more than 10000 metrics, consider adding a `tables={filter}` property to the [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) to filter the list of tables visible in Tableau.
@@ -84,4 +84,4 @@ Inspect a subset of the visualized data:
 - [Minimum and Maximum Exports each Year](examples/min_and_max_by_year_for_one_metric.md)
 - [Annual Exports and Imports](examples/sum_by_year_for_two_metrics.md)
 - [Export - Import by year](examples/export-import_by_year.md)
-- [Annual Trade Balance](examples/sum(export)-sum(import)_by_year.md)
+- [Annual Trade Balance](examples/sum-export-sum-import-by-year.md)

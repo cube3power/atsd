@@ -21,7 +21,7 @@ Weekly Change Log: November 14-20, 2016
 
 | Issue     | Category        | Type     | Subject                                                                    |
 |-----------|-----------------|----------|----------------------------------------------------------------------------|
-| 3589      | collectd        | Feature  | Exec plugin for [collectd](https://github.com/axibase/atsd-collectd-plugin) to capture `lvs` command output.|
+| 3589      | collectd        | Feature  | `Exec` plugin for [collectd](https://github.com/axibase/atsd-collectd-plugin) to capture `lvs` command output.|
 | 3599      | docker          | Feature  | Store container `ENV` parameters into a dedicated property type. |
 | 3597      | admin           | Feature  | Added an Admin page to view and drop command `resender` cache. |
 | 3595      | json            | Bug      | Added heuristics to handle `Socrata` dataset fields. |

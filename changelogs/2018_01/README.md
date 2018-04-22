@@ -50,7 +50,7 @@ Issue| Category    | Type    | Subject
 4852 | rule engine | Bug | Rule window detail page shows incorrect results for windows with 'Property' data type.
 4851 | rule engine | Feature | Implement [Freemarker-style](../../rule-engine/functions-text.md#reference) text functions.
 4849 | rule engine | Bug | Error in [time](../../rule-engine/functions-format.md#reference) format functions.
-4848 | UI | Bug | Export page: FreeMarker error for forecast [export](../../reporting/ad-hoc-exporting.md).
+4848 | UI | Bug | Export page: Freemarker error for forecast [export](../../reporting/ad-hoc-exporting.md).
 4846 | rule engine | Feature | [Web notifications](../../rule-engine/web-notifications.md): add status column.
 4845 | forecast | Bug | Forecast [settings](../../forecasting/README.md): restored disappeared tooltips.
 4833 | rule engine | Feature | Implement Web Notifications for [Microsoft Azure](../../rule-engine/notifications/azure-sb.md).

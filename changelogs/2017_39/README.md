@@ -60,4 +60,4 @@ The response incorrectly returned entities with `lastInsertDate` greater than `m
 ]
 ```
 
-> Actual lastInsertDate was `2017-09-19T21:15:00Z`
+> Actual `lastInsertDate` was `2017-09-19T21:15:00Z`
