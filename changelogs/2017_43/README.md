@@ -6,7 +6,7 @@ Weekly Change Log: October 22, 2017 - October 29, 2017
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4671 | sql | Bug | Query with `ORDER BY datetime DESC` returns no rows. |
-| 4669 | ui | Bug | Portal editor layout is broken in Firefox. |
+| 4669 |UI| Bug | Portal editor layout is broken in Firefox. |
 | 4666 | api-rest | Bug | [Search API](../../api/meta/misc/search.md) method. Ensure `LastInsertDate` and `CreatedDate` millisecond precision. |
 | 4664 | message | Bug | Tag filter is not applied if the tag is specified more than once. |
 | [4663](#issue-4663) | installation | Feature | Adjust HBase and ATSD max heap size allocation based on available server memory. |

@@ -9,11 +9,11 @@ Weekly Change Log: October 30, 2017 - November 05, 2017
 | 4693 | installation | Bug | Fix failing HBase shell tests by increasing a timeout for the last test. |
 | 4692 | rule-engine| Bug | Import of an existing rule with the notification breaks the current rule with the same name. |
 | [4687](#issue-4687) | api-rest | Feature | Added support for wildcards when requesting metric/entity tags. |
-| [4686](#issue-4686) | ui | Feature | Tag templates: added support for 'Entity Link' field type. |
+| [4686](#issue-4686) |UI| Feature | Tag templates: added support for 'Entity Link' field type. |
 | 4685 | core | Bug | Entity group built with the `hasMetric(name, hours)` function is empty after the scheduled update. |
-| [4684](#issue-4684) | ui | Feature | Entity group editor refactored. |
+| [4684](#issue-4684) |UI| Feature | Entity group editor refactored. |
 | 4665 | client | Feature | [Python API client](https://github.com/axibase/atsd-api-python) models and utility classes refactored. |
-| [4652](#issue-4652) | ui | Feature | New top menu implemented. |
+| [4652](#issue-4652) |UI| Feature | New top menu implemented. |
 
 ## Axibase Collector
 

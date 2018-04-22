@@ -8,12 +8,12 @@ Weekly Change Log: September 18, 2017 - September 24, 2017
 | 4578 | rule engine | Bug | Custom alias not resolved in Alter Message text.  |
 | 4576 | core | Bug | Duplicate samples stored after data compaction.  |
 | 4574 | admin | Bug | Reduce excessive ATSD at startup. |
-| 4571 | ui | Bug | Fix missing suggestions in auto-complete if entries contain non-ASCII characters. |
-| 4569 | ui | Feature | Standardize available fields for filtering in the API and UI. |
+| 4571 |UI| Bug | Fix missing suggestions in auto-complete if entries contain non-ASCII characters. |
+| 4569 |UI| Feature | Standardize available fields for filtering in the API and UI. |
 | [4555](#issue-4555) | sql | Bug | `time`/`datetime` `NOT BETWEEN` filter error. |
 | [4554](#issue-4554) | sql | Feature | Add support for `datetime !=` condition in the `WHERE` clause. |
-| [4499](#issue-4499) | ui | Feature | Add support for Enabled/Disabled field for Entity Groups. |
-| 4475 | ui | Bug | Display warnings if the entity record is missing in the last insert table. |
+| [4499](#issue-4499) |UI| Feature | Add support for Enabled/Disabled field for Entity Groups. |
+| 4475 |UI| Bug | Display warnings if the entity record is missing in the last insert table. |
 | [4437](#issue-4437) | sql | Bug | Date literal should not be implicitly converted to time data type. |
 | [4295](#issue-4295) | sql | Bug | `DETAIL` interpolation with `OUTER` range fails to calculate values. |
 | [4281](#issue-4281) | sql | Bug | Incorrect `ISNULL` result with null tags field. |
