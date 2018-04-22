@@ -112,19 +112,19 @@ Discarded commands for metrics with persistence filters are logged with a `FILTE
   tags.site != 'DefaultWebSite'
 ```
 
-* Discard series with tag 'id' starting with 'lo'
+* Discard series with tag 'id' starting with `lo`
 
 ```javascript
   tags.id not like 'lo*'
 ```
 
-* Discard series with tag 'disk' equal `/boot` or starting with '/run'
+* Discard series with tag 'disk' equal `/boot` or starting with `/run`
 
 ```javascript
   tags.disk != '/boot' && tags.disk NOT LIKE '/run*'
 ```
 
-* Discard series if tag 'mount_point' matches any element in named collection 'ignore-collector-mount-points'.
+* Discard series if tag `mount_point` matches any element in named collection `ignore-collector-mount-points`.
 
 ```javascript
   !likeAny(tags.mount_point, collection('ignore-collector-mount-points'))
@@ -139,7 +139,7 @@ Discarded commands for metrics with persistence filters are logged with a `FILTE
   /sys/fs/cgroup
 ```
 
-* Discard series if tag 'id' is contained in named collection `filesystem_ignore`.
+* Discard series if tag `id` is contained in named collection `filesystem_ignore`.
 
 ```javascript
   !collection('filesystem_ignore').contains(tags.id)

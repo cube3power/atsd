@@ -66,7 +66,7 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 |  Entity  |  If selected, exported data will be limited to the specified entity. Supersedes the Entity Group selector.  |
 |  Entity Group  |  If selected, exported data will be limited to entities contained in the specified entity group. Supersedes Entity Expression field.  |
 |  Entity Expression  |  An expression to filter selected data by entity name and entity tags. For example: `name like 'nur*' AND tags.environment = 'prod'`  |
-|  Value Filter  |  Expression to fetch only detailed samples that satisfy a condition. For example, `value != 0`. Value Filter is applied before aggregation and therefore impacts aggregated statistics values. To filter deleted values, use the Double.isNaN(value) syntax.  |
+|  Value Filter  |  Expression to fetch only detailed samples that satisfy a condition. For example, `value != 0`. Value Filter is applied before aggregation and therefore impacts aggregated statistics values. To filter deleted values, use the `Double.isNaN(value)` syntax.  |
 |  Selection Interval  |  Time frame of exported data. End of the Selection Interval can be optionally specified in End Time field, otherwise it is set to current time. Selection Interval setting is ignored if both Start Time and End Time fields are set.  |
 |  Start Time  |  Start time of the selection interval. This field supports [calendar](../shared/calendar.md) keywords, for example 'previous_day'. If Start Time is not defined, it is set to End Time minus Selection Interval.  |
 |  End Time  |  End time of the selection interval. This field supports [calendar](../shared/calendar.md) keywords, for example 'next_day'. If End Time is not defined, it is set to Start Time plus Selection Interval. If Start Time is not defined, End Time is set to current time.  |
@@ -76,7 +76,7 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 |  Aggregate  |  Enable period aggregations based on selected detailed samples, after the optional Value Filter is applied.  |
 |  Aggregation Period  |  Period of time over which detailed samples are aggregated.  |
 |  Interpolation  |  Insert missing periods in aggregated results. The period is considered missing if it contains no detailed samples. Supported options: `STEP` – value of missing period equals value of the previous period; `LINEAR` – value is linearly interpolated between previous and next available value; `NONE` – missing periods are not inserted.  |
-|  Aggregate Statistics  |  One or multiple aggregation functions: average, minimum, maximum, sum, count, standard deviation, weighted average, weighted time average, median (percentile 50), first, last, percentile 50/75/90/95/99/99.5/99.9, MinValueTime, MaxValueTime.  |
+|  Aggregate Statistics  |  One or multiple aggregation functions: average, minimum, maximum, sum, count, standard deviation, weighted average, weighted time average, median (percentile 50), first, last, percentile 50/75/90/95/99/99.5/99.9, `MinValueTime`, `MaxValueTime`.  |
 
 
 ##### Output

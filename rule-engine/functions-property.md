@@ -6,12 +6,12 @@ Property functions provide a set of convenience methods to retrieve and compare 
 
 ## Reference
 
-* [property](#property)
-* [property_values](#property_values)
-* [property_compare_except](#property_compare_except)
-* [property_map](#property_map)
-* [property_maps](#property_maps)
-* [getPropertyTypes](#getpropertytypes)
+* [`property`](#property)
+* [`property_values`](#property_values)
+* [`property_compare_except`](#property_compare_except)
+* [`property_map`](#property_map)
+* [`property_maps`](#property_maps)
+* [`getPropertyTypes`](#getpropertytypes)
 
 ### `property`
 
@@ -31,7 +31,9 @@ Examples:
 
 ```javascript
   property('docker.container::image')
+```
 
+```javascript
   /* Returns the most recent value if it received later than 2018-01-16T15:38:04.000Z, otherwise returns an empty string */
   property('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
 ```
@@ -56,7 +58,9 @@ Examples:
 
 ```javascript
   property_values('docker.container::image')
+```
 
+```javascript
   /* Returns the second value of the list */
   property_values('docker.container::image')[1]
   property_values('docker.container::image').get(1)
@@ -73,7 +77,9 @@ Examples:
 ```javascript
   /* Returns property tag values received later than 2018-01-16T15:38:04.000Z */
   property_values('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
+```
 
+```javascript
   /* Returns property tag values received later than 00:00:00 of the current day */
   property_values('nurswgvml007', 'docker.container::image', 'today')
 ```
@@ -90,7 +96,7 @@ Examples:
 
   Sample difference map:
 
-```javascript
+```txt
     {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log' -> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
 ```
 
@@ -118,7 +124,7 @@ Examples:
 
 Returns true if property tags have changed, except for the `name` tag, any tags that end with `time`, and any previous tags with value containing `Xloggc`. The pattern `*Xloggc*` would ignore changes such as:
 
-``` java
+```txt
     {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log'-> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
 ```
 
@@ -150,10 +156,14 @@ Examples:
 ```javascript
   /* Returns map with tags starting with 'cpu' in the 'configuration' type */
   property_map('configuration::cpu*')
+```
 
+```javascript
   /* Returns map of the 'configuration' type for the entity 'nurswgvml007' */
   property_map('nurswgvml007','configuration::')
+```
 
+```javascript
   /* Returns map if the most recent property record received later than 00:00:00 of the current day, otherwise returns an empty map */
   property_map('nurswgvml007','configuration::', 'today')
 ```
@@ -188,14 +198,20 @@ Examples:
 ```javascript
   /* Returns list of maps with tags starting with 'cpu' in the 'configuration' type */
   property_maps('configuration::cpu*')
+```
 
+```javascript
   /* Returns value of the 'host' key for the first map in the collection */
   property_maps('configuration::cpu*')[0].get('host')
   property_maps('configuration::cpu*').get(0).get('host')
+```
 
+```javascript
   /* Returns list of maps of the 'configuration' type for the entity 'nurswgvml007' */
   property_maps('nurswgvml007','configuration::')
+```
 
+```javascript
   /* Returns list of maps of property records received later than 00:00:00 of the previous day */
   property_maps('nurswgvml007','configuration::', 'yesterday')
 ```
@@ -217,14 +233,20 @@ Examples:
 ```javascript
   /* Returns property types for entity nurswgvml007*/
   getPropertyTypes('nurswgvml007')
+```
 
+```javascript
   /* Returns the first property type for entity nurswgvml007*/
   getPropertyTypes('nurswgvml007')[0]
   getPropertyTypes('nurswgvml007').get(0)
+```
 
+```javascript
   /* Returns property types received after 2018-01-23T13:30:04.000Z */
   getPropertyTypes('nurswgvml007','2018-01-23T13:30:04.000Z')
+```
 
+```javascript
   /* Returns property types received after 00:00:00 of the previous day and before 00:00:00 of the current day*/
   getPropertyTypes('nurswgvml007','yesterday', 'today')
 ```

@@ -134,7 +134,7 @@ Retrieving a full list of collected metrics in JSON:
 |message_reads_per_second|Number of messages read.|	
 |message_received_per_second | Number of messages received. |	
 |message_writes_per_second | Number of messages written. |	
-|metric_append_concat_per_second| Number of series samples received with flag `append = true` where annotication was concatenated.|	
+|metric_append_concat_per_second| Number of series samples received with flag `append = true` where annotation was concatenated.|	
 |metric_append_per_second| Number of series samples received with flag `append = true`.|	
 |metric_reads_per_second | Number of HBase rows read from the 'd' table. Each row may container multiple samples. |
 |metric_received_per_second | Number of series samples received. |	

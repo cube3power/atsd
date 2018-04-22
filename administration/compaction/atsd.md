@@ -129,20 +129,16 @@ Execute the test script by specifying the ATSD container name.
 
 ### Results
 
-```
+```txt
 Connecting to https://localhost:8443 as 'axibase'. Container: atsd_test
 
 ============
-
 CSV parser imported
-
 ============
 
 Uploading data file IBM_adjusted.txt
 
-```json
 {"startTime":1505942746237,"endTime":1505942989383,"processed":2045514,"source":"172.17.0.1","parser":"stock-parser","errorMessage":null,"taskStatus":"COMPLETED","type":"upload","fileName":"csv-upload-5523224067655787056.csv","fileCount":1,"fileSize":100890306}
-```
 
 Data file uploaded IBM_adjusted.txt
 

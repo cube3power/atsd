@@ -199,7 +199,7 @@ same object despite having different keys. Often, such series are recorded seque
 
 **Examples**:
 
-* /media/datadrive file system re-mounted on a larger disk and the mount point remains the same.
+* `/media/datadrive` file system re-mounted on a larger disk and the mount point remains the same.
 
 * Containers with different identifiers launched on schedule to perform a daily task.
 
@@ -259,7 +259,7 @@ As an alternative to specifying the `[series]` settings manually and using wildc
 
 ```ls
   var tags = getTags('df.bytes.percentused', 'mount', 'nurswgvml006')
- 
+
   for tagValue in tags
     [series]
       [tags]
@@ -271,7 +271,7 @@ As an alternative to specifying the `[series]` settings manually and using wildc
 
 ```ls
   var seriesList = getSeries('df.bytes.percentused', 'nurswgvml006')
- 
+
   for sobj in seriesList
     [series]
       [tags]
@@ -286,7 +286,7 @@ As an alternative to specifying the `[series]` settings manually and using wildc
 ## Controlling Displayed Series
 
 The `series-limit = int` setting enables limiting the number of possible series returned by the database for wildcard queries. 
-Since the limit is applied to an unsorted list of matched series, the results may vary between requests, which makes the setting 
+Since the limit is applied to matched series before sorting, the results may vary between requests, which makes the setting 
 useful when exploring the dataset to prevent the widgets from loading too many series into browser memory.
 
 ```ls

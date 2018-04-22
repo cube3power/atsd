@@ -2,27 +2,27 @@
 
 ## Reference
 
-* [collection](#collection)
-* [list](#list)
-* [likeAll](#likeall)
-* [likeAny](#likeany)
-* [matches](#matches)
-* [startsWithAny](#startswithany)
-* [collection_contains](#collection_contains)
-* [collection_intersects](#collection_intersects)
-* [upper](#upper)
-* [lower](#lower)
-* [property](#property)
-* [properties](#properties)
-* [property_values](#property_values)
-* [hasMetric](#hasmetric)
-* [memberOf](#memberof)
-* [memberOfAll](#memberofall)
-* [entity_tags](#entity_tags)
-* [contains](#contains)
-* [size](#size)
-* [isEmpty](#isempty)
-* [IN](#in)
+* [`collection`](#collection)
+* [`list`](#list)
+* [`likeAll`](#likeall)
+* [`likeAny`](#likeany)
+* [`matches`](#matches)
+* [`startsWithAny`](#startswithany)
+* [`collection_contains`](#collection_contains)
+* [`collection_intersects`](#collection_intersects)
+* [`upper`](#upper)
+* [`lower`](#lower)
+* [`property`](#property)
+* [`properties`](#properties)
+* [`property_values`](#property_values)
+* [`hasMetric`](#hasmetric)
+* [`memberOf`](#memberof)
+* [`memberOfAll`](#memberofall)
+* [`entity_tags`](#entity_tags)
+* [`contains`](#contains)
+* [`size`](#size)
+* [`isEmpty`](#isempty)
+* [`IN`](#in)
 
 ### `collection`
 
@@ -40,7 +40,9 @@ To access the n-th element in the collection, use square brackets as in `[index]
 
 ```javascript
 label = collection('hosts')[0]
+```
 
+```javascript
 tags.request_ip = collection('ip_white_list').get(1)
 ```
 
@@ -71,7 +73,6 @@ Returns `true`, if the first argument `s` matches **every** element in the colle
 Examples:
 
 ```javascript
-
 likeAll(tags.request_ip, ['10.50.*', '10.50.102.?'])
 ```
 
@@ -87,7 +88,9 @@ Examples:
 
 ```javascript
 likeAny(tags.os, ['Ubuntu*', 'Centos*'])
+```
 
+```javascript
 likeAny(tags.request_ip, collection('ip_white_list'))
 ```
 
@@ -105,7 +108,7 @@ Example:
 
 ```javascript
 matches('*atsd*', property_values('docker.container::image'))
-```  
+```
 
 ### `startsWithAny`
 
@@ -140,6 +143,7 @@ NOT collection_contains(tags['os'], collection('ignore_os'))
 ```javascript
   collection_intersects([] f, [] s) boolean
 ```
+
 Returns `true`, if collection `f` has elements in common with collection `s`. The collections can be specified inline as an arrays of strings or reference a named collections.
 
 Examples:
@@ -178,7 +182,9 @@ Examples:
 
 ```javascript
 property('docker.container::image') = 'axibase/collector:latest'
+```
 
+```javascript
 name = property('nurswgvml007', 'docker.container::image')
 ```
 
@@ -195,7 +201,9 @@ Examples:
 ```javascript
 
 properties('docker.container').image LIKE 'axibase/*' 
+```
 
+```javascript
 NOT properties('docker.container').isEmpty()
 ```
 
@@ -213,7 +221,9 @@ Examples:
 
 ```javascript
 name IN property_values('nurswgvml007', 'docker.container::image')
+```
 
+```javascript
 property_values('linux.disk:fstype=ext4:mount_point').contains('/')
 ```
 
@@ -231,24 +241,31 @@ Examples:
 
 ```javascript
 hasMetric('mpstat.cpu_busy')
+```
 
+```javascript
 hasMetric('mpstat.cpu_busy', 24*7)
 ```
 
 ### `memberOf`
 
-```javascript  
+```javascript
   memberOf(string|[string] g) boolean
 ```
+
 Returns `true` if an entity belongs to **at least one** of the specified entity groups.
 
 Examples:
 
 ```javascript
 memberOf('all-linux-servers')
+```
 
+```javascript
 memberOf(['aws-ec2', 'aws-ebs'])
+```
 
+```javascript
 memberOf(collection('groups'))
 ```
 
@@ -257,14 +274,17 @@ memberOf(collection('groups'))
 ```javascript
   memberOfAll([string] g) boolean
 ```
+
 Returns `true` if an entity belongs to **every** of the specified entity groups.
 
 Examples:
 
 ```javascript
 memberOfAll(['aws-ec2', 'aws-ebs'])
+```
 
-memberOfAll(collection('groups'))   
+```javascript
+memberOfAll(collection('groups'))
 ```
 
 ### `entity_tags`
@@ -272,6 +292,7 @@ memberOfAll(collection('groups'))
 ```javascript
   entity_tags(string e) map
 ```
+
 Returns entity tags for entity `e` as a map.
 
 If the entity is not found, an empty map is returned.
@@ -310,7 +331,7 @@ Examples:
 
 ```javascript
 collection('ip_white_list').size()
-```    
+```
 
 ### `isEmpty`
 
@@ -326,7 +347,7 @@ Example:
 
 ```javascript
 collection('ip_white_list').isEmpty()
-```  
+```
 
 ### `IN`
 
@@ -340,6 +361,8 @@ Examples:
 
 ```javascript
 name IN ('nurswgvml007', 'nurswgvml008')
+```
 
+```javascript
 tags.location IN ('NUR', 'SVL')
-```  
+```

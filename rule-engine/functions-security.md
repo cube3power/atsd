@@ -6,11 +6,11 @@ Security functions check user permissions as part of rule notification logic. Th
 
 ## Reference
 
-* [userInGroup](#useringroup)
-* [userHasRole](#userhasrole)
-* [userAllowEntity](#userallowentity)
-* [userAllowEntityGroup](#userallowentitygroup)
-* [userAllowPortal](#userallowportal)
+* [`userInGroup`](#useringroup)
+* [`userHasRole`](#userhasrole)
+* [`userAllowEntity`](#userallowentity)
+* [`userAllowEntityGroup`](#userallowentitygroup)
+* [`userAllowPortal`](#userallowportal)
 
 ## Processing
 
@@ -23,6 +23,7 @@ As an alternative to `if/else` syntax, set the optional `err` parameter to `true
 ```javascript
   userInGroup(string u, string g [, boolean err]) boolean
 ```
+
 Returns `true` if the user `u` exists, is enabled, and belongs to the specified user group `g`.
 
 ### `userHasRole`
@@ -30,6 +31,7 @@ Returns `true` if the user `u` exists, is enabled, and belongs to the specified 
 ```javascript
   userHasRole(string u, string r [, boolean err]) boolean
 ```
+
 Returns `true` if the user `u` exists, is enabled, and has the specified role [`r`](../administration/user-authorization.md#role-based-access-control).
 
 ### `userAllowEntity`
@@ -37,6 +39,7 @@ Returns `true` if the user `u` exists, is enabled, and has the specified role [`
 ```javascript
   userAllowEntity(string u, string e [, boolean err]) boolean
 ```
+
 Returns `true` if the user `u` exists, is enabled, has [READ](../administration/user-authorization.md#entity-permissions) permission for the specified entity `e`.
 
 ### `userAllowEntityGroup`
@@ -44,6 +47,7 @@ Returns `true` if the user `u` exists, is enabled, has [READ](../administration/
 ```javascript
   userAllowEntityGroup(string u, string g [, boolean err]) boolean
 ```
+
 Returns `true` if the user `u` exists, is enabled, and has [READ](../administration/user-authorization.md#entity-permissions) permission to the specified entity group `g`.
 
 ### `userAllowPortal`
@@ -51,4 +55,5 @@ Returns `true` if the user `u` exists, is enabled, and has [READ](../administrat
 ```javascript
   userAllowPortal(string u, string p [, boolean err]) boolean
 ```
+
 Returns `true` if the user `u` exists, is enabled, and has permissions to view the specified portal `p`.

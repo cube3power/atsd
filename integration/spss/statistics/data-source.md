@@ -2,12 +2,12 @@
 
 * Open the attached scripts:
 
-[weight.sps](resources/weight.sps)
+[`weight.sps`](resources/weight.sps)
 
 ![](images/spss_1.png)
 
-[price.sps](resources/price.sps)
- 
+[`price.sps`](resources/price.sps)
+
 ![](images/price.sps.png)
 
 * Right click on the script window and select **Run All** to export the data into ATSD.

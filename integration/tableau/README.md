@@ -23,7 +23,7 @@ To load the data, log in to ATSD and submit these commands on the **Metrics > Da
 ### Install Tableau
 
 - Install [Tableau Desktop 10.4](https://www.tableau.com/support/releases) 
-- Copy [ATSD.tdc](resources/ATSD.tdc) to the `Tableau Repository`. On Windows the repository is located in the `C:\Users\You\Documents\My Tableau Repository\Datasources` directory
+- Copy [`ATSD.tdc`](resources/ATSD.tdc) to the `Tableau Repository`. On Windows the repository is located in the `C:\Users\You\Documents\My Tableau Repository\Datasources` directory
 
 ### Install ODBC-JDBC Bridge
 
@@ -58,10 +58,10 @@ If your ATSD installation has more than 10000 metrics, consider adding a `tables
 
 - Press **Sheet 1**
 - Press **OK** to acknowledge the warning about limitations
-- Set _Datetime_ to the columns field
-- Set _Value_ to the rows field
+- Set `Datetime` to the columns field
+- Set `Value` to the rows field
 
-> Since `time` and `datetime` represent recorded times composed of different data types (long and timestamp), make sure you select only one of these columns in your queries. 
+> Since `time` and `datetime` represent the same recorded time as different data types (long and timestamp), select only one of the columns in your queries.
 
 ![](images/sum_year.png)
 

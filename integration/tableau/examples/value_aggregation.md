@@ -12,9 +12,9 @@ Display the minimum exports each year.
 - Drag-and-drop the table to Canvas area
 - Press **Sheet 1**
 - Press **OK** to acknowledge the warning about limitations
-- Drag-and-drop _Value_ to the Marks Card, right click > **Measure** > **Minimum**, replace _Detail_ with _Size_
-- Drag-and-drop _Datetime_ to the Marks Card, replace _Detail_ with _Color_
-- Drag-and-drop _Datetime_ to the Marks Card, right-click on the _QUARTER > YEAR_, replace _Detail_ with _Label_
+- Drag-and-drop `Value` to the Marks Card, right click > **Measure** > **Minimum**, replace _Detail_ with _Size_
+- Drag-and-drop `Datetime` to the Marks Card, replace _Detail_ with `Color`
+- Drag-and-drop `Datetime` to the Marks Card, right-click on the _QUARTER > YEAR_, replace _Detail_ with _Label_
 - Change _Automatic_ to _Circle_ in the dropdown at Marks Card
 
 ## Results

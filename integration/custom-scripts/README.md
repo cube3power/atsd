@@ -8,25 +8,25 @@ This page contains the installation guide for a custom Axibase Collector Script.
 
 #### Prerequisites
 
-##### 'nc' network utility
+##### `nc` network utility
 
 Important: only the BSD version is supported. The GNU version is not supported by collector scripts.
 
-Check if 'nc' is installed:
+Check if `nc` is installed:
 
 ```sh
 nc
 ```
 
-The nc (BSD) output will be as follows:
+The `nc` (BSD) output will be as follows:
 
-```sh
+```txt
 usage: nc [-46DdhklnrStUuvzC] [-i interval] [-p source_port]
 [-s source_ip_address] [-T ToS] [-w timeout] [-X proxy_version]
 [-x proxy_address[:port]] [hostname] [port[s]]
 ```
 
-If nc (BSD) is not available, install the appropriate package using software repositories.
+If `nc` (BSD) is not installed, install the appropriate package using software repositories.
 
 Ubuntu:
 
@@ -40,7 +40,7 @@ RedHat Enterprise Linux (RHEL):
 yum install nc
 ```
 
-##### 'sysstat' utility
+##### `sysstat` utility
 
 `mpstat` and `iostat` are included in the `sysstat` package. If this package is not installed in your system by default, install it.
 
@@ -70,6 +70,9 @@ tar xzf atsd_collectors.tar.gz
 
 ```sh
 cd collectors
+```
+
+```sh
 chmod a+x *
 ```
 

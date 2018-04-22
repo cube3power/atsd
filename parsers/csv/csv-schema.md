@@ -12,7 +12,7 @@ Schema Parser example:
 
 Input File:
 
-```
+```ls
             DateTime; sensor01;  Status; sensor02;  Status
 2015-10-29T00:00:00Z;     19.2;  Provis;     11.3;      ok
 2015-10-29T00:05:00Z;     19.8;      ok;     12.9;      ok
@@ -74,7 +74,7 @@ If Schema parsing is enabled, only the following fields from the parser configu
 | Name | Required | Description | 
 | --- | --- | --- | 
 |  `select(expression)`  |  Yes  |  Selects rows, columns, or cell range to process using RFC 7111 selection syntax.  | 
-|  `filter(condition)`  |  No  |  Optionally filter rows, columns and cells depending on rowText and cellText values, e.g. `rowText.indexOf('test')>=0`.  | 
+|  `filter(condition)`  |  No  |  Optionally filter rows, columns and cells depending on `rowText` and `cellText` values, e.g. `rowText.indexOf('test')>=0`.  | 
 
 
 #### Initialize Command Functions
@@ -85,10 +85,9 @@ If Schema parsing is enabled, only the following fields from the parser configu
 |  `addProperty()`  |  No  |  Create Property command.  | 
 |  `addMessage()`  |  No  |  Create Message command.  | 
 
-
 #### Set Command Field Functions
 
-| Name | Required (addSeries) | Required (addProperty) | Required (addMessage) | Description | 
+| Name | Required (`addSeries`) | Required (`addProperty`) | Required (`addMessage`) | Description | 
 | --- | --- | --- | --- | --- | 
 |  `entity(entityName)`  |  Yes  |  Yes  |  Yes  |  Set entity name.  | 
 |  `timestamp(timestampValue)`  |  Yes  |  Yes  |  Yes  |  Set timestamp.  | 
@@ -138,7 +137,7 @@ If Schema parsing is enabled, only the following fields from the parser configu
 
 ABNF Extension Syntax:
 
-```
+```txt
    singlespec  =  position [ "-" position  [ "!" step]]
    cellspec    =  cellrow "," cellcol [ "-" cellrow "," cellcol [ "!" steprow "," stepcol ] ]
    steprow    =  step
@@ -150,11 +149,9 @@ RFC 7111 base syntax: [https://tools.ietf.org/html/rfc7111#section-3](https://to
 
 Examples:
 
-
 - `#row=1-*!2`                    – Select odd rows.
 - `#col=10-*!3`             – Select every 3rd column starting with column 10.
 - `#cell=1,2-5,*!1,2`     – Select even columns in the first 5 rows.
-
 
 #### Schema-based Parser Examples:
 
@@ -169,7 +166,7 @@ Examples:
 - [Properties](examples/properties.md)
 - [Messages with Filter](examples/message-with-filter-schema.md)
 - [Series with Tags](examples/series-tags-schema.md)
-- [notEmptyUp](examples/notemptyup-schema.md)
-- [notEmptyLeft](examples/not-empty-left-schema.md)
+- [`notEmptyUp`](examples/notemptyup-schema.md)
+- [`notEmptyLeft`](examples/not-empty-left-schema.md)
 - [Versioned Series](examples/versioned-series-schema.md)
 - [Block-Appended](examples/block-appended-schema.md)

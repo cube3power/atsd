@@ -47,7 +47,7 @@ This configures Stata to interface with ODBC in ANSI mode to prevent string valu
 
 - Execute [`odbc load`](https://www.stata.com/manuals13/dodbc.pdf) to load results for a custom SQL query results into memory:
 
-```
+```txt
 odbc load, exec("SELECT time, value, tags.name FROM java_method_invoke_last ORDER BY datetime LIMIT 100") bigintasdouble
 ```
 
@@ -62,7 +62,7 @@ Description of resultset:
 
 ### Convert the UNIX Epoch milliseconds to the Stata milliseconds:
 
-```
+```txt
 generate double datetime = time + tC(01jan1970 00:00:00)
 format %tcCCYY-NN-DD!THH:MM:SS.sss!Z datetime
 ```
@@ -88,7 +88,7 @@ Description of resultset:
 
 Use the [`odbc insert`](https://www.stata.com/manuals13/dodbc.pdf) command to write data from Stata memory into ATSD.
 
-```
+```txt
 odbc insert var1 var2 var3, as("entity datetime value") dsn("ATSD") table("target_metric_name") block
 ```
 
@@ -108,7 +108,7 @@ To calculate the category-weighted consumer price index (CPI) for each year, the
 
 ### Load and Save Prices
 
-```
+```txt
 odbc load, exec("SELECT value as price, tags.category as category, datetime FROM inflation.cpi.categories.price ORDER BY datetime, category") dsn("ODBC_JDBC_SAMPLE")
 save prices
 ```
@@ -125,7 +125,7 @@ Preview `prices`:
 
 ### Load and Save `Datetimes`
 
-```
+```txt
 clear
 odbc load, exec("SELECT datetime FROM inflation.cpi.categories.price GROUP BY datetime ORDER BY datetime") dsn("ODBC_JDBC_SAMPLE")
 save datetimes
@@ -137,7 +137,7 @@ Preview `datetimes` dataset:
 
 ### Load Category Weights
 
-```
+```txt
 clear
 odbc load, exec("SELECT tags.category as category, value as weight FROM inflation.cpi.categories.weight ORDER BY datetime, category") dsn("ODBC_JDBC_SAMPLE")
 ```
@@ -146,7 +146,7 @@ Since the `Weights` are available for only one year, we will assume that the cat
 
 Perform a cross join of weights with `datetimes`:
 
-```
+```txt
 cross using datetimes
 ```
 
@@ -158,7 +158,7 @@ Preview the joined dataset:
 
 In this step two tables will be appended to perform calculations within one table. This table will have a unique row identifier (composite key of `datetime + category`) in order to join rows with the INNER JOIN operation.
 
-```
+```txt
 merge 1:1 category datetime using prices
 drop category _merge
 ```
@@ -171,7 +171,7 @@ Preview the merged dataset:
 
 Multiply two columns element-wise to calculate the inflation index per category:
 
-```
+```txt
 generate inflation = weight * price / 1000
 drop weight price
 ```
@@ -184,7 +184,7 @@ Preview the dataset:
 
 Group rows by `datetime` and sum weighted price values for each year.
 
-```
+```txt
 bysort datetime : egen value = total(inflation)
 sort datetime value
 by datetime value :  gen dup = cond(_N==1,0,_n)
@@ -202,7 +202,7 @@ Preview the dataset:
 
 The entity column is required to store the calculated variable in ATSD.
 
-```
+```txt
 generate entity = "bls.gov"
 ```
 
@@ -220,7 +220,7 @@ Resultset description:
 
 #### datetime as NUMBER
 
-```
+```txt
 replace datetime = datetime - tC(01jan1970 00:00:00)
 set odbcdriver ansi
 odbc insert entity datetime value, as("entity datetime value") table("inflation.cpi.composite.price") dsn("ODBC_JDBC_SAMPLE") block
@@ -228,7 +228,7 @@ odbc insert entity datetime value, as("entity datetime value") table("inflation.
 
 #### datetime as STRING
 
-```
+```txt
 generate datetime_str = string(datetime, "%tcCCYY-NN-DD!THH:MM:SS.sss!Z")
 set odbcdriver ansi
 odbc insert entity datetime_str value, as("entity datetime value") table("inflation.cpi.composite.price") dsn("ODBC_JDBC_SAMPLE") block
@@ -260,13 +260,13 @@ SELECT entity, datetime, value FROM inflation.cpi.composite.price
 
 Stata commands used in this example:
 
-- [adbc](http://www.stata.com/manuals13/dodbc.pdf)
-- [save](http://www.stata.com/manuals13/dsave.pdf)
-- [clear](http://www.stata.com/manuals13/dclear.pdf)
-- [cross](http://www.stata.com/manuals13/dcross.pdf)
-- [merge](http://www.stata.com/manuals13/dmerge.pdf)
-- [drop](http://www.stata.com/manuals13/ddrop.pdf)
-- [generate](http://www.stata.com/manuals13/dgenerate.pdf)
-- [by / bysort](http://www.stata.com/help.cgi?bysort)
-- [egen](http://www.stata.com/manuals13/degen.pdf)
-- [sort](http://www.stata.com/manuals13/dsort.pdf)
+- [`adbc`](http://www.stata.com/manuals13/dodbc.pdf)
+- [`save`](http://www.stata.com/manuals13/dsave.pdf)
+- [`clear`](http://www.stata.com/manuals13/dclear.pdf)
+- [`cross`](http://www.stata.com/manuals13/dcross.pdf)
+- [`merge`](http://www.stata.com/manuals13/dmerge.pdf)
+- [`drop`](http://www.stata.com/manuals13/ddrop.pdf)
+- [`generate`](http://www.stata.com/manuals13/dgenerate.pdf)
+- [`by / bysort`](http://www.stata.com/help.cgi?bysort)
+- [`egen`](http://www.stata.com/manuals13/degen.pdf)
+- [`sort`](http://www.stata.com/manuals13/dsort.pdf)

@@ -1,4 +1,4 @@
-# List Entities Starting with `nur` and with Tag `app` Containing `hbase` 
+# List Entities Starting with `nur` and with Tag `app` Containing `hbase`
 
 ## Request
 
@@ -10,7 +10,7 @@ GET https://atsd_server:8443/api/v1/entities?timeFormat=iso&limit=2&tags=app&exp
 
 ### Expression
 
-```
+```javascript
 name LIKE 'nur*' and lower(tags.app) LIKE '*hbase*'
 ```
 
@@ -34,5 +34,5 @@ name LIKE 'nur*' and lower(tags.app) LIKE '*hbase*'
 }]
 ```
 
-> 'lower(text)' is a built-in utility string function. 
-> Alternatively, any Java string functions can be used to modify the value, for example: 'tags.app.toLowerCase()'
+* `lower(text)` is a built-in utility string function.
+* Java string functions can be used to modify the value, for example: `tags.app.toLowerCase()`

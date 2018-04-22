@@ -98,7 +98,7 @@ ATSD_CONF = {
 }
 ```
 
-Configure Apache2 wsgi:
+Configure Apache2 `wsgi`:
 
 ```sh
 cd /opt/graphite/examples

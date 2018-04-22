@@ -9,11 +9,11 @@
 - Drag-and-drop the table to Canvas area
 - Press **Sheet 1**
 - Press **OK** to acknowledge the warning about limitations
-- Drag-and-drop _Datetime_ onto the columns field and _Value_ onto the rows field
-- _Value_ > _Right-click_ > _Dimension_
+- Drag-and-drop `Datetime` onto the columns field and `Value` onto the rows field
+- `Value` > _Right-click_ > `Dimension`
 - Marks Card > Drop-down > Line
 - _YEAR > +_, right click on the _QUARTER > MONTH_
-- Drag-and-drop _Datetime_ to the _Color_ (Marks Card), select **Add all members**
+- Drag-and-drop `Datetime` to the `Color` (Marks Card), select **Add all members**
 
 ## Results
 

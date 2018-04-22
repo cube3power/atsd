@@ -4,10 +4,10 @@
 
 ## Reference
 
-* [random](#random)
-* [randomNormal](#randomnormal)
-* [randomItem](#randomitem)
-* [randomKey](#randomkey)
+* [`random`](#random)
+* [`randomNormal`](#randomnormal)
+* [`randomItem`](#randomitem)
+* [`randomKey`](#randomkey)
 
 ### `random`
 
@@ -120,7 +120,6 @@ The function returns the randomly selected key converted to string.
 The sum of probabilities doesn't have to equal 1.0 as the inputs will be weighted to total 1.0.
 
 An input map can be obtained using the `replacementTable()` lookup function.
-
 
 ```javascript
   randomKey(replacementTable('oncall-person'))

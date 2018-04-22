@@ -11,15 +11,15 @@ Build a report displaying monthly exports and imports.
 ## Steps
 
 - Drag-and-drop both tables to Canvas area
-- Select _Inner Join_, specify _Time_ and _Entity_ as equal fields:
+- Select `Inner Join`, specify `Time` and `Entity` as equal fields:
 
 ![](../images/join_inner.png)
 
 - Press **Sheet 1**
 - Press **OK** to acknowledge the warning about limitations
-- Drag-and-drop _Datetime_ onto the column field
-- Drag-and-drop both _Value_ onto the rows field
-- Optionally rename values: right click on _Value_ and choose **Rename**
+- Drag-and-drop `Datetime` onto the column field
+- Drag-and-drop both `Value` onto the rows field
+- Optionally rename values: right click on `Value` and choose **Rename**
 - Show Me Card > _side-by-side bars_ 
 
 ![](../images/bars.png)

@@ -25,7 +25,7 @@ Get the latest nmon files, [nmon_deploy.sh](resources/nmon_deploy.sh), and sende
 
 The `deploy.properties` file contains the target machine parameters, user details, and paths to nmon and crontab settings:
 
-Use hashtags `#` to comment out optional parameters.
+Use `#` to uncomment optional parameters.
 
 The following files must be located in the same directory as the `nmon_deploy.sh` script (path to files is set in the `deploy.properties` file):
 

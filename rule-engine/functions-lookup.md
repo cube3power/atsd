@@ -10,17 +10,17 @@ The named collections are listed on the **Data > Named Collections** page.
 
 ## Reference
 
-* [entity_tag](#entity_tag)
-* [entity_tags](#entity_tags)
-* [entity_label](#entity_label)
-* [getEntity](#getentity)
-* [getEntities](#getentities)
-* [getEntityCount](#getentitycount)
-* [getEntityName](#getentityname)
-* [collection](#collection)
-* [lookup](#lookup)
-* [replacementTable](#replacementtable)
-* [property](#property)
+* [`entity_tag`](#entity_tag)
+* [`entity_tags`](#entity_tags)
+* [`entity_label`](#entity_label)
+* [`getEntity`](#getentity)
+* [`getEntities`](#getentities)
+* [`getEntityCount`](#getentitycount)
+* [`getEntityName`](#getentityname)
+* [`collection`](#collection)
+* [`lookup`](#lookup)
+* [`replacementTable`](#replacementtable)
+* [`property`](#property)
 
 ### `entity_tag`
 

@@ -112,7 +112,7 @@ and add the `tags` field to **Keys for merge** field
 
   ![](images/modeler_20.png)
   
-- Open the **Filter** tab and disable both entity fields and the datetime field for the `inflation.cpi.categories.weight` table.
+- Open the **Filter** tab and disable `entity` and `datetime` fields for the `inflation.cpi.categories.weight` table.
 
   ![](images/modeler_21.png)
   

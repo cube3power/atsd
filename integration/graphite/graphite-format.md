@@ -128,7 +128,7 @@ OUTPUT: e:nurdkr002 m:collectd.df.percent_bytes-used t:id=run-shm
 
 #### Collectl Example
 
-[Collectl](http://collectl.sourceforge.net/index.html) is a universal system performance monitoring tool for Linux systems. Collectl can monitor a broad set of subsystems, which currently include buddyinfo, cpu, disk, inodes, infiniband, lustre, memory, network, nfs, processes, quadrics, slabs, sockets, and tcp.
+[Collectl](http://collectl.sourceforge.net/index.html) is a universal system performance monitoring tool for Linux systems. Collectl can monitor a broad set of subsystems, which currently include `buddyinfo`, `cpu`, `disk`, `inodes`, `infiniband`, `lustre`, `memory`, `network`, `nfs`, `processes`, `quadrics`, `slabs`, `sockets`, and `tcp`.
 
 You can instrument Collectl to send data to ATSD using the Graphite format.
 
@@ -209,7 +209,7 @@ To send data into ATSD, you need a TCP handler, for example:
 
 [Official Sensu Handler guide.](https://sensuapp.org/docs/latest/getting-started-with-handlers)
 
-```
+```json
 {
   "handlers": {
     "tcp_socket": {
@@ -233,7 +233,7 @@ Next you have to create a check, for example:
 
 [Official Sensu Checks Guide.](https://sensuapp.org/docs/latest/getting-started-with-checks)
 
-```
+```json
 {
   "checks": {
     "cpu_metrics": {

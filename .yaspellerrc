@@ -138,7 +138,6 @@
     "jps",
     "netcat",
     "Satisfiable",
-    "versioning",
     "criticality",
     "DbVisualizer",
     "refactor",
@@ -211,7 +210,9 @@
     "TableExistsException",
     "IndexNotFoundException",
     "Jxplorer",
-    "Django"
+    "Django",
+    "regex",
+    "OpenLink"
 
   ]
 }

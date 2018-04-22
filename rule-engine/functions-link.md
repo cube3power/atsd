@@ -28,13 +28,13 @@ The inline links can be also assembled manually using the syntax supported by th
 
 ## Reference
 
-* [getEntityLink](#getentitylink)
-* [getPropertyLink](#getpropertylink)
-* [getRuleLink](#getrulelink)
-* [getCsvExportLink](#getcsvexportlink)
-* [getHtmlExportLink](#gethtmlexportlink)
-* [getChartLink](#getchartlink)
-* [addLink](#addlink)
+* [`getEntityLink`](#getentitylink)
+* [`getPropertyLink`](#getpropertylink)
+* [`getRuleLink`](#getrulelink)
+* [`getCsvExportLink`](#getcsvexportlink)
+* [`getHtmlExportLink`](#gethtmlexportlink)
+* [`getChartLink`](#getchartlink)
+* [`addLink`](#addlink)
 
 ### `getEntityLink`
 

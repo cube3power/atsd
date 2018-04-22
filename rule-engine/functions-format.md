@@ -8,15 +8,15 @@ These functions format numbers, dates, collections, and maps to strings accordin
 
 Number formatting functions:
 
-* [formatNumber](#formatnumber)
-* [formatBytes](#formatbytes)
-* [convert](#convert)
+* [`formatNumber`](#formatnumber)
+* [`formatBytes`](#formatbytes)
+* [`convert`](#convert)
 
 Date formatting functions:
 
-* [date_format](#date_format)
-* [formatInterval](#formatinterval)
-* [formatIntervalShort](#formatintervalshort)
+* [`date_format`](#date_format)
+* [`formatInterval`](#formatinterval)
+* [`formatIntervalShort`](#formatintervalshort)
 
 ### `formatNumber`
 

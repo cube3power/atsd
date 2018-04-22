@@ -29,11 +29,12 @@ SQL functions:
 
 ## Series Functions
 
-### `db_last(string m)` 
+### `db_last(string m)`
 
 ```javascript
   db_last(string m) number
 ```
+
 Retrieves the last value for the specified metric `m` and the same entity and tags as defined in the current window.
 
 Example:
@@ -49,6 +50,7 @@ Example:
 ```javascript
 db_last(string m, string e) number
 ```
+
 Retrieves the last value for the specified metric `m` and entity `e`. The entity can specified as a string or as `entity` field (current entity in the window).
 
 Example:
@@ -66,7 +68,8 @@ Example:
   db_last(string m, string e, string t) number
   db_last(string m, string e, [] t) number
 ```
-Retrieves the last value for the specified metric `m`, entity `e`, and series tags `t`. 
+
+Retrieves the last value for the specified metric `m`, entity `e`, and series tags `t`.
 
 The tags argument `t` can be specified as follows:
 
@@ -132,6 +135,7 @@ Example:
   db_statistic(string s, string i, string m, string e, string t) number
   db_statistic(string s, string i, string m, string e, [] t) number
 ```
+
 Retrieves an aggregated value from the database for the specified metric `m`, entity `e`, and series tags `t`. 
 
 The tags argument `t` can be specified as follows:

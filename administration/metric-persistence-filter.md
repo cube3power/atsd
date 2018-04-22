@@ -31,20 +31,20 @@ Logical operators: `AND`, `OR`, `NOT` as well as `&&` , `||`, `!`
 
 The following built-in functions can be used in the filter expression:
 
-* [collection](#collection)
-* [list](#list)
-* [likeAll](#likeall)
-* [likeAny](#likeany)
-* [matches](#matches)
-* [startsWithAny](#startswithany)
-* [contains](#contains)
-* [collection_contains](#collection_contains)
-* [collection_intersects](#collection_intersects)
-* [upper](#upper)
-* [lower](#lower)
-* [size](#size)
-* [isEmpty](#isempty)
-* [IN](#in)
+* [`collection`](#collection)
+* [`list`](#list)
+* [`likeAll`](#likeall)
+* [`likeAny`](#likeany)
+* [`matches`](#matches)
+* [`startsWithAny`](#startswithany)
+* [`contains`](#contains)
+* [`collection_contains`](#collection_contains)
+* [`collection_intersects`](#collection_intersects)
+* [`upper`](#upper)
+* [`lower`](#lower)
+* [`size`](#size)
+* [`isEmpty`](#isempty)
+* [`IN`](#in)
 
 Filter expression may contain [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions:
 

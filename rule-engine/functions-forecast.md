@@ -4,15 +4,16 @@
 
 ## Reference
 
-* [forecast](#forecast)
-* [forecast_stdev](#forecast_stdev)
-* [forecast_deviation](#forecast_deviation)
+* [`forecast`](#forecast)
+* [`forecast_stdev`](#forecast_stdev)
+* [`forecast_deviation`](#forecast_deviation)
 
 ### `forecast()`
 
 ```javascript
   forecast() double
 ```
+
 Forecast value for the entity, metric, and tags in the current window.
 
 ### `forecast(string n)`
@@ -20,6 +21,7 @@ Forecast value for the entity, metric, and tags in the current window.
 ```javascript
   forecast(string n) double
 ```
+
 Named forecast value for the entity, metric, and tags in the current window, for example `forecast('ltm')` .
 
 ### `forecast_stdev`
@@ -27,6 +29,7 @@ Named forecast value for the entity, metric, and tags in the current window, for
 ```javascript
   forecast_stdev() double
 ```
+
 Forecast standard deviation.
 
 ### `forecast_deviation`
@@ -34,6 +37,7 @@ Forecast standard deviation.
 ```javascript
   forecast_deviation(double n) double
 ```
+
 Difference between a number `n` (such as the last value) and a forecasted value, divided by the forecast standard deviation.
 
 Formula: `(n - forecast())/forecast_stdev()`.

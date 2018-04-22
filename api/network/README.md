@@ -259,7 +259,7 @@ series e:nurswg m:temperature=38.5 t:degrees=Celsius
 
 #### Length Limit
 
-The command length cannot exceed **128 Kb** (1024 * 128 bytes).
+The command length cannot exceed **128 kilobytes**.
 
 The client must split a command that is too long into multiple commands.
 

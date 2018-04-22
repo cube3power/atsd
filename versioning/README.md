@@ -149,7 +149,7 @@ Click on timestamp for the selected record to open the **Data Entry** page.
 
 ![](resources/9.png)
 
-Change version _Status_ and _Source_, change the _Value_ and click **Update**.
+Change version _Status_ and _Source_, change the `Value` and click **Update**.
 
 ![](resources/10.png)
 
@@ -163,7 +163,7 @@ Click the timestamp for the selected record to open the **Data Entry** page.
 
 ![](resources/9.png)
 
-Change version _Status_ and _Source_, change the _Value_ and click **Delete**.
+Change version _Status_ and _Source_, change the `Value` and click **Delete**.
 
 ![](resources/12.png)
 

@@ -6,13 +6,11 @@ The collection functions return information about the collection or check it for
 
 A collection can be created by declaring its elements inline, enclosed in square brackets:
 
-
 ```javascript
   ['a@example.org', 'b@example.org']
 ```
 
 Alternatively, it can be loaded using the `collection()` or another [lookup](functions-lookup.md) function.
-
 
 ```javascript
   collection('oncall-emails')
@@ -20,16 +18,16 @@ Alternatively, it can be loaded using the `collection()` or another [lookup](fun
 
 ## Reference
 
-* [collection](#collection)
-* [IN](#in)
-* [LIKE](#like)
-* [likeAny](#likeany)
-* [matchList](#matchlist)
-* [matches](#matches)
-* [contains](#contains)
-* [size](#size)
-* [isEmpty](#isempty)
-* [excludeKeys](#excludekeys)
+* [`collection`](#collection)
+* [`IN`](#in)
+* [`LIKE`](#like)
+* [`likeAny`](#likeany)
+* [`matchList`](#matchlist)
+* [`matches`](#matches)
+* [`contains`](#contains)
+* [`size`](#size)
+* [`isEmpty`](#isempty)
+* [`excludeKeys`](#excludekeys)
 
 ### `collection`
 
@@ -65,8 +63,8 @@ Examples:
 
 ```javascript
     tags.location IN ('NUR', 'SVL')
-```  
-  
+```
+
 ### `LIKE`
 
 ```javascript
@@ -83,11 +81,11 @@ Examples:
 
 ```javascript
     tags.version LIKE ('1.2.*', '1.3.?')
-``` 
-  
+```
+
 ```javascript
     tags.location LIKE ('NUR*', entity.tags.location)
-```   
+```
 
 ### `likeAny`
 
@@ -108,10 +106,10 @@ Examples:
 ```javascript
     likeAny(tags.location, ['NUR', 'SVL*'])
 ```
-  
+
 ```javascript
     likeAny(tags.request_ip, collection('ip_white_list'))
-```  
+```
 
 ### `matchList`
 
@@ -143,7 +141,7 @@ Example:
 
 ```javascript
     matches('*atsd*', property_values('docker.container::image'))
-```  
+```
 
 ### `contains`
 
@@ -173,11 +171,11 @@ Examples:
 
 ```javascript
     collection('ip_white_list').size()
-```  
+```
 
 ```javascript
     entity.tags.size()
-```    
+```
 
 ### `isEmpty`
 
@@ -193,7 +191,7 @@ Example:
 
 ```javascript
     collection('ip_white_list').isEmpty()
-```  
+```
 
 ### `excludeKeys`
 
@@ -209,7 +207,9 @@ Examples:
 
 ```javascript
     excludeKeys(replacementTable('oncall-emails'),['a@a.org', 'b@b.org'])
-    
+```
+
+```javascript
     /* Returns ["b1": "w1", "b2": "w2"] */
     excludeKeys(["a1": "v1", "a2": "v2", "b1": "w1", "b2": "w2", "c1": "z1"], ['a*', 'c1'])
 ```

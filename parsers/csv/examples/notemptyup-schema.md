@@ -1,4 +1,4 @@
-# notEmptyUp
+# `notEmptyUp`
 
 #### Input File
 
@@ -11,8 +11,8 @@
 
 #### Parser Settings
 
-`Timestamp Pattern:  yyyy.MM.dd HH:mm:ss`      # Used to parse Measurement Time column values
-`Delimiter: Semicolon (;)`                         # Non-default delimiter
+* Timestamp Pattern:  `yyyy.MM.dd HH:mm:ss`      # Used to parse Measurement Time column values
+* Delimiter: `Semicolon (;)`                         # Non-default delimiter
 
 #### Schema
 

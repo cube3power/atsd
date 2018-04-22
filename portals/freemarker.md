@@ -297,7 +297,7 @@ Returns the last insert time for the entity or entity/metric combination in mill
 lastInsertDate('nurswgvml007', 'cpu_busy')
 ```
 
-##### getEntitiesForGroup:
+##### `getEntitiesForGroup`
 
 ```javascript
 getEntitiesForGroup('group')
@@ -312,7 +312,7 @@ Returns a string collection.
 Finds all entities in a particular entity group. This can be useful when building portals that compare entities from the same entity group. The method returns group member that have inserted data over the last N hours.
 If hours are not specified or are non-positive, all group members are returned.
 
-```
+```freemarker
 <#assign servers = getEntitiesForGroup("VMware Hosts") >   
 <#list servers as server>
     [series]
@@ -326,7 +326,7 @@ If hours are not specified or are non-positive, all group members are returned.
 </#list>
 ```
 
-##### getEntitiesForTags:
+##### getEntitiesForTags
 
 ```javascript
 getEntitiesForTags(expression)
@@ -336,7 +336,7 @@ Returns a string collection.
 
 Finds entities by expression, based on tags.
 
-```
+```freemarker
 <#assign servers = getEntitiesForTags("", "(app == '${app}' OR '${app}' == '' AND app != '') AND 
                                             (dc == '${dc}' OR '${dc}' == '' AND dc != '')") >
 <#list servers as server>
@@ -373,7 +373,7 @@ In the response, the `freemarker` [series] are substituted with the matching ent
 
 ##### Example output of a `freemarker` [series]
 
-```
+```ls
 [configuration]
 title = CPU Used Portal
 height-units = 1
@@ -410,9 +410,9 @@ metric = cpu_used
 
 Advanced functions and aggregations can be added to the Freemarker portals to enhance the resulting data prior to loading it into the portal. Below are two examples:
 
-##### The `freemarker` [series] is given an alias, that can then be used to sum the loaded data:
+##### The `freemarker` [series] is given an alias, that can then be used to sum the loaded data
 
-```
+```freemarker
 <#assign servers = getEntitiesForGroup("Linux") >
  <#list servers as server>
 	[series]
@@ -422,9 +422,9 @@ Advanced functions and aggregations can be added to the Freemarker portals to en
  </#list>
 ```
 
-##### The `freemarker` [series] data can be aggregated by ATSD prior to loading into the portal:
+##### The `freemarker` [series] data can be aggregated by ATSD prior to loading into the portal
 
-```
+```ls
 [series]
     label = P99 CPU Used
     value = 0 <#list servers as server> + percentile(99,'cpuused_${server}','1 day')</#list>
@@ -442,7 +442,7 @@ Advanced functions and aggregations can be added to the Freemarker portals to en
 |  `list('value' [, delimiter])`  |  string collection  |  Splits a string by a delimiter. Default delimiter is comma.  | 
 |  `getTags('metric', 'entity', 'tagKey'[, hours])`  |  string collection  |  Tag values for metric, entity, and tagKey.<br>[, hours] is an optional parameter, which specifies the time interval (in hours) for searching unique tag values.<br>Default interval is 24 hours.  | 
 |  `getEntitiesForTags(expression)`  |  string collection  |  Finds entities by expression.  | 
-|  `getEntitiesForGroup("group")`  |  string collection  |  Finds all entities in a particular entity group. This is useful when building portals that compare entities from the same entity group.  | 
+|  `getEntitiesForGroup(group)`  |  string collection  |  Finds all entities in a particular entity group. This is useful when building portals that compare entities from the same entity group.  | 
 |  `getEntitiesForGroup(groupName, hours)`  |  string collection  |  Finds all entities in a particular entity group. This is useful when building portals that compare entities from the same entity group.<br>The method returns group members that have inserted data over the last N hours.<br>If hours are not specified or non-positive, all group members are returned.  | 
 |  `getMetrics('entity')`  |  string collection  |  Retrieve all collected metrics for a particular entity.  | 
 |  `isMetric('metric')`  |  boolean  |  Returns true if a metric exists.  | 
@@ -468,14 +468,13 @@ Advanced functions and aggregations can be added to the Freemarker portals to en
 |  `shift`  |  Interval: `endTime = now – shift`  | 
 |  `duration`  |  Selection interval: `startTime = endTime – duration`  | 
 
-
 #### atsd_values parameters
 
 | Name | Returns | 
 | --- | --- | 
-|  min()  |  Double  | 
-|  max()  |  Double  | 
-|  sumOf()  |  Double  | 
-|  average()  |  Double  | 
-|  countOf()  |  Integer  | 
-|  asList()  |  Double collection  | 
+|  `min()`  |  Double  | 
+|  `max()`  |  Double  | 
+|  `sumOf()`  |  Double  | 
+|  `average()`  |  Double  | 
+|  `countOf()`  |  Integer  | 
+|  `asList()`  |  Double collection  | 

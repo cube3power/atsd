@@ -144,7 +144,7 @@ c 1440 -m /opt/nmon/nmon_logs/ >> /opt/nmon/full.log 2>&1         `
 ```
 
 
-Entities collecting nmon data are automatically added to the nmon-linux and nmon-aix entity groups.
+Entities collecting nmon data are automatically added to the `nmon-linux` and `nmon-aix` entity groups.
 
 Entities collecting nmon data are also automatically assigned predefined nmon portals.
 

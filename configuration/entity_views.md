@@ -98,13 +98,13 @@ Last Insert | Last insert date for all or one metric collected by the entity wit
 
 ```javascript
   cpu_busy:900
-```  
+```
 
   * Display last insert date for the metric `cpu_busy` without highlighting. Note the terminating colon after the metric name.
 
 ```javascript
   cpu_busy:
-```    
+```
 
 ### Links
 
@@ -122,42 +122,42 @@ The following functions are available in the 'Formatting' section:
 
 #### Text Functions
 
-* [upper](../rule-engine/functions-text.md#upper)
-* [lower](../rule-engine/functions-text.md#lower)
-* [truncate](../rule-engine/functions-text.md#truncate)
-* [coalesce](../rule-engine/functions-text.md#coalesce)
-* [keepAfter](../rule-engine/functions-text.md#keepafter)
-* [keepAfterLast](../rule-engine/functions-text.md#keepafterlast)
-* [keepBefore](../rule-engine/functions-text.md#keepbefore)
-* [keepBeforeLast](../rule-engine/functions-text.md#keepbeforelast)
-* [replace](../rule-engine/functions-text.md#replace)
-* [capFirst](../rule-engine/functions-text.md#capfirst)
-* [capitalize](../rule-engine/functions-text.md#capitalize)
-* [removeBeginning](../rule-engine/functions-text.md#removebeginning)
-* [removeEnding](../rule-engine/functions-text.md#removeending)
-* [urlencode](../rule-engine/functions-text.md#urlencode)
-* [jsonencode](../rule-engine/functions-text.md#jsonencode)
-* [htmlDecode](../rule-engine/functions-text.md#htmldecode)
-* [unquote](../rule-engine/functions-text.md#unquote)
-* [countMatches](../rule-engine/functions-text.md#countmatches)
-* [abbreviate](../rule-engine/functions-text.md#abbreviate)
-* [indexOf](../rule-engine/functions-text.md#indexof)
-* [locate](../rule-engine/functions-text.md#locate)
-* [trim](../rule-engine/functions-text.md#trim)
-* [length](../rule-engine/functions-text.md#length)
+* [`upper`](../rule-engine/functions-text.md#upper)
+* [`lower`](../rule-engine/functions-text.md#lower)
+* [`truncate`](../rule-engine/functions-text.md#truncate)
+* [`coalesce`](../rule-engine/functions-text.md#coalesce)
+* [`keepAfter`](../rule-engine/functions-text.md#keepafter)
+* [`keepAfterLast`](../rule-engine/functions-text.md#keepafterlast)
+* [`keepBefore`](../rule-engine/functions-text.md#keepbefore)
+* [`keepBeforeLast`](../rule-engine/functions-text.md#keepbeforelast)
+* [`replace`](../rule-engine/functions-text.md#replace)
+* [`capFirst`](../rule-engine/functions-text.md#capfirst)
+* [`capitalize`](../rule-engine/functions-text.md#capitalize)
+* [`removeBeginning`](../rule-engine/functions-text.md#removebeginning)
+* [`removeEnding`](../rule-engine/functions-text.md#removeending)
+* [`urlencode`](../rule-engine/functions-text.md#urlencode)
+* [`jsonencode`](../rule-engine/functions-text.md#jsonencode)
+* [`htmlDecode`](../rule-engine/functions-text.md#htmldecode)
+* [`unquote`](../rule-engine/functions-text.md#unquote)
+* [`countMatches`](../rule-engine/functions-text.md#countmatches)
+* [`abbreviate`](../rule-engine/functions-text.md#abbreviate)
+* [`indexOf`](../rule-engine/functions-text.md#indexof)
+* [`locate`](../rule-engine/functions-text.md#locate)
+* [`trim`](../rule-engine/functions-text.md#trim)
+* [`length`](../rule-engine/functions-text.md#length)
 
 #### Formatting Functions
 
-* [convert](../rule-engine/functions-format.md#convert)
-* [formatNumber](../rule-engine/functions-format.md#formatnumber)
-* [formatBytes](../rule-engine/functions-format.md#formatbytes)
-* [date_format](../rule-engine/functions-format.md#date_format)
-* [formatInterval](../rule-engine/functions-format.md#formatinterval)
-* [formatIntervalShort](../rule-engine/functions-format.md#formatintervalshort)
+* [`convert`](../rule-engine/functions-format.md#convert)
+* [`formatNumber`](../rule-engine/functions-format.md#formatnumber)
+* [`formatBytes`](../rule-engine/functions-format.md#formatbytes)
+* [`date_format`](../rule-engine/functions-format.md#date_format)
+* [`formatInterval`](../rule-engine/functions-format.md#formatinterval)
+* [`formatIntervalShort`](../rule-engine/functions-format.md#formatintervalshort)
 
 #### Time Functions
 
-* [elapsedTime](../rule-engine/functions-time.md#elapsedtime)
+* [`elapsedTime`](../rule-engine/functions-time.md#elapsedtime)
 
 ## Dynamic Filters
 
@@ -168,22 +168,22 @@ Expression | A condition that entities must satisfy when the filter is selected 
 
 Filter expression examples:
 
-```java
+```javascript
 // name column
 name like 'nur*'
 ```
 
-```java
+```javascript
 // entity tag column
 upper(tags.name) LIKE '*SVL*'
 ```
 
-```java
+```javascript
 // entity tag column
 lower(tags.app) LIKE '*hbase*'
 ```
 
-```java
+```javascript
 // property tag column
 tags['configuration::codename'] = 'Santiago'
 ```
@@ -395,8 +395,8 @@ The displayed entity name can be modified, for example shortened, by specifying 
 * On-click Target
 
   ![](images/entity-view-column-name-format-result.png)
-  
-  
+
+
 #### Custom Icon Link to Specific Entity Portal
 
 Use the following configuration to specify the custom icon which opens a link to template portal assigned to the selected entity. 
@@ -418,7 +418,7 @@ Use the following configuration to specify the custom icon which opens a link to
 * On-click Target
 
   ![](images/entity_views_9.png)
-    
+
 ### Label Column Examples
 
 #### Text with Entity Label
@@ -432,7 +432,7 @@ Entity labels may be defined for entries. Otherwise, entity name will be display
 * View
 
   ![](images/entity-view-column-label-view.png)
-  
+
 #### Text Link to Entity Editor with Entity Label
 
 The link displays entity label if the label is set. Otherwise, the link displays entity name.
@@ -484,8 +484,8 @@ To display a particular portal by default, specify the portal's name in the 'Val
 * Example
 
   ![](images/entity-view-column-portals-specific-result.png)
-  
-  
+
+
 ### Properties Column Examples
 
 #### Icon Link to All Entity Properties
@@ -501,7 +501,6 @@ To display a particular portal by default, specify the portal's name in the 'Val
 * On-click Target
 
   ![](images/entity-view-column-prop-result.png)
-  
 
 #### Icon Link to Specific Entity Property
 
@@ -541,15 +540,15 @@ The text displays difference `now - lastInsertDate`. The entities are  highlight
 ```ls
     formatIntervalShort(elapsedTime(value))
 ```
-        
+
   * Configuration
-  
+
     ![](images/entity_views_10.png)
-  
+
   * View
-  
+
     ![](images/entity_views_11.png)
-  
+
   * On-click Target
-  
+
     ![](images/entity_views_12.png)
