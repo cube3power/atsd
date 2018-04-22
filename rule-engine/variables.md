@@ -117,7 +117,7 @@ To access the n-th element in the collection, use square brackets `[index]` or t
 
 ```javascript
   since_start = formatIntervalShort(elapsedTime(property('dkr.state::started')))
-```  
+```
 
 ```javascript
   server = upper(keepBefore(entity, ':'))

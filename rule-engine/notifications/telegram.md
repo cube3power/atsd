@@ -61,10 +61,10 @@ The chat id is required for the Telegram notification to function properly.
 
 There are two options to obtain chat id:
 
-  * [getUpdates API method](#getupdates)
+  * [`getUpdates` API method](#getupdates)
   * [Telegram Web](telegram-get-chat-id.md)
 
-### getUpdates
+### View Updates
   
   * Send any message to the channel (for private/public channel) or start conversation with the bot (for direct message chat). No action is required for the group.
   * Go to https://api.telegram.org/botBOT_TOKEN/getUpdates (replace BOT_TOKEN with the actual value).

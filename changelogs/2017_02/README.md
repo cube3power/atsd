@@ -53,7 +53,7 @@ WHERE metric IN ('tst-metric-short',
                 'tst-metric-float',
                 'tst-metric-double',
                 'tst-metric-decimal')
-```                
+```
 
 ### Issue 3769
 --------------

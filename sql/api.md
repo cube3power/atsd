@@ -157,7 +157,7 @@ The `metadataFormat` parameter specifies how metadata is incorporated into the C
 | **Value**| **Description** |
 |:---|:---|
 | `NONE` | Do not include metadata in the response. |
-| `HEADER` | [**Default**] Add JSON-LD metadata into Base64-encoded `Link` header according to [W3C Model for Tabular Data](http://w3c.github.io/csvw/syntax/#link-header).<br>`<data:application/csvm+json;base64,eyJAY29...ifX0=>; rel="describedBy"; type="application/csvm+json"`<br>Be aware that maximum response header size is 12 Kb and avoid Link header option if the response contains many columns or columns with long names.|
+| `HEADER` | [**Default**] Add JSON-LD metadata into Base64-encoded `Link` header according to [W3C Model for Tabular Data](http://w3c.github.io/csvw/syntax/#link-header).<br>`<data:application/csvm+json;base64,eyJAY29...ifX0=>; rel="describedBy"; type="application/csvm+json"`<br>Be aware that maximum response header size is 12 kilobytes and avoid Link header option if the response contains many columns or columns with long names.|
 | `EMBED` | Append JSON-LD metadata to CSV header as comments prefixed by hash symbol. |
 | `COMMENTS` | Append CSV metadata to CSV header as comments prefixed by hash symbol. |
 

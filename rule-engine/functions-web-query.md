@@ -2,64 +2,7 @@
 
 ## Overview
 
-The web query functions execute an HTTP request to an external web service and return the `WebRequestResult` response object for further processing.
-
-### Response Object
-
-**Field**    | **Type** | **Description**
--------------|----------|----------------
-content      | string   | Response body text.
-status       | int      | Status code, such as `200` or `401`.
-headers      | map      | Response headers. Header values with the same name are separated by a comma.
-duration     | long     | Time, in milliseconds, between initiating a request and downloading the response.
-content      | string   | Response body text.
-reasonPhrase | string   | Status line such as `OK`.
-contentType  | string   | Response content type, such as `application/json`.
-
-```txt
-WebRequestResult(
-  status=200,
-  reasonPhrase=OK,
-  contentType=application/json; charset=utf-8,
-  content={
-    "ip": "8.8.8.8",
-    "country": "US",
-    "org": "Example"
-  },
-  headers={
-    Content-Type=application/json; charset=utf-8,
-    Access-Control-Allow-Origin=*,
-    Transfer-Encoding=chunked
-  },
-  duration=225
-)
-```
-
-Response object can be introspected using the `printObject` function.
-
-```javascript
-printObject(queryPost({}))
-```
-
-```ls
-+--------------+---------------------------------------------------------+
-| Name         | Value                                                   |
-+--------------+---------------------------------------------------------+
-| class        | class                                                   |
-|              |  com.axibase.tsd.model.notifications.WebRequestResult   |
-| content      | {"success":true}                                        |
-| contentType  | application/json                                        |
-| duration     | 133                                                     |
-| headers      | {Access-Control-Allow-Headers=Origin, X-Requested-With, |
-|              |  Content-Type, Accept, Access-Control-Allow-Origin=*,   |
-|              |  Cache-Control=no-store, Content-Type=application/json, |
-|              |  Date=Wed, 18 Apr 2018 14:23:56 GMT, Pragma=no-cache,   |
-|              |  Server=Caddy, Vary=Accept-Encoding,                    |
-|              |  X-Instance-Id=gz6wtH9rkYaJpju99}                       |
-| reasonPhrase | OK                                                      |
-| status       | 200                                                     |
-+--------------+---------------------------------------------------------+
-```
+The web query functions execute an HTTP request to an external web service and return the [`WebRequestResult`](#response-object) response object for further processing.
 
 ### `queryConfig`
 
@@ -225,10 +168,6 @@ Post message to an Incoming Webhook in [Rocket.Chat](https://rocket.chat/docs/ad
 
 Retrieve results of a GraphQL query into [GitHub API v4](https://developer.github.com/v4/query/)
 
-```graphql
-
-```
-
 ```javascript
   queryPost("https://api.github.com/graphql", [
     "headers": ["Authorization" : "bearer TOKEN"],
@@ -253,6 +192,63 @@ Retrieve results of a GraphQL query into [GitHub API v4](https://developer.githu
     }
   }
 }
+```
+
+### Response Object
+
+**Field**    | **Type** | **Description**
+-------------|----------|----------------
+`content`      | string   | Response body text.
+`status`       | int      | Status code, such as `200` or `401`.
+`headers`      | map      | Response headers. Header values with the same name are separated by a comma.
+`duration`     | long     | Time, in milliseconds, between initiating a request and downloading the response.
+`content`      | string   | Response body text.
+`reasonPhrase` | string   | Status line such as `OK`.
+`contentType`  | string   | Response content type, such as `application/json`.
+
+```txt
+WebRequestResult(
+  status=200,
+  reasonPhrase=OK,
+  contentType=application/json; charset=utf-8,
+  content={
+    "ip": "8.8.8.8",
+    "country": "US",
+    "org": "Example"
+  },
+  headers={
+    Content-Type=application/json; charset=utf-8,
+    Access-Control-Allow-Origin=*,
+    Transfer-Encoding=chunked
+  },
+  duration=225
+)
+```
+
+Response object can be introspected using the `printObject` function.
+
+```javascript
+printObject(queryPost({}))
+```
+
+```ls
++--------------+---------------------------------------------------------+
+| Name         | Value                                                   |
++--------------+---------------------------------------------------------+
+| class        | class                                                   |
+|              |  com.axibase.tsd.model.notifications.WebRequestResult   |
+| content      | {"success":true}                                        |
+| contentType  | application/json                                        |
+| duration     | 133                                                     |
+| headers      | {Access-Control-Allow-Headers=Origin, X-Requested-With, |
+|              |  Content-Type, Accept, Access-Control-Allow-Origin=*,   |
+|              |  Cache-Control=no-store, Content-Type=application/json, |
+|              |  Date=Wed, 18 Apr 2018 14:23:56 GMT, Pragma=no-cache,   |
+|              |  Server=Caddy, Vary=Accept-Encoding,                    |
+|              |  X-Instance-Id=gz6wtH9rkYaJpju99}                       |
+| reasonPhrase | OK                                                      |
+| status       | 200                                                     |
++--------------+---------------------------------------------------------+
 ```
 
 ### Result Processing Examples

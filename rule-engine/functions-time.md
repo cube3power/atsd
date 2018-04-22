@@ -6,13 +6,13 @@ Time functions perform various operations on dates, timestamps, and intervals.
 
 ## Reference
 
-* [window_length_time](#window_length_time)
-* [window_length_count](#window_length_count)
-* [windowStartTime](#windowstarttime)
-* [milliseconds](#milliseconds)
-* [seconds](#seconds)
-* [elapsedTime](#elapsedtime)
-* [date_parse](#date_parse)
+* [`window_length_time`](#window_length_time)
+* [`window_length_count`](#window_length_count)
+* [`windowStartTime`](#windowstarttime)
+* [`milliseconds`](#milliseconds)
+* [`seconds`](#seconds)
+* [`elapsedTime`](#elapsedtime)
+* [`date_parse`](#date_parse)
 
 ### `window_length_time`
 
@@ -193,4 +193,4 @@ Date Pattern reference:
 
    '       escape for text              delimiter
    ''      single quote                 literal       '
-```  
+```

@@ -82,17 +82,15 @@ Each window maintains a set of continuously updated fields that can be included 
 
 > The `now` object's fields can be accessed with [`get`](object-datetime.md) methods, e.g. `now.getDayOfWeek() == 4`.
 
-
 ### Details Tables
 
 The built-in 'details' table contains entity name, entity label, entity tags, command tags, and user-defined variables. This data structure can be conveniently accessed to print out full alert information.
 
-* [detailsTable('markdown')](details-table.md#markdown)
-* [detailsTable('ascii')](details-table.md#ascii)
-* [detailsTable('html')](details-table.md#html)
-* [detailsTable('property')](details-table.md#property)
-* [detailsTable('csv')](details-table.md#csv)
-
+* [`detailsTable('markdown')`](details-table.md#markdown)
+* [`detailsTable('ascii')`](details-table.md#ascii)
+* [`detailsTable('html')`](details-table.md#html)
+* [`detailsTable('property')`](details-table.md#property)
+* [`detailsTable('csv')`](details-table.md#csv)
 
 ### Link Fields
 

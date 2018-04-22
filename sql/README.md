@@ -94,7 +94,7 @@ SELECT datetime, entity, value
 WHERE datetime >= '2017-06-15T00:00:00Z'
 ```
 
-In the example above, the "mpstat.cpu_busy" table contains records for the `mpstat.cpu_busy` metric.
+In the example above, the `"mpstat.cpu_busy"` table contains records for the `mpstat.cpu_busy` metric.
 
 > Virtual tables are currently supported only for series. Access to properties, messages, and alerts is currently not available.
 
@@ -265,7 +265,7 @@ Virtual tables have the same pre-defined columns since all the underlying data i
 |`tags.{name}`    |string   | Series tag value. Returns `NULL` if the specified tag does not exist for this series.|
 |`tags`           |string   | All series tags, concatenated to `name1=value;name2=value` format.|
 |`tags.*`         |string   | Expands to multiple columns, each column containing a separate series tag.|
-|`datetime`       |datetime | Sample time in ISO 8601 format, for example `2017-06-10T14:00:15.020Z`.<br>In `GROUP BY PERIOD` queries, the `datetime` column returns the period's **start** time in ISO format, same as `date_format(PERIOD(...))`.|
+|`datetime`       |timestamp | Sample time in ISO 8601 format, for example `2017-06-10T14:00:15.020Z`.<br>In `GROUP BY PERIOD` queries, the `datetime` column returns the period's **start** time in ISO format, same as `date_format(PERIOD(...))`.|
 |`time`           |long     | Sample time in Unix milliseconds since 1970-01-01T00:00:00Z, for example `1408007200000`.<br>In `GROUP BY PERIOD` queries, the `time` column returns the period's **start** time.|
 
 #### Metric Columns
@@ -361,13 +361,13 @@ WHERE t1.datetime BETWEEN '2017-06-16T13:00:00Z' AND '2017-06-16T13:10:00Z'
 | null                 | null              | 1497618021000 | 2017-06-16T13:00:21Z | 76980    | null    | memfree   | nurswgvml006 | null    |
 ```
 
-The `time` and `datetime` columns are interchangeable and can be used equivalently, for instance in the `GROUP BY` clause and the `SELECT` expression.
+The `time` and `datetime` columns contain the same value (record time) in different data types and can be used interchangeably, for instance in the `GROUP BY` clause and the `SELECT` expression.
 
 ```sql
-SELECT datetime, entity, count(*)
+SELECT datetime, entity, count(*)   -- 'time' column in SELECT
   FROM "df.disk_used"
-WHERE datetime BETWEEN '2017-06-15T21:02:00Z' AND '2017-06-15T21:02:15Z'
-  GROUP BY time, entity
+WHERE datetime BETWEEN '2017-06-15' AND '2017-06-15' -- 'datetime' column in WHERE
+  GROUP BY time, entity             -- 'time' column in GROUP BY
 ```
 
 The `SELECT` expression in `JOIN` queries can include both fully qualified column names such as `{table}.datetime` and short names `datetime` and `time` containing row timestamp calculated as `COALESCE(t1.datetime, t2.datetime, ...)`.
@@ -603,20 +603,20 @@ Columns referenced in the `SELECT` expression must be included in the `GROUP BY`
 
 ## Literals
 
-The literal is a constant value specified in the query, such as `'nurswvml007'`, `75`, or `'2017-08-15T00:00:00Z'`. The database supports literals for string, datetime, and number data types.
+The literal is a constant value specified in the query, such as `'nurswvml007'`, `75`, or `'2017-08-15T00:00:00Z'`. The database supports literals for `string`, `timestamp`, and `number` data types.
 
 ```sql
 -- string literal
 WHERE entity = 'nurswgvml007'
 
--- datetime literal
+-- timestamp literal
 WHERE datetime >= '2017-08-15T00:00:00Z'
 
 -- number literal
 WHERE value < 75
 ```
 
-The string and datetime literals must be enclosed in **single** quotation marks.
+The string and timestamp literals must be enclosed in **single** quotation marks.
 
 A literal value containing single quotes can be escaped by doubling the single quote symbol.
 
@@ -674,21 +674,21 @@ For aliased columns, the underlying column and table names, or expression text, 
 
 ```json
 "tableSchema": {
-	"columns": [{
-		"columnIndex": 1,
-		"name": "cpu_percent",
-		"titles": "tbl.value*100",
-		"datatype": "float",
-		"table": "tbl"
-	}, {
-		"columnIndex": 2,
-		"name": "sample-date",
-		"titles": "datetime",
-		"datatype": "xsd:dateTimeStamp",
-		"table": "tbl",
-		"propertyUrl": "atsd:datetime",
-		"dc:description": "Sample time in ISO8601 format"
-	}]
+  "columns": [{
+  "columnIndex": 1,
+  "name": "cpu_percent",
+  "titles": "tbl.value*100",
+  "datatype": "float",
+  "table": "tbl"
+  }, {
+  "columnIndex": 2,
+  "name": "sample-date",
+  "titles": "datetime",
+  "datatype": "xsd:dateTimeStamp",
+  "table": "tbl",
+  "propertyUrl": "atsd:datetime",
+  "dc:description": "Sample time in ISO8601 format"
+  }]
 }
 ```
 
@@ -766,7 +766,7 @@ In the example above, the underscore is evaluated as a regular character (not as
 
 ### REGEX Expression
 
-The `REGEX` expression matches column value against a [regex](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html) pattern and returns `true` if the text is matched.
+The `REGEX` expression matches column value against a [regulat expresssion](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html) and returns `true` if the text is matched.
 
 The comparison is case-sensitive, even for entity and metric names.
 
@@ -856,7 +856,7 @@ WHERE time >= NOW - 15 * MINUTE
   AND datetime < CURRENT_MINUTE
 ```
 
-The calendar expressions are evaluated according to the database [time zone](../shared/timezone-list.md) which can be customized using the [`endtime()`](#endtime) function.
+The calendar expressions are evaluated according to the database [time zone](../shared/timezone-list.md) which can be customized using the [`endtime`](#endtime) function.
 
 ```sql
 SELECT value, datetime,
@@ -880,7 +880,7 @@ AND datetime BETWEEN endtime(YESTERDAY, 'US/Pacific') AND endtime(CURRENT_DAY, '
 
 ### Local Time Boundaries
 
-To specify the interval range in local time, use the `date_parse` function to convert the string datetime into Unix milliseconds.
+To specify the interval range in local time, use the `date_parse` function to convert the `timestamp` literal into Unix milliseconds.
 
 ```sql
 SELECT datetime as utc_time, date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Europe/Vienna') AS local_datetime, value
@@ -911,7 +911,7 @@ To select rows for a date range based on each entity's local time zone, supply `
 ```sql
 SELECT entity, entity.timeZone,
   AVG(value),
-  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "Period Start: UTC datetime", 
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "Period Start: UTC datetime",
   date_format(time, 'yyyy-MM-dd HH:mm z', entity.timeZone) AS "Period Start: Local datetime"
 FROM "mpstat.cpu_busy"
   WHERE datetime >= ENDTIME(PREVIOUS_DAY, entity.timeZone) 
@@ -1818,7 +1818,7 @@ The syntax follows the `SQL-92` notation for enumerating the compared columns.
       AND t1.tags = t2.tags
 ```
 
-The `ON` condition can compare only the predefined columns `entity`, `time/datetime`, and `tags`. Since the tables contain the same predefined columns, the `ON` condition is optional and can be omitted.
+The `ON` condition can compare only the predefined columns: `entity`, `time`, ``datetime`, and `tags`. Since the virtual tables contain the same predefined columns, the `ON` condition is optional and can be omitted.
 
 | **Compact Syntax** | **SQL-92 Syntax** |
 |:---|---|
@@ -2133,11 +2133,11 @@ The `PERCENTILE` function accepts `percentile` parameter (0 to 100) as the first
 
 ### FIRST
 
-The `FIRST` function returns the value of the first sample (or the value of expression `expr` for the first row) in the set which is ordered by datetime in ascending order.
+The `FIRST` function returns the value of the first sample (or the value of expression `expr` for the first row) in the set which is ordered by time in ascending order.
 
 ### LAST
 
-The `LAST` function returns the value of the last sample (or the value of expression `expr` for the last row) in the set which is ordered by datetime in ascending order.
+The `LAST` function returns the value of the last sample (or the value of expression `expr` for the last row) in the set which is ordered by time in ascending order.
 
 ### MIN_VALUE_TIME
 
@@ -2326,10 +2326,10 @@ date_parse('2017-03-31T12:36:03Z', 'yyyy-MM-dd''T''HH:mm:ssZZ')
 /* Parse date using the database time zone. */
 date_parse('31.03.2017 12:36:03.283', 'dd.MM.yyyy HH:mm:ss.SSS')
 
-/* Parse date using the offset specified in the datetime string. */
+/* Parse date using the offset specified in the timestamp string. */
 date_parse('31.03.2017 12:36:03.283 -08:00', 'dd.MM.yyyy HH:mm:ss.SSS ZZ')
 
-/* Parse date using the time zone specified in the datetime string. */
+/* Parse date using the time zone specified in the timestamp string. */
 date_parse('31.03.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ')
 
 /* Parse date using the time zone provided as the third argument. */
@@ -2338,7 +2338,7 @@ date_parse('31.01.2017 12:36:03.283', 'dd.MM.yyyy HH:mm:ss.SSS', 'Europe/Berlin'
 /* Parse date using the UTC offset provided as the third argument. */
 date_parse('31.01.2017 12:36:03.283', 'dd.MM.yyyy HH:mm:ss.SSS', '+01:00')
 
-/* If the time zone (offset) is specified in the datetime string,
+/* If the time zone (offset) is specified in the timestamp string,
 it should be exactly the same as provided by the third argument. */
 date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ', 'Europe/Berlin')
 ```
@@ -2702,7 +2702,7 @@ ORDER BY datetime
 | mpstat.cpu_steal  | 2017-04-06T16:00:18Z | 0.0   |
 ```
 
-### endtime()
+### `endtime()`
 
 The `endtime()` function evaluates the specified [calendar](../shared/calendar.md) keywords in the user-defined [time zone](../shared/timezone-list.md).
 
@@ -3037,7 +3037,7 @@ The query may contain multiple `OPTION` clauses specified at the end of the stat
 
 ### `ROW_MEMORY_THRESHOLD` Option
 
-The database may choose to process rows using the local filesystem as opposed to memory if the query includes one of the following clauses:
+The database may choose to process rows using the local file system as opposed to memory if the query includes one of the following clauses:
 
 * `JOIN`
 * `ORDER BY`
@@ -3127,25 +3127,25 @@ Query Detail Fields:
 
 | **Name** | **Description** |
 |:---|:---|
-| Status | New, Running, Completed, Error, Cancelled. |
-| Source | api, console, scheduled. |
-| User | Name of the user who initiated the query.<br>For API clients, username specified in login credentials. |
-| Query Id | Unique query identifier. |
-| Query Text | Query statement text. |
-| Start Time | Query start time. |
-| Elapsed Time | Time elapsed between start time and completion (or current) time. |
-| Returned Records | Number of rows returned to the client. |
-| Records Fetched | Number of time:value pairs. |
-| Rows Fetched | Number of HBase rows. |
-| Result Bytes| Number of bytes in Result objects from HBase region servers. |
-| Remote Result Bytes | Number of bytes in Result objects from remote region servers. |
-| Millis` between next() | Total number of milliseconds spent between sequential scan.next() calls. |
-| RPC Calls | Number of RPC calls. |
-| RPC Remote Calls | Number of remote RPC calls. |
-| RPC Retries | Number of RPC retries. |
-| RPC Remote Retries | Number of remote RPC retries.  |
-| Regions Scanned | Number of regions scanned. |
-| Regions Not Serving | Number of `NotServingRegionException` caught. |
+| `Status` | New, Running, Completed, Error, Cancelled. |
+| `Source` | api, console, scheduled. |
+| `User` | Name of the user who initiated the query.<br>For API clients, username specified in login credentials. |
+| `Query Id` | Unique query identifier. |
+| `Query Text` | Query statement text. |
+| `Start Time` | Query start time. |
+| `Elapsed Time` | Time elapsed between start time and completion (or current) time. |
+| `Returned Records` | Number of rows returned to the client. |
+| `Records Fetched` | Number of time:value pairs. |
+| `Rows Fetched` | Number of HBase rows. |
+| `Result Bytes` | Number of bytes in Result objects from HBase region servers. |
+| `Remote Result Bytes` | Number of bytes in Result objects from remote region servers. |
+| `Millis between next()` | Total number of milliseconds spent between sequential scan.next() calls. |
+| `RPC Calls` | Number of RPC calls. |
+| `RPC Remote Calls` | Number of remote RPC calls. |
+| `RPC Retries` | Number of RPC retries. |
+| `RPC Remote Retries` | Number of remote RPC retries.  |
+| `Regions Scanned` | Number of regions scanned. |
+| `Regions Not Serving` | Number of `NotServingRegionException` instances caught. |
 
 ![Query Details](images/sql-query-details.png)
 
@@ -3181,10 +3181,10 @@ The following message tags are available for filtering and grouping:
 
 | **Name** | **Description** |
 |:---|:---|
-| uid    | Unique query id which is reset on application restart. |
-| format | Result set format: csv, json, html. |
-| user   | User initiating the query. |
-| query  | Query text. |
+| `uid`    | Unique query id which is reset on application restart. |
+| `format` | Result set format: csv, json, html. |
+| `user`   | User initiating the query. |
+| `query`  | Query text. |
 
 > Messages for scheduled queries include additional tags `query_name`, `query_id`, `output_path`, `email_subject`, and `email_subscribers`.
 

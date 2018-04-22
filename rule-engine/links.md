@@ -16,12 +16,12 @@ The URLs are automatically [inlined](#inline-links) in email notifications and i
 
 ## Reference
 
-* [serverLink](#serverlink)
-* [ruleLink](#rulelink)
-* [chartLink](#chartlink)
-* [csvExportLink](#csvexportlink)
-* [htmlExportLink](#htmlexportlink)
-* [entityLink](#entitylink)
+* [`serverLink`](#serverlink)
+* [`ruleLink`](#rulelink)
+* [`chartLink`](#chartlink)
+* [`csvExportLink`](#csvexportlink)
+* [`htmlExportLink`](#htmlexportlink)
+* [`entityLink`](#entitylink)
 
 ### `serverLink`
 

@@ -263,7 +263,7 @@ In order to trigger a notification by an SQL query:
 
 * Develop a query such that it returns an empty result if the situation is normal.
 
-``` sql
+```sql
     SELECT entity, tags, percentile(90, value) FROM page_views
       WHERE datetime >= current_day
       GROUP BY entity, tags, period(1 DAY)

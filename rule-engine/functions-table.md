@@ -6,12 +6,12 @@ Table functions perform various operations on strings, lists, and maps to create
 
 ## Reference
 
-* [addTable for map](#addtable-for-map)
-* [addTable for maps](#addtable-for-maps)
-* [addTable for list](#addtable-for-list)
-* [jsonToMaps](#jsontomaps)
-* [jsonToLists](#jsontolists)
-* [flattenJson](#flattenjson)
+* [`addTable` for map](#addtable-for-map)
+* [`addTable` for maps](#addtable-for-maps)
+* [`addTable` for list](#addtable-for-list)
+* [`jsonToMaps`](#jsontomaps)
+* [`jsonToLists`](#jsontolists)
+* [`flattenJson`](#flattenjson)
 
 ### `addTable` for map
 
@@ -222,7 +222,7 @@ This function prints `c` (list of lists) as a multi-column table in the specifie
 
 The number of elements in each collection must be the same.
 
-The default table header is 'Value-1, ..., Value-N'.
+The default table header is `Value-1, ..., Value-N`.
 
 The header argument `h` can be used to customize the header.
 
@@ -263,7 +263,7 @@ query = 'SELECT datetime, value FROM http.sessions WHERE datetime > current_hour
   addTable([['2018-01-31T12:00:13.242Z', '37'], ['2018-01-31T12:00:28.253Z', '36']], 'csv', ['date', 'count'])
 ```
 
-```ls
+```csv
 date,count
 2018-01-31T12:00:13.242Z,37
 2018-01-31T12:00:28.253Z,36

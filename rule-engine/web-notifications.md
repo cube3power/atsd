@@ -35,7 +35,7 @@ The built-in notification types for chat and collaboration services deliver aler
 | [AZURE-SB](notifications/azure-sb.md) | Queue/Topic and Message | Send a message to an [Azure Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging) |
 | [GCP-PS](notifications/gcp-ps.md) | Topic and Message | Send a message to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) topic. |
 | [WEBHOOK](notifications/webhook.md) | None | Send pre-defined fields as a JSON document or form to an HTTP endpoint. |
-| [CUSTOM](notifications/custom.md) | All | Send any JSON content or form parameters to an HTTP endpoint. Examples: [pagerduty](notifications/custom-pagerduty.md), [zendesk](notifications/custom-zendesk.md), [github](notifications/custom-github.md), [circleci](notifications/custom-circleci.md), [jenkins](notifications/custom-jenkins.md), [ifttt](notifications/custom-ifttt.md)|
+| [CUSTOM](notifications/custom.md) | All | Send any JSON content or form parameters to an HTTP endpoint. Examples: [`pagerduty`](notifications/custom-pagerduty.md), [`zendesk`](notifications/custom-zendesk.md), [`github`](notifications/custom-github.md), [`circleci`](notifications/custom-circleci.md), [`jenkins`](notifications/custom-jenkins.md), [`ifttt`](notifications/custom-ifttt.md)|
 
 ## Window Status
 
@@ -257,7 +257,7 @@ If the ATSD server cannot connect to the remote API server directly due to netwo
 
   NGINX configuration for Slack:
 
-```
+```txt
     location /api/chat.postMessage {
         proxy_pass https://slack.com/api/chat.postMessage;
     }
@@ -268,7 +268,7 @@ If the ATSD server cannot connect to the remote API server directly due to netwo
 
   NGINX configuration for Telegram:
 
-```
+```txt
     location /bot {
         proxy_pass https://api.telegram.org/bot;
     }
@@ -276,11 +276,11 @@ If the ATSD server cannot connect to the remote API server directly due to netwo
 
   NGINX configuration for Discord:
 
-```
+```txt
     location /api/webhooks {
         proxy_pass https://discordapp.com/api/webhooks;
     }
-```  
+```
 
   Modify the `Base URL` by replacing it with the corresponding API gateway URL.
 

@@ -70,7 +70,7 @@ If the operation succeeds, an authorization token will be present in the `token`
   ],
   "fingerprint": null
 }
-``` 
+```
 
 #### Generate Authorization Token using UI
 
@@ -98,7 +98,7 @@ Your new token will be available on the **Personal access tokens** page. Copy th
 
 Enter the following text into the `Body` field:
 
-```
+```json
 {
   "body": "${message}\n\n[Chart](${chartLink})\n\n${markdownDetailsTable}"
 }
@@ -158,7 +158,7 @@ When the notification is executed, all placeholders in the request URL will be r
 
 `https://api.github.com/repos/username/github_repository/issues/1/comments`
 
-```
+```json
 {
   "body": "[OPEN] Github for test_e {}\n\n[Chart](chart link)\n\n| **Name** | **Value**|..."
 }
@@ -168,7 +168,7 @@ When the notification is executed, all placeholders in the request URL will be r
 
 In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 

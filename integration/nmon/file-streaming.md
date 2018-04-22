@@ -111,7 +111,7 @@ nmon will run and the collected data will be streamed into ATSD. New entity and 
 ```sh
 /usr/bin/nmon -F `hostname`.nmon -s 2 -c 30       
 ./nmon_sender_telnet.sh {atsdhostname} -p 8081 -s 2 -c 30 -f `hostname`.
-nmon                                              
+nmon
 ```
 
 #### Test nmon with Sender Script – Installed from Axibase GitHub or Binaries
@@ -120,7 +120,7 @@ nmon
 ./nmon -F `hostname`.nmon -s 2 -c 30              
 ./nmon_sender_telnet.sh {atsdhostname} -p 8081 -s 2 -c 30 -f `hostname`.
 nmon
-```                                              
+```
 
 #### Setup nmon File Streaming
 

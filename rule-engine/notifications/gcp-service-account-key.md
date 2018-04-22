@@ -36,9 +36,9 @@ Check the contents of the keystore:
 keytool -list -keystore /opt/atsd/atsd/conf/server.keystore
 ```
 
-The output should contain at least 2 entries: atsd and gcp keys.
+The output should contain at least 2 entries for `atsd` and `gcp` aliases.
 
-```bash
+```txt
 Keystore type: JKS
 Keystore provider: SUN
 
@@ -54,5 +54,8 @@ Certificate fingerprint (SHA1): ...
 
 ```bash
 /opt/atsd/atsd/bin/stop-atsd.sh
+```
+
+```sh
 /opt/atsd/atsd/bin/start-atsd.sh
 ```

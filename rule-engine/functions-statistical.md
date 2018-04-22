@@ -8,43 +8,44 @@ The univariate statistical functions listed below perform calculations on an arr
 
 ## Reference
 
-* [avg](#avg)
-* [mean](#mean)
-* [sum](#sum)
-* [min](#min)
-* [max](#max)
-* [wavg](#wavg)
-* [wtavg](#wtavg)
-* [count](#count)
-* [percentile](#percentile)
-* [median](#median)
-* [variance](#variance)
-* [stdev](#stdev)
-* [intercept](#intercept)
-* [first](#first)
-* [last](#last)
-* [diff](#diff)
-* [delta](#delta)
-* [new_maximum](#new_maximum)
-* [new_minimum](#new_minimum)
-* [threshold_time](#threshold_time)
-* [threshold_linear_time](#threshold_linear_time)
-* [rate_per_second](#rate_per_second)
-* [rate_per_minute](#rate_per_minute)
-* [rate_per_hour](#rate_per_hour)
-* [slope](#slope)
-* [slope_per_second](#slope_per_second)
-* [slope_per_minute](#slope_per_minute)
-* [slope_per_hour](#slope_per_hour)
-* [countIf](#countif)
-* [avgIf](#avgif)
-* [sumIf](#sumif)
+* [`avg`](#avg)
+* [`mean`](#mean)
+* [`sum`](#sum)
+* [`min`](#min)
+* [`max`](#max)
+* [`wavg`](#wavg)
+* [`wtavg`](#wtavg)
+* [`count`](#count)
+* [`percentile`](#percentile)
+* [`median`](#median)
+* [`variance`](#variance)
+* [`stdev`](#stdev)
+* [`intercept`](#intercept)
+* [`first`](#first)
+* [`last`](#last)
+* [`diff`](#diff)
+* [`delta`](#delta)
+* [`new_maximum`](#new_maximum)
+* [`new_minimum`](#new_minimum)
+* [`threshold_time`](#threshold_time)
+* [`threshold_linear_time`](#threshold_linear_time)
+* [`rate_per_second`](#rate_per_second)
+* [`rate_per_minute`](#rate_per_minute)
+* [`rate_per_hour`](#rate_per_hour)
+* [`slope`](#slope)
+* [`slope_per_second`](#slope_per_second)
+* [`slope_per_minute`](#slope_per_minute)
+* [`slope_per_hour`](#slope_per_hour)
+* [`countIf`](#countif)
+* [`avgIf`](#avgif)
+* [`sumIf`](#sumif)
 
 ### `avg`
 
 ```javascript
   avg() double
 ```
+
 Average value function. For example, `avg()` for a `5-minute` time-based window returns the average value for all samples received within this period of time.
 
 ### `mean`
@@ -52,6 +53,7 @@ Average value function. For example, `avg()` for a `5-minute` time-based window 
 ```javascript
   mean() double
 ```
+
 Average value function. Same as `avg()`.
 
 ### `sum`
@@ -59,6 +61,7 @@ Average value function. Same as `avg()`.
 ```javascript
   sum() double
 ```
+
 Sum of all included values.
 
 ### `min`
@@ -66,6 +69,7 @@ Sum of all included values.
 ```javascript
   min() double
 ```
+
 Minimum value.
 
 ### `max`
@@ -73,6 +77,7 @@ Minimum value.
 ```javascript
   max() double
 ```
+
 Maximum value.
 
 ### `wavg`
@@ -80,6 +85,7 @@ Maximum value.
 ```javascript
   wavg() double
 ```
+
 Weighted average. Weight = sample index which starts from 0 for the first sample.
 
 ### `wtavg`
@@ -87,6 +93,7 @@ Weighted average. Weight = sample index which starts from 0 for the first sample
 ```javascript
   wtavg() double
 ```
+
 Weighted time average. `Weight = (sample.time - first.time)/(last.time - first.time + 1)`.
 
 Time measured in epoch seconds.
@@ -96,6 +103,7 @@ Time measured in epoch seconds.
 ```javascript
   count() long
 ```
+
 Value count.
 
 ### `percentile`
@@ -111,6 +119,7 @@ Value count.
 ```javascript
   median() double
 ```
+
 50% percentile (median) function. Same as `percentile(50)`.
 
 ### `variance`
@@ -118,6 +127,7 @@ Value count.
 ```javascript
   variance() double
 ```
+
 Variance.
 
 ### `stdev`
@@ -125,6 +135,7 @@ Variance.
 ```javascript
   stdev() double
 ```
+
 Standard deviation. Aliases: `stdev`, `std_dev`.
 
 ### `intercept`
@@ -132,6 +143,7 @@ Standard deviation. Aliases: `stdev`, `std_dev`.
 ```javascript
   intercept() double
 ```
+
 Linear regression intercept.
 
 ### `first`
@@ -139,6 +151,7 @@ Linear regression intercept.
 ```javascript
   first() double
 ```
+
 First value. Same as `first(0)`.
 
 ### `first(integer i)`
@@ -146,6 +159,7 @@ First value. Same as `first(0)`.
 ```javascript
   first(integer i) double
 ```
+
 `i`-th value from start. First value has index of 0.
 
 ### `last`
@@ -153,6 +167,7 @@ First value. Same as `first(0)`.
 ```javascript
   last() double
 ```
+
 Last value. Same as `last(0)`.
 
 ### `last(integer i)`
@@ -160,6 +175,7 @@ Last value. Same as `last(0)`.
 ```javascript
   last(integer i) double
 ```
+
 `i`-th value from end. Last value has index of 0.
 
 ### `diff`
@@ -167,6 +183,7 @@ Last value. Same as `last(0)`.
 ```javascript
   diff() double
 ```
+
 Difference between `last` and `first` values. Same as `last() - first()`.
 
 ### `diff(integer i)`
@@ -174,6 +191,7 @@ Difference between `last` and `first` values. Same as `last() - first()`.
 ```javascript
   diff(integer i) double
 ```
+
 Difference between `last(integer i)` and `first(integer i)` values. Same as` last(integer i)-first(integer i)`.
 
 ### `diff(string i)`
@@ -181,6 +199,7 @@ Difference between `last(integer i)` and `first(integer i)` values. Same as` las
 ```javascript
   diff(string i) double
 ```
+
 Difference between the last value and value at 'currentTime - interval'.
 
 Interval `i` specified as 'count unit', for example '5 minute'.
@@ -190,6 +209,7 @@ Interval `i` specified as 'count unit', for example '5 minute'.
 ```javascript
   delta() double
 ```
+
 Same as `diff()`.
 
 ### `new_maximum`
@@ -197,6 +217,7 @@ Same as `diff()`.
 ```javascript
   new_maximum() boolean
 ```
+
 Returns true if last value is greater than any previous value.
 
 ### `new_minimum`
@@ -204,6 +225,7 @@ Returns true if last value is greater than any previous value.
 ```javascript
   new_minimum() boolean
 ```
+
 Returns true if last value is smaller than any previous value.
 
 ### `threshold_time`
@@ -211,6 +233,7 @@ Returns true if last value is smaller than any previous value.
 ```javascript
   threshold_time(double t) double
 ```
+
 Number of minutes until the sample value reaches the specified threshold `t` based on extrapolation of the difference between the last and first value.
 
 ### `threshold_linear_time`
@@ -218,6 +241,7 @@ Number of minutes until the sample value reaches the specified threshold `t` bas
 ```javascript
   threshold_linear_time(double t) double
 ```
+
 Number of minutes until the sample value reaches the specified threshold `t` based on linear extrapolation.
 
 ### `rate_per_second`
@@ -225,6 +249,7 @@ Number of minutes until the sample value reaches the specified threshold `t` bas
 ```javascript
   rate_per_second() double
 ```
+
 Difference between last and first value per second. Same as `diff()/(last.time-first.time)`. Time measured in epoch seconds.
 
 ### `rate_per_minute`
@@ -232,6 +257,7 @@ Difference between last and first value per second. Same as `diff()/(last.time-f
 ```javascript
   rate_per_minute() double
 ```
+
 Difference between last and first value per minute. Same as `rate_per_second()/60`.
 
 ### `rate_per_hour`
@@ -239,6 +265,7 @@ Difference between last and first value per minute. Same as `rate_per_second()/6
 ```javascript
   rate_per_hour() double
 ```
+
 Hourly difference between last and first value input. Same as `rate_per_second()/3600`.
 
 ### `slope`
@@ -246,6 +273,7 @@ Hourly difference between last and first value input. Same as `rate_per_second()
 ```javascript
   slope() double
 ```
+
 Linear regression slope.
 
 ### `slope_per_second`
@@ -253,6 +281,7 @@ Linear regression slope.
 ```javascript
   slope_per_second() double
 ```
+
 Same as `slope()`.
 
 ### `slope_per_minute`
@@ -267,6 +296,7 @@ Same as `slope_per_second()/60`.
 ```javascript
   slope_per_hour() double
 ```
+
 Same as `slope_per_second()/3600`.
 
 ## Conditional Functions
@@ -278,6 +308,7 @@ The condition is a boolean expression that can refer to `value` field and compar
 ```javascript
   countIf(string c [, string i | integer n]) long
 ```
+
 Count of elements matching the specified condition `c` within interval `i` or within the last `n` samples.
 
 Examples:
@@ -285,7 +316,9 @@ Examples:
 ```javascript
   /* For values [0, 15, 5, 40] will return 2. */
   countIf('value > 10')
+```
 
+```javascript
   /* Count of values exceeding 5 within the last 10 samples. */
   countIf('value > 5', 10)
 ```
@@ -295,6 +328,7 @@ Examples:
 ```javascript
   avgIf(string c [, string i | integer n]) double
 ```
+
 Average of elements matching the specified condition `c` within interval `i` or within the last `n` samples.
 
 ### `sumIf`
@@ -302,6 +336,7 @@ Average of elements matching the specified condition `c` within interval `i` or 
 ```javascript
   sumIf(string c [, string i | integer n]) double
 ```
+
 Sum of elements matching the specified condition `c` within interval `i` or within the last `n` samples.
 
 ## Interval Selection

@@ -2,15 +2,15 @@
 
 ## Reference
 
-* [ifEmpty](#ifempty)
-* [toBoolean](#toboolean)
-* [getURLHost](#geturlhost)
-* [getURLPort](#geturlport)
-* [getURLProtocol](#geturlprotocol)
-* [getURLPath](#geturlpath)
-* [getURLQuery](#geturlquery)
-* [getURLUserInfo](#geturluserinfo)
-* [printObject](#printobject)
+* [`ifEmpty`](#ifempty)
+* [`toBoolean`](#toboolean)
+* [`getURLHost`](#geturlhost)
+* [`getURLPort`](#geturlport)
+* [`getURLProtocol`](#geturlprotocol)
+* [`getURLPath`](#geturlpath)
+* [`getURLQuery`](#geturlquery)
+* [`getURLUserInfo`](#geturluserinfo)
+* [`printObject`](#printobject)
 
 ### `ifEmpty`
 
@@ -58,13 +58,13 @@ Examples:
 
 ```javascript
   // Returns false
-
   toBoolean('hello')  
   toBoolean(0)
   toBoolean('off')  
+```
 
+```javascript
   // Returns true
-
   toBoolean('YES')    
   toBoolean(1)  
   toBoolean('On')
@@ -90,9 +90,9 @@ The first column in the table contains field names, whereas the second column co
 
 Object `o` can be an 'Entity' or a 'Window' object which can be retrieved as follows:
 
-* [getEntity](functions-lookup.md#getentity)
-* [rule_window](functions-rules.md#rule_window)
-* [rule_windows](functions-rules.md#rule_windows)
+* [`getEntity`](functions-lookup.md#getentity)
+* [`rule_window`](functions-rules.md#rule_window)
+* [`rule_windows`](functions-rules.md#rule_windows)
 
 An empty string is returned if the object `o` is `null`.
 
@@ -130,7 +130,7 @@ lastText,null
 status,OPEN
 windowStatus,OPEN
 ...
-```  
+```
 
 ```javascript
   printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')

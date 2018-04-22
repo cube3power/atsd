@@ -44,7 +44,7 @@ Copy the token.
 
 Enter the following text into the `Body` field:
 
-```
+```json
 {
   "incident": {
     "type": "incident",
@@ -93,8 +93,8 @@ Specify the following settings for the **Open** trigger:
 
 | **Name** | **Value** |
 | :-------- | :---- |
-| service_id | `<SERVICE_ID>` |
-| incident_name | `[${status}] ${rule} for ${entity} ${tags}` |
+| `service_id` | `<SERVICE_ID>` |
+| `incident_name` | `[${status}] ${rule} for ${entity} ${tags}` |
 
 ![](images/pagerduty_rule_notification_open.png)
 
@@ -114,7 +114,7 @@ Get an ID from url.
 
 Payload placeholders will automatically be resolved when the notification is triggered:
 
-```
+```json
 {
   "incident": {
     "type": "incident",

@@ -38,7 +38,7 @@ The filter matches the window if it satisfies **all** filter columns including:
 
 ![](images/override-rule-filter.png)
 
-> In the example above, the rule matches entities with a name beginning with `nurswg` that are members of the 'disk_prod' group and applies only to windows with  tag 'file_system' equal '/tmp'.
+> In the example above, the rule matches entities with a name beginning with `nurswg` that are members of the 'disk_prod' group and applies only to windows with  tag `file_system` equal `/tmp`.
 
 The tag columns are present when the rule is grouped by tags on the 'Overview' tab.
 
@@ -107,7 +107,7 @@ Override Table
 Rule Processing
 
 * Rules are processed from top to bottom. There are 4 rules in the table.
-* Row 1: Since the value cannot be greater than **100%**, this rule effectively disables alerts for 'tmp' file systems.
+* Row 1: Since the value cannot be greater than **100%**, this rule effectively disables alerts for `tmp` file systems.
 * Row 2. This rule will raise `ERROR` alert if disk usage exceeds **50%** for entity 'nurswgvml010'.
 * Row 3. This rule will raise `ERROR` alert if disk usage on `/` mount point exceeds **90%** for entity 'nurswgvml007'. Note that once a rule is matched, the default condition is not evaluated for this window, and therefore an alert will not be raised for `/` on 'nurswgvml007' with disk usage of **85%**.
 * Row 4. Raise `ERROR` alert if disk usage exceeds **60%** for any entity in the 'disk_prod' group. Otherwise, raise `WARNING` alert, if disk usage is greater than **30%** for the same entities.

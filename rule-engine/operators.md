@@ -55,7 +55,7 @@ Examples:
 
 ```javascript
    status >= 500 ? 'Server Error' : ((status >= 400) ? 'Client Error' : ((status >= 300) ? 'Redirect' : 'OK')))
-```  
+```
 
 ## Numeric Operators
 

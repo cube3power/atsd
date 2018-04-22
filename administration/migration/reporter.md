@@ -91,7 +91,7 @@ View the log file in order to monitor the job progress.
 
 ```sh
 tail -F /tmp/reporter/reporter.log
-``` 
+```
 
 When the job is completed, the log will display a summary:
 

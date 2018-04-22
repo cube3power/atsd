@@ -9,6 +9,9 @@
   "fileExtensions": [
     ".md"
   ],
+  "excludeFiles": [
+    "timezone-list.md"
+  ], 
   "dictionary": [
     "axibase",
     "ATSD",
@@ -212,7 +215,8 @@
     "Jxplorer",
     "Django",
     "regex",
-    "OpenLink"
+    "OpenLink",
+    "Pearson"
 
   ]
 }

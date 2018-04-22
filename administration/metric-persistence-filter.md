@@ -135,7 +135,7 @@ Example:
 matches(entity, collection('hosts'))
 
 matches(message, ['OK', 'stable'])
-```  
+```
 
 ### `startsWithAny`
 
@@ -221,7 +221,7 @@ Examples:
 
 ```javascript
 tags.size() > 1
-```    
+```
 
 ### `isEmpty`
 
@@ -237,7 +237,7 @@ Example:
 
 ```javascript
 NOT tags.isEmpty()
-```  
+```
 
 ### `IN`
 
@@ -253,7 +253,7 @@ Examples:
 entity IN ('nurswgvml007', 'nurswgvml008')
 
 tags.location IN ('NUR', 'SVL')
-```  
+```
 
 ## Using Persistence Filter
 

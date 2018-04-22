@@ -9,35 +9,35 @@ Download scollector binary for Linux.
 ```sh
  mkdir scollector
 ```
- 
+
 ```sh
  cd scollector
 ```
- 
+
 ```sh
  wget https://github.com/bosun-monitor/bosun/releases/download/0.6.0-beta1/scollector-linux-amd64
 ```
- 
+
 ```sh
  chmod 700 scollector-linux-amd64
 ```
- 
+
 Replace username, password, hostname and port number with actual connection parameters. 
- 
+
 ```sh
  echo 'Host = "http://username:password@atsd_hostname:8088/"' > scollector.toml
 ```
- 
+
 The default ATSD http port is `8088`, https port is `8443`. 
- 
+
 scollector does not support untrusted SSL certificates. If ATSD is running on a CA-signed SSL certificate, you can specify the secure connection.
 
 ```sh
  echo 'Host = "https://username:password@atsd_hostname:8443/"' > scollector.toml
-``` 
- 
+```
+
 Start scollector.
- 
+
 ```sh
  nohup ./scollector-linux-amd64 &
 ```
@@ -52,6 +52,9 @@ Create `/etc/init.d/scollector` file by running the following command in the sco
 
 ```sh
 sudo cat <<EOF > /etc/init.d/scollector
+```
+
+```txt
 #chkconfig: 2345 90 10
 #description: scollector is a framework to collect data points and store them in a TSDB.
 ### BEGIN INIT INFO
@@ -63,16 +66,16 @@ sudo cat <<EOF > /etc/init.d/scollector
 # Short-Description: start scollector
 # Description:
 ### END INIT INFO
- 
+
 SCOLLECTOR_BIN=$(pwd)/scollector-linux-amd64
 SCOLLECTOR_CONF=$(pwd)/scollector.toml
- 
+
 "\$SCOLLECTOR_BIN" -conf="\$SCOLLECTOR_CONF"
 EOF
 ```
- 
+
 Make the `/etc/init.d/scollector` file executable.
- 
+
 ```sh
   chmod a+x /etc/init.d/scollector
 ```
@@ -89,6 +92,9 @@ Create `/etc/init.d/scollector` file by running the following command in the sco
 
 ```sh
 sudo cat <<EOF > /etc/init.d/scollector
+```
+
+```txt
 #chkconfig: 2345 90 10
 #description: scollector is a framework to collect data points and store them in a TSDB.
 ### BEGIN INIT INFO
@@ -100,10 +106,10 @@ sudo cat <<EOF > /etc/init.d/scollector
 # Short-Description: start scollector
 # Description:
 ### END INIT INFO
- 
+
 SCOLLECTOR_BIN=$(pwd)/scollector-linux-amd64
 SCOLLECTOR_CONF=$(pwd)/scollector.toml
- 
+
 "\$SCOLLECTOR_BIN" -conf="\$SCOLLECTOR_CONF"
 EOF
 ```
@@ -151,7 +157,7 @@ sudo systemctl enable scollector
 
 Modify the `/etc/init.d/tcollector` content
 
-```
+```txt
 #chkconfig: 2345 90 10
 #description: collect OS metrics and store them in ATSD
 ### BEGIN INIT INFO
@@ -163,7 +169,7 @@ Modify the `/etc/init.d/tcollector` content
 # Short-Description: start scollector
 # Description:
 ### END INIT INFO
- 
+
 SCOLLECTOR_BIN=/home/axibase/scollector-linux-amd64
 SCOLLECTOR_CONF=/home/axibase/scollector.toml
 SCOLLECTOR_USER=axibase
@@ -209,13 +215,13 @@ scollector does not support untrusted SSL certificates. If you installed a CA-si
 
 Open the prompt as Administrator and create an scollector service with automated startup by executing the following command:
 
-```
+```txt
  scollector-windows-amd64.exe -winsvc=install
 ```
 
 Start scollector service by executing the following command:
 
-```
+```txt
  scollector-windows-amd64.exe -winsvc=start
 ```
 
@@ -228,5 +234,3 @@ If the service exits a few seconds after startup, check the following:
 Open Windows event log and review the scollector service startup error.
 
 If the service is running but there are no `scollector` metrics in ATSD, verify the protocol, url, and user credentials specified in the `scollector.toml` file.
-
-

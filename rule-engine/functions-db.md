@@ -429,7 +429,7 @@ executeSqlQuery('SELECT datetime, value FROM http.sessions WHERE datetime > curr
     [2018-01-25T19:00:12.346Z, 1], 
     [2018-01-25T19:00:27.347Z, 1]
   ]
-``` 
+```
 
 ```javascript
 executeSqlQuery("SELECT entity, avg(value) AS \"Average Value\" FROM jvm_memory_used WHERE datetime > current_hour GROUP BY entity")
@@ -446,7 +446,7 @@ executeSqlQuery("SELECT entity, avg(value) AS \"Average Value\" FROM jvm_memory_
 query = 'SELECT datetime, value FROM http.sessions WHERE datetime > current_hour LIMIT 2'
 //
 addTable(executeSqlQuery(query), 'ascii', true)
-```  
+```
 
 ```ls
 +--------------------------+-------+

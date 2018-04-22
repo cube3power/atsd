@@ -44,7 +44,7 @@ Prepare a request URL for accepting notifications from Telegram servers.
 
 ```elm
    https://telegram:12345678@atsd_host:8443/api/v1/messages/webhook/telegram?command.message=message.text
-```  
+```
 
   The target ATSD server must be accessible on one of the supported ports (80, 88, 443, 8443).
 

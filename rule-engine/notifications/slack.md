@@ -135,12 +135,12 @@ NGINX API Gateway Path for Slack:
 
 |**Setting**|**Description**|
 |---|---|
-|Auth Token|Bot API authentication token (see above).|
-|Bot Username|Set your bot's user name.|
-|Channels|Comma-separated list of channels, private groups, or IM channels to send message to. Each entry can be a name or an encoded ID.|
-|Text|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
-|Parse Mode|Change how messages are formatted. See [Basic message formatting](https://api.slack.com/docs/message-formatting) for more information.|
-|Names as Links|Find and link channel names and usernames.|
+|`Auth Token`|Bot API authentication token (see above).|
+|`Bot Username`|Set your bot user name.|
+|`Channels`|Comma-separated list of channels, private groups, or IM channels to send message to. Each entry can be a name or an encoded ID.|
+|`Text`|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
+|`Parse Mode`|Change how messages are formatted. See [Basic message formatting](https://api.slack.com/docs/message-formatting) for more information.|
+|`Names as Links`|Find and link channel names and usernames.|
 
 ## Reacting to Bot Messages
 
