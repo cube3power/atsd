@@ -48,7 +48,7 @@ message e:nurswg t:type=Security t:fs_type=NFS m:"Initiation complete"
 
 Rules inherited from [Base ABNF](base-abnf.md).
 
-```properties
+```elm
   ; message or at least one tag is required
 command = "message" MSP entity [MSP tag-type] [MSP tag-source] [MSP tag-severity] *(MSP tag) [MSP time] [MSP persist] [MSP message]
 entity = "e:" NAME

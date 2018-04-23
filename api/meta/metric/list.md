@@ -161,7 +161,7 @@ curl https://atsd_host:8443/api/v1/metrics?limit=2 \
 
 Expression text:
 
-```text
+```txt
 name != "" OR tags.keyName != "" OR label! = "" OR description != "" OR enabled = true OR persistent=true OR persistenceFilter != "" OR retentionDays=0 OR dataType="FLOAT" OR timePrecision="MILLISECONDS" OR versioning=false AND invalidAction="NONE" OR timeZone="" OR interpolate="LINEAR"
 ```
 

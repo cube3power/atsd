@@ -144,26 +144,26 @@ Otherwise, you need to allow the newly created `axibase` principal to access HBa
 
 Login into the HMaster server and locate the `hbase.keytab` file.
 
-```bash
+```sh
 find / -name "hbase.keytab" | xargs ls -la
 -rw------- 1 hbase        hbase        448 Jul 29 16:44 /var/run/cloudera-scm-agent/process/30-hbase-MASTER/hbase.keytab
 ```
 
 Obtain the fully qualified hostname of the HMaster server.
 
-```bash
+```sh
 hostname -f
 ```
 
 Authenticate with Kerberos using the `hbase.keytab` file and HMaster full hostname.
 
-```bash
+```sh
 kinit -k -t /var/run/cloudera-scm-agent/process/30-hbase-MASTER/hbase.keytab hbase/{master_full_hostname}
 ```
 
 Open HBase shell and execute the `grant` command to grant **RWXC** permissions to `axibase` principal.
 
-```bash
+```sh
 echo "grant 'axibase', 'RWXC'" | hbase shell  
 ```
 
@@ -426,45 +426,45 @@ su - axibase -c /opt/atsd/atsd/bin/start-atsd.sh
 
 - Download the latest ATSD release, or a specific version based on the link provided by Axibase support.
 
-```bash
+```sh
 cd ~
 curl -O https://axibase.com/public/atsd_ee_hbase_1.0.3.tar.gz
 ```
 
 - Extract the files.
 
-```bash
+```sh
 tar -xvf atsd_ee_hbase_1.0.3.tar.gz
 ```
 
 - Stop the ATSD process.
 
-```bash
+```sh
 /opt/atsd/atsd/bin/stop-atsd.sh
 ```
 
 - Update start/script files. Required for ATSD installations older than revision 15060.
 
-```bash
+```sh
 sed -i 's~^atsd_executable="$atsd_home/bin/atsd.*~atsd_executable=`ls $atsd_home/bin/atsd*.jar`~g' /opt/atsd/atsd/bin/stop-atsd.sh
 sed -i 's~^atsd_executable="$atsd_home/bin/atsd.*~atsd_executable=`ls $atsd_home/bin/atsd*.jar`~g' /opt/atsd/atsd/bin/start-atsd.sh
 ```
 
 - Delete previous ATSD jar files on the ATSD server.
 
-```bash
+```sh
 rm /opt/atsd/atsd/bin/atsd*.jar
 ```
 
 - Copy new ATSD jar files on the ATSD server.
 
-```bash
+```sh
 cp atsd/atsd/bin/atsd*.jar /opt/atsd/atsd/bin/
 ```
 
 - Compare atsd-hbase jar revision with the revision installed on HBase region servers
 
-```bash
+```sh
 ls atsd/hbase/lib/atsd-hbase.*.jar
 ```
 
@@ -472,6 +472,6 @@ Compare the displayed revision with atsd-hbase file revision in `/usr/lib/hbase/
 
 - Start ATSD process.
 
-```bash
+```sh
 /opt/atsd/atsd/bin/start-atsd.sh
 ```

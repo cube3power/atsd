@@ -10,7 +10,7 @@ As with all self-signed certificates, the new certificate will still cause a sec
 
 Delete the current Java keystore file from the configuration directory.
 
-```bash
+```sh
 rm /opt/atsd/atsd/conf/server.keystore
 ```
 
@@ -18,13 +18,13 @@ rm /opt/atsd/atsd/conf/server.keystore
 
 Generate a new self-signed certificate using the [`keytool`](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) utility.
 
-```bash
+```sh
 keytool -genkeypair -keystore /opt/atsd/atsd/conf/server.keystore -alias atsd -keyalg RSA -keysize 2048 -validity 3650
 ```
 
 The self-signed certificate requires only `first and last name` question to be answered. It should be set to the DNS name used by clients when connecting to the ATSD server, such as `atsd.customer_domain.com` in the example below. The remaining fields are optional.
   
-```bash
+```sh
 Enter keystore password: NEW_PASS  
 Re-enter new password: NEW_PASS
 What is your first and last name?
@@ -50,13 +50,13 @@ Enter key password for <mykey>
 
 Open `/opt/atsd/atsd/conf/server.properties` file.
 
-```bash
+```sh
 nano /opt/atsd/atsd/conf/server.properties
 ```
 
 Specify the new password (in plain text or [obfuscated](passwords-obfuscation.md)) in `https.keyStorePassword` and `https.keyManagerPassword` settings. Leave `https.trustStorePassword` blank.
 
-```properties
+```elm
 ...
 https.keyStorePassword=NEW_PASS
 https.keyManagerPassword=NEW_PASS
@@ -65,7 +65,7 @@ https.trustStorePassword=
 
 ## Restart ATSD
 
-```bash
+```sh
 /opt/atsd/atsd/bin/stop-atsd.sh
 /opt/atsd/atsd/bin/start-atsd.sh
 ```

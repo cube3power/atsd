@@ -47,7 +47,7 @@ Refer to [Metric API](../meta/metric/list.md#fields) for field descriptions.
 
 Rules inherited from [Base ABNF](base-abnf.md).
 
-```properties
+```elm
 command = "metric" MSP metric [MSP enabled] [MSP label] [MSP units] [MSP description] [MSP data-type] [MSP interpolate] [MSP filter] [MSP timezone] [MSP versioning] [MSP invalidAction] [MSP timePrecision] [MSP persistent] [MSP retentionIntervalDays] [MSP minValue] [MSP maxValue] *(MSP tag)
 metric = "m:" NAME
 enabled = "b:" BOOLEAN

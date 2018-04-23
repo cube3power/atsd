@@ -22,7 +22,7 @@ When a service account will be created, the account's private key will be saved 
 
 Import the saved private key into the ATSD keystore.
 
-```bash
+```sh
 keytool -v -importkeystore -srckeystore {P12_FILE_NAME} -srcstoretype PKCS12 -alias privatekey -srcstorepass notasecret -destkeystore /opt/atsd/atsd/conf/server.keystore -deststoretype JKS -destalias {GCP_KEY_ALIAS} -destkeypass {KEY_PASSWORD}
 ```
 
@@ -32,7 +32,7 @@ Replace `{KEY_PASSWORD}` with your key manager password (The property `https.key
 
 Check the contents of the keystore:
 
-```bash
+```sh
 keytool -list -keystore /opt/atsd/atsd/conf/server.keystore
 ```
 
@@ -52,7 +52,7 @@ Certificate fingerprint (SHA1): ...
 
 ## Restart ATSD
 
-```bash
+```sh
 /opt/atsd/atsd/bin/stop-atsd.sh
 ```
 

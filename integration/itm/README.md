@@ -90,7 +90,7 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 	
 * Set username and password in the `inotify_sender.sh` script
 
-```bash
+```sh
 --user=[[USER]] --password=[[PASSWORD]]
 ```
 

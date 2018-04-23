@@ -34,7 +34,7 @@ entity e:{entity} b:{enabled} l:{label} i:{interpolate} z:{timezone} t:{tag-1}={
 
 Rules inherited from [Base ABNF](base-abnf.md).
 
-```properties
+```elm
 command = "entity" MSP entity [MSP enabled] [MSP label] [MSP interpolate] [MSP timezone] 1*(MSP tag)
 entity = "e:" NAME
 enabled = "b:" BOOLEAN

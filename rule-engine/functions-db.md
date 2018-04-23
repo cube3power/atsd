@@ -2,14 +2,16 @@
 
 ## Overview
 
-The `db_*` functions retrieve series and message records from the database. The `executeSqlQuery` function retrieves the results of an SQL query executed against the database.
+The `db_*` functions retrieve series and message records from the database.
 
 The `db_last` and `db_statistic` functions provide a way to retrieve the last detailed or averaged value stored in the database for a series which may be different from the series in the current window. The functions can be used to compare different series for correlation purposes.
 
 * The `db_last` function retrieves the last value stored in the database for the specified series.
 * The `db_statistic` function retrieves an aggregated value from the database for the specified series.
 
-The `db_message_count` and `db_message_last` functions allow one to correlate different types of data - time series and messages.
+The `db_message_count` and `db_message_last` functions allow one to add conditions based on existence of messages as well as to correlate time series and messages.
+
+The `executeSqlQuery` function retrieves the results of an SQL query executed against the database.
 
 ## Reference
 
@@ -35,7 +37,7 @@ SQL functions:
   db_last(string m) number
 ```
 
-Retrieves the last value for the specified metric `m` and the same entity and tags as defined in the current window.
+Retrieves the last (most recent) value for the specified metric `m` and the same entity and tags as defined in the current window. The last value is retrieved regardless when it was stored.
 
 Example:
 
@@ -45,7 +47,7 @@ Example:
 
 > As an alternative, if the specified metric was received in the same command, use the [`value()`](functions-value.md) function. The `value()` function returns metric values set in the command, even if they're not yet stored in the database.
 
-### `db_last(string m, string e)` 
+### `db_last(string m, string e)`
 
 ```javascript
 db_last(string m, string e) number
@@ -62,7 +64,7 @@ Example:
   value > 60 && db_last('temperature', entity) < 30
 ```
 
-### `db_last(string m, string e, string t | [] t)` 
+### `db_last(string m, string e, string t | [] t)`
 
 ```javascript
   db_last(string m, string e, string t) number
@@ -84,7 +86,7 @@ Example:
   value > 60 && db_last('temperature', 'sensor-01', 'stage=heating') < 30
 ```
 
-### `db_statistic` 
+### `db_statistic`
 
 The first required argument `s` accepts a [statistical function](../api/data/aggregation.md) name such as `avg` which is applied to values within the selection interval.
 
@@ -95,6 +97,7 @@ The second required argument `i` is the duration of selection interval specified
 ```javascript
   db_statistic(string s, string i) number
 ```
+
 Retrieves an aggregated value from the database for the same metric, entity and tags as defined in the current window.
 
 Example:
@@ -108,6 +111,7 @@ Example:
 ```javascript
   db_statistic(string s, string i, string m) number
 ```
+
 Retrieves an aggregated value from the database for the specified metric `m` and the same entity and series tags as defined in the current window.
 
 Example:
@@ -121,6 +125,7 @@ Example:
 ```javascript
   db_statistic(string s, string i, string m, string e) number
 ```
+
 Retrieves an aggregated value from the database for the specified metric `m` and entity `e`. The entity can specified as a string or as `entity` field  current entity in the window).
 
 Example:
@@ -259,7 +264,7 @@ In the example below, the `db_last('disk_used_percent')` function will search fo
 
 #### Example `Different Tags`
 
-In the example below, the `db_last('io_disk_percent_util')` function will search for the first series with **any** tags (including no tags) because the `io_disk_percent_util` and `disk_used metrics` have different non-intersecting tag sets. This search will likely match multiple series, the first of which will be used to return the value. To better control which series is matched, use `db_last('io_disk_percent_util', entity, 'device=sda')` syntax option.
+In the example below, the `db_last('io_disk_percent_util')` function will search for the first series with **any** tags (including no tags) because the `io_disk_percent_util` and `disk_used metrics` have different non-intersecting tag sets. This search will likely match multiple series, the first of which will be used to return the value. To better control which series is matched, use `db_last('io_disk_percent_util', entity, 'device=sda')` option.
 
 * Current Window
 
@@ -293,12 +298,12 @@ In the example below, the `db_last('io_disk_percent_util')` function will search
 
 ## Message Functions
 
-
-### `db_message_count` 
+### `db_message_count`
 
 ```javascript
   db_message_count(string i, string g, string s[, string t | [] t[, string e[, string p]]]) long
 ```
+
 Returns the number of message records matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
 
 ### `db_message_last`
@@ -306,10 +311,12 @@ Returns the number of message records matching the specified interval `i`, messa
 ```javascript
   db_message_last(string i, string g, string s[, string t | [] t[, string e[, string p]]]) object
 ```
+
 Returns the most recent [message](../api/data/messages/query.md#fields-1) record matching the specified interval `i`, message type `g`, message source `s`, tags `t`, entity `e`, and expression `p`.
 
 The returned object's [fields](../api/data/messages/query.md#fields-1) can be accessed using dot notation, for example `db_message_last('1 hour', 'webhook', '').timestamp`.
-> Note `date` is `null` due to the use of millisecond time format by the message object and stored in the `timestamp` field. 
+
+> Note that `date` field in the message object is `null`. The record time is stored in the `timestamp` field instead (Unix milliseconds).
 
 ---
 
@@ -318,10 +325,10 @@ The following matching rules apply:
 * Interval:
   * The selection interval `i` is specified as 'count [unit](../shared/calendar.md#interval-units)', for example, '1 hour'.
   * The end of the selection interval is set to the **timestamp of the last command** in the window. As a result, the current command is excluded.
-  
+
 * Type:
   * If the message type argument `g` is specified as `null` or an empty string `''`, all types are matched.
-  
+
 * Source:
   * If the message source argument `s` is specified as `null` or an empty string `''`, all sources are matched. 
 
@@ -361,13 +368,13 @@ The following matching rules apply:
   received within the last 15 minutes for entity 'nurswgvml006'.
   */
   avg() > 80 && db_message_count('15 minute', 'backup-error', '', '', 'nurswgvml006') > 0
-  
+
   /*
   Count messages within the previous 60 minutes 
   for 'type=compaction', any source, any tags and all entities.
   */
   db_message_count('1 hour', 'compaction', '',  '', '*')
-  
+
   /*
   Count messages with the same text as in the last command, but from different users
   */
@@ -396,7 +403,7 @@ The following matching rules apply:
   containing tag 'api_app_id=583' and regardless of type or source. 
   */
   db_message_last('1 day', null, null, ["api_app_id":"583"], entity)
-  
+
   /*
   Returns message with type 'webhook' and empty tags.
   */

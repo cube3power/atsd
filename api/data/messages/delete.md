@@ -20,7 +20,7 @@ Login into the ATSD server and execute the following administrative commands in 
 
 > The procedure is different in distributed installations.
 
-```bash
+```sh
 echo "disable 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
 
 echo "alter 'atsd_message', NAME => 'c', TTL => 1209600, MIN_VERSIONS => 0" | /opt/atsd/hbase/bin/hbase shell
@@ -118,6 +118,6 @@ major_compact 'atsd_message'
 
 Execute the following administrative command in HBase shell to truncate the 'atsd_message' table which will cause all records to be removed.
 
-```bash
+```sh
 echo "truncate 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
 ```

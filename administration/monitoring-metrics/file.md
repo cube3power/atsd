@@ -1,16 +1,13 @@
 # Viewing Metrics on the Local File System
 
-To view ATSD metrics on the local file system, you can open the `metrics.txt` 
-file which is updated continuously. This file
-can be downloaded from the Server Logs page located under the Admin tab
-on the main menu of ATSD.
+To view ATSD metrics on the local file system, you can open the `metrics.txt` file which is updated continuously. This file
+can be downloaded from the Server Logs page located under the **Settings** tab on the main menu of ATSD.
 
-![atsd metrics
-file](images/server_logs_metrics.png "server_logs_metrics")
+![atsd metrics file](images/server_logs_metrics.png "server_logs_metrics")
 
 Example `metrics.txt` file:
 
-```properties
+```elm
  api_command_malformed_per_second=0.0
  com.axibase.tsd.hbase.dao.EntityDaoImpl.processEntities:java_method_invoke_average=20.0
  com.axibase.tsd.hbase.dao.EntityDaoImpl.processEntities:java_method_invoke_count_per_second=0.016661390559656108

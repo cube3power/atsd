@@ -233,7 +233,7 @@ wc -l IBM_adjusted.txt
 Start a Microsoft SQL Server 2017 (RTM) - 14.0.1000.169 container.
 Mount `/tmp/test` directory to the container and start using following command.
 
-```properties
+```elm
 docker run --name=mssql \
   -e 'ACCEPT_EULA=Y' \
   -e 'SA_PASSWORD=Axibase123' \
@@ -241,7 +241,7 @@ docker run --name=mssql \
   -d microsoft/mssql-server-linux:2017-latest
 ```
 
-### Execute SQL scripts for the **Trade Table** Schema.
+### Execute SQL scripts for the **Trade Table** Schema
 
 ```sh
 curl -o /tmp/test/mssql-trade-table.sql \

@@ -13,12 +13,12 @@ Provide the following artifacts as part of your support request related to a ser
 ## 2. Operating System Information
 
 * A. Output of system commands:
-   
-```bash
+
+```sh
    cat /etc/*-release
    cat /proc/version 
 ```
- 
+
 ## 3. Log Files
 
 * A. Archive (tar.gz) of `*.log` and `*.zip` files in the `/opt/atsd/atsd/logs` directory.

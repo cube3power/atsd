@@ -96,7 +96,7 @@ WHERE tag = 'sinusoid'
 
 Rules inherited from [Base ABNF](base-abnf.md).
 
-```properties
+```elm
 command = "picomp2" MSP entity [MSP timezone] [MSP ignore-defaults] *(MSP tag)
 entity = "e:" NAME
 ignore-defaults = "i:" BOOLEAN

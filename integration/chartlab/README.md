@@ -33,7 +33,7 @@ The widgets can be configured to load data from the following sources:
 
   Add the following setting:
 
-```properties
+```elm
   api.guest.access.enabled = true
 ```
 

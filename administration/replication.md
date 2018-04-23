@@ -127,7 +127,7 @@ Verify that ATSD tables are present.
 
 Start HBase shell and list tables:
 
-```bash
+```sh
 echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\[" 
 ```
 The output should contain a list of ATSD tables, all starting with `atsd_`:
@@ -146,7 +146,7 @@ Start Hadoop and HBase:
 
 Execute the `add_peer` command:
 
-```bash
+```sh
 echo "add_peer '1', \"atsd_slave:2181:/hbase\"" | /opt/atsd/hbase/bin/hbase shell
 ```
 
@@ -159,7 +159,7 @@ replication.
 
 Make sure that the peer has been added:
 
-```bash
+```sh
 echo "list_peers" | /opt/atsd/hbase/bin/hbase shell
 
 
@@ -185,7 +185,7 @@ Start ATSD:
 
 Verify that ATSD tables are present: list tables
 
-```bash
+```sh
  echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\[" 
 ```
 
@@ -221,7 +221,7 @@ machine.**
 
 Create the new table in the slave database:
 
-```bash
+```sh
 /opt/atsd/hbase/bin/hbase shell < /tmp/atsd_new_schema.txt
 ```
 
@@ -292,7 +292,7 @@ Then click SAVE.
 Scan the `atsd_rule` table and note down the amount of line contained in the
 table:
 
-```bash
+```sh
 echo "scan 'atsd_rule'" | /opt/atsd/hbase/bin/hbase shell
 ```
 
@@ -306,7 +306,7 @@ machine.**
 Scan the `atsd_rule` table and note down the amount of line contained in the
 table:
 
-```bash
+```sh
 echo "scan 'atsd_rule'" | /opt/atsd/hbase/bin/hbase shell
 ```
 

@@ -2,7 +2,7 @@
 
 ## Text Rules
 
-```properties
+```elm
   ; printable characters
   ; value must be enclosed in double quotes if it contains double-quote (") or equal (=) character
   ; inner double-quote must be escaped with another double quote
@@ -47,7 +47,7 @@ UNICODE = %x80-FF / ; Latin-1 Supplement
 
 ## Date Rules
 
-```properties
+```elm
   ; ISO date defined in RFC-3339 Appendix-A. 
   ; Format yyyy-MM-dd'T'HH:mm:ss.SSSXX
   ; https://tools.ietf.org/html/rfc3339#appendix-A
@@ -60,7 +60,7 @@ TIMEZONE = time-zone-code
 
 ## Number Rules
 
-```properties
+```elm
 NUMBER = ["-"] (FRACTIONAL_NUMBER / REAL_NUMBER) / "NaN"
 FRACTIONAL_NUMBER = ("0" / POSITIVE_INTEGER) ["." 1*DIGIT]
 POSITIVE_INTEGER = %x31-39 *DIGIT

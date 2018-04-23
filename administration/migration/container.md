@@ -24,7 +24,7 @@ The instructions apply only to ATSD installed in a Docker container. For host-ba
 * Java 8 installation requires root privileges.
 * Login into the container as root:
 
-```sh
+```elm
 docker exec -it -u root atsd bash
 ```
 
@@ -87,7 +87,7 @@ Exit from the root session and re-login into the container as the 'axibase' user
 exit
 ```
 
-```sh
+```elm
 docker exec -it -u axibase atsd bash
 ```
 

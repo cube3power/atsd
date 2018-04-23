@@ -85,7 +85,7 @@ these commands on the **Metrics > Data Entry** page.
   
 - Close the preview table and click **OK** in database source settings window to save changes.
 
-- Repeat these steps to create another data source for table `inflation.cpi.categories.weight` 
+- Repeat these steps to create another data source for table `inflation.cpi.categories.weight`
   
   ![](images/modeler_15.png)
   

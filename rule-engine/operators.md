@@ -111,8 +111,8 @@ Examples:
 
 ```javascript
   entity LIKE '*007'
-```		
+```
 
 ```javascript
   tags.location LIKE ('NUR*', entity.tags.location)
-```		
+```

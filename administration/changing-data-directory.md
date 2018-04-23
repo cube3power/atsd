@@ -8,7 +8,6 @@ Grant ownership of the target directory to the `axibase` user:
 ```sh
  sudo chown axibase /data
 ```
- 
 
 Change to `axibase` user:
 
@@ -16,17 +15,13 @@ Change to `axibase` user:
 su axibase
 ```
 
-
 Stop ATSD:
-
 
 ```sh
 /opt/atsd/bin/atsd-all.sh stop
 ```
 
-
 Copy data to the target directory:
-
 
 ```sh
 cp -a /opt/atsd/hdfs-data/  /data/
@@ -43,10 +38,8 @@ mkdir /opt/atsd/old && mv /opt/atsd/hdfs* /opt/atsd/old/
 Backup the configuration files:
 
 ```sh
-cp /opt/atsd/hadoop/conf/hdfs-site.xml /opt/atsd/hadoop/conf/hdfs-site.x 
-ml.backup                         
-cp /opt/atsd/hadoop/conf/core-site.xml /opt/atsd/hadoop/conf/core-site.x 
-ml.backup
+cp /opt/atsd/hadoop/conf/hdfs-site.xml /opt/atsd/hadoop/conf/hdfs-site.xml.backup
+cp /opt/atsd/hadoop/conf/core-site.xml /opt/atsd/hadoop/conf/core-site.xml.backup
 ```
 
 Open the `/opt/atsd/hadoop/conf/hdfs-site.xml` file and set `dfs.name.dir`
@@ -86,7 +79,7 @@ Verify that the old data is available and that the new data is coming in.
 Delete the old data and configuration files:
 
 ```sh
-rm -r /opt/atsd/old               
-rm /opt/atsd/hadoop/conf/core-site.xml.backup                            
-rm /opt/atsd/hadoop/conf/hdfs-site.xml.backup                            
+rm -r /opt/atsd/old
+rm /opt/atsd/hadoop/conf/core-site.xml.backup
+rm /opt/atsd/hadoop/conf/hdfs-site.xml.backup
 ```

@@ -12,7 +12,7 @@ The following instructions assume that you have obtained certificate files in `P
 
 Combine the SSL certificates into one file to create a full certificate chain containing both the DNS and intermediate certificates.
 
-```bash
+```sh
 cat atsd.company.com.crt atsd.company.com.ca-bundle > atsd.company.com.fullchain
 ```
 
@@ -45,11 +45,11 @@ Log in to ATSD server shell.
 
 Create a PKCS12 keystore.
 
-```bash
+```sh
 openssl pkcs12 -export -inkey atsd.company.com.key -in atsd.company.com.fullchain -out atsd.company.com.pkcs12
 ```
 
-```bash
+```sh
 Enter Export Password: NEW_PASS
 Verifying - Enter Export Password: NEW_PASS
 ```
@@ -58,7 +58,7 @@ Verifying - Enter Export Password: NEW_PASS
 
 Backup the current `server.keystore` file.
 
-```bash
+```sh
 mv /opt/atsd/atsd/conf/server.keystore /opt/atsd/atsd/conf/server.keystore.backup 
 ```
 
@@ -66,7 +66,7 @@ mv /opt/atsd/atsd/conf/server.keystore /opt/atsd/atsd/conf/server.keystore.backu
 
 Use the `keytool` command to create a new JKS keystore by importing the PKCS12 keystore file.
 
-```bash
+```sh
 keytool -importkeystore -srckeystore atsd.company.com.pkcs12 -srcstoretype PKCS12 -alias 1 -destkeystore /opt/atsd/atsd/conf/server.keystore -destalias atsd
 ```
 
@@ -80,7 +80,7 @@ Enter source keystore password: NEW_PASS
 
 Open `/opt/atsd/atsd/conf/server.properties` file.
 
-```bash
+```sh
 nano /opt/atsd/atsd/conf/server.properties
 ```
 
@@ -88,7 +88,7 @@ Specify the new password (in plain or [obfuscated](passwords-obfuscation.md) tex
 
 Leave `https.trustStorePassword` blank.
 
-```properties
+```elm
 ...
 https.keyStorePassword=NEW_PASS
 https.keyManagerPassword=NEW_PASS
@@ -97,7 +97,7 @@ https.trustStorePassword=
 
 #### Restart ATSD
 
-```bash
+```sh
 /opt/atsd/atsd/bin/stop-atsd.sh
 /opt/atsd/atsd/bin/start-atsd.sh
 ```
@@ -110,7 +110,7 @@ Log in to ATSD by entering its DNS name in the browser address bar and check its
 
 Check the contents of the keystore.
 
-```bash
+```sh
 keytool -list -v -keystore /opt/atsd/atsd/conf/server.keystore
 ```
 

@@ -17,7 +17,7 @@ Build a report displaying two metrics in one workspace.
 
 - Press **Sheet 1**
 - Press **OK** to acknowledge the warning about limitations
-- Drag-and-drop `Datetime` onto the columns field (you can use any of `Datetime`), change from **YEAR** aggregation to `Exact Date` 
+- Drag-and-drop `Datetime` onto the columns field (you can use any of `Datetime`), change from **YEAR** aggregation to `Exact Date`
 - Drag-and-drop both `Value` onto the rows field, change from **SUM** aggregation to `Dimension`
 - Specify color: `Marks` > `Value` (you can use any of `Value`) > `Color`
 - Specify shape: `Marks` > `Value` (you can use any of `Value`) > drop-down > `Shape`

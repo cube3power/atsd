@@ -73,14 +73,14 @@ Log in to the server where YARN ResourceManager is running.
 
 Locate the `yarn.keytab` file.
 
-```bash
+```sh
 sudo find / -name "yarn.keytab" | xargs ls -la | tail -n 1
 -rw------- 1 yarn        hadoop        448 Jul 29 16:44 /run/cloudera-scm-agent/process/7947-yarn-RESOURCEMANAGER/yarn.keytab
 ```
 
 Switch to the 'yarn' user.
 
-```bash
+```sh
 sudo su yarn
 ```
 
@@ -88,13 +88,13 @@ sudo su yarn
 
 Obtain the fully qualified hostname of the YARN ResourceManager server.
 
-```bash
+```sh
 hostname -f
 ```
 
 Authenticate with Kerberos using the located `yarn.keytab` file and the full hostname of the YARN ResourceManager.
 
-```bash
+```sh
 kinit -k -t /run/cloudera-scm-agent/process/7947-yarn-RESOURCEMANAGER/yarn.keytab yarn/{yarn_rm_full_hostname}
 ```
 
@@ -227,7 +227,7 @@ Remove all ATSD coprocessors and save settings:
 
 Find ATSD coprocessors jar files on each Region Server:
 
-```bash
+```sh
 sudo find /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/ -name "atsd*.jar"
 ```
 
@@ -253,7 +253,7 @@ sed -i '/^hbase.regionserver.lease.period/d' /opt/atsd/atsd/conf/hadoop.properti
 
 Add path to co-processor jar file.
 
-```bash
+```sh
 echo "coprocessors.jar=hdfs:///hbase/lib/atsd-hbase.jar" >> /opt/atsd/atsd/conf/server.properties
 ```
 
@@ -279,7 +279,7 @@ Edit the `/opt/atsd/atsd/conf/atsd-env.sh` file.
 
 Increase 'Xmx' memory to 50% of available RAM memory on the ATSD server:
 
-```bash
+```sh
 JAVA_OPTS="-server -Xmx4096M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$atsd_home"/logs"
 ```
 

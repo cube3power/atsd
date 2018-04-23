@@ -123,7 +123,7 @@ SQL query results can be published to all visitors by checking 'Guest Access' fi
 
 * `curl` Example:
 
-```bash
+```sh
 curl http://10.102.0.6:8088/api/v1/properties/query \
   --user {username}:{password} \
   --header "Content-Type: application/json" \

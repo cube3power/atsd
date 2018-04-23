@@ -48,7 +48,7 @@ The database automatically manages schema for the inserted data.
 
 ## Compression Algorithms
 
-The storage efficiency in ATSD is a product of standard compressions algorithms such as GZIP or LZO and built-in codecs. For the purpose of this test, the compression algorithm is set to GZIP and the default ATSD codec is enabled.
+The storage efficiency in ATSD is a product of standard compressions algorithms such as `GZIP` or `LZO` and built-in codecs. For the purpose of this test, the compression algorithm is set to `GZIP` and the default ATSD codec is enabled.
 
 ## Executing Tests
 
@@ -67,7 +67,7 @@ Verify the row count:
 wc -l IBM_adjusted.txt
 ```
 
-```
+```txt
 2045514 IBM_adjusted.txt
 ```
 
@@ -75,18 +75,18 @@ wc -l IBM_adjusted.txt
 
 Start container with a pre-configured administrator account and port 8443 open for access.
 
-```properties
+```elm
 docker run -d --name=atsd_test -p 8443:8443 \
     -e ADMIN_USER_NAME=axibase -e ADMIN_USER_PASSWORD=axibase axibase/atsd:latest
 ```
 
 Watch the startup log until the list of open ports is displayed.
 
-```sh
+```elm
 docker logs -f atsd_test
 ```
 
-```
+```txt
 [ATSD] Waiting for ATSD to accept requests on port 8088 ... ( 5 / 60 )
 [ATSD] ATSD user interface:
 [ATSD] http://127.0.0.1:8088

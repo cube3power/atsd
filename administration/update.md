@@ -7,7 +7,6 @@ copying files, and gracefully restarting ATSD services.
 
 > Access to axibase.com from the target server is required to download installation files. If the server is not connected to the Internet, switch to the [manual update](update-manual.md) option.
 
-
 ## Migration
 
 ATSD for HBase 1.2.5 was released in August 2017. 
@@ -33,7 +32,7 @@ If **Settings > System Information** page on your current instance displays HBas
 
 Assuming `atsd` is the name of the container:
 
-```
+```elm
 docker exec -it atsd /bin/bash
 /opt/atsd/bin/update.sh
 ```
@@ -42,7 +41,7 @@ docker exec -it atsd /bin/bash
 
 Once the update is completed, the script will print out the following message:
 
-```
+```txt
 Update process finished successfully.
 ```
 

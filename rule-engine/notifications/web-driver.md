@@ -6,7 +6,7 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
 
 > If you are installing the Web Driver in a Docker container, log in as `root` and install `wget` prior to switching to the `axibase` user
 >
-> ```bash
+> ```elm
 >   docker exec -it -u root atsd bash
 >   apt-get update && apt-get install wget
 >   su axibase
@@ -24,7 +24,7 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
 
 * Make sure that `axibase` user is allowed to execute the binary
 
-```bash
+```sh
     ls -all /home/axibase | grep phantomjs-2.1.1-linux-x86_64
 ```
 
@@ -49,7 +49,7 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
 
 Ubuntu:
 
-```bash
+```sh
 sudo apt-get update && sudo apt-get install wget
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
@@ -58,7 +58,7 @@ sudo apt-get install -f --no-install-recommends
 
 RedHat, CentOS:
 
-```bash
+```sh
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 sudo yum install ./google-chrome-stable_current_*.rpm
 ```
@@ -67,7 +67,7 @@ sudo yum install ./google-chrome-stable_current_*.rpm
 
 Ubuntu:
 
-```bash
+```sh
 sudo apt-get install unzip
 wget https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
@@ -76,7 +76,7 @@ sudo mv chromedriver /usr/bin/chromedriver
 
 RedHat, CentOS:
 
-```bash
+```sh
 sudo yum install unzip
 wget https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip

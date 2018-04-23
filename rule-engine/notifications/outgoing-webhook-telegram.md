@@ -56,7 +56,7 @@ Execute one of the following commands to setup a webhook.
 
   Set webhook by specifying the webhook URL
 
-```bash
+```sh
     curl -F "url=https://telegram:12345678@atsd_host:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
       https://api.telegram.org/botBOT_TOKEN/setWebhook
 ```
@@ -65,7 +65,7 @@ Execute one of the following commands to setup a webhook.
 
   Export the [self-signed](/administration/ssl-self-signed.md) SSL certificate in [PEM format](https://core.telegram.org/bots/webhooks#a-self-signed-certificate):
 
-```bash
+```sh
   keytool -importkeystore -srckeystore /opt/atsd/atsd/conf/server.keystore -destkeystore /opt/atsd/atsd/conf/server.keystore.p12 -srcstoretype jks -deststoretype pkcs12
 ```
 
@@ -75,7 +75,7 @@ Execute one of the following commands to setup a webhook.
 
     Set webhook by specifying the webhook URL and attaching the `server.keystore.pem` file.
 
-```bash
+```sh
     curl -F "url=https://telegram:12345678@atsd_host:8443/api/v1/messages/webhook/telegram?command.message=message.text" \
       -F "certificate=@/opt/atsd/atsd/conf/server.keystore.pem" \
       https://api.telegram.org/botBOT_TOKEN/setWebhook
@@ -85,7 +85,7 @@ Execute one of the following commands to setup a webhook.
 
 Make sure that the `getWebhookInfo` method doesn't return any SSL errors:
 
-```bash
+```sh
 curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 ```
 

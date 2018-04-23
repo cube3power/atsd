@@ -275,7 +275,7 @@ To stop storing such series, create a collection with filter patterns on the **D
 
 Open the metric editor and create a filter expression to ignore matching series.
 
-```bash
+```sh
 !likeAny(tags.command, collection('ignore-collector-process-commands'))
 ```
 

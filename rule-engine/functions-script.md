@@ -55,7 +55,7 @@ Script terminated on timeout: {current timeout value}
 
 Only scripts in the  `./atsd/conf/script/` directory can be executed. The scripts should have the permission bit `+x` enabled.
 
-```bash
+```sh
 chmod u=rwx,g=rx,o=r ./atsd/conf/script/*
 ```
 
@@ -91,7 +91,7 @@ The output of the `scriptOut` function can be formatted with backticks when usin
 
 #### Script
 
-```bash
+```sh
 #!/usr/bin/env bash
 
 host=${1}
@@ -116,7 +116,7 @@ ping -c 3 axibase.com
 
 #### Output
 
-```bash
+```sh
 PING axibase.com (78.47.207.156) 56(84) bytes of data.
 64 bytes from axibase.com (78.47.207.156): icmp_seq=1 ttl=52 time=45.5 ms
 64 bytes from axibase.com (78.47.207.156): icmp_seq=2 ttl=52 time=40.0 ms
@@ -148,7 +148,7 @@ Slack:
 
 #### Script
 
-```bash
+```sh
 #!/usr/bin/env bash
 
 kill_after=${1}
@@ -176,13 +176,13 @@ ${scriptOut('traceroute.sh', ['3', 'axibase.com'])}
 
 #### Command
 
-```bash
+```sh
 timeout 3 traceroute axibase.com
 ```
 
 #### Output
 
-```bash
+```sh
 traceroute to axibase.com (78.47.207.156), 30 hops max, 60 byte packets
  1  NURSWGVML102(10.102.0.1)  0.149 ms  0.059 ms  0.032 ms
  2  static.129.38.9.5.clients.your-server.de (5.9.38.129)  0.438 ms  0.430 ms  0.481 ms
@@ -212,7 +212,7 @@ traceroute to axibase.com (78.47.207.156), 30 hops max, 60 byte packets
 
 #### Script
 
-```bash
+```sh
 #!/usr/bin/env bash
 
 host=${1}
@@ -233,13 +233,13 @@ ${scriptOut('top.sh', ['nurswgvml006','www-data', '1', '1', '15'])}
 
 #### Command
 
-```bash
+```sh
 ssh -i /home/axibase/.ssh/def.key nurswgvml006 top -u www-data -b -n 1 -d 1 | head -n 15
 ```
 
 #### Output
 
-```bash
+```sh
 top - 13:01:25 up 96 days, 23:05,  1 user,  load average: 0.02, 0.04, 0.05
 Tasks: 139 total,   1 running, 138 sleeping,   0 stopped,   0 zombie
 %Cpu(s):  1.3 us,  0.6 sy,  0.0 ni, 97.8 id,  0.2 wa,  0.0 hi,  0.1 si,  0.0 st
@@ -277,7 +277,7 @@ KiB Swap:        0 total,        0 used,        0 free.  1363820 cached Mem
 
 #### Script
 
-```bash
+```sh
 #!/usr/bin/env bash
 
 host=${1}
@@ -295,13 +295,13 @@ ${scriptOut('ps.sh', ['axibase.com','bash'])}
 
 #### Command
 
-```bash
+```sh
 ssh -i /home/axibase/.ssh/def.key axibase.com ps aux | grep bash
 ```
 
 #### Output
 
-```bash
+```sh
 axibase      1  0.0  0.0  19712  3304 ?        Ss   11:07   0:00 /bin/bash /entrypoint.sh
 axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/hbase/bin/hbase-daemon.sh --config /opt/atsd/hbase/bin/../conf foreground_start master
 ```
@@ -326,7 +326,7 @@ axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/
 
 #### Script
 
-```bash
+```sh
 #!/usr/bin/env bash
 
 url=${1}
@@ -354,13 +354,13 @@ ${scriptOut('url_avail.sh', ['https://axibase.com'])}
 
 #### Command
 
-```bash
+```sh
 curl -sS -L --insecure -X GET -m 10 -D ./atsd/conf/script/headers -w "\nResponse Time: %{time_total}\n" "https://axibase.com" > ./atsd/conf/script/response 2>&1
 ```
 
 #### Output
 
-```bash
+```sh
 Status code: 200 OK
 Response Time: 0.618
 Content Length: 35214 bytes
@@ -387,7 +387,7 @@ Content Length: 35214 bytes
 
 #### Script
 
-```bash
+```sh
 #!/usr/bin/env bash
 
 kill_after=${1}
@@ -411,13 +411,13 @@ Output is: ${scriptOut('tcp.sh', ['2','axibase.com', '443'])}
 
 #### Command
 
-```bash
+```sh
 timeout 2 bash -c "</dev/tcp/axibase.com/443"
 ```
 
 #### Output
 
-```bash
+```sh
 TCP port 443 is available
 ```
 
@@ -442,7 +442,7 @@ TCP port 443 is available
 
 #### Script
 
-```bash
+```sh
 
 #!/usr/bin/env bash
 
@@ -460,7 +460,7 @@ ${scriptOut('osquery.sh', ['axibase.com', "SELECT DISTINCT processes.name, liste
 
 #### Command
 
-```bash
+```sh
 ssh -i /home/axibase/.ssh/def.key axibase.com 'osqueryi "SELECT DISTINCT processes.name, listening_ports.port, processes.pid FROM listening_ports JOIN processes USING (pid) WHERE listening_ports.address = '\''0.0.0.0'\'';"'
 ```
 

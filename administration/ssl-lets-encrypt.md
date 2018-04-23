@@ -190,7 +190,7 @@ Since Let's Encrypt certificates are issued for a short period of time (90 days)
 
 Create a shell script `deploy-atsd.sh` to upload certificates files into ATSD. This script will be invoked by certbot.
 
-```bash
+```sh
 #!/bin/bash
 
 USR=certbot
@@ -299,7 +299,7 @@ The `/etc/letsencrypt/renewal/atsd.company.com.conf` file should contain the fol
 
 If the `renew_hook` is missing, open the `/etc/letsencrypt/renewal/atsd.company.com.conf` file and add the line manually.
 
-```properties
+```elm
 # renew_before_expiry = 30 days
 version = 0.22.2
 archive_dir = /etc/letsencrypt/archive/atsd.company.com

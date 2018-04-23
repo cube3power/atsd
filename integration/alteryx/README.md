@@ -48,13 +48,13 @@ these commands on the **Metrics > Data Entry** page.
 
 - Add the [`missingMetric=error`](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) property to the DSN URL to ensure that the driver functions properly.
 
-```text
+```txt
     jdbc:atsd://ATSD_HOST:8443;missingMetric=error
 ```
 
 - If the target ATSD installation contains more than 10000 metrics, consider adding the `tables` property to the DSN URL to filter metrics by name in the Query Builder. For example, `tables=infla%` shows only metrics that start with the characters `infla`.
 
-```text
+```txt
     jdbc:atsd://ATSD_HOST:8443;missingMetric=error;tables=infla%
 ```
 

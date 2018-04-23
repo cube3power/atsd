@@ -109,7 +109,7 @@ curl https://atsd_host:8443/api/v1/entities?timeFormat=iso&limit=2&expression=na
 
 Expression value:
 
-```text
+```txt
 name!="" or tags.keyName!="" or label!=null or enabled=true or interpolate="LINEAR" or timeZone!=""
 ```
 

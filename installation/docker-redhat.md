@@ -19,7 +19,6 @@ systemctl enable docker.service
 	- Base: atsd:latest
 	- [Dockerfile](https://github.com/axibase/dockers/blob/atsd-rhel7/Dockerfile)
 
-
 * [Axibase Collector](https://access.redhat.com/containers/?tab=overview#/registry.connect.redhat.com/axibase/collector)
 	- Image name: `registry.connect.redhat.com/axibase/collector`
 	- Base: atsd:collector
@@ -27,14 +26,14 @@ systemctl enable docker.service
 
 ## Start Container
 
-```properties
+```elm
 docker run -d  --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
   registry.connect.redhat.com/axibase/atsd:latest
 ```
 
 To automatically create an [account](../administration/collector-account.md) for data collection agents and storage drivers, replace `cuser` and `cpassword` credential variables in the command below.
 
-```properties
+```elm
 docker run -d --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
   --env COLLECTOR_USER_NAME=cuser \
   --env COLLECTOR_USER_PASSWORD=cpassword \
@@ -49,7 +48,7 @@ The password is subject to the following [requirements](../administration/user-a
 Execute the command as described above.
 
 ```sh
-axibase@nurswghbs002 ~]# docker run \
+$ docker run \
 >   --detach \
 >   --name=atsd \
 >   --publish 8088:8088 \
@@ -76,14 +75,13 @@ It may take up to 5 minutes to initialize the database.
 
 ## Check Installation
 
-```
+```elm
 docker logs -f atsd
 ```
 
-You should see an _ATSD start completed_ message at the end of the `start.log` file.
+You should see an `ATSD start completed` message at the end of the `start.log` file.
 
-
-```
+```txt
 ...
  * [ATSD] Starting ATSD ...
  * [ATSD] ATSD not running.
@@ -139,7 +137,7 @@ Cannot start container <container_id>: failed to create endpoint atsd on network
 Bind for 0.0.0.0:8088 failed: port is already allocated
 ```
 
-```properties
+```elm
 docker run -d \
   --name=atsd \
   --publish 9088:8088 \

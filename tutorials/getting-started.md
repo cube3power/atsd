@@ -19,7 +19,7 @@ Select type **Series**
 
 Fill out the **Entity**, **Metric**, and **Value** fields, press **Send**:
 
-```properties
+```elm
 metric = my-metric
 entity = my-entity
 value = 24

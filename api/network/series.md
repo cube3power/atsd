@@ -39,7 +39,7 @@ series d:{iso-date} e:{entity} t:{tag-1}={val-1} m:{metric-1}={number} m:{metric
 
 Rules are inherited from [Base ABNF](base-abnf.md).
 
-```properties
+```elm
   ; entity and at least one metric is required
 command = "series" MSP entity 1*(MSP [metric-numeric / metric-text]) *(MSP tag) [MSP append] [MSP time]
 entity = "e:" NAME

@@ -30,7 +30,7 @@ In addition, **Invalid Value Action** may be set to `SET_VERSION_STATUS` to init
 
 To insert versioning fields along with the modified value, use the reserved tags:
 
- * `$version_source` 
+ * `$version_source`
  * `$version_status`
 
 These tags will be converted to the corresponding [versioning fields](#versioning-fields). Note that `$version_status` tag overrides 'invalid' value set by `SET_VERSION_STATUS` trigger. 

@@ -69,22 +69,21 @@ Run the `jps` utility to display Java processes running under the current user.
 
 The script will stop ATSD, HBase, and HDFS.
 
-```
+```sh
 /opt/atsd/bin/atsd-all.sh stop
 ```
 
 The script will start HDFS, HBase, and ATSD.
 
-```
+```sh
 /opt/atsd/bin/atsd-all.sh start
 ```
-
 
 ### Docker Container
 
 To restart and update an ATSD instance running in a Docker container, open a `bash` session.
 
-```sh
+```elm
 docker exec -it atsd bash
 ```
 
@@ -100,7 +99,7 @@ Execute scripts as usual.
 
 Stop ATSD.
 
-```
+```sh
 /opt/atsd/bin/atsd-tsd.sh stop
 ```
 
@@ -128,7 +127,7 @@ jps
 
 The `jps` output should display only HDFS processes at this time.
 
-```
+```txt
 27392 Jps
 25961 SecondaryNameNode
 25790 DataNode
@@ -220,7 +219,7 @@ Verify that no HBase processes are running with `jps`.
 
 Remove the Zookeeper data directory.
 
-```
+```sh
 rm -rf /opt/atsd/hbase/zookeeper
 ```
 
@@ -236,7 +235,7 @@ The `jps` utility requires write permissions to the `/tmp/hsperfdata_axibase` di
 
 If `jps` output is incomplete, the `atsd-all.sh` script aborts the startup procedure with the following message:
 
-```
+```txt
 nurswgvml007 atsdService: * [ATSD] DataNode is not running.
 ```
 

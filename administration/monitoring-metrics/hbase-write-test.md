@@ -13,7 +13,7 @@ HBase Write Test allows you to:
 -   Apply test results to modify the default configuration parameters in
     the ATSD `server.properties` file:
 
-```properties
+```elm
  series.batch.size = 1024                                                 
  series.queue.pool.size = 4                                               
 ```

@@ -13,14 +13,14 @@
 
 ## Start Container
 
-```properties
+```elm
 docker run -d --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
   axibase/atsd:latest
 ```
 
 To automatically create an [account](../administration/collector-account.md) for data collection agents, replace `cuser` and `cpassword` credential variables in the command below.
 
-```properties
+```elm
 docker run -d --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
   --env COLLECTOR_USER_NAME=cuser \
   --env COLLECTOR_USER_PASSWORD=cpassword \
@@ -34,13 +34,13 @@ The password is subject to the following [requirements](../administration/user-a
 
 ## Check Installation
 
-```
+```elm
 docker logs -f atsd
 ```
 
-You should see an **ATSD start completed** message once the database is ready.
+You should see an `ATSD start completed` message once the database is ready.
 
-```
+```txt
 [ATSD] Waiting for ATSD to accept requests on port 8088 ... ( 4 / 60 )
 [ATSD] ATSD user interface:
 [ATSD] http://172.17.0.2:8088
@@ -93,7 +93,7 @@ Cannot start container <container_id>: failed to create endpoint atsd on network
 Bind for 0.0.0.0:8088 failed: port is already allocated
 ```
 
-```properties
+```elm
 docker run -d --name=atsd \
   --publish 9088:8088 \
   --publish 9443:8443 \

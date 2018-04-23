@@ -47,7 +47,7 @@ sudo apt-get update
 
 Download the ATSD package, including its dependencies, to the `dependencies` directory.
 
-```bash
+```sh
 mkdir ~/dependencies
 cd ~/dependencies
 apt-get download atsd $(apt-cache depends --recurse --no-recommends --no-suggests \
@@ -57,13 +57,13 @@ apt-get download atsd $(apt-cache depends --recurse --no-recommends --no-suggest
 
 Download newer `ca-certificates-java`. This step is required only for Debian 8.x (jessie).
 
-```bash
+```sh
 rm ca-certificates-java*
 apt-get -t jessie-backports download ca-certificates-java
 ```
 Make sure that the download directory isn't empty:
 
-```bash
+```sh
 ...
 libtinfo5_5.9+20140913-1+b1_amd64.deb
 lsb-base_4.1+Debian13+nmu1_all.deb
@@ -81,13 +81,13 @@ Copy the `dependencies` directory to the target machine where ATSD will be insta
 
 Install dependencies.
 
-```bash
+```sh
 ls dependencies/* | grep -v "atsd*" | xargs sudo dpkg -i
 ```
 
 Sample output:
 
-```bash
+```sh
 ...
 Processing triggers for man-db (2.7.5-1) ...
 Processing triggers for install-info (6.1.0.dfsg.1-5) ...
@@ -99,7 +99,7 @@ Processing triggers for mime-support (3.59ubuntu1) ...
 
 Install ATSD.
 
-```bash
+```sh
 sudo dpkg -i dependencies/atsd*
 ```
 

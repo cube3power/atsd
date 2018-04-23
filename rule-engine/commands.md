@@ -55,7 +55,7 @@ If the executable path is empty, no command will be executed for this status tri
 
 Only **one** command can be executed for each status change. If you need to execute multiple commands, create a wrapper script with multiple commands or launch a spawned shell process with `bash -c` and chain commands using `&&`.
 
-```sh
+```elm
 /bin/bash
 -c
 docker restart prd_aer && docker exec -it -u axibase prd_aer /home/axibase/aer/start.sh

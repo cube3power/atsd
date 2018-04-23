@@ -16,7 +16,7 @@ Properties that are re-inserted before the `major compaction` is completed with 
 
 To identify pending `DELETE` markers for a given type and entity, run the following command:
 
-```bash
+```sh
 echo "scan 'atsd_properties', {'LIMIT' => 3, RAW => true, FILTER => \"PrefixFilter('\\"prop_type\\":\\"entity_name\\"')\"}" | /opt/atsd/hbase/bin/hbase shell
 ```
 
@@ -24,7 +24,7 @@ The same behavior applies to properties deleted when the entire entity is remove
 
 To remove these markers, run `major compaction` on the `atsd_properties` table ahead of schedule.
 
-```bash
+```sh
 echo "major_compact 'atsd_properties'" | /opt/atsd/hbase/bin/hbase shell
 ```
 

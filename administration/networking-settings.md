@@ -20,14 +20,14 @@ UDP datagrams dropped due to buffer overflow.
 
 Add the following property to `server.properties` file:
 
-```
+```txt
 # default value is 8192
 udp.receive.buffer.size.kb = 20000
 ```
 
 ## Restart ATSD
 
-```bash
+```sh
 /opt/atsd/bin/atsd-all.sh stop
 /opt/atsd/bin/atsd-all.sh start
 ```
