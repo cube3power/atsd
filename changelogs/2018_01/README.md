@@ -25,7 +25,7 @@ Issue| Category    | Type    | Subject
 4893 | UI | Feature | Statistics page: display tag names based on associated metric and entity tag templates.
 4892 | rule engine | Feature | Extend [`excludeKeys`](../../rule-engine/functions-collection.md#excludekeys) function - add support for patterns.
 4889 | rule engine | Bug | Round numbers in [web notifications](../../rule-engine/web-notifications.md).
-4888 | rule engine | Bug | Email [subject](../../administration/setting-up-email-client.md) should not include inline links.
+4888 | rule engine | Bug | Email [subject](../../administration/mail-client.md) should not include inline links.
 4883 | rule engine | Bug | Window remains in [`OPEN`](../../rule-engine/window.md#open-status) status after all commands are removed.
 4879 | rule engine | Feature | Add support for [control flow](../../rule-engine/control-flow.md) in notifications.
 4877 | rule engine | Bug | [`entity_tags`](../../rule-engine/window.md#base-fields) expression fails if used without key.
