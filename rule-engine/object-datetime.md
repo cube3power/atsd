@@ -26,6 +26,9 @@ The object provides `get()` methods to extract numeric values for the various ca
 * `getYearOfEra()`
 * `getCenturyOfEra()`
 * `getEra()`
+* `getMillis()`
+
+The `getMillis()` method returns current time in UNIX milliseconds.
 
 ## `now` Window Field
 
@@ -55,3 +58,4 @@ The following values are returned by the `DateTime` object on `2018-01-13T16:45:
 |`getYearOfEra()`|2018|
 |`getCenturyOfEra()`|20|
 |`getEra()`|1|
+|`getMillis()`|1515861922303|
