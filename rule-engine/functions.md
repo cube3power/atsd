@@ -246,6 +246,7 @@ Lookup functions retrieve records from replacement tables, collections, and othe
 
 Time functions perform various operations on dates, timestamps and intervals.
 
+* [`now`](functions-time.md#now)
 * [`window_length_time`](functions-time.md#window_length_time)
 * [`window_length_count`](functions-time.md#window_length_count)
 * [`windowStartTime`](functions-time.md#windowstarttime)

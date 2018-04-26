@@ -6,6 +6,7 @@ Time functions perform various operations on dates, timestamps, and intervals.
 
 ## Reference
 
+* [`now`](#now)
 * [`window_length_time`](#window_length_time)
 * [`window_length_count`](#window_length_count)
 * [`windowStartTime`](#windowstarttime)
@@ -13,6 +14,29 @@ Time functions perform various operations on dates, timestamps, and intervals.
 * [`seconds`](#seconds)
 * [`elapsedTime`](#elapsedtime)
 * [`date_parse`](#date_parse)
+
+### `now`
+
+```javascript
+  now long
+```
+
+Returns the current time as a [`DateTime`](object-datetime.md) object. The object's fields can be accessed with `get` methods.
+
+```javascript
+  // returns true if it's Thursday
+  now.getDayOfWeek() == 4
+```
+
+```javascript
+  // returns true on Thursday at anytime between 15:00 and 16:00 (exclusive)
+  now.getDayOfWeek() == 4 && now.getHourOfDay() == 15
+```
+
+```javascript
+  // returns true if difference between current time (long, UNIX millis) and create_ms (long, UNIX millis) exceeds 1 hour
+  (now.getMillis() - create_ms) > 60*60000
+```
 
 ### `window_length_time`
 
