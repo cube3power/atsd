@@ -163,6 +163,7 @@ Text functions transform and compare strings.
 * [`endsWith`](functions-text.md#endswith)
 * [`split`](functions-text.md#split)
 * [`list`](functions-text.md#list)
+* [`isEmpty`](functions-text.md#isempty)
 * [`coalesce`](functions-text.md#coalesce)
 * [`keepAfter`](functions-text.md#keepafter)
 * [`keepAfterLast`](functions-text.md#keepafterlast)

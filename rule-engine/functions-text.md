@@ -15,6 +15,7 @@ The functions are `null`-safe - they return `null` or `false` if one of the inpu
 * [`endsWith`](#endsWith)
 * [`split`](#split)
 * [`list`](#list)
+* [`isEmpty`](#isempty)
 * [`coalesce`](#coalesce)
 * [`keepAfter`](#keepafter)
 * [`keepAfterLast`](#keepafterlast)
@@ -124,13 +125,30 @@ Example:
   list('hello "brave new world" hello', ' ')
 ```
 
+### `ifEmpty`
+
+```javascript
+  ifEmpty(string a, string b) object
+```
+
+Returns `b` if `a` is either `null` or an empty string.
+
+> Note: this function also accepts arguments of other data types, such as objects and numbers.
+
+Examples:
+
+```javascript
+    /* Returns 'N/A' if tags.location is null or empty. Otherwise returns the value of `location` tag. */
+    ifEmpty(tags.location, 'N/A')
+```
+
 ### `coalesce`
 
 ```javascript
   coalesce([string] c) string
 ```
 
-Returns first non-empty string from the collection or array of strings `c`. 
+Returns first non-empty string from the collection or array of strings `c`.
 
 The function returns an empty string if all elements of `c` are null or empty.
 

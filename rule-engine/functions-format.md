@@ -163,11 +163,15 @@ Date Pattern reference:
 
 Converts interval in UNIX milliseconds to a formatted interval consisting of non-zero years, days, hours, minutes, and seconds.
 
-Example:
+Examples:
 
 ```javascript
   /* Return formatted interval: 2y 139d 16h 47m 15s */
   formatInterval(75228435000L)
+```
+
+```javascript
+  formatInterval(elapsedTime(milliseconds(tags.last_updated)))
 ```
 
 ### `formatIntervalShort`
@@ -183,8 +187,9 @@ Examples:
 ```javascript
   /* Return formatted interval: 2y 139d */
   formatIntervalShort(75228435000L)
-
-  /* Assuming current time of 2017-08-15T00:01:30Z, returns a short interval of elapsed time: 1m 30s */
-  formatIntervalShort(elapsedTime("2017-08-15T00:00:00Z"))  
 ```
 
+```javascript
+  /* Assuming current time of 2017-08-15T00:01:30Z, returns a short interval of elapsed time: 1m 30s */
+  formatIntervalShort(elapsedTime("2017-08-15T00:00:00Z"))
+```

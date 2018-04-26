@@ -108,7 +108,7 @@ Calculates the number of milliseconds between the current time and time `t` whic
 
 The function accepts time `t` in UNIX milliseconds or the date `d` in the following format:
 
-```
+```txt
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
 ```
 
@@ -119,6 +119,18 @@ Example:
 ```javascript
   /* Assuming current time of 2017-08-15T00:01:30Z, returned elapsed time is 90000 */
   elapsedTime("2017-08-15T00:00:00Z")
+```
+
+```javascript
+  /* Returns elapsed time in milliseconds since ISO date in tags.last_updated */
+  elapsedTime(milliseconds(tags.last_updated))
+```
+
+The interval in milliseconds can be formatted with [`formatInterval`](functions-format.md#formatinterval) or [`formatintervalshort`](functions-format.md#formatintervalshort).
+
+```javascript
+  /* Returns interval in short notation, for example 2y 201d */
+  formatIntervalShort(elapsedTime(milliseconds(tags.last_updated)))
 ```
 
 ### `date_parse`
