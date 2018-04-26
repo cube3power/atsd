@@ -11,7 +11,7 @@
 
 ### Install PRD
 
-- Install [Pentaho Report Designer](http://community.pentaho.com/projects/reporting/) 7.1
+- Install Pentaho Report Designer 7.1
 
 ### Install ATSD Driver
 

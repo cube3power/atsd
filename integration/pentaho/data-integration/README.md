@@ -8,7 +8,7 @@ Pentaho Data Integration at `https://community.hitachivantara.com/community/prod
 
 ### Install PDI
 
-- Install [Pentaho Data Integration](http://community.pentaho.com/projects/data-integration/) 7.1
+- Install Pentaho Data Integration 7.1
 
 ### Install ATSD JDBC Driver
 
