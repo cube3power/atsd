@@ -15,7 +15,7 @@ The functions are `null`-safe - they return `null` or `false` if one of the inpu
 * [`endsWith`](#endsWith)
 * [`split`](#split)
 * [`list`](#list)
-* [`isEmpty`](#isempty)
+* [`ifEmpty`](#ifempty)
 * [`coalesce`](#coalesce)
 * [`keepAfter`](#keepafter)
 * [`keepAfterLast`](#keepafterlast)
