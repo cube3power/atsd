@@ -16,8 +16,8 @@ Type `Classpath` as **Variable name** and the path to the ATSD JDBC driver 'jar'
 
 ![](images/system_properties.png)
 
-- [Register](https://shop.openlinksw.com/license_generator/login.vsp) an account with the ODBC-JDBC Bridge vendor. The account is required for trial license activation.
-- [Generate license](https://shop.openlinksw.com/license_generator/) for the bridge program as displayed:
+- Register an account with the ODBC-JDBC Bridge vendor at https://uda.openlinksw.com/ (required for trial activation).
+- Generate license for the bridge program as displayed:
 
 ![](images/openlink_license.png)
 
