@@ -24,13 +24,12 @@ WHERE datetime between '2016-07-15T15:40:00.000Z' AND '2016-07-15T15:41:00.000Z'
 
 ### sql.csv
 
-```
+```txt
 entity,datetime,value
 e-1,2016-07-15T15:40:20.000Z,10
 e-1,2016-07-15T15:40:40.000Z,NaN
 e-1,2016-07-15T15:40:50.000Z,24.5
 ```
-
 
 ## Exclude NaN
 

@@ -10,13 +10,13 @@ By default, ATSD ignores two series tags collected by scollector: environment an
 
 You can change this setting by editing the `server.properties` file:
 
-```
+```txt
 /opt/atsd/atsd/conf/server.properties
 ```
 
 Edit or comment out the following line:
 
-```
+```elm
 scollector.ignore.tags = environment role
 ```
 
@@ -27,7 +27,6 @@ Restart ATSD for the changes to take effect.
 Entities collecting scollector data are automatically grouped in ATSD:
 
 Entity Groups:
-
 
 - `scollector-linux`
 - `scollector-windows`
@@ -40,13 +39,11 @@ Default portals are assigned to scollector entity groups.
 
 Portals:
 
-
 - `scollector-Linux`
 - `scollector-Windows`
 - `scollector-IIS`
 - `scollector-.NET`
 - `scollector-MS SQL`
-
 
 ##### scollector-Linux Portal:
 
@@ -59,7 +56,6 @@ Launch a live scollector-Linux portal in Axibase Chart Lab.
 
 ##### scollector-Windows Portal:
 
-
 Launch live scollector-Windows portal in Axibase Chart Lab.
 
 [Launch](https://apps.axibase.com/chartlab/db099fa9/2/)
@@ -68,7 +64,6 @@ Launch live scollector-Windows portal in Axibase Chart Lab.
 
 ##### scollector-MS SQL Portal:
 
-
 Launch live scollector-MS SQL portal in Axibase Chart Lab.
 
 [Launch](https://apps.axibase.com/chartlab/1fc2721b)
@@ -76,7 +71,6 @@ Launch live scollector-MS SQL portal in Axibase Chart Lab.
 ![](resources/scollector_mssql_portal1.png)
 
 ##### scollector-.NET Portal:
-
 
 Launch live scollector-.NET portal in Axibase Chart Lab.
 
@@ -92,7 +86,7 @@ Launch live scollector-.NET portal in Axibase Chart Lab.
 
 #### Linux
 
-```
+```txt
 linux.cpu
 linux.cpu.clock
 linux.cpu.percpu
@@ -562,7 +556,7 @@ scollector.version
 
 #### Windows
 
-```
+```txt
 dsc.lcm.configured
 os.cpu
 os.cpu.clock

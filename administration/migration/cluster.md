@@ -174,7 +174,7 @@ Note that the Yarn interface will be stopped automatically once the job is finis
 
 Once the job is complete, the `migration.log` file should contain the following line:
 
-```
+```txt
 17/08/01 10:44:31 INFO mapreduce.DataMigrator: HFiles loaded, data table migration job completed, elapsedTime: 45 minutes.
 ```
 
@@ -193,7 +193,7 @@ sudo su hdfs
 Copy `atsd-hbase.17326.jar` to the HDFS `hbase.dynamic.jars.dir` directory.
 The path to this directory is set to `${hbase.rootdir}/lib` by default in HBase.
 
-```
+```txt
 hadoop fs -ls /hbase/lib/       #   check existence
 hadoop fs -mkdir /hbase/lib/    #   if not exists
 curl -O https://axibase.com/public/atsd-125-migration/atsd-hbase.17326.jar

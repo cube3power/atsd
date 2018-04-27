@@ -37,10 +37,10 @@ Keep the `${project_name}` and `${branch}` placeholders in the URL path so that 
 
 The web notification can be configured to send a JSON document to the Circle CI endpoint in order to pass extended build parameters and the `Body` field can include the following text:
 
-```
+```json
 {
   "parallel": "${parallel}",
-  "build_parameters": { 
+  "build_parameters": {
     "RUN_EXTRA_TESTS": "${run_extra_tests}",
     "timezone": "${timezone}"
   }
@@ -109,7 +109,7 @@ If the placeholder is not found, it will be replaced with an empty string.
 
 In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 

@@ -29,7 +29,7 @@ Enter a name and specify the following parameters:
 
 Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your [Amazon CloudWatch Events region](http://docs.aws.amazon.com/general/latest/gr/rande.html#cwe_region), for example:
 
-```
+```elm
 https://events.us-east-1.amazonaws.com
 ```
 

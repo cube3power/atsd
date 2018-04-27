@@ -93,7 +93,7 @@ If the Discord API server is not directly accessible from the ATSD server, open 
 
 NGINX API Gateway Path for Discord:
 
-```
+```ls
   location /api/webhooks {
       proxy_pass https://discordapp.com/api/webhooks;
   }

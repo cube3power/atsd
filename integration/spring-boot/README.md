@@ -16,14 +16,13 @@ Axibase Time Series Database has a storage driver for Spring Boot.
 |  `metrics.names.metricPrefix`  |  No  |  –  |  A prefix to be added to the original metric name.  | 
 |  `metrics.names.tags.*`  |  No  |  –  |  Optional set of key-value pairs in the ATSD time series identifier.  | 
 
-
 #### Configuration
 
 Configuration settings are specified in the `application.properties` file.
 
 `application.properties` file example:
 
-```
+```txt
 metrics.export.username: admin
 metrics.export.password: secret
 metrics.export.url: http://localhost:8088/api/v1/command

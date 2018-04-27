@@ -98,7 +98,7 @@ If the Telegram API server is not directly accessible from the ATSD server, open
 
 NGINX API Gateway Path for Telegram:
 
-```
+```ls
   location /bot {
       proxy_pass https://api.telegram.org/bot;
   }

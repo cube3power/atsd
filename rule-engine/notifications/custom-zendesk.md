@@ -37,7 +37,7 @@ Enter the Zendesk user name into the `Username` field and the password into the 
 
 Enter the following text into the `Body` field:
 
-```
+```json
 {
   "request": {
     "comment": {
@@ -85,7 +85,7 @@ The request ID placeholder in the request URL as well as payload placeholders wi
 
 `https://axibase.zendesk.com/api/v2/requests/1.json`
 
-```
+```json
 {
   "request": {
     "comment": {
@@ -99,7 +99,7 @@ The request ID placeholder in the request URL as well as payload placeholders wi
 
 To test for successful integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 

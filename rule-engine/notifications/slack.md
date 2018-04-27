@@ -122,7 +122,7 @@ If the Slack API server is not directly accessible from the ATSD server, open th
 
 NGINX API Gateway Path for Slack:
 
-```
+```ls
   location /api/chat.postMessage {
       proxy_pass https://slack.com/api/chat.postMessage;
   }

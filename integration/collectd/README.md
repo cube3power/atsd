@@ -10,10 +10,13 @@ See the `write_atsd` plugin [documentation](https://github.com/axibase/atsd-coll
 ### Ubuntu 14.04
 
 Download package
+
 ```sh
 wget https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7/collectd_ubuntu_14.04_amd64.deb
 ```
+
 Install package
+
 ```sh
 sudo dpkg -i collectd_ubuntu_14.04_amd64.deb
 ```
@@ -21,10 +24,13 @@ sudo dpkg -i collectd_ubuntu_14.04_amd64.deb
 ### Ubuntu 16.04
 
 Download package
+
 ```sh
 wget https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7/collectd_ubuntu_16.04_amd64.deb
 ```
+
 Install package
+
 ```sh
 sudo dpkg -i collectd_ubuntu_16.04_amd64.deb
 ```
@@ -32,11 +38,14 @@ sudo dpkg -i collectd_ubuntu_16.04_amd64.deb
 ### CentOS 6.x and RHEL 6.x
 
 Download package
+
 ```sh
 curl -L --output collectd.rpm \
     https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7/collectd_rhel_6_amd64.rpm
 ```
+
 Install package
+
 ```sh
 sudo yum install collectd.rpm
 ```
@@ -44,17 +53,20 @@ sudo yum install collectd.rpm
 ### CentOS 7.x and RHEL 7.x
 
 Download package
+
 ```sh
 curl -L --output collectd.rpm \
     https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7/collectd_rhel_7_amd64.rpm
 ```
 
 Install collectd with utility for managing SELinux policies
+
 ```sh
 sudo yum install collectd.rpm policycoreutils-python
 ```
 
 Persist updated SELinux policy to allow TCP connections for collectd
+
 ```sh
 setsebool -P collectd_tcp_network_connect on
 ```
@@ -63,7 +75,7 @@ setsebool -P collectd_tcp_network_connect on
 
 Edit `/ect/collect.conf` by replacing atsd_host with ATSD IP address or host name, specify protocol and port. Example
 
-```
+```xml
 ...
 <Plugin write_atsd>
      <Node "atsd">
@@ -74,8 +86,7 @@ Edit `/ect/collect.conf` by replacing atsd_host with ATSD IP address or host nam
 ...
 ```
 
-Description of `write_atsd` plugin options below
-
+Description of `write_atsd` plugin options is provided below
 
  **Setting**      | **Required** | **Description**                                                                                                                                        | **Default Value**
 ------------------|:-------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------

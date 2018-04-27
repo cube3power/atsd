@@ -50,7 +50,7 @@ WHERE t1.datetime BETWEEN '2017-07-15T09:00:00Z' AND '2017-07-15T09:00:05Z'
 
 * Implicit JOIN condition
 
-```
+```sql
 SELECT *
   FROM cpu_busy t1
   JOIN USING ENTITY disk_size t2

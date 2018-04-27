@@ -164,7 +164,7 @@ If the connection is terminated due to client error, all valid commands sent pri
 
 Due to the fact that closing the channel due to client error may take some time, the database may also store a few valid commands received after the discarded command.
 
-```
+```txt
 valid command   - stored
 ...             - stored
 valid command   - stored

@@ -29,7 +29,7 @@ Enter a name and specify the following parameters:
 
 Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with the target [region](http://docs.aws.amazon.com/general/latest/gr/rande.html#batch_region), for example:
 
-```
+```elm
 https://batch.us-east-1.amazonaws.com/v1/submitjob
 ```
 
@@ -75,7 +75,7 @@ Enable **Open** trigger.
 
 In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 

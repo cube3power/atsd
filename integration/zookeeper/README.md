@@ -13,7 +13,7 @@ This guide describes how to monitor availability and performance of an [Apache Z
 3) Click `Add` and create item list with Zookeeper hosts. 
 Enter name `zookeeper-jmx-hosts`, choose type `TEXT` and add comma-separated addresses of Zookeeper hosts in the following format:
 
-```
+```txt
 #host,port,username,password,entity,cluster
 host1.com,9010,user,pass,prod-zoo-host1,prod
 host2.com,9010,user,pass,prod-zoo-host2,prod

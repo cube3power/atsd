@@ -8,7 +8,7 @@ The functions returns the sum of the differences between consecutive values in t
 
 ### `COUNTER` function
 
-```
+```javascript
 SUM (v(i) - v(i-1) < 0 ? v(i) : v(i) - v(i-1))
 ```
 
@@ -27,7 +27,7 @@ If the difference between two values is negative, the difference is replaced wit
 
 ### `DELTA` function
 
-```
+```javascript
 SUM (v(i) - v(i-1))
 ```
 

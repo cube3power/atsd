@@ -20,7 +20,7 @@ Input File:
 
 Schema:
 
-```
+```javascript
 select("#row=2-*!1").select("#col=2-*!2").
 addSeries().
 timestamp(cell(row, 1)).

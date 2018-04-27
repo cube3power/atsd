@@ -16,18 +16,18 @@ None.
 
 ## ABNF Syntax
 
-```
+```txt
 command = "version"
 ```
 
 ## Examples
 
-```
+```txt
 version
 ```
 
 > Response
 
-```
+```txt
 13216
 ```

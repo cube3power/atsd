@@ -162,7 +162,7 @@ GROUP BY date_format(time, 'EEE HH')
   ORDER BY 2 DESC
 ```
 
-```
+```ls
 | hour_in_day | percentile(75,value) |
 |-------------|----------------------|
 | Tue 09      | 41.8                 |

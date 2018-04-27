@@ -25,7 +25,7 @@ The message payload can be signed with the `SHA1` algorithm by filling out the `
 
 This header contains the lower-cased `HMAC-SHA1` hex digest of the payload.
 
-```
+```txt
 x-axi-signature: sha1=232c3cd1dedf9f5a5ac42bf63275b8b686ae53b6
 ```
 
@@ -53,7 +53,7 @@ You can use online resources such as `https://webhook.site` for troubleshooting.
 
 ### Sample Headers
 
-```
+```ls
 | Header Name      | Header Value                                  |
 |------------------|-----------------------------------------------|
 | accept-encoding  | gzip,deflate                                  |

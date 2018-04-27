@@ -313,7 +313,7 @@ Review the `hbase.log` file.
 tail /opt/atsd/hbase/logs/hbase.log
 ```
 
-```
+```txt
 INFO  [main] util.HFileV1Detector: Count of HFileV1: 0
 INFO  [main] util.HFileV1Detector: Count of corrupted files: 0
 INFO  [main] util.HFileV1Detector: Count of Regions with HFileV1: 0

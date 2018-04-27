@@ -549,7 +549,7 @@ The default time zone can be customized by specifying a [time zone identifier](.
 
 * Custom Time Zone
 
-```
+```sql
 SELECT entity, value,
   date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "UTC datetime", 
   date_format(time, 'yyyy-MM-dd HH:mm z', 'US/Pacific') AS "Local datetime"

@@ -58,7 +58,7 @@ Choose **Send me an SMS**.
 
 Enter following text into **Message** field and click **Create action**.
 
-```
+```ls
 [{{Value1}}] {{Value2}} for {{Value3}}
 ```
 
@@ -101,7 +101,7 @@ Keep the `${webhook_name}` placeholder in the URL path so that it can be customi
 
 Enter the following text into the `Body` field:
 
-```
+```json
 {
   "value1": "${status}",
   "value2": "${rule}",
@@ -147,7 +147,7 @@ The `webhook_name` placeholder in the request URL as well as payload placeholder
 
 `https://maker.ifttt.com/trigger/atsd_custom_trigger/with/key/111111`
 
-```
+```json
 {
   "value1": "OPEN",
   "value2": "IFTTT",

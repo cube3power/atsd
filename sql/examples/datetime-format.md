@@ -93,7 +93,7 @@ Entities:
 
 Server Time:
 
-```
+```txt
 UTC
 ```
 

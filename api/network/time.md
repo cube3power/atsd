@@ -16,18 +16,18 @@ None.
 
 ## ABNF Syntax
 
-```
+```txt
 command = "time"
 ```
 
 ## Examples
 
-```
+```txt
 time
 ```
 
 > Response
 
-```
+```txt
 1426260311663
 ```

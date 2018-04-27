@@ -16,18 +16,18 @@ None.
 
 ## ABNF Syntax
 
-```
+```txt
 command = "exit"
 ```
 
 ## Examples
 
-```
+```txt
 exit
 ```
 
 > Response
 
-```
+```txt
 Goodbye
 ```

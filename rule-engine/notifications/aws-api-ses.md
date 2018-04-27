@@ -29,7 +29,7 @@ Enter a name and specify the following parameters:
 
 Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your [Amazon SES region](http://docs.aws.amazon.com/general/latest/gr/rande.html#ses_region), for example:
 
-```
+```elm
 https://email.us-east-1.amazonaws.com
 ```
 
@@ -92,7 +92,7 @@ Specify the text into the `Message.Body.Text.Data` and `Message.Subject.Data` pa
 
 In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 

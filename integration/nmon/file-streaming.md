@@ -32,7 +32,7 @@ cd /opt/nmon
 
 #### Option 1: install nmon from repositories – Ubuntu/Debian
 
-```
+```sh
 sudo apt-get install nmon                         
 ```
 
@@ -142,7 +142,6 @@ GitHub or Binaries:**
 0 0 * * * /opt/nmon/nmon_sender_telnet.sh {atsdhostname} -p 8081 -s 60 -
 c 1440 -m /opt/nmon/nmon_logs/ >> /opt/nmon/full.log 2>&1         `
 ```
-
 
 Entities collecting nmon data are automatically added to the `nmon-linux` and `nmon-aix` entity groups.
 

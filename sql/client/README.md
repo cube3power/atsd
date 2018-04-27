@@ -8,7 +8,7 @@ The client is a bash script that parses and validates input parameters and execu
 
 Make sure that `sql.sh` has execution permissions.
 
-```
+```sh
 chmod +x sql.sh
 ```
 
@@ -30,7 +30,6 @@ password=********
 ```
 
 ## Parameters
-
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
@@ -61,19 +60,19 @@ Execute query specified in the `query.sql` file and write CSV results to `/tmp/r
 
 Execute inline query and redirect output to a file.
 
-```
+```sh
 ./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE datetime > now-1*hour LIMIT 2" > /tmp/test.csv
 ```
 
 Execute inline query with escaped double quotes.
 
-```
+```sh
 ./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE datetime > now-1*hour LIMIT 5"
 ```
 
 Execute a multi-line query.
 
-```
+```sh
 ./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE 
                datetime > now-1*hour LIMIT 5"
 ```

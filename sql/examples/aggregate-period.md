@@ -36,7 +36,6 @@ WHERE entity = 'nurswgvml007'
 
 Display the period start and end time using the `date_format` function.
 
-
 ```sql
 SELECT datetime AS period_start, date_format(time+60*60000) AS period_end, avg(value)
   FROM "mpstat.cpu_busy"
@@ -52,7 +51,6 @@ GROUP BY PERIOD(1 HOUR)
 | 2016-08-25T01:00:00Z | 2016-08-25T02:00:00Z | 8.2        |
 | 2016-08-25T02:00:00Z | 2016-08-25T03:00:00Z | 6.7        |
 ```
-
 
 ## Period Aligned to Custom Time Zone
 
@@ -111,7 +109,7 @@ FROM tmz1
   GROUP BY PERIOD(1 DAY, 'US/Pacific')
 ```
 
-```
+```ls
 | datetime            | local_datetime          | min(value) | max(value) | count(value) | first(value) | last(value) | 
 |---------------------|-------------------------|------------|------------|--------------|--------------|-------------| 
 | 2017-04-14 07:00:00 | 2017-04-14 00:00:00 PDT | 0.0        | 23.0       | 7            | 21.0         | 3.0         | 
