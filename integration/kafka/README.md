@@ -9,7 +9,7 @@ This document describes how to monitor availability and performance of [Apache K
 3. Import the following [kafka-jmx](resources/job_jmx_kafka-jmx.xml) job.
 4. Locate the newly-imported `kafka-jmx` job on the **Jobs** page.
 5. On the JMX Job page, enable the job status by setting the flag in the **Enabled** checkbox.
-6. Adjust the cron expression if required. For more information on cron expressions, see [Scheduling](https://github.com/axibase/axibase-collector/blob/master/scheduling.md).  
+6. Adjust the cron expression if required. For more information on cron expressions, see [Scheduling](https://github.com/axibase/axibase-collector/blob/master/scheduling.md).
 7. Select a target ATSD database for storing data.
 8. Click **Save**.
 
@@ -79,27 +79,28 @@ Log in to the Kafka server.
 
 Download the [script](resources/send_offset.sh) into Kafka `bin` directory.
 
-```
+```sh
 # assign execute permission
 chmod +x /opt/kafka_2.12-1.0.0/bin/send_offset.sh
 ```
 
 For Kafka versions before 0.10.2.0 use `--zookeeper` option instead `bootstrap-server` in the script.
 
-Replace `ATSD_HOST` and `TCP_PORT` with actual values and launch the script. 
+Replace `ATSD_HOST` and `TCP_PORT` with actual values and launch the script.
 
-> The default ATSD TCP command port is `8081`. 
+> The default ATSD TCP command port is `8081`.
 
 The script will read topic offsets and send them to ATSD under the hostname entity.
 
-```
-# launch the script 
+Launch the script.
+
+```sh
 nohup /opt/kafka_2.12-1.0.0/bin/send_offset.sh ATSD_HOST TCP_PORT &
 ```
 
 If the hostname is different from the entity name used in the JMX job, specify the entity manually.
 
-```
+```sh
 nohup /opt/kafka_2.12-1.0.0/bin/send_offset.sh ATSD_HOST TCP_PORT ENTITY &
 ```
 

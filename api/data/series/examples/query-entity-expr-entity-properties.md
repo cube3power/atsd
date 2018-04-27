@@ -11,7 +11,7 @@ Properties can be accessed with the `properties('{property-type}').{key-name or 
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:ame:ame:8443/api/v1/series/query
 ```
 
 ### Payload

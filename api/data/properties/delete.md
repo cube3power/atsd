@@ -99,7 +99,7 @@ Queries would delete the following record:
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/properties/delete
+POST https://atsd_hostname:8443/api/v1/properties/delete
 ```
 
 #### Payload
@@ -119,7 +119,7 @@ POST https://atsd_host:8443/api/v1/properties/delete
 #### curl
 
 ```sh
-curl https://atsd_host:8443/api/v1/properties/delete \
+curl https://atsd_hostname:8443/api/v1/properties/delete \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \

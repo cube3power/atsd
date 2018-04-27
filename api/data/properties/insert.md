@@ -51,7 +51,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/properties/insert
+POST https://atsd_hostname:8443/api/v1/properties/insert
 ```
 
 #### Payload
@@ -74,7 +74,7 @@ POST https://atsd_host:8443/api/v1/properties/insert
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/properties/insert  \
+curl https://atsd_hostname:8443/api/v1/properties/insert  \
   --insecure  --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request  POST \

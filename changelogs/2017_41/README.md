@@ -114,7 +114,7 @@ Add support for the following environment variables:
 ```ls
   --env COLLECTOR_USER_NAME=cuser
   --env COLLECTOR_USER_PASSWORD=cpassword
-  --env ATSD_URL=https://atsd_host:8443
+  --env ATSD_URL=https://atsd_hostname:8443
 ```
 
 ### Issue 4616

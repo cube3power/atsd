@@ -49,7 +49,7 @@ You can import ATSD data into SPSS by configuring an ODBC data source on a Windo
 
 * Configure an [ODBC-JDBC bridge](../../../integration/odbc) for ATSD:
 
-    - specify URL property `compatibility=odbc2`: `jdbc:atsd://ATSD_HOST:ATSD_PORT;compatibility=odbc2`.
+    - specify URL property `compatibility=odbc2`: `jdbc:atsd://atsd_hostname:ATSD_PORT;compatibility=odbc2`.
 * Disable UNICODE mode:
 
     - launch SPSS Statistics;

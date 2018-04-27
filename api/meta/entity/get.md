@@ -29,7 +29,7 @@ Refer to Response Fields in [Entities: List](list.md#fields)
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/entities/nurswgvml006
+GET https://atsd_hostname:8443/api/v1/entities/nurswgvml006
 ```
 #### Payload
 
@@ -38,7 +38,7 @@ None.
 #### curl 
 
 ```elm
-curl https://atsd_host:8443/api/v1/entities/nurswgvml006 \
+curl https://atsd_hostname:8443/api/v1/entities/nurswgvml006 \
  --insecure --verbose --user {username}:{password} \
  --request GET
 ```

@@ -103,12 +103,11 @@ To allow users to download the updated results each time they click on the link,
 
 When enabled and if the url contains a `?refresh=true` parameter, the report is rebuilt by the database for each download request.
 
-```
-https://atsd_host:8443.co/sqlr/85/cpu-busy-total-query.csv?refresh=true
+```elm
+https://atsd_hostname:8443.com/sqlr/85/cpu-busy-total-query.csv?refresh=true
 ```
 
 To make links accessible for unauthenticated users, enable the `Guest Access` option. Additional download links for non-authenticated users will be displayed.
-
 
 ### Placeholders
 
@@ -143,7 +142,7 @@ Form placeholders return an empty string if the requested field is not found or 
 - `${author}` - Report author as specified in the 'Author' field.
 - `${description}` - Report description as specified in the 'Description' field.
 - `${id}` - Report numeric identifier.
-- `${link}` - Report URL based on `server.url` setting, for example `https://atsd_host:8443/export/queries/query.xhtml?queryId=23`
+- `${link}` - Report URL based on `server.url` setting, for example `https://atsd_hostname:8443/export/queries/query.xhtml?queryId=23`
 
 ## Metadata
 

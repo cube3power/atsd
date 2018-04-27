@@ -83,7 +83,7 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 
 ```sh
     if [ "$url" = "" ]; then
-        url="http://atsd_host:8088"
+        url="http://atsd_hostname:8088"
     fi
 ```
 

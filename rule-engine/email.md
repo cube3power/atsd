@@ -182,7 +182,7 @@ If a portal is a [template](../portals/portals-overview.md#template-portals), pl
 The number of messages sent per minute can be monitored with the [`email_notifications_per_minute`](../administration/monitoring.md#rule-engine) metric collected by ATSD.
 
 ```elm
-https://atsd_host:8443/portals/series?entity=atsd&metric=email_notifications_per_minute
+https://atsd_hostname:8443/portals/series?entity=atsd&metric=email_notifications_per_minute
 ```
 
 ![](../administration/images/monitor-email.png)

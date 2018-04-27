@@ -74,7 +74,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/messages/query
+POST https://atsd_hostname:ame:8443/api/v1/messages/query
 ```
 #### Payload
 
@@ -96,7 +96,7 @@ POST https://atsd_host:8443/api/v1/messages/query
 #### curl
 
 ```elm
-curl  https://atsd_host:8443/api/v1/messages/query \
+curl  https://atsd_hostname:ame:8443/api/v1/messages/query \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \

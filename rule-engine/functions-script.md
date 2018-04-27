@@ -47,7 +47,7 @@ The script must complete within the timeout value specified in **Settings > Serv
 
 If the script times out, its process is terminated with `SIGTERM` flag and the following text is appended to the output:
 
-```
+```txt
 Script terminated on timeout: {current timeout value}
 ```
 
@@ -67,13 +67,13 @@ The output of the `scriptOut` function can be formatted with backticks when usin
 
 ### Markdown Format
 
- ![](images/script-osquery-bacticks.png)  
+ ![](images/script-osquery-bacticks.png)
 
 ### HTML Format
 
- ![](images/script-format-html.png)  
+ ![](images/script-format-html.png)
 
- ![](images/script-format-html-result.png)  
+ ![](images/script-format-html-result.png)
 
 ## Examples
 
@@ -110,13 +110,13 @@ ${scriptOut('ping.sh', ['axibase.com', '3'])}
 
 #### Command
 
-```
+```sh
 ping -c 3 axibase.com
 ```
 
 #### Output
 
-```sh
+```txt
 PING axibase.com (78.47.207.156) 56(84) bytes of data.
 64 bytes from axibase.com (78.47.207.156): icmp_seq=1 ttl=52 time=45.5 ms
 64 bytes from axibase.com (78.47.207.156): icmp_seq=2 ttl=52 time=40.0 ms
@@ -140,7 +140,6 @@ Discord:
 Slack:
 
 ![](images/script-ping-slack.png)
-
 
 ### `traceroute`
 
@@ -182,7 +181,7 @@ timeout 3 traceroute axibase.com
 
 #### Output
 
-```sh
+```txtsh
 traceroute to axibase.com (78.47.207.156), 30 hops max, 60 byte packets
  1  NURSWGVML102(10.102.0.1)  0.149 ms  0.059 ms  0.032 ms
  2  static.129.38.9.5.clients.your-server.de (5.9.38.129)  0.438 ms  0.430 ms  0.481 ms
@@ -239,7 +238,7 @@ ssh -i /home/axibase/.ssh/def.key nurswgvml006 top -u www-data -b -n 1 -d 1 | he
 
 #### Output
 
-```sh
+```txt
 top - 13:01:25 up 96 days, 23:05,  1 user,  load average: 0.02, 0.04, 0.05
 Tasks: 139 total,   1 running, 138 sleeping,   0 stopped,   0 zombie
 %Cpu(s):  1.3 us,  0.6 sy,  0.0 ni, 97.8 id,  0.2 wa,  0.0 hi,  0.1 si,  0.0 st
@@ -301,7 +300,7 @@ ssh -i /home/axibase/.ssh/def.key axibase.com ps aux | grep bash
 
 #### Output
 
-```sh
+```txt
 axibase      1  0.0  0.0  19712  3304 ?        Ss   11:07   0:00 /bin/bash /entrypoint.sh
 axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/hbase/bin/hbase-daemon.sh --config /opt/atsd/hbase/bin/../conf foreground_start master
 ```
@@ -360,7 +359,7 @@ curl -sS -L --insecure -X GET -m 10 -D ./atsd/conf/script/headers -w "\nResponse
 
 #### Output
 
-```sh
+```txt
 Status code: 200 OK
 Response Time: 0.618
 Content Length: 35214 bytes
@@ -433,8 +432,7 @@ TCP port 443 is available
 
  Slack:
 
- ![](images/script-tcp-slack.png)  
-
+ ![](images/script-tcp-slack.png)
 
 ### `osquery`
 
@@ -443,7 +441,6 @@ TCP port 443 is available
 #### Script
 
 ```sh
-
 #!/usr/bin/env bash
 
 host=${1}
@@ -490,4 +487,4 @@ ssh -i /home/axibase/.ssh/def.key axibase.com 'osqueryi "SELECT DISTINCT process
 
  Slack:
 
- ![](images/script-osquery-slack.png)    
+ ![](images/script-osquery-slack.png)

@@ -70,7 +70,7 @@ Use the `keytool` command to create a new JKS keystore by importing the PKCS12 k
 keytool -importkeystore -srckeystore atsd.company.com.pkcs12 -srcstoretype PKCS12 -alias 1 -destkeystore /opt/atsd/atsd/conf/server.keystore -destalias atsd
 ```
 
-```
+```txt
 Enter destination keystore password: NEW_PASS
 Re-enter new password: NEW_PASS
 Enter source keystore password: NEW_PASS
@@ -116,8 +116,8 @@ keytool -list -v -keystore /opt/atsd/atsd/conf/server.keystore
 
 The output should contain an entry for `atsd` alias, for example:
 
-```
-Enter keystore password:  
+```txt
+Enter keystore password:
 Keystore type: JKS
 Keystore provider: SUN
 

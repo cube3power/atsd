@@ -29,7 +29,7 @@ Refer to Response Fields in [Entity Groups: List](list.md#fields)
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/entity-groups/nmon-aix
+GET https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix
 ```
 
 #### Payload
@@ -39,7 +39,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/entity-groups/nmon-aix \
+curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```

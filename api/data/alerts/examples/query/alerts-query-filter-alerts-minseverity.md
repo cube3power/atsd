@@ -9,7 +9,7 @@ Select alerts with severity equal or greater than specified (CRITICAL).
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/alerts/query
+POST https://atsd_hostname:8443/api/v1/alerts/query
 ```
 
 ### Payload

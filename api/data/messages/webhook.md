@@ -383,7 +383,7 @@ Receive incoming bot messages. Refer to the Telegram webhook configuration [inst
 Request:
 
 ```elm
-POST https://usr:pwd@atsd_host:8443/api/v1/messages/webhook/github?exclude=organization.*;repository.*;*.signature;*.payload;*.sha;*.ref;*_at;*.id&include=repository.name;repository.full_name&header.tag.event=X-GitHub-Event&excludeValues=http*&debug=true
+POST https://usr:pwd@atsd_hostname:ame:8443/api/v1/messages/webhook/github?exclude=organization.*;repository.*;*.signature;*.payload;*.sha;*.ref;*_at;*.id&include=repository.name;repository.full_name&header.tag.event=X-GitHub-Event&excludeValues=http*&debug=true
 ```
 
 Notes:

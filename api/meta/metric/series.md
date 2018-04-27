@@ -50,7 +50,7 @@ None.
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/metrics/disk_used/series
+GET https://atsd_hostname:8443/api/v1/metrics/disk_used/series
 ```
 
 #### Payload
@@ -60,7 +60,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics/disk_used/series \
+curl https://atsd_hostname:8443/api/v1/metrics/disk_used/series \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```

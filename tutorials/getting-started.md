@@ -5,7 +5,7 @@ The purpose of this article is to guide the reader through the first steps of us
 ### Prerequisites
 
 * [Install Axibase Time Series Database.](../installation/README.md)
-* Login into the ATSD web interface at `https://atsd_host:8443/`
+* Login into the ATSD web interface at `https://atsd_hostname:8443/`
 
 ### Insert Data Manually
 
@@ -35,7 +35,7 @@ Insert additional observations by modifying **Value** field for example sample.
 
 ### Graph Data
 
-Open a time chart using the following link `https://atsd_host:8443/portals/series?entity=my-entity&metric=my-metric`.
+Open a time chart using the following link `https://atsd_hostname:8443/portals/series?entity=my-entity&metric=my-metric`.
 
 In the upper right corner switch to _detail_ data type to view the detailed values you inserted in the previous step.
 

@@ -94,7 +94,7 @@ Review the following guides describing the basic syntax:
 
 ## Portals Page
 
-The portals are listed on the **Portals** page located at `https://atsd_host:8443/portals/list`. 
+The portals are listed on the **Portals** page located at `https://atsd_hostname:8443/portals/list`. 
 
 To access the **Portals** page via ATSD web interface click on **Portals** drop-down at the right upper corner and click on **Configure** button.
 
@@ -120,7 +120,7 @@ The regular portal doesn't depend on external parameters and can be rendered as 
 Sample link for a regular portal:
 
 ```elm
-https://atsd_host:8443/portal/4.xhtml
+https://atsd_hostname:8443/portal/4.xhtml
 ```
 
 Enabled regular portals are listed under the **Portals** link in the top menu.
@@ -136,7 +136,7 @@ Additional parameters can be passed in the query string to customize the portal 
 Sample link to a template portal:
 
 ```elm
-https://atsd_host:8443/portal/111.xhtml?entity=nurswgvml013
+https://atsd_hostname:8443/portal/111.xhtml?entity=nurswgvml013
 ```
 
 The above link passes the `entity` parameter to a template portal which substitutes all `${entity}` placeholders in the Configure Portal text. 
@@ -162,7 +162,7 @@ The actual configuration displayed replaces the `${entity}` placeholder with the
 To open a template portal directly in the browser address bar, substitute the `{portal_id}` below with _portal identifier_ displayed at the [Portals Page](#portals-page) and specify a valid entity name in the `{entity}` request parameter.
 
 ```elm
-https://atsd_host:8443/portal/{portal_id}.xhtml?entity={entity}
+https://atsd_hostname:8443/portal/{portal_id}.xhtml?entity={entity}
 ```
 
 Alternatively, assign an entity group to the template portal so that the link to this portal is available on the **Entities** page for all entities that are members of the entity group:
@@ -198,14 +198,14 @@ The portals are available at the following URLs:
 * Using portal id displayed at the [Portals Page](#portals-page):
 
 ```elm
-https://atsd_host:8443/portal/{portal_id}.xhtml
+https://atsd_hostname:8443/portal/{portal_id}.xhtml
 ```
 ![](resources/creating-and-assigning-portals_13.png)
 
 * Using portal name (case-sensitive):
 
 ```elm
-https://atsd_host:8443/portal/name/{name}
+https://atsd_hostname:8443/portal/name/{name}
 ```
 > Names containing whitespace and other special properties must be url-encoded.
 
@@ -216,14 +216,14 @@ https://atsd_host:8443/portal/name/{name}
 The template portal requires the `entity` parameter to be present in the query string regardless if the portal is accessed with an identifier or name.
 
 ```elm
-https://atsd_host:8443/portal/name/linux-os?entity=nurswgvml008
+https://atsd_hostname:8443/portal/name/linux-os?entity=nurswgvml008
 ```
 
 Additional parameters can be passed in the query string to customize the portal.
 
 ```elm
 # add extra dtype parameter
-https://atsd_host:8443/portal/name/linux-disk?entity=nurswgvml008&dtype=nfs
+https://atsd_hostname:8443/portal/name/linux-disk?entity=nurswgvml008&dtype=nfs
 ```
 
 Such request parameter values can be referenced with `${parameter_name}` placeholders in the Configure Portal text.

@@ -245,7 +245,7 @@ sudo certbot renew --deploy-hook "/opt/certbot/deploy-atsd.sh"
 
 The certbot will skip the renewal if the certificate is valid for more than 30 days.
 
-```
+```txt
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 
 -------------------------------------------------------------------------------
@@ -279,7 +279,7 @@ cat /etc/cron.d/certbot
 
 The `certbot -q renew` command is executed as root.
 
-```
+```txt
 # ...
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
@@ -299,7 +299,7 @@ sudo grep -nr /etc/letsencrypt -e "renew_hook"
 
 The `/etc/letsencrypt/renewal/atsd.company.com.conf` file should contain the following file with the correct path.
 
-```
+```txt
 /etc/letsencrypt/renewal/atsd.company.com.conf:14:renew_hook = /opt/certbot/deploy-atsd.sh
 ```
 

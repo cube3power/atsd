@@ -57,7 +57,7 @@ Verify that the jar file is stored in S3:
 aws s3 ls --summarize --human-readable --recursive s3://atsd/hbase-root/lib
 ```
 
-```
+```txt
   2017-08-31 21:43:24  555.1 KiB hbase-root/lib/atsd-hbase.jar
 
   Total Objects: 1
@@ -116,7 +116,7 @@ The cluster size can be adjusted at runtime.
 
 The minimum number of nodes in each instance group is 1, therefore the smallest cluster can have two EC2 instances:
 
-```
+```sh
   Name=Master,InstanceCount=1,InstanceGroupType=MASTER,InstanceType=m4.large        \
   Name=Region,InstanceCount=1,InstanceGroupType=CORE,InstanceType=m4.large          \
 ```
@@ -151,7 +151,7 @@ watch 'aws emr describe-cluster --cluster-id $CLUSTER_ID | grep MasterPublic | c
 
 Determine public IP address of the HBase Master node.
 
-```
+```sh
 export MASTER_IP=$(aws emr describe-cluster --cluster-id $CLUSTER_ID | grep MasterPublic | cut -d "\"" -f 4) \
 && echo $MASTER_IP
 ```
@@ -168,7 +168,7 @@ Wait until HBase services are running on the HMaster node.
 watch 'initctl list | grep hbase'
 ```
 
-```
+```txt
   hbase-thrift start/running, process 8137
   hbase-rest start/running, process 7842
   hbase-master start/running, process 7987
@@ -176,14 +176,13 @@ watch 'initctl list | grep hbase'
 
 Verify HBase version (1.2.3+) and rerun the status command until the cluster becomes operational.
 
-
 ```sh
 echo "status" | hbase shell
 ```
 
 Wait until the cluster is initialized and the "Master is initializing" error is no longer displayed.
 
-```
+```txt
 status
 1 active master, 0 backup masters, 4 servers, 0 dead, 1.0000 average load
 ```
@@ -277,13 +276,13 @@ Start ATSD.
 
 Monitor startup progress using the log file.
 
-```
+```sh
 tail -f atsd/atsd/logs/atsd.log
 ```
 
 It may take ATSD several minutes to create tables after initializing the system.
 
-```
+```txt
 ...
 2017-08-31 22:10:37,890;INFO;main;org.springframework.web.servlet.DispatcherServlet;FrameworkServlet 'dispatcher': initialization completed in 3271 ms
 ...
@@ -293,7 +292,6 @@ It may take ATSD several minutes to create tables after initializing the system.
 ```
 
 Login to the ATSD web interface on `https://atsd_hostname:8443`. Modify the port to `9443` if port settings were previously replaced.
-
 
 ## Troubleshooting
 
@@ -336,7 +334,7 @@ Check that the file is present in S3.
 aws s3 ls --summarize --human-readable --recursive s3://atsd/hbase-root/lib
 ```
 
-```
+```txt
   2017-08-31 21:43:24  555.1 KiB hbase-root/lib/atsd-hbase.jar
 
   Total Objects: 1

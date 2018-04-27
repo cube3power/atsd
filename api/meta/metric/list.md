@@ -109,7 +109,7 @@ Default data type for new metrics, when auto-created, is **float**.
 #### URI
 
 ```elm
-https://atsd_host:8443/api/v1/metrics?limit=2
+https://atsd_hostname:8443/api/v1/metrics?limit=2
 ```
 
 #### Payload
@@ -119,7 +119,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics?limit=2 \
+curl https://atsd_hostname:8443/api/v1/metrics?limit=2 \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```
@@ -170,7 +170,7 @@ name != "" OR tags.keyName != "" OR label! = "" OR description != "" OR enabled 
 #### URI
 
 ```elm
-https://atsd_host:8443/api/v1/metrics?tags=*&expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22
+https://atsd_hostname:8443/api/v1/metrics?tags=*&expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22
 ```
 
 #### Payload
@@ -180,7 +180,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics?expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22 \
+curl https://atsd_hostname:8443/api/v1/metrics?expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22 \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```

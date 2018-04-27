@@ -44,7 +44,7 @@ None.
 #### URI
 
 ```elm
-PUT https://atsd_host:8443/api/v1/entity-groups/nmon-collectors
+PUT https://atsd_hostname:8443/api/v1/entity-groups/nmon-collectors
 ```
 
 #### Payload
@@ -60,7 +60,7 @@ PUT https://atsd_host:8443/api/v1/entity-groups/nmon-collectors
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/entity-groups/nmon-collectors \
+curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-collectors \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PUT \

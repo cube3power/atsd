@@ -8,7 +8,7 @@ Select unacknowledged alerts.
 
 ### URI
 ```elm
-POST https://atsd_host:8443/api/v1/alerts/query
+POST https://atsd_hostname:8443/api/v1/alerts/query
 ```
 ### Payload
 

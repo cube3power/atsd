@@ -41,7 +41,7 @@ An array of strings.
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/entities/nurswgvml007/property-types
+GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/property-types
 ```
 
 #### Payload
@@ -51,7 +51,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/entities/nurswgvml007/property-types \
+curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/property-types \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```

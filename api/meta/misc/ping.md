@@ -23,7 +23,7 @@ None.
 #### URI
 
 ```elm
-GET https://atsd_host:8443/ping
+GET https://atsd_hostname:8443/ping
 ```
 
 #### Payload

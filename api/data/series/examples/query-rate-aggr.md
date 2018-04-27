@@ -25,7 +25,7 @@ Aggregation function is applied to values returned by the rate function.
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 ### Payload

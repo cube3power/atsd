@@ -8,7 +8,7 @@ Insert Not a Number (NaN) as a `null` value.
 
 ### URI
 ```elm
-POST https://atsd_host:8443/api/v1/series/insert
+POST https://atsd_hostname:8443/api/v1/series/insert
 ```
 ### Payload
 ```json

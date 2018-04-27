@@ -39,7 +39,7 @@ None.
 #### URI
 
 ```elm
-PATCH https://atsd_host:8443/api/v1/entities/{entity}
+PATCH https://atsd_hostname:8443/api/v1/entities/{entity}
 ```
 
 #### Payload
@@ -55,7 +55,7 @@ PATCH https://atsd_host:8443/api/v1/entities/{entity}
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/entities/nurswgvml006 \
+curl https://atsd_hostname:8443/api/v1/entities/nurswgvml006 \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PUT \

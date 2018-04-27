@@ -5,7 +5,7 @@ List metrics with `lastInsertDate` equal or greater than 2016-05-18T22:13:40.000
 ## Request
 ### URI
 ```elm
-GET https://atsd_host:8443/api/v1/metrics?minInsertDate=2016-05-18T22:13:40.000Z
+GET https://atsd_hostname:8443/api/v1/metrics?minInsertDate=2016-05-18T22:13:40.000Z
 ```
 ## Response
 ```json

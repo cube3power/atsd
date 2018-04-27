@@ -224,7 +224,7 @@ To temporarily disable sending alerts from all rules through the selected notifi
 Notification results are recorded in the database as messages and can be viewed under the 'notification' type on the Message Search page.
 
 ```elm
-https://atsd_host:8443/messages?search=1&search=&type=notification&interval.intervalCount=1&interval.intervalUnit=WEEK
+https://atsd_hostname:8443/messages?search=1&search=&type=notification&interval.intervalCount=1&interval.intervalUnit=WEEK
 ```
 
 ![](images/notify-error.png)
@@ -234,7 +234,7 @@ https://atsd_host:8443/messages?search=1&search=&type=notification&interval.inte
 The number of notifications sent per minute can be monitored with the [`web_service_notifications_per_minute`](../administration/monitoring.md#rule-engine) metric collected by the database.
 
 ```elm
-https://atsd_host:8443/portals/series?entity=atsd&metric=web_service_notifications_per_minute
+https://atsd_hostname:8443/portals/series?entity=atsd&metric=web_service_notifications_per_minute
 ```
 
 ![](images/notifications-monitoring.png)

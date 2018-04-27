@@ -8,7 +8,7 @@ Messages with persistence disabled will not be stored in the database; however t
 
 ### URI
 ```elm
-POST https://atsd_host:8443/api/v1/messages/insert
+POST https://atsd_hostname:8443/api/v1/messages/insert
 ```
 ### Payload
 ```json

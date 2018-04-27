@@ -65,7 +65,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/csv/nurswgvml007
+POST https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007
 ```
 
 #### Payload
@@ -79,7 +79,7 @@ time,cpu_user,cpu_system,waitio
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/series/csv/nurswgvml007 \
+curl https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007 \
  --insecure --verbose --user {username}:{password} \
  --header "Content-Type: text/csv" \
  --request POST \
@@ -89,7 +89,7 @@ curl https://atsd_host:8443/api/v1/series/csv/nurswgvml007 \
 > `--data-binary $` is used to prevent `curl` from dropping line feed characters.
 
 ```elm
-curl https://atsd_host:8443/api/v1/series/csv/nurswgvml007 \
+curl https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007 \
  --insecure --verbose --user {username}:{password} \
  --header "Content-Type: text/csv" \
  --request POST \

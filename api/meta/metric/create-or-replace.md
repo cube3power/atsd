@@ -43,7 +43,7 @@ None.
 #### URI
 
 ```elm
-PUT https://atsd_host:8443/api/v1/metrics/my-metric
+PUT https://atsd_hostname:8443/api/v1/metrics/my-metric
 ```
 
 #### Payload
@@ -62,7 +62,7 @@ PUT https://atsd_host:8443/api/v1/metrics/my-metric
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics/my-metric \
+curl https://atsd_hostname:8443/api/v1/metrics/my-metric \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PUT \

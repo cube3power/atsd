@@ -9,13 +9,13 @@ CSV file is exported.
 ### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/series/csv/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&columns=date,entity,metric,value
+GET https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&columns=date,entity,metric,value
 ```
 
 ### curl
 
 ```css
-curl --insecure https://atsd_host:8443/api/v1/series/csv/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&columns=date,entity,metric,value \
+curl --insecure https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&columns=date,entity,metric,value \
   --verbose --user {username}:{password} \
   --request GET
 ```

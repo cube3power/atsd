@@ -59,7 +59,7 @@ It may take up to 5 minutes for the database to initialize.
 ## Login into ATSD user interface
 
 ```sh
-https://atsd_host:8443/
+https://atsd_hostname:8443/
 ```
 
 * Open the **Settings > System Information** page.

@@ -53,7 +53,7 @@ Configure the Axibase Server to serve as an ATSD proxy so that widgets stored in
 
 * Open the **Admin:Settings:** page in the Axibase Server and expand the `SERVER` section.
 * Enter a full URL to ATSD into the `REDIRECT URL` field, including username and password as follows:
-`schema://atsd_user:atsd_user_password@atsd_host:atsd_port`
+`schema://atsd_user:atsd_user_password@atsd_hostname:atsd_port`
 
 Example:
 

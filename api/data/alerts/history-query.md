@@ -80,7 +80,7 @@ An array of matching alert objects containing the following fields:
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/alerts/history/query
+POST https://atsd_hostname:8443/api/v1/alerts/history/query
 ```
 
 #### Payload
@@ -97,7 +97,7 @@ POST https://atsd_host:8443/api/v1/alerts/history/query
 #### curl 
 
 ```elm
-curl  https://atsd_host:8443/api/v1/alerts/history \
+curl  https://atsd_hostname:8443/api/v1/alerts/history \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \

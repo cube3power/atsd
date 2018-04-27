@@ -92,7 +92,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/insert
+POST https://atsd_hostname:8443/api/v1/series/insert
 ```
 
 #### Payload
@@ -113,7 +113,7 @@ POST https://atsd_host:8443/api/v1/series/insert
 * `--data` Payload
 
 ```elm
-curl https://atsd_host:8443/api/v1/series/insert \
+curl https://atsd_hostname:8443/api/v1/series/insert \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \
@@ -123,7 +123,7 @@ curl https://atsd_host:8443/api/v1/series/insert \
 * file
 
 ```elm
-curl https://atsd_host:8443/api/v1/series/insert \
+curl https://atsd_hostname:8443/api/v1/series/insert \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \

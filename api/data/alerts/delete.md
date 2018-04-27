@@ -39,7 +39,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/alerts/delete
+POST https://atsd_hostname:8443/api/v1/alerts/delete
 ```
 
 #### Payload
@@ -54,7 +54,7 @@ POST https://atsd_host:8443/api/v1/alerts/delete
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/alerts/delete \
+curl https://atsd_hostname:8443/api/v1/alerts/delete \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \

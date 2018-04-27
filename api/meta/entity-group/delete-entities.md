@@ -44,7 +44,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/delete
+POST https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/delete
 ```
 
 #### Payload
@@ -59,7 +59,7 @@ POST https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/delete
 #### curl
 
 ```
-curl https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/delete \
+curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/delete \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \

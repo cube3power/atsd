@@ -58,7 +58,7 @@ The following password rules apply to **Local** accounts:
 
     - Special characters:
 
-```
+```txt
       ~!@#$%^&*_-+=`|\(){}[]:;”‘<>,.?/"'
 ```
 

@@ -31,7 +31,7 @@ None.
 #### URI
 
 ```elm
-DELETE https://atsd_host:8443/api/v1/entities/nurswgvml001
+DELETE https://atsd_hostname:8443/api/v1/entities/nurswgvml001
 ```
 #### Payload
 
@@ -40,7 +40,7 @@ None.
 #### curl 
 
 ```elm
-curl https://atsd_host:8443/api/v1/entities/nurswgvml001 \
+curl https://atsd_hostname:8443/api/v1/entities/nurswgvml001 \
   --insecure --verbose --user {username}:{password} \
   --request DELETE
 ```

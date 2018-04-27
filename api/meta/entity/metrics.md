@@ -40,7 +40,7 @@ Refer to Fields specified in [Metrics List](../../../api/meta/metric/list.md#fie
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/entities/nurswgvml007/metrics?limit=2
+GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?limit=2
 ```
 
 #### Payload
@@ -50,7 +50,7 @@ None.
 #### curl
 
 ```sh
-curl https://atsd_host:8443/api/v1/entities/nurswgvml007/metrics?limit=2 \
+curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?limit=2 \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```

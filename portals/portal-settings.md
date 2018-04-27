@@ -120,7 +120,7 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 |  `batch-update`  |  `batch-update = true`  |  Sending data queries to the server in batches with size specified in `batch-size` setting. Default: false.<br>If enabled, series for which the request has failed will be requested separately from successfully updated series.  |  [View](https://apps.axibase.com/chartlab/808e5846/4/)  | 
 |  `batch-size`  |  `batch-size = 1`  |  Maximum number of series in one batch request to the server. Default: 8.<br>If 0 is specified, the limit is not set.<br>Applies when `batch-update = true`.  |  [View](https://apps.axibase.com/chartlab/808e5846/5/)  | 
 
-> The actual URL for data requests is assembled from `{url}{context-path}{method-path}{url-parameters}`. For example, the default URL for loading series data is `https://atsd_host:8443/api/v1/series/query`.
+> The actual URL for data requests is assembled from `{url}{context-path}{method-path}{url-parameters}`. For example, the default URL for loading series data is `https://atsd_hostname:8443/api/v1/series/query`.
 
 ## Comments
 

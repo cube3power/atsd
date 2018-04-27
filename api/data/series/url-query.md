@@ -70,13 +70,13 @@ time,entity,metric,value
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/series/json/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&timeFormat=iso
+GET https://atsd_hostname:8443/api/v1/series/json/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&timeFormat=iso
 ```
 
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/series/csv/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&timeFormat=iso \
+curl https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007/mpstat.cpu_busy?startDate=previous_hour&endDate=now&timeFormat=iso \
   --insecure --verbose -user {username}:{password} \
   --request GET
 ```

@@ -3,7 +3,7 @@ Fetch first three metrics, ordered by name.
 ## Request
 ### URI
 ```
-https://atsd_host:8443/api/v1/metrics?limit=3
+https://atsd_hostname:8443/api/v1/metrics?limit=3
 ```
 ## Response
 ```json

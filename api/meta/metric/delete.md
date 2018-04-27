@@ -31,7 +31,7 @@ None.
 #### URI
 
 ```elm
-DELETE https://atsd_host:8443/api/v1/metrics/my-metric
+DELETE https://atsd_hostname:8443/api/v1/metrics/my-metric
 ```
 
 #### Payload
@@ -41,7 +41,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics/my-metric \
+curl https://atsd_hostname:8443/api/v1/metrics/my-metric \
   --insecure --verbose --user {username}:{password} \
   --request DELETE
 ```

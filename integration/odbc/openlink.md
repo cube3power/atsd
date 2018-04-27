@@ -54,7 +54,7 @@ Enter the following settings in the DSN Configuration window:
 
 ```
 JDBC driver:   com.axibase.tsd.driver.jdbc.AtsdDriver
-URL string :   <ATSD URL, for example jdbc:atsd://ATSD_HOST:ATSD_PORT>
+URL string :   <ATSD URL, for example jdbc:atsd://atsd_hostname:ATSD_PORT>
 Login ID   :   <atsd login>
 Password   :   <atsd password>
 ```

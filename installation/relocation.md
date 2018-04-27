@@ -18,7 +18,7 @@ Execute the following steps if you need to move ATSD to a different file system.
 
    The output should list only the `jps` process itself.
 
-```
+```txt
    12150 Jps
 ```
 

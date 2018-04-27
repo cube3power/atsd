@@ -52,7 +52,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/set?createEntities=true
+POST https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/set?createEntities=true
 ```
 
 #### Payload
@@ -67,7 +67,7 @@ POST https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/set?createEnt
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/set?createEntities=true \
+curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/set?createEntities=true \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \

@@ -2,7 +2,7 @@
 
 ## Create `axibase` user
 
-```
+```sh
 sudo adduser axibase
 ```
 
@@ -18,20 +18,20 @@ http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.h
 
 * RHEL/CentOS
 
-```
+```sh
 sudo yum install java-1.7.0-openjdk-devel.x86_64
 ```
 
 * Ubuntu/Debian
 
-```
+```sh
 sudo apt-get update
 sudo apt-get install openjdk-7-jdk
 ```
 
 ### Verify Java Installation
 
-```
+```sh
 java -version
 java version "1.7.0_101"
 OpenJDK Runtime Environment (rhel-2.6.6.1.el7_2-x86_64 u101-b00)
@@ -40,7 +40,7 @@ OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
 
 Add the `JAVA_HOME` path to the `axibase` user environment in `.bashrc`.
 
-```
+```sh
 sudo su axibase
 echo "export JAVA_HOME=${absolute path to JDK 7 home directory}" >> ~/.bashrc
 exit
@@ -50,7 +50,7 @@ exit
 
 Check connection from the ATSD server to the Zookeeper service.
 
-```
+```sh
 telnet zookeeper-host 2181
 Trying 10.102.0.6...
 Connected to zookeeper-host.
@@ -64,7 +64,7 @@ The Zookeeper client port is specified in:
 
 ## Download ATSD EE
 
-```
+```sh
 curl -O https://www.axibase.com/public/atsd_ee_hbase_1.2.2.tar.gz
 ```
 
@@ -72,7 +72,7 @@ curl -O https://www.axibase.com/public/atsd_ee_hbase_1.2.2.tar.gz
 
 ## Extract Files
 
-```
+```sh
 sudo tar -xzvf atsd_ee_hbase_1.2.2.tar.gz -C /opt
 sudo chown -R axibase:axibase /opt/atsd
 ```
@@ -81,7 +81,7 @@ sudo chown -R axibase:axibase /opt/atsd
 
 Open the `hadoop.properties` file.
 
-```
+```sh
 nano /opt/atsd/atsd/conf/hadoop.properties
 ```
 
@@ -91,7 +91,7 @@ If Zookeeper client port is different from 2181, set `hbase.zookeeper.property.c
 
 Set Zookeeper Znode parent according to the setting `zookeeper.znode.parent` configured on `HBase host` > `/usr/hdp/{hdp_version}/hbase/conf/hbase-site.xml`.
 
-```
+```elm
 hbase.zookeeper.quorum = zookeeper-host
 hbase.zookeeper.property.clientPort = 2181
 zookeeper.znode.parent = /hbase-unsecure
@@ -105,8 +105,11 @@ To obtain the license key, contact Axibase support with the following informatio
 
 * Output of the `ip addr` command.
 
+```sh
+$ ip addr
 ```
-[axibase@NURSWGVML007 ~]$ ip addr
+
+```txt
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436 qdisc noqueue state UNKNOWN
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
@@ -123,8 +126,11 @@ To obtain the license key, contact Axibase support with the following informatio
 
 * Output of the `hostname` command.
 
+```sh
+$ hostname
 ```
-[axibase@NURSWGVML007 ~]$ hostname
+
+```txt
 NURSWGVML007
 ```
 
@@ -132,15 +138,15 @@ Email output of the above commands to Axibase support and copy the provided key 
 
 ## Configure HBase Region Servers
 
-### Deploy ATSD coprocessors 
+### Deploy ATSD coprocessors
 
 Copy `/opt/atsd/hbase/lib/atsd.jar` to the `/usr/hdp/{hdp_version}/hbase/lib/` directory on each HBase region server.
 
 ### Enable ATSD Coprocessors
 
-Open Services tab in Ambari UI, select the target HBase cluster, open `Configs` tab, search for the setting `hbase.coprocessor.region.classes`, and enter the following names separated by comma. 
+Open Services tab in Ambari UI, select the target HBase cluster, open `Configs` tab, search for the setting `hbase.coprocessor.region.classes`, and enter the following names separated by comma.
 
-```
+```txt
 com.axibase.tsd.hbase.coprocessor.CompactRawDataEndpoint, com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint, com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint
 ```
 
@@ -150,13 +156,13 @@ com.axibase.tsd.hbase.coprocessor.CompactRawDataEndpoint, com.axibase.tsd.hbase.
 
 ## Check for Port Conflicts
 
-```
+```sh
 sudo netstat -tulpn | grep "8081\|8082\|8084\|8088\|8443"
 ```
 
 If some of the above ports are taken, open the `/opt/atsd/atsd/conf/server.properties` file and change ATSD listening ports accordingly.
 
-```
+```elm
 http.port = 8088
 input.port = 8081
 udp.input.port = 8082
@@ -166,13 +172,13 @@ https.port = 8443
 
 ## Start ATSD
 
-```
+```sh
 /opt/atsd/atsd/bin/start-atsd.sh
 ```
 
 Review the start log for any errors:
 
-```
+```sh
 tail -f /opt/atsd/atsd/logs/atsd.log
 ```
 
@@ -184,7 +190,7 @@ Web interface is accessible on port 8088 (http) and 8443 (https).
 
 To configure ATSD for automated restart on server reboot, add the following line to `/etc/rc.local` before the `return 0` line.
 
-```
+```sh
 su - axibase -c /opt/atsd/atsd/bin/start-atsd.sh
 ```
 

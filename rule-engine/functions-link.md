@@ -57,7 +57,7 @@ getEntityLink('nurswgvml007')
 The returned link includes the path to the entity page on the target database server:
 
 ```elm
-https://atsd_host:8443/entities/nurswgvml007
+https://atsd_hostname:8443/entities/nurswgvml007
 ```
 
 The above URL could also be assembled manually:
@@ -89,7 +89,7 @@ getPropertyLink('nurswgvml007', 'configuration', false, 'markdown')
 Returned inline link:
 
 ```elm
-[configuration](https://atsd_host:8443/entities/nurswgvml007/properties?type=configuration)
+[configuration](https://atsd_hostname:8443/entities/nurswgvml007/properties?type=configuration)
 ```
 
 ### `getRuleLink`
@@ -155,7 +155,7 @@ getChartLink('markdown')
 The following inline link is returned:
 
 ```elm
-[Default](https://atsd_host:8443/portals/series?metric=docker&entity=nurswgvml007...)
+[Default](https://atsd_hostname:8443/portals/series?metric=docker&entity=nurswgvml007...)
 ```
 
 ### `addLink`
@@ -179,7 +179,7 @@ addLink('Error Messages', serverLink + '/messages?entity=' + entity)
 The following inline link is returned:
 
 ```markdown
-[Error Messages](https://atsd_host:8443/messages?entity=nurswgvml007)
+[Error Messages](https://atsd_hostname:8443/messages?entity=nurswgvml007)
 ```
 
 * `pipe` (Slack):
@@ -191,7 +191,7 @@ addLink('Error Messages', serverLink + '/messages?entity=' + entity)
 The following inline link is returned:
 
 ```ls
-<https://atsd_host:8443/messages?entity=nurswgvml007|Error Messages>
+<https://atsd_hostname:8443/messages?entity=nurswgvml007|Error Messages>
 ```
 
 * `html` (Email, HipChat, Discord):
@@ -203,5 +203,5 @@ addLink('Error Messages', serverLink + '/messages?entity=' + entity)
 The following inline link is returned:
 
 ```html
-<a href="https://atsd_host:8443/messages?entity=nurswgvml007">Error Messages</a>
+<a href="https://atsd_hostname:8443/messages?entity=nurswgvml007">Error Messages</a>
 ```

@@ -39,7 +39,7 @@ None.
 #### URI
 
 ```elm
-PATCH https://atsd_host:8443/api/v1/metrics/cpu_busy
+PATCH https://atsd_hostname:8443/api/v1/metrics/cpu_busy
 ```
 
 #### Payload
@@ -56,7 +56,7 @@ PATCH https://atsd_host:8443/api/v1/metrics/cpu_busy
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics/cpu_busy \
+curl https://atsd_hostname:8443/api/v1/metrics/cpu_busy \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PATCH \

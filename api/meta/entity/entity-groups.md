@@ -34,7 +34,7 @@ An array of objects containing the following fields describing an entity group.
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/entities/nurswgvml007/groups
+GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/groups
 ```
 
 #### Payload
@@ -44,7 +44,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/entities/nurswgvml007/groups \
+curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/groups \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```

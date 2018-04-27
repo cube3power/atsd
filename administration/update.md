@@ -50,7 +50,7 @@ The update process may take a few minutes to complete.
 To verify that ATSD is working correctly, open the ATSD web interface:
 
 ```sh
- https://atsd_host:8443/
+ https://atsd_hostname:8443/
 ```
 
 * Open the **Settings > System Information** page

@@ -181,7 +181,7 @@ In the example below, the `db_last('cpu_busy')` function ignores mount_point and
 
 * Current Window
 
-```
+```elm
   metric = disk_used
   entity = nurswgvml007
   tags   = mount_point=/,file_system=/sda
@@ -195,7 +195,7 @@ In the example below, the `db_last('cpu_busy')` function ignores mount_point and
 
 * Search Filter
 
-```
+```elm
   metric = cpu_busy
   entity = nurswgvml007
   tags   = [empty - no tags]
@@ -203,7 +203,7 @@ In the example below, the `db_last('cpu_busy')` function ignores mount_point and
 
 * Matched Series
 
-```
+```elm
   metric = cpu_busy
   entity = nurswgvml007
   tags   = no tags
@@ -215,7 +215,7 @@ In the example below, the `db_last('disk_used_percent')` function uses the same 
 
 * Current Window
 
-```
+```elm
   metric = disk_used
   entity = nurswgvml007
   tags   = mount_point=/,file_system=/sda
@@ -229,7 +229,7 @@ In the example below, the `db_last('disk_used_percent')` function uses the same 
 
 * Search Filter
 
-```
+```elm
   metric = disk_used_percent
   entity = nurswgvml007
   tags   = mount_point=/,file_system=/sda
@@ -237,7 +237,7 @@ In the example below, the `db_last('disk_used_percent')` function uses the same 
 
 * Matched Series
 
-```
+```elm
   metric = cpu_busy
   entity = nurswgvml007
   tags   = mount_point=/,file_system=/sda
@@ -249,7 +249,7 @@ In the example below, the `db_last('disk_used_percent')` function will search fo
 
 * Current Window
 
-```
+```elm
   metric = cpu_busy
   entity = nurswgvml007
   tags   = [empty - no tags]
@@ -263,7 +263,7 @@ In the example below, the `db_last('disk_used_percent')` function will search fo
 
 * Search Filter
 
-```
+```elm
   metric = disk_used_percent
   entity = nurswgvml007
   tags   = [empty - no tags]
@@ -271,7 +271,7 @@ In the example below, the `db_last('disk_used_percent')` function will search fo
 
 * Matched Series
 
-```
+```elm
   metric = disk_used_percent
   entity = nurswgvml007
   tags   = mount_point=/,file_system=/sda
@@ -283,7 +283,7 @@ In the example below, the `db_last('io_disk_percent_util')` function will search
 
 * Current Window
 
-```
+```elm
   metric = disk_used_percent
   entity = nurswgvml007
   tags   = mount_point=/,file_system=/sda
@@ -297,7 +297,7 @@ In the example below, the `db_last('io_disk_percent_util')` function will search
 
 * Search Filter
 
-```
+```elm
   metric = io_disk_percent_util
   entity = nurswgvml007
   tags   = [empty - no tags - because there are no intersecting tag names]
@@ -305,7 +305,7 @@ In the example below, the `db_last('io_disk_percent_util')` function will search
 
 * Matched Series
 
-```
+```elm
   metric = io_disk_percent_util
   entity = nurswgvml007
   tags   = device=sda
@@ -372,7 +372,7 @@ The following matching rules apply:
 ### `db_message_count` Examples
 
 ```javascript
-  /* 
+  /*
   Check if the average exceeds 20 and the 'compaction' message was not received 
   within the last hour for the current entity.
   */
@@ -399,8 +399,8 @@ The following matching rules apply:
 ### `db_message_last` Examples
 
 ```javascript
-  last_msg = db_message_last('60 minute', 'logger', '')
-  /* 
+  last_msg = db_message_last('60 minute', 'logger', ''
+  /*
   Check that the average exceeds 50 and the severity of the last message with type 'logger' 
   for the current entity is greater than or equal to 'ERROR'. 
   */
@@ -413,7 +413,7 @@ The following matching rules apply:
   */
   db_message_last('1 minute', 'webhook', 'slack', 'event.channel=D7UKX9NTG,event.type=message', 'slack', 'message LIKE "docker start sftp*"')
 
-  /* 
+  /*
   Returns the most recent message within 1 day for the current entity,
   containing tag 'api_app_id=583' and regardless of type or source. 
   */
@@ -447,8 +447,8 @@ executeSqlQuery('SELECT datetime, value FROM http.sessions WHERE datetime > curr
 
 ```css
   [
-    [datetime, value], 
-    [2018-01-25T19:00:12.346Z, 1], 
+    [datetime, value],
+    [2018-01-25T19:00:12.346Z, 1],
     [2018-01-25T19:00:27.347Z, 1]
   ]
 ```

@@ -45,7 +45,7 @@ None.
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/metrics/disk_used/series/tags?entity=nurswgvml006
+GET https://atsd_hostname:8443/api/v1/metrics/disk_used/series/tags?entity=nurswgvml006
 ```
 
 #### Payload
@@ -55,7 +55,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics/disk_used/series/tags?entity=nurswgvml006 \
+curl https://atsd_hostname:8443/api/v1/metrics/disk_used/series/tags?entity=nurswgvml006 \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```
@@ -74,7 +74,7 @@ curl https://atsd_host:8443/api/v1/metrics/disk_used/series/tags?entity=nurswgvm
 * Include only `mount_point` tag in the response.
 
 ```elm
-https://atsd_host:8443/api/v1/metrics/disk_used/series/tags?file_system=/&tags=mount_point
+https://atsd_hostname:8443/api/v1/metrics/disk_used/series/tags?file_system=/&tags=mount_point
 ```
 
 ```json
