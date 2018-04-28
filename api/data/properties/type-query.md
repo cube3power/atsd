@@ -35,13 +35,13 @@ An array of property type names.
 #### URI
 
 ```elm
-GET https://atsd_server:8443/api/v1/properties/nurswgvml007/types
+GET https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types
 ```
 
 #### curl
 
 ```elm
-curl  https://atsd_server:8443/api/v1/properties/nurswgvml007/types \
+curl  https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```

@@ -45,7 +45,7 @@ The password is subject to the following [requirements](../administration/user-a
 
 ## Start Container
 
-Execute the command as described above.
+Launch the container with `docker run`.
 
 ```sh
 $ docker run \

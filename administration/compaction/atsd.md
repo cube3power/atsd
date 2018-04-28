@@ -75,14 +75,14 @@ wc -l IBM_adjusted.txt
 
 Start container with a pre-configured administrator account and port 8443 open for access.
 
-```elm
+```sh
 docker run -d --name=atsd_test -p 8443:8443 \
     -e ADMIN_USER_NAME=axibase -e ADMIN_USER_PASSWORD=axibase axibase/atsd:latest
 ```
 
 Watch the startup log until the list of open ports is displayed.
 
-```elm
+```sh
 docker logs -f atsd_test
 ```
 

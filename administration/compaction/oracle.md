@@ -199,7 +199,7 @@ wc -l IBM_adjusted.txt
 ### Launch Oracle Database Container
 
 Build a Oracle EE 12c 12.2.0.1 container as described [here](https://github.com/oracle/docker-images/tree/master/OracleDatabase).
-Mount `/tmp/test` directory to the container and start using following command.
+Start the container with `/tmp/test` directory.
 
 ```elm
 docker run --name oracle \

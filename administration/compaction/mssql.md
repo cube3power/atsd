@@ -231,7 +231,8 @@ wc -l IBM_adjusted.txt
 ### Launch Microsoft SQL Server Database Container
 
 Start a Microsoft SQL Server 2017 (RTM) - 14.0.1000.169 container.
-Mount `/tmp/test` directory to the container and start using following command.
+
+Start the database container with `/tmp/test` directory.
 
 ```elm
 docker run --name=mssql \

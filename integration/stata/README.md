@@ -15,7 +15,7 @@
 
 ## Loading Data
 
-Execute the following command in the Stata console: `set odbcdriver ansi`
+Set encoding for the ODBC Driver in the Stata console: `set odbcdriver ansi`
 
 This configures Stata to interface with ODBC in ANSI mode to prevent string values from being truncated.
 

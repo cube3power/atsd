@@ -99,15 +99,15 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
     chmod a+x inotify_sender.sh
 ```
 
-* Run the script with the following command:
+* Launch the `inotify` wrapper script:
 
 ```sh
     ./inotify_sender.sh
 ```
 
-* Review script logs in the `/tmp/itm/logs` directory.
+* Review the logs in the `/tmp/itm/logs` directory.
 
-* Add script to auto-start. The auto-start configuration is dependent on your operating system.
+* Add script to auto-start. The auto-start configuration is specific on your operating system.
 
 ## Verifying Data in ATSD
 

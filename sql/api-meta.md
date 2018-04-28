@@ -94,7 +94,7 @@ ATSD JSON-LD schema is published [here](https://www.axibase.com/schemas/2017/07/
 ### `curl` Query Example
 
 ```sh
-curl https://atsd_server:8443/api/sql/meta  \
+curl https://atsd_hostname:8443/api/sql/meta  \
   --insecure  --verbose --user {username}:{password} \
   --request POST \
   --data 'q=SELECT entity, value FROM "mpstat.cpu_busy" WHERE datetime > now - 1*MINUTE'
@@ -112,7 +112,7 @@ curl https://atsd_server:8443/api/sql/meta  \
 	"dc:publisher": {
 		"schema:name": "Axibase Time-Series Database",
 		"schema:url": {
-			"@id": "https://atsd_server:8443"
+			"@id": "https://atsd_hostname:8443"
 		}
 	},
 	"dc:title": "SQL Query",

@@ -53,7 +53,7 @@ wget -t 1 -T 10 \
     --post-file="nmon_logs/NURSWGVML070_160319_0516.nmon" \
     --header="Content-type: text/csv" \
     --header="Content-Disposition: form-data; filename=NURSWGVML070_160318_1012.nmon" \
-    "https://atsd_server:8443/api/v1/nmon?p=default&e=NURSWGVML070"
+    "https://atsd_hostname:8443/api/v1/nmon?p=default&e=NURSWGVML070"
 ```
 
 #### Payload

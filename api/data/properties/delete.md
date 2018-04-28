@@ -14,7 +14,7 @@ The actual deletion from the disk, which removes both the `DELETE` marker as wel
 
 Properties that are re-inserted before the `major compaction` is completed with timestamps earlier than the `DELETE` marker will not be visible.
 
-To identify pending `DELETE` markers for a given type and entity, run the following command:
+To identify pending `DELETE` markers for a given type and entity, run:
 
 ```sh
 echo "scan 'atsd_properties', {'LIMIT' => 3, RAW => true, FILTER => \"PrefixFilter('\\"prop_type\\":\\"entity_name\\"')\"}" | /opt/atsd/hbase/bin/hbase shell

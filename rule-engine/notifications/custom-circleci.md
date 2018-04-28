@@ -107,7 +107,7 @@ If the placeholder is not found, it will be replaced with an empty string.
 
 ## Test
 
-In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
+Test the integration by submitting a sample `series` command on the **Data > Data Entry** page.
 
 ```ls
   series e:test_e m:test_m=2

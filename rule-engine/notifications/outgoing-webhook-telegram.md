@@ -50,7 +50,7 @@ Prepare a request URL for accepting notifications from Telegram servers.
 
 ## Set Webhook
 
-Execute one of the following commands to setup a webhook.
+Setup a webhook depending on the SSL certificate installed in ATSD.
 
 * If ATSD has a CA-signed SSL certificate
 

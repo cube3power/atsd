@@ -42,13 +42,13 @@ An array of property objects.
 #### URI
 
 ```elm
-GET https://atsd_server:8443/api/v1/properties/nurswgvml007/types/disk
+GET https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types/disk
 ```
 
 #### curl
 
 ```elm
-curl https://atsd_server:8443/api/v1/properties/nurswgvml007/types/disk \
+curl https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types/disk \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```

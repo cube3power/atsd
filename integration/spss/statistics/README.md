@@ -193,21 +193,20 @@ SPSS provides two alternatives to aggregate data by period.
 * Create a new dataset with the break and aggregated variables.
 
     ![](images/aggregate_data.png)
-    
+
 * Create a new dataset with final columns `datetime` and `value`.
 
     ![](images/cpi_annual.png)
- 
 
 ## Export Derived Series into ATSD
 
-- Create a new metric in ATSD that will be used to store new series calculated in SPSS. 
-- Login into ATSD, open **Metrics** > **Data entry** page and execute the following command:
+- Create a new metric in ATSD that will be used to store new series calculated in SPSS.
+- Login into ATSD, open **Metrics** > **Data entry** page and send a `metric` command:
 
 ```ls
 metric m:cpi_price
 ```
- 
+
 ![](images/atsd_export_1.png)
  
 - Open the previously created dataset in SPSS.

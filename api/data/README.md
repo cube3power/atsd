@@ -39,7 +39,7 @@ The API uses the `POST` method to read, write, and delete data except for [serie
 
 When submitting a payload with the `POST` method in JSON format, add the header `Content-Type: application/json`.
 
-For correct Unicode handling, specify the charset `Content-Type: application/json;chartset=UTF-8`.
+For correct Unicode handling, specify the charset `Content-Type: application/json;charset=UTF-8`.
 
 ## URI Encoding
 

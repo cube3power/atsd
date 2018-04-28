@@ -13,7 +13,7 @@ Configuration file example:
 ```json
 {
     atsd : {
-        host: "atsd_server",
+        host: "atsd_hostname",
         port: 8081,
         protocol: "tcp",
         patterns: [

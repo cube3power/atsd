@@ -113,7 +113,7 @@ If the `Server` process is still running, kill it forcefully with `kill -9 {Serv
 
 ### Stop HBase
 
-Stop HBase.
+Stop HBase processes.
 
 ```sh
 /opt/atsd/bin/atsd-hbase.sh stop
@@ -134,7 +134,7 @@ The `jps` output should display only HDFS processes at this time.
 25587 NameNode
 ```
 
-If any HBase processes are still running, execute the following commands.
+Stop remaining HBase processes if any of the them are still running.
 
 ```sh
 /opt/atsd/hbase/bin/hbase-daemon.sh stop regionserver
@@ -142,12 +142,10 @@ If any HBase processes are still running, execute the following commands.
 /opt/atsd/hbase/bin/hbase-daemon.sh stop zookeeper
 ```
 
-If HBase processes are still running, kill HBase processes by PID (no flags).
-
-> Make sure you kill only HBase processes `HMaster`, `HRegionServer`, `HQuorumPeer` in this step.
+If the HBase processes fail to stop after executing the above commands, kill HBase processes `HMaster`, `HRegionServer`, and `HQuorumPeer` by PID (no flags).
 
 ```sh
-kill 18494
+kill 11345
 ```
 
 ### Stop HDFS
@@ -194,7 +192,7 @@ Caused by:
   org.apache.hadoop.hbase.TableExistsException: atsd_message
 ```
 
-Execute the command to remove the ephemeral `/hbase` directory from Zookeeper cache.
+Remove the ephemeral `/hbase` directory from the Zookeeper cache.
 
 ```sh
 echo "rmr /hbase" | /opt/atsd/hbase/bin/hbase zkcli

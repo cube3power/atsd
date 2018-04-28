@@ -59,7 +59,7 @@ curl https://atsd_hostname:8443/api/v1/entity-groups/nur-entities-name/entities?
 ```json
 [
     {
-        "name": "atsd_server",
+        "name": "atsd_hostname",
         "enabled": true,
         "tags": {}
     },

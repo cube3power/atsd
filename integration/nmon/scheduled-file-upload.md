@@ -25,7 +25,7 @@ Create a file script `/opt/nmon/nmon_script.sh` and add the following row to the
 
 ### Step 2.
 
-After that, add the following content to the file script `/opt/nmon/nmon_script.sh` replacing `atsd_user`, `atsd_password`, and `atsd_server` with actual credentials.
+After that, add the following content to the file script `/opt/nmon/nmon_script.sh` replacing `atsd_user`, `atsd_password`, and `atsd_hostname` with actual credentials.
 
 ## Upload Files to ATSD with UNIX Socket
 
@@ -41,7 +41,7 @@ Create a file script `/opt/nmon/nmon_script.sh` and add the following row to the
 
 ### Step 2.
 
-Add the following contents to script `/opt/nmon/nmon_script.sh` replacing `atsd_server` with the ATSD hostname or IP address.
+Add the following contents to script `/opt/nmon/nmon_script.sh` replacing `atsd_hostname` with the ATSD hostname or IP address.
 
 ## Upload Files to ATSD with Netcat
 
@@ -57,4 +57,4 @@ Create a file script `/opt/nmon/nmon_script.sh` and add the following row to the
 
 ### Step 2.
 
-Add the following contents to the `/opt/nmon/nmon_script.sh` file replacing `atsd_server` with the ATSD hostname or IP address.
+Add the following contents to the `/opt/nmon/nmon_script.sh` file replacing `atsd_hostname` with the ATSD hostname or IP address.

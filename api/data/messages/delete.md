@@ -116,7 +116,7 @@ major_compact 'atsd_message'
 
 ## Deleting All Messages
 
-Execute the following administrative command in HBase shell to truncate the 'atsd_message' table which will cause all records to be removed.
+Truncate the 'atsd_message' table which will cause all records to be removed.
 
 ```sh
 echo "truncate 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell

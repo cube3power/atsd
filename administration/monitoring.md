@@ -24,7 +24,7 @@ You can retrieve, test, or view the metrics using the following methods:
 Retrieving a full list of collected metrics in JSON:
 
 ```elm
-https://atsd_server:8443/jmx?query=com.axibase.tsd:name=metrics           
+https://atsd_hostname:8443/jmx?query=com.axibase.tsd:name=metrics           
 ```
 
 ## Collected metrics

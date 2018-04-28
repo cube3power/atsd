@@ -3,7 +3,7 @@
 ## CSV File Upload
 
 ```sh
-wget --header="Content-type: text/csv" --post-file=file.csv 'http://atsd_server:port/csv?config=${config_name}'
+wget --header="Content-type: text/csv" --post-file=file.csv 'http://atsd_hostname:port/csv?config=${config_name}'
 ```
 
 ### Processing

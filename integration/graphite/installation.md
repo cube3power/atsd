@@ -92,7 +92,7 @@ STORAGE_FINDERS = (
 
 ```json
 ATSD_CONF = {
-    'url': 'http://atsd_server:8088',
+    'url': 'http://atsd_hostname:8088',
     'username': 'atsd_username',
     'password': 'secret_pwd',
 }

@@ -175,10 +175,10 @@ Authenticate with Kerberos using the `hbase.keytab` file and HMaster full hostna
 kinit -k -t /var/run/cloudera-scm-agent/process/30-hbase-MASTER/hbase.keytab hbase/{master_full_hostname}
 ```
 
-Open HBase shell and execute the `grant` command to grant **RWXC** permissions to `axibase` principal.
+Grant **RWXC** permissions to `axibase` principal in HBase shell.
 
 ```sh
-echo "grant 'axibase', 'RWXC'" | hbase shell  
+echo "grant 'axibase', 'RWXC'" | hbase shell
 ```
 
 ### Configure Kerberos Configuration Information in `krb5.conf` File

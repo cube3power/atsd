@@ -48,13 +48,12 @@ Start scollector.
 
 #### Ubuntu 14.04
 
-Create `/etc/init.d/scollector` file by running the following command in the scollector installation directory.
+Change to the scollector installation directory.
+
+Create `/etc/init.d/scollector` file:
 
 ```sh
 sudo cat <<EOF > /etc/init.d/scollector
-```
-
-```txt
 #chkconfig: 2345 90 10
 #description: scollector is a framework to collect data points and store them in a TSDB.
 ### BEGIN INIT INFO
@@ -88,13 +87,12 @@ Enable scollector launch when the system is started.
 
 #### CentOS 6.x and RHEL 6.x
 
-Create `/etc/init.d/scollector` file by running the following command in the scollector installation directory.
+Change to the scollector installation directory.
+
+Create `/etc/init.d/scollector` file:
 
 ```sh
 sudo cat <<EOF > /etc/init.d/scollector
-```
-
-```txt
 #chkconfig: 2345 90 10
 #description: scollector is a framework to collect data points and store them in a TSDB.
 ### BEGIN INIT INFO
@@ -128,7 +126,9 @@ sudo chkconfig --add scollector
 
 #### Ubuntu 16.04, CentOS 7.x and RHEL 7.x
 
-Create service file for scollector `/lib/systemd/system/scollector.service` by running the following command in the scollector installation directory.
+Change to the scollector installation directory.
+
+Create a service file for scollector `/lib/systemd/system/scollector.service`:
 
 ```sh
 sudo cat <<EOF > /lib/systemd/system/scollector.service
@@ -155,7 +155,7 @@ sudo systemctl enable scollector
 
 #### Ubuntu 14.04, CentOS 6.x and RHEL 6.x
 
-Modify the `/etc/init.d/tcollector` content
+Modify the `/etc/init.d/tcollector` file:
 
 ```txt
 #chkconfig: 2345 90 10
@@ -181,7 +181,7 @@ else
 fi
 ```
 
-Be sure to change `SCOLLECTOR_BIN` and `SCOLLECTOR_CONF` to the actual scollector directory path.
+Change `SCOLLECTOR_BIN` and `SCOLLECTOR_CONF` to the actual scollector directory path.
 Set `SCOLLECTOR_USER` to the user that will run scollector.
 
 #### Ubuntu 16.04, CentOS 7.x and RHEL 7.x
@@ -213,13 +213,13 @@ scollector does not support untrusted SSL certificates. If you installed a CA-si
  Host = "https://username:password@atsd_hostname:8443/"
 ```
 
-Open the prompt as Administrator and create an scollector service with automated startup by executing the following command:
+Open the prompt as Administrator and create an scollector service with automated startup:
 
 ```txt
  scollector-windows-amd64.exe -winsvc=install
 ```
 
-Start scollector service by executing the following command:
+Start scollector service:
 
 ```txt
  scollector-windows-amd64.exe -winsvc=start

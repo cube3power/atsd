@@ -124,7 +124,9 @@ nmon
 
 #### Setup nmon File Streaming
 
-Setup crontab with the following commands so that nmon will collect the data constantly. ATSD can stream the data as it is written into the nmon file:
+Setup crontab so that the nmon daemon collects the data continuously.
+
+ATSD will receive the stream of data as it is written into the nmon file.
 
 #### Setup nmon File Streaming with Sender Script – Installed from Repositories
 
