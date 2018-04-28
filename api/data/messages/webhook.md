@@ -43,7 +43,7 @@ The wizard will automatically create user and entity groups and grant necessary 
 
 ### Request Parameters
 
-Request parameters, except for reserved parameters, are converted into message **tags** where tag names equal parameter names and tag values equal parameter values. Tag names are lowercased. Non-printable characters such as whitespace in tag names are replaced with an underscore.
+Request parameters, except for reserved parameters, are converted into message **tags** where tag names equal parameter names and tag values equal parameter values. Tag names are converted to lower case. Non-printable characters such as whitespace in tag names are replaced with an underscore.
 
 Request URL:
 
@@ -64,7 +64,7 @@ String fields are unquoted by removing leading and trailing single or double quo
 
 Array elements are assigned names based on array name and element index, starting with `0` for the first element.
 
-Tag names are lowercased. Non-printable characters such as whitespace in tag names are replaced with an underscore.
+Tag names are converted to lower case. Non-printable characters such as whitespace in tag names are replaced with an underscore.
 
 Input document:
 
@@ -98,7 +98,7 @@ Since each message must be associated with an entity, the request should instruc
 
 1. By default, the entity will be set to the remainder of the path following the `/api/v1/messages/webhook/` prefix.
 
-```
+```elm
   /api/v1/messages/webhook/jenkins?hello=world
 ```
 
@@ -109,7 +109,7 @@ Since each message must be associated with an entity, the request should instruc
 
 2. The entity may be specified literally by adding an `entity` parameter to the query string, for example `/api/v1/messages/webhook/jenkins?entity=test-1`
 
-```
+```elm
   entity = test-1
 ```
 
@@ -124,7 +124,7 @@ Since each message must be associated with an entity, the request should instruc
   }
 ```
 
-```
+```elm
   entity = test-2
 ```
 
@@ -132,13 +132,13 @@ Since each message must be associated with an entity, the request should instruc
 
   HTTP request headers:
 
-```
+```txt
   ...
   X-AXI-Region: us-east-01
   ...
 ```
 
-```
+```elm
   entity = us-east-01
 ```
 
@@ -175,7 +175,7 @@ These parameters set message fields to literal values.
 
 `/api/v1/messages/webhook/jenkins?entity=test-1&type=ci&severity=3`
 
-```
+```elm
   entity = test-1
   type = ci
   severity = WARNING
@@ -203,7 +203,7 @@ Command parameters set message field values from JSON field values.
   }
 ```
 
-```
+```elm
   entity = test-2
   type = deploy
 ```
@@ -231,7 +231,7 @@ Header parameters set message field values from header values.
   X-Hub-Signature: sha1=b0d4aa86d17c6b77e5b35e7482769955ad9aca4d
 ```
 
-```
+```elm
   entity = github
   tags.event = watch
 ```
@@ -252,19 +252,19 @@ The filter parameters contain patterns that the converted message tags must sati
 * Tag name match is case-**IN**sensitive.
 * The parameters may contain multiple patterns separated by semi-colon `;`.
 
-```
+```elm
   &exclude=repository.*;sender.location
 ```
 
 * Parameters may be repeated in the query string.
 
-```
+```elm
   &exclude=repository.*&exclude=sender.location
 ```
 
 Example:
 
-```
+```elm
 	exclude=repository.*&include=repository.name
 ```
 
@@ -283,7 +283,7 @@ Example:
 
   Message fields:
 
-```
+```elm
     tag.event = commit
     tag.result = ok
     repository.name = atsd
@@ -307,19 +307,19 @@ Example:
 
 * Request URL:
 
-```
+```elm
     /api/v1/messages/webhook/github?entity=test-1&header.entity=User-Agent&command.entity=server
 ```
 
 * Request Headers:
 
-```
+```txt
     User-Agent: GitHub-Hookshot/5ee1da1
 ```
 
 * Request Payload:
 
-```
+```json
     {
       "server": "test-2"
     }
@@ -327,7 +327,7 @@ Example:
 
 * Message Command:
 
-```
+```elm
 	type=github
 	source=webhook
 	entity=test-1
@@ -342,7 +342,7 @@ Example:
 
 Subscribe to GitHub repository events.
 
-```
+```elm
 /api/v1/messages/webhook/github?exclude=organization.*;repository.*;*.signature;*.payload;*.sha;*.ref;*_at;*.id&include=repository.name;repository.full_name&header.tag.event=X-GitHub-Event&excludeValues=http*&debug=true
 ```
 
@@ -350,7 +350,7 @@ Subscribe to GitHub repository events.
 
 Receive AWS SNS subscription notifications.
 
-```
+```elm
 /api/v1/messages/webhook/aws-cw?command.date=Timestamp&json.parse=Message&exclude=Signature;SignatureVersion;SigningCertURL;SignatureVersion;UnsubscribeURL;MessageId;Message.detail.instance-id;Message.time;Message.id;Message.version
 ```
 
@@ -358,7 +358,7 @@ Receive AWS SNS subscription notifications.
 
 Subscribe to build status events from Jenkins.
 
-```
+```elm
 /api/v1/messages/webhook/jenkins?command.date=build.timestamp&datetimePattern=milliseconds&exclude=build.url;url;build.artifacts*
 ```
 
@@ -366,7 +366,7 @@ Subscribe to build status events from Jenkins.
 
 Receive incoming bot events using Slack Event API. Refer to the Slack webhook configuration [instructions](../../../rule-engine/notifications/outgoing-webhook-slack.md).
 
-```
+```elm
 /api/v1/messages/webhook/slack?command.message=event.text&command.date=event.ts&exclude=event.event_ts&exclude=event_time&exclude=event.icons.image*&exclude=*thumb*&exclude=token&exclude=event_id&exclude=event.message.edited.ts&exclude=*.ts
 ```
 
@@ -374,7 +374,7 @@ Receive incoming bot events using Slack Event API. Refer to the Slack webhook co
 
 Receive incoming bot messages. Refer to the Telegram webhook configuration [instructions](../../../rule-engine/notifications/outgoing-webhook-telegram.md).
 
-```
+```elm
 /api/v1/messages/webhook/telegram?command.message=message.text
 ```
 
