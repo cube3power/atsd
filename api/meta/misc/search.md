@@ -93,7 +93,7 @@ curl 'https://atsd_hostname:8443/api/v1/search?query=inflation*&limit=2&metricTa
       {
         "units": "million",
         "dataType": "LONG"
-      },            
+      },
       {
         "pricebase": "Current prices",
         "seasonaladjustment": "Seasonally Adjusted",
@@ -103,7 +103,7 @@ curl 'https://atsd_hostname:8443/api/v1/search?query=inflation*&limit=2&metricTa
       "U.S. FED",
       {
         "timeZone": "US/Eastern"
-      },                
+      },
       {
         "source": "FRED"
       },
@@ -118,7 +118,7 @@ curl 'https://atsd_hostname:8443/api/v1/search?query=inflation*&limit=2&metricTa
       {
         "units": "million",
         "dataType": "LONG"
-      },            
+      },
       {
         "pricebase": "Current prices",
         "seasonaladjustment": "Seasonally Adjusted",

@@ -1,6 +1,6 @@
 # Getting Started: Part 5
 
-### SQL
+## SQL
 
 Open the SQL console:
 
@@ -33,6 +33,6 @@ GROUP BY entity, PERIOD(1 HOUR)
 
 Review the [SQL syntax](../sql/README.md) and experiment by executing your own queries.
 
-### Summary
+## Summary
 
 Congratulations! You have reached the end of the Getting Started introduction to Axibase Time Series Database.

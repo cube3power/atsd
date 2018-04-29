@@ -1,6 +1,6 @@
 # Weekly Change Log: August 07, 2017 - August 13, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
@@ -19,9 +19,7 @@
 | [4386](#issue-4386) | sql | Feature | Add support for querying `datetime` column using standard Timestamp format `yyyy-MM-dd[ HH:mm:SS]`. |
 | [4382](#issue-4382) | UI | Feature | Unique Values tab added to the Series Statistics page. |
 
-### ATSD
-
-##### Issue 4464
+### Issue 4464
 
 ```json
 [
@@ -37,7 +35,7 @@
 ]
 ```
 
-##### Issue 4456
+### Issue 4456
 
 ```json
 [
@@ -60,7 +58,7 @@
 ]
 ```
 
-##### Issue 4386
+### Issue 4386
 
 The supported format is `yyyy-MM-dd HH:mm:SS[.NNNNNNNNN]`. The dates are parsed according to the database time zone.
 
@@ -71,6 +69,6 @@ WHERE ((datetime >= '2017-07-10 10:06:56.065') AND (datetime <= '2017-07-11 18:4
   LIMIT 5
 ```
 
-##### Issue 4382
+### Issue 4382
 
 ![](Images/issue4382.png)

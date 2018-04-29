@@ -94,7 +94,6 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:06:00Z'
 ```
 
 > A value at 08:00:00 is not returned because there is no prior value in the `INNER` mode to interpolate between it and the value at 08:00:18.
-
 > Values at 08:05:00 and 08:05:30 are not returned because there is no value after 08:04:48 in the `INNER` mode.
 
 ```ls

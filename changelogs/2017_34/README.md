@@ -21,7 +21,7 @@
 
 * Unlimited sub-queries are supported.
 
-**Sample Query**
+Sample Query:
 
 ```sql
 SELECT datetime, AVG(value) AS "daily_average"
@@ -34,7 +34,7 @@ SELECT datetime, AVG(value) AS "daily_average"
 GROUP BY PERIOD(1 DAY)
 ```
 
-**Sample ResultSet**
+Results:
 
 ```ls
 | datetime            | daily_average |

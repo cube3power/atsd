@@ -1,6 +1,6 @@
 # Weekly Change Log: November 28-December 4, 2016
 
-### ATSD
+## ATSD
 
 | Issue     | Category        | Type     | Subject                                                                    |
 |-----------|-----------------|----------|----------------------------------------------------------------------------|
@@ -29,7 +29,7 @@
 | [3438](#issue-3438)      | security        | Feature  | Modified Enterprise Edition to support LDAP authentication. |
 | [3309](#issue-3309)      | grafana        | Support  | Implemented ATSD storage driver for Grafana 3.x. |
 
-### Collector
+## Collector
 
 | Issue     | Category        | Type     | Subject                                                                    |
 |-----------|-----------------|----------|----------------------------------------------------------------------------|
@@ -40,13 +40,11 @@
 | 3621      | docker          | Bug      | Added checker to synchronize Docker-engine objects and statuses with ATSD. |
 | 3405      | docker          | Bug      | Fixed issue with missing Docker statistics. |
 
-### Charts
+## Charts
 
 | Issue     | Category        | Type     | Subject                                                                    |
 |-----------|-----------------|----------|----------------------------------------------------------------------------|
 | 3523      | property        | Bug      | Set format-number to false by default to let users enable it explicitly at the widget or column level. |
-
-## ATSD
 
 ### Issue 3677
 
@@ -257,8 +255,6 @@ The Enterprise Edition now supports LDAP authentication to simplify and centrali
 ### Issue 3309
 
 [https://github.com/axibase/grafana-data-source](https://github.com/axibase/grafana-data-source)
-
-## Collector
 
 ### Issue 3644
 

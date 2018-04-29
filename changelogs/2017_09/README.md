@@ -1,13 +1,13 @@
 # Weekly Change Log: February 27 - March 5, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category        | Type    | Subject                                                                              |
 |------|-----------------|---------|--------------------------------------------------------------------------------------|
 | [3940](#issue-3940) | client          | Feature | Added the `sendCommands` method to the [Python API client](https://github.com/axibase/atsd-api-python).                                                                |
 | 3918 | api-rest        | Bug     | Removed the `last` parameter in [series](../../api/data/series/query.md) queries. Use [`limit=1`](../../api/data/series/query.md#control-filter-fields) instead.                                            |
 
-### Collector
+## Collector
 
 | Issue| Category        | Type    | Subject                                                                              |
 |------|-----------------|---------|--------------------------------------------------------------------------------------|
@@ -23,7 +23,7 @@
 | [3817-a](#issue-3817-a) | socrata         | Feature | Added an option to skip resending of already processed data.                         |
 | [3817-b](#issue-3817-b) | socrata         | Feature | Added the `Query Filter` field to filter rows in a resultset.                         |
 
-### Charts
+## Charts
 
 | Issue| Category        | Type    | Subject                                                                              |
 |------|-----------------|---------|--------------------------------------------------------------------------------------|
@@ -34,8 +34,6 @@
 | [3959](#issue-3959) | api             | Feature | Removed support for `last` setting due to ATSD API changes.                              |
 | [3941](#issue-3941) | widget-settings | Feature | Implemented functions to retrieve entity and metric tags in `threshold` and other calculations. |
 | 3927 | core            | Bug     | Fixed the order of widget content geometry calculation.                                |
-
-## ATSD
 
 ### Issue 3940
 
@@ -50,8 +48,6 @@ commands_to_send = ["metric m:stat.step p:integer",
                     "series e:process m:stat.step=0 x:stat.step=initial"]
 commandsService.send_commands(commands_to_send)
 ```
-
-## Collector
 
 ### Issue 3977
 
@@ -68,6 +64,7 @@ For the Replacement table, the linked task configurations are shown.
 <img src="Images/Figure3.png" width="300px"/>
 
 ### Issue 3976
+
 The old `Command` field containing the path to the executable script has been renamed to `Path to the script`.
 The new `Command` field allows entering commands returning the Item List elements, one Item per line.
 The commands from the text area are copied to a file in the `$AXIBASE_COLLECTOR_HOME/conf/scripts` directory and executed as a script.

@@ -13,7 +13,7 @@
 | [3763](#issue-3763) | sql             | Bug     | Updated the [`SELECT 1`](../../sql#validation-query) validation query implementation to return exactly one row. |
 | [3480](#issue-3480) | api-rest        | Feature | Added support for the [`text`](../../api/data/series/query.md#value-object) field in the [series query](../../api/data/series/query.md) method. The `text` field allows annotating numeric samples with text.|
 
-### Collector
+## Collector
 
 | Issue         | Category        | Type | Subject                                                                             |
 |---------------|-----------------|---------|--------------------------------------------------|
@@ -22,15 +22,13 @@
 | 3734 | docker          | Bug     | Fixed issue with stopped container status not being instantly sent into ATSD. |
 | 3733 | docker          | Bug     | Eliminated table locks in the embedded database, which resulted in the collection of all statistics being stopped. |
 
-### Charts
+## Charts
 
 | Issue         | Category        | Type | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [3481](#issue-3481) | widget-settings | Feature | Implemented a JavaScript replacement for the Freemarker `getSeries` method. |
 | [3078](#issue-3078) | widget-settings | Feature | Added support for new series settings [`exact-match`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/) and [`interpolate-extend`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/). |
 | [2928](#issue-2928) | widget-settings | Feature | Changed setting name from `interpolate` to [`fill-value`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/) to prevent collision.|
-
-## ATSD
 
 ### Issue 3773
 
@@ -126,8 +124,6 @@ Support was added for the text field (named `x`) in Data API methods for series 
 }]
 ```
 
-## Collector
-
 ### Issue 3755
 
 The following aggregate [metrics](https://github.com/axibase/axibase-collector/blob/master/jobs/docker/volume-size.md) for Docker container sizes were added:
@@ -144,8 +140,6 @@ The following metrics are collected at the docker-host level.
 The metrics are collected at 'Container Size Interval' for running containers and at 'Property Refresh Interval' for all containers.
 
 ![Figure 1](Images/Figure1.png)
-
-## Charts
 
 ### Issue 3481
 

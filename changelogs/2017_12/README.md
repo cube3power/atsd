@@ -1,6 +1,6 @@
 # Weekly Change Log: March 20 - March 26, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
@@ -33,8 +33,6 @@
 | 4026 | core | Bug | Add support for specific dates in ISO 8601 format in [calendar](../../shared/calendar.md#specific-time) expressions. |
 | 4019 | docker | Bug | Do not interrupt the job if there are no free ATSD connections in pool. |
 | 4025 | core | Bug | Remove `m:{name}=NaN` field in series command if text value is specified. |
-
-### ATSD
 
 ### Issue 3915
 

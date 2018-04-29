@@ -25,31 +25,31 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 
 * Set the `hd.ini` settings to activate private history streaming:
 
-    * Change to the `/opt/ITM directory` and append the following settings to the `config/hd.ini` file:
+  * Change to the `/opt/ITM directory` and append the following settings to the `config/hd.ini` file:
 
-```ini
-        KHD_CSV_OUTPUT_ACTIVATE=Y
-        KHD_CSV_OUTPUT=/tmp/itm/csv
-        KHD_CSV_OUTPUT_TAGGED_ONLY=Y
-        KHD_CSV_ISO_DATE_FORMAT=Y
-        KHD_CSV_MAXSIZE=400
-        KHD_CSV_EVAL_INTERVAL=60
-```
+    ```ini
+            KHD_CSV_OUTPUT_ACTIVATE=Y
+            KHD_CSV_OUTPUT=/tmp/itm/csv
+            KHD_CSV_OUTPUT_TAGGED_ONLY=Y
+            KHD_CSV_ISO_DATE_FORMAT=Y
+            KHD_CSV_MAXSIZE=400
+            KHD_CSV_EVAL_INTERVAL=60
+    ```
 
-    * Restart WareHouse Proxy agent:
+  * Restart WareHouse Proxy agent:
 
-```sh
-        bin/itmcmd stop hd
-        bin/itmcmd start hd
-```
+    ```sh
+            bin/itmcmd stop hd
+            bin/itmcmd start hd
+    ```
 
 ### Configure ITM Agents
 
 * Download situation configuration files for the following products:
 
-    - [Linux OS](csv-configs/agents/lz_situations.xml)
-    - [VMware](csv-configs/agents/vm_situations.xml)
-    - [WebSphere MQ](csv-configs/agents/mq_situations.xml)
+  * [Linux OS](csv-configs/agents/lz_situations.xml)
+  * [VMware](csv-configs/agents/vm_situations.xml)
+  * [WebSphere MQ](csv-configs/agents/mq_situations.xml)
 
 * Copy the configuration file to the `localconfig/${PRODUCT_CODE}/` directory on the agent machine, where `${PRODUCT_CODE}` is the agent product code. You can look up commonly used product codes [here](https://www.ibm.com/support/knowledgecenter/en/SS4EKN_7.2.0/com.ibm.itm.doc_6.3/install/pc_codes.htm).
 
@@ -64,9 +64,9 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 
 ### Download CSV Parsers for UX, VM, and MQ Product Codes
 
-   - [Linux OS](csv-configs/atsd/klz-csv-configs.xml)
-   - [VMware](csv-configs/atsd/kvm-csv-configs.xml)
-   - [WebSphere MQ](csv-configs/atsd/mq-csv-configs.xml)
+* [Linux OS](csv-configs/atsd/klz-csv-configs.xml)
+* [VMware](csv-configs/atsd/kvm-csv-configs.xml)
+* [WebSphere MQ](csv-configs/atsd/mq-csv-configs.xml)
 
 ### Upload CSV Parsers into ATSD
 
@@ -114,16 +114,20 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 * Log in to ATSD.
 * Click to the Metrics tab and filter metrics with the following prefixes:
 
- - `klz`
+  * `klz`
+
   ![](images/klz_metrics.png)
 
- - `lnx`
+  * `lnx`
+
   ![](images/lnx_metrics.png)
 
- - `kvm`
+  * `kvm`
+
   ![](images/kvm_metrics.png)
 
- - `mq`
+  * `mq`
+
   ![](images/mq_metrics.png)
 
 ## Viewing Data in ATSD
@@ -137,6 +141,7 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 * `ITM - Linux OS`
 
 ### Portals
+
 * [ITM – Linux OS Portal](https://apps.axibase.com/chartlab/43f054ee)
 
 ![](images/itm_linux_portal.png "itm_linux_portal")

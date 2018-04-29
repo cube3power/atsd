@@ -1,6 +1,6 @@
 # Date and Time Pattern letters
 
-### Pattern Letters
+## Pattern Letters
 
 ```ls
 | Letter | Date or Time Component                     | Presentation       | Examples                              |
@@ -29,7 +29,7 @@
 | X      | Time zone                                  | ISO 8601 time zone | -08; -0800; -08:00                    |
 ```
 
-### Examples
+## Examples
 
 ```ls
 | Date and Time Pattern            | Result                               |
@@ -49,7 +49,7 @@
 
  > See Java [documentation](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html) for supported fields (pattern letters).
 
-### Custom Formatting
+## Custom Formatting
 
 If the default pattern letters are not sufficient, use String and Math functions to apply custom formatting.
 

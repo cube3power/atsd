@@ -2,7 +2,7 @@
 
 ## Description
 
-ChartLab Example: https://apps.axibase.com/chartlab/2f607d1b/17/
+[ChartLab](https://apps.axibase.com/chartlab/2f607d1b/17/)
 
 ## Request
 

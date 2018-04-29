@@ -1,6 +1,6 @@
 # Weekly Change Log: April 10 - April 16, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                                                             |
 |------|-------------|---------|---------------------------------------------------------------------|
@@ -9,7 +9,7 @@
 | [3739](#issue-3739) | sql | Feature | Add options for sending empty or failed results for scheduled SQL reports. |
 | 2880 | UI | Bug | Add HTML-escaping for all forms in the web interface. |
 
-### Collector
+## Collector
 
 | Issue| Category    | Type    | Subject                                                             |
 |------|-------------|---------|---------------------------------------------------------------------|
@@ -18,25 +18,19 @@
 | [4063](#issue-4063) | core | Feature | Implement a configuration file editor with syntax highlighting. |
 | 4036 | jdbc | Bug | Fix column order in Test SQL result table. |
 
-### Charts
+## Charts
 
 | Issue| Category    | Type    | Subject                                                             |
 |------|-------------|---------|---------------------------------------------------------------------|
 | [4043](#issue-4043) | widget-settings | Bug | Fix color assignment for wildcard series. |
 
-## ATSD
-
 ### Issue 3739
 
 ![](Images/Figure1.png)
 
-## Collector
-
 ### Issue 4063
 
 ![](Images/Figure2.png)
-
-## Charts
 
 ### Issue 4043
 

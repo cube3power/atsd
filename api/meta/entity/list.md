@@ -149,6 +149,7 @@ curl https://atsd_hostname:8443/api/v1/entities?expression=label!=%22%22%20and%2
 ```
 
 ## Additional examples
+
 * [List entities by name](./examples/list-entities-by-name.md)
 * [List entities by Max Insert Date](./examples/list-entities-by-maxinsertdate.md)
 * [List entities by Min Insert Date](./examples/list-entities-by-mininsertdate.md)

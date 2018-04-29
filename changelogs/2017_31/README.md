@@ -1,6 +1,6 @@
 # Weekly Change Log: July 31, 2017 - August 06, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
@@ -37,9 +37,7 @@
 | 3983 | api-rest    | Bug |    Data API: tags are incorrectly concatenated with [`group`](../../api/data/series/group.md) processor. |
 | 3874 | api-network | Bug | Data API: series command fails to overwrite value when inserted in batch with [append flag](../../api/network/series.md#text-append). |
 
-### ATSD
-
-##### Issue 4420
+### Issue 4420
 
 ```sql
 SELECT time FROM jvm_memory_used LIMIT 1
@@ -73,11 +71,11 @@ SELECT COUNT(*) FROM test_m
 }
 ```
 
-##### Issue 4406
+### Issue 4406
 
 ![](Images/4406.png)
 
-##### Issue 4395
+### Issue 4395
 
  The expression uses `%` and `_` wildcards to match tables and columns by name.
 
@@ -86,7 +84,7 @@ SELECT COUNT(*) FROM test_m
  ResultSet rs = dmd.getTables(null, null, "_isk_%", null);
 ```
 
-##### Issue 4389
+### Issue 4389
 
 ```sql
 INSERT INTO "temperature"
@@ -94,13 +92,13 @@ INSERT INTO "temperature"
   VALUES ('sensor-01', '2017-08-21T00:00:00Z', 24.5, 'Outer', 'Celsius', 'SVL')
 ```
 
-##### Issue 4388
+### Issue 4388
 
 ```sql
 INSERT INTO 'my-metric' (entity, value, datetime) VALUES ('e-1', 123, '2017-07-12 04:05:00.34567')
 ```
 
-##### Issue 4373
+### Issue 4373
 
 ```java
 final String sql = "INSERT INTO metric1 (time, entity, value, tags) VALUES (?,?,?,?)";
@@ -113,7 +111,7 @@ try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 }
 ```
 
-##### Issue 4372
+### Issue 4372
 
 Multiple tag pairs must be separated by semi-colon or inserted with [`setTags`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md#parameterized-queries) method.
 
@@ -130,7 +128,7 @@ tag1=abc;tag2=cde
   st.setString(4, "tag1=abc;tag2=cde");
 ```
 
-##### Issue 4365
+### Issue 4365
 
 ```sql
 SELECT time, date_format(time, 'yyyy-MM-dd HH:mm', 'Europe/Vienna')
@@ -138,7 +136,7 @@ SELECT time, date_format(time, 'yyyy-MM-dd HH:mm', 'Europe/Vienna')
 GROUP BY period(1 DAY, 'Europe/Vienna')
 ```
 
-##### Issue 4328
+### Issue 4328
 
 ```sql
 SELECT t1.tags.company_name, datetime,
@@ -152,7 +150,7 @@ WHERE t1.tags.company_name = 'Mutual of Omaha Insurance Company'
   WITH ROW_NUMBER(t1.tags.company_name ORDER BY datetime) <= 2
 ```
 
-##### Issue 4303
+### Issue 4303
 
 The JDBC driver provides support for writing data into ATSD using INSERT and UPDATE statements. These statements are parsed by the driver into network commands which are inserted into the database with the Data API [command](../../api/data/ext/command.md) method.
 

@@ -159,5 +159,5 @@ This applies to derived series which will be placed into the same column along w
 
 Examples:
 
-* https://apps.axibase.com/chartlab/6e37edc8/2/
-* https://apps.axibase.com/chartlab/1b8d6e3f/1/
+* [ChartLab](https://apps.axibase.com/chartlab/6e37edc8/2/)
+* [ChartLab](https://apps.axibase.com/chartlab/1b8d6e3f/1/)

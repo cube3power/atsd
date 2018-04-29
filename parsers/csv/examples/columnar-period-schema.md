@@ -24,7 +24,8 @@ timestamp(cell(1, 1) + ' ' + cell(row, 1));
 ```
 
 Adhere to the following points to convert the CSV file into a tabular model:
-* For each cell in the cell range, starting with the 4th row and until the last row, and starting from the 2nd column and until the last column, iterating over EVEN columns (2 + step 2);
+
+* For each cell in the cell range, starting with the 4th row and until the last row, and starting from the 2nd column and until the last column, iterating over EVEN colum `(2 + step 2)`;
 * Set the metric name to a constant (temperature);
 * Set the entity name to the value of the cell located in the 2nd row in the current column;
 * Set the tag 'status' to the value of the cell located in the current row to the right of the current column (column + 1);

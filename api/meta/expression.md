@@ -1,4 +1,3 @@
-
 # Expression Syntax
 
 ## Variables

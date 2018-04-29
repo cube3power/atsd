@@ -3,6 +3,7 @@
 List metrics starting with `nmon` and with tag `table` starting with `CPU`
 
 ## Request
+
 ### URI
 
 ```elm

@@ -27,7 +27,7 @@ STORAGE_FINDERS = (
 
 ATSD Storage Finder and ATSD Storage Finder Virtual can be used together (their settings can be combined in `ATSD_CONF`).
 
-#### ATSD Storage Finder Default
+## ATSD Storage Finder Default
 
 ```python
 STORAGE_FINDERS = (
@@ -52,7 +52,7 @@ For example:
 
 `'_other'`
 
-##ATSD Storage Finder `local_settings.py` example:##
+## ATSD Storage Finder `local_settings.py` example
 
 ```python
 ATSD_CONF = {
@@ -80,7 +80,7 @@ ATSD_CONF = {
 }
 ```
 
-#### ATSD Storage Finder Virtual
+## ATSD Storage Finder Virtual
 
 ```python
 STORAGE_FINDERS = (
@@ -104,33 +104,27 @@ Under `views`, use `type` to control which folders and the order you would like 
 |  `'type': 'aggregator'`  |  Node representing statistics.  |
 |  `'type': 'period'`  |  Node representing statistics periods.  |
 
-##`local_settings.py` example with "views":##
+## `local_settings.py` example with "views"
 
 ```python
 ATSD_CONF = {
- 
+
     'views': {'DistributedGeoMon': [{'type': 'entity folder',
                                      'value': [{'com.axibase'  : 'com.axibase'},
                                                {'com.axibase.*': 'com.axibase.*'}]},
- 
                                     {'type': 'entity',
                                      'value': ['*']},
- 
                                     {'type': 'tag',
                                      'value': ['path'],
                                      'global': [{'type': 'metric',
                                                  'value': ['distgeomon.connect-dns']}]},
- 
                                     {'type': 'tag',
                                      'value': ['geo-target', 'geo-source']},
- 
                                     {'type': 'metric folder',
                                      'value': [{'distgeomon.response*': 'response'},
                                                {'distgeomon.connect*' : 'connect'}]},
- 
                                     {'type': 'metric',
                                      'value': ['*']},
- 
                                     {'type': 'interval',
                                      'value': [{'count': '30',
                                                 'unit': 'minute',
@@ -141,15 +135,12 @@ ATSD_CONF = {
                                                {'count': '1',
                                                 'unit': 'day',
                                                 'label': '1 day'}]},
- 
                                     {'type': 'collection',
                                      'value': [{'type': 'aggregator',
                                                 'value': [{'detail': 'Detail'}],
                                                 'is leaf': True},
- 
                                                {'type': 'const',
                                                 'value': ['Aggregate']}]},
- 
                                     {'type': 'aggregator',
                                      'value': [{'count'        : 'Count'},
                                                {'min'          : 'Minimum'},
@@ -159,7 +150,6 @@ ATSD_CONF = {
                                                {'sum'          : 'Sum'},
                                                {'percentile_75': 'Percentile 75%'},
                                                {'delta'        : 'Delta'}]},
- 
                                     {'type': 'period',
                                      'value': [{'count': '30',
                                                 'unit': 'second',
@@ -175,7 +165,7 @@ ATSD_CONF = {
 
 ![](resources/00.png)
 
-##### "views" example breakdown
+## "views" example breakdown
 
 ![](resources/01.png)
 
@@ -259,7 +249,6 @@ List of aggregation intervals.
  'value': [{'type': 'aggregator',
             'value': [{'detail': 'Detail'}],
             'is leaf': True},
- 
            {'type': 'const',
             'value': ['Aggregate']}]}
 ```

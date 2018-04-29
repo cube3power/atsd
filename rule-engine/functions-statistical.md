@@ -289,6 +289,7 @@ Same as `slope()`.
 ```javascript
   slope_per_minute() double
 ```
+
 Same as `slope_per_second()/60`.
 
 ### `slope_per_hour`

@@ -1,6 +1,6 @@
 # Weekly Change Log: May 01, 2017 - May 07, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                                                             |
 |------|-------------|---------|----------------------
@@ -11,7 +11,7 @@
 | 4105 | sql | Bug | Fixed an error causing missing rows in [sub-queries](../../sql/examples/filter-by-date.md#query-using-between-subquery) containing the `WHERE` condition.|
 | 4097 | UI | Bug | Fixed a concurrency problem causing multiple queries to be terminated with a single cancel request. |
 
-### Collector
+## Collector
 
 | Issue| Category    | Type    | Subject                                                             |
 |------|-------------|---------|----------------------

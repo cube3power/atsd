@@ -1,10 +1,9 @@
 # Monitoring Metrics using JMX
 
 JMX tools can be used to fetch ATSD metrics, for example:
-[JConsole](https://docs.oracle.com/javase/7/docs/technotes/guides/management/jconsole.html "jconsole"), [jmxterm](http://wiki.cyclopsgroup.org/jmxterm/ "jmxterm"), or
-any other application that support JMX.
+[JConsole](https://docs.oracle.com/javase/7/docs/technotes/guides/management/jconsole.html "jconsole"), [jmxterm](http://wiki.cyclopsgroup.org/jmxterm/ "jmxterm"), or any other application that support JMX.
 
-#### Setup JMX in ATSD
+## Setup JMX in ATSD
 
 In `/etc/hosts` change `127.0.1.1 atsd_hostname` to `atsd_ip atsd_hostname`
 where `atsd_ip` is the ip v4 address of the ATSD host.
@@ -33,11 +32,9 @@ Restart ATSD:
  /opt/atsd/bin/atsd-tsd.sh start
 ```
 
-Now you can access ATSD on
-`service:jmx:rmi:///jndi/rmi://atsd_ip:1099/atsd`, with the
-username and password established earlier in the guide.
+Now you can access ATSD on `service:jmx:rmi:///jndi/rmi://atsd_ip:1099/atsd`, with the username and password established earlier in the guide.
 
-#### Connect to JMX Server with jvisualvm
+## Connect to JMX Server with `jvisualvm`
 
 Uncomment JMX settings in the `/opt/atsd/atsd/conf/server.properties`
 file:
@@ -45,5 +42,4 @@ file:
 * set `jmx.host` to local ip
 * set `jmx.access.file` and `jmx.password.file`
 
-Now you should be able to access ATSD from a remote machine
-on: `service:jmx:rmi:///jndi/rmi://{ip}:1099/jmxrmi`
+Now you should be able to access ATSD from a remote machine on: `service:jmx:rmi:///jndi/rmi://{ip}:1099/jmxrmi`

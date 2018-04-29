@@ -355,7 +355,7 @@ series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
 }]
 ```
 
-**Response**
+Response:
 
 ```ls
 | datetime         | value |
@@ -391,7 +391,7 @@ series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
 }]
 ```
 
-**Response**
+Response:
 
 ```ls
 | datetime         | value |
@@ -418,7 +418,7 @@ series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
 }]
 ```
 
-**Response**
+Response:
 
 ```ls
 | datetime         | value |
@@ -445,7 +445,7 @@ series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
 }]
 ```
 
-**Response**
+Response:
 
 ```ls
 | datetime         | value |
@@ -472,7 +472,7 @@ series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
 }]
 ```
 
-**Response**
+Response:
 
 ```ls
 | datetime         | value |
@@ -499,7 +499,7 @@ series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
 }]
 ```
 
-**Response**
+Response:
 
 ```ls
 | datetime         | value |

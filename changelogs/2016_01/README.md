@@ -1,6 +1,6 @@
 # Weekly Change Log: November 14-20, 2016
 
-### ATSD
+## ATSD
 
 | Issue     | Category        | Type     | Subject                                                          |
 |-----------|-----------------|----------|----------------------------------------------------------------------------|
@@ -16,7 +16,7 @@
 | 3557      |   sql           | Bug      | Fixed incorrect empty string handling by the [`ISNULL`](../../sql#isnull) function. |
 | 3502      |   sql           | Bug      | Replaced CSV generator to speed up response generation for SQL queries executed via an [../sql`](../../sql/api.md) endpoint. |
 
-### Collector
+## Collector
 
 | Issue     | Category        | Type     | Subject                                                                    |
 |-----------|-----------------|----------|----------------------------------------------------------------------------|

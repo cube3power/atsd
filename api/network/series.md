@@ -30,9 +30,7 @@ series d:{iso-date} e:{entity} t:{tag-1}={val-1} m:{metric-1}={number} m:{metric
 | a         | boolean         | Text append flag. If set to `true`, it causes the text value to be appended to the previous text value with the same timestamp. |
 
 > At least one numeric metric `m:` or text metric `x:` is required.
-
 > If the numeric observation was not specified for the text value with the same metric name, it is set to `NaN` (not a number).
-
 > If the time fields `d, s, and ms` are omitted, the values are inserted with the current server time.
 
 ### ABNF Syntax

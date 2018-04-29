@@ -1,6 +1,6 @@
 # Weekly Change Log: November 21-27, 2016
 
-### ATSD
+## ATSD
 
 | Issue     | Category        | Type     | Subject                                                                    |
 |-----------|-----------------|----------|----------------------------------------------------------------------------|
@@ -14,7 +14,7 @@
 |  2369     | portal          |  Support | Implemented Docker container portals: docker host overview, docker host counter breakdown, and docker container detail. |
 |  1924     | forecast        |  Feature | Added new options for the `Period` setting in the Forecast Settings editor. |
 
-### Charts
+## Charts
 
 |Issue     | Category        | Type      | Subject                                                                    |
 |----------|-----------------|---------- |----------------------------------------------------------------------------|
@@ -22,7 +22,7 @@
 |  2454    | property        |   Feature | Implemented `format-numbers` and `format-headers` settings.|
 |  2335    | property        |   Bug     | Refactored configuration so that the `entity` setting can be specified in json and simplified no-json syntax. |
 
-### Collector
+## Collector
 
 | Issue     | Category        | Type     | Subject                                                                    |
 |-----------|-----------------|----------|----------------------------------------------------------------------------|

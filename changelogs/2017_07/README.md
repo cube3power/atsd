@@ -1,6 +1,6 @@
 # Weekly Change Log: February 13 - February 19, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category        | Type    | Subject                                                                              |
 |------|-----------------|---------|--------------------------------------------------------------------------------------|
@@ -9,14 +9,14 @@
 | 3898 | rule engine     | Bug     | Fixed incorrect error validation of user-defined `column` aliases.                                                      |
 | [3889](#issue-3889) | rule engine     | Bug     | Fixed `entity.label` field not accessible in filter [`expressions`](../../rule-engine/filters.md).                                                                 |
 
-### Collector
+## Collector
 
 | Issue| Category        | Type    | Subject                                                                              |
 |------|-----------------|---------|--------------------------------------------------------------------------------------|
 | 3895 | socrata         | Bug     | Added heuristics to automatically classify and ignore fields in Socrata data sources. |
 | 3891 | docker          | Bug     | Fixed missing `entity` command for a new container when 'Life Cycle event monitoring' is disabled.   |
 
-### Charts
+## Charts
 
 | Issue| Category        | Type    | Subject                                                                              |
 |------|-----------------|---------|--------------------------------------------------------------------------------------|
@@ -25,8 +25,6 @@
 | [3897](#issue-3897) | table      | Feature | Added an `auto-height` setting.                                                                |
 | [3896](#issue-3896) | table      | Feature | Added a setting to hide table headers.                                                   |
 | [3791](#issue-3791) | table      | Bug     | Fixed slider un-focus behavior after data update.                |
-
-## ATSD
 
 ### Issue 3919
 
@@ -62,8 +60,6 @@ Title: "ORO.csv"
 The `entity.label` parameter is now supported in the rule filter.
 
 ![](Images/Figure3.png)
-
-## Charts
 
 ### Issue 3921
 

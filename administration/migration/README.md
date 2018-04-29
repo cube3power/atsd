@@ -478,28 +478,26 @@ In case of other errors, review job logs for the application ID displayed above:
 
 ### Migrate Records from Backup Tables
 
-1. Migrate data from the `'atsd_delete_task_backup'` table by launching the task and confirming its execution.
+Step 1. Migrate data from the `'atsd_delete_task_backup'` table by launching the task and confirming its execution.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DeleteTaskMigration -m 2
 ```
 
 ```txt
-...
 17/08/01 10:14:27 INFO mapreduce.Job: Job job_1501581371115_0001 completed successfully
 17/08/01 10:14:27 INFO mapreduce.Job: Counters: 62
     File System Counters
         FILE: Number of bytes read=6
-...
 ```
 
-2. Migrate data from the 'atsd_forecast' table.
+Step 2. Migrate data from the 'atsd_forecast' table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.ForecastMigration -m 2
 ```
 
-3. Migrate data from the 'atsd_li' table.
+Step 3. Migrate data from the 'atsd_li' table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.LastInsertMigration -m 2
@@ -520,13 +518,13 @@ Delete the diagnostics folder manually:
 /opt/atsd/hadoop/bin/hdfs dfs -rm -r /user/axibase/copytable
 ```
 
-4. Migrate data to the 'atsd_metric' table.
+Step 4. Migrate data to the 'atsd_metric' table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.MetricMigration -m 2
 ```
 
-5. Migrate data to the 'atsd_d' table.
+Step 5. Migrate data to the 'atsd_d' table.
 
 ```sh
 /opt/atsd/hadoop/bin/yarn com.axibase.migration.mapreduce.DataMigrator -m 2
@@ -542,9 +540,9 @@ The `DataMigrator` job may take a long time to complete. You can monitor the job
 
 The Yarn interface will be automatically terminated once the `DataMigrator` is finished.
 
-6. Migration is now complete.
+Step 6. Migration is now complete.
 
-7. Stop Map-Reduce servers.
+Step 7. Stop Map-Reduce servers.
 
 ```sh
 /opt/atsd/hadoop/sbin/mr-jobhistory-daemon.sh --config /opt/atsd/hadoop/etc/hadoop/ stop historyserver

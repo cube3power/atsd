@@ -1,6 +1,6 @@
 # Weekly Change Log: January 16 - January 22, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category        | Type    | Subject                                                                             |
 |------|-----------------|---------|-------------------------------------------------------------------------------------|
@@ -14,21 +14,19 @@
 | [3691](#issue-3691) | rule engine     | Feature | Added functions to convert string date to a date object or to epoch time. |
 | [3680](#issue-3680) | statistics      | Feature | Created a page to show series characteristics, such as value and interval statistics and histograms. |
 
-### Collector
+## Collector
 
 | Issue| Category        | Type    | Subject                                                                             |
 |------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [3784](#issue-3784)| jdbc            | Feature | Added the [`${SPLIT_CONDITION}`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#job-configuration) placeholder support in the JDBC job to allow fetching large result sets in multiple iterations. |
 | 3656 | socrata         | Bug     | Refactored the Socrata job so that a dataset with more than 100,000 rows or more than 100Mb can be processed without an OutOfMemory error. |
 
-### Charts
+## Charts
 
 | Issue| Category        | Type    | Subject                                                                             |
 |------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [2528](#issue-2528) | property        | Feature | Implemented support for the `column-label-format` setting to transform column headers. |
 | [1926](#issue-1926) | box             | Feature | Added mouse-over tooltips for box charts. |
-
-## ATSD
 
 ### Issue 3797
 
@@ -180,8 +178,6 @@ The following characteristics are available.
 
   ![Figure 7](Images/Figure7.png)
 
-## Collector
-
 ### Issue 3784
 
 If a SQL query returns millions of rows, it may be useful to split it into multiple queries. This can be accomplished by including `${SPLIT_CONDITION}` in the query text and specifying multiple split conditions, one per line.
@@ -222,8 +218,6 @@ WHERE tag LIKE 'AB%'
 The last condition is typically included to select all remaining rows other than those fetched with previous conditions.
 
 ![Figure 8](Images/Figure8.png)
-
-## Charts
 
 ### Issue 2528
 

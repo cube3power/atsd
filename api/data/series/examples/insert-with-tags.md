@@ -1,4 +1,4 @@
-#  Series Insert With Tags
+# Series Insert With Tags
 
 ## Request
 

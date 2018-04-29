@@ -1,6 +1,6 @@
 # Weekly Change Log: March 13 - March 19, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
@@ -20,7 +20,7 @@
 | 3838 | sql | Bug | Add support for column alias in `ORDER BY` clause |
 | 3963 | client | Bug | Replace `last` with `cache` parameter in series query method within the Java API client. |
 
-### Collector
+## Collector
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
@@ -28,14 +28,12 @@
 | 3992 | socrata | Bug | Apply encoding to JSON output. |
 | 4004 | socrata | Bug | Handle optional request parameters in the URL wizard. |
 
-### Charts
+## Charts
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | [4006](#issue-4006) | widget-settings | Feature | Add fixed-fraction formatter. |
 | [3997](#issue-3997) | time-chart | Bug | Change legend style for forecast series. |
-
-### ATSD
 
 ### Issue 3658
 
@@ -86,15 +84,11 @@ LIMIT 1
 
 See the [guide](https://redash.io/help/data-sources/axibase_tsd.html) on how to integrate Redash with ATSD.
 
-### Collector
-
 ### Issue 4001
 
 Replacement tables are deprecated. Similar functionality is provided by the `LOOKUP` function.
 
 ![](Images/Figure1.png)
-
-### Charts
 
 ### Issue 4006
 

@@ -1,6 +1,6 @@
 # Weekly Change Log: January 23 - January 29, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
@@ -11,7 +11,7 @@
 | 3808 | metric      | Bug     | Corrected a defect where an incorrect `NaN` count was shown on the Series Statistics page. |
 | [3742](#issue-3742) | UI          | Feature | Added a `Text Column` button to the UI Export form. |
 
-### Collector
+## Collector
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
@@ -32,8 +32,6 @@
 | 3793 | socrata     | Bug     | Added heuristics to the Socrata job. |
 | [3772](#issue-3772) | Socrata     | Feature | Created new Socrata job to query [Socrata](https://socrata.com/) data. |
 
-## ATSD
-
 ### Issue 3742
 
 A `Text Column` button was added to the user interface export form. By enabling this button, a text column will be displayed for data exported in CSV and HTML formats.
@@ -42,8 +40,6 @@ Now, a [text value](../../api/network/series.md#series-tags-text-value-messages)
 [Issue 3480](../../changelogs/2017_02#issue-3480) for more information.
 
 ![Figure 1](Images/Figure1.png)
-
-## Collector
 
 ### Issue 3818
 

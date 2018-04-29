@@ -1,6 +1,7 @@
 # Weekly Change Log: May 15, 2017 - May 21, 2017
 
-### ATSD
+## ATSD
+
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4207 | core | Bug | Add missing `HOST` tags to all internal ATSD metrics.|
@@ -19,9 +20,7 @@
 | 4132 | collectd | Feature | Force [`collectd`](https://github.com/axibase/atsd-collectd-plugin) to use a short hostname instead of a Fully Qualified Domain Name when FQDN is `localhost`.  |
 | 4115 | UI | Bug | Fix localization issue with submit buttons without the value attribute. |
 
-#### ATSD
-
-##### Issue 4196
+### Issue 4196
 
 Sample curl command:
 
@@ -29,11 +28,11 @@ Sample curl command:
  curl -k -X POST --data-binary @command.txt.gz http://atsd_hostname:8443/api/v1/command --header "Content-Encoding:gzip" --header "Content-Type:text/plain;charset=UTF-8"
 ```
 
-##### Issue 4184
+### Issue 4184
 
 ![4184](Images/4184.png)
 
-##### Issue 4179
+### Issue 4179
 
 In SQL Console > Query Statistics
 

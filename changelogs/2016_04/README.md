@@ -1,6 +1,6 @@
 # Weekly Change Log: December 5-11, 2016
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                         |
 |------|-------------|---------|---------------------------------|
@@ -26,8 +26,6 @@
 |------|-------------|---------|---------------------------------|
 | [3664](#issue-3664) | docker      | Feature | Added new Docker container metrics for process count monitoring: `docker.process.all` and `docker.process.filtered`. |
 | [3559](#issue-3559) | jdbc        | Feature | Extended JDBC job so that PI server `PIPoint` metadata can be offloaded into ATSD. |
-
-## ATSD
 
 ### Issue 3690
 

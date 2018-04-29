@@ -1,6 +1,6 @@
 # Weekly Change Log: December 25, 2016 - January 08, 2017
 
-### ATSD
+## ATSD
 
 | Issue         | Category        | Type | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
@@ -25,7 +25,7 @@
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [3743](#issue-3743)          | pi              | Feature | Developed PI Server emulator for `picomp2` and `pipoint2` tables.                   |
 
-### Charts
+## Charts
 
 | Issue         | Category        | Type | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
@@ -34,10 +34,7 @@
 | [3636](#issue-3636)          | data-loading    | Bug     | Series not displayed if requested for the entity group or with the entity expression.                                         |
 | [3143](#issue-3143)          | table           | Bug     | Value and time columns of series with shorter periods are not displayed.         |
 
-## ATSD
-
 ### Issue 3756
--------------
 
 The SQL executor was fixed to return correct results for a query containing a tag filter on a joined table (`t64o.tags.city = 'New York'`).
 
@@ -52,7 +49,6 @@ GROUP BY t1.tags, t1.period(1 year)
 ```
 
 ### Issue 3751
--------------
 
 An error for `entityExpression` was addressed in [series](../../api/data/series/query.md) query method when `isEmpty()` was specified with brackets.
 
@@ -67,7 +63,6 @@ An error for `entityExpression` was addressed in [series](../../api/data/series/
 ```
 
 ### Issue 3749
--------------
 
 The SQL parser was fixed to allow for the [`LOCATE`](../../sql#string-functions) function to be used in the `WHERE` clause.
 
@@ -79,7 +74,6 @@ WHERE datetime > now - 1 * minute
 ```
 
 ### Issue 3747
--------------
 
 The [`CAST`](../../sql#cast) function now accepts output of the [`date_format`](../../sql#time-formatting-functions) function as the argument, for example:
 
@@ -94,7 +88,6 @@ GROUP BY date_format(time, 'EEE HH')
 ```
 
 ### Issue 3746
--------------
 
 The `u` pattern was updated to return a numeric value representing the [day number](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html) within a week (1 = Monday, ..., 7 = Sunday).
 
@@ -108,7 +101,6 @@ GROUP BY date_format(time, 'u')
 ```
 
 ### Issue 3741
--------------
 
 [`JOIN USING ENTITY`](../../sql#join-with-using-entity) didn't merge rows as expected if tag names had the same names but different values. For example, the same tag `tag1` with different values `a` and `b`.
 
@@ -124,7 +116,6 @@ SELECT *
 ```
 
 ### Issue 3740
--------------
 
 The API processor was fixed to return the history of the `text` field for versioned metrics.
 
@@ -172,7 +163,6 @@ series e:e-vers-text d:2016-12-22T00:00:00Z x:vers-text-m=hello2
 ```
 
 ### Issue 3738
--------------
 
 The `ABS()` function produced an error when an expression was submitted:
 
@@ -183,7 +173,6 @@ WHERE datetime > previous_minute
 ```
 
 ### Issue 3721
--------------
 
 The `LIKE` operator was optimized to filter out series using the last insert table. The following query now provides similar performance such as for `tags.city = 'Philadelphia'`.
 
@@ -195,7 +184,6 @@ WHERE entity = 'mr8w-325u'
 ```
 
 ### Issue 3711
--------------
 
 The lexer was upgraded to resolve slow parsing of queries such as shown below:
 
@@ -211,7 +199,6 @@ FROM 'testmetric'
 ```
 
 ### Issue 3695
--------------
 
 A defect with the `GROUP BY` and `JOIN` clauses was fixed to return results for the following queries:
 
@@ -225,7 +212,6 @@ GROUP BY tot.period(1 year)
 ```
 
 ### Issue 3661
--------------
 
 The `CAST` function transforms a string into a number which can then be used in arithmetic expressions.
 
@@ -240,10 +226,7 @@ FROM disk.stats.used
   WHERE datetime > current_hour
 ```
 
-## Collector
-
 ### Issue 3743
--------------
 
 Released an initial version of the PI Server emulator, which returns results for queries against the virtual `picomp2` and `pipoint2` tables.
 The emulator operates via the ATSD JDBC driver (not the PI JDBC driver).
@@ -253,15 +236,11 @@ SELECT *
 FROM pipoint..pipoint2
 ```
 
-## Charts
-
 ### Issue 3754
--------------
 
-Fixed an issue were columns were not being created for series with a statistic and wildcard match: https://apps.axibase.com/chartlab/506da7c3
+Fixed an issue were columns were not being created for series with a statistic and wildcard match: [ChartLab](https://apps.axibase.com/chartlab/506da7c3)
 
 ### Issue 3654
--------------
 
 Added support for meta fields in label-format (and series tooltips) so that `meta.metric.tag` and `meta.entity.tag` can be replaced with metadata values, loaded from the server.
 
@@ -270,11 +249,9 @@ Meta-data examples are documented [here](https://axibase.com/products/axibase-ti
 [ChartLab](https://apps.axibase.com/chartlab/506da7c3)
 
 ### Issue 3636
--------------
 
-Updated charts to display series if requested for an entity group or with an entity expression: https://apps.axibase.com/chartlab/480bd642
+Updated charts to display series if requested for an entity group or with an entity expression: [ChartLab](https://apps.axibase.com/chartlab/480bd642)
 
 ### Issue 3143
--------------
 
-Fixed an issue where the value and time columns of series with shorter period were not being displayed: https://apps.axibase.com/chartlab/adce7a9c
+Fixed an issue where the value and time columns of series with shorter period were not being displayed: [ChartLab](https://apps.axibase.com/chartlab/adce7a9c)

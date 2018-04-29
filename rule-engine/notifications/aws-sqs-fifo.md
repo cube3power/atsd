@@ -1,4 +1,4 @@
-## FIFO Queue Type Example
+# FIFO Queue Type Example
 
 Create a `AWS SQS` notification with `Queue Type = FIFO`, for example:
 

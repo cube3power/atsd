@@ -30,8 +30,8 @@ In addition, **Invalid Value Action** may be set to `SET_VERSION_STATUS` to init
 
 To insert versioning fields along with the modified value, use the reserved tags:
 
- * `$version_source`
- * `$version_status`
+* `$version_source`
+* `$version_status`
 
 These tags will be converted to the corresponding [versioning fields](#versioning-fields). Note that `$version_status` tag overrides 'invalid' value set by `SET_VERSION_STATUS` trigger.
 
@@ -76,6 +76,7 @@ To apply the same versioning fields to all records in a CSV file, specify them i
 $version_status={status}
 $version_source={source}
 ```
+
 ![](resources/2.png)
 
 > Note:
@@ -120,6 +121,7 @@ Examples:
 ```ls
     version_source LIKE 'col*'
 ```
+
     ![](resources/5.png)
 
 * Match using date function
@@ -127,6 +129,7 @@ Examples:
 ```ls
     version_time > date('2018-03-21 10:41:00') AND version_time < date('now')
 ```
+
     ![](resources/6.png)
 
 * Match using exact value
@@ -134,6 +137,7 @@ Examples:
 ```ls
     version_status = 'OK'
 ```
+
     ![](resources/7.png)
 
 * Display only modified values

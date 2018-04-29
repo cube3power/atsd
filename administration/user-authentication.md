@@ -54,9 +54,9 @@ The following password rules apply to **Local** accounts:
 
 * Password can contain the following characters:
 
-    - Unicode character categorized as an alphanumeric character.
+  * Unicode character categorized as an alphanumeric character.
 
-    - Special characters:
+  * Special characters:
 
 ```txt
       ~!@#$%^&*_-+=`|\(){}[]:;”‘<>,.?/"'
@@ -77,11 +77,10 @@ The following password rules apply to **Local** accounts:
 * User passwords for Local accounts are stored as hashcodes. As a result, recovering a lost password is not supported.
 
 * To reset the password for a user account:
-
-    - Open the `server.properties` file.
-    - Add `user.password.reset.username={username}` and `user.password.reset.password={new-password}` settings and save the file.
-      - Restart ATSD.
-      - Remove the above settings from the `server.properties` file to prevent password resets on subsequent restarts.
+  * Open the `server.properties` file.
+  * Add `user.password.reset.username={username}` and `user.password.reset.password={new-password}` settings and save the file.
+    * Restart ATSD.
+    * Remove the above settings from the `server.properties` file to prevent password resets on subsequent restarts.
 
 * If the account being reset is configured as LDAP type, the type will be changed to Local.
 

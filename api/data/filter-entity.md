@@ -27,31 +27,24 @@ Supported fields:
 ### Supported Functions
 
 * Property Functions
-
-   * [`property(string s)`](../../rule-engine/functions-property.md#property)
-   * [`property_values(string s)`](../../rule-engine/functions-property.md#property_values), access to returned objects is not supported
-   * [`properties`](./series/examples/query-entity-expr-entity-properties.md#description)
-
+  * [`property(string s)`](../../rule-engine/functions-property.md#property)
+  * [`property_values(string s)`](../../rule-engine/functions-property.md#property_values), access to returned objects is not supported
+  * [`properties`](./series/examples/query-entity-expr-entity-properties.md#description)
 * Lookup Functions
-
-   * [`entity_tags(string e)`](../../rule-engine/functions-lookup.md#entity_tags)
-   * [`collection`](../../rule-engine/functions-lookup.md#collection)
-
+  * [`entity_tags(string e)`](../../rule-engine/functions-lookup.md#entity_tags)
+  * [`collection`](../../rule-engine/functions-lookup.md#collection)
 * Collection Functions
-
-   * [`collection`](../../rule-engine/functions-collection.md#collection)
-   * [`IN`](../../rule-engine/functions-collection.md#in)
-   * [`likeAny`](../../rule-engine/functions-collection.md#likeany)
-   * [`matches`](../../rule-engine/functions-collection.md#matches)
-   * [`contains`](../../rule-engine/functions-collection.md#contains)
-   * [`size`](../../rule-engine/functions-collection.md#size)
-   * [`isEmpty`](../../rule-engine/functions-collection.md#isempty)
-
+  * [`collection`](../../rule-engine/functions-collection.md#collection)
+  * [`IN`](../../rule-engine/functions-collection.md#in)
+  * [`likeAny`](../../rule-engine/functions-collection.md#likeany)
+  * [`matches`](../../rule-engine/functions-collection.md#matches)
+  * [`contains`](../../rule-engine/functions-collection.md#contains)
+  * [`size`](../../rule-engine/functions-collection.md#size)
+  * [`isEmpty`](../../rule-engine/functions-collection.md#isempty)
 * Text Functions
-
-   * [`upper`](../../rule-engine/functions-text.md#upper)
-   * [`lower`](../../rule-engine/functions-text.md#lower)
-   * [`list`](../../rule-engine/functions-text.md#list)
+  * [`upper`](../../rule-engine/functions-text.md#upper)
+  * [`lower`](../../rule-engine/functions-text.md#lower)
+  * [`list`](../../rule-engine/functions-text.md#list)
 
 ## Examples
 

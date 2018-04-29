@@ -67,4 +67,5 @@ curl https://atsd_hostname:8443/api/v1/alerts/update \
 ```
 
 ## Additional Examples
+
 * [Multiple Id Update](examples/update/alerts-update-multiple-id.md)

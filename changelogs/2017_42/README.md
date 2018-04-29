@@ -85,7 +85,7 @@ GET /api/v1/search?query=inflation*&limit=2&metricTags=*&metricFields=units,data
       {
         "units": "million",
         "dataType": "LONG"
-      },            
+      },
       {
         "pricebase": "Current prices",
         "seasonaladjustment": "Seasonally Adjusted",
@@ -95,7 +95,7 @@ GET /api/v1/search?query=inflation*&limit=2&metricTags=*&metricFields=units,data
       "U.S. FED",
       {
         "timeZone": "US/Eastern"
-      },                
+      },
       {
         "source": "FRED"
       },
@@ -110,7 +110,7 @@ GET /api/v1/search?query=inflation*&limit=2&metricTags=*&metricFields=units,data
       {
         "units": "million",
         "dataType": "LONG"
-      },            
+      },
       {
         "pricebase": "Current prices",
         "seasonaladjustment": "Seasonally Adjusted",
@@ -120,7 +120,7 @@ GET /api/v1/search?query=inflation*&limit=2&metricTags=*&metricFields=units,data
       "U.S. FED",
       {
         "timeZone": "US/Eastern"
-      },                
+      },
       {
         "source": "FRED"
       },

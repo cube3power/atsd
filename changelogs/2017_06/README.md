@@ -1,6 +1,6 @@
 # Weekly Change Log: February 6 - February 12, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category       | Type    | Subject                                                                              |
 |------|----------------|---------|--------------------------------------------------------------------------------------|
@@ -22,7 +22,7 @@
 | 3844 | sql            | Bug     | The [`ISNULL`](../../sql#join) function is now allowed to be a part of expression.               |
 | 3508 | log_aggregator | Feature | Added ability to limit maximum event message size.                                          |
 
-### Collector
+## Collector
 
 | Issue| Category       | Type    | Subject                                                                              |
 |------|----------------|---------|--------------------------------------------------------------------------------------|
@@ -32,15 +32,13 @@
 | [3864](#issue-3864) | socrata        | Feature | Added a summary table displayed in `Test` mode.                                            |
 | [3859](#issue-3859) | socrata        | Feature | Added a URL wizard.                                                                   |
 
-### Charts
+## Charts
 
 | Issue| Category       | Type    | Subject                                                                              |
 |------|----------------|---------|--------------------------------------------------------------------------------------|
 | 3908 | table          | Bug     | Fixed row sorting when conditional 'display: none' style is used.                                      |
 | [3901](#issue-3901) | portal    | Support | Added ability to hide rows if no alert is raised for all metrics in a row.          |
 | [3792](#issue-3792) | box       | Feature | Implemented class 'Metro'.                                                            |
-
-## ATSD
 
 ### Issue 3909
 
@@ -51,9 +49,8 @@ The `Discard Previous Values` option allows you to discard commands timestamped 
 
 ![](Images/Figure_02.png)
 
-## Collector
-
 ### Issue 3899
+
 An example for launching a `Socrata` job can be found in [this tutorial](https://github.com/axibase/atsd-use-cases/blob/master/SocrataPython/README.md).
 
 ### Issue 3864

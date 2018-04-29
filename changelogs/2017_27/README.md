@@ -1,6 +1,6 @@
 # Weekly Change Log: July 03, 2017 - July 09, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
@@ -15,15 +15,13 @@
 | 4117 | SQL | Bug | Fixed a defect with some [metric columns](../../sql/README.md#metric-columns) not accessible in [`WHERE`](../../sql#where-clause)/[`HAVING`](../../sql#having-filter) filters, for example `WHERE metric.units = 'Celcius'`. |
 | 3888 | SQL | Bug | Fixed a defect with some [entity columns](../../sql/README.md#entity-columns) not accessible in [`WHERE`](../../sql#where-clause)/[`HAVING`](../../sql#having-filter) filters, for example `WHERE entity.label = 'SVL'`. |
 
-### ATSD
-
-##### Issue 4320
+### Issue 4320
 
 ![](Images/4320.png)
 
 > Live Search Search
 
-##### Issue 4226
+### Issue 4226
 
 > The `COALESCE` function returns the first argument that is not `NULL` or `NaN`.
 

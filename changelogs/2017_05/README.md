@@ -1,6 +1,6 @@
 # Weekly Change Log: January 30 - February 5, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
@@ -19,7 +19,7 @@
 | 3841 | sql         | Bug     | [`CAST`](../../sql#cast) expression in `WHERE` condition changes results. |
 | 3840 | sql         | Bug     | [`ORDER BY`](../../sql#ordering-1) not applied when using column alias. |
 
-### Collector
+## Collector
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
@@ -30,7 +30,7 @@
 | 3848 | socrata     | Bug     | Extract command time from the built-in `updated_at` field.|
 | 3826 | socrata     | Feature | Add support for series [annotation](../../api/network/series.md#series-tags-text-value-messages) (x:) field. |
 
-### Charts
+## Charts
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|

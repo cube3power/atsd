@@ -1,6 +1,6 @@
 # Weekly Change Log: March 26 - April 2, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
@@ -18,7 +18,7 @@
 | 3856 | sql | Feature | Support implicit conversion to number in the `LAST` and `FIRST` aggregation functions. |
 | [2911](#issue-2911) | UI | Feature | Show user-specified parameters on the `Admin: CSV Tasks` page. |
 
-### Collector
+## Collector
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
@@ -30,13 +30,11 @@
 | 3987 | socrata | Bug | Add heuristics to automatically classify and ignore fields in Socrata data sources. |
 | 3973 | collection | Feature | Add the `URL` Item List type. |
 
-### Charts
+## Charts
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | [3850](#issue-3850) | widget-settings | Bug | Fix `end-time` calculation to increment month if it has fewer days than the current month. |
-
-## ATSD
 
 ### Issue 4050
 
@@ -153,8 +151,6 @@ LIMIT 10
 
 ![](Images/Figure1.png)
 
-## Collector
-
 ### Issue 4041
 
 ![](Images/Figure2.png)
@@ -164,8 +160,6 @@ LIMIT 10
 | Before | After |
 |--------|-------|
 |![](Images/Figure3.png) | ![](Images/Figure4.png) |
-
-## Charts
 
 ### Issue 3850
 

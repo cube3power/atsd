@@ -1,6 +1,6 @@
 # Weekly Change Log: April 25 - April 30, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                                                             |
 |------|-------------|---------|---------------------------------------------------------------------|
@@ -14,14 +14,12 @@
 | 4120 | sql | Bug | Speed up queries with `PREVIOUS` interpolation. |
 | 4069 | sql | Bug | Fix interpolation issues in queries with overlapping periods. |
 
-### Charts
+## Charts
 
 | Issue| Category    | Type    | Subject                                                             |
 |------|-------------|---------|---------------------------------------------------------------------|
 | 4126 | box | Feature | Add 'Last' to the tooltip in box chart |
 | 4122 | widget-settings | Bug | Remove colon suffix in labels when `add-meta` is used and `legend-last-value = false` |
-
-## ATSD
 
 ### Issue 4085a
 

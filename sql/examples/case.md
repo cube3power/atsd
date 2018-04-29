@@ -210,8 +210,6 @@ FROM "mpstat.cpu_busy"
 GROUP BY entity
 ```
 
-####
-
 ```ls
 | entity       | avg(value) | Utilization |
 |--------------|------------|-------------|

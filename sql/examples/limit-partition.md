@@ -1,8 +1,8 @@
-## LIMIT by Partition
+# LIMIT by Partition
 
 The last record in each partition can be retrieved by reverse ordering rows within each partition using the `ORDER BY time DESC` condition.
 
-### Query
+## Query
 
 ```sql
 SELECT entity, datetime, value
@@ -12,7 +12,7 @@ WHERE datetime >= '2016-06-18T12:00:00.000Z' AND datetime < '2016-06-18T12:00:30
   ORDER BY entity, time
 ```
 
-### Results
+## Results
 
 ```ls
 | entity       | datetime                 | value |

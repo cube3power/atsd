@@ -1,6 +1,7 @@
 # Insert Forecast
 
 ## Request
+
 ### URI
 
 ```elm

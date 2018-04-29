@@ -33,24 +33,30 @@ Save changes.
 
 ### Import job
 
-1. Select the **Jobs** tab in the top menu and click **Import**.
-2. Import the [`zookeeper-jmx`](resources/jobs.xml) job.
-3. Locate the `zookeeper-jmx` job in the list of jobs.
-4. Adjust the cron expression if required. For more information on cron expressions, see [Scheduling](https://github.com/axibase/axibase-collector/blob/master/scheduling.md).
-5. Select a target ATSD database for storing data.
-6. Click **Save**.
+Select the **Jobs** tab in the top menu and click **Import**.
+
+Import the [`zookeeper-jmx`](resources/jobs.xml) job.
+
+Locate the `zookeeper-jmx` job in the list of jobs.
+
+Adjust the cron expression if required. For more information on cron expressions, see [Scheduling](https://github.com/axibase/axibase-collector/blob/master/scheduling.md).
+
+Select a target ATSD database for storing data.
+
+Click **Save**.
 
 ![JMX_JOB](images/jmx_job_configuration.png)
 
-7. Test job configurations. Click on `zookeeper-series`.
+Test job configurations. Click on `zookeeper-series`.
+
 If needed, change default parameters.
 For more information on JMX configuration, see [JMX](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md). Click **Test**.
 
 ![](images/jmx_job_series_config.png)
 
-8. Repeat test for `zookeeper-properties`.
+Repeat test for `zookeeper-properties`.
 
-9. On the **JMX Job** page set **Enabled** checkbox and save the job.
+On the **JMX Job** page set **Enabled** checkbox and save the job.
 
 ### Check data collection
 
@@ -85,51 +91,52 @@ Go to **Metrics** page and verify that `jmx.zookeeper.*` metrics are available.
 
 ### Import rules
 
-1. Go to `Alerts -> Rules` and import [rules](resources/rules.xml) (set the flag in the **Auto-enable New Rules** check box).
-2. Check that rules were imported
+Go to `Alerts -> Rules` and import [rules](resources/rules.xml) (set the flag in the **Auto-enable New Rules** check box).
+
+Check that rules were imported
 
 ![](images/rules_list.png)
 
- * `Zookeeper cluster high latency` - alert opens when more than 50% of the nodes in a cluster have average latency greater than 100 ms in 3 minutes.
- * `Zookeeper cluster not serving requests` - alert opens when node status is `leaderelection`, which means that nodes cannot choose leader.
- * `Zookeeper dead cluster` - opens when no data was collected from cluster in 2 minutes.
- * `Zookeeper dead node` - opens when no data was collected from a single node in 2 minutes.
- * `Zookeeper dead nodes list` - same as single dead node, but checks all nodes by timer.
- * `Zookeeper node high latency` - opens when node average latency is above 100 in 3 consecutive measurements.
- * `Zookeeper rate metrics` - always open. Used for transform `packetsreceived` and `packetssent` metrics from cumulative to difference (packets per minute) metrics. Uses derived commands.
+* `Zookeeper cluster high latency` - alert opens when more than 50% of the nodes in a cluster have average latency greater than 100 ms in 3 minutes.
+* `Zookeeper cluster not serving requests` - alert opens when node status is `leaderelection`, which means that nodes cannot choose leader.
+* `Zookeeper dead cluster` - opens when no data was collected from cluster in 2 minutes.
+* `Zookeeper dead node` - opens when no data was collected from a single node in 2 minutes.
+* `Zookeeper dead nodes list` - same as single dead node, but checks all nodes by timer.
+* `Zookeeper node high latency` - opens when node average latency is above 100 in 3 consecutive measurements.
+* `Zookeeper rate metrics` - always open. Used for transform `packetsreceived` and `packetssent` metrics from cumulative to difference (packets per minute) metrics. Uses derived commands.
 
-3. Verify rule functionality. Stop one node and check that `Zookeeper dead node` and `Zookeeper dead nodes list` rule opens (it may take up to 2 minutes). Go to **Alerts -> Open Alerts** to see all open rules.
+Verify rule functionality. Stop one node and check that `Zookeeper dead node` and `Zookeeper dead nodes list` rule opens (it may take up to 2 minutes). Go to **Alerts -> Open Alerts** to see all open rules.
 
 ![](images/rule_dead_node_test.png)
 
- * To check `Zookeeper cluster not serving requests` rule stop more than 50% of all active nodes (in this case 2 of 3, if Zookeeper quorum is default).
+To check `Zookeeper cluster not serving requests` rule stop more than 50% of all active nodes (in this case 2 of 3, if Zookeeper quorum is default).
 
- * To check `Zookeeper dead cluster` stop all nodes.
+To check `Zookeeper dead cluster` stop all nodes.
 
- * To check `Zookeeper cluster high latency` send large latency values using `Data -> Data Entry` page. For example:
+To check `Zookeeper cluster high latency` send large latency values using `Data -> Data Entry` page. For example:
 
 ```ls
 series e:prod-zoo-host1 m:jmx.zookeeper.avgrequestlatency=1400 t:cluster=prod
 series e:prod-zoo-host2 m:jmx.zookeeper.avgrequestlatency=1500 t:cluster=prod
 ```
 
- * To check `Zookeeper node high latency` send large latency for single node 3 times using `Data Entry`
+To check `Zookeeper node high latency` send large latency for single node 3 times using `Data Entry`
 
 ```ls
 series e:prod-zoo-host1 m:jmx.zookeeper.avgrequestlatency=1400 t:cluster=prod
 ```
 
- * To check `Zookeeper rate metrics` go to `Metrics` and verify that metrics `jmx.zookeeper.packetsreceived.counter` and `jmx.zookeeper.packetssent.counter` are collecting.
+To check `Zookeeper rate metrics` go to `Metrics` and verify that metrics `jmx.zookeeper.packetsreceived.counter` and `jmx.zookeeper.packetssent.counter` are collecting.
 
 For more information on Rule Engine, see [ATSD Rule Engine](https://github.com/axibase/atsd/tree/master/rule-engine).
 
 ### Import entity view
 
-1. Go to `Entity Views -> Configure` and import the following [entity view](resources/entity-views.xml).
-2. Check entity view. Go to `Entity Views -> Zookeeper`
+Go to `Entity Views -> Configure` and import the following [entity view](resources/entity-views.xml).
+Check entity view. Go to `Entity Views -> Zookeeper`
 
 ![](images/entity_view.png)
 
-3. Click on `portal` link and check cluster portal
+Click on `portal` link and check cluster portal
 
 ![](images/cluster_portal.png)

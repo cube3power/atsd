@@ -1,6 +1,6 @@
 # Weekly Change Log: June 26, 2017 - July 02, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
@@ -11,12 +11,10 @@
 | 4313 | export | Bug | Modify Excel files produced by ATSD to increase compatibility with analytics tools such as IBM SPSS. |
 | 4312 | sql | Bug | Fix a NullPointerException in SQL console when results contain [`NULL`](../../sql#null) values. |
 
-### ATSD
-
-##### Issue 4331
+### Issue 4331
 
 ![](Images/4331.jpg)
 
-##### Issue 4327a
+### Issue 4327a
 
 ![](Images/4327a.jpg)

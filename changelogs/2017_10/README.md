@@ -1,12 +1,12 @@
 # Weekly Change Log: March 6 - March 12, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | 3978 | portal | Bug | Display disabled portals on Entity Group portal assignment page. |
 
-### Collector
+## Collector
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
@@ -16,22 +16,18 @@
 | [3827](#issue-3827) | file | Feature | Add support for [placeholders](https://github.com/axibase/axibase-collector/blob/master/jobs/placeholders.md#overview) in `First Line Contains` field. |
 | 3990 | collection | Bug | Ignore `stderr` when reading SCRIPT Item List. |
 
-### Charts
+## Charts
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | [3956](#issue-3956) | data-loading | Bug | Treat [tags] containing comma as separate tag values. |
 | [3975](#issue-3975) | widget-settings | Feature | Implement `tag-expression` setting to filter series by tag values. |
 
-### Collector
-
 ### Issue 3827
 
 ![](Images/Figure1.png)
 
 ![](Images/Figure2.png)
-
-### Charts
 
 ### Issue 3956
 

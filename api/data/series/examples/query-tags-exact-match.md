@@ -45,7 +45,7 @@ POST https://atsd_hostname:8443/api/v1/series/query
     {
         "startDate": "2016-02-22T13:30:00Z",
         "endDate":   "2016-02-22T13:35:00Z",
-        "metric": "m-1",        
+        "metric": "m-1",
         "entity": "e-1",
         "tags": {
             "tag-1": "val-1"

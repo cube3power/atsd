@@ -2,12 +2,12 @@
 
 The purpose of this article is to guide the reader through the first steps of using Axibase Time Series Database.
 
-### Prerequisites
+## Prerequisites
 
 * [Install Axibase Time Series Database.](../installation/README.md)
 * Login into the ATSD web interface at `https://atsd_hostname:8443/`
 
-### Insert Data Manually
+## Insert Data Manually
 
 Open the **Data Entry** form located under the **Data** tab in the main menu.
 
@@ -26,14 +26,13 @@ value = 24
 ```
 
 > By default the Time field is set to the current server time and is displayed in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601).
-
-> We will ignore series tags to simplify this example. Tags can be used to add [metadata about the time series.](https://axibase.com/products/axibase-time-series-database/data-model/)
+> We will ignore series tags to simplify this example. Tags can be used to add [metadata](https://axibase.com/products/axibase-time-series-database/data-model/) about the time series.
 
 Insert additional observations by modifying **Value** field for example sample.
 
 ![](resources/getting-started_3.png)
 
-### Graph Data
+## Graph Data
 
 Open a time chart using the following link `https://atsd_hostname:8443/portals/series?entity=my-entity&metric=my-metric`.
 

@@ -130,7 +130,7 @@ The response contains an array of series objects, each containing series identif
 | `data` | array | Array of [Value](#value-object) objects.|
 | `meta` | object | Metric and entity metadata fields, if requested with the `addMeta` parameter. |
 
-#### Value Object
+### Value Object
 
 * The value object contains a sample time and a numeric (`v` field) and/or text (`x` field) value.
 * The sample time can be specified in Epoch milliseconds (`t` field) or ISO format (`d` field).

@@ -4,6 +4,8 @@ Querying the built-in `atsd_series` table allows specifying metric name in the `
 
 At least one metric condition must be present in a `WHERE` clause of a valid `atsd_series` query. Metric names are case-insensitive.
 
+## Queries
+
 The following queries are equivalent:
 
 ```sql

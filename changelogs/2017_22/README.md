@@ -1,6 +1,6 @@
 # Weekly Change Log: May 29, 2017 - June 04, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
@@ -16,36 +16,34 @@
 
 #### Issue 4163
 
-1. Admin > Server Properties, modified to display differences between actual and default
-property values:
+Admin > Server Properties, modified to display differences between actual and default property values:
 
 ![4163](Images/4163.1.png)
 
-2. Admin > System Information, table headers added to user interface:
+Admin > System Information, table headers added to user interface:
 
 ![4163.2](Images/4163.2.png)
 
-3. Configuration > Portals, `View` button allows for viewing of
+Configuration > Portals, `View` button allows for viewing of
 Portal during configuration:
 
 ![4163.3](Images/4163.3.1.png)
 
-4. 'Remember Me' tooltip added:
+'Remember Me' tooltip added:
 
 ![4163.4](Images/4163.4.png)
 
-5. Admin > Users. `ROLE_` prefix removed:
+Admin > Users. `ROLE_` prefix removed:
 
 ![4163.5](Images/4163.5.png)
 
-6. Detailed columns removed from the Entities tab.
+Detailed columns removed from the Entities tab.
 
-7. Alerts, second precision added to date column, `ACKNOWLEDGE` column shortened to
-`ACK`:
+Alerts, second precision added to date column, `ACKNOWLEDGE` column shortened to `ACK`:
 
 ![4163.6](Images/4163.6.png)
 
-8. Messages, Millisecond precision added to date column.
+Messages, Millisecond precision added to date column.
 
 #### Issue 4144
 

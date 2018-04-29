@@ -1,6 +1,6 @@
 # Weekly Change Log: April 3 - April 9, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                                                             |
 |------|-------------|---------|---------------------------------------------------------------------|
@@ -19,15 +19,13 @@
 | 4058 | sql | Bug | Fix NullPointerException in partitioned [`OUTER JOIN`](../../sql#outer-join) queries with externally sorted results. |
 | 4047 | sql | Bug | Fix error raised when using `IN` operator in `WHERE` condition containing [`LAG`](../../sql#lag) and [`LEAD`](../../sql#lead) functions. |
 
-### Collector
+## Collector
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | 4090 | jdbc | Bug | Don't log error if `InterpolateType` value is `NULL`. |
 | 4078 | core | Bug | Fix parsing series commands with '=' symbol in the text field.  |
 | 4061 | file | Bug | Save error messages if FTP connection fails. |
-
-## ATSD
 
 ### Issue 4057
 

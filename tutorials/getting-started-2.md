@@ -1,6 +1,6 @@
 # Getting Started: Part 2
 
-### Create Portal
+## Create Portal
 
 * Click on **Portals** link in the top menu.
 

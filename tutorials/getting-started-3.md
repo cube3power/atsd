@@ -1,6 +1,6 @@
 # Getting Started: Part 3
 
-### Export Data
+## Export Data
 
 Open the **Data > Export** page.
 
@@ -10,7 +10,7 @@ Complete the form to download data for the `my-entity` and `my-metric` into a CS
 
 ![](resources/getting-started-3_5.png)
 
-### Execute API Requests
+## Execute API Requests
 
 Experiment with [Data API](../api/data/README.md) by executing sample [series query](../api/data/series/query.md) requests using the built-in API client.
 

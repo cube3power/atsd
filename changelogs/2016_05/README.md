@@ -1,6 +1,6 @@
 # Weekly Change Log: December 12-18, 2016
 
-### ATSD
+## ATSD
 
 | Issue    | Category        | Type            | Subject                                                   |
 |----------|-----------------|-----------------|-----------------------------------------------------------|
@@ -21,8 +21,6 @@
 | 3692     | UI              | Bug             | Raised an error when the job is executed manually and the storage driver is not 'successful' at that time. |
 | [3685](#issue-3685)     | docker          | Feature         | Added a setting to remove deleted records from ATSD after a period of time. Containers can be removed after a certain number of days, images/volumes/networks can removed instantly. |
 | 3684     | UI              | Bug             | Added Enable/Disable/Run buttons on the job list page to change status or run multiple jobs at a time using check boxes.                             |
-
-## ATSD
 
 ### Issue 3704
 

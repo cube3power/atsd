@@ -13,6 +13,7 @@ GET https://atsd_hostname:8443/api/v1/metrics?maxInsertDate=1970-01-01T00:00:00Z
 ```
 
 ## Response
+
 ```json
 [{
    "name": "%a",

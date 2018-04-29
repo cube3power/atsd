@@ -1,6 +1,6 @@
 # Weekly Change Log: December 19-25, 2016
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                                                                                               |
 |------|-------------|---------|-------------------------------------------------------------------------------------------------------|
@@ -26,7 +26,7 @@
 | [3555](#issue-3555) | sql         | Feature | Implemented [`LOOKUP`](../../sql#lookup) function to translate the key into a value using the specified replacement table. |
 | [3421](#issue-3421) | sql         | Feature | Implemented the `searched case` variant of the [`CASE`](../../sql#case) expression. |
 
-### Collector
+## Collector
 
 | Issue| Category    | Type    | Subject                                                                                               |
 |------|-------------|---------|-------------------------------------------------------------------------------------------------------|
@@ -36,8 +36,6 @@
 | 3722 | core        | Feature | Send property command with collector details to ATSD after a startup is completed. |
 | 3686 | core        | Support | Added a list of pre-configured jobs and their xml files [here](https://github.com/axibase/axibase-collector/blob/master/job-autostart.md). |
 | 3571 | admin       | Bug     | Modified Dockerfile to speed up Collector application startup at the expense of a slight larger image size. |
-
-## ATSD
 
 ### Issue 3737
 
@@ -61,7 +59,6 @@ GROUP BY entity
 ```
 
 ### Issue 3727
--------------
 
 The TCP handler, running on the default port 8081, was optimized for faster processing of `series` commands streamed by a single TCP client. The new implementation provides a pool of
 threads instead of a single one to offload parsing and processing from the TCP handler. The size of the pool is controlled with the `series.processing.pool.size` parameter on the

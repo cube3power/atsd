@@ -7,8 +7,8 @@ Web query functions execute an HTTP request to an external web service and retur
 ## Reference
 
 * [`queryConfig`](#queryconfig)
-    * [Form](#content-type-is-form)
-    * [JSON](#content-type-is-json)
+  * [Form](#content-type-is-form)
+  * [JSON](#content-type-is-json)
 * [`queryGet`](#queryget)
 * [`queryPost`](#querypost)
 * [Request URL](#request-url)
