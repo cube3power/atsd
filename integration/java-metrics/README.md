@@ -10,13 +10,11 @@ The `metrics-atsd` module implements `AtsdReporter`, which allows Java applicati
 
 The Metrics library provides 5 types of metrics:
 
-
 - [Gauge](https://dropwizard.github.io/metrics/3.1.0/getting-started/#gauges) – current value.
 - [Counter](https://dropwizard.github.io/metrics/3.1.0/getting-started/#counters) – incrementing and decrementing integer.
 - [Meter](https://dropwizard.github.io/metrics/3.1.0/getting-started/#meters) – rate of events over time.
 - [Histogram](https://dropwizard.github.io/metrics/3.1.0/getting-started/#histograms) – statistical distribution of values.
 - [Timer](https://dropwizard.github.io/metrics/3.1.0/getting-started/#timers) – rate at which the method is invoked and the distribution of its duration.
-
 
 ### Configurations and Settings
 
@@ -45,7 +43,6 @@ final AtsdUDPSender sender = new AtsdUDPSender("atsd.example.com", 8082);
 |  `public Builder convertDurationsTo(TimeUnit durationUnit)`  |  No  |  `TimeUnit.MILLISECONDS`  |  Convert durations to the specified period.  |
 |  `public Builder filter(MetricFilter filter)`  |  No  |  `MetricFilter.ALL`  |  Only report metrics matching the specified filter.  |
 |  `public AtsdReporter build(AtsdSender sender)`  |  Yes  |  –  |  Sending metrics using the specified AtsdSender.  |
-
 
 #### Add Metric
 

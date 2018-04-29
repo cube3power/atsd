@@ -38,4 +38,3 @@ To receive alert notifications via email, configure the [mail client](../adminis
 ![](resources/getting-started-4_8.png)
 
 [Continue to Next Page](getting-started-5.md).
-

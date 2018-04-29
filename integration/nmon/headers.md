@@ -118,4 +118,3 @@ BBBC,218,PDIsapdata5Lv 1999 1999 400..400..399..400..400 /oracle/PDI/sapdata5
 "virtual cpu": "2",
 "weight": "128",
 ```
-

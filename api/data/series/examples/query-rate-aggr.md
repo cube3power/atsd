@@ -19,7 +19,6 @@ Aggregation function is applied to values returned by the rate function.
 | 2016-02-16T12:35:58.000Z | 7144214       |
 ```
 
-
 ## Request
 
 ### URI

@@ -351,7 +351,6 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:02:00Z'
 
 The `WITH INTERPOLATE` clause, on the other hand, calculates values at calendar-aligned timestamps using neighboring raw values.
 
-
 ```sql
 SELECT datetime, value FROM metric1
   WHERE entity = 'e1'
@@ -619,7 +618,6 @@ WHERE entity = 'nurswgvml006'
 | 2016-09-18T14:04:45Z | 82.4  |
 | 2016-09-18T14:05:00Z | 5.8   | [14:04-14:05] interval END
 ```
-
 
 ### Input Commands
 

@@ -39,7 +39,7 @@ You can learn more about uploading nmon files into ATSD
 
 ### View the Data
 
--   Navigate to the below URL. Replace **atsd\_server** with your ATSD url, **hostname** with the hostname for which you have uploaded the nmon file, and **portal\_id** with your portal ID:
+- Navigate to the below URL. Replace **atsd\_server** with your ATSD url, **hostname** with the hostname for which you have uploaded the nmon file, and **portal\_id** with your portal ID:
 
     https://**atsd\_host**:8443/portal/tabs?entity=**hostname**&id=**portal\_id**
 

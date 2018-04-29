@@ -33,6 +33,7 @@ None.
 ```elm
 DELETE https://atsd_hostname:8443/api/v1/entities/nurswgvml001
 ```
+
 #### Payload
 
 None.
@@ -50,4 +51,3 @@ curl https://atsd_hostname:8443/api/v1/entities/nurswgvml001 \
 None.
 
 ## Additional Examples
-

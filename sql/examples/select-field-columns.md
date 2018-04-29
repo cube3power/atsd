@@ -39,4 +39,3 @@ FROM atsd_series WHERE metric IN ('mpstat.cpu_busy', 'mpstat.cpu_user', 'mpstat.
 | 2016-10-16T17:10:13.000Z | nurswgvml007 | cpu_system | 2.1   | CPU Sys %    | AEST            | LINEAR                           | NURswgvml007                  | PST             | LINEAR                           |
 | 2016-10-16T17:10:13.000Z | nurswgvml007 | cpu_user   | 13.4  | CPU User %   | null            | LINEAR                           | NURswgvml007                  | PST             | LINEAR                           |
 ```
-

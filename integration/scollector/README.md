@@ -34,7 +34,6 @@ Entity Groups:
 - `scollector-iis`
 - `scollector-mssql`
 
-
 Default portals are assigned to scollector entity groups.
 
 Portals:
@@ -46,7 +45,6 @@ Portals:
 - `scollector-MS SQL`
 
 ##### scollector-Linux Portal
-
 
 Launch a live scollector-Linux portal in Axibase Chart Lab.
 

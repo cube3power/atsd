@@ -50,7 +50,6 @@ series e:sensor02 m:power_kwh=12.9 d:2015-10-29T00:05:00Z t:status=ok
 
 If Schema parsing is enabled, only the following fields from the parser configuration are applied:
 
-
 - Delimiter
 - Line Delimiter
 - Text Qualifier
@@ -76,7 +75,6 @@ If Schema parsing is enabled, only the following fields from the parser configu
 |  `select(expression)`  |  Yes  |  Selects rows, columns, or cell range to process using RFC 7111 selection syntax.  |
 |  `filter(condition)`  |  No  |  Optionally filter rows, columns and cells depending on `rowText` and `cellText` values, e.g. `rowText.indexOf('test')>=0`.  |
 
-
 #### Initialize Command Functions
 
 | Name | Required | Description |
@@ -100,7 +98,6 @@ If Schema parsing is enabled, only the following fields from the parser configu
 |  `appendText(text, delimiter)`  |  Unsupported  |  Unsupported  |  No  |  Append text to current message text.  |
 |  `forEach(expression)`  |  No  |  No  |  No  |  Accepts RFC 7111 #col= selector, iterates over matched cells in the current row and applies chained-after functions to each cell, e.g. `forEach('#col=5!2').tag(cell(row,col), cell(row,col+1));`  |
 
-
 #### Pre-defined Variables
 
 | Name | Type | Description |
@@ -111,7 +108,6 @@ If Schema parsing is enabled, only the following fields from the parser configu
 |  `rowText`  |  String  |  Current row full text.  |
 |  `columnCount`  |  Integer  |  Column count for current row.  |
 |  `fileName`  |  String  |  CSV file name being parsed, if available.  |
-
 
 #### Lookup Functions
 

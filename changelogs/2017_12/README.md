@@ -35,7 +35,6 @@ Weekly Change Log: March 20 - March 26, 2017
 | 4019 | docker | Bug | Do not interrupt the job if there are no free ATSD connections in pool. |
 | 4025 | core | Bug | Remove `m:{name}=NaN` field in series command if text value is specified. |
 
-
 ### ATSD
 
 ### Issue 3915
@@ -43,9 +42,11 @@ Weekly Change Log: March 20 - March 26, 2017
 [Documentation](../../api/data/series/query.md)
 
 URI
+
 ```elm
 POST https://atsd_hostname:8443/api/v1/series/query
 ```
+
 Payload
 
 ```json
@@ -57,8 +58,10 @@ Payload
   "tagExpression": "tags.file_system NOT LIKE '*your-backup*'",
   "limit": 1
 }]
+
 ```
 Response
+
 ```json
 [{"entity":"nurswgvml007","metric":"disk_used","tags":{"file_system":"/dev/mapper/vg_nurswgvml007-lv_root","mount_point":"/"},"type":"HISTORY","aggregate":{"type":"DETAIL"},"data":[{"d":"2017-02-13T08:59:53.000Z","v":9242420.0}]}]
 ```

@@ -1,6 +1,5 @@
 # IBM SPSS Modeler
 
-
 ## Overview
 
 The IBM SPSS Modeler provides a set of tools to build data transformations and analysis models for users without programming experience. The following guide includes examples of loading time series data from the Axibase Time Series Database (ATSD),

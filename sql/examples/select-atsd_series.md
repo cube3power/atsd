@@ -52,7 +52,6 @@ WHERE metric IN ('mpstat.cpu_busy', 'mpstat.cpu_user')
 | nurswgvml007 | cpu_user | 2016-08-08T15:55:03.000Z | 5.9   | null |
 ```
 
-
 By default results are ordered by metric. The default sort can be modified with the `ORDER BY` clause.
 
 ```sql
@@ -232,7 +231,6 @@ WITH INTERPOLATE(180 second, AUTO, OUTER, EXTEND, START_TIME)
 | br-1470   | sv6.pack:r04 | 2016-10-04T02:09:00Z | 21.9     | 455.0        | 1414          | 1414-Proc3     |
 ```
 
-
 ## Selecting Multiple Metrics and Entities
 
 Locate lagging series: series with data timestamped with the last 14 days, but which have stopped collecting data during the last 24 hours.
@@ -256,7 +254,6 @@ GROUP BY metric, entity, tags
 |------------|---------------|------------------------------------|---------------------|
 | disk_used  | nurswgvml010  | file_system=udev;mount_point=/dev  | 2017-09-29 10:16:37 |
 ```
-
 
 ## Numeric Precedence
 

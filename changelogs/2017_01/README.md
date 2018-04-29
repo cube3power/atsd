@@ -26,7 +26,6 @@ Weekly Change Log: December 25, 2016 - January 08, 2017
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [3743](#issue-3743)          | pi              | Feature | Developed PI Server emulator for `picomp2` and `pipoint2` tables.                   |
 
-
 ### Charts
 
 | Issue         | Category        | Type | Subject                                                                             |
@@ -84,7 +83,6 @@ WHERE datetime > now - 1 * minute
 -------------
 
 The [`CAST`](../../sql#cast) function now accepts output of the [`date_format`](../../sql#time-formatting-functions) function as the argument, for example:
-
 
 ```sql
 SELECT date_format(time, 'EEE HH') AS 'hour_in_day',
@@ -185,7 +183,6 @@ SELECT ABS(max(value)*avg(value))
 WHERE datetime > previous_minute
 ```
 
-
 ### Issue 3721
 -------------
 
@@ -197,7 +194,6 @@ SELECT count(*)
 WHERE entity = 'mr8w-325u'
   AND tags.city LIKE 'Philadelphia'
 ```
-
 
 ### Issue 3711
 -------------

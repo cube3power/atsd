@@ -75,7 +75,6 @@ DESCRIBE TradeHistory;
  VOLUME                       NUMBER(8)
  TIME                     NOT NULL TIMESTAMP(0)
 
-
 SELECT * FROM TradeHistory FETCH FIRST 5 ROWS ONLY;
 
 INSTRUMENT|     OPEN|        HIGH|    LOW|     CLOSE|    VOLUME|TIME
@@ -98,7 +97,6 @@ DESCRIBE Instruments;
  ID             NOT NULL NUMBER(7)
  NAME                  VARCHAR2(20)
 
-
 SELECT * FROM Instruments;
 
     ID|NAME
@@ -119,7 +117,6 @@ Name                     Null?    Type
  METRIC                  NOT NULL NUMBER(7)
  TIME                     NOT NULL TIMESTAMP(0)
  VALUE                          NUMBER(12,4)
-
 
 SELECT * FROM UniversalHistory FETCH FIRST 5 ROWS ONLY;
 
@@ -158,7 +155,6 @@ Name                     Null?    Type
  ----------------------------------- -------- ------------------------
  ID                     NOT NULL NUMBER(7)
  NAME                          VARCHAR2(20)
-
 
 SELECT * FROM Metrics;
 
@@ -237,7 +233,6 @@ TABLE_NAME  |ROWS_COUNT
 ------------|----------
 TRADEHISTORY|    2045514
 
-
 SEGMENT_NAME          |    BYTES
 --------------------------|----------
 TRADEHISTORY_COMPRESSED   |  53477376
@@ -276,8 +271,6 @@ UNIVERSALHISTORY_PK          | 260046848
 TABLE_NAME    |ROWS_COUNT
 ----------------|----------
 UNIVERSALHISTORY|  10227570
-
-
 
 SEGMENT_NAME              |     BYTES
 ------------------------------|----------

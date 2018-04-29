@@ -64,13 +64,13 @@ The following password rules apply to **Local** accounts:
 
 ## Built-in Account
 
--   When accessed for the first time after the installation, the database presents a web page for configuring the default administrator account. This account is granted an `ADMIN` role which has `All Entities: Read / Write` permissions.
+- When accessed for the first time after the installation, the database presents a web page for configuring the default administrator account. This account is granted an `ADMIN` role which has `All Entities: Read / Write` permissions.
 
 ## Changing the Password
 
--   Users with Local accounts can modify their password by clicking on the user icon in the top menu.
+- Users with Local accounts can modify their password by clicking on the user icon in the top menu.
 
--   Users are not allowed to change their own type, roles, group membership, or entity permissions.
+- Users are not allowed to change their own type, roles, group membership, or entity permissions.
 
 ## Resetting Password
 

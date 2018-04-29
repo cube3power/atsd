@@ -32,4 +32,3 @@ tag(cell(1, col), cell(row, col));
 series e:sensor-0001 d:2015-10-15T00:00:00Z m:temperature=35.5 m:humidity=40.0 t:model=PV120000-XG1 t:address="3109 N BROADWAY" t:city=CHICAGO t:state=IL t:status=Ok t:zip=60657
 series e:sensor-0020 d:2015-10-15T00:00:00Z m:temperature=20.4 m:humidity=60.8 t:model=PV120000-XG1 t:address="3109 N BROADWAY" t:city=CHICAGO t:state=IL t:status=Ok t:zip=60657
 ```
-

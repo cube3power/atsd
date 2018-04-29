@@ -104,7 +104,6 @@ SELECT entity ... FROM "my-table"
 
 Columns starting with 'entity.tags.', 'metric.tags.', or 'metric.{field-name}' prefixes generate [`entity`](../api/network/entity.md) and [`metric`](../api/network/metric.md) metadata commands.
 
-
 ```sql
 SELECT datetime,
   'dc-1' AS "entity",

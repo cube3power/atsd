@@ -5,9 +5,11 @@
 ## Request
 
 ### URI
+
 ```elm
 POST https://atsd_hostname:8443/api/v1/alerts/history/query
 ```
+
 ### Payload
 
 ```json
@@ -24,6 +26,7 @@ POST https://atsd_hostname:8443/api/v1/alerts/history/query
 ## Response
 
 ### Payload
+
 ```json
 [
   {
@@ -76,4 +79,3 @@ POST https://atsd_hostname:8443/api/v1/alerts/history/query
   }
 ]
 ```
-

@@ -51,7 +51,6 @@ Other parameters are optional. For more information on JMX configuration, see [J
 6. Go to ![](images/alerts.png) `Alerts -> Rules` and import [Kafka](resources/rules.xml) rules (check on the Auto-enable New Rules check box).
 7. Go to ![](images/entity_views.png) `Entity Views -> Configure` and import [Kafka](resources/entity-views.xml) entity view.
 
-
 ## Step 3: Verification
 
 1. Select an open `Kafka` on the `Entity Views` menu:
@@ -65,7 +64,6 @@ Other parameters are optional. For more information on JMX configuration, see [J
 3. Verify that portals for each entity refer to the Broker portal:
 
     ![](images/kafka_broker.png)
-
 
 ## Consumer Lag
 

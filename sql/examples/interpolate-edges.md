@@ -20,7 +20,6 @@ WHERE datetime >= '2016-06-19T09:10:00Z' AND datetime < '2016-06-19T09:40:00Z'
 | nurswgvml006 | 2016-06-19T09:30:00.000Z | 20.0  |
 ```
 
-
 ## Data within the 10 minute Half-Inclusive Interval [)
 
 ```sql

@@ -47,8 +47,6 @@ Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 
 disable 'atsd_message'
 0 row(s) in 1.4720 seconds
 
-
-
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell
 Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 UTC 2015
@@ -58,8 +56,6 @@ Updating all regions with the new schema...
 1/1 regions updated.
 Done.
 0 row(s) in 1.4390 seconds
-
-
 
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell
@@ -71,8 +67,6 @@ Updating all regions with the new schema...
 Done.
 0 row(s) in 1.3900 seconds
 
-
-
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell
 Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 UTC 2015
@@ -82,8 +76,6 @@ Updating all regions with the new schema...
 1/1 regions updated.
 Done.
 0 row(s) in 1.3870 seconds
-
-
 
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell
@@ -95,16 +87,12 @@ Updating all regions with the new schema...
 Done.
 0 row(s) in 1.4120 seconds
 
-
-
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell
 Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 UTC 2015
 
 enable 'atsd_message'
 0 row(s) in 1.3640 seconds
-
-
 
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell

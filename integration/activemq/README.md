@@ -166,7 +166,6 @@ If the existing configuration passes, this indicates that there are no errors or
 
 ## Step 4: View ActiveMQ Statistics in ATSD
 
-
 1. Log in to ATSD web interface at `https://atsd_hostname:8443`
 2. Click the Entities tab in the top menu.
 3. Locate the ActiveMQ host in the Entities list or enter its name in Name Mask field at the bottom of the list.

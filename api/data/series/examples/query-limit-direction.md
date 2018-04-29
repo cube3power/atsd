@@ -57,7 +57,6 @@ POST https://atsd_hostname:8443/api/v1/series/query
 ]
 ```
 
-
 ## Request with descending order
 
 Note that `DESC` direction is the default direction.

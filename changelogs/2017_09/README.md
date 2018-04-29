@@ -112,7 +112,6 @@ The new settings introduced in Treemap configurations:
 |------|-------------|-------------------|
 | mode | Layout mode to control how rectangles are positioned. |– `default` <BR> – `row` (align rectangles as rows) <BR> – `column` (align rectangles as columns) <BR> – `auto` (switch between row and column modes depending on widget size)
 
-
 https://apps.axibase.com/chartlab/fc68bae4/7/
 
 ![](Images/Figure10.png)

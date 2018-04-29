@@ -29,4 +29,3 @@ tag(cell(1,5), cell(row,5));
 series e:sensor-0001 d:2014-10-01T00:00:00Z m:temperature=35.5 m:humidity=40.0 m:pressure=760 m:precipitation=80 t:model=PV120000-XG1
 series e:sensor-0001 d:2015-10-01T00:00:00Z m:temperature=20.4 m:humidity=60.8 m:pressure=745 m:precipitation=77 t:model=PV120000-XG1
 ```
-

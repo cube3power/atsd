@@ -22,7 +22,6 @@ Scheduled exporting enables exporting of historical data and forecasts to the lo
 |  Every Monday at 02:00 server time  |  `0 0 2 * * MON`  |
 |  First day of each month at 02:00 server time  |  `0 0 2 1 * *`  |
 
-
 Concurrent execution for the same job is not allowed.
 
 Export job settings in the server.properties file:
@@ -50,7 +49,6 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 |  on job rejected  |  `status=rejected`  |  `severity=ERROR`  |  `name={job_name}`  |  `message=Job rejected`  |  `start_time={start_time_iso}`  |  |
 |  on job failed  |  `status=failed`  |  `severity=ERROR`  |  `name={job_name}`  |  `message=Job failed`  |  `start_time={start_time_iso}`  |  `end_time={start_time_iso}`  |
 
-
 > * Raised when the job starts while the previous instance of the same job is still running.
 
 ##### Dataset
@@ -75,7 +73,6 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 |  Interpolation  |  Insert missing periods in aggregated results. The period is considered missing if it contains no detailed samples. Supported options: `STEP` – value of missing period equals value of the previous period; `LINEAR` – value is linearly interpolated between previous and next available value; `NONE` – missing periods are not inserted.  |
 |  Aggregate Statistics  |  One or multiple aggregation functions: average, minimum, maximum, sum, count, standard deviation, weighted average, weighted time average, median (percentile 50), first, last, percentile 50/75/90/95/99/99.5/99.9, `MinValueTime`, `MaxValueTime`.  |
 
-
 ##### Output
 
 | Field | Description |
@@ -90,14 +87,12 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 |  Decimal Precision  |  Number of fractional digits displayed. If a negative value such as -1 is specified, stored numbers are displayed 'as is' without any formatting.  |
 |  Time Format  |  Format for displaying series sample timestamps: Local Time (server time zone) or ISO (UTC time).<br>Local = `yyyy-MM-dd HH:mm:ss`<br>ISO = `yyyy-MM-dd'T'HH:mm:ss'Z'`  |
 
-
 ##### Distribution
 
 | Field | Description |
 | --- | --- |
 |  Email Subscribers  |  List of email addresses separated by commas, white spaces, or semicolons, to which the exported files will be sent as attachments.  |
 |  Email Subject  |  Subject of email.<br>Supports placeholders: `${ENTITY}, ${ENTITY.tagName}, ${METRIC}, ${METRIC.tagName}, ${yyyy-MM-dd}`.  |
-
 
 Clicking on the [TEST] button will export the first file, display the file name, and provide a link to download the file.
 

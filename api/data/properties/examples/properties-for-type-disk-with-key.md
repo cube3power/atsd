@@ -2,10 +2,13 @@
 
 ## Request
 ### URI
+
 ```elm
 POST https://atsd_hostname:8443/api/v1/properties/query
 ```
+
 ### Payload
+
 ```json
 [
   {

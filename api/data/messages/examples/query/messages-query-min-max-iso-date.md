@@ -7,9 +7,11 @@ Query for all dates. Select last message with limit = 1. The database can store 
 ## Request
 
 ### URI
+
 ```elm
 POST https://atsd_hostname:8443/api/v1/messages/query
 ```
+
 ### Payload
 
 ```json
@@ -26,6 +28,7 @@ POST https://atsd_hostname:8443/api/v1/messages/query
 ## Response
 
 ### Payload
+
 ```json
 [
   {

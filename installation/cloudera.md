@@ -394,7 +394,6 @@ Similarly, enable the `hbase.rpc.protection` property on the HBase cluster:
 
 ![](images/rpc-hbase.png)
 
-
 ## Start ATSD
 
 ```sh

@@ -1,6 +1,5 @@
 # Changing the Directory Where Data is Stored
 
-
 > Note: `/data/` is an example of a new path used to store ATSD data.
 
 Grant ownership of the target directory to the `axibase` user:

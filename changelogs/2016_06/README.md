@@ -290,7 +290,6 @@ WHERE datetime > current_hour
   GROUP BY entity
 ```
 
-
 ```ls
 | entity       | avg(value) | Utilization    |
 |--------------|------------|----------------|

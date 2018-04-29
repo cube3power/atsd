@@ -36,7 +36,6 @@ The grouped SUM series is then aggregated into periods.
 
 > Note that if a period is not specified, the grouping function automatically applies aggregation for the same period as the aggregate function.<br>To avoid this, specify `"period": {"count": 1, "unit": "MILLISECOND"}` in `group`.
 
-
 ## Detailed Data by Series
 
 ```ls

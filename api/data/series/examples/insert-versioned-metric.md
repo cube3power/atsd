@@ -1,10 +1,15 @@
 # Insert Versioned Metric
+
 ## Request
+
 ### URI
+
 ```elm
 POST https://atsd_hostname:8443/api/v1/series/insert
 ```
+
 ### Payload
+
 ```json
 [
     {
@@ -28,4 +33,3 @@ POST https://atsd_hostname:8443/api/v1/series/insert
 |---|---|
 |status | Status describing value change event.|
 |source | Source that generated value change event.|
-

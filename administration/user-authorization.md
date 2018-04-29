@@ -8,6 +8,7 @@ Authenticated users are allowed to access protected resources based on
 their role. The role specifies which URLs and HTTP methods the user can access. Each user can be assigned multiple roles.
 
 ### API Roles
+
 | Role | Description |
 | --- | --- |
 |API_DATA_READ | Query Data API to read series, properties, messages, and alerts from the database.|

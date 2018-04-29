@@ -66,7 +66,6 @@ The `entity.label` parameter is now supported in the rule filter.
 
 ![](Images/Figure3.png)
 
-
 ## Charts
 
 ### Issue 3921
@@ -105,4 +104,3 @@ https://apps.axibase.com/chartlab/e02b8303/6
 ![](Images/Figure1.png)
 
 ![](Images/Figure2.png)
-

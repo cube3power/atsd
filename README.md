@@ -50,7 +50,6 @@
   * [JDBC](https://github.com/axibase/atsd-jdbc)
   * [ODBC](integration/odbc/README.md)
 
-
 ## Rule Engine
 
   * [Overview](rule-engine/README.md)

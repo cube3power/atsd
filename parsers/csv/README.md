@@ -56,7 +56,6 @@ series e:nurswgvml001 d:2015-11-15T00:00:00Z m:space_used_%=14.4 t:disk=/dev/sda
 |  `Header`  |  Header to be used if the file contains no header or to replace existing header.  |
 |  `Schema`  |  [Schema](csv-schema.md) defines how to process cells based on their position.  |
 
-
 Columns contained in the CSV file that are not specified in any field in the parser will be imported as metrics.
 
 #### Parse Settings
@@ -74,7 +73,6 @@ Columns contained in the CSV file that are not specified in any field in the par
 |  Discard NaN  |  NaN (Not a Number) values will be discarded  |
 |  Ignore Line Errors  |  If enabled, any errors while parsing the given line are ignored, including date parse errors, number parse errors, split errors, mismatch of rows, and header column counts.  |
 |  Ignore Header Lines  |  Ignore Top-N lines from the file header  |
-
 
 ![](resources/csv_parser_example.png)
 

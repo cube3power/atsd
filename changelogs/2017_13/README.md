@@ -37,7 +37,6 @@ Weekly Change Log: March 26 - April 2, 2017
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | [3850](#issue-3850) | widget-settings | Bug | Fix `end-time` calculation to increment month if it has fewer days than the current month. |
 
-
 ## ATSD
 
 ### Issue 4050
@@ -98,7 +97,6 @@ GROUP BY entity, tags.etype, period(1 year)
 | 2001 | 654            | null            | null   | null      |
 | 2002 | 650            | 654             | -4     | -0.6      |
 | 2003 | 590            | 650             | -60    | -9.2      |
-
 
 ### Issue 3993
 --------------

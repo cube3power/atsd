@@ -50,8 +50,3 @@
 | **Name** | **Method** | **Path** | **Content-Type** | **Description** |
 |:---|:---|:---|:---|:---|
 | [SQL Query](../../sql/api.md) | POST | `/api/sql` | `text/plain` | Execute an SQL query and retrieve results in CSV or JSON format. |
-
-
-
-
-

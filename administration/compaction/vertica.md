@@ -226,7 +226,6 @@ SELECT column_name, encodings, compressions FROM column_storage WHERE ANCHOR_TAB
 | epoch       | Int_Delta    | none         |
 +-------------+--------------+--------------+
 
-
 SELECT * FROM Metrics;
 
 +----+--------+

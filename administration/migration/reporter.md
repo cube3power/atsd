@@ -184,4 +184,3 @@ The report includes memory required by the mapper. This maximum is reported for 
 * Total number of time series samples for the given metric, entity , and day are `11520`.
 * There are no annotations and non-versioned samples.
 * The `atsd_d` table stores data for the displayed metric, the entity, and the day in rows from the specified `start key` (inclusive) to `stop key` (exclusive).
-

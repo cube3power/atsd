@@ -7,10 +7,13 @@ Message primary key is entity, type, source, and time. Tags and message are exte
 ## Request
 
 ### URI
+
 ```elm
 POST https://atsd_hostname:8443/api/v1/messages/insert
 ```
+
 ### Payload
+
 ```json
 [{
     "entity": "nurswgvml007",

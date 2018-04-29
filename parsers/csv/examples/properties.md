@@ -31,4 +31,3 @@ tag(cell(row,col),cell(row,col+1));
 property e:sensor-0001 d:2015-10-15T00:00:00Z t:measurements t:model=PV120000-XG1
 property e:sensor-0002 d:2015-10-15T00:10:00Z t:measurements t:model=PV120000-XG1
 ```
-

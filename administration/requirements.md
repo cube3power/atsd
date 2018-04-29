@@ -19,9 +19,9 @@
 
 ## Operating Systems
 
--   Ubuntu 16.04
--   RedHat Enterprise Linux 7.x
--   SUSE Linux Enterprise Server 12.x
--   Debian 8.x/9.x
--   CentOS 7.x
--   Other RPM and Debian based systems at compatible levels
+- Ubuntu 16.04
+- RedHat Enterprise Linux 7.x
+- SUSE Linux Enterprise Server 12.x
+- Debian 8.x/9.x
+- CentOS 7.x
+- Other RPM and Debian based systems at compatible levels

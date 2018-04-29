@@ -55,4 +55,3 @@ curl  https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types \
     "nmon.process"
 ]
 ```
-

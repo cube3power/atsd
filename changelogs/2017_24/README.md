@@ -42,4 +42,3 @@ Compare [`NaN`](../../sql#not-a-number-nan) values similar to [`NULL`](../../sql
 Apply user-applied date format on the SQL console.
 
 ![4166](Images/4166.png)
-

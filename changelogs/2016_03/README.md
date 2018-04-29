@@ -282,4 +282,3 @@ A new Item List type was implemented to load data from property records in ATSD.
 list of containers retrieved by the Docker job.
 
 ![Figure 3](Images/Figure3.png)
-

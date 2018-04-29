@@ -462,7 +462,6 @@ Advanced functions and aggregations can be added to the Freemarker portals to en
 |  `lastInsertTime('entity'[, 'metric'])`  |  Double  |  Returns last insert time for the entity or entity/metric combination in milliseconds. Metric is an optional parameter.  |
 |  `lastInsertDate('entity'[, 'metric'])`  |  Double  |  Returns last insert date for the entity or entity/metric combination in ISO format. Metric is an optional parameter.  |
 
-
 #### atsd_values parameters
 
 | Name | Description |

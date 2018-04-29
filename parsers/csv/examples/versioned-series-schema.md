@@ -31,4 +31,3 @@ series e:nova_scotia d:2015-10-15T00:00:00Z m:temperature=32.5 t:$version_status
 series e:nova_scotia d:2015-10-15T00:00:00Z m:humidity=60.0 t:$version_status=1
 series e:nova_scotia d:2015-10-15T00:00:00Z m:pressure=-1 t:$version_status=0
 ```
-

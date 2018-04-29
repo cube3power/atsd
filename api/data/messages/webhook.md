@@ -126,7 +126,6 @@ Since each message must be associated with an entity, the request should instruc
   entity = jenkins
 ```
 
-
 2. The entity may be specified literally by adding an `entity` parameter to the query string, for example `/api/v1/messages/webhook/jenkins?entity=test-1`
 
 ```elm
@@ -266,7 +265,6 @@ The filter parameters contain patterns that the converted message tags must sati
 | `excludeValues` | Exclude tags with **values** that match the specified pattern. |
 | `include` | Override `exclude` rules by including tags with **names** that match the specified pattern. |
 | `includeValues` | Override `excludeValues` rules by including tags with **values** that match the specified pattern. |
-
 
 * The patterns support `*` as a wildcard.
 * Tag name match is case-**IN**sensitive.

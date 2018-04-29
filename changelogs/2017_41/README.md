@@ -21,7 +21,6 @@ Weekly Change Log: October 9, 2017 - October 15, 2017
 | [4353](#issue-4353) | sql | Feature | Allow column aliases to be the same as column names. |
 | 4103 | sql | Bug | Fix `WITH INTERPOLATE` clause with user-defined time zone. |
 
-
 ## Axibase Collector
 
 | Issue| Category    | Type    | Subject              |

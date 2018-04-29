@@ -4,12 +4,10 @@ In order to install nmon and the Axibase sender script on multiple Linux machine
 
 The `nmon_deploy.sh` script will execute the following steps on each specified target machine:
 
-
 - Connect to the remote machine over ssh
 - Copy the nmon binary file
 - Copy the atsd sender script
 - Add a cron task to restart the nmon data collection on a schedule
-
 
 Download `nmon_deploy.sh` and sender script from the `nmon` repository: [https://github.com/axibase/nmon](https://github.com/axibase/nmon)
 
@@ -22,19 +20,16 @@ Download `nmon_deploy.sh` and sender script from the `nmon` repository: [https:
 |  -d  |  Comments out all nmon cron tasks. Will stop nmon data collection and delivery to ATSD  |
 |  -i  |  While nmon does not have any dependencies, the ATSD sender script has the following dependencies: crontab, telnet.<br>With -i flag the script will only check and install dependencies.<br>Requires sudo credentials defined in the `deploy.properties` file.<br>After installing the dependencies, run the script again without the -i flag to install the nmon and sender script.  |
 
-
 The `deploy.properties` file contains the target machine parameters, user details, and paths to nmon and crontab settings:
 
 Use `#` to uncomment optional parameters.
 
 The following files must be located in the same directory as the `nmon_deploy.sh` script (path to files is set in the `deploy.properties` file):
 
-
 - nmon binary file
 - Sender script
 - Target machine user ssh key
 - atsdreadonly ssh key
-
 
 | Setting | Description |
 | --- | --- |
@@ -56,7 +51,6 @@ The following files must be located in the same directory as the `nmon_deploy.sh
 |  deploy.nmon-binary  |  Path to nmon binary file that will be installed on target machines.  |
 |  deploy.directory  |  Directory that will be used on target machines to install nmon and the sender script.<br>The user must have write access to this directory.  |
 |  deploy.target  |  Target server hostname or ip address and ssh connection port separated by `:`<br>Can be set to multiple servers, one server per line.  |
-
 
 Example `deploy.properties` file:
 

@@ -52,7 +52,6 @@ The `Discard Previous Values` option allows you to discard commands timestamped 
 --------------
 ![](Images/Figure_02.png)
 
-
 ## Collector
 
 ### Issue 3899
@@ -84,4 +83,3 @@ The generated configuration:
 [Example of `Metro` class](https://apps.axibase.com/chartlab/6d6ae13c/2/):
 
 ![](Images/Figure_08.png)
-

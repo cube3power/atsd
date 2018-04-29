@@ -271,7 +271,6 @@ The link displays the value of the entity tag of another entity, which name is s
 
 3. Specify the entity tag of related entity in the 'Link Label' setting.
 
-
   * Configuration
 
     ![](images/entity-view-column-entity-tag-related.png)
@@ -396,7 +395,6 @@ The displayed entity name can be modified, for example shortened, by specifying 
 
   ![](images/entity-view-column-name-format-result.png)
 
-
 #### Custom Icon Link to Specific Entity Portal
 
 Use the following configuration to specify the custom icon which opens a link to template portal assigned to the selected entity.
@@ -485,7 +483,6 @@ To display a particular portal by default, specify the portal's name in the 'Val
 
   ![](images/entity-view-column-portals-specific-result.png)
 
-
 ### Properties Column Examples
 
 #### Icon Link to All Entity Properties
@@ -513,7 +510,6 @@ Specify the default property type in the 'Value' setting.
 * Configuration
 
   ![](images/entity-view-column-prop-specific.png)
-
 
 * Result
 

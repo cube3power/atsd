@@ -120,7 +120,6 @@ The [series tags](../../api/meta/metric/series-tags.md) method returns unique se
 }
 ```
 
-
 ### Issue 4710
 
 The inline screenshots are positioned after the message content and before the message footer.

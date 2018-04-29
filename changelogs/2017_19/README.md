@@ -57,4 +57,3 @@ The period starting at '2017-05-01T00:00:00Z' is now included even though it sta
 These links have been compressed to a dropdown menu, as shown below:
 
 ![4104](Images/4104.2.png)
-

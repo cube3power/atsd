@@ -34,5 +34,3 @@ Weekly Change Log: May 01, 2017 - May 07, 2017
 
 Application of the `statistic` command yielded incorrect displays for the `entity = *` fields
 under particular `[series]` clusters which can be viewed in ChartLab.
-
-

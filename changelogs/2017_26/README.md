@@ -3,7 +3,6 @@ Weekly Change Log: June 26, 2017 - July 02, 2017
 
 ### ATSD
 
-
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4335 | sql | Feature | Optimize metadata queries with a `FALSE` condition, e.g. `WHERE 1=0`. The queries are used by some BI tools (Tableau) to retrieve column information. |

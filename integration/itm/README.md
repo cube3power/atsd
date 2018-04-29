@@ -123,10 +123,8 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
  - `kvm`
   ![](images/kvm_metrics.png)
 
-
  - `mq`
   ![](images/mq_metrics.png)
-
 
 ## Viewing Data in ATSD
 

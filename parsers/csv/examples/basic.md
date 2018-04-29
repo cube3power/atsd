@@ -33,7 +33,6 @@ Adhere to the following points to convert the CSV file into a tabular model:
   - Set the timestamp to the value of the cell located in the current row, 1st column (Measurement Time). The text value will be parsed using the 'Timestamp Pattern';
   - Set the series value to the value of the current cell.
 
-
 #### Commands
 
 ```ls

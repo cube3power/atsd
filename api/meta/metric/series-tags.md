@@ -82,7 +82,3 @@ https://atsd_hostname:8443/api/v1/metrics/disk_used/series/tags?file_system=/&ta
   "mount_point":["/","/app","/dev","/media/datadrive","/mnt/u113452"]
 }
 ```
-
-
-
-

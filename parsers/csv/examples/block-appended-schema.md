@@ -28,4 +28,3 @@ tag(cell(row,col+2),cell(row,col+3));
 series e:sensor-0001 d:2015-11-15T00:00:00Z m:temperature=35.5  t:model=PV120000-XG1
 series e:sensor-0020 d:2015-11-15T00:00:00Z m:humidity=40.0     t:model=PV120000-XG1
 ```
-

@@ -54,4 +54,3 @@ Configuration > Rules
 ![4144](Images/4144.png)
 
 Subscribers button displays all email subscribers.
-

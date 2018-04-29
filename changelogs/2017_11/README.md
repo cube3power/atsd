@@ -36,7 +36,6 @@ Weekly Change Log: March 13 - March 19, 2017
 | [4006](#issue-4006) | widget-settings | Feature | Add fixed-fraction formatter. |
 | [3997](#issue-3997) | time-chart | Bug | Change legend style for forecast series. |
 
-
 ### ATSD
 
 ### Issue 3658
@@ -89,7 +88,6 @@ LIMIT 1
 --------------
 
 See the [guide](https://redash.io/help/data-sources/axibase_tsd.html) on how to integrate Redash with ATSD.
-
 
 ### Collector
 

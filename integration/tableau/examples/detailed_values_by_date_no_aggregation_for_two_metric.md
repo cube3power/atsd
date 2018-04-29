@@ -27,4 +27,3 @@ Build a report displaying two metrics in one workspace.
 Compare the two metrics:
 
 ![](../images/two_metrcS.png)
-

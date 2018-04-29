@@ -78,5 +78,3 @@ POST https://atsd_hostname:8443/api/v1/series/query
     {"d":"2016-06-27T14:19:00.000Z","v":4.0}
 ]}]
 ```
-
-

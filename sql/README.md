@@ -1993,7 +1993,6 @@ WHERE t1.datetime >= '2017-06-16T13:00:00Z' AND t1.datetime < '2017-06-16T13:10:
 | null                 | null         | null | 2017-06-16T13:00:27Z | nurswgvml006 | 73620 |
 ```
 
-
 To regularize the merged series in join queries, apply interpolation or period aggregation using a statistical function.
 
 * Interpolation

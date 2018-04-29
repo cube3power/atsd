@@ -1,6 +1,5 @@
 # Update
 
-
 Update Axibase Time Series Database to the latest version by running the `update.sh` script.
 The script automates the process of downloading the latest ATSD artifacts,
 copying files, and gracefully restarting ATSD services.

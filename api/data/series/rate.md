@@ -40,7 +40,6 @@ Used to compute rate of change when the underlying metric measures a continuousl
 
 - If rate period is not specified, the function computes the difference between values of two subsequent series samples. If samples are `(previousTimestamp, previousValue)` and `(timestamp, value)`, then result would be `(timestamp, value - previousValue)`.
 
-
 - If rate period is specified, the function computes rate of change for the specified time period:
 
 `(value - previousValue) * ratePeriod / (timestamp - previousTimestamp)`.

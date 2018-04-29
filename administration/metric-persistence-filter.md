@@ -184,6 +184,7 @@ NOT collection_contains(tags['os'], collection('ignore_os'))
 ```javascript
   collection_intersects([] f, [] s) boolean
 ```
+
 Returns `true`, if collection `f` has elements in common with collection `s`. The collections can be specified inline as an arrays of strings or reference a named collections.
 
 Examples:
@@ -205,6 +206,7 @@ Converts `s` to uppercase letters.
 ```javascript
   lower(string s) string
 ```
+
 Converts `s` to lowercase letters.
 
 ### `size`

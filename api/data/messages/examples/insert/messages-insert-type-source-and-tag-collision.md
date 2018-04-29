@@ -7,10 +7,13 @@ The message tags `{"type": "hello", "source": "world"}` are discarded since they
 ## Request
 
 ### URI
+
 ```elm
 POST https://atsd_hostname:8443/api/v1/messages/insert
 ```
+
 ### Payload
+
 ```json
 [{
     "entity": "nurswgvml007",
@@ -24,10 +27,13 @@ POST https://atsd_hostname:8443/api/v1/messages/insert
 ## Response
 
 ### URI
+
 ```elm
 POST https://atsd_hostname:8443/api/v1/messages/query
 ```
+
 ### Payload
+
 ```json
 [
   {

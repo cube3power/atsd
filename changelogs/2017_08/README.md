@@ -26,7 +26,6 @@ Weekly Change Log: February 20 - February 26, 2017
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | [3958](#issue-3958) | core   | Bug | Improved performance of legend rendering.                                    |
 
-
 ## ATSD
 
 ### Issue 3938
@@ -57,7 +56,6 @@ The following [placeholders](https://github.com/axibase/axibase-collector/blob/m
 
 ![](Images/Figure_02.png)
 ![](Images/Figure_03.png)
-
 
 ### Issue 3926
 --------------

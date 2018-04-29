@@ -72,7 +72,6 @@ If a metric name has more tokens than `atsd_pattern`, extra tokens are cropped.
 
 `metric` – metric token; multiple occurrences are combined.
 
-
 `entity` – entity token to replace the default entity; multiple occurrences are combined.
 
 ```sh

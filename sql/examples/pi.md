@@ -133,7 +133,6 @@ WHERE entity = 'br-1211' AND (text = '800' OR LAG(text) = '800')
 
 * LEAD function [examples](../README.md#lag)
 
-
 ## BETWEEN clause supports subqueries
 
 * The `BETWEEN` clause (Interval condition) accepts subqueries

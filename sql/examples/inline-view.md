@@ -115,8 +115,6 @@ GROUP BY tags.application, tags.transaction, PERIOD(1 hour)
 
 ## Query
 
-
-
 ```sql
 SELECT app,
   SUM(mem_val) AS "apps.usage_memory",

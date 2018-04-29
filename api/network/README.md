@@ -242,7 +242,6 @@ Field value:
 
 Use CSV escaping methods in core libraries where available, for example [`StringEscapeUtils.escapeCsv`](https://commons.apache.org/proper/commons-lang/javadocs/api-2.6/org/apache/commons/lang/StringEscapeUtils.html#escapeCsv%28java.io.Writer,%20java.lang.String%29) in Java.
 
-
 ### Case Sensitivity
 
 * Field names are case-insensitive and are converted to lower case when stored in the database.

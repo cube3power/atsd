@@ -36,7 +36,6 @@ name LIKE '*db*' AND lower(tags.function) = 'database'
 
 The `lastInsertDate` field should be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
 
-
 ## Response
 
 ### Fields
@@ -105,6 +104,7 @@ curl https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&limit=2&expressio
     }
 ]
 ```
+
 ## Example 2
 
 Expression value:

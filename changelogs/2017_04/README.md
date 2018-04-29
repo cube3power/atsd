@@ -55,7 +55,6 @@ The [Test] result now includes a list of columns from the underlying dataset and
 * Schema Type: classifies how the column is processed in ATSD commands, e.g. metric, series tag, time, property type, etc.
 * Included: determines if the column is included in ATSD commands or is excluded (ignored).
 
-
 ```json
 "columns" : [ {
     "id" : 266155015,

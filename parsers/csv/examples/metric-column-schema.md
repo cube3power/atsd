@@ -28,4 +28,3 @@ timestamp(cell(row, 1));
 series e:sensor-0001 d:2015-11-15T00:00:00Z m:temperature=35.5
 series e:sensor-0001 d:2015-11-15T00:00:00Z    m:humidity=40.0
 ```
-

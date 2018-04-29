@@ -7,9 +7,11 @@ Select alerts for the specified entity group and rule.
 ## Request
 
 ### URI
+
 ```elm
 POST https://atsd_hostname:8443/api/v1/alerts/query
 ```
+
 ### Payload
 
 ```json
@@ -26,6 +28,7 @@ POST https://atsd_hostname:8443/api/v1/alerts/query
 ## Response
 
 ### Payload
+
 ```json
 [
   {
@@ -138,4 +141,3 @@ POST https://atsd_hostname:8443/api/v1/alerts/query
   }
 ]
 ```
-

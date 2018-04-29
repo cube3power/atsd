@@ -118,7 +118,6 @@ GROUP BY metric, entity, tags
   HAVING MAX(time) < NOW - 24 * HOUR -- condition to exclude series that have recent data
 ```
 
-
 ---
 
 ### Issue 4611

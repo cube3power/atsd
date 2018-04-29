@@ -161,7 +161,6 @@ GROUP BY period(1 day)
 | 2017-02-05T00:00:00Z | Sunday      | 694730     | 695097     | 367     | 694730       | 695097      | 367        | 3884         |
 ```
 
-
 The same query where filtering is applied to grouped rows (by period) produces daily differences since the first value used by the `DELTA` function is the last value of the previous day.
 
 ```sql

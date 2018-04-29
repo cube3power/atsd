@@ -34,4 +34,3 @@ ORDER BY time
 | nurswgvml011 | Linux | 10.102.0.10 | 1698750587.0 | //u113452.your-backup.de/backup                        | /mnt/u113452              |
 | nurswgvml011 | Linux | 10.102.0.10 | 6811290.5    | /dev/sda1                                              | /                         |
 ```
-

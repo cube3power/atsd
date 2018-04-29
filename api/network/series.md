@@ -191,7 +191,6 @@ WHERE metric IN ('temperature', 'status') AND datetime >= '2016-10-13T08:00:00Z'
 | sensor-1 | 2016-10-13T10:30:00Z | NaN   | Shutdown by adm-user, RFC-5434 |
 ```
 
-
 ## Text Append
 
 The `append` flag applies to text values specified with the `x:` field.

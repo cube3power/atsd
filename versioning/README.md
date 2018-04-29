@@ -88,7 +88,6 @@ To extract versioning fields from CSV content, add the version tags to the **Tag
 
 ![](resources/3.png)
 
-
 > Note:
 > * Request to insert versioned value for a **non-versioned** metric will cause a validation error.
 > * If the command refers to a new metric, it will be automatically created with **Versioning** set to **Yes**.

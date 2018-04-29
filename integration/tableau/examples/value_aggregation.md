@@ -24,4 +24,3 @@ Display the minimum exports each year.
 We can see that in 1975, the value was equal to 109 and it is the absolute minimum among all measures in the `bi.ex_net1.m` metric:
 
 ![](../images/min_val.png)
-

@@ -34,7 +34,6 @@ Refer to [Sun Java System Identity Synchronization for Windows 6.0 Installation 
 
 * Add `servername.corp.company.com.crt` certificate:
 
-
 ```css
 keytool -importcert -keystore /opt/atsd/atsd/conf/server.keystore -storepass atsd_sec_pwd -keyalg "RSA" -trustcacerts -file servername.corp.company.com.crt
 ```

@@ -135,6 +135,3 @@ However, since both `aggregate` and `group` objects support interpolation functi
 {"d":"2016-01-04T08:00:00.000Z","v":0.10960919540229952},
 {"d":"2016-01-04T08:30:00.000Z","v":0.4539999999999509}]}]
 ```
-
-
-

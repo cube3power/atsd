@@ -21,4 +21,3 @@ ATSD provides the following built-in facilities to export data:
 * [Stata](../integration/stata/README.md)
 * [Tableau](../integration/tableau/README.md)
 * Other tools supporting [JDBC](https://github.com/axibase/atsd-jdbc) or [ODBC-JDBC](../integration/odbc/README.md) connectivity.
-

@@ -29,7 +29,6 @@ migrate.py [-h] [--whisper-base BASE] [-R] path atsd_hostname atsd_tcp_port
 |  `atsd_hostname`  |  yes  |  ATSD hostname or IP.  |
 |  `atsd_tcp_port`  |  yes  |  ATSD TCP listening port. Default ATSD TCP port is 8081.  |
 
-
 #### Examples
 
 Base path to the Whisper database directory is set with `-R` to migrate all the data and metrics.

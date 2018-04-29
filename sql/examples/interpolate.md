@@ -22,7 +22,6 @@ Value for period **2016-06-03T09:30:00.000Z** is missing.
 | nurswgvml007 | 2016-06-03T09:45:00.000Z      | 19           |
 ```
 
-
 ## Fill Gaps with Constant Value 0
 
 ```sql

@@ -4,9 +4,9 @@ I/O Tests can be run directly from the ATSD user interface under **Settings > 
 
 I/O Tests allow you to:
 
--   Execute disk read and write tests for the server on which the ATSD
+- Execute disk read and write tests for the server on which the ATSD
     instance is running.
--   Identify any abnormalities, such as slower than expected write speed.
+- Identify any abnormalities, such as slower than expected write speed.
 
 | Field | Description |
 | --- | --- |

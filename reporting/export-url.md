@@ -74,5 +74,4 @@ Interpolation functions can insert missing intervals in returned aggregated dat
 | `LINEAR`  |  Missing value is computed using linear interpolation between previous (last) and next available value.  |
 |  `NONE`  |  Missing values are not inserted.  |
 
-
 If the interpolation function is not specified in the request, missing intervals are not created.

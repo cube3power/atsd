@@ -1,6 +1,5 @@
 # Alteryx Designer
 
-
 ## Overview
 
 Alteryx Designer is a graphical design environment to create and edit ETL

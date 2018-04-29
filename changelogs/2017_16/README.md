@@ -17,7 +17,6 @@ Weekly Change Log: April 17 - April 23, 2017
 | [4094](#issue-4094) | docker | Feature | Upgrade supported Remote API versions from 1.21 to 1.28.  |
 | 4044 | docker | Bug | Handle HTTP request timeouts for Unix socket. |
 
-
 ## ATSD
 
 ### Issue 4100

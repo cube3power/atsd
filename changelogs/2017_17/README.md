@@ -31,7 +31,3 @@ Weekly Change Log: April 25 - April 30, 2017
 ### Issue 4134
 --------------
 ![](Images/Figure2.png)
-
-
-
-

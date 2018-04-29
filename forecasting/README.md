@@ -5,7 +5,6 @@
 - Built-in auto-regressive time series extrapolation algorithms (Holt-Winters, ARIMA, etc.) in ATSD can predict failures at early stages.
 - Dynamic predictions eliminate the need to set manual thresholds.
 
-
 #### Forecasting Example with Abnormal Deviation
 
 ![](resources/forecasts.png)
@@ -14,13 +13,11 @@
 
 #### Forecast Settings
 
-
 - Forecasting settings can be left in their default, automatic mode for easy setup.
 - ATSD selects the most accurate forecasting algorithm for each time series separately based on a ranking system.
 - The winning algorithm is used to compute forecasts for the next day, week, or month.
 - Pre-computed forecasts can be used in the rule engine.
 - Basic automatic ad hoc forecasting can be used directly in graphs and widgets, and forecasts will be calculated for 1 week with automatic settings.
-
 
 ![](resources/forecasts3.png)
 
@@ -42,7 +39,6 @@
 |  Algorithm  |  Holt-Winters or ARIMA algorithms.  |
 |  End Time  |  Used to calculate the forecast from an exact point in time. Useful when calculating a forecast for data that is not frequently updated. Accepts [calendar](../shared/calendar.md)keywords.<br>Choose "Full Scan" when forecasting historical data that is no longer collected. If "Full Scan" is not set, then ATSD will automatically look for metric keys from the past 24 hours.  |
 |  Name  |  Unique forecast identifier.  |
-
 
 ![](resources/forecast_settings2.png)
 

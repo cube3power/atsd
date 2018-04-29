@@ -1,6 +1,7 @@
 # List Metrics with Tag 'table'
 
 ## Request
+
 ### URI
 
 ```elm
@@ -12,8 +13,8 @@ GET https://atsd_hostname:8443/api/v1/metrics?tags=table&expression=tags.table%2
 ```sh
 tags.table != ''
 ```
-### Response
 
+### Response
 
 ```json
 [

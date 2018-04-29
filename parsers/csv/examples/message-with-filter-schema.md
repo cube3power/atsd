@@ -30,4 +30,3 @@ tag(value,cell(row, col + 1));
 ```ls
 message e:sensor-0002 d:2015-10-16T00:00:00Z t:type=application t:source=cron t:model=PV120000-XG1 m:"humidity changed"
 ```
-

@@ -32,7 +32,6 @@ Weekly Change Log: September 25, 2017 - October 1, 2017
 
 The new lookup functions can be used for creating correlated rules that depend on the state of another (related) entity, for example container<->host / container<->image / volume<->container.
 
-
 ```javascript
 count() = 0 AND entity_tag(entity.tags['collector-host'], 'status') = 'running'
 ```
