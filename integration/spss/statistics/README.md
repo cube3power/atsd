@@ -1,4 +1,4 @@
-# IBM SPSS Data Analysis.
+# IBM SPSS Data Analysis
 
 - [Load Sample Data into ATSD](#load-sample-data-into-atsd)
 - [Import Data into SPSS](#import-data-into-spss)
@@ -56,7 +56,7 @@ You can import ATSD data into SPSS by configuring an ODBC data source on a Windo
     - do not open any existing data file;
     - select the 'Edit' menu;
     - select the 'Options' menu;
-    - select the 'Language' tab; 
+    - select the 'Language' tab;
     - in the section labeled 'Character Encoding for Data and Syntax', select 'Locale's writing system'.
 
 #### Option 1: Load Prices and Weights As Separate Datasets
@@ -84,13 +84,13 @@ You can import ATSD data into SPSS by configuring an ODBC data source on a Windo
 * Open **File > Import Data > Database > New query...**.
 * Select the `datetime` column from both the `inflation.cpi.categories.price` and `inflation.cpi.categories.weight` tables.
 ![](images/merged_import/step1.png)
-* Skip the next steps until a query editor is displayed. 
+* Skip the next steps until a query editor is displayed.
 * Enter the following query which executes a FULL OUTER JOIN with interpolation for the missing weight records:
 
 ```sql
-SELECT T0."value" AS price,  T1."datetime" AS datetime, T1."value" AS weight, T1."tags" AS tags 
-FROM "inflation.cpi.categories.price" T0 
-  OUTER JOIN "inflation.cpi.categories.weight" T1 
+SELECT T0."value" AS price,  T1."datetime" AS datetime, T1."value" AS weight, T1."tags" AS tags
+FROM "inflation.cpi.categories.price" T0
+  OUTER JOIN "inflation.cpi.categories.weight" T1
 WHERE T0.datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z'
   WITH INTERPOLATE (1 YEAR, PREVIOUS, INNER, EXTEND)
 ```
@@ -102,7 +102,7 @@ WHERE T0.datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z'
 ![](images/merged_data1.png)
 
 * Proceed to the [Analyze Dataset](#analyze-dataset) section below.
- 
+
 ### Import from CSV Files
 
 * Export data from ATSD into CSV files as described in the [Exporting Data from ATSD](#exporting-data-from-atsd-into-csv-files) section at the end of this article.
@@ -117,7 +117,7 @@ Data from the CSV files are now available as SPSS datasets `prices.sav` and `wei
 
 ### Change Names of Columns
 
-SPSS merges datasets using matching column names, similar to the `SELF JOIN` command in the SQL syntax. 
+SPSS merges datasets using matching column names, similar to the `SELF JOIN` command in the SQL syntax.
 
 To prevent the `datetime` and `value` columns from being merged, their names must be changed in the `weights.sav` dataset using `Variable View` tab, otherwise the merged dataset produced by SPSS will only contain data for 2017.
 
@@ -132,7 +132,7 @@ Merge the two datasets by adding the `weight` column from the `weights.sav` data
 * Open **Data > Merge Files... > Add Variables...**
 * Select `weights.sav` dataset.
 * Check 'Match cases on key variables'.
-* Select `time` in the 'New Active Dataset' pane, add to 'Key Variables' Pane. 
+* Select `time` in the 'New Active Dataset' pane, add to 'Key Variables' Pane.
 
 ![](images/merge_editor.png)
 * Click 'Ok'.
@@ -152,9 +152,9 @@ To calculate the weighted CPI for each year, the CPI value for a given category 
 
 Open the `prices_merged.sav` dataset and create the new column `categ_index`.
 
-* Open **Transform > Compute Variable...**  
-* Place the columns from the left into the expression editor and specify a formula. 
-* Select the `price` and `weight` columns, divide `weight` by 1000 and multiply `price` by the adjusted `weight`. 
+* Open **Transform > Compute Variable...**
+* Place the columns from the left into the expression editor and specify a formula.
+* Select the `price` and `weight` columns, divide `weight` by 1000 and multiply `price` by the adjusted `weight`.
 * Assign a name to the new column.
 
 ![](images/compute_variable.png)
@@ -166,26 +166,26 @@ The `categ_index` column is now available in the dataset.
 ### Calculate Annual CPI
 
 SPSS provides two alternatives to aggregate data by period.
-  
+
 #### Aggregation using the Analyze Menu
-    
-* Open **Analyze > Reports > Report Summaries in Columns...** 
-* Move the `categ_index` column to the 'Summary Variables' field and select the `SUM` aggregation function. 
+
+* Open **Analyze > Reports > Report Summaries in Columns...**
+* Move the `categ_index` column to the 'Summary Variables' field and select the `SUM` aggregation function.
 * Set the `datetime` column as the break variable, which is used to group the resulting data. You can format aggregation columns in the dialog window.
 
 ![](images/analysis_reports_summary.png)
-    
+
 * Publish the report by selecting **File > Export As a Web Report** in the output window.
 * The output contains the processing log in the results window.
-    
+
     ![](images/htm_report_spss.png)
-    
+
 * The report is also available in [HTML format](resources/index_calculation.htm).
 
     ![](images/htm_version_output.png)
 
 #### Aggregation using the Data Menu
-    
+
 * Open **Data > Aggregate...**.
 * Set `categ_index` as the summary variable and apply the `SUM` function.
 * Set `datetime` as the break variable.
@@ -208,7 +208,7 @@ metric m:cpi_price
 ```
 
 ![](images/atsd_export_1.png)
- 
+
 - Open the previously created dataset in SPSS.
 
 - Select **Transform > Compute Variable...**
@@ -253,18 +253,18 @@ metric m:cpi_price
 ![](images/atsd_export11.png)
 
 The result should look as follows. Click **Next**
- 
+
 ![](images/atsd_export12.png)
- 
+
  - Select **ODBC** - **Row-wise binding**, select **Paste the syntax** and click **Finish**
- 
+
 ![](images/atsd_export_13.png)
 
 - Paste the following script into the dialog window:
 
 ```sh
 SAVE TRANSLATE /TYPE=ODBC
-  /BULKLOADING BATCHSIZE=10000 METHOD=ODBC BINDING=ROW 
+  /BULKLOADING BATCHSIZE=10000 METHOD=ODBC BINDING=ROW
   /CONNECT='DSN=ATSD;'
   /ENCRYPTED
   /MISSING=IGNORE
@@ -300,15 +300,15 @@ ATSD provides a web-based SQL console to export query results into various data 
 
 ### Prices
 
-Obtain CPI price data by executing the following query: 
+Obtain CPI price data by executing the following query:
 
 ```sql
-SELECT entity, datetime, value, tags.category 
-  FROM inflation.cpi.categories.price 
+SELECT entity, datetime, value, tags.category
+  FROM inflation.cpi.categories.price
 ORDER BY tags.category, datetime
 ```
 
-![](images/sql_run.png)    
+![](images/sql_run.png)
 
 Export query results into `prices.csv`.
 
@@ -316,11 +316,11 @@ Export query results into `prices.csv`.
 
 ### Weights
 
-Obtain weight data by executing the following query: 
+Obtain weight data by executing the following query:
 
 ```sql
-SELECT entity, datetime, value, tags.category 
-  FROM inflation.cpi.categories.weight 
+SELECT entity, datetime, value, tags.category
+  FROM inflation.cpi.categories.weight
 ORDER BY tags.category, datetime
 ```
 

@@ -19,18 +19,18 @@
     * [message](api/network/message.md)
     * [csv](api/network/csv.md)
     * [nmon](api/network/nmon.md)
-    * [entity](api/network/entity.md)  
+    * [entity](api/network/entity.md)
     * [metric](api/network/metric.md)
     * [extended](api/network/extended-commands.md)
 
 ## [API Clients](api#api-clients)
 
   * [Python](https://github.com/axibase/atsd-api-python)
-  * [Java](https://github.com/axibase/atsd-api-java) 
-  * [NodeJS](https://github.com/axibase/atsd-api-nodejs)  
+  * [Java](https://github.com/axibase/atsd-api-java)
+  * [NodeJS](https://github.com/axibase/atsd-api-nodejs)
   * [R](https://github.com/axibase/atsd-api-r)
   * [PHP](https://github.com/axibase/atsd-api-php)
-  * [Go](https://github.com/axibase/atsd-api-go)  
+  * [Go](https://github.com/axibase/atsd-api-go)
   * [Ruby](https://github.com/axibase/atsd-api-ruby)
 
 ## [SQL](sql#overview)
@@ -49,7 +49,7 @@
 
   * [JDBC](https://github.com/axibase/atsd-jdbc)
   * [ODBC](integration/odbc/README.md)
-  
+
 
 ## Rule Engine
 
@@ -81,10 +81,10 @@
   * Cluster Distributions
     * [Cloudera Hadoop Distribution (CDH)](installation/cloudera.md)  	
   * Cloud Services
-    * [AWS EMR](installation/aws-emr-s3.md)    
+    * [AWS EMR](installation/aws-emr-s3.md)
   * [Uninstalling](administration/uninstalling.md)
-  * [Updating](administration/update.md)   
-  
+  * [Updating](administration/update.md)
+
 ## Tutorials
 
   * [Getting Started](tutorials/getting-started.md)
@@ -110,7 +110,7 @@
   * [Compaction Test](administration/compaction-test.md)
   * [Compaction](administration/compaction.md)
   * [Configuration Files](administration/editing-configuration-files.md)
-  * [Network Settings](administration/networking-settings.md)  
+  * [Network Settings](administration/networking-settings.md)
   * [Enabling Swap Space](administration/enabling-swap-space.md)
   * [Logging](administration/logging.md)
   * [Metric Persistence Filter](administration/metric-persistence-filter.md)
@@ -127,17 +127,17 @@
   * [Grafana](https://github.com/axibase/grafana-data-source)
   * [MatLab](integration/matlab/README.md)
   * [Pentaho Data Integration](integration/pentaho/data-integration/README.md)
-  * [Pentaho Report Designer](integration/pentaho/report-designer/README.md)  
+  * [Pentaho Report Designer](integration/pentaho/report-designer/README.md)
   * [Stata](integration/stata/README.md)
   * [Tableau](integration/tableau/README.md)
   * [ODBC](integration/odbc/README.md)
-  
+
 ## Data Collection Examples
 
   * [ActiveMQ](integration/activemq#monitoring-activemq-with-atsd)
   * [collectd](integration/collectd/README.md)
   * [Derby](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/derby#overview)
-  * [Graphite](integration/graphite/README.md)  
+  * [Graphite](integration/graphite/README.md)
   * [HP Openview](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/hp-openview#overview)
   * [IBM Tivoli Monitoring](integration/itm#ibm-tivoli-monitoring)
   * [JVM](https://github.com/axibase/axibase-collector/blob/master/jobs/examples/jvm#overview)

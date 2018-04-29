@@ -19,7 +19,7 @@ The Data API lets you insert and retrieve series, properties, messages, and aler
   - [insert](messages/insert.md)
   - [webhook](messages/webhook.md)
   - [query](messages/query.md)
-  - [delete](messages/delete.md)  
+  - [delete](messages/delete.md)
   - [statistics](messages/stats-query.md)
 * [Alerts](alerts#data-api-alerts-methods)
   - [query](alerts/query.md)

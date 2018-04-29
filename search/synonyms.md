@@ -2,7 +2,7 @@
 
 ## Overview
 
-Synonym search allows finding series with metadata fields containing values with a similar meaning in the original or other languages. 
+Synonym search allows finding series with metadata fields containing values with a similar meaning in the original or other languages.
 
 For example, a user searching for series with 'currency' keyword might be interested in locating series with keywords `money`, `cash` as well as `geld` (German) and `dinero` (Spanish).
 

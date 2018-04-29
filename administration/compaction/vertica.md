@@ -275,7 +275,7 @@ Start a Vertica v7.1.1-0 container. Mount `/tmp/test` directory to the container
 docker run --name=vertica -v /tmp/test:/data -d sumitchawla/vertica
 ```
 
-### Execute SQL scripts for the **Trade Table** Schema.
+### Execute SQL scripts for the **Trade Table** Schema
 
 ```sh
 curl -o /tmp/test/vertica-trade-table.sql \
@@ -296,7 +296,7 @@ cat /tmp/test/vertica-trade-table.sql | \
 +-------------------+-----------+------------+
 ```
 
-### Execute SQL scripts for the **Universal Table** Schema.
+### Execute SQL scripts for the **Universal Table** Schema
 
 ```sh
 curl -o /tmp/test/vertica-universal-table.sql \

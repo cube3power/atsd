@@ -59,7 +59,7 @@ SELECT { * | { expr [ .* | [ AS ] alias ] } }
   [ HAVING expr(boolean) ]
   [ WITH ROW_NUMBER expr ]
 [ WITH LAST_TIME expr ]
-[ WITH INTERPOLATE expr ]  
+[ WITH INTERPOLATE expr ]
 [ ORDER BY expr [{ ASC | DESC }] [, ...] ]
 [ LIMIT count [ OFFSET skip ]]
   [ OPTION(expr) [...]]
@@ -311,7 +311,7 @@ New columns can be created by applying functions and arithmetic expressions to e
 SELECT t1.datetime, t1.entity, t1.value + t2.value AS cpu_sysusr
   FROM "mpstat.cpu_system" t1
   JOIN "mpstat.cpu_user" t2
-WHERE t1.datetime >= '2017-06-15T00:00:00Z' 
+WHERE t1.datetime >= '2017-06-15T00:00:00Z'
   AND cpu_sysusr > 10
 ```
 
@@ -633,7 +633,7 @@ Use **double quotation marks** to enquote a table name, column name, and alias i
 
 ```sql
 -- Special character
-SELECT entity.tags."file-system" FROM "disk.io" 
+SELECT entity.tags."file-system" FROM "disk.io"
 
 -- Reserved column name
 SELECT value*5 AS "value"
@@ -733,7 +733,7 @@ WHERE entity IN ('nurswgvml006', 'nurswgvml007', 'nurswgvml008')
 
 ### LIKE Expression
 
-The `LIKE` expression returns true if the value matches the specified string pattern which supports `%` and `_` wildcards. 
+The `LIKE` expression returns true if the value matches the specified string pattern which supports `%` and `_` wildcards.
 
 * Percent sign `%` matches zero or more characters in the value.
 
@@ -914,17 +914,17 @@ SELECT entity, entity.timeZone,
   date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "Period Start: UTC datetime",
   date_format(time, 'yyyy-MM-dd HH:mm z', entity.timeZone) AS "Period Start: Local datetime"
 FROM "mpstat.cpu_busy"
-  WHERE datetime >= ENDTIME(PREVIOUS_DAY, entity.timeZone) 
+  WHERE datetime >= ENDTIME(PREVIOUS_DAY, entity.timeZone)
     AND datetime < ENDTIME(CURRENT_DAY, entity.timeZone)
 GROUP BY entity, PERIOD(1 DAY, entity.timeZone)
 ```
 
 ```ls
-| entity       | entity.timeZone | avg(value) | Period Start: UTC datetime | Period Start: Local datetime | 
-|--------------|-----------------|------------|----------------------------|------------------------------| 
-| nurswgvml007 | PST             | 12.3       | 2017-08-17 07:00 UTC       | 2017-08-17 00:00 PDT         | 
-| nurswgvml006 | US/Mountain     | 9.2        | 2017-08-17 06:00 UTC       | 2017-08-17 00:00 MDT         | 
-| nurswgvml010 | null            | 5.8        | 2017-08-17 00:00 UTC       | 2017-08-17 00:00 GMT         | 
+| entity       | entity.timeZone | avg(value) | Period Start: UTC datetime | Period Start: Local datetime |
+|--------------|-----------------|------------|----------------------------|------------------------------|
+| nurswgvml007 | PST             | 12.3       | 2017-08-17 07:00 UTC       | 2017-08-17 00:00 PDT         |
+| nurswgvml006 | US/Mountain     | 9.2        | 2017-08-17 06:00 UTC       | 2017-08-17 00:00 MDT         |
+| nurswgvml010 | null            | 5.8        | 2017-08-17 00:00 UTC       | 2017-08-17 00:00 GMT         |
 ```
 
 ### Multiple Intervals
@@ -1658,7 +1658,7 @@ The above query retrieves all records for the 'm-1' metric, even though it retur
 
 ## Inline Views
 
-Inline view is a subquery specified in the `FROM` clause. It defines a virtual table to be processed by the parent query. 
+Inline view is a subquery specified in the `FROM` clause. It defines a virtual table to be processed by the parent query.
 
 ```sql
 -- parent query
@@ -1666,7 +1666,7 @@ SELECT env, MAX(avg_val)
 FROM (
   -- subquery acting as table
   SELECT entity, entity.tags.environment AS env, avg(value) AS avg_val
-    FROM "cpu_busy" 
+    FROM "cpu_busy"
     WHERE datetime >= CURRENT_DAY
   GROUP BY entity
 )
@@ -1674,16 +1674,16 @@ GROUP BY env
 ```
 
 ```ls
-| env  | max(avg_val) | 
-|------|--------------| 
-| prod |         24.1 | 
-| test |          8.2 | 
+| env  | max(avg_val) |
+|------|--------------|
+| prod |         24.1 |
+| test |          8.2 |
 ```
 
 The example below calculates hourly maximum from which the parent query computes a daily average (average hourly maximum).
 
 ```sql
-SELECT datetime, AVG(value) AS "daily_average" 
+SELECT datetime, AVG(value) AS "daily_average"
   FROM (
     SELECT datetime, MAX(value) AS "value"
       FROM "mpstat.cpu_busy" WHERE datetime >= CURRENT_WEEK
@@ -1693,11 +1693,11 @@ GROUP BY PERIOD(1 DAY)
 ```
 
 ```ls
-| datetime            | daily_average | 
-|---------------------|---------------| 
-| 2017-08-14 00:00:00 | 96.1          | 
-| 2017-08-15 00:00:00 | 96.6          | 
-| 2017-08-16 00:00:00 | 98.8          | 
+| datetime            | daily_average |
+|---------------------|---------------|
+| 2017-08-14 00:00:00 | 96.1          |
+| 2017-08-15 00:00:00 | 96.6          |
+| 2017-08-16 00:00:00 | 98.8          |
 ```
 
 If the subquery column is based on an expression or function, rename it with an alias that can be referenced in the parent query.
@@ -1706,7 +1706,7 @@ If the subquery column is based on an expression or function, rename it with an 
 MAX(value) AS "mval"
 ```
 
-A subquery can include a nested subquery. Unlimited nested subqueries are supported. 
+A subquery can include a nested subquery. Unlimited nested subqueries are supported.
 
 ```sql
 SELECT MAX(value) FROM (
@@ -1731,7 +1731,7 @@ An inline view may contain subqueries that join multiple tables.
 SELECT datetime, MAX(value) AS "5-min Peak" FROM (
   SELECT datetime, AVG(t1.value * t2.value) AS "value"
     FROM "cpu_allocated_units" t1
-    JOIN "cpu_used_percent" t2 
+    JOIN "cpu_used_percent" t2
     WHERE datetime >= PREVIOUS_HOUR
     GROUP BY PERIOD(5 MINUTE)
 )
@@ -1751,20 +1751,20 @@ The `JOIN` clause merges records from multiple tables. The database implements i
 Metric `m_1` records:
 
 ```ls
-| m_1.datetime     | m_1.value  | m_1.entity | 
-|------------------|------------|------------| 
-| 2018-03-15 18:00 | 1.0        | e_1        | 
-| 2018-03-15 18:05 | 3.0        | e_1        | 
+| m_1.datetime     | m_1.value  | m_1.entity |
+|------------------|------------|------------|
+| 2018-03-15 18:00 | 1.0        | e_1        |
+| 2018-03-15 18:05 | 3.0        | e_1        |
 ```
 
 Metric `m_2` records:
 
 ```ls
-| m_2.datetime     | m_2.value  | m_2.entity | 
-|------------------|------------|------------| 
-| 2018-03-15 18:01 | 2.0        | e_1        | 
-| 2018-03-15 18:05 | 4.0        | e_1        | 
-| 2018-03-15 18:10 | 6.0        | e_1        | 
+| m_2.datetime     | m_2.value  | m_2.entity |
+|------------------|------------|------------|
+| 2018-03-15 18:01 | 2.0        | e_1        |
+| 2018-03-15 18:05 | 4.0        | e_1        |
+| 2018-03-15 18:10 | 6.0        | e_1        |
 ```
 
 * Inner Join Query
@@ -1772,7 +1772,7 @@ Metric `m_2` records:
 ```sql
 SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
   FROM m_1
-  JOIN m_2 
+  JOIN m_2
   /*  ON m_1.time = m_2.time
        AND m_1.entity = m_2.entity
        AND m_1.tags = m_2.tags */
@@ -1780,9 +1780,9 @@ SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
 ```
 
 ```ls
-| m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value | 
-|-------------------|-------------------|------------|-----------| 
-| 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       | 
+| m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value |
+|-------------------|-------------------|------------|-----------|
+| 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       |
 ```
 
 * Outer Join Query
@@ -1790,7 +1790,7 @@ SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
 ```sql
 SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
   FROM m_1
-  OUTER JOIN m_2 
+  OUTER JOIN m_2
   /*  ON m_1.time = m_2.time
        AND m_1.entity = m_2.entity
        AND m_1.tags = m_2.tags */
@@ -1798,12 +1798,12 @@ SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
 ```
 
 ```ls
-| m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value | 
-|-------------------|-------------------|------------|-----------| 
-| 2018-03-15 18:00  | null              | 1.0        | null      | 
-| null              | 2018-03-15 18:01  | null       | 2.0       | 
-| 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       | 
-| null              | 2018-03-15 18:10  | null       | 6.0       | 
+| m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value |
+|-------------------|-------------------|------------|-----------|
+| 2018-03-15 18:00  | null              | 1.0        | null      |
+| null              | 2018-03-15 18:01  | null       | 2.0       |
+| 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       |
+| null              | 2018-03-15 18:10  | null       | 6.0       |
 ```
 
 ### JOIN Syntax
@@ -1811,10 +1811,10 @@ SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
 The syntax follows the `SQL-92` notation for enumerating the compared columns.
 
 ```sql
-  FROM tbl t1 
-     JOIN tbl t2 
-      ON  t1.time AND t2.time 
-      AND t1.entity = t2.entity 
+  FROM tbl t1
+     JOIN tbl t2
+      ON  t1.time AND t2.time
+      AND t1.entity = t2.entity
       AND t1.tags = t2.tags
 ```
 
@@ -1850,17 +1850,17 @@ In addition to default columns, the `JOIN` query results include `datetime` and 
 ```sql
 SELECT datetime, m_1.datetime, m_2.datetime, m_1.value, m_2.value
   FROM m_1
-  OUTER JOIN m_2 
+  OUTER JOIN m_2
   WHERE datetime BETWEEN '2018-03-15 18:00:00' AND '2018-03-15 18:15:00'
 ```
 
 ```ls
-| datetime          | m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value | 
-|-------------------|-------------------|-------------------|------------|-----------| 
-| 2018-03-15 18:00  | 2018-03-15 18:00  | null              | 1.0        | null      | 
-| 2018-03-15 18:01  | null              | 2018-03-15 18:01  | null       | 2.0       | 
-| 2018-03-15 18:05  | 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       | 
-| 2018-03-15 18:10  | null              | 2018-03-15 18:10  | null       | 6.0       | 
+| datetime          | m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value |
+|-------------------|-------------------|-------------------|------------|-----------|
+| 2018-03-15 18:00  | 2018-03-15 18:00  | null              | 1.0        | null      |
+| 2018-03-15 18:01  | null              | 2018-03-15 18:01  | null       | 2.0       |
+| 2018-03-15 18:05  | 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       |
+| 2018-03-15 18:10  | null              | 2018-03-15 18:10  | null       | 6.0       |
 ```
 
 ### `JOIN` Filtering
@@ -1878,10 +1878,10 @@ WHERE datetime BETWEEN '2018-03-09T07:07:00Z' AND '2018-03-09T07:08:00Z'
 Note that the `t1.entity` column below contains rows with `null` values even though this column was checked in the `WHERE` condition. In this example, `null` values were created at the `OUTER JOIN` stage.
 
 ```ls
-| t1.datetime           | t1.entity     | t1.value  | t2.datetime           | t2.entity     | t2.value  | t2.tags                                | 
-|-----------------------|---------------|-----------|-----------------------|---------------|-----------|----------------------------------------| 
-| 2018-03-09T07:07:05Z  | nurswghbs001  | 4.4       | null                  | null          | null      | null                                   | 
-| null                  | null          | null      | 2018-03-09T07:07:42Z  | nurswghbs001  | 248909.0  | file_system=/dev/md2;mount_point=/     | 
+| t1.datetime           | t1.entity     | t1.value  | t2.datetime           | t2.entity     | t2.value  | t2.tags                                |
+|-----------------------|---------------|-----------|-----------------------|---------------|-----------|----------------------------------------|
+| 2018-03-09T07:07:05Z  | nurswghbs001  | 4.4       | null                  | null          | null      | null                                   |
+| null                  | null          | null      | 2018-03-09T07:07:42Z  | nurswghbs001  | 248909.0  | file_system=/dev/md2;mount_point=/     |
 
 ```
 
@@ -2209,7 +2209,7 @@ SELECT entity, datetime, metric.timeZone AS "Metric TZ", entity.timeZone AS "Ent
   date_format(time) AS "default",
   date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS "ISO 8601",
   date_format(time, 'yyyy-MM-dd HH:mm:ss') AS "Local Database",
-  date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-08:00') AS "GMT Offset",  
+  date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-08:00') AS "GMT Offset",
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PDT') AS "PDT",
   date_format(time, 'yyyy-MM-dd HH:mm:ssZZ', 'PDT') AS " PDT t/z",
   date_format(time, 'yyyy-MM-dd HH:mm:ssZZ', AUTO) AS "AUTO: CST", -- nurswgvml006 is in CST
@@ -2296,12 +2296,12 @@ GROUP BY PERIOD(1 hour)
 ```
 
 ```ls
-| datetime             | day of week  | avg(value)  | count(value) | 
-|----------------------|--------------|-------------|--------------| 
-| 2018-03-12 08:00:00  | Mon          | 14.535      | 223          | 
-| 2018-03-12 09:00:00  | Mon          | 12.626      | 225          | 
-| 2018-03-12 10:00:00  | Mon          | 12.114      | 225          | 
-| 2018-03-12 11:00:00  | Mon          | 11.314      | 225          | 
+| datetime             | day of week  | avg(value)  | count(value) |
+|----------------------|--------------|-------------|--------------|
+| 2018-03-12 08:00:00  | Mon          | 14.535      | 223          |
+| 2018-03-12 09:00:00  | Mon          | 12.626      | 225          |
+| 2018-03-12 10:00:00  | Mon          | 12.114      | 225          |
+| 2018-03-12 11:00:00  | Mon          | 11.314      | 225          |
 ...
 ```
 
@@ -2590,7 +2590,7 @@ WHERE entity = 'qz-1211'
 | datetime             | text     | lag(text) |
 |----------------------|----------|-----------|
 | 2017-10-04T01:52:05Z | 700      | null      | -- excluded: text is '900' and LAG is null
-| 2017-10-04T02:00:34Z | Inactive | 700       | -- excluded: text is 'Inactive' and LAG = '700'  
+| 2017-10-04T02:00:34Z | Inactive | 700       | -- excluded: text is 'Inactive' and LAG = '700'
 | 2017-10-04T02:01:20Z | 800      | Inactive  |
 | 2017-10-04T02:03:05Z | Inactive | 800       |
 | 2017-10-04T02:03:10Z | 800      | Inactive  |
@@ -2820,11 +2820,11 @@ The `CASE` expression provides a way to use `IF THEN` logic in various parts of 
 The searched `CASE` expression evaluates a sequence of boolean expressions and returns a matching result expression.
 
 ```sql
-CASE  
+CASE
      WHEN search_expression THEN result_expression
      [ WHEN search_expression THEN result_expression ]
      [ ELSE result_expression ]
-END  
+END
 ```
 
 Each `search_expression` should evaluate to a boolean (true/false) value.
@@ -2894,7 +2894,7 @@ CASE input_expression
      WHEN compare_expression THEN result_expression
      [ WHEN compare_expression THEN result_expression ]
      [ ELSE result_expression ]
-END  
+END
 ```
 
 ```sql
@@ -2911,14 +2911,14 @@ FROM "mpstat.cpu_busy"
 The `CASE` expressions can be nested by using `CASE` within the `result_expression`:
 
 ```sql
-CASE date_format(time, 'yyyy')           
+CASE date_format(time, 'yyyy')
     WHEN '2016' THEN
       CASE
         WHEN CAST(date_format(time, 'D') AS NUMBER) > 5 THEN '17'
         ELSE '16'
       END
     WHEN '2017' THEN '18'
-    WHEN '2018' THEN '17'      
+    WHEN '2018' THEN '17'
     ELSE '15'
 END AS "Tax Day"
 ```

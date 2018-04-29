@@ -1,6 +1,6 @@
 # Versions
 
-`version` is an object. Contains source, status and change time fields for versioned metrics. 
+`version` is an object. Contains source, status and change time fields for versioned metrics.
 
 When a metric is versioned, the database retains the history of series value changes for the same timestamp along with version_source and version_status.
 

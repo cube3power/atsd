@@ -3,7 +3,7 @@ Monthly Change Log: February 2018
 
 ## ATSD
 
-Issue| Category    | Type    | Subject              
+Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
 5047 | rule engine | Bug | [`CANCEL`](../../rule-engine/window.md#cancel-status) window doesn't display user variables.
 5044 | security | Feature | User [permissions](../../administration/user-authorization.md#user-authorization) page: add group-level details.
@@ -77,7 +77,7 @@ Issue| Category    | Type    | Subject
 
 ## Collector
 
-Issue| Category    | Type    | Subject              
+Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
 5052 | [docker](https://github.com/axibase/axibase-collector/blob/master/jobs/docker.md) | Bug | `docker.fs.total.size.rw` sampling frequency irregularity.
 5043 | core | Bug | Collector CPU is abnormally high.

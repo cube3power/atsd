@@ -52,14 +52,14 @@ Supported fields:
    * [`upper`](../../rule-engine/functions-text.md#upper)
    * [`lower`](../../rule-engine/functions-text.md#lower)
    * [`list`](../../rule-engine/functions-text.md#list)
-   
+
 ## Examples
 
 ### Entity Name Match
 
 ```javascript
   /*
-  Match entities with name starting with 'nurswgvml', 
+  Match entities with name starting with 'nurswgvml',
   for example 'nurswgvml001', 'nurswgvml772'.
   */
   id LIKE 'nurswgvml*'
@@ -79,10 +79,10 @@ Supported fields:
 ```javascript
   /* Match enabled entities. */
   enabled = true
-  
+
   /* Match disabled entities. */
   enabled = false
-  
+
 ```
 
 ### Entity Tag Match
@@ -94,7 +94,7 @@ Supported fields:
   tags.environment = 'production'
 
   /*
-  Match entities with entity tag 'location' starting with 'SVL', 
+  Match entities with entity tag 'location' starting with 'SVL',
   for example 'SVL', 'SVL02'.
   */
   tags.location LIKE 'SVL*'
@@ -114,18 +114,18 @@ Supported fields:
 
 ```javascript
   /*
-  Match entities with a 'java_home' stored in 'docker.container.config.env' 
+  Match entities with a 'java_home' stored in 'docker.container.config.env'
   equal to '/usr/lib/jvm/java-8-openjdk-amd64/jre'.
   */
   property('docker.container.config.env::java_home') = '/usr/lib/jvm/java-8-openjdk-amd64/jre'
-  
+
   /*
   Match entities which have a '/opt' file_system stored in 'nmon.jfs' property type.
   */
   property_values('nmon.jfs::file_system').contains('/opt')
 
   /*
-  Match entities with a 'file_system' which name includes 'ora', 
+  Match entities with a 'file_system' which name includes 'ora',
   stored in 'nmon.jfs' property type.
   */
   matches('*ora*', property_values('nmon.jfs::file_system'))

@@ -8,11 +8,11 @@ Membership in entity groups with non-empty expression is managed by the server. 
 
 ## Request
 
-| **Method** | **Path** | 
+| **Method** | **Path** |
 |:---|:---|
 | GET | `/api/v1/entity-groups` |
 
-### Query Parameters 
+### Query Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
@@ -52,7 +52,7 @@ curl https://atsd_hostname:8443/api/v1/entity-groups?tags=os_level&limit=2&expre
  --insecure --verbose --user {username}:{password} \
  --request GET
 ```
- 
+
 ### Response
 
 ```json
@@ -60,7 +60,7 @@ curl https://atsd_hostname:8443/api/v1/entity-groups?tags=os_level&limit=2&expre
     "name": "nmon-aix",
     "tags": {
         "os_level": "aix 6.3"
-    }, 
+    },
     "enabled": true
 },
 {

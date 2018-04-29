@@ -49,7 +49,7 @@ series e:default d:2016-10-11T15:38:00Z m:Memory_Avail_MBytes=6139.2 t:_index=3
 series e:default d:2016-10-11T15:38:01Z m:Memory_Avail_MBytes=6141.0
 series e:default d:2016-08-24T15:02:55Z x:BA:ACTIVE.1="" t:status_text="Pt Created" t:status=-253
 series e:default d:2016-08-24T15:03:17Z x:BA:ACTIVE.1=Inactive
-series e:default d:2016-08-24T15:04:17Z x:BA:ACTIVE.1=Active  
+series e:default d:2016-08-24T15:04:17Z x:BA:ACTIVE.1=Active
 series e:default d:2016-08-24T16:15:17Z x:BA:ACTIVE.1=Inactive
 series e:default d:2016-08-24T15:01:09Z m:CDEP158=NaN t:status_text="Shutdown" t:status=-254
 series e:default d:2016-08-24T15:03:17Z m:CDEP158=0

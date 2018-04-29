@@ -266,7 +266,7 @@ The `--force-renewal` flag forces the certbot to request new certificates.
 sudo certbot renew --force-renewal --deploy-hook "/opt/certbot/deploy-atsd.sh"
 ```
 
-Be aware that renewal requests are subject to [rate limits](https://letsencrypt.org/docs/rate-limits/) and too many requests may cause 
+Be aware that renewal requests are subject to [rate limits](https://letsencrypt.org/docs/rate-limits/) and too many requests may cause
 temporarily rejections.
 
 ### Enable Auto-Renewal
@@ -280,7 +280,6 @@ cat /etc/cron.d/certbot
 The `certbot -q renew` command is executed as root.
 
 ```txt
-# ...
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 

@@ -57,7 +57,7 @@ Rules inherited from [Base ABNF](base-abnf.md).
 command = "property" MSP entity type *(MSP key) 1*(MSP tag) [MSP time]
 entity = "e:" NAME
 type = "t:" NAME
-key = "k:" NAME "=" VALUE  
+key = "k:" NAME "=" VALUE
 tag = "v:" NAME "=" VALUE
 time = time-millisecond / time-second / time-iso
 time-millisecond = "ms:" POSITIVE_INTEGER

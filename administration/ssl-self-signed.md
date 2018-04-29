@@ -37,7 +37,7 @@ Replace `{USR}` and `{PWD}` with administrator credentials, `{atsd_hostname}` wi
 
 ```sh
 curl -k -u {USR}:{PWD} https://{atsd_hostname}:8443/admin/certificates/self-signed \
-  -d "domainName=atsd.customer_domain.com" 
+  -d "domainName=atsd.customer_domain.com"
   -w "\n%{http_code}\n"
 ```
 

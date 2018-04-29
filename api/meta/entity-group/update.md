@@ -2,7 +2,7 @@
 
 ## Description
 
-Update fields and tags of the specified entity group. 
+Update fields and tags of the specified entity group.
 
 Unlike the [replace method](create-or-replace.md), fields and tags that are **not** specified in the request are left unchanged.
 
@@ -14,7 +14,7 @@ Similarly, fields that are set to `null` are ignored and are left unchanged.
 |:---|:---|---:|
 | PATCH | `/api/v1/entity-groups/{group}` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
@@ -39,7 +39,7 @@ None.
 #### URI
 
 ```elm
-PATCH https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix 
+PATCH https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix
 ```
 
 #### Payload

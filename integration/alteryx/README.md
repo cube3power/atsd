@@ -184,7 +184,7 @@ The workflow consists of the following steps (nodes):
    ![](images/sort.png)
 
 9. **Formula** tool. Create a new column named `entity` with the **Formula** tool. Name it
-   `"bls.gov`. 
+   `"bls.gov`.
 
    ![](images/entity.png)
 

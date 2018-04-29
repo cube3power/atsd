@@ -6,15 +6,15 @@ Axibase Time Series Database has a storage driver for Spring Boot.
 
 #### Settings
 
-| Name | Required | Default Value | Description | 
-| --- | --- | --- | --- | 
-|  `metrics.export.url`  |  No  |  `http://localhost:8088/api/v1/command`  |  ATSD API URL  | 
-|  `metrics.export.username`  |  Yes  |  –  |  ATSD Username.  | 
-|  `metrics.export.password`  |  Yes  |  –  |  ATSD Password.  | 
-|  `metrics.export.bufferSize`  |  No  |  `64`  |  Size of metrics buffer. Metrics writer flushes the buffer if it is full or by schedule (configured by `spring.metrics.export.*` properties.)  | 
-|  `metrics.names.entity`  |  No  |  `atsd-default`  |  Entity name.  | 
-|  `metrics.names.metricPrefix`  |  No  |  –  |  A prefix to be added to the original metric name.  | 
-|  `metrics.names.tags.*`  |  No  |  –  |  Optional set of key-value pairs in the ATSD time series identifier.  | 
+| Name | Required | Default Value | Description |
+| --- | --- | --- | --- |
+|  `metrics.export.url`  |  No  |  `http://localhost:8088/api/v1/command`  |  ATSD API URL  |
+|  `metrics.export.username`  |  Yes  |  –  |  ATSD Username.  |
+|  `metrics.export.password`  |  Yes  |  –  |  ATSD Password.  |
+|  `metrics.export.bufferSize`  |  No  |  `64`  |  Size of metrics buffer. Metrics writer flushes the buffer if it is full or by schedule (configured by `spring.metrics.export.*` properties.)  |
+|  `metrics.names.entity`  |  No  |  `atsd-default`  |  Entity name.  |
+|  `metrics.names.metricPrefix`  |  No  |  –  |  A prefix to be added to the original metric name.  |
+|  `metrics.names.tags.*`  |  No  |  –  |  Optional set of key-value pairs in the ATSD time series identifier.  |
 
 #### Configuration
 
@@ -41,24 +41,24 @@ Enable public metrics export:
 
 ```java
 @Bean
-	public MetricsEndpointMetricReader metricsEndpointMetricReader(MetricsEndpoint metricsEndpoint) {
-		return new MetricsEndpointMetricReader(metricsEndpoint);
-	}
+    public MetricsEndpointMetricReader metricsEndpointMetricReader(MetricsEndpoint metricsEndpoint) {
+        return new MetricsEndpointMetricReader(metricsEndpoint);
+    }
  
         @Bean
-	@ExportMetricWriter
-	@ConfigurationProperties("metrics.export")
-	public MetricWriter atsdMetricWriter() {
-		AtsdMetricWriter writer = new AtsdMetricWriter();
-		writer.setNamingStrategy(namingStrategy());
-		return writer;
-	}
+    @ExportMetricWriter
+    @ConfigurationProperties("metrics.export")
+    public MetricWriter atsdMetricWriter() {
+        AtsdMetricWriter writer = new AtsdMetricWriter();
+        writer.setNamingStrategy(namingStrategy());
+        return writer;
+    }
  
-	@Bean
-	@ConfigurationProperties("metrics.names")
-	public AtsdNamingStrategy namingStrategy() {
-		return new DefaultAtsdNamingStrategy();
-	}
+    @Bean
+    @ConfigurationProperties("metrics.names")
+    public AtsdNamingStrategy namingStrategy() {
+        return new DefaultAtsdNamingStrategy();
+    }
 ```
 
 ##### Wrapping Methods using Custom Metrics

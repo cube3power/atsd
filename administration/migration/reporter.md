@@ -39,10 +39,10 @@ hbase classpath | cut -f 1 -d ":"
 ```
 
 ```sh
-# CDH 5.5 Package installation.
+# CDH 5.5 Package installation
 /usr/lib/hbase/conf
 
-# CDH 5.10 Parcels installation.
+# CDH 5.10 Parcels installation
 /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/lib/hbase/bin/../conf
 ```
 
@@ -87,7 +87,7 @@ The reporter can take some time to complete. Launch it with the `nohup` command 
 nohup yarn com.axibase.reporter.mapreduce.DataTableReporter &> /tmp/reporter/reporter.log &
 ```
 
-View the log file in order to monitor the job progress. 
+View the log file in order to monitor the job progress.
 
 ```sh
 tail -F /tmp/reporter/reporter.log
@@ -100,20 +100,20 @@ When the job is completed, the log will display a summary:
 17/08/09 12:15:55 INFO mapreduce.Job: Job job_1502265066318_0006 completed successfully
 17/08/09 12:15:55 INFO mapreduce.Job: Counters: 55
 ...
-	Map-Reduce Framework
-		Map input records=4534313
+    Map-Reduce Framework
+        Map input records=4534313
 ...
-	com.axibase.reporter.mapreduce.DataTableReporter$JobStatics
-		ANNOTATIONS_COUNT=56
-		ROWS_AFTER_MIGRATION=1435293
-		ROWS_READ=4534313
-		SAMPLES_COUNT=196354701
-		VERSIONED_VALUES_COUNT=0
-		VERSIONS_COUNT=0
-	File Input Format Counters
-		Bytes Read=0
-	File Output Format Counters
-		Bytes Written=183403
+    com.axibase.reporter.mapreduce.DataTableReporter$JobStatics
+        ANNOTATIONS_COUNT=56
+        ROWS_AFTER_MIGRATION=1435293
+        ROWS_READ=4534313
+        SAMPLES_COUNT=196354701
+        VERSIONED_VALUES_COUNT=0
+        VERSIONS_COUNT=0
+    File Input Format Counters
+        Bytes Read=0
+    File Output Format Counters
+        Bytes Written=183403
 17/08/09 12:15:55 INFO mapreduce.DataTableReporter: Map-reduce job success!
 17/08/09 12:15:55 INFO mapreduce.DataTableReporter: Start processing results of the map-reduce jab.
 ...
@@ -162,7 +162,7 @@ Email the `reporter.log`, `summary.log`, and `maximum-per-region.log` files to `
 The report contains the following summary counters:
 
 * `ANNOTATIONS_COUNT` - The number of annotations (text columns) stored in the `atsd_d` table.
-* `ROWS_AFTER_MIGRATION` - The estimated number of daily rows in the `atsd_d` table to be created after migration. 
+* `ROWS_AFTER_MIGRATION` - The estimated number of daily rows in the `atsd_d` table to be created after migration.
 * `ROWS_READ` - The number of hourly rows currently present in the `atsd_d` table. Equal to `Map input records` counter.
 * `SAMPLES_COUNT` - The total number of `timestamp=value` samples for all series in the `atsd_d` table.
 * `VERSIONED_VALUES_COUNT` - The total number of samples which have several versions of values for the same timestamp.

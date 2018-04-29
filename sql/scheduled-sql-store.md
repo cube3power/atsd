@@ -22,7 +22,7 @@ The remaining numeric columns are classified as metric name columns.
 
 ```sql
 SELECT datetime,
-  'DC-1' AS "entity",  
+  'DC-1' AS "entity",
   AVG(value) AS "temp_daily_avg",
   PERCENTILE(90, value) AS "temp_daily_perc_90"
   -- mapped to datetime, entity, for metric with name = temp_daily_avg and for metric with name = temp_daily_perc_90
@@ -107,7 +107,7 @@ Columns starting with 'entity.tags.', 'metric.tags.', or 'metric.{field-name}' p
 
 ```sql
 SELECT datetime,
-  'dc-1' AS "entity",  
+  'dc-1' AS "entity",
   'SVL' as "entity.tags.location",
   'Celcius' AS "metric.units",
   AVG(value) AS "temp_daily_avg"

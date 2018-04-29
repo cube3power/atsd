@@ -12,7 +12,7 @@ Refer to [expression reference](../../../search/README.md) for syntax, available
 | :--------- | :--------------- |
 | GET        | `/api/v1/search` |
 
-### Query Parameters:
+### Query Parameters
 
 | **Parameter** | **Type** | **Description**                                                                                   |
 | :------------ | :------- | :------------- |
@@ -83,7 +83,7 @@ curl 'https://atsd_hostname:8443/api/v1/search?query=inflation*&limit=2&metricTa
 ```json
 {
   "query": "contents:inflation.cpi.categories*",
-  "recordsTotal": 496621,	
+  "recordsTotal": 496621,
   "recordsFiltered": 20,
   "time": 136,
   "data": [
@@ -93,7 +93,7 @@ curl 'https://atsd_hostname:8443/api/v1/search?query=inflation*&limit=2&metricTa
       {
         "units": "million",
         "dataType": "LONG"
-      },			
+      },            
       {
         "pricebase": "Current prices",
         "seasonaladjustment": "Seasonally Adjusted",
@@ -103,7 +103,7 @@ curl 'https://atsd_hostname:8443/api/v1/search?query=inflation*&limit=2&metricTa
       "U.S. FED",
       {
         "timeZone": "US/Eastern"
-      },				
+      },                
       {
         "source": "FRED"
       },
@@ -118,7 +118,7 @@ curl 'https://atsd_hostname:8443/api/v1/search?query=inflation*&limit=2&metricTa
       {
         "units": "million",
         "dataType": "LONG"
-      },			
+      },            
       {
         "pricebase": "Current prices",
         "seasonaladjustment": "Seasonally Adjusted",
@@ -128,7 +128,7 @@ curl 'https://atsd_hostname:8443/api/v1/search?query=inflation*&limit=2&metricTa
       "U.S. FED",
       {
         "timeZone": "US/Eastern"
-      },				
+      },
       {
         "source": "FRED"
       },
@@ -147,44 +147,44 @@ curl 'https://atsd_hostname:8443/api/v1/search?query=inflation*&limit=2&metricTa
     [
       // metric name
       "inflation.cpi.categories.price",
-      
+
       // metric label
       "CPI - Non-negotiable",
-      
+
       // metric fields
       {
         "units": "million",
         "dataType": "LONG"
       },
-      
+
       // metric tags
       {
         "pricebase": "Current prices",
         "seasonaladjustment": "Seasonally Adjusted",
         "source": "CBS"
       },
-      
+
       // entity name
       "fed",
-      
+
       // entity label
       "U.S. FED",
-      
+
       // entity fields
       {
         "timeZone": "US/Eastern"
       },
-      
+
       // entity tags
       {
         "source": "FRED"
       },
-      
+
       // series tags
       {
         "category": "Health"
       },
-      
+
       // relevance score
       1.5
     ]

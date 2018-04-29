@@ -1,4 +1,4 @@
-# Insert Forecast Deviation 
+# Insert Forecast Deviation
 
 
 ## Request
@@ -24,7 +24,7 @@ POST https://atsd_hostname:8443/api/v1/series/insert
     }
 ]
 ```
-## Response 
+## Response
 ```json
 
 ```

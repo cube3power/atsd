@@ -18,7 +18,7 @@ The interpolated values are calculated based on two adjacent values.
 
 If a raw value exists at the regularized timestamp, it is used "as is" irrespective of neighboring values.
 
-### Irregular Series:
+### Irregular Series
 
 ```ls
 | time                 | value |
@@ -551,7 +551,7 @@ The default time zone can be customized by specifying a [time zone identifier](.
 
 ```sql
 SELECT entity, value,
-  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "UTC datetime", 
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "UTC datetime",
   date_format(time, 'yyyy-MM-dd HH:mm z', 'US/Pacific') AS "Local datetime"
 FROM "mpstat.cpu_busy"
   WHERE datetime >= NOW - 2*DAY
@@ -559,12 +559,12 @@ WITH INTERPOLATE(1 DAY, LINEAR, INNER, FALSE, CALENDAR, 'US/Pacific')
 ```
 
 ```ls
-| entity       | value | UTC datetime         | Local datetime       | 
-|--------------|-------|----------------------|----------------------| 
-| nurswgvml007 | 65.5  | 2017-08-17 07:00 UTC | 2017-08-17 00:00 PDT | 
-| nurswgvml007 | 38.5  | 2017-08-18 07:00 UTC | 2017-08-18 00:00 PDT | 
-| nurswgvml006 | 33.2  | 2017-08-17 07:00 UTC | 2017-08-17 00:00 PDT | 
-| nurswgvml006 | 33.3  | 2017-08-18 07:00 UTC | 2017-08-18 00:00 PDT | 
+| entity       | value | UTC datetime         | Local datetime       |
+|--------------|-------|----------------------|----------------------|
+| nurswgvml007 | 65.5  | 2017-08-17 07:00 UTC | 2017-08-17 00:00 PDT |
+| nurswgvml007 | 38.5  | 2017-08-18 07:00 UTC | 2017-08-18 00:00 PDT |
+| nurswgvml006 | 33.2  | 2017-08-17 07:00 UTC | 2017-08-17 00:00 PDT |
+| nurswgvml006 | 33.3  | 2017-08-18 07:00 UTC | 2017-08-18 00:00 PDT |
 ```
 
 * Entity or Metric Time Zone
@@ -572,7 +572,7 @@ WITH INTERPOLATE(1 DAY, LINEAR, INNER, FALSE, CALENDAR, 'US/Pacific')
 ```sql
 SELECT entity, entity.timeZone,
   value,
-  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "UTC datetime", 
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "UTC datetime",
   date_format(time, 'yyyy-MM-dd HH:mm z', entity.timeZone) AS "Local datetime"
 FROM "mpstat.cpu_busy"
   WHERE datetime >= NOW - 2*DAY
@@ -580,14 +580,14 @@ WITH INTERPOLATE(1 DAY, LINEAR, INNER, FALSE, CALENDAR, entity.timeZone)
 ```
 
 ```ls
-| entity       | entity.timeZone | value | UTC datetime         | Local datetime       | 
-|--------------|-----------------|-------|----------------------|----------------------| 
-| nurswgvml007 | PST             | 65.5  | 2017-08-17 07:00 UTC | 2017-08-17 00:00 PDT | 
-| nurswgvml007 | PST             | 38.5  | 2017-08-18 07:00 UTC | 2017-08-18 00:00 PDT | 
-| nurswgvml006 | US/Mountain     | 31.1  | 2017-08-17 06:00 UTC | 2017-08-17 00:00 MDT | 
-| nurswgvml006 | US/Mountain     | 3.0   | 2017-08-18 06:00 UTC | 2017-08-18 00:00 MDT | 
-| nurswgvml010 | null            | 0.4   | 2017-08-17 00:00 UTC | 2017-08-17 00:00 GMT | 
-| nurswgvml010 | null            | 22.5  | 2017-08-18 00:00 UTC | 2017-08-18 00:00 GMT | 
+| entity       | entity.timeZone | value | UTC datetime         | Local datetime       |
+|--------------|-----------------|-------|----------------------|----------------------|
+| nurswgvml007 | PST             | 65.5  | 2017-08-17 07:00 UTC | 2017-08-17 00:00 PDT |
+| nurswgvml007 | PST             | 38.5  | 2017-08-18 07:00 UTC | 2017-08-18 00:00 PDT |
+| nurswgvml006 | US/Mountain     | 31.1  | 2017-08-17 06:00 UTC | 2017-08-17 00:00 MDT |
+| nurswgvml006 | US/Mountain     | 3.0   | 2017-08-18 06:00 UTC | 2017-08-18 00:00 MDT |
+| nurswgvml010 | null            | 0.4   | 2017-08-17 00:00 UTC | 2017-08-17 00:00 GMT |
+| nurswgvml010 | null            | 22.5  | 2017-08-18 00:00 UTC | 2017-08-18 00:00 GMT |
 ```
 
 ## Multiple Intervals

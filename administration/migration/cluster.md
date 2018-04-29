@@ -47,7 +47,7 @@ Stop ATSD.
 /opt/atsd/atsd/bin/stop-atsd.sh
 ```
 
-Take note of the **table prefix** specified in the `/opt/atsd/atsd/conf/server.properties` file. 
+Take note of the **table prefix** specified in the `/opt/atsd/atsd/conf/server.properties` file.
 
 ```sh
 cat /opt/atsd/atsd/conf/server.properties | grep "hbase.table.prefix" | cut -f 2 -d "="
@@ -84,7 +84,7 @@ Switch to the 'yarn' user.
 sudo su yarn
 ```
 
-### Initiate a Kerberos session.
+### Initiate a Kerberos session
 
 Obtain the fully qualified hostname of the YARN ResourceManager server.
 
@@ -101,7 +101,7 @@ kinit -k -t /run/cloudera-scm-agent/process/7947-yarn-RESOURCEMANAGER/yarn.keyta
 Download the `migration.jar` file to the temporary `/tmp/migration/` directory.
 
 ```sh
-mkdir /tmp/migration 
+mkdir /tmp/migration
 curl -o /tmp/migration/migration.jar https://axibase.com/public/atsd-125-migration/migration-hbase-1.2.0-cdh5.10.0.jar
 ```
 
@@ -160,7 +160,7 @@ nohup yarn com.axibase.migration.mapreduce.DataMigrator --forced --drop_annotati
 
 #### Monitoring Job Progress
 
-The job may take several hours to complete. 
+The job may take several hours to complete.
 
 Open **Clusters > Cluster > YARN > Web UI > ResourceManager Web UI** in Cloudera Manager.
 
@@ -183,7 +183,7 @@ Once the job is complete, the `migration.log` file should contain the following 
 ### Copy New Coprocessors into HDFS
 
 Log in to HDFS NameNode server or another server with the DFS client.
- 
+
 Switch to the 'hdfs' user.
 
 ```sh
@@ -207,7 +207,7 @@ Note that this path should match the `coprocessors.jar` setting specified in the
 
 ### Remove Old Coprocessors
 
-ATSD coprocessors that were added to HBase CoprocessorRegion Classes have been loaded automatically and therefore must be removed from HBase settings in Cloudera Manager. 
+ATSD coprocessors that were added to HBase CoprocessorRegion Classes have been loaded automatically and therefore must be removed from HBase settings in Cloudera Manager.
 
 The old jar files should be removed from the local file system on each HBase Region Server.
 
@@ -275,7 +275,7 @@ Update `JAVA_HOME` in the `start-atsd.sh` file:
 jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" /opt/atsd/atsd/bin/start-atsd.sh
 ```
 
-Edit the `/opt/atsd/atsd/conf/atsd-env.sh` file. 
+Edit the `/opt/atsd/atsd/conf/atsd-env.sh` file.
 
 Increase 'Xmx' memory to 50% of available RAM memory on the ATSD server:
 

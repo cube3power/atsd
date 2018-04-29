@@ -52,14 +52,14 @@ tags.request_ip = collection('ip_white_list').get(1)
   list(string s[, string p]) [string]
 ```
 
-Splits string `s` using separator `p` (default is comma ',') into a collection of string values. The function discards duplicate items by preserving only the first occurrence of each element. 
+Splits string `s` using separator `p` (default is comma ',') into a collection of string values. The function discards duplicate items by preserving only the first occurrence of each element.
 
 To access the n-th element in the collection, use square brackets as in `[index]` or the `get(index)` method (starting with 0 for the first element).
 
 Examples:
 
 ```javascript
-name = list('atsd,nurswgvml007').get(0) 
+name = list('atsd,nurswgvml007').get(0)
 ```
 
 ### `likeAll`
@@ -135,7 +135,7 @@ Returns `true`, if collection `c` contains object `v`. The collection `c` can be
 Examples:
 
 ```javascript
-NOT collection_contains(tags['os'], collection('ignore_os'))   
+NOT collection_contains(tags['os'], collection('ignore_os'))
 ```
 
 ### `collection_intersects`
@@ -174,7 +174,7 @@ Converts `s` to lowercase letters.
   property([string e, ]string s) string
 ```
 
-Returns the first value in the list of strings returned by the `property_values(string s)` function for the specified [property search](../rule-engine/property-search.md) expression `s` and entity `e`. 
+Returns the first value in the list of strings returned by the `property_values(string s)` function for the specified [property search](../rule-engine/property-search.md) expression `s` and entity `e`.
 
 The function returns an empty string if no matching property records are found.
 
@@ -200,7 +200,7 @@ Examples:
 
 ```javascript
 
-properties('docker.container').image LIKE 'axibase/*' 
+properties('docker.container').image LIKE 'axibase/*'
 ```
 
 ```javascript
@@ -235,7 +235,7 @@ property_values('linux.disk:fstype=ext4:mount_point').contains('/')
 
 Returns `true` if the entity collects the specified metric `m`, regardless of tags.
 
-If the optional hours `n` argument is specified, only rows inserted for the last `n` hours are evaluated. 
+If the optional hours `n` argument is specified, only rows inserted for the last `n` hours are evaluated.
 
 Examples:
 

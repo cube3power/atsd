@@ -92,57 +92,57 @@ Sample metadata:
 
 ```json
 {
-	"@context": ["http://www.w3.org/ns/csvw", {
-		"atsd": "http://www.axibase.com/schemas/2017/07/atsd.jsonld"
-	}],
-	"dc:created": {
-		"@value": "2017-07-04T16:59:19.908Z",
-		"@type": "xsd:date"
-	},
-	"dc:publisher": {
-		"schema:name": "Axibase Time-Series Database",
-		"schema:url": {
-			"@id": "https://atsd_hostname:8443"
-		}
-	},
-	"dc:title": "SQL Query",
-	"rdfs:comment": "SELECT tbl.value*100 AS \"cpu_percent\", tbl.datetime 'sample-date'\n FROM \"mpstat.cpu_busy\" tbl \n WHERE datetime > now - 1*MINUTE",
-	"@type": "Table",
-	"url": "sql.csv",
-	"tableSchema": {
-		"columns": [{
-			"columnIndex": 1,
-			"name": "tbl.value * 100",
-			"titles": "cpu_percent",
-			"datatype": "double",
-			"table": "cpu_busy",
-			"propertyUrl": "atsd:value"
-		}, {
-			"columnIndex": 2,
-			"name": "tbl.datetime",
-			"titles": "sample-date",
-			"datatype": "xsd:dateTimeStamp",
-			"table": "cpu_busy",
-			"propertyUrl": "atsd:datetime",
-			"dc:description": "Sample time in ISO8601 format"
-		}]
-	},
-	"dialect": {
-		"commentPrefix": "#",
-		"delimiter": ",",
-		"doubleQuote": true,
-		"quoteChar": "\"",
-		"headerRowCount": 1,
-		"encoding": "utf-8",
-		"header": true,
-		"lineTerminators": ["\r\n", "\n"],
-		"skipBlankRows": false,
-		"skipColumns": 0,
-		"skipRows": 0,
-		"skipInitialSpace": false,
-		"trim": false,
-		"@type": "Dialect"
-	}
+    "@context": ["http://www.w3.org/ns/csvw", {
+        "atsd": "http://www.axibase.com/schemas/2017/07/atsd.jsonld"
+    }],
+    "dc:created": {
+        "@value": "2017-07-04T16:59:19.908Z",
+        "@type": "xsd:date"
+    },
+    "dc:publisher": {
+        "schema:name": "Axibase Time-Series Database",
+        "schema:url": {
+            "@id": "https://atsd_hostname:8443"
+        }
+    },
+    "dc:title": "SQL Query",
+    "rdfs:comment": "SELECT tbl.value*100 AS \"cpu_percent\", tbl.datetime 'sample-date'\n FROM \"mpstat.cpu_busy\" tbl \n WHERE datetime > now - 1*MINUTE",
+    "@type": "Table",
+    "url": "sql.csv",
+    "tableSchema": {
+        "columns": [{
+            "columnIndex": 1,
+            "name": "tbl.value * 100",
+            "titles": "cpu_percent",
+            "datatype": "double",
+            "table": "cpu_busy",
+            "propertyUrl": "atsd:value"
+        }, {
+            "columnIndex": 2,
+            "name": "tbl.datetime",
+            "titles": "sample-date",
+            "datatype": "xsd:dateTimeStamp",
+            "table": "cpu_busy",
+            "propertyUrl": "atsd:datetime",
+            "dc:description": "Sample time in ISO8601 format"
+        }]
+    },
+    "dialect": {
+        "commentPrefix": "#",
+        "delimiter": ",",
+        "doubleQuote": true,
+        "quoteChar": "\"",
+        "headerRowCount": 1,
+        "encoding": "utf-8",
+        "header": true,
+        "lineTerminators": ["\r\n", "\n"],
+        "skipBlankRows": false,
+        "skipColumns": 0,
+        "skipRows": 0,
+        "skipInitialSpace": false,
+        "trim": false,
+        "@type": "Dialect"
+    }
 }
 ```
 

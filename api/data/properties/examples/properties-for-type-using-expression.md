@@ -17,7 +17,7 @@ POST https://atsd_hostname:8443/api/v1/properties/query
         "entity": "host2",
         "keyTagExpression": "key3 like 'nur*'",
         "startDate": "now - 1 * DAY",
-        "endDate": "now",        
+        "endDate": "now",
     }
 ]
 ```

@@ -24,7 +24,7 @@ Logical operators: `AND`, `OR`, `NOT` as well as `&&` , `||`, `!`
 
 ### Wildcards
 
-* Wildcard `*` means zero or more characters. 
+* Wildcard `*` means zero or more characters.
 * Wildcard `?` means any character.
 
 ### Functions
@@ -78,14 +78,14 @@ tags.request_ip = collection('ip_white_list').get(1)
   list(string s[, string p]) [string]
 ```
 
-Splits string `s` using separator `p` (default is comma ',') into a collection of string values. The function discards duplicate items by preserving only the first occurrence of each element. 
+Splits string `s` using separator `p` (default is comma ',') into a collection of string values. The function discards duplicate items by preserving only the first occurrence of each element.
 
 To access the n-th element in the collection, use square brackets as in `[index]` or the `get(index)` method (starting with 0 for the first element).
 
 Examples:
 
 ```javascript
-entity = list('atsd,nurswgvml007').get(0) 
+entity = list('atsd,nurswgvml007').get(0)
 ```
 
 ### `likeAll`
@@ -176,7 +176,7 @@ Returns `true`, if collection `c` contains object `v`. The collection `c` can be
 Examples:
 
 ```javascript
-NOT collection_contains(tags['os'], collection('ignore_os'))   
+NOT collection_contains(tags['os'], collection('ignore_os'))
 ```
 
 ### `collection_intersects`
@@ -261,7 +261,7 @@ If space utilization needs to be controlled, open the **Settings > Receive Stati
 
 ![](images/metric_persistence_filter_1.png "top_hourly_metrics")
 
-The _Series_ icon opens a list of unique tags for the selected metric. 
+The _Series_ icon opens a list of unique tags for the selected metric.
 
 ![](images/metric_persistence_filter_2.png)
 

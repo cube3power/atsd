@@ -1,4 +1,4 @@
-# Secure Connection to Active Directory 
+# Secure Connection to Active Directory
 
 In order to setup a secure connection between an Axibase Time Series Database server and an Active Directory (AD) server for the purpose of LDAP user authentication, you need to import an LDAP Server Certificate from the target AD server into ATSD.
 
@@ -10,7 +10,7 @@ There are several ways of obtaining the SSL server certificate:
 
 Refer to [Sun Java System Identity Synchronization for Windows 6.0 Installation and Configuration Guide](https://docs.oracle.com/cd/E19656-01/821-0422/aarjd/index.html) for additional information.
 
-### Export Certificate using a Web Browser such as Mozilla Firefox 
+### Export Certificate using a Web Browser such as Mozilla Firefox
 
 * Enter https, LDAP server hostname and SSL port in the browser address bar, for example `https://ldap_host:636`
 
@@ -32,7 +32,7 @@ Refer to [Sun Java System Identity Synchronization for Windows 6.0 Installation 
 
 ## Import Server Certificate into ATSD Keystore File
 
-* Add `servername.corp.company.com.crt` certificate: 
+* Add `servername.corp.company.com.crt` certificate:
 
 
 ```css

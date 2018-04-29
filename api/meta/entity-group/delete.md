@@ -12,7 +12,7 @@ Member entities and their data is not affected by this operation.
 |:---|:---|---:|
 | DELETE | `/api/v1/entity-groups/{group}` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
@@ -45,7 +45,7 @@ curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix \
   --insecure --verbose --user {username}:{password} \
   --request DELETE
 ```
-  
+
 ### Response
 
 None.

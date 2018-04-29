@@ -1,8 +1,8 @@
 # Rate Processor
 
-## Overview 
+## Overview
 
-Computes the difference between consecutive samples per unit of time (rate period). 
+Computes the difference between consecutive samples per unit of time (rate period).
 
 Used to compute rate of change when the underlying metric measures a continuously incrementing counter.
 
@@ -41,7 +41,7 @@ Used to compute rate of change when the underlying metric measures a continuousl
 - If rate period is not specified, the function computes the difference between values of two subsequent series samples. If samples are `(previousTimestamp, previousValue)` and `(timestamp, value)`, then result would be `(timestamp, value - previousValue)`.
 
 
-- If rate period is specified, the function computes rate of change for the specified time period: 
+- If rate period is specified, the function computes rate of change for the specified time period:
 
 `(value - previousValue) * ratePeriod / (timestamp - previousTimestamp)`.
 
@@ -55,7 +55,7 @@ Used to compute rate of change when the underlying metric measures a continuousl
 
 ## NANOSECOND Period Example
 
-### Request 
+### Request
 
 ```json
 [

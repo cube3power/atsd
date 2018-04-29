@@ -27,7 +27,7 @@ The expression can include all fields listed below except `lastInsertDate`.
 Examples:
 
 ```java
-name LIKE 'meminfo.*'  
+name LIKE 'meminfo.*'
 
 name NOT LIKE 'cpu*' AND createdDate > '2017-10-01T00:00:00Z'
 

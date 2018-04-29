@@ -3,7 +3,7 @@ Weekly Change Log: July 17, 2017 - July 23, 2017
 
 ### ATSD
 | Issue| Category    | Type    | Subject              |
-|------|-------------|---------|----------------------| 
+|------|-------------|---------|----------------------|
 | 4409 | export | Bug | Added `metrics.unit` to the list of fields in the backup xml files. |
 | 4400 | sql | Bug | Fixed illegal syntax error when querying table names containing dots. |
 | [4398](#Issue-4398) | UI | Feature | Refactored the **[Metrics]** tab to improve usability. |
@@ -16,7 +16,7 @@ Weekly Change Log: July 17, 2017 - July 23, 2017
 
 ![](Images/4398.png)
 
-**Feature Details**: 
+**Feature Details**:
 
 * Flexible search expression
 * Tag sets to display common sets of metric tags

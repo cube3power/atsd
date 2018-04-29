@@ -15,7 +15,7 @@ POST https://atsd_hostname:8443/api/v1/messages/insert
 [{
     "entity": "nurswgvml007",
     "type": "application",
-	"source": "atsd",
+    "source": "atsd",
     "message": "NURSWGVML007 ssh: error: connect_to localhost port 8882: failed.",
     "tags": {"type": "hello", "source": "world"}
 }]

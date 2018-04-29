@@ -165,7 +165,7 @@ GROUP BY period(1 day)
 The same query where filtering is applied to grouped rows (by period) produces daily differences since the first value used by the `DELTA` function is the last value of the previous day.
 
 ```sql
-SELECT datetime, date_format(time, 'EEEE') AS "day-of-week",  
+SELECT datetime, date_format(time, 'EEEE') AS "day-of-week",
   min(value), max(value), max(value)- min(value) AS "max-min", first(value), last(value), last(value)-first(value) AS "last-first", delta(value)
 FROM "so.tags.count"
 WHERE entity = 'stackoverflow-python'

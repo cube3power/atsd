@@ -1,15 +1,15 @@
 # Update
 
 
-Update Axibase Time Series Database to the latest version by running the `update.sh` script. 
-The script automates the process of downloading the latest ATSD artifacts, 
+Update Axibase Time Series Database to the latest version by running the `update.sh` script.
+The script automates the process of downloading the latest ATSD artifacts,
 copying files, and gracefully restarting ATSD services.
 
 > Access to axibase.com from the target server is required to download installation files. If the server is not connected to the Internet, switch to the [manual update](update-manual.md) option.
 
 ## Migration
 
-ATSD for HBase 1.2.5 was released in August 2017. 
+ATSD for HBase 1.2.5 was released in August 2017.
 
 If **Settings > System Information** page on your current instance displays HBase version 0.94.x, execute the following steps depending on the installation mode.
 

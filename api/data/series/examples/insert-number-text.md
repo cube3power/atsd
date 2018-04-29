@@ -2,7 +2,7 @@
 
 ## Description
 
-Insert text value along with numeric value. 
+Insert text value along with numeric value.
 
 ## Request
 

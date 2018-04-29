@@ -71,7 +71,7 @@ property to `/data/hdfs-cache`:
 Start ATSD:
 
 ```sh
-/opt/atsd/bin/atsd-all.sh start   
+/opt/atsd/bin/atsd-all.sh start
 ```
 
 Verify that the old data is available and that the new data is coming in.

@@ -51,7 +51,7 @@ curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix \
     "name": "nmon-aix",
     "tags": {
         "os_level": "aix 6.3"
-    }, 
+    },
     "enabled": true
 }
 ```

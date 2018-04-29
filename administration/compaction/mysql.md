@@ -213,7 +213,7 @@ docker run --name mysql-axibase-storage-test \
     -d mysql/mysql-server:5.7
 ```
 
-### Execute SQL scripts for the **Trade Table** Schema.
+### Execute SQL scripts for the **Trade Table** Schema
 
 ```sh
 curl -o /tmp/test/mysql-trade-table.sql \
@@ -249,7 +249,7 @@ cat /tmp/test/mysql-trade-table.sql | \
 +-----------+---------------------+---------------------+
 ```
 
-### Execute SQL scripts for the **Universal Table** Schema.
+### Execute SQL scripts for the **Universal Table** Schema
 
 ```sh
 curl -o /tmp/test/mysql-universal-table.sql \

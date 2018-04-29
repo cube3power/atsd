@@ -124,9 +124,9 @@ In the default `INNER` mode the values outside of the selection interval are ign
 ```json
 [{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
 "data":[
-	{"d":"2017-01-01T01:00:00Z","v":0.5},
-	{"d":"2017-01-01T02:00:00Z","v":1.5},
-	{"d":"2017-01-01T03:00:00Z","v":2.5}
+    {"d":"2017-01-01T01:00:00Z","v":0.5},
+    {"d":"2017-01-01T02:00:00Z","v":1.5},
+    {"d":"2017-01-01T03:00:00Z","v":2.5}
 ]}]
 ```
 

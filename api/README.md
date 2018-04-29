@@ -25,13 +25,13 @@
 * [message](network/message.md)
 * [csv](network/csv.md)
 * [nmon](network/nmon.md)
-* [entity](network/entity.md)  
+* [entity](network/entity.md)
 * [metric](network/metric.md)
 * [extended](network/extended-commands.md)
 
 ## SQL
 
-* [Overview](../sql#overview)  
+* [Overview](../sql#overview)
 * [Syntax](../sql#syntax)
 * [Grouping](../sql#grouping)
 * [Partitioning](../sql#partitioning)

@@ -31,13 +31,13 @@ POST https://atsd_hostname:8443/api/v1/series/query
     "metric": "cpu_busy",
     "aggregate": {"period": {"count": 1, "unit": "MINUTE"},
                   "threshold": {"min": 10, "max": 90},
-                  "types": ["AVG", 
-                            "SUM", 
-                            "MIN", 
-                            "MAX", 
-                            "COUNT", 
-                            "DELTA", 
-                            "COUNTER", 
+                  "types": ["AVG",
+                            "SUM",
+                            "MIN",
+                            "MAX",
+                            "COUNT",
+                            "DELTA",
+                            "COUNTER",
                             "PERCENTILE_999",
                             "PERCENTILE_995",
                             "PERCENTILE_99",
@@ -45,7 +45,7 @@ POST https://atsd_hostname:8443/api/v1/series/query
                             "PERCENTILE_90",
                             "PERCENTILE_75",
                             "PERCENTILE_50",
-							"MEDIAN",
+                            "MEDIAN",
                             "STANDARD_DEVIATION",
                             "FIRST",
                             "LAST",
@@ -55,7 +55,7 @@ POST https://atsd_hostname:8443/api/v1/series/query
                             "MAX_VALUE_TIME",
                             "THRESHOLD_COUNT",
                             "THRESHOLD_DURATION",
-                            "THRESHOLD_PERCENT"                            
+                            "THRESHOLD_PERCENT"
                            ]}
   }
 ]

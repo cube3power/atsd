@@ -64,12 +64,12 @@ The AWS SQS Queues:
 
 ![](images/aws_sqs_queues.png)
 
-## Notifications examples:
+## Notifications examples
 
-### Queue:
+### Queue
 
 ![](images/aws_sqs_web_notification_fifo_test_1.png)
 
-### Messages:
+### Messages
 
 ![](images/aws_sqs_web_notification_fifo_test_2.png)

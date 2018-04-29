@@ -35,7 +35,7 @@ Weekly Change Log: July 31, 2017 - August 06, 2017
 | [4328](#issue-4328) | sql | Feature | Add support for [`LAG`](../../sql/README.md#lag) function in `JOIN` queries. |
 | [4303](#issue-4303) | jdbc | Feature | Add support for inserting data with JDBC driver using [`INSERT` and `UPDATE`](https://github.com/axibase/atsd-jdbc/blob/master/insert.md) queries. |
 | 4278 | core | Bug | Fix a bug causing the data compaction to hang when multiple detailed column families are present. |
-| 3983 | api-rest	| Bug |	Data API: tags are incorrectly concatenated with [`group`](../../api/data/series/group.md) processor. |
+| 3983 | api-rest    | Bug |    Data API: tags are incorrectly concatenated with [`group`](../../api/data/series/group.md) processor. |
 | 3874 | api-network | Bug | Data API: series command fails to overwrite value when inserted in batch with [append flag](../../api/network/series.md#text-append). |
 
 ### ATSD
@@ -135,19 +135,19 @@ tag1=abc;tag2=cde
 
 ```sql
 SELECT time, date_format(time, 'yyyy-MM-dd HH:mm', 'Europe/Vienna')
-  FROM m1 
+  FROM m1
 GROUP BY period(1 DAY, 'Europe/Vienna')
 ```
 
 ##### Issue 4328
 
 ```sql
-SELECT t1.tags.company_name, datetime, 
-  t1.value, t2.value, 
-  t1.value - t2.value, 
+SELECT t1.tags.company_name, datetime,
+  t1.value, t2.value,
+  t1.value - t2.value,
   t1.value - LAG(t1.value)
-FROM assets t1 
-  JOIN liabilities t2 
+FROM assets t1
+  JOIN liabilities t2
 WHERE t1.tags.company_name = 'Mutual of Omaha Insurance Company'
   --ORDER BY datetime
   WITH ROW_NUMBER(t1.tags.company_name ORDER BY datetime) <= 2
@@ -163,7 +163,7 @@ INSERT INTO temperature (entity, datetime, value, tags.surface)
 ```
 
 ```sql
-UPDATE temperature SET value = 24.5 
+UPDATE temperature SET value = 24.5
   WHERE entity = 'sensor-01' AND datetime = '2017-08-21T00:00:00Z' AND tags.surface = 'Outer'
 ```
 

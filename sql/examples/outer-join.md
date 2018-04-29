@@ -93,5 +93,5 @@ FULL OUTER JOIN USING ENTITY "df.disk_used" t2
 | 2017-05-31T06:00:00Z | nurswgvml007 | nurswgvml007 | 2017-05-31T06:00:00Z | 51.1     | nurswgvml007 | 2017-05-31T06:00:00Z | 8651262.9    | /dev/mapper/vg_nurswgvml007-lv_root | /                   |
 | 2017-05-31T06:00:00Z | nurswgvml007 | nurswgvml007 | 2017-05-31T06:00:00Z | 51.1     | nurswgvml007 | 2017-05-31T06:00:00Z | 1491432638.0 | //u113452.nurstr003/backup          | /mnt/u113452        |
 | 2017-05-31T06:00:15Z | nurswgvml007 | nurswgvml007 | 2017-05-31T06:00:15Z | 5.1      | nurswgvml007 | 2017-05-31T06:00:15Z | 8652388.0    | /dev/mapper/vg_nurswgvml007-lv_root | /                   |
-| 2017-05-31T06:00:15Z | nurswgvml007 | nurswgvml007 | 2017-05-31T06:00:15Z | 5.1      | nurswgvml007 | 2017-05-31T06:00:15Z | 1491432638.0 | //u113452.nurstr003/backup          | /mnt/u113452        | 
+| 2017-05-31T06:00:15Z | nurswgvml007 | nurswgvml007 | 2017-05-31T06:00:15Z | 5.1      | nurswgvml007 | 2017-05-31T06:00:15Z | 1491432638.0 | //u113452.nurstr003/backup          | /mnt/u113452        |
 ```

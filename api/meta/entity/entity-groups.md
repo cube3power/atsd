@@ -6,11 +6,11 @@ Retrieve a list of entity groups to which the specified entity belongs.
 
 ## Request
 
-| **Method** | **Path** | 
+| **Method** | **Path** |
 |:---|:---|
 | GET | `/api/v1/entities/{entity}/groups` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|

@@ -2,7 +2,7 @@
 
 ## Description
 
-Query data for series that have the specified tag `file_system` with any value. 
+Query data for series that have the specified tag `file_system` with any value.
 
 ## Request
 

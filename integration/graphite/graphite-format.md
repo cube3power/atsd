@@ -40,7 +40,7 @@ String constants without brackets(tokens) will be added.
 
 > NOTE: Empty `atsd-pattern` will drop all incoming metrics that satisfy `pattern`.
 
-##### Examples:
+##### Examples
 
 ```txt
 INPUT: awgswgvml001.counters.axibase_com.wordpress.http.counts.api_bruteprotect_com.count
@@ -199,7 +199,7 @@ To set up the server and client on separate machines please refer to the follow
 
 [https://www.digitalocean.com/community/tutorials/how-to-configure-sensu-monitoring-rabbitmq-and-redis-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-configure-sensu-monitoring-rabbitmq-and-redis-on-ubuntu-14-04)
 
-##### Configure Sensu to send data to ATSD:
+##### Configure Sensu to send data to ATSD
 
 To send data into ATSD, you need a TCP handler, for example:
 
@@ -234,7 +234,7 @@ Next you have to create a check, for example:
       "type": "metric",
       "handlers": [
         "debug",
-        "tcp_socket"  
+        "tcp_socket"
       ],
       "command": "/etc/sensu/plugins/cpu-metrics.rb --scheme stats.:::name:::.cpu",
       "subscribers": ["webservers"],

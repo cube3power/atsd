@@ -1,12 +1,12 @@
 # Entity: Get
 
-## Description 
+## Description
 
 Retrieve information about the specified entity including its tags.
 
 ## Request
 
-| **Method** | **Path** | 
+| **Method** | **Path** |
 |:---|:---|
 | GET | `/api/v1/entities/{entity}` |
 
@@ -35,7 +35,7 @@ GET https://atsd_hostname:8443/api/v1/entities/nurswgvml006
 
 None.
 
-#### curl 
+#### curl
 
 ```elm
 curl https://atsd_hostname:8443/api/v1/entities/nurswgvml006 \

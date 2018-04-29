@@ -1,4 +1,4 @@
-# List Active Metrics 
+# List Active Metrics
 
 ## Request
 

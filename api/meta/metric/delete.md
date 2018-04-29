@@ -2,7 +2,7 @@
 
 ## Description
 
-Delete the specified metric. 
+Delete the specified metric.
 
 Data collected for the metric will be removed asynchronously in the background.
 
@@ -12,7 +12,7 @@ Data collected for the metric will be removed asynchronously in the background.
 |:---|:---|---:|
 | DELETE | `/api/v1/metrics/{metric}` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|

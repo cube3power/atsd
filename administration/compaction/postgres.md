@@ -211,7 +211,7 @@ docker run --name postgres \
    -d  postgres:9.6
 ```
 
-### Execute SQL scripts for the **Trade Table** Schema.
+### Execute SQL scripts for the **Trade Table** Schema
 
 ```sh
 curl -o /tmp/test/postgres-trade-table.sql \
@@ -239,7 +239,7 @@ docker exec -i postgres \
 +-----------+---------------------+---------------------+
 ```
 
-### Execute SQL scripts for the **Universal Table** Schema.
+### Execute SQL scripts for the **Universal Table** Schema
 
 ```sh
 curl -o /tmp/test/postgres-universal-table.sql \

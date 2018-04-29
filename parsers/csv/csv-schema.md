@@ -71,59 +71,57 @@ If Schema parsing is enabled, only the following fields from the parser configu
 
 #### Select and Filter Functions
 
-| Name | Required | Description | 
-| --- | --- | --- | 
-|  `select(expression)`  |  Yes  |  Selects rows, columns, or cell range to process using RFC 7111 selection syntax.  | 
-|  `filter(condition)`  |  No  |  Optionally filter rows, columns and cells depending on `rowText` and `cellText` values, e.g. `rowText.indexOf('test')>=0`.  | 
+| Name | Required | Description |
+| --- | --- | --- |
+|  `select(expression)`  |  Yes  |  Selects rows, columns, or cell range to process using RFC 7111 selection syntax.  |
+|  `filter(condition)`  |  No  |  Optionally filter rows, columns and cells depending on `rowText` and `cellText` values, e.g. `rowText.indexOf('test')>=0`.  |
 
 
 #### Initialize Command Functions
 
-| Name | Required | Description | 
-| --- | --- | --- | 
-|  `addSeries()`  |  No  |  Create Series command.  | 
-|  `addProperty()`  |  No  |  Create Property command.  | 
-|  `addMessage()`  |  No  |  Create Message command.  | 
+| Name | Required | Description |
+| --- | --- | --- |
+|  `addSeries()`  |  No  |  Create Series command.  |
+|  `addProperty()`  |  No  |  Create Property command.  |
+|  `addMessage()`  |  No  |  Create Message command.  |
 
 #### Set Command Field Functions
 
-| Name | Required (`addSeries`) | Required (`addProperty`) | Required (`addMessage`) | Description | 
-| --- | --- | --- | --- | --- | 
-|  `entity(entityName)`  |  Yes  |  Yes  |  Yes  |  Set entity name.  | 
-|  `timestamp(timestampValue)`  |  Yes  |  Yes  |  Yes  |  Set timestamp.  | 
-|  `metric(metricName)`  |  Yes  |  Unsupported  |  Unsupported  |  Set metric name.  | 
-|  `tag(tagName, tagValue)`  |  No  |  No  |  No  |  Add tag with defined name and value.  | 
-|  `key(keyName, keyValue)`  |  Unsupported  |  No  |  Unsupported  |  Add key with defined name and value.  | 
-|  `type(typeName)`  |  Unsupported  |  Yes  |  Unsupported  |  Set property type.  | 
-|  `value(value)`  |  No  |  Unsupported  |  Unsupported  |  Overrides series value (default value is current cell content).  | 
-|  `messageText(text)`  |  Unsupported  |  Unsupported  |  No  |  Set message text.  | 
-|  `appendText(text, delimiter)`  |  Unsupported  |  Unsupported  |  No  |  Append text to current message text.  | 
-|  `forEach(expression)`  |  No  |  No  |  No  |  Accepts RFC 7111 #col= selector, iterates over matched cells in the current row and applies chained-after functions to each cell, e.g. `forEach('#col=5!2').tag(cell(row,col), cell(row,col+1));`  | 
+| Name | Required (`addSeries`) | Required (`addProperty`) | Required (`addMessage`) | Description |
+| --- | --- | --- | --- | --- |
+|  `entity(entityName)`  |  Yes  |  Yes  |  Yes  |  Set entity name.  |
+|  `timestamp(timestampValue)`  |  Yes  |  Yes  |  Yes  |  Set timestamp.  |
+|  `metric(metricName)`  |  Yes  |  Unsupported  |  Unsupported  |  Set metric name.  |
+|  `tag(tagName, tagValue)`  |  No  |  No  |  No  |  Add tag with defined name and value.  |
+|  `key(keyName, keyValue)`  |  Unsupported  |  No  |  Unsupported  |  Add key with defined name and value.  |
+|  `type(typeName)`  |  Unsupported  |  Yes  |  Unsupported  |  Set property type.  |
+|  `value(value)`  |  No  |  Unsupported  |  Unsupported  |  Overrides series value (default value is current cell content).  |
+|  `messageText(text)`  |  Unsupported  |  Unsupported  |  No  |  Set message text.  |
+|  `appendText(text, delimiter)`  |  Unsupported  |  Unsupported  |  No  |  Append text to current message text.  |
+|  `forEach(expression)`  |  No  |  No  |  No  |  Accepts RFC 7111 #col= selector, iterates over matched cells in the current row and applies chained-after functions to each cell, e.g. `forEach('#col=5!2').tag(cell(row,col), cell(row,col+1));`  |
 
 
 #### Pre-defined Variables
 
-| Name | Type | Description | 
-| --- | --- | --- | 
-|  `col`  |  Integer  |  Column index of the active cell.  | 
-|  `row`  |  Integer  |  Row index of the active cell.  | 
-|  `value, cellText`  |  String  |  Text content of the active cell.  | 
-|  `rowText`  |  String  |  Current row full text.  | 
-|  `columnCount`  |  Integer  |  Column count for current row.  | 
-|  `fileName`  |  String  |  CSV file name being parsed, if available.  | 
+| Name | Type | Description |
+| --- | --- | --- |
+|  `col`  |  Integer  |  Column index of the active cell.  |
+|  `row`  |  Integer  |  Row index of the active cell.  |
+|  `value, cellText`  |  String  |  Text content of the active cell.  |
+|  `rowText`  |  String  |  Current row full text.  |
+|  `columnCount`  |  Integer  |  Column count for current row.  |
+|  `fileName`  |  String  |  CSV file name being parsed, if available.  |
 
 
 #### Lookup Functions
 
-| Name | Type | Description | 
-| --- | --- | --- | 
-|  `cell(rowIndex, colIndex)`  |  String  |  Return content from the specified cell.  | 
-|  `notEmptyLeft(rowIndex, colIndex)`  |  String  |  Finds a non-empty cell located to the left from the specified cell.  | 
-|  `notEmptyUp(rowIndex, colIndex)`  |  String  |  Finds a non-empty cell located in the current or prior row in the specified column.  | 
+| Name | Type | Description |
+| --- | --- | --- |
+|  `cell(rowIndex, colIndex)`  |  String  |  Return content from the specified cell.  |
+|  `notEmptyLeft(rowIndex, colIndex)`  |  String  |  Finds a non-empty cell located to the left from the specified cell.  |
+|  `notEmptyUp(rowIndex, colIndex)`  |  String  |  Finds a non-empty cell located in the current or prior row in the specified column.  |
 
-
-#### Notes:
-
+#### Notes
 
 - Row and column indexes start with 1.
 - Row index of the active cell can be referenced with the `row` parameter.
@@ -132,8 +130,7 @@ If Schema parsing is enabled, only the following fields from the parser configu
 - Row index can be smaller or equal to the index of the current row due to the streaming nature of the parser.
 - If index is not specified, the current index is used. Same as `+0` or `-0`.
 
-
-#### RFC 7111 Step Extension Syntax:
+#### RFC 7111 Step Extension Syntax
 
 ABNF Extension Syntax:
 
@@ -153,7 +150,7 @@ Examples:
 - `#col=10-*!3`             – Select every 3rd column starting with column 10.
 - `#cell=1,2-5,*!1,2`     – Select even columns in the first 5 rows.
 
-#### Schema-based Parser Examples:
+#### Schema-based Parser Examples
 
 - [Basic Example](examples/basic.md)
 - [Columnar Format](examples/columnar-schema.md)

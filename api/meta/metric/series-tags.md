@@ -1,12 +1,12 @@
 # Metric: Series Tags
 
-## Description 
+## Description
 
-Returns unique **series** tags values for the specified metric. 
+Returns unique **series** tags values for the specified metric.
 
 ## Request
 
-| **Method** | **Path** | 
+| **Method** | **Path** |
 |:---|:---|
 | GET | `/api/v1/metrics/{metric}/series/tags` |
 

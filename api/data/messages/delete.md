@@ -2,7 +2,7 @@
 
 ## Description
 
-The ability to delete specific message records via the Data API is not implemented. 
+The ability to delete specific message records via the Data API is not implemented.
 
 ## TTL
 

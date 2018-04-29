@@ -2,7 +2,7 @@
 
 ## Description
 
-Insert data for an entity, metric (no tags) with sample times specified in ISO format.  
+Insert data for an entity, metric (no tags) with sample times specified in ISO format.
 
 Millisecond precision is optional.
 

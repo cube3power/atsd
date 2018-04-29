@@ -2,7 +2,7 @@
 
 ## Description
 
-Query data for series that have the specified tag `file_system` that starts with `/dev`. 
+Query data for series that have the specified tag `file_system` that starts with `/dev`.
 
 ## Request
 

@@ -78,15 +78,12 @@ Columns contained in the CSV file that are not specified in any field in the par
 
 ![](resources/csv_parser_example.png)
 
-#### Column-based Parser Examples:
-
+#### Column-based Parser Examples
 
 - [Weather Data](examples/weather.md)
 - [Air Quality](examples/air-quality.md)
 
-
-#### Schema-based Parser Examples:
-
+#### Schema-based Parser Examples
 
 - [Basic Example](examples/basic.md)
 - [Columnar Format](examples/columnar-schema.md)

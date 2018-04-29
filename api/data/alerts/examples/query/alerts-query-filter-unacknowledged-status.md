@@ -2,7 +2,7 @@
 
 ## Description
 
-Select unacknowledged alerts. 
+Select unacknowledged alerts.
 
 ## Request
 

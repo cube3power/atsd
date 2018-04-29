@@ -46,7 +46,7 @@ An array of query objects containing the following filtering fields:
 |:---|:---|:---|
 | `limit`   | integer | Maximum number of records to be returned. Default: 0.<br>Limit is not applied if the parameter value <= 0. |
 | `last` | boolean | Returns only records with the update time equal to the maximum update time of matched records. Default: false. |
-| `offset` | integer | Exclude records based on difference, in milliseconds, between maximum update time of matched records and update time of the current record. Default: -1 (not applied).<br>If `offset >=0` and the difference exceeds `offset`, the record is excluded from results. <br>`offset=0` is equivalent to `last=true`.|   
+| `offset` | integer | Exclude records based on difference, in milliseconds, between maximum update time of matched records and update time of the current record. Default: -1 (not applied).<br>If `offset >=0` and the difference exceeds `offset`, the record is excluded from results. <br>`offset=0` is equivalent to `last=true`.|
 | `addMeta` | boolean | Include metric and entity metadata (field, tags) under the `meta` object in response. Default: false.|
 
 ## Response

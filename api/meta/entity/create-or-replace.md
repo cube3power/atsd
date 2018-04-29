@@ -18,7 +18,7 @@ The replace request for an existing entity doesn't affect any series, properties
 |:---|:---|---:|
 | PUT | `/api/v1/entities/{entity}` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
@@ -32,7 +32,7 @@ The `name` field specified in the payload is ignored by the server since it's sp
 
 ## Response
 
-### Fields 
+### Fields
 
 None.
 
@@ -68,8 +68,8 @@ curl https://atsd_hostname:8443/api/v1/entities/nurswgvml006 \
   --data '{"enabled":true,"tags":{"env":"production","location":"NUR-2"}}'
 ```
 
-### Response 
+### Response
 
-None. 
+None.
 
 ## Additional Examples

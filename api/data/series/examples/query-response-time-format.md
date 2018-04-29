@@ -21,7 +21,7 @@ POST https://atsd_hostname:8443/api/v1/series/query
         "endDate":   "2016-02-22T13:35:00Z",
         "entity": "nurswgvml007",
         "metric": "mpstat.cpu_busy",
-		"timeFormat": "milliseconds"
+        "timeFormat": "milliseconds"
     }
 ]
 ```

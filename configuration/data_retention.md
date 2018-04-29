@@ -275,7 +275,7 @@ The widget displays the current number of records as well as weekly change.
 
   [column]
     key = value
-    label = Value   
+    label = Value
   [column]
     key = delta
     label = Weekly Change

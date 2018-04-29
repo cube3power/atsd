@@ -25,14 +25,14 @@ POST https://atsd_hostname:ame:8443/api/v1/series/query
         "endDate":   "2016-02-22T13:31:00Z",
         "entity": "nurswgvml007",
         "metric": "cpu_busy",
-		"requestId": "q1"
+        "requestId": "q1"
     },
     {
         "startDate": "now - 1 * MINUTE",
         "endDate":   "now",
         "entity": "nurswgvml006",
         "metric": "memfree",
-		"requestId": "q2"
+        "requestId": "q2"
     }
 ]
 ```

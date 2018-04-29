@@ -6,7 +6,7 @@ Delete property records that match specified filters.
 
 ### Delete Markers
 
-Due to the specifics of the underlying storage technology, the records deleted with this method are not instantly removed from the disk. 
+Due to the specifics of the underlying storage technology, the records deleted with this method are not instantly removed from the disk.
 
 Instead, the records are masked with a so called `DELETE` marker timestamped at the delete request time. The `DELETE` marker hides all data rows that were recorded before the `DELETE` marker.
 
@@ -69,27 +69,27 @@ None.
 Assuming property records A,B,C, and D exist:
 
 ```ls
-| record | type   | entity | key-1 | key-2 | 
-|--------|--------|--------|-------|-------| 
-| A      | type-1 | e-1    | val-1 | val-2 | 
-| B      | type-1 | e-2    | val-1 |       | 
-| C      | type-1 | e-3    |       | VAL-3 | 
-| D      | type-1 | e-4    |       |       | 
+| record | type   | entity | key-1 | key-2 |
+|--------|--------|--------|-------|-------|
+| A      | type-1 | e-1    | val-1 | val-2 |
+| B      | type-1 | e-2    | val-1 |       |
+| C      | type-1 | e-3    |       | VAL-3 |
+| D      | type-1 | e-4    |       |       |
 ```
 
 Queries would delete the following record:
 
 ```ls
-| exactMatch | key                     | delete  | 
-|------------|-------------------------|---------| 
-| true       |                         | D       | 
-| false      |                         | A;B;C;D | 
-| true       | key-1=val-1             | B       | 
-| false      | key-1=val-1             | A;B     | 
-| true       | key-1=val-1;key-2=val-2 | A       | 
-| false      | key-1=val-1;key-2=val-2 | A       | 
-| false      | key-2=val-3             |         | 
-| false      | key-2=VAL-3             | C       | 
+| exactMatch | key                     | delete  |
+|------------|-------------------------|---------|
+| true       |                         | D       |
+| false      |                         | A;B;C;D |
+| true       | key-1=val-1             | B       |
+| false      | key-1=val-1             | A;B     |
+| true       | key-1=val-1;key-2=val-2 | A       |
+| false      | key-1=val-1;key-2=val-2 | A       |
+| false      | key-2=val-3             |         |
+| false      | key-2=VAL-3             | C       |
 ```
 
 ## Example

@@ -33,7 +33,7 @@ Determine the size of the ATSD installation directory.
 
 ```sh
 du -hs /opt/atsd
-24G	/opt/atsd
+24G /opt/atsd
 ```
 
 Check that free disk space is available on the file system containing the `/opt/atsd` directory.
@@ -73,7 +73,6 @@ SELECT COUNT(*) FROM mymetric
 ```
 
 The number of records should match the results after the migration.
-
 
 ## Install Java 8
 
@@ -355,9 +354,9 @@ echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["
 
 ```sh
   ...
-  TABLE                  
-  atsd_calendar                                           
-  atsd_collection                                         
+  TABLE
+  atsd_calendar
+  atsd_collection
   atsd_config
   ...
 ```
@@ -490,8 +489,8 @@ In case of other errors, review job logs for the application ID displayed above:
 ...
 17/08/01 10:14:27 INFO mapreduce.Job: Job job_1501581371115_0001 completed successfully
 17/08/01 10:14:27 INFO mapreduce.Job: Counters: 62
-	File System Counters
-		FILE: Number of bytes read=6
+    File System Counters
+        FILE: Number of bytes read=6
 ...
 ```
 
@@ -540,7 +539,7 @@ Delete the diagnostics folder manually:
 ...
 ```
 
-The `DataMigrator` job may take a long time to complete. You can monitor the job progress in the Yarn web interface at `http://atsd_hostname:8050/`. 
+The `DataMigrator` job may take a long time to complete. You can monitor the job progress in the Yarn web interface at `http://atsd_hostname:8050/`.
 
 The Yarn interface will be automatically terminated once the `DataMigrator` is finished.
 

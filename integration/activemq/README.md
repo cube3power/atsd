@@ -95,7 +95,7 @@ monitorRole readonly
 monitorRole abc123
 ```
 
-* Secure access to the `jmx.password` file by restricting permissions: 
+* Secure access to the `jmx.password` file by restricting permissions:
 
 ```sh
 chmod 600 ./conf/jmx.password
@@ -136,7 +136,7 @@ If the `activemq_hostname` cannot be resolved, add it to `/etc/hosts` manually.
 2. Click the Jobs tab in the top menu.
 3. Locate the `jmx-activemq` job.
 4. On the JMX Job page, enable collection by setting the flag in the Enabled check box.
-5. Adjust the cron expression if needed. By default, the job will be executed every 10 seconds. For more information on cron expressions, see [Scheduling](https://github.com/axibase/axibase-collector/blob/master/scheduling.md).  
+5. Adjust the cron expression if needed. By default, the job will be executed every 10 seconds. For more information on cron expressions, see [Scheduling](https://github.com/axibase/axibase-collector/blob/master/scheduling.md).
 
 ![JMX_JOB](https://axibase.com/wp-content/uploads/2016/03/jmx_job_to_configuration.png)
 
@@ -146,13 +146,13 @@ If the `activemq_hostname` cannot be resolved, add it to `/etc/hosts` manually.
 2. On the JMX Configuration page, enter the JMX connection parameters as specified in Step 1.6 above:
 
    **Host** — ActiveMQ hostname. Must be the same as the `activemq_hostname`.
-   **Port** — JMX port.  
-   **User Name** — JMX user name such as `monitorRole`. Read-only permissions are sufficient.  
-   **Password** — Password for JMX user.  
-   **Entity** — Optionally, specify the output of the hostname command on the ActiveMQ server if it’s different from `activemq_hostname` (for example if `activemq_hostname` represents a fully qualified name).  
-Other parameters are optional. For more information on JMX configuration, see [JMX](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md).   
+   **Port** — JMX port.
+   **User Name** — JMX user name such as `monitorRole`. Read-only permissions are sufficient.
+   **Password** — Password for JMX user.
+   **Entity** — Optionally, specify the output of the hostname command on the ActiveMQ server if it’s different from `activemq_hostname` (for example if `activemq_hostname` represents a fully qualified name).
+Other parameters are optional. For more information on JMX configuration, see [JMX](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md).
 
-3. Click **Test** to validate the configuration.  
+3. Click **Test** to validate the configuration.
 If the existing configuration passes, this indicates that there are no errors or empty fields in the test results.
 4. Click **Save**.
     ![](https://axibase.com/wp-content/uploads/2016/03/series_config_85.png)

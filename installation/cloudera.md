@@ -434,7 +434,7 @@ su - axibase -c /opt/atsd/atsd/bin/start-atsd.sh
 
 ## Updating ATSD
 
-### Option 1. Co-processor Update is NOT Required.
+### Option 1. Co-processor Update is NOT Required
 
 - Login as an `axibase` user into the server where ATSD is installed.
 

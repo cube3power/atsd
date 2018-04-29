@@ -27,7 +27,7 @@ The expression can include all fields listed below except `lastInsertDate`.
 Examples:
 
 ```java
-name LIKE 'nur*'  
+name LIKE 'nur*'
 
 name NOT LIKE 'aws*' AND lower(label) NOT LIKE 'aws*' AND createdDate > '2017-10-01T00:00:00Z'
 
@@ -100,7 +100,7 @@ curl https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&limit=2&expressio
     },
     {
         "name": "nurswgvml001",
-		"label": "NURSWGDKR002.corp.axibase.com",
+        "label": "NURSWGDKR002.corp.axibase.com",
         "enabled": false
     }
 ]

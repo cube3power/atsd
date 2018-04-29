@@ -8,13 +8,13 @@
 GET https://atsd_hostname:8443/api/v1/entities?tags=*&expression=name%20like%20%27nur*%27
 ```
 
-### Expression 
+### Expression
 
 ```javascript
 name like 'nur*'
 ```
 
-## Response 
+## Response
 
 ```json
 [

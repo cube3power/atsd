@@ -3,7 +3,7 @@
 ## Overview
 
 Build a report showing the number of filings per day of month.
- 
+
 ## Data Source
 
 * Table: `bi.ex_net1.m`
@@ -17,9 +17,9 @@ Build a report showing the number of filings per day of month.
 - Drag-and-drop `Datetime` to the Marks Card, right click on the _Year > Day_, replace _Detail_ with _Label_
 - Change _Automatic_ to _Pie_ in drop-down at Marks Card
 - Drag-and-drop `Value` to the Marks Card, change aggregation from **SUM** to **COUNT**, replace _Detail_ with _Angle_
- 
+
  ## Results
- 
+
  Most records were reported on the 31st day of month:
- 
+
  ![](../images/pie.png)

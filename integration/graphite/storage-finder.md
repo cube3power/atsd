@@ -179,7 +179,7 @@ ATSD_CONF = {
 
 ![](resources/00.png)
 
-##### "views" example breakdown:
+##### "views" example breakdown
 
 ![](resources/01.png)
 

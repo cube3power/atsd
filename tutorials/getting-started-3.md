@@ -17,7 +17,7 @@ Experiment with [Data API](../api/data/README.md) by executing sample [series qu
 Open **Data > API Client** page.
 
 ![](resources/getting-started-3_2.png)
- 
+
 Select _Series > Query Detailed_ template.
 
 ![](resources/getting-started-3_3.png)
@@ -47,7 +47,7 @@ Adjust `startDate` and `endDate` fields, replace `entity` and `metric` field val
     "aggregate": {
       "type": "DETAIL"
     },
-    "data": [ 
+    "data": [
       { "d": "2018-02-26T20:10:00.000Z", "v": 15 },
       { "d": "2018-02-26T20:20:00.000Z", "v": 10.8 },
       { "d": "2018-02-26T20:30:00.000Z", "v": 24 }

@@ -49,7 +49,7 @@ Refer to message [query](query.md#message-filter-fields) fields.
 | `requestId` | string | Optional identifier used to associate `query` object in request with `series` objects in response. |
 | `timeFormat` |string| Time format for data array. `iso` or `milliseconds`. Default: `iso`. |
 
-## Response 
+## Response
 
 An array of `series` objects containing message filter fields and message counter fields.
 
@@ -101,7 +101,7 @@ curl  https://atsd_hostname:ame:8443/api/v1/messages/stats/query \
   --request POST \
   --data @file.json
 ```
-  
+
 ### Response
 
 #### Payload

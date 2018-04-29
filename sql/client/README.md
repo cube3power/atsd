@@ -2,7 +2,7 @@
 
 SQL client provides a convenient way to query the Axibase Time Series Database using SQL and export results to a file or standard output in a variety of formats.
 
-The client is a bash script that parses and validates input parameters and executes an http/s request to `/api/sql` API endpoint in the database using credentials stored in the `atsd.config` file. 
+The client is a bash script that parses and validates input parameters and executes an http/s request to `/api/sql` API endpoint in the database using credentials stored in the `atsd.config` file.
 
 ## Security
 
@@ -73,6 +73,6 @@ Execute inline query with escaped double quotes.
 Execute a multi-line query.
 
 ```sh
-./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE 
+./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE
                datetime > now-1*hour LIMIT 5"
 ```

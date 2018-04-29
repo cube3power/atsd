@@ -1,6 +1,6 @@
 # Metric: Create or Replace
 
-## Description 
+## Description
 
 Create a metric with specified fields and tags or replace the fields and tags of an existing metric.
 
@@ -18,7 +18,7 @@ The replace request for an existing metric doesn't affect any series data since 
 |:---|:---|---:|
 | PUT | `/api/v1/metrics/{metric}` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|

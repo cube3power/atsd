@@ -10,7 +10,7 @@ Weekly Change Log: December 5-11, 2016
 | [3688](#issue-3688) | sql         | Feature     | Added support for `GROUP BY value` to calculate unique occurrences of the `value` over the specified timespan. This could be useful for metrics that measure discrete characteristics, such as status codes, error codes, digital states etc. |
 | 3679 | email       | Feature     | Cleaned up the email notification template to hide irrelevant statistics if the sample in the window is less than 1. |
 | 3678 | UI          | Bug     | Placed the Name and Label fields on separate lines in the metric and entity forms to account for long names. |
-| [3675](#issue-3675) | sql         | Feature     | Added the capability to replace numeric `NAN` with another integer with the `ISNULL` function.|  
+| [3675](#issue-3675) | sql         | Feature     | Added the capability to replace numeric `NAN` with another integer with the `ISNULL` function.|
 | 3662 | csv         | Support     | Identified an issue with schema-based CSV parsers. A schema-based CSV parser will not work if ATSD is launched under Java 8+.|
 | [3650](#issue-3650) | UI          | Feature | Consolidated multiple pages under the Admin menu into one page. |
 | 3646 | UI          | Bug     | Return 4xx error number instead of 500 on the `/sql/queries/info` page if the query is no longer found by id, which occurs when the server is restarted, or the query plan is evicted from cache. |
@@ -25,7 +25,7 @@ Weekly Change Log: December 5-11, 2016
 
 | Issue| Category    | Type    | Subject                         |
 |------|-------------|---------|---------------------------------|
-| [3664](#issue-3664) | docker      | Feature | Added new Docker container metrics for process count monitoring: `docker.process.all` and `docker.process.filtered`. |  
+| [3664](#issue-3664) | docker      | Feature | Added new Docker container metrics for process count monitoring: `docker.process.all` and `docker.process.filtered`. |
 | [3559](#issue-3559) | jdbc        | Feature | Extended JDBC job so that PI server `PIPoint` metadata can be offloaded into ATSD. |
 
 ## ATSD

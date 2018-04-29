@@ -128,7 +128,7 @@ Values added by the `extend` setting are determined as follows:
    "type": "AVG",
    "period": {"count": 1, "unit": "HOUR"},
    "interpolate" : {
-	  "type": "PREVIOUS"
+      "type": "PREVIOUS"
    }
 }
 ```
@@ -140,7 +140,7 @@ Values added by the `extend` setting are determined as follows:
    "type": "AVG",
    "period": {"count": 1, "unit": "HOUR"},
    "interpolate" : {
-	  "type": "LINEAR"
+      "type": "LINEAR"
    }
 }
 ```
@@ -152,9 +152,9 @@ Values added by the `extend` setting are determined as follows:
    "type": "SUM",
    "period": {"count": 1, "unit": "HOUR"},
    "interpolate" : {
-	  "type": "VALUE",
-	  "value": 0,
-	  "extend": true
+      "type": "VALUE",
+      "value": 0,
+      "extend": true
    }
 }
 ```

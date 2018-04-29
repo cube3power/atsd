@@ -20,14 +20,14 @@ This document describes how to monitor availability and performance of [Apache K
 1. Select 'kafka-series' configuration.
 2. On the JMX Configuration page, enter the JMX connection parameters or use [Item List](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md#connection-parameters) with predefined kafka parameters:
 
-   **Host** — Kafka hostname.  
-   **Port** — JMX port.  
-   **User Name** — JMX user name.  
-   **Password** — Password for JMX user.  
-   **Entity** — Optionally, specify the output of the hostname command on the Kafka server if it is different from `kafka_hostname` (for example if `kafka_hostname` represents a fully qualified name).  
-Other parameters are optional. For more information on JMX configuration, see [JMX](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md).   
+   **Host** — Kafka hostname.
+   **Port** — JMX port.
+   **User Name** — JMX user name.
+   **Password** — Password for JMX user.
+   **Entity** — Optionally, specify the output of the hostname command on the Kafka server if it is different from `kafka_hostname` (for example if `kafka_hostname` represents a fully qualified name).
+Other parameters are optional. For more information on JMX configuration, see [JMX](https://github.com/axibase/axibase-collector/blob/master/jobs/jmx.md).
 
-3. Click **Test** to validate the configuration.  
+3. Click **Test** to validate the configuration.
 4. Click **Save**.
 
     ![](images/series_config.png)
@@ -69,11 +69,11 @@ Other parameters are optional. For more information on JMX configuration, see [J
 
 ## Consumer Lag
 
-Consumer lag calculation requires information about producer offset and consumer offset. 
+Consumer lag calculation requires information about producer offset and consumer offset.
 
 Producer offset is collected from Kafka brokers by the JMX Job above.
 
-Consumer offset is collected using a Kafka console consumer reading events from  the `__consumer_offset` topic on one of the Kafka servers in the cluster. 
+Consumer offset is collected using a Kafka console consumer reading events from  the `__consumer_offset` topic on one of the Kafka servers in the cluster.
 
 Log in to the Kafka server.
 

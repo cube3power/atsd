@@ -36,7 +36,7 @@ Determine the size of the ATSD installation directory.
 
 ```sh
 du -hs /opt/atsd
-24G	/opt/atsd
+24G /opt/atsd
 ```
 
 Check that free disk space is available on the file system containing the `/opt/atsd` directory.
@@ -367,9 +367,9 @@ echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["
 
 ```txt
 ...
-  TABLE                  
-  atsd_calendar                                           
-  atsd_collection                                         
+  TABLE
+  atsd_calendar
+  atsd_collection
   atsd_config
   ...
 ```
@@ -489,8 +489,8 @@ Table 'atsd_metric' successfully deleted.
 ...
 17/08/01 10:14:27 INFO mapreduce.Job: Job job_1501581371115_0001 completed successfully
 17/08/01 10:14:27 INFO mapreduce.Job: Counters: 62
-	File System Counters
-		FILE: Number of bytes read=6
+  File System Counters
+    FILE: Number of bytes read=6
 ...
 ```
 

@@ -78,7 +78,7 @@ If Zookeeper Znode parent is not `/hbase`, set `zookeeper.znode.parent` to the a
 hbase.zookeeper.quorum = zookeeper-host
 hbase.zookeeper.property.clientPort = 2181
 zookeeper.znode.parent = /hbase
-hbase.rpc.timeout = 120000 
+hbase.rpc.timeout = 120000
 hbase.client.scanner.timeout.period = 120000
 ```
 
@@ -121,7 +121,7 @@ Email output of the above commands to Axibase support and copy the provided key 
 
 ## Configure HBase Region Servers
 
-### Deploy ATSD coprocessors 
+### Deploy ATSD coprocessors
 
 Copy `/opt/atsd/hbase/lib/atsd.jar` to the `/usr/lib/hbase/lib` directory on each HBase region server.
 

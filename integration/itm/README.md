@@ -56,7 +56,7 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
     > Agent situation files adhere to the following naming convention: ${PRODUCT_CODE}_situations.xml
 
 * Restart the agent:
-    
+
 ```sh
     bin/itmcmd stop ${PRODUCT_CODE}
     bin/itmcmd start ${PRODUCT_CODE}

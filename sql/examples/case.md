@@ -145,7 +145,7 @@ WHERE metric IN ('temperature', 'status') AND datetime >= '2016-10-13T08:00:00Z'
 
 ## Simple CASE Syntax
 
-### Move condition to the input expression:
+### Move condition to the input expression
 
 ```sql
 SELECT entity, avg(value),
@@ -176,11 +176,11 @@ GROUP BY entity
 
 ```sql
 SELECT date_format(time, 'yyyy'),
-  CASE date_format(time, 'yyyy')                 
+  CASE date_format(time, 'yyyy')
       WHEN '2012' OR '2018' THEN 17
       WHEN '2016' OR '2017' THEN 18
       ELSE 15
-    END AS "Tax Day", value   
+    END AS "Tax Day", value
   FROM "income-returns-received"
 WHERE datetime BETWEEN '2010-01-01T00:00:00Z' AND '2019-01-01T00:00:00Z'
 ```

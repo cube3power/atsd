@@ -20,7 +20,7 @@ The Metrics library provides 5 types of metrics:
 
 ### Configurations and Settings
 
-#### Configuring the Sender:
+#### Configuring the Sender
 
 TCP
 
@@ -34,17 +34,17 @@ UDP
 final AtsdUDPSender sender = new AtsdUDPSender("atsd.example.com", 8082);
 ```
 
-#### Configuring the Builder:
+#### Configuring the Builder
 
-| Name | Required | Default | Description | 
-| --- | --- | --- | --- | 
-|  `public Builder setEntity(String entity)`  |  No  |  `hostname` or `"defaultEntity"`  |  Application name or hostname.  | 
-|  `public Builder withClock(Clock clock)`  |  No  |  `Clock.defaultClock()`  |  Clock instance.  | 
-|  `public Builder setMetricPrefix(String prefix)`  |  No  |  `null`  |  Prefix metric names with the specified string.  | 
-|  `public Builder convertRatesTo(TimeUnit rateUnit)`  |  No  |  `TimeUnit.SECONDS`  |  Convert rates to the specified period.  | 
-|  `public Builder convertDurationsTo(TimeUnit durationUnit)`  |  No  |  `TimeUnit.MILLISECONDS`  |  Convert durations to the specified period.  | 
-|  `public Builder filter(MetricFilter filter)`  |  No  |  `MetricFilter.ALL`  |  Only report metrics matching the specified filter.  | 
-|  `public AtsdReporter build(AtsdSender sender)`  |  Yes  |  –  |  Sending metrics using the specified AtsdSender.  | 
+| Name | Required | Default | Description |
+| --- | --- | --- | --- |
+|  `public Builder setEntity(String entity)`  |  No  |  `hostname` or `"defaultEntity"`  |  Application name or hostname.  |
+|  `public Builder withClock(Clock clock)`  |  No  |  `Clock.defaultClock()`  |  Clock instance.  |
+|  `public Builder setMetricPrefix(String prefix)`  |  No  |  `null`  |  Prefix metric names with the specified string.  |
+|  `public Builder convertRatesTo(TimeUnit rateUnit)`  |  No  |  `TimeUnit.SECONDS`  |  Convert rates to the specified period.  |
+|  `public Builder convertDurationsTo(TimeUnit durationUnit)`  |  No  |  `TimeUnit.MILLISECONDS`  |  Convert durations to the specified period.  |
+|  `public Builder filter(MetricFilter filter)`  |  No  |  `MetricFilter.ALL`  |  Only report metrics matching the specified filter.  |
+|  `public AtsdReporter build(AtsdSender sender)`  |  Yes  |  –  |  Sending metrics using the specified AtsdSender.  |
 
 
 #### Add Metric

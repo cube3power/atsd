@@ -43,11 +43,11 @@ WHERE datetime >= '2017-05-01T00:05:00Z' AND datetime < '2017-05-02T00:00:00Z'
 The period starting at '2017-05-01T00:00:00Z' is now included even though it starts earlier than the selection interval start time '2017-05-01T00:05:00Z'.
 
 ```ls
-| datetime             | avg(value) | count(value) | 
-|----------------------|------------|--------------| 
+| datetime             | avg(value) | count(value) |
+|----------------------|------------|--------------|
 | 2017-05-01T00:00:00Z | 1          | 1            | <-- included
-| 2017-05-01T01:00:00Z | 3          | 3            | 
-| 2017-05-01T02:00:00Z | 5          | 1            | 
+| 2017-05-01T01:00:00Z | 3          | 3            |
+| 2017-05-01T02:00:00Z | 5          | 1            |
 ```
 
 #### Issue 4140

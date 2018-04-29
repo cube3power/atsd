@@ -10,14 +10,14 @@ WHERE datetime >= '2016-06-19T09:10:00Z' AND datetime < '2016-06-19T09:40:00Z'
 ```
 
 ```ls
-| entity       | datetime                 | value | 
-|--------------|--------------------------|-------| 
-| nurswgvml006 | 2016-06-19T09:19:00.000Z |  9.0  | 
-| nurswgvml006 | 2016-06-19T09:23:00.000Z | 13.0  | 
-| nurswgvml006 | 2016-06-19T09:24:00.000Z | 14.0  | 
-| nurswgvml006 | 2016-06-19T09:27:00.000Z | 17.0  | 
-| nurswgvml006 | 2016-06-19T09:28:00.000Z | 18.0  | 
-| nurswgvml006 | 2016-06-19T09:30:00.000Z | 20.0  | 
+| entity       | datetime                 | value |
+|--------------|--------------------------|-------|
+| nurswgvml006 | 2016-06-19T09:19:00.000Z |  9.0  |
+| nurswgvml006 | 2016-06-19T09:23:00.000Z | 13.0  |
+| nurswgvml006 | 2016-06-19T09:24:00.000Z | 14.0  |
+| nurswgvml006 | 2016-06-19T09:27:00.000Z | 17.0  |
+| nurswgvml006 | 2016-06-19T09:28:00.000Z | 18.0  |
+| nurswgvml006 | 2016-06-19T09:30:00.000Z | 20.0  |
 ```
 
 
@@ -31,12 +31,12 @@ WHERE datetime >= '2016-06-19T09:20:00Z' AND datetime < '2016-06-19T09:30:00Z'
 ```
 
 ```ls
-| entity       | datetime                 | value | 
-|--------------|--------------------------|-------| 
-| nurswgvml006 | 2016-06-19T09:23:00.000Z | 13.0  | 
-| nurswgvml006 | 2016-06-19T09:24:00.000Z | 14.0  | 
-| nurswgvml006 | 2016-06-19T09:27:00.000Z | 17.0  | 
-| nurswgvml006 | 2016-06-19T09:28:00.000Z | 18.0  | 
+| entity       | datetime                 | value |
+|--------------|--------------------------|-------|
+| nurswgvml006 | 2016-06-19T09:23:00.000Z | 13.0  |
+| nurswgvml006 | 2016-06-19T09:24:00.000Z | 14.0  |
+| nurswgvml006 | 2016-06-19T09:27:00.000Z | 17.0  |
+| nurswgvml006 | 2016-06-19T09:28:00.000Z | 18.0  |
 ```
 
 ## Grouped Data within the 10 Minute Half-Inclusive Interval [)
@@ -50,33 +50,33 @@ WHERE datetime >= '2016-06-19T09:20:00Z' AND datetime < '2016-06-19T09:30:00Z'
 ```
 
 ```ls
-| entity       | datetime                 | MAX(value) | 
-|--------------|--------------------------|------------| 
-| nurswgvml006 | 2016-06-19T09:23:00.000Z | 13.0       | 
-| nurswgvml006 | 2016-06-19T09:24:00.000Z | 14.0       | 
-| nurswgvml006 | 2016-06-19T09:27:00.000Z | 17.0       | 
-| nurswgvml006 | 2016-06-19T09:28:00.000Z | 18.0       | 
+| entity       | datetime                 | MAX(value) |
+|--------------|--------------------------|------------|
+| nurswgvml006 | 2016-06-19T09:23:00.000Z | 13.0       |
+| nurswgvml006 | 2016-06-19T09:24:00.000Z | 14.0       |
+| nurswgvml006 | 2016-06-19T09:27:00.000Z | 17.0       |
+| nurswgvml006 | 2016-06-19T09:28:00.000Z | 18.0       |
 ```
 
-## Interpolation 
+## Interpolation
 
 ```sql
-SELECT entity, date_format(PERIOD(5 minute)), COUNT(value) 
-  FROM "mpstat.cpu_busy" 
+SELECT entity, date_format(PERIOD(5 minute)), COUNT(value)
+  FROM "mpstat.cpu_busy"
 WHERE datetime >= '2016-06-03T09:20:00.000Z' AND datetime < '2016-06-03T09:50:00.000Z'
   AND entity = 'nurswgvml006'
 GROUP BY entity, PERIOD(5 minute, PREVIOUS)
 ```
 
 ```ls
-| entity       | datetime                 | MAX(value) | 
-|--------------|--------------------------|------------| 
-| nurswgvml006 | 2016-06-19T09:23:00.000Z | 13.0       | 
-| nurswgvml006 | 2016-06-19T09:24:00.000Z | 14.0       | 
+| entity       | datetime                 | MAX(value) |
+|--------------|--------------------------|------------|
+| nurswgvml006 | 2016-06-19T09:23:00.000Z | 13.0       |
+| nurswgvml006 | 2016-06-19T09:24:00.000Z | 14.0       |
 | nurswgvml006 | 2016-06-19T09:25:00.000Z | 14.0       | + interpolated +
 | nurswgvml006 | 2016-06-19T09:26:00.000Z | 14.0       | + interpolated +
-| nurswgvml006 | 2016-06-19T09:27:00.000Z | 17.0       | 
-| nurswgvml006 | 2016-06-19T09:28:00.000Z | 18.0       | 
+| nurswgvml006 | 2016-06-19T09:27:00.000Z | 17.0       |
+| nurswgvml006 | 2016-06-19T09:28:00.000Z | 18.0       |
 ```
 
 * Interpolated values are calculated between neighboring values in the result set.

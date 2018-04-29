@@ -10,7 +10,7 @@ This guide describes how to monitor availability and performance of an [Apache Z
 
 2) Click the `Collections` tab in the top menu and select `Item Lists`.
 
-3) Click `Add` and create item list with Zookeeper hosts. 
+3) Click `Add` and create item list with Zookeeper hosts.
 Enter name `zookeeper-jmx-hosts`, choose type `TEXT` and add comma-separated addresses of Zookeeper hosts in the following format:
 
 ```txt
@@ -20,11 +20,11 @@ host2.com,9010,user,pass,prod-zoo-host2,prod
 host3.com,9010,user,pass,prod-zoo-host3,prod
 ```
 
-   **host** — Zookeeper hostname.  
-   **port** — JMX port.  
-   **username** — JMX user name.  
-   **password** — Password for JMX user.  
-   **entity** — ATSD entity for Zookeeper node.  
+   **host** — Zookeeper hostname.
+   **port** — JMX port.
+   **username** — JMX user name.
+   **password** — Password for JMX user.
+   **entity** — ATSD entity for Zookeeper node.
    **cluster** — ATSD series tag for indicating that nodes are in the same cluster.
 
 ![](images/items_list_config.png)
@@ -72,7 +72,7 @@ Go to **Metrics** page and verify that `jmx.zookeeper.*` metrics are available.
 
 1. Go to `Settings -> Entity Groups` and import this [entity group](resources/groups.xml).
 1. Locate `Zookeeper Nodes` group, click on it
-1. Verify that entities were successfully imported. 
+1. Verify that entities were successfully imported.
 
 ![](images/entity_group_check.png)
 

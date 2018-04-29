@@ -62,7 +62,7 @@ volume = 10031
 
 The tests are performed using two schema options:
 
-### Specific Table.
+### Specific Table
 
 The **Specific Table** schema uses a named column for each metric.
 

@@ -45,9 +45,9 @@ An array of query objects containing the following fields:
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| `limit`   | integer | Maximum number of records to be returned. Default: -1.<br>Limit is not applied if the parameter value <= 0. | 
+| `limit`   | integer | Maximum number of records to be returned. Default: -1.<br>Limit is not applied if the parameter value <= 0. |
 
-## Response 
+## Response
 
 An array of matching alert objects containing the following fields:
 
@@ -118,7 +118,7 @@ curl https://atsd_hostname:8443/api/v1/alerts/query \
 [
     {
         "id": 13,
-        "entity": "nurswgvml006",        
+        "entity": "nurswgvml006",
         "tags": {
             "file_system": "/dev/sdc1",
             "mount_point": "/media/datadrive"

@@ -13,7 +13,7 @@ Weekly Change Log: December 12-18, 2016
 
 ### Collector
 
-| Issue    | Category        | Type            | Subject                                                   |       
+| Issue    | Category        | Type            | Subject                                                   |
 |----------|-----------------|-----------------|-----------------------------------------------------------|
 | [3717](#issue-3717)     | docker          | Feature         | Set container label from environment variable `CONTAINER_NAME` for Mesos compatibility. |
 | 3716     | docker          | Bug             | Fixed malformed label for images without a parent image. |

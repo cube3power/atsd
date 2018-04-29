@@ -5,12 +5,12 @@ Select a series without the specified tag using the `tags.{name} IS NULL` condit
 ## Data
 
 ```ls
-| entity  | datetime                 | value | tags.tag1 | tags.tag2 | tags.tag4 | 
-|---------|--------------------------|-------|-----------|-----------|-----------| 
-| e-sql-1 | 2016-06-19T11:00:00.000Z | 1.0   | val1      | null      | null      | 
-| e-sql-2 | 2016-06-19T11:00:00.000Z | 2.0   | val2      | val2      | null      | 
-| e-sql-3 | 2016-06-19T11:00:00.000Z | 3.0   | null      | val3      | null      | 
-| e-sql-4 | 2016-06-19T11:00:00.000Z | 4.0   | null      | null      | val4      | 
+| entity  | datetime                 | value | tags.tag1 | tags.tag2 | tags.tag4 |
+|---------|--------------------------|-------|-----------|-----------|-----------|
+| e-sql-1 | 2016-06-19T11:00:00.000Z | 1.0   | val1      | null      | null      |
+| e-sql-2 | 2016-06-19T11:00:00.000Z | 2.0   | val2      | val2      | null      |
+| e-sql-3 | 2016-06-19T11:00:00.000Z | 3.0   | null      | val3      | null      |
+| e-sql-4 | 2016-06-19T11:00:00.000Z | 4.0   | null      | null      | val4      |
 ```
 
 ## Query
@@ -27,10 +27,10 @@ WHERE datetime >= '2016-06-19T11:00:00.000Z' and datetime < '2016-06-19T12:00:00
 ## Results
 
 ```ls
-| entity  | datetime                 | value | tags.tag1 | tags.tag2 | tags.tag4 | 
-|---------|--------------------------|-------|-----------|-----------|-----------| 
-| e-sql-1 | 2016-06-19T11:00:00.000Z | 1.0   | val1      | null      | null      | 
-| e-sql-2 | 2016-06-19T11:00:00.000Z | 2.0   | val2      | val2      | null      | 
+| entity  | datetime                 | value | tags.tag1 | tags.tag2 | tags.tag4 |
+|---------|--------------------------|-------|-----------|-----------|-----------|
+| e-sql-1 | 2016-06-19T11:00:00.000Z | 1.0   | val1      | null      | null      |
+| e-sql-2 | 2016-06-19T11:00:00.000Z | 2.0   | val2      | val2      | null      |
 | e-sql-3 | 2016-06-19T11:00:00.000Z | 3.0   | null      | val3      | null      |
 ```
 
@@ -48,9 +48,9 @@ WHERE datetime >= '2016-06-19T11:00:00.000Z' and datetime < '2016-06-19T12:00:00
 ## Results
 
 ```ls
-| entity  | datetime                 | value | tags.tag1 | tags.tag2 | tags.tag4 | 
-|---------|--------------------------|-------|-----------|-----------|-----------| 
-| e-sql-4 | 2016-06-19T11:00:00.000Z | 4.0   | null      | null      | val4      | 
+| entity  | datetime                 | value | tags.tag1 | tags.tag2 | tags.tag4 |
+|---------|--------------------------|-------|-----------|-----------|-----------|
+| e-sql-4 | 2016-06-19T11:00:00.000Z | 4.0   | null      | null      | val4      |
 ```
 
 ## Query
@@ -67,8 +67,8 @@ WHERE datetime >= '2016-06-19T11:00:00.000Z' and datetime < '2016-06-19T12:00:00
 ```
 
 ```ls
-| entity  | datetime                 | value | tags.tag1 | tags.tag2 | tags.tag4 | 
-|---------|--------------------------|-------|-----------|-----------|-----------| 
-| e-sql-1 | 2016-06-19T11:00:00.000Z | 1.0   | val1      | null      | null      | 
-| e-sql-2 | 2016-06-19T11:00:00.000Z | 2.0   | val2      | val2      | null      | 
+| entity  | datetime                 | value | tags.tag1 | tags.tag2 | tags.tag4 |
+|---------|--------------------------|-------|-----------|-----------|-----------|
+| e-sql-1 | 2016-06-19T11:00:00.000Z | 1.0   | val1      | null      | null      |
+| e-sql-2 | 2016-06-19T11:00:00.000Z | 2.0   | val2      | val2      | null      |
 ```

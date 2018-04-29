@@ -2,7 +2,7 @@
 
 ## Description
 
-Update fields and tags of the specified metric. 
+Update fields and tags of the specified metric.
 
 Unlike the [replace method](create-or-replace.md), fields and tags that are **not** specified in the request are left unchanged.
 
@@ -14,7 +14,7 @@ Similarly, fields that are set to `null` are ignored and are left unchanged.
 |:---|:---|---:|
 | PATCH | `/api/v1/metrics/{metric}` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|

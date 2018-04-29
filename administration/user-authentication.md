@@ -80,8 +80,8 @@ The following password rules apply to **Local** accounts:
 
     - Open the `server.properties` file.
     - Add `user.password.reset.username={username}` and `user.password.reset.password={new-password}` settings and save the file.
-	  - Restart ATSD.
-	  - Remove the above settings from the `server.properties` file to prevent password resets on subsequent restarts.
+      - Restart ATSD.
+      - Remove the above settings from the `server.properties` file to prevent password resets on subsequent restarts.
 
 * If the account being reset is configured as LDAP type, the type will be changed to Local.
 
@@ -110,15 +110,15 @@ SQL query results can be published to all visitors by checking 'Guest Access' fi
 * Java Example:
 
 ```java
-	URL url = new URL("http://10.102.0.6:8088/api/v1/series");
-	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-	conn.setDoOutput(true);
-	conn.setRequestMethod("POST");
-	conn.setRequestProperty("charset", "utf-8");
+    URL url = new URL("http://10.102.0.6:8088/api/v1/series");
+    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+    conn.setDoOutput(true);
+    conn.setRequestMethod("POST");
+    conn.setRequestProperty("charset", "utf-8");
 
-	String authString = userName + ":" + password;
-	String authEncoded = DatatypeConverter.printBase64Binary(authString.getBytes());
-	conn.setRequestProperty("Authorization", "Basic " + authEncoded);
+    String authString = userName + ":" + password;
+    String authEncoded = DatatypeConverter.printBase64Binary(authString.getBytes());
+    conn.setRequestProperty("Authorization", "Basic " + authEncoded);
 ```
 
 * `curl` Example:

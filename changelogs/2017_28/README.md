@@ -4,12 +4,12 @@ Weekly Change Log: July 10, 2017 - July 16, 2017
 ### ATSD
 
 | Issue| Category    | Type    | Subject              |
-|------|-------------|---------|----------------------| 
+|------|-------------|---------|----------------------|
 | 4390 | sql | Bug | Fixed [`CAST`](../../sql#keywords) conversion error with the built-in `time` column. |
 | [4375](#Issue-4375) | sql | Feature | Added support for [`CURRENT_TIMESTAMP`](../../sql#current_timestamp) and [`DBTIMEZONE`](../../sql#dbtimezone) functions. |
 | [4360](#Issue-4360) | forecast | Feature | Added support for additional aggregation functions in [forecast](https://axibase.com/products/axibase-time-series-database/forecasts/) settings: `AVG`, `MIN`, `MAX`, `SUM`, `COUNT`.  |
 
-### ATSD  
+### ATSD
 
 ##### Issue 4375
 
@@ -30,7 +30,7 @@ Averages the values during a period.
 
 ![](Images/4360.1.1.png)
 
-###### MAX 
+###### MAX
 
 Displays the maximum value during a period.
 
@@ -48,7 +48,7 @@ Sums the values during a period.
 
 ![](Images/4360.4.png)
 
-###### COUNT 
+###### COUNT
 
 Displays the number of samples for a period.
 

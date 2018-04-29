@@ -11,7 +11,7 @@ Weekly Change Log: February 27 - March 5, 2017
 ### Collector
 
 | Issue| Category        | Type    | Subject                                                                              |
-|------|-----------------|---------|--------------------------------------------------------------------------------------|  
+|------|-----------------|---------|--------------------------------------------------------------------------------------|
 | [3977](#issue-3977) | UI              | Feature | Display linked job configurations for HTTP Pools, [Database Configurations](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc-data-source.md), and [Replacement Tables](https://github.com/axibase/axibase-collector/blob/master/collections.md#replacement-tables). |
 | [3976](#issue-3976) | collection      | Feature | Added an option to specify executable script text on the Item List configuration page.                        |
 | 3974 | http-pool       | Bug     | Fixed an error when deleting an HTTP Pool.                                 |
@@ -127,7 +127,7 @@ https://apps.axibase.com/chartlab/25551747
 ### Issue 3941
 --------------
 
-Functions `meta()`, `entityTag()`, and `metricTag()`, which return entity or metric tags retrieved from the server, are now available in widget settings:  
+Functions `meta()`, `entityTag()`, and `metricTag()`, which return entity or metric tags retrieved from the server, are now available in widget settings:
 
 ```python
 meta('alias') – returns ‘meta’ object for series with alias ‘alias’.

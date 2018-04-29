@@ -4,7 +4,7 @@
 
 CSV file is exported.
 
-## Request 
+## Request
 
 ### URI
 

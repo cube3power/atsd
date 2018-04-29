@@ -283,7 +283,7 @@ The link displays the value of the entity tag of another entity, which name is s
   * On-click Target
 
     ![](images/entity-view-column-entity-tag-related-result.png)
-    
+
 #### Customized Entity Tag
 
 Tag value can be formatted for convenient representation.
@@ -319,10 +319,10 @@ Text displays property tag value with a link to property type.
 * On-click Target
 
   ![](images/entity_views_15.png)
-  
+
 #### Custom Icon Link to Message Search Page with Property Tag
 
-The message search link template contains tag value.  
+The message search link template contains tag value.
 
 1. Set 'Type' setting to Property Tag.
 
@@ -342,7 +342,7 @@ The message search link template contains tag value.
 
 * On-click Target
 
-  ![](images/entity_views_18.png)  
+  ![](images/entity_views_18.png)
 
 ### Series Value Examples
 
@@ -359,17 +359,17 @@ The link displays the latest inserted value for the specific metric.
 ```ls
     formatNumber(value, '0.0')
 ```
-        
+
   * Configuration
-  
+
     ![](images/entity-view-column-series-chart-value-format.png)
-  
+
   * View
-  
+
     ![](images/entity-view-column-series-chart-value-view.png)
-  
+
   * On-click Target
-  
+
     ![](images/entity-view-column-series-chart-value-result.png)
 
 ### Name Column Examples
@@ -399,7 +399,7 @@ The displayed entity name can be modified, for example shortened, by specifying 
 
 #### Custom Icon Link to Specific Entity Portal
 
-Use the following configuration to specify the custom icon which opens a link to template portal assigned to the selected entity. 
+Use the following configuration to specify the custom icon which opens a link to template portal assigned to the selected entity.
 
 1. Set 'Type' setting to Name Column.
 

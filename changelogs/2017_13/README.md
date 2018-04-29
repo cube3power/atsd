@@ -130,9 +130,9 @@ GROUP BY tu.entity
 --------------
 
 ```sql
-SELECT t1.datetime, t1.tags, 
-  t1.value as 'wind power', 
-  t2.value as 'sun power', 
+SELECT t1.datetime, t1.tags,
+  t1.value as 'wind power',
+  t2.value as 'sun power',
   t1.value + t2.value as total
 FROM wind_power_production t1 JOIN "solar_cell_production_(estimated)" t2
 WHERE t1.tags.name LIKE 'DK*st'
@@ -142,7 +142,7 @@ LIMIT 10
 ```
 
 ```ls
-| t1.datetime | t1.tags | wind power | sun power | total | 
+| t1.datetime | t1.tags | wind power | sun power | total |
 |-------------|---------|------------|-----------|-------|
 | 2016-12-13T09:00:00.000Z | name=DK-West | 443.4 | 3 | 446.4 |
 | 2016-12-13T09:00:00.000Z | name=DK-East | 123.5 | 2 | 125.5 |

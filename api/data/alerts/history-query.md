@@ -5,7 +5,7 @@
 Retrieve a list of **closed** alerts matching specified fields.
 
 ## Request
- 
+
 | **Method** | **Path** | **Content-Type Header**|
 |:---|:---|---:|
 | POST | `/api/v1/alerts/history/query` | `application/json` |
@@ -94,7 +94,7 @@ POST https://atsd_hostname:8443/api/v1/alerts/history/query
 }]
 ```
 
-#### curl 
+#### curl
 
 ```elm
 curl  https://atsd_hostname:8443/api/v1/alerts/history \

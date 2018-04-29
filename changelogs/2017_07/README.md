@@ -4,7 +4,7 @@ Weekly Change Log: February 13 - February 19, 2017
 ### ATSD
 
 | Issue| Category        | Type    | Subject                                                                              |
-|------|-----------------|---------|--------------------------------------------------------------------------------------| 
+|------|-----------------|---------|--------------------------------------------------------------------------------------|
 | 3925 | api-rest        | Feature     | Added column alias to metadata with [`metadataFormat=COMMENTS`](../../sql/api.md#parameters) and `outputFormat=csv`.                                                       |
 | [3919](#issue-3919) | csv        | Feature | Added an option to ignore top-N header lines in [CSV Parser](../../parsers/csv/README.md).                                                                  |
 | 3898 | rule engine     | Bug     | Fixed incorrect error validation of user-defined `column` aliases.                                                      |
@@ -13,14 +13,14 @@ Weekly Change Log: February 13 - February 19, 2017
 ### Collector
 
 | Issue| Category        | Type    | Subject                                                                              |
-|------|-----------------|---------|--------------------------------------------------------------------------------------| 
+|------|-----------------|---------|--------------------------------------------------------------------------------------|
 | 3895 | socrata         | Bug     | Added heuristics to automatically classify and ignore fields in Socrata data sources. |
 | 3891 | docker          | Bug     | Fixed missing `entity` command for a new container when 'Life Cycle event monitoring' is disabled.   |
 
 ### Charts
 
 | Issue| Category        | Type    | Subject                                                                              |
-|------|-----------------|---------|--------------------------------------------------------------------------------------| 
+|------|-----------------|---------|--------------------------------------------------------------------------------------|
 | [3921](#issue-3921) | widget-settings | Bug     | Added an `escape()` method to `list` and `var` arrays to escape commas in elements.         |
 | 3917 | widget-settings | Bug     | Added the ability to escape commas and backslashes in settings which contain a list.                 |
 | [3897](#issue-3897) | table      | Feature | Added an `auto-height` setting.                                                                |
@@ -54,7 +54,7 @@ Title: "ORO.csv"
 :Note:  All data is PST and is displayed in 4-digit year format to comply with Y2K requirements.
 :
 :  sta yyyymmdd PS DHhhmm /code value
-.A ORO 20160312 PS DH0000 /LSH 2325491 
+.A ORO 20160312 PS DH0000 /LSH 2325491
 ```
 
 ![](Images/Figure4.png)
@@ -65,7 +65,7 @@ Title: "ORO.csv"
 The `entity.label` parameter is now supported in the rule filter.
 
 ![](Images/Figure3.png)
- 
+
 
 ## Charts
 
@@ -89,10 +89,10 @@ New generic table settings:
 
 | Setting | Description |
 |---|---|
-| auto-height	| Calculate row height automatically based on amount of vertical space allocated to the widget and the number of rows.|
-| font-scale	| Ratio of font height to row height when auto-height is enabled. Minimum row height is 10px, maximum row height is 64px. |
-| table-header-style	| Custom CSS style applied to table header, including a style to hide the header altogether. |
-| header-style	| Custom CSS style applied to widget header, including a style to hide the widget header altogether. |
+| auto-height    | Calculate row height automatically based on amount of vertical space allocated to the widget and the number of rows.|
+| font-scale    | Ratio of font height to row height when auto-height is enabled. Minimum row height is 10px, maximum row height is 64px. |
+| table-header-style    | Custom CSS style applied to table header, including a style to hide the header altogether. |
+| header-style    | Custom CSS style applied to widget header, including a style to hide the widget header altogether. |
 
 https://apps.axibase.com/chartlab/e02b8303/3/
 

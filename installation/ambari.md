@@ -95,7 +95,7 @@ Set Zookeeper Znode parent according to the setting `zookeeper.znode.parent` con
 hbase.zookeeper.quorum = zookeeper-host
 hbase.zookeeper.property.clientPort = 2181
 zookeeper.znode.parent = /hbase-unsecure
-hbase.rpc.timeout = 120000 
+hbase.rpc.timeout = 120000
 hbase.client.scanner.timeout.period = 120000
 ```
 

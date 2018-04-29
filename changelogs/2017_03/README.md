@@ -11,7 +11,7 @@ Weekly Change Log: January 16 - January 22, 2017
 | 3786 | statistics      | Bug     | Added the [`LIMIT 100`](../../sql#limiting) clause for pre-defined SQL query on the [series statistics](#issue-3680) page. |
 | 3783 | sql             | Bug     | Removed extra comma if all columns contain `null` (empty string). |
 | 3781 | jdbc            | Bug     | Fixed empty row issue for the JDBC Driver. |
-| 3753 | jdbc            | Bug     | Corrected error in handling metadata when creating a ResultSet. |  
+| 3753 | jdbc            | Bug     | Corrected error in handling metadata when creating a ResultSet. |
 | [3691](#issue-3691) | rule engine     | Feature | Added functions to convert string date to a date object or to epoch time. |
 | [3680](#issue-3680) | statistics      | Feature | Created a page to show series characteristics, such as value and interval statistics and histograms. |
 
@@ -236,7 +236,7 @@ The last condition is typically included to select all remaining rows other than
 --------------
 
 In order to reduce rename/transform multiple similar column headers with one setting, support was added to the `column-label-format` setting for property and table widgets. For example, in
-order to remove a common prefix from a column label, add the following code snippet to your configuration:  
+order to remove a common prefix from a column label, add the following code snippet to your configuration:
 
 ```javascript
 column-label-format = value.replace(/^systemproperties./, "")

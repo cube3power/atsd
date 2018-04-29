@@ -16,7 +16,7 @@ POST https://atsd_hostname:8443/api/v1/properties/query
         "entityGroup": "nur-entities-name",
         "type": "$entity_tags",
         "startDate": "now - 1 * DAY",
-        "endDate": "now",        
+        "endDate": "now",
     }
 ]
 ```

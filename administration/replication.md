@@ -94,8 +94,8 @@ Comment out the following strings in the `start_all` function:
 
 ```sh
      ${ATSD_TSD} start
-     if [ ! $? -eq 0 ]; then                                              
-         return 1                                                         
+     if [ ! $? -eq 0 ]; then
+         return 1
      fi
 ```
 
@@ -126,7 +126,7 @@ Verify that ATSD tables are present.
 Start HBase shell and list tables:
 
 ```sh
-echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\[" 
+echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["
 ```
 
 The output should contain a list of ATSD tables, all starting with `atsd_`:
@@ -179,7 +179,7 @@ Start ATSD:
 Verify that ATSD tables are present: list tables
 
 ```sh
- echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\[" 
+ echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["
 ```
 
 Output should contain a list of ATSD tables, all starting with `atsd_`:
@@ -234,7 +234,7 @@ instructions below.
 To verify that replication is working correctly, execute the following
 steps:
 
-##### Option 1:
+##### Option 1
 
 **SLAVE: the following steps must be executed only on the slave
 machine.**
@@ -250,16 +250,16 @@ replicated on the slave machine:
 
 ```sh
  2015-07-17 16:39:22,926 INFO  regionserver.ReplicationSink (ReplicationS
- ink.java:replicateEntries(158)) - Total replicated: 4                    
- 2015-07-17 16:39:24,019 INFO  regionserver.ReplicationSink (ReplicationS 
- ink.java:replicateEntries(158)) - Total replicated: 1                    
- 2015-07-17 16:39:25,083 INFO  regionserver.ReplicationSink (ReplicationS 
- ink.java:replicateEntries(158)) - Total replicated: 1                    
- 2015-07-17 16:39:31,122 INFO  regionserver.ReplicationSink (ReplicationS 
+ ink.java:replicateEntries(158)) - Total replicated: 4
+ 2015-07-17 16:39:24,019 INFO  regionserver.ReplicationSink (ReplicationS
+ ink.java:replicateEntries(158)) - Total replicated: 1
+ 2015-07-17 16:39:25,083 INFO  regionserver.ReplicationSink (ReplicationS
+ ink.java:replicateEntries(158)) - Total replicated: 1
+ 2015-07-17 16:39:31,122 INFO  regionserver.ReplicationSink (ReplicationS
  ink.java:replicateEntries(158)) - Total replicated: 1
 ```
 
-##### Option 2:
+##### Option 2
 
 **MASTER: the following steps must be executed only on the
 master machine.**

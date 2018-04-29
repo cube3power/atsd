@@ -121,7 +121,7 @@ ORDER BY datetime, tags.category
 Since the `Weights` are available for only one year, we will assume that the category weights are constant through the timespan and therefore can be repeated for each year from 2013 to 2017.
 
 - Open the `Design` pane.
-- Locate `Join Rows (cartesian product)` in `Joins` category. 
+- Locate `Join Rows (cartesian product)` in `Joins` category.
 - Drag and drop it to the `Transformation` pane.
 - Connect your `Join Rows (cartesian product)` with `Datetimes` and `Weights` using `Input Connection` button. That button is displayed when the mouse hovers over `Join Rows` or any item inside the `Transformation` pane.
 
@@ -162,7 +162,7 @@ Diagram example:
 ### Remove Redundant Columns
 
 - Open the `Design` pane.
-- Locate the `Select values` option in the `Transform` category. 
+- Locate the `Select values` option in the `Transform` category.
 - Drag and drop it to `Transformation` pane.
 - Connect `Select values` to `Merge Join`.
 - Configure `Select values` as shown in the screenshot below:
@@ -245,7 +245,7 @@ Group rows by `datetime` and sum weighted price values for each year.
 
 #### Add Entity Column
 
-The entity column is required to store computed metrics back in ATSD. 
+The entity column is required to store computed metrics back in ATSD.
 
 - Open the `Design` pane.
 - Locate `Add constants` in the `Transform` category. Drag and drop it to the `Transformation` pane.

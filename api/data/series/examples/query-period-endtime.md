@@ -6,7 +6,7 @@ By default, period start time is based on calendar.
 
 For a 1-minute period, each period starts at 0 seconds of each minute. For a 1-hour period, the period starts at 0 minute and 0 seconds of each hour, etc.
 
-This is called the `CALENDAR` alignment. 
+This is called the `CALENDAR` alignment.
 
 For example, the default alignment can be changed so that the period's start or end time is aligned with boundaries of the requested time range.
 

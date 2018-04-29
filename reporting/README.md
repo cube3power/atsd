@@ -17,7 +17,7 @@ ATSD provides the following built-in facilities to export data:
 * [IBM SPSS Statistics](../integration/spss/statistics/README.md)
 * [MatLab](../integration/matlab/README.md)
 * [Pentaho Data Integration](../integration/pentaho/data-integration/README.md)
-* [Pentaho Report Designer](../integration/pentaho/report-designer/README.md)  
+* [Pentaho Report Designer](../integration/pentaho/report-designer/README.md)
 * [Stata](../integration/stata/README.md)
 * [Tableau](../integration/tableau/README.md)
 * Other tools supporting [JDBC](https://github.com/axibase/atsd-jdbc) or [ODBC-JDBC](../integration/odbc/README.md) connectivity.

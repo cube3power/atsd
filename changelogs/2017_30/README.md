@@ -28,16 +28,16 @@ metric m:{metric} b:{enabled} p:{data-type} l:{label} d:{description} i:{interpo
 This query will now cause an error:
 
 ```sql
-SELECT * FROM jvm_memory_used 
-  WHERE value IN 169328488 
+SELECT * FROM jvm_memory_used
+  WHERE value IN 169328488
   AND datetime > NOW - 10*HOUR
 ```
 
 The correct syntax is to use brackets:
 
 ```sql
-SELECT * FROM jvm_memory_used 
-  WHERE value IN (169328488) 
+SELECT * FROM jvm_memory_used
+  WHERE value IN (169328488)
   AND datetime > NOW - 10*HOUR
 ```
 
@@ -46,9 +46,9 @@ SELECT * FROM jvm_memory_used
 Add support for selecting all columns with an asterisk (`*`) symbol in inline views:
 
 ```sql
-SELECT TableauSQL.datetime AS datetime,     
-  TableauSQL.value AS value 
-FROM ( select * from table_size ) TableauSQL 
+SELECT TableauSQL.datetime AS datetime,
+  TableauSQL.value AS value
+FROM ( select * from table_size ) TableauSQL
   LIMIT 10
 ```
 

@@ -113,37 +113,37 @@ Search is case-insensitive.
 
 ```ls
 /* Search for 'nurswgvml007' entity */
-entity:nurswgvml007     
+entity:nurswgvml007
 
 /* Search for entities starting with 'nurswgvml' */
-entity:nurswgvml*     
+entity:nurswgvml*
 
 /* Search for entities starting with 'nur' and ending with '007' */
-entity:nur*007     
+entity:nur*007
 
 /* Search for 'mpstat.cpu_busy' metric */
-metric:mpstat.cpu_busy     
+metric:mpstat.cpu_busy
 
 /* Search for metrics starting with 'mpstat.cpu' */
-metric:mpstat.cpu*     
+metric:mpstat.cpu*
 
 /* Search for metrics starting with 'mpstat.' and containing 'cpu' */
-metric:mpstat.*cpu*     
+metric:mpstat.*cpu*
 
 /* Search for any field name or value containing the keyword 'location' */
-location     
+location
 
 /* Search for any field name or value starting with 'location' */
-location*     
+location*
 
 /* Search for any field name or value containing keywords 'location' or 'Baltimore' */
-location baltimore     
+location baltimore
 
 /* Search for any field name or value containing both keywords 'location' and 'baltimore' */
-location AND baltimore     
+location AND baltimore
 
 /* Search for series with series tag, metric tag or entity tag named 'location' containing the keyword 'baltimore' */
-location:baltimore     
+location:baltimore
 
 /* Search for series with series tag, metric tag or entity tag named 'location' starting with 'balt' */
 location:balt*

@@ -36,7 +36,7 @@ Examples
 
 ## Processes
 
-Switch to the `axibase` user. 
+Switch to the `axibase` user.
 
 Run the `jps` utility to display Java processes running under the current user.
 
@@ -209,11 +209,11 @@ cat /opt/atsd/hbase/logs/hbase-*-master-*.log | grep -C 5 "Master not active"
 ```ls
 2017-09-15 05:24:43,982 ERROR master.HMasterCommandLine - Master exiting
 java.lang.RuntimeException: Master not active after 30 seconds
-	at org.apache.hadoop.hbase.util.JVMClusterUtil.startup(JVMClusterUtil.java:194)
-	at org.apache.hadoop.hbase.LocalHBaseCluster.startup(LocalHBaseCluster.java:449)
+    at org.apache.hadoop.hbase.util.JVMClusterUtil.startup(JVMClusterUtil.java:194)
+    at org.apache.hadoop.hbase.LocalHBaseCluster.startup(LocalHBaseCluster.java:449)
 ```
 
-Verify that no HBase processes are running with `jps`. 
+Verify that no HBase processes are running with `jps`.
 
 Remove the Zookeeper data directory.
 

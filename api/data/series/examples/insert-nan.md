@@ -1,8 +1,8 @@
-# Series Insert Not A Number 
+# Series Insert Not A Number
 
 ## Description
 
-Insert Not a Number (NaN) as a `null` value.  
+Insert Not a Number (NaN) as a `null` value.
 
 ## Request
 

@@ -83,7 +83,7 @@ Time                 |NO         |datetime2            |             NULL|      
 
 SELECT TOP 5 * FROM TradeHistory;
 
-Instrument |Open     |High     |Low      |Close    |Volume     |Time                                  
+Instrument |Open     |High     |Low      |Close    |Volume     |Time
 -----------|---------|---------|---------|---------|-----------|--------------------------------------
           1|  99.0000|  99.0000|  99.0000|  99.0000|       6600|                   1998-03-11 14:59:00
           1|  99.0000|  99.0600|  99.0000|  99.0600|       2400|                   1998-03-11 15:00:00
@@ -111,9 +111,9 @@ Name                 |YES        |varchar              |             NULL|      
 
 SELECT * FROM Instruments;
 
-Id       |Name                
+Id       |Name
 ---------|--------------------
-        1|IBM                 
+        1|IBM
 ```
 
 ### **Universal Table** Schema
@@ -140,7 +140,7 @@ Time                 |NO         |datetime2            |             NULL|      
 
 SELECT TOP 5 * FROM UniversalHistory;
 
-Instrument |Metric     |Value         |Time                                  
+Instrument |Metric     |Value         |Time
 -----------|-----------|--------------|--------------------------------------
           1|          1|      104.5000|                   1998-01-02 09:30:00
           1|          1|      104.3800|                   1998-01-02 09:31:00
@@ -168,9 +168,9 @@ Name                 |YES        |varchar              |             NULL|      
 
 SELECT * FROM Instruments;
 
-Id       |Name                
+Id       |Name
 ---------|--------------------
-        1|IBM                 
+        1|IBM
 ```
 
 * Metrics Table
@@ -192,13 +192,13 @@ Name                 |YES        |varchar              |             NULL|      
 
 SELECT * FROM Metrics;
 
-Id         |Name                
+Id         |Name
 -----------|--------------------
-          1|Open                
-          2|High                
-          3|Low                 
-          4|Close               
-          5|Volume              
+          1|Open
+          2|High
+          3|Low
+          4|Close
+          5|Volume
 ```
 
 ## Executing Tests
@@ -258,23 +258,23 @@ cat /tmp/test/mssql-trade-table.sql |\
 ```sh
 name                 |data_compression_desc
 ---------------------|---------------------
-TradeHistory         |NONE                 
+TradeHistory         |NONE
 
-name                 |rows                |reserved          |data              |index_size        |unused            
+name                 |rows                |reserved          |data              |index_size        |unused
 ---------------------|--------------------|------------------|------------------|------------------|------------------
-TradeHistory         |2045514             |192592 KB         |115248 KB         |77248 KB          |96 KB             
+TradeHistory         |2045514             |192592 KB         |115248 KB         |77248 KB          |96 KB
 
 name                 |data_compression_desc
 ---------------------|---------------------
-TradeHistory         |PAGE                 
+TradeHistory         |PAGE
 
-name                 |rows                |reserved          |data              |index_size        |unused            
+name                 |rows                |reserved          |data              |index_size        |unused
 ---------------------|--------------------|------------------|------------------|------------------|------------------
-TradeHistory         |2045514             |93968 KB          |45008 KB          |48704 KB          |256 KB            
+TradeHistory         |2045514             |93968 KB          |45008 KB          |48704 KB          |256 KB
 
 ```
 
-### Execute SQL scripts for the **Universal Table** Schema.
+### Execute SQL scripts for the **Universal Table** Schema
 
 ```sh
 curl -o /tmp/test/mssql-universal-table.sql \
@@ -290,17 +290,17 @@ cat /tmp/test/mssql-universal-table.sql |\
 ```sh
 name                 |data_compression_desc
 ---------------------|---------------------
-UniversalHistory     |NONE                 
+UniversalHistory     |NONE
 
-name                 |rows                |reserved          |data              |index_size        |unused            
+name                 |rows                |reserved          |data              |index_size        |unused
 ---------------------|--------------------|------------------|------------------|------------------|------------------
 UniversalHistory     |10227570            |894096 KB         |464896 KB         |428816 KB         |384 KB
 
 name                 |data_compression_desc
 ---------------------|---------------------
-UniversalHistory     |PAGE                
+UniversalHistory     |PAGE
 
-name                 |rows                |reserved          |data              |index_size        |unused            
+name                 |rows                |reserved          |data              |index_size        |unused
 ---------------------|--------------------|------------------|------------------|------------------|------------------
-UniversalHistory     |10227570            |428752 KB         |144544 KB         |283952 KB         |256 KB            
+UniversalHistory     |10227570            |428752 KB         |144544 KB         |283952 KB         |256 KB
 ```

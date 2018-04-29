@@ -22,13 +22,13 @@ Download scollector binary for Linux.
  chmod 700 scollector-linux-amd64
 ```
 
-Replace username, password, hostname and port number with actual connection parameters. 
+Replace username, password, hostname and port number with actual connection parameters.
 
 ```sh
  echo 'Host = "http://username:password@atsd_hostname:8088/"' > scollector.toml
 ```
 
-The default ATSD http port is `8088`, https port is `8443`. 
+The default ATSD http port is `8088`, https port is `8443`.
 
 scollector does not support untrusted SSL certificates. If ATSD is running on a CA-signed SSL certificate, you can specify the secure connection.
 

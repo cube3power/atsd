@@ -39,8 +39,8 @@ WITH INTERPOLATE(60 SECOND, AUTO, OUTER, EXTEND, START_TIME)
 The subquery returns two intervals.
 
 ```sql
-SELECT datetime, text 
-  FROM "TV6.Unit_BatchID" 
+SELECT datetime, text
+  FROM "TV6.Unit_BatchID"
 WHERE entity = 'br-1211' AND (text = '800' OR LAG(text)='800')
 ```
 

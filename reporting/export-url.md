@@ -20,24 +20,22 @@ http://server:port/export?settings={"m":"cpu_used","e":"nurswgvml001","si":"1-WE
 
 #### JSON Format
 
-| Field | Description | Example | 
+| Field | Description | Example |
 | --- | --- | --- |
-|  `m`  |  Metric name  |  `"m":"metric"`  | 
-|  `e`  |  Entity name  | `"e":"entity"`  | 
-|  `g`  |  Entity group  |  `"g":"group"`  | 
-|  `tags`  |  Tags array  |  `"tags":[{"k":"key1","v":"value11"},{"k":"key2","v":"value2"}]`  | 
-|  `si`  |  Selection Interval  | ` si":"1-WEEK"`  | 
-|  `et`  |  End time  |  `"et":"today"`  | 
-|  `l` |  Limit  |  `"l":1000`  | 
-|  `f`  |  Export Format (CSV, HTML)  |  `"f":"CSV"`  | 
-|  `t`  |  Export Type (DATA, FORECAST)  |  `"t":"DATA"`  | 
-|  `ai`  |  Aggregation Interval  |  `"ai":"1-HOUR"`  | 
-|  `a`  |  Aggregation Functions  |  `"a":["AVG", "MIN"]`  | 
-|  `i`  |  Interpolation (LINEAR, STEP)  |  `"i" : "LINEAR"`  | 
+|  `m`  |  Metric name  |  `"m":"metric"`  |
+|  `e`  |  Entity name  | `"e":"entity"`  |
+|  `g`  |  Entity group  |  `"g":"group"`  |
+|  `tags`  |  Tags array  |  `"tags":[{"k":"key1","v":"value11"},{"k":"key2","v":"value2"}]`  |
+|  `si`  |  Selection Interval  | ` si":"1-WEEK"`  |
+|  `et`  |  End time  |  `"et":"today"`  |
+|  `l` |  Limit  |  `"l":1000`  |
+|  `f`  |  Export Format (CSV, HTML)  |  `"f":"CSV"`  |
+|  `t`  |  Export Type (DATA, FORECAST)  |  `"t":"DATA"`  |
+|  `ai`  |  Aggregation Interval  |  `"ai":"1-HOUR"`  |
+|  `a`  |  Aggregation Functions  |  `"a":["AVG", "MIN"]`  |
+|  `i`  |  Interpolation (LINEAR, STEP)  |  `"i" : "LINEAR"`  |
 
-
-#### Aggregation Functions:
-
+#### Aggregation Functions
 
 - AVG
 - MIN
@@ -55,9 +53,7 @@ http://server:port/export?settings={"m":"cpu_used","e":"nurswgvml001","si":"1-WE
 - PERCENTILE_995
 - PERCENTILE_999
 
-
-#### Interval Time Units:
-
+#### Interval Time Units
 
 - SECOND
 - MINUTE
@@ -68,16 +64,15 @@ http://server:port/export?settings={"m":"cpu_used","e":"nurswgvml001","si":"1-WE
 - QUARTER
 - YEAR
 
-
-#### Interpolation Functions:
+#### Interpolation Functions
 
 Interpolation functions can insert missing intervals in returned aggregated data:
 
-| Function Name | Description | 
-| --- | --- | 
-|  `STEP`  |  Missing value equals previous (last) value.  | 
-| `LINEAR`  |  Missing value is computed using linear interpolation between previous (last) and next available value.  | 
-|  `NONE`  |  Missing values are not inserted.  | 
+| Function Name | Description |
+| --- | --- |
+|  `STEP`  |  Missing value equals previous (last) value.  |
+| `LINEAR`  |  Missing value is computed using linear interpolation between previous (last) and next available value.  |
+|  `NONE`  |  Missing values are not inserted.  |
 
 
 If the interpolation function is not specified in the request, missing intervals are not created.

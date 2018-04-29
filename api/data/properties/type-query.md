@@ -2,7 +2,7 @@
 
 ## Description
 
-Returns an array of property types for the entity. 
+Returns an array of property types for the entity.
 
 ## Request
 

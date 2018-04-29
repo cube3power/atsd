@@ -4,7 +4,7 @@ Weekly Change Log: February 6 - February 12, 2017
 ### ATSD
 
 | Issue| Category       | Type    | Subject                                                                              |
-|------|----------------|---------|--------------------------------------------------------------------------------------| 
+|------|----------------|---------|--------------------------------------------------------------------------------------|
 | 3912 | sql            | Bug     | Fixed NullPointerException in [`JOIN`](../../sql#join) queries without a `WHERE` condition.                                                                                                          |
 | 3910 | rule engine    | Bug     | Invalid rules are logged with rule name to simplify troubleshooting.                                    |
 | [3909](#issue-3909) | rule engine    | Feature | Added a `Discard Previous Values` filter option to control processing of commands with a timestamp earlier than the most recent one.                                                                                                               |
@@ -13,7 +13,7 @@ Weekly Change Log: February 6 - February 12, 2017
 | 3893 | sql            | Bug     | Fixed delta aggregator behavior with filtered dates.                                  |
 | 3892 | sql            | Bug     | Fixed usage of the [CASE](../../sql#case) statement in `SELECT` clauses with grouping by the `time` column.    |
 | 3890 | sql            | Bug     | Fixed tag encoding error in high-cardinality metrics.                                 |
-| 3887 | UI             | Bug     | Added HTML-escaping for columns on SQL Queries page.                                  | 
+| 3887 | UI             | Bug     | Added HTML-escaping for columns on SQL Queries page.                                  |
 | 3885 | api-network    | Bug     | Fixed annotation append behavior by batched [series](../../api/network/series.md#series-command) commands with the [append](../../api/network/series.md#text-append) flag.                                             |
 | 3883 | rule engine    | Bug     | Variables are now allowed to be referenced by other variables.                            |
 | 3880 | sql            | Bug     | Fixed NullPointerException in [`JOIN`](../../sql#join) queries when aggregating `null` values.   |
@@ -26,17 +26,17 @@ Weekly Change Log: February 6 - February 12, 2017
 ### Collector
 
 | Issue| Category       | Type    | Subject                                                                              |
-|------|----------------|---------|--------------------------------------------------------------------------------------| 
+|------|----------------|---------|--------------------------------------------------------------------------------------|
 | 3903 | socrata        | Bug     | Implemented filtering and trimming of tag values before saving.                                      |
 | [3899](#issue-3899) | socrata        | Feature | Added capability to launch an automated job from dataset url.                                                |
 | 3877 | socrata        | Bug     | Annotations are added under numeric metric names.                                         |
 | [3864](#issue-3864) | socrata        | Feature | Added a summary table displayed in `Test` mode.                                            |
-| [3859](#issue-3859) | socrata        | Feature | Added a URL wizard.                                                                   | 
+| [3859](#issue-3859) | socrata        | Feature | Added a URL wizard.                                                                   |
 
 ### Charts
 
 | Issue| Category       | Type    | Subject                                                                              |
-|------|----------------|---------|--------------------------------------------------------------------------------------| 
+|------|----------------|---------|--------------------------------------------------------------------------------------|
 | 3908 | table          | Bug     | Fixed row sorting when conditional 'display: none' style is used.                                      |
 | [3901](#issue-3901) | portal    | Support | Added ability to hide rows if no alert is raised for all metrics in a row.          |
 | [3792](#issue-3792) | box       | Feature | Implemented class 'Metro'.                                                            |

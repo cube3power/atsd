@@ -11,8 +11,7 @@ Scheduled exporting enables exporting of historical data and forecasts to the lo
 |  Enabled  |  Enable the current scheduled export job.  |
 |  Schedule  |  Cron expression specifying when the export job will be executed.<br>Field order: `seconds minutes hours day-of-month month day-of-week year`.<br>By default all export jobs are executed daily at 02:00 AM local server time: `0 0 2 * * *`.  |
 
-
-##### Schedule Syntax Examples:
+##### Schedule Syntax Examples
 
 | Schedule | Expression |
 | --- | --- |
@@ -28,14 +27,12 @@ Concurrent execution for the same job is not allowed.
 
 Export job settings in the server.properties file:
 
-
 - `export.worker.count (default = 8)` – number of export jobs that can be executed at the same time
 - `export.worker.queue (default = 8)` – number of export jobs that can be queued for execution
 
-
 If new jobs are added for executing when the queue is full, such jobs will be rejected.
 
-##### Export Job Logging:
+##### Export Job Logging
 
 Each export job execution is logged in ATSD. Messages are saved to track the status. Below are their parameters.
 

@@ -38,9 +38,9 @@ csv p:{parser} e:{entity} r:{metric_prefix} z:{timezone} t:{timeout}
 Rules inherited from [Base ABNF](base-abnf.md).
 
 ```elm
-command = "csv" MSP parser [MSP entity] [MSP entity-prefix] [MSP entity-tags] 
-                           [MSP metric] [MSP metric-prefix] [MSP metric-tags] 
-						   [MSP timezone] [MSP timeout] *(MSP tag)
+command = "csv" MSP parser [MSP entity] [MSP entity-prefix] [MSP entity-tags]
+                           [MSP metric] [MSP metric-prefix] [MSP metric-tags]
+                           [MSP timezone] [MSP timeout] *(MSP tag)
 parser = "p:" NAME
 entity = "e:" NAME
 entity-prefix = "ep:" NAME

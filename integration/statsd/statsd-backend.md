@@ -47,7 +47,7 @@ Possible variables:
 |  `atsd.password`  |  Password to log into ATSD  |    |
 |  `atsd.protocol`  |  Protocol: `tcp` or `udp`  |  `tcp`  |
 |  `atsd.entity`  |  Default entity  |  local hostname  |
-|  `atsd.prefix`  |  Global prefix for each metric  |    | 
+|  `atsd.prefix`  |  Global prefix for each metric  |    |
 |  `atsd.prefixCounter`  |  Prefix for counter metrics  |  `counters`  |
 |  `atsd.prefixTimer`  |  Prefix for timer metrics  |  `timers`  |
 |  `atsd.prefixGauge`  |  Prefix for gauge metrics  |  `gauges`  |

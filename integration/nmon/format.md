@@ -288,29 +288,29 @@ network_size.readsize
 network_size.writesize
 ```
 
-#### Derived Metrics:
+#### Derived Metrics
 
 - Derived metrics are calculated to simplify rule development and visualization tasks.
 - The derived metrics are stored similar to original metrics and are available in rule expressions, forecasts, and widgets.
 
-| Derived Metric | Original Metrics | 
-| --- | --- | 
-|  `pcpu_total.busy`  |  `pcpu_total.sys` + `pcpu_total.user` + `pcpu_total.wait`  | 
-|  `scpu_total.busy`  |  `scpu_total.sys` + `scpu_total.user` + `scpu_total.wait`  | 
-|  `pcpu_total.entitled_capacity_used%`  |  `pcpu_total.busy` / `pcpu_total.entitled_capacity` * 100  | 
-|  `pcpu.total`  |  `pcpu.sys` + `pcpu.user` + `pcpu.wait` — computed by tag (by processor id)   | 
-|  `scpu.total`  |  `scpu.sys` + `scpu.user` + `scpu.wait` — computed by tag (by processor id)  | 
-|  `memory_mb.memused%`  |  (1 – `memory_mb.memfree`/`memory_mb.memtotal`) * 100  | 
-|  `memory_mb.memused`  |  `memory_mb.memtotal` – `memory_mb.memfree`  | 
-|  `memory_mb.swapused%`  |  (1 – `memory_mb.swapfree`/`memory_mb.swaptotal`) * 100  | 
-|  `memory_mb.swapused`  |  `memory_mb.swaptotal` – `memory_mb.swapfree`  | 
-|  `cpu_total.busy%`  |  100 – `cpu_total.idle%`  | 
-|  `logical_partition.entitled_used%`  |  `logical_partition.physicalcpu` / `logical_partition.entitled` * 100   | 
-|  `logical_partition.physicalcpu_used%`  |  `logical_partition.physicalcpu` / `logical_partition.virtualcpus` * 100  | 
-|  `memory.real_used_%`  |  100 – `memory.real_free_%`  | 
-|  `memory.virtual_used_%`  |  100 – `memory.virtual_free_%`  | 
-|  `memory.real_used(mb)`  | `memory.real_total(mb)` – `memory.real_free(mb)`  | 
-|  `memory.virtual_used(mb)`  |  `memory.virtual_total(mb)` – `memory.virtual_free(mb)`  | 
-|  `memory_new.used%`  |  100 – `memory_new.free%`  | 
-|  `disk_read_kb/s`<br>`nmon.disk_write_kb/s`<br>`nmon.disk_%busy`<br>`nmon.disk_transfers_per_second`  |  Sum of values for all disks for each snapshot.  | 
-|  `nmon.network_packets.write/s`<br>`nmon.network_packets.read/s`  |  Sum of values for all interfaces for each snapshot except local.  | 
+| Derived Metric | Original Metrics |
+| --- | --- |
+|  `pcpu_total.busy`  |  `pcpu_total.sys` + `pcpu_total.user` + `pcpu_total.wait`  |
+|  `scpu_total.busy`  |  `scpu_total.sys` + `scpu_total.user` + `scpu_total.wait`  |
+|  `pcpu_total.entitled_capacity_used%`  |  `pcpu_total.busy` / `pcpu_total.entitled_capacity` * 100  |
+|  `pcpu.total`  |  `pcpu.sys` + `pcpu.user` + `pcpu.wait` — computed by tag (by processor id)   |
+|  `scpu.total`  |  `scpu.sys` + `scpu.user` + `scpu.wait` — computed by tag (by processor id)  |
+|  `memory_mb.memused%`  |  (1 – `memory_mb.memfree`/`memory_mb.memtotal`) * 100  |
+|  `memory_mb.memused`  |  `memory_mb.memtotal` – `memory_mb.memfree`  |
+|  `memory_mb.swapused%`  |  (1 – `memory_mb.swapfree`/`memory_mb.swaptotal`) * 100  |
+|  `memory_mb.swapused`  |  `memory_mb.swaptotal` – `memory_mb.swapfree`  |
+|  `cpu_total.busy%`  |  100 – `cpu_total.idle%`  |
+|  `logical_partition.entitled_used%`  |  `logical_partition.physicalcpu` / `logical_partition.entitled` * 100   |
+|  `logical_partition.physicalcpu_used%`  |  `logical_partition.physicalcpu` / `logical_partition.virtualcpus` * 100  |
+|  `memory.real_used_%`  |  100 – `memory.real_free_%`  |
+|  `memory.virtual_used_%`  |  100 – `memory.virtual_free_%`  |
+|  `memory.real_used(mb)`  | `memory.real_total(mb)` – `memory.real_free(mb)`  |
+|  `memory.virtual_used(mb)`  |  `memory.virtual_total(mb)` – `memory.virtual_free(mb)`  |
+|  `memory_new.used%`  |  100 – `memory_new.free%`  |
+|  `disk_read_kb/s`<br>`nmon.disk_write_kb/s`<br>`nmon.disk_%busy`<br>`nmon.disk_transfers_per_second`  |  Sum of values for all disks for each snapshot.  |
+|  `nmon.network_packets.write/s`<br>`nmon.network_packets.read/s`  |  Sum of values for all interfaces for each snapshot except local.  |

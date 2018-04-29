@@ -165,7 +165,7 @@ New chart functions `getTags()` and `getSeries()` provide a way to load series t
 list disks = sda, sda1, sda2, sda3, sda4, sda5
 
 # Option 2: Use Freemarker function
-list disks = ${getTags("collectd.disk.disk_io_time.io_time", entity, "instance", 1)?sort?join(", ")}  
+list disks = ${getTags("collectd.disk.disk_io_time.io_time", entity, "instance", 1)?sort?join(", ")}
 
 # Option 3: a) Use Chart function getTags to retrieve tag values
 var disks = getTags("disk_used", "mount_point", "nurswgvml007")

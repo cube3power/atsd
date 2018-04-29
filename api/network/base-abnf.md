@@ -15,7 +15,7 @@ NAME = NAME_QUOTED / 1*CHAR_SAFE
   ; inner double-quote must be escaped with another double quote
   ; m:"my=message"
   ; m:"my message"
-  ; m:"my 
+  ; m:"my
   ;       message"
 VALUE = VALUE_QUOTED / 1*CHAR_SAFE
 
@@ -48,12 +48,12 @@ UNICODE = %x80-FF / ; Latin-1 Supplement
 ## Date Rules
 
 ```elm
-  ; ISO date defined in RFC-3339 Appendix-A. 
+  ; ISO date defined in RFC-3339 Appendix-A.
   ; Format yyyy-MM-dd'T'HH:mm:ss.SSSXX
   ; https://tools.ietf.org/html/rfc3339#appendix-A
   ; UTC time zone (Z) = 2016-06-01T16:00:15.142Z
   ; Numeric time zone = 2016-06-01T12:00:15.142-04:00
-ISO_DATE = date-time 
+ISO_DATE = date-time
   ; inhereted from /shared/timezone-abnf.md
 TIMEZONE = time-zone-code
 ```

@@ -69,21 +69,21 @@ curl https://atsd_hostname:8443/api/v1/metrics/disk_used/series \
 
 ```json
 [{
-	"metric": "disk_used",
-	"entity": "nurswgvml007",
-	"tags": {
-		"file_system": "/dev/mapper/vg_nurswgvml007-lv_root",
-		"mount_point": "/"
-	},
-	"lastInsertDate": "2016-05-23T11:54:36.000Z"
+    "metric": "disk_used",
+    "entity": "nurswgvml007",
+    "tags": {
+        "file_system": "/dev/mapper/vg_nurswgvml007-lv_root",
+        "mount_point": "/"
+    },
+    "lastInsertDate": "2016-05-23T11:54:36.000Z"
 }, {
-	"metric": "disk_used",
-	"entity": "nurswgvml006",
-	"tags": {
-		"file_system": "10.102.0.2:/home/store/share",
-		"mount_point": "/mnt/share"
-	},
-	"lastInsertDate": "2015-12-25T14:09:49.000Z"
+    "metric": "disk_used",
+    "entity": "nurswgvml006",
+    "tags": {
+        "file_system": "10.102.0.2:/home/store/share",
+        "mount_point": "/mnt/share"
+    },
+    "lastInsertDate": "2015-12-25T14:09:49.000Z"
 }]
 ```
 

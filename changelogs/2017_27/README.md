@@ -2,7 +2,7 @@ Weekly Change Log: July 03, 2017 - July 09, 2017
 ==================================================
 
 ### ATSD
- 
+
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4352 | SQL| Feature | Standardized the list of columns for wildcard [`SELECT *`](../../sql/examples/select-all-tags.md) expressions. |

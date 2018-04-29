@@ -235,7 +235,7 @@ WITH INTERPOLATE(180 second, AUTO, OUTER, EXTEND, START_TIME)
 
 ## Selecting Multiple Metrics and Entities
 
-Locate lagging series: series with data timestamped with the last 14 days, but which have stopped collecting data during the last 24 hours. 
+Locate lagging series: series with data timestamped with the last 14 days, but which have stopped collecting data during the last 24 hours.
 
 ```sql
 SELECT metric, entity, tags, date_format(MAX(time)) as "max_time"
@@ -252,9 +252,9 @@ GROUP BY metric, entity, tags
 ### Results
 
 ```ls
-| metric     | entity        | tags                               | max_time            | 
-|------------|---------------|------------------------------------|---------------------| 
-| disk_used  | nurswgvml010  | file_system=udev;mount_point=/dev  | 2017-09-29 10:16:37 | 
+| metric     | entity        | tags                               | max_time            |
+|------------|---------------|------------------------------------|---------------------|
+| disk_used  | nurswgvml010  | file_system=udev;mount_point=/dev  | 2017-09-29 10:16:37 |
 ```
 
 

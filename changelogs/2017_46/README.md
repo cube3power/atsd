@@ -70,7 +70,7 @@ Weekly Change Log: November 13, 2017 - November 19, 2017
       "period": { "count": 1, "unit": "MINUTE"},
       "type": "MAX"
     }
-  }  
+  }
 ]
 ```
 

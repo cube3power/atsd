@@ -16,8 +16,8 @@ Weekly Change Log: May 29, 2017 - June 04, 2017
 
 #### Issue 4163
 
-1. Admin > Server Properties, modified to display differences between actual and default 
-property values: 
+1. Admin > Server Properties, modified to display differences between actual and default
+property values:
 
 ![4163](Images/4163.1.png)
 
@@ -25,7 +25,7 @@ property values:
 
 ![4163.2](Images/4163.2.png)
 
-3. Configuration > Portals, `View` button allows for viewing of 
+3. Configuration > Portals, `View` button allows for viewing of
 Portal during configuration:
 
 ![4163.3](Images/4163.3.1.png)
@@ -53,5 +53,5 @@ Configuration > Rules
 
 ![4144](Images/4144.png)
 
-Subscribers button displays all email subscribers. 
+Subscribers button displays all email subscribers.
 

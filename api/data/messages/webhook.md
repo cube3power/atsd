@@ -114,7 +114,7 @@ Array elements are assigned names based on array name and element index, startin
 
 ## Entity Mapping
 
-Since each message must be associated with an entity, the request should instruct the server how to determine the entity name from the request parameters and the payload. 
+Since each message must be associated with an entity, the request should instruct the server how to determine the entity name from the request parameters and the payload.
 
 1. By default, the entity will be set to the remainder of the path following the `/api/v1/messages/webhook/` prefix.
 
@@ -397,12 +397,12 @@ Example:
 * Message Command:
 
 ```elm
-	type=github
-	source=webhook
-	entity=test-1
-	tags:
-	    server=test-2
-	    request_ip=...
+    type=github
+    source=webhook
+    entity=test-1
+    tags:
+        server=test-2
+        request_ip=...
 ```
 
 ## Sample URLs
@@ -572,22 +572,22 @@ Command:
 
 ```json
 {
-	"entity": "github",
-	"type": "webhook",
-	"source": "github",
-	"severity": null,
-	"tags": {
-		"action": "started",
-		"event": "watch",
-		"repository.name": "atsd",
-		"repository.full_name": "axibase/atsd",
-		"request_ip": "192.30.253.29",
-		"sender.id": "2098022",
-		"sender.login": "rodionos",
-		"sender.site_admin": "false",
-		"sender.type": "User"
-	},
-	"date": "2017-12-22T13:32:50.901Z"
+    "entity": "github",
+    "type": "webhook",
+    "source": "github",
+    "severity": null,
+    "tags": {
+        "action": "started",
+        "event": "watch",
+        "repository.name": "atsd",
+        "repository.full_name": "axibase/atsd",
+        "request_ip": "192.30.253.29",
+        "sender.id": "2098022",
+        "sender.login": "rodionos",
+        "sender.site_admin": "false",
+        "sender.type": "User"
+    },
+    "date": "2017-12-22T13:32:50.901Z"
 }
 ```
 

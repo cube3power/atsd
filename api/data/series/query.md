@@ -168,18 +168,18 @@ POST https://atsd_hostname:8443/api/v1/series/query
 
 ```json
 [{
-	"entity": "nurswgvml007",
-	"metric": "mpstat.cpu_busy",
-	"tags": {},
-	"type": "HISTORY",
-	"aggregate": {
-	  "type": "DETAIL"
-	},
-	"data": [
-		{"d":"2017-09-14T17:00:03.000Z","v":24.24},
-		{"d":"2017-09-14T17:00:19.000Z","v":39.8},
-		{"d":"2017-09-14T17:00:35.000Z","v":39.18}
-	]
+    "entity": "nurswgvml007",
+    "metric": "mpstat.cpu_busy",
+    "tags": {},
+    "type": "HISTORY",
+    "aggregate": {
+      "type": "DETAIL"
+    },
+    "data": [
+        {"d":"2017-09-14T17:00:03.000Z","v":24.24},
+        {"d":"2017-09-14T17:00:19.000Z","v":39.8},
+        {"d":"2017-09-14T17:00:35.000Z","v":39.18}
+    ]
 }]
 ```
 

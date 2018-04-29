@@ -59,31 +59,31 @@ name LIKE 'disk?used*'
 
 ```json
 [{
-	"name": "disk_used",
-	"enabled": true,
-	"dataType": "FLOAT",
-	"persistent": true,
-	"timePrecision": "MILLISECONDS",
-	"retentionDays": 0,
-	"invalidAction": "NONE",
-	"lastInsertDate": "2017-07-17T12:24:26.000Z",
-	"filter": "!likeAny(tags.mount_point, collection('ignore-collector-mount-points'))",
-	"versioned": false,
-	"interpolate": "LINEAR"
+    "name": "disk_used",
+    "enabled": true,
+    "dataType": "FLOAT",
+    "persistent": true,
+    "timePrecision": "MILLISECONDS",
+    "retentionDays": 0,
+    "invalidAction": "NONE",
+    "lastInsertDate": "2017-07-17T12:24:26.000Z",
+    "filter": "!likeAny(tags.mount_point, collection('ignore-collector-mount-points'))",
+    "versioned": false,
+    "interpolate": "LINEAR"
 }, {
-	"name": "disk_used_percent",
-	"enabled": true,
-	"dataType": "FLOAT",
-	"label": "Disk Used, %",
-	"persistent": true,
-	"timePrecision": "MILLISECONDS",
-	"retentionDays": 0,
-	"minValue": 0.0,
-	"maxValue": 100.0,
-	"invalidAction": "TRANSFORM",
-	"lastInsertDate": "2017-07-17T12:24:26.000Z",
-	"filter": "!likeAny(tags.mount_point, collection('ignore-collector-mount-points'))",
-	"versioned": false,
-	"interpolate": "LINEAR"
+    "name": "disk_used_percent",
+    "enabled": true,
+    "dataType": "FLOAT",
+    "label": "Disk Used, %",
+    "persistent": true,
+    "timePrecision": "MILLISECONDS",
+    "retentionDays": 0,
+    "minValue": 0.0,
+    "maxValue": 100.0,
+    "invalidAction": "TRANSFORM",
+    "lastInsertDate": "2017-07-17T12:24:26.000Z",
+    "filter": "!likeAny(tags.mount_point, collection('ignore-collector-mount-points'))",
+    "versioned": false,
+    "interpolate": "LINEAR"
 }]
 ```

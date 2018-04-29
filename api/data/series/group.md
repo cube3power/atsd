@@ -135,16 +135,16 @@ On the other hand, the `SUM` returns 3 (3 + null->0) at `2016-06-25T08:00:05Z` b
 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
-	"aggregate":{"type":"DETAIL"},
-	"group":{"type":"SUM","order":0},
+    "aggregate":{"type":"DETAIL"},
+    "group":{"type":"SUM","order":0},
   "data":[
-	{"d":"2016-06-25T08:00:00Z","v":12.0},
-	{"d":"2016-06-25T08:00:05Z","v":3.0},
-	{"d":"2016-06-25T08:00:10Z","v":5.0},
-	{"d":"2016-06-25T08:00:15Z","v":16.0},
-	{"d":"2016-06-25T08:00:30Z","v":16.0},
-	{"d":"2016-06-25T08:00:45Z","v":20.0},
-	{"d":"2016-06-25T08:00:59Z","v":19.0}
+    {"d":"2016-06-25T08:00:00Z","v":12.0},
+    {"d":"2016-06-25T08:00:05Z","v":3.0},
+    {"d":"2016-06-25T08:00:10Z","v":5.0},
+    {"d":"2016-06-25T08:00:15Z","v":16.0},
+    {"d":"2016-06-25T08:00:30Z","v":16.0},
+    {"d":"2016-06-25T08:00:45Z","v":20.0},
+    {"d":"2016-06-25T08:00:59Z","v":19.0}
 ]}]
 ```
 
@@ -196,7 +196,7 @@ Sample for series `e-2` at `2016-06-25T08:00:59Z` is discarded because there is 
     "metric": "m-1",
     "group": {
       "type": "SUM",
-	    "truncate": true
+        "truncate": true
     }
   }
 ]
@@ -204,12 +204,12 @@ Sample for series `e-2` at `2016-06-25T08:00:59Z` is discarded because there is 
 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
-	"aggregate":{"type":"DETAIL"},
-	"group":{"type":"SUM","truncate":true,"order":0},
+    "aggregate":{"type":"DETAIL"},
+    "group":{"type":"SUM","truncate":true,"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:15Z","v":16.0},
-	{"d":"2016-06-25T08:00:30Z","v":16.0},
-	{"d":"2016-06-25T08:00:45Z","v":20.0}
+    {"d":"2016-06-25T08:00:15Z","v":16.0},
+    {"d":"2016-06-25T08:00:30Z","v":16.0},
+    {"d":"2016-06-25T08:00:45Z","v":20.0}
 ]}]
 ```
 
@@ -245,9 +245,9 @@ An opposite operation to truncation, extend adds missing values at the beginning
     "metric": "m-1",
     "group": {
       "type": "SUM",
-      "interpolate": { 
+      "interpolate": {
         "type": "NONE",
-        "extend": true 
+        "extend": true
       }
     }
   }
@@ -256,15 +256,15 @@ An opposite operation to truncation, extend adds missing values at the beginning
 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
-	"aggregate":{"type":"DETAIL"},
-	"group":{"type":"SUM","interpolate":{"type":"NONE","value":0.0,"extend":true},"order":0},
+    "aggregate":{"type":"DETAIL"},
+    "group":{"type":"SUM","interpolate":{"type":"NONE","value":0.0,"extend":true},"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:05Z","v":11.0},
-	{"d":"2016-06-25T08:00:10Z","v":13.0},
-	{"d":"2016-06-25T08:00:15Z","v":16.0},
-	{"d":"2016-06-25T08:00:30Z","v":16.0},
-	{"d":"2016-06-25T08:00:45Z","v":20.0},
-	{"d":"2016-06-25T08:00:59Z","v":24.0}
+    {"d":"2016-06-25T08:00:05Z","v":11.0},
+    {"d":"2016-06-25T08:00:10Z","v":13.0},
+    {"d":"2016-06-25T08:00:15Z","v":16.0},
+    {"d":"2016-06-25T08:00:30Z","v":16.0},
+    {"d":"2016-06-25T08:00:45Z","v":20.0},
+    {"d":"2016-06-25T08:00:59Z","v":24.0}
 ]}]
 ```
 
@@ -301,7 +301,7 @@ Query:
     "metric": "m-1",
     "group": {
       "type": "SUM",
-	    "interpolate": { "type": "PREVIOUS" }
+        "interpolate": { "type": "PREVIOUS" }
     }
   }
 ]
@@ -311,16 +311,16 @@ Response:
 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
-	"aggregate":{"type":"DETAIL"},
-	"group":{"type":"SUM","interpolate":{"type":"PREVIOUS","value":0.0,"extend":false},"order":0},
+    "aggregate":{"type":"DETAIL"},
+    "group":{"type":"SUM","interpolate":{"type":"PREVIOUS","value":0.0,"extend":false},"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:00Z","v":12.0},
-	{"d":"2016-06-25T08:00:05Z","v":14.0},
-	{"d":"2016-06-25T08:00:10Z","v":16.0},
-	{"d":"2016-06-25T08:00:15Z","v":16.0},
-	{"d":"2016-06-25T08:00:30Z","v":16.0},
-	{"d":"2016-06-25T08:00:45Z","v":20.0},
-	{"d":"2016-06-25T08:00:59Z","v":19.0}
+    {"d":"2016-06-25T08:00:00Z","v":12.0},
+    {"d":"2016-06-25T08:00:05Z","v":14.0},
+    {"d":"2016-06-25T08:00:10Z","v":16.0},
+    {"d":"2016-06-25T08:00:15Z","v":16.0},
+    {"d":"2016-06-25T08:00:30Z","v":16.0},
+    {"d":"2016-06-25T08:00:45Z","v":20.0},
+    {"d":"2016-06-25T08:00:59Z","v":19.0}
 ]}]
 ```
 
@@ -405,7 +405,7 @@ To split values into periods, specify a period.
     "metric": "m-1",
     "group": {
       "type": "SUM",
-	    "period": {"count": 10, "unit": "SECOND"}
+        "period": {"count": 10, "unit": "SECOND"}
     }
   }
 ]
@@ -413,14 +413,14 @@ To split values into periods, specify a period.
 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
-	"aggregate":{"type":"DETAIL"},
-	"group":{"type":"SUM","period":{"count":10,"unit":"SECOND","align":"CALENDAR"},"order":0},
+    "aggregate":{"type":"DETAIL"},
+    "group":{"type":"SUM","period":{"count":10,"unit":"SECOND","align":"CALENDAR"},"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:00Z","v":15.0},
-	{"d":"2016-06-25T08:00:10Z","v":21.0},
-	{"d":"2016-06-25T08:00:30Z","v":16.0},
-	{"d":"2016-06-25T08:00:40Z","v":20.0},
-	{"d":"2016-06-25T08:00:50Z","v":19.0}
+    {"d":"2016-06-25T08:00:00Z","v":15.0},
+    {"d":"2016-06-25T08:00:10Z","v":21.0},
+    {"d":"2016-06-25T08:00:30Z","v":16.0},
+    {"d":"2016-06-25T08:00:40Z","v":20.0},
+    {"d":"2016-06-25T08:00:50Z","v":19.0}
 ]}]
 ```
 
@@ -436,7 +436,7 @@ This is equivalent to `Group <-> Aggregation` processing in case of `SUM`+`SUM` 
     "aggregate": {
       "type": "SUM",
       "period": {"count": 10, "unit": "SECOND"}
-    },    
+    },
     "group": {
       "type": "SUM",
       "period": {"count": 10, "unit": "SECOND"}
@@ -473,11 +473,11 @@ The timestamps used for grouping combine period start times from the underlying 
     "aggregate": {
       "type": "COUNT",
       "period": {"count": 10, "unit": "SECOND"},
-	    "order": 0
-    },    
+        "order": 0
+    },
     "group": {
       "type": "SUM",
-	    "order": 1
+        "order": 1
     }
   }
 ]
@@ -488,11 +488,11 @@ The timestamps used for grouping combine period start times from the underlying 
 "aggregate":{"type":"COUNT","period":{"count":10,"unit":"SECOND","align":"CALENDAR"}},
 "group":{"type":"SUM","order":1},
 "data":[
-	{"d":"2016-06-25T08:00:00Z","v":3.0},
-	{"d":"2016-06-25T08:00:10Z","v":3.0},
-	{"d":"2016-06-25T08:00:30Z","v":2.0},
-	{"d":"2016-06-25T08:00:40Z","v":2.0},
-	{"d":"2016-06-25T08:00:50Z","v":1.0}
+    {"d":"2016-06-25T08:00:00Z","v":3.0},
+    {"d":"2016-06-25T08:00:10Z","v":3.0},
+    {"d":"2016-06-25T08:00:30Z","v":2.0},
+    {"d":"2016-06-25T08:00:40Z","v":2.0},
+    {"d":"2016-06-25T08:00:50Z","v":1.0}
 ]}]
 ```
 
@@ -508,7 +508,7 @@ At the first stage, grouping produces the following `SUM` series:
     "startDate": "2016-06-25T08:00:00Z",
     "endDate":   "2016-06-25T08:01:00Z",
     "entities": ["e-1", "e-2"],
-    "metric": "m-1",  
+    "metric": "m-1",
     "group": {
       "type": "SUM"
     }
@@ -542,12 +542,12 @@ The grouped `SUM` series is then aggregated into periods.
     "aggregate": {
       "type": "COUNT",
       "period": {"count": 10, "unit": "SECOND"},
-	    "order": 1
-    },    
+        "order": 1
+    },
     "group": {
       "type": "SUM",
       "period": {"count": 1, "unit": "MILLISECOND"},
-	    "order": 0
+        "order": 0
     }
   }
 ]
@@ -565,13 +565,13 @@ The grouped `SUM` series is then aggregated into periods.
 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
-	"aggregate":{"type":"COUNT","period":{"count":10,"unit":"SECOND","align":"CALENDAR"}},
-	"group":{"type":"SUM","period":{"count":1,"unit":"MILLISECOND","align":"CALENDAR"},"order":0},
+    "aggregate":{"type":"COUNT","period":{"count":10,"unit":"SECOND","align":"CALENDAR"}},
+    "group":{"type":"SUM","period":{"count":1,"unit":"MILLISECOND","align":"CALENDAR"},"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:00Z","v":2.0},
-	{"d":"2016-06-25T08:00:10Z","v":2.0},
-	{"d":"2016-06-25T08:00:30Z","v":1.0},
-	{"d":"2016-06-25T08:00:40Z","v":1.0},
-	{"d":"2016-06-25T08:00:50Z","v":1.0}
+    {"d":"2016-06-25T08:00:00Z","v":2.0},
+    {"d":"2016-06-25T08:00:10Z","v":2.0},
+    {"d":"2016-06-25T08:00:30Z","v":1.0},
+    {"d":"2016-06-25T08:00:40Z","v":1.0},
+    {"d":"2016-06-25T08:00:50Z","v":1.0}
 ]}]
 ```

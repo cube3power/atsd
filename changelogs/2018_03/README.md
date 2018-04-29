@@ -3,7 +3,7 @@ Monthly Change Log: March 2018
 
 ## ATSD
 
-**Issue**| **Category**    | **Type**    | **Subject**              
+**Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
 5170 | forecast | Bug | NPE in [forecast](../../forecasting#data-forecasting) settings.
 5169 | export | Bug | [Scheduled Query](../../reporting/scheduled-exporting.md#scheduled-exporting): Temporary files not deleted if Store enabled and no other output specified.
@@ -61,7 +61,7 @@ Monthly Change Log: March 2018
 
 ## Collector
 
-**Issue**| **Category**    | **Type**    | **Subject**             
+**Issue**| **Category**    | **Type**    | **Subject**
 -----|-------------|---------|----------------------
 5141 | [jdbc](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#jdbc-job) | Support | Timestamp format error in JDBC job.
 5140 | UI | Bug | Empty page on opening simon console.

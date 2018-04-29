@@ -59,7 +59,7 @@ Verifying - Enter Export Password: NEW_PASS
 Backup the current `server.keystore` file.
 
 ```sh
-mv /opt/atsd/atsd/conf/server.keystore /opt/atsd/atsd/conf/server.keystore.backup 
+mv /opt/atsd/atsd/conf/server.keystore /opt/atsd/atsd/conf/server.keystore.backup
 ```
 
 #### Create JKS Keystore
@@ -84,7 +84,7 @@ Open `/opt/atsd/atsd/conf/server.properties` file.
 nano /opt/atsd/atsd/conf/server.properties
 ```
 
-Specify the new password (in plain or [obfuscated](passwords-obfuscation.md) text) in `https.keyStorePassword` and `https.keyManagerPassword` settings. 
+Specify the new password (in plain or [obfuscated](passwords-obfuscation.md) text) in `https.keyStorePassword` and `https.keyManagerPassword` settings.
 
 Leave `https.trustStorePassword` blank.
 

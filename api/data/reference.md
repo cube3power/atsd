@@ -13,7 +13,7 @@
 
 | **Name** | **Method** | **Path** | **Content-Type** | **Description** |
 |:---|:---|:---|:---|:---|
-| [Insert](properties/insert.md) | POST | ` 	/api/v1/properties/insert` | `application/json` | Insert an array of properties. |
+| [Insert](properties/insert.md) | POST | `/api/v1/properties/insert` | `application/json` | Insert an array of properties. |
 | [Query](properties/query.md) | POST | `/api/v1/properties/query` | `application/json` | Retrieve property records matching specified filters. |
 | [URL Query](properties/url-query.md) | GET | `/api/v1/properties/{entity}/types/{type}` |  | Retrieve property records for the specified entity and type. |
 | [Type Query](properties/type-query.md) | GET | `/api/v1/properties/{entity}/types` |  | Retrieve an array of property types for the entity.  |

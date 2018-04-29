@@ -24,8 +24,8 @@ Weekly Change Log: April 17 - April 23, 2017
 --------------
 
 ```sql
-SELECT datetime, 
-  date_format(time, "yyyy-MM-dd HH:mm:ss", "Europe/Vienna") AS local_datetime, 
+SELECT datetime,
+  date_format(time, "yyyy-MM-dd HH:mm:ss", "Europe/Vienna") AS local_datetime,
   MIN(value), MAX(value)
 FROM m1
   GROUP BY PERIOD(1 DAY, "Europe/Vienna")

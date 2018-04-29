@@ -110,9 +110,9 @@ FROM tmz1
 ```
 
 ```ls
-| datetime            | local_datetime          | min(value) | max(value) | count(value) | first(value) | last(value) | 
-|---------------------|-------------------------|------------|------------|--------------|--------------|-------------| 
-| 2017-04-14 07:00:00 | 2017-04-14 00:00:00 PDT | 0.0        | 23.0       | 7            | 21.0         | 3.0         | 
+| datetime            | local_datetime          | min(value) | max(value) | count(value) | first(value) | last(value) |
+|---------------------|-------------------------|------------|------------|--------------|--------------|-------------|
+| 2017-04-14 07:00:00 | 2017-04-14 00:00:00 PDT | 0.0        | 23.0       | 7            | 21.0         | 3.0         |
 ```
 
 * Data
@@ -132,18 +132,18 @@ series e:e1 d:2017-04-15T03:00:00Z m:tmz1=3
 ```sql
 SELECT entity, entity.timeZone,
   AVG(value),
-  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "Period Start: UTC datetime", 
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "Period Start: UTC datetime",
   date_format(time, 'yyyy-MM-dd HH:mm z', entity.timeZone) AS "Period Start: Local datetime"
 FROM "mpstat.cpu_busy"
-  WHERE datetime >= ENDTIME(PREVIOUS_DAY, entity.timeZone) 
+  WHERE datetime >= ENDTIME(PREVIOUS_DAY, entity.timeZone)
     AND datetime < ENDTIME(CURRENT_DAY, entity.timeZone)
 GROUP BY entity, PERIOD(1 DAY, entity.timeZone)
 ```
 
 ```ls
-| entity       | entity.timeZone | avg(value) | Period Start: UTC datetime | Period Start: Local datetime | 
-|--------------|-----------------|------------|----------------------------|------------------------------| 
-| nurswgvml007 | PST             | 12.3       | 2017-08-17 07:00 UTC       | 2017-08-17 00:00 PDT         | 
-| nurswgvml006 | US/Mountain     | 9.2        | 2017-08-17 06:00 UTC       | 2017-08-17 00:00 MDT         | 
-| nurswgvml010 | null            | 5.8        | 2017-08-17 00:00 UTC       | 2017-08-17 00:00 GMT         | 
+| entity       | entity.timeZone | avg(value) | Period Start: UTC datetime | Period Start: Local datetime |
+|--------------|-----------------|------------|----------------------------|------------------------------|
+| nurswgvml007 | PST             | 12.3       | 2017-08-17 07:00 UTC       | 2017-08-17 00:00 PDT         |
+| nurswgvml006 | US/Mountain     | 9.2        | 2017-08-17 06:00 UTC       | 2017-08-17 00:00 MDT         |
+| nurswgvml010 | null            | 5.8        | 2017-08-17 00:00 UTC       | 2017-08-17 00:00 GMT         |
 ```

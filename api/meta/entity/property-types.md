@@ -2,23 +2,23 @@
 
 ## Description
 
-Retrieve a list property types for the entity. 
+Retrieve a list property types for the entity.
 
 ## Request
 
 ## Request
 
-| **Method** | **Path** | 
+| **Method** | **Path** |
 |:---|:---|
 | GET | `/api/v1/entities/{entity}/property-types` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
 | `entity` |string|Entity name.|
 
-### Query Parameters 
+### Query Parameters
 
 | **Parameter** | **Type** | **Description** |
 |:---|:---|:---|
@@ -60,7 +60,7 @@ curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/property-types \
 
 ```json
 [
-   "configuration", 
+   "configuration",
    "system",
    "process"
 ]

@@ -185,7 +185,7 @@ Assuming there were no detailed records for this series in October 2016, the cur
 
 ```ls
 | date_format(period(1 MONTH)) | sum(value) | count(value) |
-|------------------------------|------------|--------------|  
+|------------------------------|------------|--------------|
 | 2016-09-01T00:00:00.000Z     | 537.0      | 4.0          |
 | 2016-11-01T00:00:00.000Z     | 234.0      | 4.0          |
 ```
@@ -194,7 +194,7 @@ Previous result:
 
 ```ls
 | date_format(period(1 MONTH)) | sum(value) | count(value) |
-|------------------------------|------------|--------------|  
+|------------------------------|------------|--------------|
 | 2016-09-01T00:00:00.000Z     | 537.0      | 4.0          |
 | 2016-10-01T00:00:00.000Z     | 0.0        | 0.0          | <- this period was added by interpolation set in period(1 MONTH, VALUE 0), after HAVING.
 | 2016-11-01T00:00:00.000Z     | 234.0      | 4.0          |
@@ -269,7 +269,7 @@ Implemented the `searched case` variant of the [CASE](../../sql#case) expression
 The `CASE` expression evaluates a sequence of boolean expressions and returns a matching result expression.
 
 ```sql
-CASE  
+CASE
      WHEN search_expression THEN result_expression
      [ WHEN search_expression THEN result_expression ]
      [ ELSE result_expression ]

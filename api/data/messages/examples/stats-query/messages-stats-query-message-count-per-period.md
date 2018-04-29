@@ -1,4 +1,4 @@
-# Message Count per Period 
+# Message Count per Period
 
 ## Description
 

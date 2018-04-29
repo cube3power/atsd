@@ -59,7 +59,7 @@ ORDER BY datetime
 
 ```sql
 SELECT datetime, LAG(value), value, LEAD(value)
-  FROM cpu_busy 
+  FROM cpu_busy
 WHERE entity = 'nurswgvml007'
   AND datetime BETWEEN '2017-04-02T14:19:15Z' AND '2017-04-02T14:21:15Z'
   AND value BETWEEN LAG(value) AND LEAD(value)
