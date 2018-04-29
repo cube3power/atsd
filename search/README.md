@@ -79,7 +79,7 @@ Keywords support both single and multiple character wildcards.
 he*
 ```
 
- * "?" symbol matches one character.
+* "?" symbol matches one character.
 
 ```ls
 h?llo

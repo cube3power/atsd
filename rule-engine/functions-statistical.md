@@ -192,7 +192,7 @@ Difference between `last` and `first` values. Same as `last() - first()`.
   diff(integer i) double
 ```
 
-Difference between `last(integer i)` and `first(integer i)` values. Same as` last(integer i)-first(integer i)`.
+Difference between `last(integer i)` and `first(integer i)` values. Same as `last(integer i)-first(integer i)`.
 
 ### `diff(string i)`
 

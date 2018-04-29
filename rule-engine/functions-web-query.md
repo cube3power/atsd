@@ -8,7 +8,7 @@ Web query functions execute an HTTP request to an external web service and retur
 
 * [`queryConfig`](#queryconfig)
     * [Form](#content-type-is-form)
-    * [JSON](#content-type-is-json)    
+    * [JSON](#content-type-is-json)
 * [`queryGet`](#queryget)
 * [`queryPost`](#querypost)
 * [Request URL](#request-url)
@@ -38,7 +38,7 @@ The values for such parameters are retrieved from the input map `p`. Unknown par
 ![query config form](images/query-config-form.png)
 
 ```javascript
-queryConfig("rc-hook", 
+queryConfig("rc-hook",
   ["channel": "devops", "repository": "atsd-site"]
 )
 ```
@@ -58,7 +58,7 @@ Such placeholders are substituted with corresponding parameter values from the i
 ![query config json](images/query-config-json.png)
 
 ```javascript
-queryConfig("rc-hook", 
+queryConfig("rc-hook",
   ["channel": "devops", "repository": "atsd-site"]
 )
 ```
@@ -101,19 +101,19 @@ Execute a `POST` request to the specified [request URL](#request-url) `u` and re
 The configuration map `c` may contain the following fields:
 
 * `contentType` - Content type of the request. Default is `application/json`.
-* `content` - Request body text. 
+* `content` - Request body text.
 * `headers` - Map of request headers keys and values.
 * `params` - Map of request parameters.
 * `ignoreSsl` - Boolean field that controls SSL certificate validation. Default is `true`.
 
-The request payload can be specified using either `content` text or `params` map. 
+The request payload can be specified using either `content` text or `params` map.
 
 The `params` map is serialized into a JSON document if content type is `application/json`. Otherwise it is converted to URL-encoded form format.
 
 **JSON content type:**
 
 ```javascript
-  queryPost(_url, 
+  queryPost(_url,
     ["params": ["repository": "atsd-site", "channel": "devops"]]
   )
 ```
@@ -128,7 +128,7 @@ Payload:
 
 ```javascript
   queryPost(_url, [
-     "contentType": "application/x-www-form-urlencoded", 
+     "contentType": "application/x-www-form-urlencoded",
      "params": ["repository": "atsd-site", "channel": "devops"]
   ])
 ```
@@ -181,7 +181,7 @@ WebRequestResult(
     Access-Control-Allow-Origin=*,
     Transfer-Encoding=chunked
   },
-  duration=225,  
+  duration=225,
   reasonPhrase=OK,
   contentType=application/json; charset=utf-8
 )
@@ -220,7 +220,7 @@ printObject(queryPost({}))
 Post message to an `Incoming Webhook` in [Rocket.Chat](https://rocket.chat/docs/administrator-guides/integrations/).
 
 ```javascript
-  queryPost("https://chat_server:3000/hooks/1A1AbbbAAAa1bAAAa/xox-token", [  
+  queryPost("https://chat_server:3000/hooks/1A1AbbbAAAa1bAAAa/xox-token", [
       "params": ["channel": "#devops", "text": "Hello from ATSD!"]
   ])
 ```

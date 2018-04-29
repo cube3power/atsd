@@ -32,7 +32,7 @@ Enter a name and specify the following parameters:
 
 If the Jenkins job is not parameterized, use the `https://jenkins.example.org/job/${job_name}/build` url.
 
-Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address. 
+Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address.
 
 Keep the `${job_name}` placeholder in the URL path so that one can customize it in the rule editor. This would allow you to trigger different jobs using the same web notification.
 
@@ -52,7 +52,7 @@ Your token is displayed in the `API Token` field.
 
 ### Payload
 
-If your Jenkins job is parameterized, you can send the additional parameters in the request payload. 
+If your Jenkins job is parameterized, you can send the additional parameters in the request payload.
 
 To inspect which parameters are exposed by the project, open the job configuration page in Jenkins.
 
@@ -76,7 +76,7 @@ Create a new rule or import the [rule template](resources/custom-jenkins-rule.xm
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
-Specify the key settings on the **Overview** tab. 
+Specify the key settings on the **Overview** tab.
 
 | **Name** | **Value** |
 | :-------- | :---- |

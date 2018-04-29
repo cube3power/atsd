@@ -61,7 +61,7 @@ Enter the following text into the `Body` field:
 }
 ```
 
-The `body` text contains placeholders that will be substituted with actual values when the notification is triggered. 
+The `body` text contains placeholders that will be substituted with actual values when the notification is triggered.
 
 The placeholders specified in the payload are visible as editable parameters in the rule editor.
 
@@ -73,7 +73,7 @@ Create a new rule or import the [rule template](resources/custom-pagerduty-rule.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
-Specify the key settings on the **Overview** tab. 
+Specify the key settings on the **Overview** tab.
 
 | **Name** | **Value** |
 | :-------- | :---- |
@@ -98,7 +98,7 @@ Specify the following settings for the **Open** trigger:
 
 ![](images/pagerduty_rule_notification_open.png)
 
-The `service_id` parameter indicates which service is affected by the incident. You can obtain the service ID on the PagerDuty **Services** page. 
+The `service_id` parameter indicates which service is affected by the incident. You can obtain the service ID on the PagerDuty **Services** page.
 
 Click **Configuration > Services**.
 

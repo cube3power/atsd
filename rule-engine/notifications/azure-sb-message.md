@@ -1,4 +1,4 @@
-## Azure Send Message Example
+# Azure Send Message Example
 
 ## Overview
 

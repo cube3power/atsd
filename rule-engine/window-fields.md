@@ -44,7 +44,6 @@ Each window maintains a set of continuously updated fields that can be included 
 | `message` | string | Message text |
 
 > The `tags` field for the `message` command contains `type`, `source`, `severity`, and other command tags.
-
 > Alert `severity` value is inherited from message `severity` when the Logging: Severity is set to 'Undefined'.
 
 ### Properties Fields
@@ -75,11 +74,8 @@ Each window maintains a set of continuously updated fields that can be included 
 `alert_duration_interval` | n/a | Interval between current time and alert open time, formatted as `alert_duration` with units, for example `1m:45s`.
 
 > Fields ending with `_time` contain time in local server time zone, for example `2017-05-30 14:05:39 PST`.
-
 > Fields ending with `_datetime` contain time in ISO 8601 format in UTC time zone, for example `2017-05-30T06:05:39Z`.
-
 > If 'Check On Exit' option is enabled for time-based window, some of the events will be caused by exiting commands and the `timestamp` placeholder will return the time of the command being removed (oldest command), rounded to seconds.
-
 > The `now` object's fields can be accessed with [`get`](object-datetime.md) methods, e.g. `now.getDayOfWeek() == 4`.
 
 ### Details Tables

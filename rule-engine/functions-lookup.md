@@ -119,7 +119,7 @@ Example:
   getEntities(string m, string s, string e, string p) [object]
 ```
 
-Returns a list of entity **objects** with last insert date for metric `m` between `s` and `e` and matching the specified expression `p`. 
+Returns a list of entity **objects** with last insert date for metric `m` between `s` and `e` and matching the specified expression `p`.
 
 Expression `p` can include entity [fields](../api/meta/entity/list.md#fields) (except `lastInsertDate`) and [window fields](window.md#window-fields). The entity [fields](entity-fields.md) can be referred to using the dot notation.
 
@@ -138,7 +138,7 @@ Examples:
 * Match using entity object field
 
 ```javascript
-  getEntities('df.inodes.used', '2018-01-13T18:08:04Z', '2018-02-13T18:08:04Z', "enabled=true")  
+  getEntities('df.inodes.used', '2018-01-13T18:08:04Z', '2018-02-13T18:08:04Z', "enabled=true")
 ```
 
 * Match using wildcard
@@ -147,7 +147,7 @@ Examples:
   getEntities('jvm_memory_used', 'now - 4*YEAR', 'now', "tags.alias LIKE '00*'")
 ```
 
-* Match using window field 
+* Match using window field
 
 ```javascript
   getEntities('cpu_busy', 'yesterday', 'now', "interpolate = 'LINEAR' && tags.app = '" + entity.tags.app + "'")
@@ -167,7 +167,7 @@ Same as `getEntities(string m, string s, string e, object p).size()`.
   getEntityName(string e) string
 ```
 
-Returns normalized (lowercase) entity name for input string `e`. The function searches for entity by name `e` in a case-insensitive manner. If the entity is not found by name, the function attempts to find an entity by label `e` in a case-insensitive manner. 
+Returns normalized (lowercase) entity name for input string `e`. The function searches for entity by name `e` in a case-insensitive manner. If the entity is not found by name, the function attempts to find an entity by label `e` in a case-insensitive manner.
 
 If the entity cannot be found, the original input string `e` is returned.
 

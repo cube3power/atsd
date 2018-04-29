@@ -141,10 +141,10 @@ Examples:
 
 ```ls
 [
-  {id=/, jfs_filespace_%used=12.8}, 
-  {id=/dev, jfs_filespace_%used=0.0}, 
-  {id=/mnt/u113452, jfs_filespace_%used=34.9}, 
-  {id=/run, jfs_filespace_%used=7.5}, 
+  {id=/, jfs_filespace_%used=12.8},
+  {id=/dev, jfs_filespace_%used=0.0},
+  {id=/mnt/u113452, jfs_filespace_%used=34.9},
+  {id=/run, jfs_filespace_%used=7.5},
   {id=/var/lib/lxcfs, jfs_filespace_%used=0.0}
 ]
 ```
@@ -435,8 +435,8 @@ Examples:
 Output lists:
 
 ```ls
-[[d, v], 
- [2018-04-24, 1], 
+[[d, v],
+ [2018-04-24, 1],
  [2018-04-25, 2]]
 ```
 

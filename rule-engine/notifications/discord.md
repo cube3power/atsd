@@ -21,51 +21,51 @@ Install and configure the [Web Driver](web-driver.md) in order to send chart scr
 
 Configure a new Discord server, if necessary.
 
- * Click on the plus icon in the left panel.
+* Click on the plus icon in the left panel.
 
      ![](images/create_server.png)
 
- * Click on **Create a Server**.
+* Click on **Create a Server**.
 
      ![](images/create_server2.png)
 
- * Specify **Server Name**. Click **Create**.
+* Specify **Server Name**. Click **Create**.
 
      ![](images/create_server3.png)
-     
- * Configure the server for [private](https://support.discordapp.com/hc/en-us/articles/206143407-How-do-I-set-up-private-servers-without-passwords-) access.
 
- * Invite new members to the server, click **Done**.
+* Configure the server for [private](https://support.discordapp.com/hc/en-us/articles/206143407-How-do-I-set-up-private-servers-without-passwords-) access.
+
+* Invite new members to the server, click **Done**.
 
 ## Create Channel
 
- * Click on **Create Channel**.
+* Click on **Create Channel**.
 
      ![](images/create_discord_channel.png)
 
- * Specify **Channel name**, check (enable) **Text Channel**, click **Create Channel**.
+* Specify **Channel name**, check (enable) **Text Channel**, click **Create Channel**.
 
      ![](images/create_discord_channel2.png)
 
- * Click **Edit channel**.
+* Click **Edit channel**.
 
      ![](images/create_discord_channel3.png)
 
- * Open the **Permissions** tab and review the settings.
+* Open the **Permissions** tab and review the settings.
 
      ![](images/create_discord_channel4.png)
 
-On the **Invite** tab you can create an invitation link and distribute it to new users.  
+On the **Invite** tab you can create an invitation link and distribute it to new users.
 
 To join a server, click **Create new server**, select **Join** and paste the received invitation link.
 
 ## Create Webhook
 
- * Open the **Webhook** tab, click **Create Webhook**, enter a name and select a channel.
+* Open the **Webhook** tab, click **Create Webhook**, enter a name and select a channel.
 
       ![](images/create_webhook.png)
 
- * Copy the Webhook URL for future reference, click **Save**.
+* Copy the Webhook URL for future reference, click **Save**.
 
 ## Create Discord Notification in ATSD
 
@@ -73,8 +73,8 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 * Click on an existing `DISCORD` template, or click the **Create** button and select the `DISCORD` type.
 * Specify the unique `Name` of the notification.
 
-    ![](images/discord_1.png) 
-    
+    ![](images/discord_1.png)
+
 * Copy the `Webhook URL` from the Discord client into the `Webhook URL` field in the configuration form.
 * The `Webhook ID` and `Webhook Token` will be filled automatically when you finish editing the `Webhook URL` field.
 * Select **Test Portal** to test the screenshot.
@@ -85,7 +85,7 @@ To join a server, click **Create new server**, select **Join** and paste the rec
 
    ![](images/discord_2.png)
 
-* If test is passed, set the status **Enabled** and click **Save**,  `Webhook URL` field will be cleared.  
+* If test is passed, set the status **Enabled** and click **Save**,  `Webhook URL` field will be cleared.
 
 ## Proxy Settings
 

@@ -8,11 +8,11 @@ The integration relies on the Telegram Bot API [setWebhook](https://core.telegra
 
 ## Reference
 
- * [Create Telegram Bot](#create-telegram-bot)
- * [Prepare Webhook URL](#prepare-webhook-url)
- * [Set Webhook](#set-webhook)
- * [Check Webhook](#check-webhook)
- * [Test Integration](#test-integration)
+* [Create Telegram Bot](#create-telegram-bot)
+* [Prepare Webhook URL](#prepare-webhook-url)
+* [Set Webhook](#set-webhook)
+* [Check Webhook](#check-webhook)
+* [Test Integration](#test-integration)
 
 ## Create Telegram Bot
 
@@ -131,19 +131,19 @@ curl "https://api.telegram.org/botBOT_TOKEN/getWebhookInfo"
 * Go to the Telegram and send a direct message to the recently created bot.
 
     ![](images/outgoing_webhook_telegram_2.png)
-    
+
 * Open **Settings > Diagnostics > Webhook Requests** page and check that a request from Slack servers has been received.
 
     ![](images/outgoing_webhook_slack_18.png)
-    
+
     ![](images/outgoing_webhook_slack_19.png)
-    
+
 * If the request is not visible, check **Settings > Diagnostics > Security Incidents** page which will display an error in case the user credentials are mis-configured.
 
     ![](images/outgoing_webhook_slack_20.png)
-    
+
     ![](images/outgoing_webhook_slack_21.png)
 
 * It may take a few seconds for the commands to arrive and to trigger the notifications. The rule will create new windows based on incoming `message` commands. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
-    ![](images/outgoing_webhook_telegram_3.png)  
+    ![](images/outgoing_webhook_telegram_3.png)

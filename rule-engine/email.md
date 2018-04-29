@@ -64,17 +64,17 @@ The override table below contains rules that will always return `false` for the 
 
 * Subject
 * Content
-  - Header
-  - Text
-  - Detail Table
-    - Entity tags
-    - Alert fields
-    - Command/Event tags
-    - User variables
-  - Portal Screenshots
-  - Footer
+  * Header
+  * Text
+  * Detail Table
+    * Entity tags
+    * Alert fields
+    * Command/Event tags
+    * User variables
+  * Portal Screenshots
+  * Footer
 
-![](images/email-message-composition-top.png)  
+![](images/email-message-composition-top.png)
 
 ![](images/email-message-composition-bottom.png)
 

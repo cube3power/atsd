@@ -35,9 +35,9 @@ There are two types of supported Web Drivers: [PhantomJS](http://phantomjs.org/)
 * Set path to `/home/axibase/phantomjs-2.1.1-linux-x86_64/bin/phantomjs` in **Settings > Server Properties** `webdriver.phantomjs.path`.
 
     ![](images/webdriver.phantomjs.path.png)
-    
+
 * Open Rules > Web Notifications page. Create and test one of TYPE-specific web notifications such as [Telegram](telegram.md) or [Slack](slack.md). Verify that screenshot was successfully received in the chat client.
-    
+
 * Review Web Driver settings on **Settings > System Information** page, no error should be displayed.
 
     ![](images/webdriver-settings_1.png)

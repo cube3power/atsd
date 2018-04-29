@@ -43,16 +43,16 @@ When used with other configurations, the function will return an empty string.
 ```javascript
 addPortal('ATSD')
 ```
-![](images/functions-portal-1.png)
 
+![](images/functions-portal-1.png)
 
 * Template Portal for Specific Entity
 
 ```javascript
 addPortal('Linux nmon', 'nurswgvml007')
 ```
-![](images/functions-portal-2.png)
 
+![](images/functions-portal-2.png)
 
 * Custom Caption
 

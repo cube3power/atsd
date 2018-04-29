@@ -86,8 +86,8 @@ In addition to the room ID, you can search by room name, for example `test-axiba
 * Click on an existing `HIPCHAT` template, or click the **Create** button and select the `HIPCHAT`type.
 * Specify the unique `Name` of the notification.
 
-    ![](images/hipchat_1.png) 
-    
+    ![](images/hipchat_1.png)
+
 * Specify the `Endpoint URL`.
 * Copy the `Token` from the HipChat Data Center client into the `Auth Token` field of the configuration form.
 * Copy the room ID or room name from the HipChat Data Center client into the `Room ID` field in the configuration form.
@@ -99,7 +99,7 @@ In addition to the room ID, you can search by room name, for example `test-axiba
 
    ![](images/hipchat_2.png)
 
-* If test is passed, set the status to **Enabled** and click **Save**.  
+* If test is passed, set the status to **Enabled** and click **Save**.
 
 ## Proxy Settings
 

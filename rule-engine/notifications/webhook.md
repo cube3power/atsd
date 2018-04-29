@@ -134,7 +134,7 @@ You can use online resources such as `https://webhook.site` for troubleshooting.
     "container-name": "db-test-db2-10.5.0.5",
     "external-port": "48002",
     "host": "172.17.0.12",
-    "port": "50000"    
+    "port": "50000"
   },
   "value": 1,
   "window": "length(1)",

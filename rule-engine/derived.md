@@ -8,7 +8,7 @@ Derived command actions store new calculated metrics in the database by creating
 
 When configuring a command action, you need to specify a template consisting of command name, command fields and command values.
 
-### Supported commands:
+### Supported commands
 
 * [series](../api/network/series.md)
 * [property](../api/network/property.md)
@@ -130,7 +130,7 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 * Command Template:
 
 ```ls
-	series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
+  series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
 ```
 
 ### Moving Average (Last *N* Time)
@@ -142,7 +142,7 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 * Command Template:
 
 ```ls
-	series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
+  series e:${entity} m:${metric}_movavg=${avg()} ${commandTags}
 ```
 
 ### Roll-up (all matching entities)
@@ -155,7 +155,7 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 * Command Template:
 
 ```ls
-	series e:total m:${metric}_sum=${sum()}
+  series e:total m:${metric}_sum=${sum()}
 ```
 
 ### Reverse/Inverse Metric
@@ -167,11 +167,11 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 * Command Template:
 
 ```ls
-	series e:${entity} m:${metric}_rev=${100-value} ${commandTags}
+  series e:${entity} m:${metric}_rev=${100-value} ${commandTags}
 ```
 
 ```ls
-	series e:${entity} m:${metric}_inv=${value = 0 ? 0 : 1/value} ${commandTags}
+  series e:${entity} m:${metric}_inv=${value = 0 ? 0 : 1/value} ${commandTags}
 ```
 
 ### Ratio / Percentage
@@ -183,7 +183,7 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 * Command Template:
 
 ```ls
-	series e:${entity} m:${metric}_percent=${100 * value/value('total')} ${commandTags}
+  series e:${entity} m:${metric}_percent=${100 * value/value('total')} ${commandTags}
 ```
 
 ### Message to Series
@@ -195,5 +195,5 @@ If creating new data is the rule's only purpose, set the `Condition` field to a 
 * Command Template:
 
 ```ls
-	series e:${entity} m:job_execution_time=${tags.job_execution_time.replaceAll("[a-zA-Z]", "").trim()}
+  series e:${entity} m:job_execution_time=${tags.job_execution_time.replaceAll("[a-zA-Z]", "").trim()}
 ```

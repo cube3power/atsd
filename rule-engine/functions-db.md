@@ -30,7 +30,7 @@ SQL functions:
 
 ### `db_last`
 
-The `db_last` function retrieves the last (most recent) value stored in the database for the specified series, regardless when it was stored. 
+The `db_last` function retrieves the last (most recent) value stored in the database for the specified series, regardless when it was stored.
 
 The functions return `Double.NaN` if no matching series is found.
 
@@ -40,7 +40,7 @@ The functions return `Double.NaN` if no matching series is found.
   db_last(string m) number
 ```
 
-Retrieves the last value for the specified metric `m` and the same entity and tags as defined in the current window. 
+Retrieves the last value for the specified metric `m` and the same entity and tags as defined in the current window.
 
 Example:
 
@@ -56,7 +56,7 @@ Example:
 db_last(string m, string e) number
 ```
 
-Retrieves the last value for the specified metric `m` and entity `e`. 
+Retrieves the last value for the specified metric `m` and entity `e`.
 
 The entity `e` can be specified as a string literal value or with an `entity` field in which case it represents the name of the entity in the current window.
 
@@ -156,7 +156,7 @@ Example:
   db_statistic(string s, string i, string m, string e, [] t) number
 ```
 
-Retrieves an aggregated value from the database for the specified metric `m`, entity `e`, and series tags `t`. 
+Retrieves an aggregated value from the database for the specified metric `m`, entity `e`, and series tags `t`.
 
 The tags argument `t` can be specified as follows:
 
@@ -345,7 +345,7 @@ The following matching rules apply:
   * If the message type argument `g` is specified as `null` or an empty string `''`, all types are matched.
 
 * Source:
-  * If the message source argument `s` is specified as `null` or an empty string `''`, all sources are matched. 
+  * If the message source argument `s` is specified as `null` or an empty string `''`, all sources are matched.
 
 * Entity:
   * If the entity argument `e` is not specified, the **current** entity in the window is used for matching.
@@ -356,24 +356,24 @@ The following matching rules apply:
   * To match records with empty tags use `'tags.isEmpty()=true'` or `'tags.size()=0'` in expression `p`.
   * The tags `t` argument matches records that include the specified tags but may also include other tags.
   * The tags `t` argument can be specified as follows:
-    - String containing one or multiple `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
-    - Map: `["tag1":"value1", "tag2":"value2"]`
-    - The `tags` field representing the grouping tags of the current window.
+    * String containing one or multiple `name=value` pairs separated with comma: `'tag1=value1,tag2=value2'`.
+    * Map: `["tag1":"value1", "tag2":"value2"]`
+    * The `tags` field representing the grouping tags of the current window.
 
 * Expression:
   * The expression `p` can include the following fields and supports wildcards in field values:
-    - `message`
-    - `type`
-    - `source`
-    - `severity`
-    - `entity`
-    - `tags` and `tags.{name}`
+    * `message`
+    * `type`
+    * `source`
+    * `severity`
+    * `entity`
+    * `tags` and `tags.{name}`
 
 ### `db_message_count` Examples
 
 ```javascript
   /*
-  Check if the average exceeds 20 and the 'compaction' message was not received 
+  Check if the average exceeds 20 and the 'compaction' message was not received
   within the last hour for the current entity.
   */
   avg() > 20 && db_message_count('1 hour', 'compaction', '') == 0
@@ -385,7 +385,7 @@ The following matching rules apply:
   avg() > 80 && db_message_count('15 minute', 'backup-error', '', '', 'nurswgvml006') > 0
 
   /*
-  Count messages within the previous 60 minutes 
+  Count messages within the previous 60 minutes
   for 'type=compaction', any source, any tags and all entities.
   */
   db_message_count('1 hour', 'compaction', '',  '', '*')
@@ -401,8 +401,8 @@ The following matching rules apply:
 ```javascript
   last_msg = db_message_last('60 minute', 'logger', ''
   /*
-  Check that the average exceeds 50 and the severity of the last message with type 'logger' 
-  for the current entity is greater than or equal to 'ERROR'. 
+  Check that the average exceeds 50 and the severity of the last message with type 'logger'
+  for the current entity is greater than or equal to 'ERROR'.
   */
   avg() > 50 && last_msg != null && last_msg.severity.toString() >= "6"
 ```
@@ -415,7 +415,7 @@ The following matching rules apply:
 
   /*
   Returns the most recent message within 1 day for the current entity,
-  containing tag 'api_app_id=583' and regardless of type or source. 
+  containing tag 'api_app_id=583' and regardless of type or source.
   */
   db_message_last('1 day', null, null, ["api_app_id":"583"], entity)
 
@@ -433,7 +433,7 @@ The following matching rules apply:
   executeSqlQuery(string q) collection[collection[string]]
 ```
 
-Returns the result of SQL query `q`. The first row contains headers consisting of column labels. 
+Returns the result of SQL query `q`. The first row contains headers consisting of column labels.
 
 The response is limited to 1000 rows.
 

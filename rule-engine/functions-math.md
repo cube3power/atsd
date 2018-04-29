@@ -58,7 +58,7 @@ Return `x` raised to the power of `y`.
   round(double x[, int y]) long
 ```
 
-Returns `x` rounded to `y` decimal places (precision). 
+Returns `x` rounded to `y` decimal places (precision).
 
 The precision is 0 if omitted.
 
@@ -88,7 +88,7 @@ Returns the smallest of two numbers: `x` and `y`.
   cbrt(double x) double
 ```
 
-Returns the cube root of `x`. 
+Returns the cube root of `x`.
 
 ### `sqrt`
 

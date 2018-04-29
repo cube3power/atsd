@@ -1,4 +1,4 @@
-## Azure Send Event Example
+# Azure Send Event Example
 
 ## Overview
 

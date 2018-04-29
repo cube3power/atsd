@@ -109,7 +109,7 @@ Enter the following text into the `Body` field:
 }
 ```
 
-The `body` text contains placeholders that will be substituted with actual values when the notification is triggered. 
+The `body` text contains placeholders that will be substituted with actual values when the notification is triggered.
 
 Only `valueN` naming convention for JSON fields is supported by the IFTTT platform.
 
@@ -123,7 +123,7 @@ Create a new rule or import the [rule template](resources/custom-ifttt-rule.xml)
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
-Specify the key settings on the **Overview** tab. 
+Specify the key settings on the **Overview** tab.
 
 | **Name** | **Value** |
 | :-------- | :---- |

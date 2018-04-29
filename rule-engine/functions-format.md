@@ -29,7 +29,7 @@ Formats number `x` with the specified [`DecimalFormat`](https://docs.oracle.com/
 Example:
 
 ```javascript
-    // returns 3.14  
+    // returns 3.14
     formatNumber(3.14159, '#.##')
 ```
 
@@ -80,18 +80,18 @@ The function divides the number `x` by the specified measurement unit `s` and fo
 
 The unit prefix is case-insensitive and should be one of the following:
 
-  * `K`, `Kb` (1000)
-  * `Ki`, `KiB` (1024)
-  * `M`, `Mb` (1000^2)
-  * `Mi`, `MiB` (1024^2)
-  * `G`, `Gb` (1000^3)
-  * `Gi`, `GiB` (1024^3)
-  * `T`, `Tb` (1000^4)
-  * `Ti`, `TiB` (1024^4)
-  * `P`, `Pb` (1000^5)
-  * `Pi`, `PiB` (1024^5)
-  * `E`, `Eb` (1000^6)
-  * `Ei`, `EiB` (1024^6)
+* `K`, `Kb` (1000)
+* `Ki`, `KiB` (1024)
+* `M`, `Mb` (1000^2)
+* `Mi`, `MiB` (1024^2)
+* `G`, `Gb` (1000^3)
+* `Gi`, `GiB` (1024^3)
+* `T`, `Tb` (1000^4)
+* `Ti`, `TiB` (1024^4)
+* `P`, `Pb` (1000^5)
+* `Pi`, `PiB` (1024^5)
+* `E`, `Eb` (1000^6)
+* `Ei`, `EiB` (1024^6)
 
 Examples:
 

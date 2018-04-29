@@ -47,7 +47,7 @@ Enter the following text into the `Body` field:
 }
 ```
 
-The `html_body` text contains placeholders that will be substituted with actual values when the notification is triggered. 
+The `html_body` text contains placeholders that will be substituted with actual values when the notification is triggered.
 
 Placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
@@ -59,7 +59,7 @@ Create a new rule or import the [rule template](resources/custom-zendesk-rule.xm
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
-Specify the key settings on the **Overview** tab. 
+Specify the key settings on the **Overview** tab.
 
 | **Name** | **Value** |
 | :-------- | :---- |

@@ -51,8 +51,8 @@ linux.disk:fstype=ext4,name=sda:mount_point
 ---
 
 ```javascript
-/* 
-Returns all tags for disks with key 'id' starting with 'sd' 
+/*
+Returns all tags for disks with key 'id' starting with 'sd'
 */
 
 disk:id=sd*:*

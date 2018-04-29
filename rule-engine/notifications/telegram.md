@@ -6,16 +6,16 @@
 
 ## Reference
 
- * [Prerequisites](#prerequisites)
- * [Create Bot](#create-bot)
- * [Add Bot to Group or Channel](#add-bot-to-group-or-channel)
- * [Get Chat Id](#get-chat-id)
- * [Configure Web Notification in ATSD](#configure-web-notification-in-atsd)
- * [Proxy Settings](#proxy-settings)
- * [Notification Settings](#notification-settings)
- * [Reacting to Bot Messages](#reacting-to-bot-messages)
- * [Testing Notification Rule](#testing-notification-rule)
- * [Notifications Examples](#notifications-examples)
+* [Prerequisites](#prerequisites)
+* [Create Bot](#create-bot)
+* [Add Bot to Group or Channel](#add-bot-to-group-or-channel)
+* [Get Chat Id](#get-chat-id)
+* [Configure Web Notification in ATSD](#configure-web-notification-in-atsd)
+* [Proxy Settings](#proxy-settings)
+* [Notification Settings](#notification-settings)
+* [Reacting to Bot Messages](#reacting-to-bot-messages)
+* [Testing Notification Rule](#testing-notification-rule)
+* [Notifications Examples](#notifications-examples)
 
 ## Prerequisites
 
@@ -61,14 +61,14 @@ The chat id is required for the Telegram notification to function properly.
 
 There are two options to obtain chat id:
 
-  * [`getUpdates` API method](#getupdates)
-  * [Telegram Web](telegram-get-chat-id.md)
+* [`getUpdates` API method](#getupdates)
+* [Telegram Web](telegram-get-chat-id.md)
 
 ### View Updates
-  
-  * Send any message to the channel (for private/public channel) or start conversation with the bot (for direct message chat). No action is required for the group.
-  * Open `https://api.telegram.org/botBOT_TOKEN/getUpdates` link (replace BOT_TOKEN with the actual value).
-  * Review the `Chat Object` and copy `id` value.
+
+* Send any message to the channel (for private/public channel) or start conversation with the bot (for direct message chat). No action is required for the group.
+* Open `https://api.telegram.org/botBOT_TOKEN/getUpdates` link (replace BOT_TOKEN with the actual value).
+* Review the `Chat Object` and copy `id` value.
 
     ![](images/chat_object.png)
 
@@ -79,14 +79,14 @@ There are two options to obtain chat id:
 * Specify the unique `Name` of the notification.
 
     ![](images/telegram_2.png)
-    
+
 * Enter the `BOT_TOKEN` value into the `Bot API Token` field.
 * Enter the chat id into the `Chat ID` field.
 * Select **Test Portal** to verify screenshot delivery.
 
   ![](images/telegram_12.png)
 
-* Click **Test**.    
+* Click **Test**.
 
   ![](images/telegram_1.png)
 
@@ -119,7 +119,7 @@ NGINX API Gateway Path for Telegram:
 
 ## Reacting to Bot Messages
 
-The bot account can be used both to deliver notifications to end users, as well as to react to messages addressed to the bot itself. 
+The bot account can be used both to deliver notifications to end users, as well as to react to messages addressed to the bot itself.
 
 In order to receive incoming messages, configure an [outgoing webhook](outgoing-webhook-telegram.md) or set **Receive Updates** setting to 'yes' and **Method** to 'Polling'. The [webhook](outgoing-webhook-telegram.md) integration requires ATSD server to be reachable from Telegram API servers.
 
@@ -149,6 +149,7 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
   ![](images/telegram_11.png)
 
 * The rule will create new windows based on incoming data.
+
 It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ### Test

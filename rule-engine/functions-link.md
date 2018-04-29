@@ -11,7 +11,7 @@ The inline links can be also assembled manually using the syntax supported by th
 * `markdown`
 
 ```markdown
-[Error Messages](${serverLink}/messages?entity=${entity})	
+[Error Messages](${serverLink}/messages?entity=${entity})
 ```
 
 * `pipe` (used by Slack)

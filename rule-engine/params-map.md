@@ -42,6 +42,7 @@ Example:
 ```javascript
 queryConfig("Slack", ["username":"ATSD BOT", "channels":"devops", "text":"Hello, Slack!"])
 ```
+
 > Note only first channel in "channels" parameter will receive notification.
 
 ## [Telegram](./notifications/telegram.md)

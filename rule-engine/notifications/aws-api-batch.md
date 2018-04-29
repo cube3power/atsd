@@ -53,7 +53,7 @@ Create a new rule or import the [rule template](resources/aws-api-batch-rule.xml
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
-Specify the key settings on the **Overview** tab. 
+Specify the key settings on the **Overview** tab.
 
 | **Name** | **Value** |
 | :-------- | :---- |

@@ -77,10 +77,10 @@ Base command fields:
 ![](images/filter-expression.png)
 
 ```javascript
-tags.method == 'get' AND tags.site == 'OperationsManager2007WebConsole' 	
+tags.method == 'get' AND tags.site == 'OperationsManager2007WebConsole'
 ```
 
-Tag values can be accessed using dot notation `tags.{tag-name}` or square brackets `tags['tag-name']`. 
+Tag values can be accessed using dot notation `tags.{tag-name}` or square brackets `tags['tag-name']`.
 
 > Square brackets are required if the tag name contains special characters `(-,+,=, etc)`.
 

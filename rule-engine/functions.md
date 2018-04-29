@@ -325,4 +325,3 @@ Web Query functions allow to perform requests to external web services.
 * [`userAllowEntity`](functions-security.md#userallowentity)
 * [`userAllowEntityGroup`](functions-security.md#userallowentitygroup)
 * [`userAllowPortal`](functions-security.md#userallowportal)
-

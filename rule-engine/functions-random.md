@@ -39,70 +39,70 @@ The function returns the selected element converted to string format.
 
 An input collection can contain elements of any type, such as strings or numbers, and can be specified as follows:
 
-* Collection of strings
+#### String Collection
 
 ```javascript
-	  randomItem(['a', 'b', 'c'])
+  randomItem(['a', 'b', 'c'])
 ```
 
-* Collection of numbers
+#### Number Collection
 
 ```javascript
-	  randomItem([1, 2, 3])
+  randomItem([1, 2, 3])
 ```
 
 Note that although the input collection contains numbers, the returned element will be a string which has to be parsed to a number if necessary.
 
 ```javascript
-	  randomItem([1, 2, 3]) = '2'
+  randomItem([1, 2, 3]) = '2'
 ```
 
 ```javascript
-	  Double.parseDouble(randomItem([1, 2, 3])) >= 2
+  Double.parseDouble(randomItem([1, 2, 3])) >= 2
 ```
 
-* Named collection
+#### Named Collection
 
-	> Named collections are listed on **Data > Named Collections** page.
+Named collections are listed on **Data > Named Collections** page.
 
-	Assuming the collection contains the following records and the 2nd entry is randomly selected:
+Assuming the collection contains the following records and the 2nd entry is randomly selected:
 
 ```txt
-		Kent
-		Thomas
-		Stacy
+  Kent
+  Thomas
+  Stacy
 ```
 
 ```javascript
-	  randomItem(collection('oncall-person'))
-	  // returns Thomas
+  randomItem(collection('oncall-person'))
+  // returns Thomas
 ```
 
-* Keys or values from an object map
+#### Keys or values from an object map
 
-	> Replacement tables are listed on **Data > Replacement Tables** page.
+Replacement tables are listed on the **Data > Replacement Tables** page.
 
-	Assuming the table contains the following records and the 2nd entry is randomly selected:
+Assuming the table contains the following records and the 2nd entry is randomly selected:
 
 ```txt
-		Kent=415.555-0000
-		Thomas=415.555-0001
-		Stacy=415.555-0002
+  Kent=415.555-0000
+  Thomas=415.555-0001
+  Stacy=415.555-0002
 ```
 
 ```javascript
-	  randomItem(replacementTable('oncall-person').keySet())
-	  // returns Thomas
+  randomItem(replacementTable('oncall-person').keySet())
+  // returns Thomas
 ```
 
 ```javascript
-	  randomItem(replacementTable('oncall-person').values())
-	  // returns 415.555-0001
+  randomItem(replacementTable('oncall-person').values())
+  // returns 415.555-0001
 ```
 
 ```javascript
-	  randomItem(replacementTable('oncall-person').entrySet())
-	  // returns Thomas=415.555-0001
+  randomItem(replacementTable('oncall-person').entrySet())
+  // returns Thomas=415.555-0001
 ```
 
 ### `randomKey`

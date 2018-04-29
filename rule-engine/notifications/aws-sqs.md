@@ -16,7 +16,7 @@
 |Message Group Id|Optional tag that associates the messages with a specific message group.|
 |Message|Default message text.|
 
-#### Queue Types
+### Queue Types
 
 |**Setting**|**Description**|
 |---|---|

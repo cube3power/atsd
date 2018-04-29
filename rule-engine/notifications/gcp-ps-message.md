@@ -1,4 +1,4 @@
-## Google Cloud Pub/Sub Send Message Example
+# Google Cloud Pub/Sub Send Message Example
 
 ## Overview
 

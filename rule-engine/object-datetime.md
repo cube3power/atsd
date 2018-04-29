@@ -32,9 +32,9 @@ The `getMillis()` method returns current time in UNIX milliseconds.
 
 ## `now` Window Field
 
-The `now` field returns the `DateTime` object that contains **current** server time. 
+The `now` field returns the `DateTime` object that contains **current** server time.
 
-## Sample Values 
+## Sample Values
 
 The following values are returned by the `DateTime` object on `2018-01-13T16:45:22.303Z` (Saturday).
 

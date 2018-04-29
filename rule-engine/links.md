@@ -121,7 +121,7 @@ https://atsd_hostname:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3
 ${entityLink}
 ```
 
-Link to current entity that is initialized in the rule window. 
+Link to current entity that is initialized in the rule window.
 
 Displayed as an entity label in inline mode.
 

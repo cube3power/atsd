@@ -78,7 +78,7 @@ Inner quotes can be escaped with backslash.
 
 A collection can include elements of different types.
 
-Both single and double quotes can be used to specify elements of string type.   
+Both single and double quotes can be used to specify elements of string type.
 
 ```javascript
   stateList = ['CA', 'WA']

@@ -1,15 +1,18 @@
-## SNS JSON Message Format Example
+# SNS JSON Message Format Example
 
 Create a `AWS SNS` notification with `Message Format = SNS JSON`, for example:
 
 ![](images/aws_sns_web_notification_config_json.png)
 
 Create a new rule and open the **Web Notifications** tab.
-* Select `[AWS-SNS] test` from the **Endpoint** drop-down.
-* Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.
-* Customize the alert messages using [placeholders](../placeholders.md) as necessary, for example:
 
-  - OPEN:
+Select `[AWS-SNS] test` from the **Endpoint** drop-down.
+
+Enable the `OPEN`, `REPEAT`, and `CANCEL` triggers.
+
+Customize the alert messages using [placeholders](../placeholders.md) as necessary, for example:
+
+* `OPEN`
 
 ```json
      {
@@ -18,7 +21,7 @@ Create a new rule and open the **Web Notifications** tab.
      }
 ```
 
-  - REPEAT:
+* `REPEAT`
 
 ```json
      {
@@ -27,7 +30,7 @@ Create a new rule and open the **Web Notifications** tab.
      }
 ```
 
-  - CANCEL:
+* `CANCEL`
 
 ```json
      {
@@ -41,6 +44,7 @@ Create a new rule and open the **Web Notifications** tab.
 * Save the rule by clicking on the **Save** button.
 
 * The rule will create new windows based on incoming data.
+
 It may take a few seconds for the first commands to arrive and to trigger the notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Test
@@ -49,9 +53,9 @@ The AWS SNS Subscriptions:
 
 ![](images/aws_sns_subscriptions.png)
 
-## Notifications examples:
+## Notifications examples
 
-### Email protocol:
+### Email protocol
 
 ![](images/aws_sns_web_notification_json_test_1.png)
 
@@ -59,7 +63,7 @@ The AWS SNS Subscriptions:
 
 ![](images/aws_sns_web_notification_json_test_3.png)
 
-### Http protocol:
+### Http protocol
 
 The `HTTP` subscription with parameter `raw message delivery = false`:
 
@@ -69,7 +73,7 @@ The `HTTP` subscription with parameter `raw message delivery = false`:
 
 ![](images/aws_sns_web_notification_json_test_6.png)
 
-### Http protocol:
+### Http protocol
 
 The `HTTP` subscription with parameter `raw message delivery = true`:
 

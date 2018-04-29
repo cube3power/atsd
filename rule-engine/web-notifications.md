@@ -199,7 +199,7 @@ The option `Attach Portals` sends one or more portals when active. If a portal i
 
 ![](images/notify-attach-4.png)
 
-The option `Series Chart` sends the default portal for the current metric, entity and tags as an image when active. 
+The option `Series Chart` sends the default portal for the current metric, entity and tags as an image when active.
 
 ![](images/notify-attach-1.png)
 

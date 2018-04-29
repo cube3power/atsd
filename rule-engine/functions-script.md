@@ -305,7 +305,7 @@ axibase      1  0.0  0.0  19712  3304 ?        Ss   11:07   0:00 /bin/bash /entr
 axibase   2807  0.0  0.0  19828  3464 ?        S    11:09   0:00 bash /opt/atsd/hbase/bin/hbase-daemon.sh --config /opt/atsd/hbase/bin/../conf foreground_start master
 ```
 
-#### Notification   
+#### Notification
 
  Telegram:
 
@@ -365,7 +365,7 @@ Response Time: 0.618
 Content Length: 35214 bytes
 ```
 
-#### Notification  
+#### Notification
 
  Telegram:
 
@@ -377,7 +377,7 @@ Content Length: 35214 bytes
 
  Slack:
 
- ![](images/script-url_avail-slack.png)   
+ ![](images/script-url_avail-slack.png)
 
 
 ### TCP availability

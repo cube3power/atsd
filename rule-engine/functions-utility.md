@@ -23,10 +23,10 @@ The function returns `b` if `a` is either `null` or an empty string.
 Examples:
 
 ```javascript
-    /* Returns 2 */  
+    /* Returns 2 */
     ifEmpty(null, 2)
 
-    /* Returns hello */  
+    /* Returns hello */
     ifEmpty('hello', 'world')
 ```
 
@@ -58,15 +58,15 @@ Examples:
 
 ```javascript
   // Returns false
-  toBoolean('hello')  
+  toBoolean('hello')
   toBoolean(0)
-  toBoolean('off')  
+  toBoolean('off')
 ```
 
 ```javascript
   // Returns true
-  toBoolean('YES')    
-  toBoolean(1)  
+  toBoolean('YES')
+  toBoolean(1)
   toBoolean('On')
 ```
 
@@ -157,7 +157,7 @@ Retrieves the **host** from URL string `u`. If the URL `u` is null, empty or inv
 Example:
 
 ```javascript
-    /* Returns "axibase.com" */  
+    /* Returns "axibase.com" */
     getURLHost('https://axibase.com/en/products?type=database&status=1')
 ```
 
@@ -174,7 +174,7 @@ If the URL `u` doesn't contain a port, the function returns the default value fo
 Example:
 
 ```javascript
-    /* Returns 443 */  
+    /* Returns 443 */
     getURLPort('https://axibase.com/en/products?type=database&status=1')
 ```
 
@@ -189,7 +189,7 @@ Retrieves the **protocol** from URL string `u`. If the URL `u` is null, empty or
 Example:
 
 ```javascript
-    /* Returns "https" */  
+    /* Returns "https" */
     getURLProtocol('https://axibase.com/en/products?type=database&status=1')
 ```
 
@@ -204,7 +204,7 @@ Retrieves the **path** from URL string `u`. If the URL `u` is null, empty or inv
 Example:
 
 ```javascript
-    /* Returns "/en/products" */  
+    /* Returns "/en/products" */
     getURLPath('https://axibase.com/en/products?type=database&status=1')
 ```
 
@@ -219,7 +219,7 @@ Retrieves the **query string** from URL string `u`. If the URL `u` is null, empt
 Example:
 
 ```javascript
-    /* Returns "type=database&status=1" */  
+    /* Returns "type=database&status=1" */
     getURLQuery('https://axibase.com/en/products?type=database&status=1')
 ```
 
@@ -234,9 +234,9 @@ Retrieves the `user:password` from URL string `u`. If the URL `u` is null, empty
 Example:
 
 ```javascript
-    /* Returns null */  
+    /* Returns null */
     getURLUserInfo('https://axibase.com/en/products?type=database&status=1')
 
-    /* Returns "atsd_user:atsd_password" */  
+    /* Returns "atsd_user:atsd_password" */
     getURLUserInfo('https://atsd_user:atsd_password@axibase.com/en/products?type=database&status=1')
 ```

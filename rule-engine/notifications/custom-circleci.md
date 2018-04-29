@@ -59,7 +59,7 @@ Create a new rule or import the [rule template](resources/custom-circleci-rule.x
 
 To create a new rule, open the page **Alerts > Rules** and click **Create**.
 
-Specify the key settings on the **Overview** tab. 
+Specify the key settings on the **Overview** tab.
 
 | **Name** | **Value** |
 | :-------- | :---- |
@@ -96,7 +96,7 @@ When the notification is executed, all placeholders in the request URL and the p
 ```json
 {
   "parallel": "4",
-  "build_parameters": { 
+  "build_parameters": {
     "RUN_EXTRA_TESTS": "false",
     "timezone": "Etc/UTC"
   }
