@@ -2,11 +2,11 @@
 
 ATSD back-end for StatsD enables you to forward metrics collected by StatsD daemon into the Axibase Time Series Database for retention, analytics, visualization, and alerting.
 
-[Learn more about StatsD.](README.md)
+[Learn more about StatsD](README.md).
 
-[Download the ATSD StatsD back-end.](https://github.com/axibase/atsd-statsd-backend)
+[Download the ATSD StatsD back-end](https://github.com/axibase/atsd-statsd-backend).
 
-#### Configuration
+## Configuration
 
 Configuration file example:
 
