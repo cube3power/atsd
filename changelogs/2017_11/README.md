@@ -38,7 +38,6 @@
 ### ATSD
 
 ### Issue 3658
---------------
 
 ```sql
 SELECT metric,
@@ -84,14 +83,12 @@ LIMIT 1
 ```
 
 ### Issue 3907
---------------
 
 See the [guide](https://redash.io/help/data-sources/axibase_tsd.html) on how to integrate Redash with ATSD.
 
 ### Collector
 
 ### Issue 4001
---------------
 
 Replacement tables are deprecated. Similar functionality is provided by the `LOOKUP` function.
 
@@ -100,17 +97,15 @@ Replacement tables are deprecated. Similar functionality is provided by the `LOO
 ### Charts
 
 ### Issue 4006
---------------
 
 | Setting | Description |
 |---------|-------------|
 | format = fixed(n) | Format numbers with the specified number of digits in the fraction portion of a number.<br>Default: 0 fractional digits. |
 
-https://apps.axibase.com/chartlab/b510b820
+[ChartLab](https://apps.axibase.com/chartlab/b510b820)
 
 ### Issue 3997
---------------
 
 ![](Images/Figure2.png)
 
-https://apps.axibase.com/chartlab/075941a0/2/
+[ChartLab](https://apps.axibase.com/chartlab/075941a0/2/)

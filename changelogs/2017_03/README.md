@@ -31,7 +31,6 @@
 ## ATSD
 
 ### Issue 3797
---------------
 
 Support was added to the [`ROW_NUMBER`](../../sql/examples/partition-row-number.md#partition---row-number) function after the [`GROUP BY`](../../sql#grouping) clause for [`SELECT`](../../sql#syntax) statements.
 
@@ -86,7 +85,6 @@ ORDER BY Diff DESC
 ```
 
 ### Issue 3796
---------------
 
 The [`append`](../../api/network/series.md#text-append) flag applies to text values specified with the `x:` field.
 
@@ -107,7 +105,6 @@ Restart
 ```
 
 ### Issue 3795
---------------
 
 Previously, entity tags were not supported in the `GROUP BY` clause. Now it's possible to group rows by entity tag, for example `GROUP BY entity.tags.{tag-name}`.
 
@@ -128,7 +125,6 @@ GROUP BY entity.tags.app
 ```
 
 ### Issue 3691
---------------
 
 Implemented [date functions](../../rule-engine/functions-time.md) in the rule engine to convert an ISO8601 date string into a numeric epoch time or into a [`DateTime`](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) date object. These functions can be used in rule expressions.
 
@@ -148,7 +144,6 @@ property('config::deleted')).dayOfWeek().get() < 6
 ```
 
 ### Issue 3680
---------------
 
 The series list now includes a 'Statistics' link to characterize the selected series.
 
@@ -188,7 +183,6 @@ The following characteristics are available.
 ## Collector
 
 ### Issue 3784
---------------
 
 If a SQL query returns millions of rows, it may be useful to split it into multiple queries. This can be accomplished by including `${SPLIT_CONDITION}` in the query text and specifying multiple split conditions, one per line.
 
@@ -232,7 +226,6 @@ The last condition is typically included to select all remaining rows other than
 ## Charts
 
 ### Issue 2528
---------------
 
 In order to reduce rename/transform multiple similar column headers with one setting, support was added to the `column-label-format` setting for property and table widgets. For example, in
 order to remove a common prefix from a column label, add the following code snippet to your configuration:
@@ -241,15 +234,14 @@ order to remove a common prefix from a column label, add the following code snip
 column-label-format = value.replace(/^systemproperties./, "")
 ```
 
-https://apps.axibase.com/chartlab/1ee27e2e/4/
+[ChartLab](https://apps.axibase.com/chartlab/1ee27e2e/4/)
 
 ![Figure 10](Images/Figure10.png)
 
 ### Issue 1926
---------------
 
 Now upon a mouse over for box charts, metric names are displayed at the top of the box and the distribution of the series (minimum, maximum, count, and value percentiles) is displayed next to its respective series.
 
-https://apps.axibase.com/chartlab/46e8b4ec
+[ChartLab](https://apps.axibase.com/chartlab/46e8b4ec)
 
 ![Figure 9](Images/Figure9.png)

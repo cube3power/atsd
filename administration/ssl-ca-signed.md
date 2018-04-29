@@ -89,7 +89,6 @@ Specify the new password (in plain or [obfuscated](passwords-obfuscation.md) tex
 Leave `https.trustStorePassword` blank.
 
 ```elm
-...
 https.keyStorePassword=NEW_PASS
 https.keyManagerPassword=NEW_PASS
 https.trustStorePassword=

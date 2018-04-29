@@ -1,6 +1,6 @@
 # `notEmptyLeft`
 
-#### Input File
+## Input File
 
 ```csv
 Date;        Sensor Name;   Measurement;    10:00;  10:15;  10:30;   10:45
@@ -8,12 +8,12 @@ Date;        Sensor Name;   Measurement;    10:00;  10:15;  10:30;   10:45
 2015-10-15;  Sensor-0020;      humidity;     40.0;   60.8;       ;
 ```
 
-#### Parser Settings
+## Parser Settings
 
 `Timestamp Pattern:  yyyy-MM-ddHH:mm`      # Used to parse Measurement Time column values
 `Delimiter: Semicolon (;)`                     # Non-default delimiter
 
-#### Schema
+## Schema
 
 ```javascript
 select('#row=2-*').select('#col=4-*').
@@ -24,7 +24,7 @@ timestamp(cell(row, 1) + cell(1, col)).
 value(notEmptyLeft(row, col));
 ```
 
-#### Commands
+## Commands
 
 ```ls
 series e:sensor-0001 d:2015-10-15T10:00:00Z m:temperature=35.5

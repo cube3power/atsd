@@ -4,12 +4,10 @@
 
 * [Layout](#layout)
 * [[configuration] Section](#configuration-section)
-
-    * [General Settings](#general-settings)
-    * [Interval Settings](#interval-settings)
-    * [Layout Settings](#layout-settings)
-    * [Connection Settings](#connection-settings)
-
+  * [General Settings](#general-settings)
+  * [Interval Settings](#interval-settings)
+  * [Layout Settings](#layout-settings)
+  * [Connection Settings](#connection-settings)
 * [Comments](#comments)
 * [Freemarker Expressions](#freemarker-expressions)
 
@@ -35,13 +33,13 @@ To display multiple widgets on one row, group them using the `[group]` tag.
 [configuration]
   width-units = 3
   height-units = 2
- 
+
 # 1st widget row
 [group]
   [widget]
   [widget]
   [widget]
- 
+
 # 2nd widget row
 [group]
   [widget]
@@ -55,7 +53,7 @@ As an alternative to creating groups for each row, add the `widgets-per-row` set
 [configuration]
   width-units = 3
   height-units = 2
- 
+
 [group]
   widgets-per-row = 3
 

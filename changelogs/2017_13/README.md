@@ -39,7 +39,6 @@
 ## ATSD
 
 ### Issue 4050
---------------
 
 The `date_parse` function parses the literal timestamp string into Unix milliseconds.
 
@@ -78,7 +77,6 @@ date_parse("31.01.2017 12:36:03.283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss.SSS ZZZ
 ```
 
 ### Issue 4032
---------------
 
 ```sql
 SELECT date_format(datetime, 'yyyy') AS 'Date',
@@ -98,7 +96,6 @@ GROUP BY entity, tags.etype, period(1 year)
 | 2003 | 590            | 650             | -60    | -9.2      |
 
 ### Issue 3993
---------------
 
 ```sql
 SELECT tu.entity,
@@ -124,7 +121,6 @@ GROUP BY tu.entity
 ```
 
 ### Issue 3991
---------------
 
 ```sql
 SELECT t1.datetime, t1.tags,
@@ -154,19 +150,16 @@ LIMIT 10
 ```
 
 ### Issue 3991
---------------
 
 ![](Images/Figure1.png)
 
 ## Collector
 
 ### Issue 4041
---------------
 
 ![](Images/Figure2.png)
 
 ### Issue 4012
---------------
 
 | Before | After |
 |--------|-------|
@@ -175,6 +168,5 @@ LIMIT 10
 ## Charts
 
 ### Issue 3850
---------------
 
-https://apps.axibase.com/chartlab/55840d5c/2/
+[ChartLab](https://apps.axibase.com/chartlab/55840d5c/2/)

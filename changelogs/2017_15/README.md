@@ -27,18 +27,17 @@
 ## ATSD
 
 ### Issue 3739
---------------
+
 ![](Images/Figure1.png)
 
 ## Collector
 
 ### Issue 4063
---------------
+
 ![](Images/Figure2.png)
 
 ## Charts
 
 ### Issue 4043
---------------
 
-https://apps.axibase.com/chartlab/bbc5e671/5/
+[ChartLab](https://apps.axibase.com/chartlab/bbc5e671/5/)

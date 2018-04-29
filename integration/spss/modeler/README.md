@@ -106,8 +106,7 @@ these commands on the **Metrics > Data Entry** page.
 
   ![](images/modeler_19.png)
 
-* Right click on the **Merge** shape and select **Edit...**. Set **Merge method** to **Keys**
-and add the `tags` field to **Keys for merge** field
+* Right click on the **Merge** shape and select **Edit...**. Set **Merge method** to **Keys** and add the `tags` field to **Keys for merge** field
 
   ![](images/modeler_20.png)
 
@@ -115,8 +114,7 @@ and add the `tags` field to **Keys for merge** field
 
   ![](images/modeler_21.png)
 
-* Rename the `value` field in the `inflation.cpi.categories.price` table to `price` and the `value` field
-in `inflation.cpi.categories.weight` to `weight`
+* Rename the `value` field in the `inflation.cpi.categories.price` table to `price` and the `value` field in `inflation.cpi.categories.weight` to `weight`
 
   ![](images/modeler_22.png)
 
@@ -128,8 +126,7 @@ in `inflation.cpi.categories.weight` to `weight`
 
 ## Calculate Weighted Price
 
-* Select the **Field Ops** tab in the bottom panel, choose the **Derive** shape and
-add it to the stream.
+* Select the **Field Ops** tab in the bottom panel, choose the **Derive** shape and add it to the stream.
 
   ![](images/modeler_24.png)
 
@@ -182,8 +179,7 @@ add it to the stream.
 
 ## Add Entity Field
 
-* Select the **Field Ops** tab, choose the **Derive** shape and
-add it to the stream
+* Select the **Field Ops** tab, choose the **Derive** shape and add it to the stream
 
   ![](images/modeler_34.png)
 
@@ -206,8 +202,7 @@ add it to the stream
 
 ## Export Results
 
-* Select the **Export** tab, choose the **Database** shape and
-add it to the stream
+* Select the **Export** tab, choose the **Database** shape and add it to the stream
 
   ![](images/modeler_38.png)
 

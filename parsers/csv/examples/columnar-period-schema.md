@@ -1,6 +1,6 @@
 # Columnar Period Schema Example
 
-#### Input File
+## Input File
 
 ```csv
 2015-10-15, Sensor-0001,      Status, Sensor-0020,      Status
@@ -8,11 +8,11 @@
      00:10,        35.6,          ok,        20.5,          ok
 ```
 
-#### Parser Settings
+## Parser Settings
 
 `Timestamp Pattern: yyyy-MM-dd HH:mm`          # Used to parse timestamp values from 1st column
 
-#### Schema
+## Schema
 
 ```javascript
 select("#cell=2,2-*,*!1,2").
@@ -31,7 +31,7 @@ Adhere to the following points to convert the CSV file into a tabular model:
 * Set the timestamp to the value of the cell located in the 3rd row and 1st column (date part 2015-11-15) concatenated with the value of the cell located in the current row in the 1st column (hour part). The concatenated value will be parsed using the 'Timestamp Pattern';
 * Set the series value to the value of the current cell.
 
-#### Commands
+## Commands
 
 ```ls
 series e:sensor-0001 d:2015-11-15T00:00:00Z m:temperature=35.5 t:status=provis

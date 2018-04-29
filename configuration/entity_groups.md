@@ -44,40 +44,31 @@ The expression may refer to entity properties and [functions](#supported-functio
 #### Supported Functions
 
 * Property Functions
-
-   * [`property`](functions-entity-groups-expression.md#property)
-   * [`properties`](functions-entity-groups-expression.md#properties)
-   * [`property_values`](functions-entity-groups-expression.md#property_values), access to returned objects isn't supported
-
+  * [`property`](functions-entity-groups-expression.md#property)
+  * [`properties`](functions-entity-groups-expression.md#properties)
+  * [`property_values`](functions-entity-groups-expression.md#property_values), access to returned objects isn't supported
 * Lookup Functions
-
-   * [`entity_tags`](functions-entity-groups-expression.md#entity_tags)
-
+  * [`entity_tags`](functions-entity-groups-expression.md#entity_tags)
 * Collection Functions
-
-   * [`collection`](functions-entity-groups-expression.md#collection)
-   * [`likeAll`](functions-entity-groups-expression.md#likeall)
-   * [`likeAny`](functions-entity-groups-expression.md#likeany)
-   * [`matches`](functions-entity-groups-expression.md#matches)
-   * [`collection_contains`](functions-entity-groups-expression.md#collection_contains)
-   * [`collection_intersects`](functions-entity-groups-expression.md#collection_intersects)
-   * [`contains`](functions-entity-groups-expression.md#contains)
-   * [`size`](functions-entity-groups-expression.md#size)
-   * [`isEmpty`](functions-entity-groups-expression.md#isempty)
-   * [`IN`](functions-entity-groups-expression.md#in)
-
+  * [`collection`](functions-entity-groups-expression.md#collection)
+  * [`likeAll`](functions-entity-groups-expression.md#likeall)
+  * [`likeAny`](functions-entity-groups-expression.md#likeany)
+  * [`matches`](functions-entity-groups-expression.md#matches)
+  * [`collection_contains`](functions-entity-groups-expression.md#collection_contains)
+  * [`collection_intersects`](functions-entity-groups-expression.md#collection_intersects)
+  * [`contains`](functions-entity-groups-expression.md#contains)
+  * [`size`](functions-entity-groups-expression.md#size)
+  * [`isEmpty`](functions-entity-groups-expression.md#isempty)
+  * [`IN`](functions-entity-groups-expression.md#in)
 * Text Functions
-
-   * [`upper`](functions-entity-groups-expression.md#upper)
-   * [`lower`](functions-entity-groups-expression.md#lower)
-   * [`list`](functions-entity-groups-expression.md#list)
-   * [`startsWithAny`](functions-entity-groups-expression.md#startswithany)
-
+  * [`upper`](functions-entity-groups-expression.md#upper)
+  * [`lower`](functions-entity-groups-expression.md#lower)
+  * [`list`](functions-entity-groups-expression.md#list)
+  * [`startsWithAny`](functions-entity-groups-expression.md#startswithany)
 * Utility functions
-
-   * [`hasMetric`](functions-entity-groups-expression.md#hasmetric)
-   * [`memberOf`](functions-entity-groups-expression.md#memberof)
-   * [`memberOfAll`](functions-entity-groups-expression.md#memberofall)
+  * [`hasMetric`](functions-entity-groups-expression.md#hasmetric)
+  * [`memberOf`](functions-entity-groups-expression.md#memberof)
+  * [`memberOfAll`](functions-entity-groups-expression.md#memberofall)
 
 #### Examples
 

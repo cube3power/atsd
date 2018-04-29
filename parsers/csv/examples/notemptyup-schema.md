@@ -1,6 +1,6 @@
 # `notEmptyUp`
 
-#### Input File
+## Input File
 
 ```csv
 2015.10.15 00:00:00;    Sensor-0001;        measurements;  model;        PV120000-XG1
@@ -9,12 +9,12 @@
 2015.10.15 00:10:00;    Sensor-0001;        measurements;  model;        PV120000-XG1
 ```
 
-#### Parser Settings
+## Parser Settings
 
 * Timestamp Pattern:  `yyyy.MM.dd HH:mm:ss`      # Used to parse Measurement Time column values
 * Delimiter: `Semicolon (;)`                         # Non-default delimiter
 
-#### Schema
+## Schema
 
 ```javascript
 select('#row=1-*').select('#col=1').
@@ -26,7 +26,7 @@ forEach('#col=4-*!2').
 tag(cell(row, col), cell(row, col+1));
 ```
 
-#### Commands
+## Commands
 
 ```ls
 property e:sensor-0001 d:2015-10-15T00:00:00Z t:measurements t:model=PV120000-XG1

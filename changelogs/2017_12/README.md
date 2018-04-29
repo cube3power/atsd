@@ -37,7 +37,7 @@
 ### ATSD
 
 ### Issue 3915
---------------
+
 [Documentation](../../api/data/series/query.md)
 
 URI
@@ -59,6 +59,7 @@ Payload
 }]
 
 ```
+
 Response
 
 ```json
@@ -66,20 +67,19 @@ Response
 ```
 
 ### Issue 4029
---------------
 
 ![](Images/Figure1.png)
 
 ### Issue 3882
---------------
+
 [List of predefined columns](../../sql/README.md#predefined-columns)
 
 ### Collector
 
 ### Issue 3682
---------------
+
 ![](Images/Figure2.png)
 
 ### Issue 3996
---------------
+
 ![](Images/Figure3.png)

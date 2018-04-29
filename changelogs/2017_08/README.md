@@ -28,7 +28,6 @@
 ## ATSD
 
 ### Issue 3938
---------------
 
 The new metrics `jvm_permgen_max`, `jvm_permgen_used`, `jvm_permgen_used_percent` have been introduced to collect `PermGen` memory usage statistics.
 The values can also be seen in atsd.log:
@@ -40,7 +39,6 @@ The values can also be seen in atsd.log:
 ## Collector
 
 ### Issue 3936
---------------
 
 Custom network commands specified in `Raw Commands` textarea can be executed.
 
@@ -57,7 +55,6 @@ The following [placeholders](https://github.com/axibase/axibase-collector/blob/m
 ![](Images/Figure_03.png)
 
 ### Issue 3926
---------------
 
 Fields accessed by the array index have been added to dropdown menu.
 
@@ -67,7 +64,6 @@ Fields accessed by the array index have been added to dropdown menu.
 ## Charts
 
 ### Issue 3958
---------------
 
 Rendering time of a [chart with about 300 legend units](https://apps.axibase.com/chartlab/259e3907)
 

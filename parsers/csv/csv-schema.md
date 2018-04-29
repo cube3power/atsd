@@ -1,5 +1,7 @@
 # CSV Schema Settings
 
+## Overview
+
 Schema Parser implements position-aware parsing of CSV files. Once the file is converted into a tabular model, each cell is assigned a unique address and its value can be retrieved using the `cell(rowIndex, columnIndex)` function. The schema parser reads rows and columns from top left to bottom right. The number of rows and columns to be processed is controlled with start/end index and step arguments in `select` functions.
 
 The `select()` function implements [RFC 7111](https://tools.ietf.org/html/rfc7111) selections using URI Fragment Identifiers, including `row#`, `col#`, and `cell#` with a custom extension controlling iteration step. See extended ABNF syntax [here](#abnf).
@@ -66,16 +68,16 @@ If Schema parsing is enabled, only the following fields from the parser configu
 * Renamed Columns
 * Filter
 
-### Schema Functions
+## Schema Functions
 
-#### Select and Filter Functions
+### Select and Filter Functions
 
 | Name | Required | Description |
 | --- | --- | --- |
 |  `select(expression)`  |  Yes  |  Selects rows, columns, or cell range to process using RFC 7111 selection syntax.  |
 |  `filter(condition)`  |  No  |  Optionally filter rows, columns and cells depending on `rowText` and `cellText` values, e.g. `rowText.indexOf('test')>=0`.  |
 
-#### Initialize Command Functions
+### Initialize Command Functions
 
 | Name | Required | Description |
 | --- | --- | --- |
@@ -83,7 +85,7 @@ If Schema parsing is enabled, only the following fields from the parser configu
 |  `addProperty()`  |  No  |  Create Property command.  |
 |  `addMessage()`  |  No  |  Create Message command.  |
 
-#### Set Command Field Functions
+### Set Command Field Functions
 
 | Name | Required (`addSeries`) | Required (`addProperty`) | Required (`addMessage`) | Description |
 | --- | --- | --- | --- | --- |
@@ -98,7 +100,7 @@ If Schema parsing is enabled, only the following fields from the parser configu
 |  `appendText(text, delimiter)`  |  Unsupported  |  Unsupported  |  No  |  Append text to current message text.  |
 |  `forEach(expression)`  |  No  |  No  |  No  |  Accepts RFC 7111 #col= selector, iterates over matched cells in the current row and applies chained-after functions to each cell, e.g. `forEach('#col=5!2').tag(cell(row,col), cell(row,col+1));`  |
 
-#### Pre-defined Variables
+### Pre-defined Variables
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -109,7 +111,7 @@ If Schema parsing is enabled, only the following fields from the parser configu
 |  `columnCount`  |  Integer  |  Column count for current row.  |
 |  `fileName`  |  String  |  CSV file name being parsed, if available.  |
 
-#### Lookup Functions
+### Lookup Functions
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -117,7 +119,7 @@ If Schema parsing is enabled, only the following fields from the parser configu
 |  `notEmptyLeft(rowIndex, colIndex)`  |  String  |  Finds a non-empty cell located to the left from the specified cell.  |
 |  `notEmptyUp(rowIndex, colIndex)`  |  String  |  Finds a non-empty cell located in the current or prior row in the specified column.  |
 
-#### Notes
+### Notes
 
 * Row and column indexes start with 1.
 * Row index of the active cell can be referenced with the `row` parameter.
@@ -146,7 +148,7 @@ Examples:
 * `#col=10-*!3`             – Select every 3rd column starting with column 10.
 * `#cell=1,2-5,*!1,2`     – Select even columns in the first 5 rows.
 
-#### Schema-based Parser Examples
+### Schema-based Parser Examples
 
 * [Basic Example](examples/basic.md)
 * [Columnar Format](examples/columnar-schema.md)

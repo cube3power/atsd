@@ -29,7 +29,6 @@
 ## ATSD
 
 ### Issue 3919
---------------
 
 The option allows ignoring top-N header lines in the imported CSV file. This enables skipping multi-line headers or metadata sections in CSV files.
 
@@ -59,7 +58,6 @@ Title: "ORO.csv"
 ![](Images/Figure4.png)
 
 ### Issue 3889
---------------
 
 The `entity.label` parameter is now supported in the rule filter.
 
@@ -68,7 +66,6 @@ The `entity.label` parameter is now supported in the rule filter.
 ## Charts
 
 ### Issue 3921
---------------
 
 Added an `escape()` method to `list` and `var` arrays, so that this collections can now be serialized as follows  `@{arrayName.escape()}`. The `escape()` method escapes commas and backslashes in each element in an array.
 
@@ -78,10 +75,9 @@ Added an `escape()` method to `list` and `var` arrays, so that this collections 
     change-field = series.tags.ctyname
 ```
 
-https://apps.axibase.com/chartlab/ff94d98d/2/
+[ChartLab](https://apps.axibase.com/chartlab/ff94d98d/2/)
 
 ### Issue 3897
---------------
 
 New generic table settings:
 
@@ -92,13 +88,13 @@ New generic table settings:
 | table-header-style    | Custom CSS style applied to table header, including a style to hide the header altogether. |
 | header-style    | Custom CSS style applied to widget header, including a style to hide the widget header altogether. |
 
-https://apps.axibase.com/chartlab/e02b8303/3/
+[ChartLab](https://apps.axibase.com/chartlab/e02b8303/3/)
 
-https://apps.axibase.com/chartlab/e02b8303/4
+[ChartLab](https://apps.axibase.com/chartlab/e02b8303/4)
 
-https://apps.axibase.com/chartlab/e02b8303/5
+[ChartLab](https://apps.axibase.com/chartlab/e02b8303/5)
 
-https://apps.axibase.com/chartlab/e02b8303/6
+[ChartLab](https://apps.axibase.com/chartlab/e02b8303/6)
 
 ![](Images/Figure1.png)
 

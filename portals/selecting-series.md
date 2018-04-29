@@ -44,8 +44,7 @@ Each series is identified by a composite key which consists of a **metric**, **e
 
 * A **metric** represents the name of a measurable numeric attribute such as `cpu_busy` or `temperature`.
 
-* **Series Tags** are optional. They provide additional level of detail for measurements, for example the disk’s mount point
-for the `df.bytes.percentused` metric.
+* **Series Tags** are optional. They provide additional level of detail for measurements, for example the disk’s mount point for the `df.bytes.percentused` metric.
 
 An entity may be measured with a variety of metrics, just as the same metric could be collected for multiple entities.
 

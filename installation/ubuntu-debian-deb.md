@@ -24,7 +24,7 @@ Download deb package to the target server:
 
 ## Installation Steps
 
-#### Add `backports` repository
+### Add `backports` repository
 
 This step is required only for Debian 8.x (jessie)
 
@@ -32,7 +32,7 @@ This step is required only for Debian 8.x (jessie)
 sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
 ```
 
-#### Update Repositories and Install Dependencies
+### Update Repositories and Install Dependencies
 
 ```sh
 sudo apt-get update && sudo apt-get install -y openjdk-8-jdk curl hostname net-tools iproute2 procps
@@ -44,7 +44,7 @@ On Debian 8.x (jessie)
 sudo apt-get update && sudo apt-get -t jessie-backports install -y openjdk-8-jdk curl hostname net-tools iproute2 procps
 ```
 
-#### Install ATSD
+### Install ATSD
 
 ```sh
 sudo dpkg -i atsd_amd64.deb

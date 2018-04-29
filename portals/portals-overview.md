@@ -200,6 +200,7 @@ The portals are available at the following URLs:
 ```elm
 https://atsd_hostname:8443/portal/{portal_id}.xhtml
 ```
+
 ![](resources/creating-and-assigning-portals_13.png)
 
 * Using portal name (case-sensitive):
@@ -207,6 +208,7 @@ https://atsd_hostname:8443/portal/{portal_id}.xhtml
 ```elm
 https://atsd_hostname:8443/portal/name/{name}
 ```
+
 > Names containing whitespace and other special properties must be url-encoded.
 
 ![](resources/creating-and-assigning-portals_14.png)

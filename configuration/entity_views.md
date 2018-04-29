@@ -88,19 +88,19 @@ Last Insert | Last insert date for all or one metric collected by the entity wit
 
 #### Last Insert
 
-  * Highlight entities if last insert date for **all** metrics is before `now - 900 seconds`
+* Highlight entities if last insert date for **all** metrics is before `now - 900 seconds`
 
 ```javascript
   :900
 ```
 
-  * Highlight entities if last insert date for the metric `cpu_busy` is before `now - 900 seconds`
+* Highlight entities if last insert date for the metric `cpu_busy` is before `now - 900 seconds`
 
 ```javascript
   cpu_busy:900
 ```
 
-  * Display last insert date for the metric `cpu_busy` without highlighting. Note the terminating colon after the metric name.
+* Display last insert date for the metric `cpu_busy` without highlighting. Note the terminating colon after the metric name.
 
 ```javascript
   cpu_busy:
@@ -250,14 +250,14 @@ The multi-entity portal is any portal that displays a metric for [multiple entit
 
 Examples by Column Types:
 
-  * [Entity Tag](#entity-tag-examples)
-  * [Property Tag](#property-tag-examples)
-  * [Series Value](#series-value-examples)
-  * [Name Column](#name-column-examples)
-  * [Label Column](#label-column-examples)
-  * [Portals Column](#portals-column-examples)
-  * [Properties Column](#properties-column-examples)
-  * [Last Insert](#last-insert-examples)
+* [Entity Tag](#entity-tag-examples)
+* [Property Tag](#property-tag-examples)
+* [Series Value](#series-value-examples)
+* [Name Column](#name-column-examples)
+* [Label Column](#label-column-examples)
+* [Portals Column](#portals-column-examples)
+* [Properties Column](#properties-column-examples)
+* [Last Insert](#last-insert-examples)
 
 ### Entity Tag Examples
 
@@ -271,15 +271,15 @@ The link displays the value of the entity tag of another entity, which name is s
 
 3. Specify the entity tag of related entity in the 'Link Label' setting.
 
-  * Configuration
+* Configuration
 
     ![](images/entity-view-column-entity-tag-related.png)
 
-  * View
+* View
 
     ![](images/entity-view-column-entity-tag-related-view.png)
 
-  * On-click Target
+* On-click Target
 
     ![](images/entity-view-column-entity-tag-related-result.png)
 
@@ -287,11 +287,11 @@ The link displays the value of the entity tag of another entity, which name is s
 
 Tag value can be formatted for convenient representation.
 
-  * Configuration
+* Configuration
 
     ![](images/entity_views_19.png)
 
-  * View
+* View
 
     ![](images/entity_views_20.png)
 
@@ -359,15 +359,15 @@ The link displays the latest inserted value for the specific metric.
     formatNumber(value, '0.0')
 ```
 
-  * Configuration
+* Configuration
 
     ![](images/entity-view-column-series-chart-value-format.png)
 
-  * View
+* View
 
     ![](images/entity-view-column-series-chart-value-view.png)
 
-  * On-click Target
+* On-click Target
 
     ![](images/entity-view-column-series-chart-value-result.png)
 
@@ -537,14 +537,14 @@ The text displays difference `now - lastInsertDate`. The entities are  highlight
     formatIntervalShort(elapsedTime(value))
 ```
 
-  * Configuration
+* Configuration
 
     ![](images/entity_views_10.png)
 
-  * View
+* View
 
     ![](images/entity_views_11.png)
 
-  * On-click Target
+* On-click Target
 
     ![](images/entity_views_12.png)

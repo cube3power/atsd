@@ -40,7 +40,6 @@
 ## ATSD
 
 ### Issue 3737
---------------
 
 ```sql
 SELECT entity, tags.*, value, datetime
@@ -51,7 +50,6 @@ WHERE datetime > now - 1 * day
 ```
 
 ### Issue 3735
---------------
 
 ```sql
 SELECT entity, avg(value), ABS((last(value) / avg(value) - 1)*100)
@@ -72,7 +70,6 @@ Admin > Server Properties -> Network page. The default value is 2 and is recomme
 As a result, the TCP processing and parsing throughput (measured in commands per second) has increased by 40% on average.
 
 ### Issue 3725
---------------
 
 Previously, execution of queries with the `LIMIT` clause involved copying selected rows into a temporary table, even if only a small subset of the rows, restricted with `LIMIT`, was required.
 Both `ASC` and `DESC` ordered results were optimized by reducing the number of rows copied into a temporary table. The following queries should see a 90% speedup in execution time.
@@ -92,7 +89,6 @@ LIMIT 10
 ```
 
 ### Issue 3719
---------------
 
 We added an optimization to narrow the start date in [windowing](../../sql#last_time-syntax) queries which is now determined as the minimum (last insert date) for all series.
 Prior to this change, the start date was set to 0 (not applied) if it was not specified explicitly in the query.
@@ -116,7 +112,6 @@ For example, if we have 3 series with the following last insert dates:
 The SQL optimizer will add a condition `AND datetime >= '2016-20-05T00:00:00Z'`, even if it is not set in the query.
 
 ### Issue 3713
---------------
 
 ```sql
 SELECT tot.datetime, tot.tags.city as 'city', tot.tags.state as 'state',
@@ -141,7 +136,6 @@ OPTION (ROW_MEMORY_THRESHOLD 500000)
 ```
 
 ### Issue 3703
---------------
 
 Now aggregate functions such as `MAX`, `MIN`, and `DELTA` can be applied to the `time` column, which returns the sampling time in Unix milliseconds.
 One of the use cases is to display the most recent time in windowing queries where the [last_time](../../sql#last_time-syntax) function can be utilized to select data for a sliding interval, such as the most recent 4 weeks for each series in the example below.
@@ -165,7 +159,6 @@ ORDER BY max(time)
 ```
 
 ### Issue 3697
---------------
 
 The sequence of period interpolation and period filtering with the [HAVING](../../sql#having-filter) clause was modified.
 Now, the `HAVING` filter is applied after [PERIOD interpolation](../../sql#interpolation) whereas before it was the opposite.
@@ -200,7 +193,6 @@ Previous result:
 ```
 
 ### Issue 3696
---------------
 
 ```sql
 SELECT date_format(period(1 MONTH)), sum(value), count(value)
@@ -213,7 +205,6 @@ ORDER BY 1
 ```
 
 ### Issue 3694
---------------
 
 The query optimizer was modified to apply tag filter specified in `JOIN` queries on one of the tables to the remaining tables, since
 [JOINs](../../sql#joins) in ATSD perform merging of rows on time, entity, and series tags anyway. Prior to this change, the tag filter
@@ -222,13 +213,11 @@ was applied only to those tables where the filter was set explicitly.
 ![Figure 2](Images/Figure2.png)
 
 ### Issue 3689
---------------
 
 Implemented the special `SELECT 1` query, which is typically used to [test connectivity](../../sql#validation-query) and validate open
 connections in the shared connection pool in active state.
 
 ### Issue 3672
---------------
 
 SQL Query Plan is used for diagnosing slow query response times. The plan was extended to:
 
@@ -238,7 +227,6 @@ SQL Query Plan is used for diagnosing slow query response times. The plan was ex
 ![Figure 3](Images/Figure3.png)
 
 ### Issue 3555
---------------
 
 Implemented the [LOOKUP](../../sql#lookup) function, which translates the key into a value using the specified replacement table.
 
@@ -261,7 +249,6 @@ LIMIT 10
 ```
 
 ### Issue 3421
---------------
 
 Implemented the `searched case` variant of the [CASE](../../sql#case) expression.
 

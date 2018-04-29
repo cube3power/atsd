@@ -25,7 +25,6 @@
 ## ATSD
 
 ### Issue 3704
---------------
 
 ```sql
 SELECT tavg.tags.type,
@@ -41,7 +40,6 @@ GROUP BY tavg.tags.type
 ```
 
 ### Issue 3702
---------------
 
 ```sql
 SELECT date_format(time, 'yyyy-MM-dd') as 'date',
@@ -54,7 +52,6 @@ ORDER BY sum(value) desc
 ```
 
 ### Issue 3701
---------------
 
 In this issue, we took a look at optimizing [partitioning queries](../../sql#partitioning), leveraging the fact that we can narrow the start and end date for a scan based on the last times in the Last
 Insert Table. Let's take the below query as an example.
@@ -76,7 +73,6 @@ only need the last value for each combination of tags. We can therefore skip val
 Check out our article on [SQL queries for U.S. death statistics](https://github.com/axibase/atsd-use-cases/blob/master/USMortality/README.md).
 
 ### Issue 3325
---------------
 
 ```sql
 SELECT count(*), count(value), count(entity) FROM cpu_busy WHERE datetime > previous_minute GROUP BY entity
@@ -85,7 +81,6 @@ SELECT count(*), count(value), count(entity) FROM cpu_busy WHERE datetime > prev
 ## Collector
 
 ### Issue 3717
---------------
 
 While Axibase Collector gathers container properties and statistics using full Docker identifiers, it sends container names as entity labels into ATSD. This makes it possible to refer
 to human-readable container names in graphs and alerts. There are however several orchestration frameworks which use container names to store their own identifiers, for
@@ -151,7 +146,6 @@ Docker `inspect` snippet for a Mesos-managed container:
 ```
 
 ### Issue 3685
---------------
 
 Recently added to the [`docker`](https://github.com/axibase/axibase-collector/blob/master/jobs/docker.md#docker-job) job in Collector is the ability to remove deleted records in ATSD for objects that no longer exist in Docker itself.
 

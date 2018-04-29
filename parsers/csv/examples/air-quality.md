@@ -1,6 +1,6 @@
 # Air Quality CSV Example
 
-#### Original CSV File
+## Original CSV File
 
 ```txt
 "36.785378","-119.773206","2015-07-09T00:00","CO","0.12","PPM"
@@ -35,11 +35,11 @@
 "36.785378","-119.773206","2015-07-09T04:00","SO2","0.0","PPB"
 ```
 
-#### Parser Configuration Screenshot
+## Parser Configuration Screenshot
 
 ![](resources/air_quality_csv_parser.png)
 
-#### Parser Configuration Description
+## Parser Configuration Description
 
 | Field | Setting | Reason |
 | --- | --- | --- |

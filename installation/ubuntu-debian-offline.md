@@ -61,6 +61,7 @@ Download newer `ca-certificates-java`. This step is required only for Debian 8.x
 rm ca-certificates-java*
 apt-get -t jessie-backports download ca-certificates-java
 ```
+
 Make sure that the download directory isn't empty:
 
 ```sh

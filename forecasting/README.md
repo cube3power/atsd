@@ -5,13 +5,13 @@
 * Built-in auto-regressive time series extrapolation algorithms (Holt-Winters, ARIMA, etc.) in ATSD can predict failures at early stages.
 * Dynamic predictions eliminate the need to set manual thresholds.
 
-#### Forecasting Example with Abnormal Deviation
+## Forecasting Example with Abnormal Deviation
 
 ![](resources/forecasts.png)
 
 ![](resources/forecasts2.png)
 
-#### Forecast Settings
+## Forecast Settings
 
 * Forecasting settings can be left in their default, automatic mode for easy setup.
 * ATSD selects the most accurate forecasting algorithm for each time series separately based on a ranking system.
@@ -21,7 +21,7 @@
 
 ![](resources/forecasts3.png)
 
-#### Key Advanced Settings
+## Key Advanced Settings
 
 | Setting | Description |
 | --- | --- |

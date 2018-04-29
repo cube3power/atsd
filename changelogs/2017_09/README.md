@@ -38,7 +38,6 @@
 ## ATSD
 
 ### Issue 3940
---------------
 
 New `sendCommands` method:
 
@@ -50,13 +49,11 @@ commandsService = CommandsService(conn)
 commands_to_send = ["metric m:stat.step p:integer",
                     "series e:process m:stat.step=0 x:stat.step=initial"]
 commandsService.send_commands(commands_to_send)
-
 ```
 
 ## Collector
 
 ### Issue 3977
---------------
 
 The configuration pages for Databases, HTTP Pools, and Replacement Tables now display linked jobs.
 
@@ -71,7 +68,6 @@ For the Replacement table, the linked task configurations are shown.
 <img src="Images/Figure3.png" width="300px"/>
 
 ### Issue 3976
---------------
 The old `Command` field containing the path to the executable script has been renamed to `Path to the script`.
 The new `Command` field allows entering commands returning the Item List elements, one Item per line.
 The commands from the text area are copied to a file in the `$AXIBASE_COLLECTOR_HOME/conf/scripts` directory and executed as a script.
@@ -80,12 +76,10 @@ You must set `script.text.execute.allow=true` in the `$AXIBASE_COLLECTOR_HOME/co
 ![](Images/Figure4.png)
 
 ### Issue 3932
---------------
 
 ![](Images/Figure5.png)
 
 ### Issue 3817-a
---------------
 
 The new checkbox `Skip Old Data` has been introduced. If the setting is enabled, the last data row from the target dataset is stored by the Collector. When the task is executed next time, only new rows are sent into ATSD as series.
 
@@ -93,7 +87,6 @@ The new checkbox `Skip Old Data` has been introduced. If the setting is enabled,
 ![](Images/Figure7.png)
 
 ### Issue 3817-b
---------------
 
 The new field `Query Filter` has been introduced to allow applying a filter expression as part of a request.
 
@@ -103,7 +96,6 @@ The new field `Query Filter` has been introduced to allow applying a filter expr
 ## Charts
 
 ### Issue 3961
---------------
 
 The new settings introduced in Treemap configurations:
 
@@ -111,19 +103,17 @@ The new settings introduced in Treemap configurations:
 |------|-------------|-------------------|
 | mode | Layout mode to control how rectangles are positioned. |– `default` <BR> – `row` (align rectangles as rows) <BR> – `column` (align rectangles as columns) <BR> – `auto` (switch between row and column modes depending on widget size)
 
-https://apps.axibase.com/chartlab/fc68bae4/7/
+[ChartLab](https://apps.axibase.com/chartlab/fc68bae4/7/)
 
 ![](Images/Figure10.png)
 
 ### Issue 3959
---------------
 
 `last = true` is deprecated. Replace it with `limit: 1`.
 
-https://apps.axibase.com/chartlab/25551747
+[ChartLab](https://apps.axibase.com/chartlab/25551747)
 
 ### Issue 3941
---------------
 
 Functions `meta()`, `entityTag()`, and `metricTag()`, which return entity or metric tags retrieved from the server, are now available in widget settings:
 
@@ -138,8 +128,8 @@ metricTag('tag_name') – return metric tag value for the current series
 
 Refer to [metadata](https://axibase.com/products/axibase-time-series-database/visualization/widgets/metadata/) documentation for additional examples.
 
-https://apps.axibase.com/chartlab/2b15e6f9
+[ChartLab](https://apps.axibase.com/chartlab/2b15e6f9)
 
-https://apps.axibase.com/chartlab/c4c1f7b8
+[ChartLab](https://apps.axibase.com/chartlab/c4c1f7b8)
 
-https://apps.axibase.com/chartlab/c9bd5eb5
+[ChartLab](https://apps.axibase.com/chartlab/c9bd5eb5)

@@ -26,23 +26,21 @@
 ### Collector
 
 ### Issue 3827
---------------
 
 ![](Images/Figure1.png)
+
 ![](Images/Figure2.png)
 
 ### Charts
 
 ### Issue 3956
---------------
 
-https://apps.axibase.com/chartlab/558ba4c1
+[ChartLab](https://apps.axibase.com/chartlab/558ba4c1)
 
 ### Issue 3975
---------------
 
 | Setting | Description |
 |---------|-------------|
 | tag-expression | Applies server-side filter to series based on series tag values. |
 
-https://apps.axibase.com/chartlab/906238e2/4/
+[ChartLab](https://apps.axibase.com/chartlab/906238e2/4/)

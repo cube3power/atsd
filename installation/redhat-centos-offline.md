@@ -39,7 +39,6 @@ sudo yumdownloader --resolve java-1.8.0-openjdk-devel which hostname net-tools i
 ```
 
 > See the RedHat [note](https://access.redhat.com/solutions/10154) on using yum to download packages without installation.
-
 > If some of the above dependencies are not found, for example in case of installation on new systems, run `sudo yum update` to upgrade all packages on your operating system to the latest versions.
 
 Copy the downloaded *.rpm packages to the target machine and install them as follows:

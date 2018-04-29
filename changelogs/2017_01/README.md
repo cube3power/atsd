@@ -267,7 +267,7 @@ Added support for meta fields in label-format (and series tooltips) so that `met
 
 Meta-data examples are documented [here](https://axibase.com/products/axibase-time-series-database/visualization/widgets/metadata/).
 
-https://apps.axibase.com/chartlab/506da7c3
+[ChartLab](https://apps.axibase.com/chartlab/506da7c3)
 
 ### Issue 3636
 -------------

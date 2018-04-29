@@ -1,6 +1,6 @@
 # Basic Schema Field Example
 
-#### Input File
+## Input File
 
 ```csv
 Measurement Time,Sensor Name,Sensor Model,Temperature,Humidity,Pressure
@@ -8,11 +8,11 @@ Measurement Time,Sensor Name,Sensor Model,Temperature,Humidity,Pressure
 2015-10-15 00:00,Sensor-0020,PV120000-XG1,       20.4,    60.8,     745
 ```
 
-#### Parser Settings
+## Parser Settings
 
 `Timestamp Pattern: yyyy-MM-dd HH:mm`          # Used to parse Measurement Time column values
 
-#### Schema
+## Schema
 
 ```java
 select("#row=2-*").select("#col=4-*").
@@ -24,6 +24,7 @@ timestamp(cell(row, 1));
 ```
 
 Adhere to the following points to convert the CSV file into a tabular model:
+
 * For each row starting with the 2nd row until the last row;
 * For each column in the current row starting with the 4th column (Temperature) until the last column (Pressure);
 * For each cell:
@@ -33,7 +34,7 @@ Adhere to the following points to convert the CSV file into a tabular model:
   * Set the timestamp to the value of the cell located in the current row, 1st column (Measurement Time). The text value will be parsed using the 'Timestamp Pattern';
   * Set the series value to the value of the current cell.
 
-#### Commands
+## Commands
 
 ```ls
 series e:sensor-0001 d:2015-11-15T00:00:00Z m:temperature=35.5 m:humidity=40.0 m:pressure=760 t:model=PV120000-XG1

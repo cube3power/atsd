@@ -1,6 +1,6 @@
 # Weather CSV Example
 
-#### Original CSV File
+## Original CSV File
 
 ```txt
 "Station Name","HALIFAX INTL A"
@@ -62,11 +62,11 @@
 "2015-01-31","2015","01","31","‡","0.9","","-5.6","","-2.4","","20.4","","0.0","","","M","","M","","M","4","","","M","<31",""
 ```
 
-#### Parser Configuration Screenshot
+## Parser Configuration Screenshot
 
 ![](resources/csv_halifax_config.png)
 
-#### Parser Configuration Description
+## Parser Configuration Description
 
 | Field | Setting | Reason |
 | --- | --- | --- |

@@ -19,7 +19,6 @@
 ## ATSD
 
 ### Issue 4100
---------------
 
 ```sql
 SELECT datetime,
@@ -32,5 +31,5 @@ FROM m1
 ## Collector
 
 ### Issue 4094
---------------
+
 ![](Images/Figure1.png)

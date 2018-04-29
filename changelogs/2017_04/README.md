@@ -35,7 +35,6 @@
 ## ATSD
 
 ### Issue 3742
---------------
 
 A `Text Column` button was added to the user interface export form. By enabling this button, a text column will be displayed for data exported in CSV and HTML formats.
 
@@ -47,7 +46,6 @@ Now, a [text value](../../api/network/series.md#series-tags-text-value-messages)
 ## Collector
 
 ### Issue 3818
---------------
 
 The [Test] result now includes a list of columns from the underlying dataset and information on how they're mapped into command fields. The table contains column attributes as well as the following fields:
 
@@ -146,7 +144,6 @@ The [Test] result now includes a list of columns from the underlying dataset and
 ![Figure 3](Images/Figure3.png)
 
 ### Issue 3772
---------------
 
 In order to simplify processing of JSON documents created with [Open Data](https://project-open-data.cio.gov/v1.1/schema/) schema, we implemented a new [Socrata](https://github.com/axibase/axibase-collector/blob/master/jobs/socrata.md) job. Support for Socrata format has been removed from the JSON job as a result.
 

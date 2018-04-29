@@ -11,13 +11,12 @@ In the guide `atsd_master` is the hostname of the master host and
 > Note: This guide should be executed only on new ATSD installations.
 Executing this guide on an existing ATSD installation will lead to the
 loss of all stored data on both the master and slave machines.
-
 > Note: If master loses connection with slave, it will accumulate all the
 data and events for the duration of the connection loss and will start
 transferring the accumulated data once connection with slave is
 re-established. No data should be lost in the process.
 
-#### Requirements
+## Requirements
 
 Both the master and slave machines must have static a IP addresses in the
 local network.
@@ -29,7 +28,7 @@ The same versions of ATSD must be installed on both machines. [See ATSD
 installation
 guides.](../installation/README.md "ATSD Install Guides")
 
-#### Installation
+## Installation
 
 **MASTER & SLAVE: the following steps must be executed on both machines
 – master and slave.**
@@ -113,6 +112,7 @@ Start Hadoop and HBase:
 ```sh
  /opt/atsd/bin/atsd-all.sh start
 ```
+
 Run the replication configuration script:
 
 ```sh
@@ -186,7 +186,7 @@ Output should contain a list of ATSD tables, all starting with `atsd_`:
 
 ![](images/atsd_tables.png "atsd_tables")
 
-#### Enabling Replication for New Tables
+## Enabling Replication for New Tables
 
 If after updating ATSD, or for any other reason, a new table was created
 in HBase with the name containing `atsd_` (for example `atsd_new`),
@@ -229,12 +229,12 @@ Enable replication for the new table:
 Verify that the new table is being replicated using the verification
 instructions below.
 
-#### Verifying Replication
+## Verifying Replication
 
 To verify that replication is working correctly, execute the following
 steps:
 
-##### Option 1
+### Option 1
 
 **SLAVE: the following steps must be executed only on the slave
 machine.**
@@ -259,7 +259,7 @@ replicated on the slave machine:
  ink.java:replicateEntries(158)) - Total replicated: 1
 ```
 
-##### Option 2
+### Option 2
 
 **MASTER: the following steps must be executed only on the
 master machine.**

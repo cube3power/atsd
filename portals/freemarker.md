@@ -4,7 +4,7 @@ Freemarker expressions are supported in portal creation.
 
 ## Freemarker Functions
 
-##### `getTags`
+### `getTags`
 
 ```javascript
 getTags('metric', 'entity', 'tagKey'[, hours])
@@ -30,7 +30,7 @@ Tag values for metric, entity, and `tagKey`.
 </#list>
 ```
 
-##### tag
+### tag
 
 ```javascript
 tag('entity', 'tagKey')
@@ -44,7 +44,7 @@ Entity tag value.
 tag('nurswgvml007', 'location')
 ```
 
-##### `groupTag`
+### `groupTag`
 
 ```javascript
 groupTag('entity', 'tagKey')
@@ -58,7 +58,7 @@ Returns collection of tag values for `tagKey` of all entity groups to which the 
 groupTag('nurswgvml007', 'cpu_busy_avg_15_min')
 ```
 
-##### `getMetrics`
+### `getMetrics`
 
 ```javascript
 getMetrics('entity')
@@ -97,7 +97,7 @@ Returns collected metrics for a particular entity.
 </#list>
 ```
 
-##### `isMetric`
+### `isMetric`
 
 ```javascript
 isMetric('metric')
@@ -116,7 +116,7 @@ Returns true if a metric exists.
 </#if>
 ```
 
-##### `isMetricCollected`
+### `isMetricCollected`
 
 ```javascript
 `isMetricCollected('metric', 'entity')`
@@ -135,7 +135,7 @@ Returns true if there is some data for metric and entity inserted in the last 2
 </#if>
 ```
 
-##### `getProperty`
+### `getProperty`
 
 ```javascript
 getProperty('entity', 'property_type', 'tagKey')
@@ -154,7 +154,7 @@ Retrieve a collection of property objects for a specified entity, property type,
 </#if>
 ```
 
-##### `getSeriesProperties`
+### `getSeriesProperties`
 
 ```javascript
 getSeriesProperties("{entity}", "{property_type}")
@@ -178,7 +178,7 @@ If no entity is specified, then the schema retrieves a collection of property ob
 </#list>
 ```
 
-##### `getTagMaps`
+### `getTagMaps`
 
 ```javascript
 getTagMaps('metric', 'entity'[, hours])
@@ -205,7 +205,7 @@ Retrieve a collection of unique tag maps for metric and entity.
 </#list>
 ```
 
-##### atsd_last
+### atsd_last
 
 ```javascript
 atsd_last("entity", "metric", "tag1=v1,tag2=v2")
@@ -232,7 +232,7 @@ The returned value is formatted according to server locale. For example 13325 is
   total-value = ${total?c}
 ```
 
-##### `memberOf`
+### `memberOf`
 
 ```javascript
 memberOf('entity', 'group1', …, 'groupN')
@@ -250,7 +250,7 @@ Returns true if an entity belongs to any of the specified entity groups.
 </#if>
 ```
 
-##### `memberOfAll`
+### `memberOfAll`
 
 ```javascript
 memberOfAll('entity', 'group1', …, 'groupN')
@@ -269,7 +269,7 @@ Returns true if an entity belongs to all of the entity groups.
 </#if>
 ```
 
-##### `lastInsertTime` & `lastInsertDate`
+### `lastInsertTime` & `lastInsertDate`
 
 ```javascript
 lastInsertTime('entity'[, ‘metric’])
@@ -300,7 +300,7 @@ Returns the last insert time for the entity or entity/metric combination in mill
 lastInsertDate('nurswgvml007', 'cpu_busy')
 ```
 
-##### `getEntitiesForGroup`
+### `getEntitiesForGroup`
 
 ```javascript
 getEntitiesForGroup('group')
@@ -329,7 +329,7 @@ If hours are not specified or are non-positive, all group members are returned.
 </#list>
 ```
 
-##### `getEntitiesForTags`
+### `getEntitiesForTags`
 
 ```javascript
 getEntitiesForTags(expression)
@@ -378,37 +378,37 @@ The Freemarker search can be for any combination of tags. For example: > `applic
 
 In the response, the `freemarker` [series] are substituted with the matching entities, creating [series] for each of them.
 
-##### Example output of a `freemarker` [series]
+### Example output of a `freemarker` [series]
 
 ```ls
 [configuration]
 title = CPU Used Portal
 height-units = 1
 width-units = 1
- 
+
 [group]
- 
+
 [widget]
 type = chart
 title = CPU Used
 time-span = 1 hour
 max-range = 100
- 
+
 [series]
 label = host0987
 entity = host0987
 metric = cpu_used
- 
+
 [series]
 label = host1040
 entity = host1040
 metric = cpu_used
- 
+
 [series]
 label = host1299
 entity = host1299
 metric = cpu_used
- 
+
 [series]
 label = host1786
 entity = host1786
@@ -417,7 +417,7 @@ metric = cpu_used
 
 Advanced functions and aggregations can be added to the Freemarker portals to enhance the resulting data prior to loading it into the portal. Below are two examples:
 
-##### The `freemarker` [series] is given an alias, that can then be used to sum the loaded data
+### The `freemarker` [series] is given an alias, that can then be used to sum the loaded data
 
 ```freemarker
 <#assign servers = getEntitiesForGroup("Linux") >
@@ -429,7 +429,7 @@ Advanced functions and aggregations can be added to the Freemarker portals to en
  </#list>
 ```
 
-##### The `freemarker` [series] data can be aggregated by ATSD prior to loading into the portal
+### The `freemarker` [series] data can be aggregated by ATSD prior to loading into the portal
 
 ```ls
 [series]

@@ -1,6 +1,6 @@
 # Weekly Change Log: January 09 - January 15, 2017
 
-### ATSD
+## ATSD
 
 | Issue         | Category        | Type | Subject                                                                             |
 |---------------|-----------------|---------|-------------------------------------------------------------------------------------|
@@ -33,7 +33,6 @@
 ## ATSD
 
 ### Issue 3773
---------------
 
 If the value column in an `atsd_series` query returns numbers for metrics with different data types, the prevailing data type is determined based on the following [rules](../../sql#numeric-precedence):
 
@@ -55,7 +54,6 @@ WHERE metric IN ('tst-metric-short',
 ```
 
 ### Issue 3769
---------------
 
 Extended the [`LOOKUP`](../../sql#lookup) function so that it can accept series, metric, and entity tags as parameters.
 
@@ -75,7 +73,6 @@ FROM 'ba:active.1'
 ```
 
 ### Issue 3768
---------------
 
 Extended the [`CONCAT`](../../sql#string-functions) function to accept numeric arguments by implicitly converting them into strings using a `#.##` pattern.  As a result, applying the [`CAST`](../../sql#cast) function to numbers is no longer required.
 
@@ -88,7 +85,6 @@ FROM 'ba:active.1'
 ```
 
 ### Issue 3767
---------------
 
 The [`CAST`](../../sql#cast) function can now convert both a string into a number, as well as a number into a string. Casting numbers (modifying data type) to strings is required to pass it as an argument into a string function. Applying `CAST` to a string returns a string for a numeric value formatted with a `#.##` pattern.
 
@@ -100,7 +96,6 @@ FROM 'ba:active.1'
 ```
 
 ### Issue 3763
---------------
 
 Previously, the [`SELECT 1`](../../sql#validation-query) validation query didn't return any rows except the header.
 
@@ -118,7 +113,6 @@ The `SELECT 1` query has been updated to return both the header as well as one r
 ```
 
 ### Issue 3480
---------------
 
 Support was added for the text field (named `x`) in Data API methods for series [query](../../api/data/series/query.md#value-object) and [insert](../../api/data/series/insert.md#value-object) methods. The text field can be used to store an annotation along the numeric sample, as well as annotation without the numeric value itself.
 
@@ -135,7 +129,6 @@ Support was added for the text field (named `x`) in Data API methods for series 
 ## Collector
 
 ### Issue 3755
---------------
 
 The following aggregate [metrics](https://github.com/axibase/axibase-collector/blob/master/jobs/docker/volume-size.md) for Docker container sizes were added:
 
@@ -146,7 +139,7 @@ The following aggregate [metrics](https://github.com/axibase/axibase-collector/b
 
 The following metrics are collected at the docker-host level.
 
-https://apps.axibase.com/chartlab/81932cd6
+[ChartLab](https://apps.axibase.com/chartlab/81932cd6)
 
 The metrics are collected at 'Container Size Interval' for running containers and at 'Property Refresh Interval' for all containers.
 
@@ -155,7 +148,6 @@ The metrics are collected at 'Container Size Interval' for running containers an
 ## Charts
 
 ### Issue 3481
---------------
 
 New chart functions `getTags()` and `getSeries()` provide a way to load series tags from the server as an alternative to using Freemarker functions and to specifying tag names in the configuration manually.
 
@@ -184,16 +176,15 @@ The requests are performed by the browser in synchronous mode. The `getSeries` f
 getTags( metric, tagName [, entity, [ , minInsertDate [ , maxInsertDate [ , url ] ] ] ] )
 ```
 
-`getTags()` example: https://apps.axibase.com/chartlab/5010c220/2
+`getTags()` [example](https://apps.axibase.com/chartlab/5010c220/2)
 
 ```javascript
 getSeries( metric, [, entity, [ , minInsertDate [ , maxInsertDate [ , url ] ] ] ] )
 ```
 
-`getSeries` example: https://apps.axibase.com/chartlab/bc586a41
+`getSeries` [example](https://apps.axibase.com/chartlab/bc586a41)
 
 ### Issue 3078
---------------
 
 Added new series query settings [`exact-match`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/) and [`interpolate-extend`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/configuring-the-widgets/).
 
@@ -201,13 +192,12 @@ The `exact-match` setting selects series with exactly the same `tags` as request
 
 The `interpolate-extend` setting adds missing periods at the beginning and the end of a selection interval, with the default also being `false`.
 
-https://apps.axibase.com/chartlab/dada4561
+[ChartLab](https://apps.axibase.com/chartlab/dada4561)
 
 ### Issue 2928
---------------
 
 To prevent naming collision, the `interpolate` setting was renamed to [`fill-value`](https://axibase.com/products/axibase-time-series-database/visualization/widgets/time-chart/), which is an interpolation mode applied to computed series in case the values are irregularly spaced.
 If set to true, the missing samples are filled with interpolated values. When `fill-value` is set to the `interpolate` keyword, the missing value is linearly interpolated from the
 previous and preceding values.
 
-https://apps.axibase.com/chartlab/e377b59a/3/
+[ChartLab](https://apps.axibase.com/chartlab/e377b59a/3/)

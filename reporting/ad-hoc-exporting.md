@@ -2,7 +2,7 @@
 
 Ad hoc exporting provides an interactive interface for exporting historical data and forecasts in CSV and HTML formats.
 
-#### Ad hoc Export Settings
+## Ad hoc Export Settings
 
 | Setting | Description |
 | --- | --- |

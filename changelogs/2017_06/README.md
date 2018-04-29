@@ -43,42 +43,42 @@
 ## ATSD
 
 ### Issue 3909
---------------
+
 The `Discard Previous Values` option allows you to discard commands timestamped earlier than the time of the most recent event in the given window.
 ![](Images/Figure_01.png)
 
 ### Issue 3879
---------------
+
 ![](Images/Figure_02.png)
 
 ## Collector
 
 ### Issue 3899
---------------
 An example for launching a `Socrata` job can be found in [this tutorial](https://github.com/axibase/atsd-use-cases/blob/master/SocrataPython/README.md).
 
 ### Issue 3864
---------------
+
 ![](Images/Figure_03.png)
 
 ### Issue 3859
---------------
+
 ![](Images/Figure_04.png)
 ![](Images/Figure_05.png)
 
 The generated configuration:
+
 ![](Images/Figure_06.png)
 
 ## Charts
 
 ### Issue 3901
---------------
+
 [Example portal](https://apps.axibase.com/chartlab/bb65c060) where rows without alerts get hidden:
 
 ![](Images/Figure_07.png)
 
 ### Issue 3792
---------------
+
 [Example of `Metro` class](https://apps.axibase.com/chartlab/6d6ae13c/2/):
 
 ![](Images/Figure_08.png)

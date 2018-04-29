@@ -1,5 +1,7 @@
 # Uploading CSV Files into Axibase Time Series Database
 
+## Overview
+
 CSV files can be [uploaded](uploading-csv-files.md) into the Axibase Time Series Database via HTTP API or manually through the user interface.
 
 ![](resources/csv.gif)
@@ -25,7 +27,7 @@ series e:nurswgvml007 d:2015-11-15T00:00:00Z m:space_used_%=14.5 t:disk=/dev/sdb
 series e:nurswgvml001 d:2015-11-15T00:00:00Z m:space_used_%=14.4 t:disk=/dev/sda1
 ```
 
-#### Configuration Settings
+### Configuration Settings
 
 | Setting | Description |
 | --- | --- |
@@ -58,7 +60,7 @@ series e:nurswgvml001 d:2015-11-15T00:00:00Z m:space_used_%=14.4 t:disk=/dev/sda
 
 Columns contained in the CSV file that are not specified in any field in the parser will be imported as metrics.
 
-#### Parse Settings
+### Parse Settings
 
 | Setting | Description |
 | --- | --- |
@@ -76,12 +78,12 @@ Columns contained in the CSV file that are not specified in any field in the par
 
 ![](resources/csv_parser_example.png)
 
-#### Column-based Parser Examples
+### Column-based Parser Examples
 
 * [Weather Data](examples/weather.md)
 * [Air Quality](examples/air-quality.md)
 
-#### Schema-based Parser Examples
+### Schema-based Parser Examples
 
 * [Basic Example](examples/basic.md)
 * [Columnar Format](examples/columnar-schema.md)

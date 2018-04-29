@@ -49,7 +49,6 @@
 ## ATSD
 
 ### Issue 3677
---------------
 
 The `date_format` function can now be used in the `WHERE`, `GROUP BY`, and `HAVING` clauses to filter and group dates by month name, day name, or hour number.
 
@@ -81,7 +80,6 @@ ORDER BY date_format(time, 'MM')
 Refer to [diurnal](../../sql/examples/diurnal.md) query examples.
 
 ### Issue 3674
---------------
 
 ```sql
 SELECT count(t1.value)
@@ -91,7 +89,6 @@ WHERE t1.entity = 'mr8w-325u'
 ```
 
 ### Issue 3673
---------------
 
 We fixed the [PERIOD](../../sql#period) function by adding the `WEEK` interval type.
 The list of interval types supported by `PERIOD` now includes:
@@ -145,13 +142,11 @@ GROUP BY PERIOD(2 WEEK, START_TIME)
 ```
 
 ### Issue 3670
---------------
 
 The `ROW_MEMORY_THRESHOLD` option allows in-memory processing of result sets. It should not affect the returned records in any way. The issue provided a fix for a query that produced
 different results in two modes: in-memory and temporary table.
 
 ### Issue 3665
---------------
 
 The query executor was changed to raise an error if too many tag combinations are located for one of the metric and entities specified in the query. The limit is 1000. If the limit is
 exceeded, the following error message is returned to the client so that the user can refactor the query and add conditions to the `WHERE` clause to reduce the number of series.
@@ -162,12 +157,10 @@ IllegalStateException: Too many tags combinations for metric 'df.disk_used' and 
 ```
 
 ### Issue 3645
---------------
 
 We cleaned-up email alert template by removing rows from alert details that are not relevant if window count = 1.
 
 ### Issue 3615
---------------
 
 Continuing the extension of the ATSD schema, we added the new fields `minValue` and `maxValue` to the Metric class so that commonly used metadata about metrics can be described with
 fields, as opposed to tags because fields provide validation, dictionaries, and ease-of-use for users when editing metrics.
@@ -175,7 +168,6 @@ fields, as opposed to tags because fields provide validation, dictionaries, and 
 ![Figure 4](Images/Figure4.png)
 
 ### Issue 3601
---------------
 
 We added a fix so that queries with arithmetic expressions execute nearly as fast as queries without expressions:
 
@@ -188,14 +180,12 @@ select avg(value) from mpstat.cpu_busy
 ```
 
 ### Issue 3592
---------------
 
 The Trust SSL Certificate setting, when enabled, allows encrypted connections to LDAP servers with self-signed SSL certificates.
 
 ![Figure 1](Images/Figure1.png)
 
 ### Issue 3583
---------------
 
 The new LDAP integration feature, 'Create Accounts', makes it possible to self-register user accounts in ATSD if the new user account exists in LDAP and the user was able to successfully
 authenticate. The new account settings, such as username, email, and first/last name, are inherited from LDAP attributes.
@@ -205,7 +195,6 @@ If the 'Default User Group' is specified, the new self-registered users are auto
 ![Figure 2](Images/Figure2.png)
 
 ### Issue 3470
---------------
 
 A new [`text` column](../../sql/examples/select-text-value.md) was made available in the `SELECT` expression and the `WHERE` clause, so
 that string annotations can be displayed in the result set along with numeric values. The `text` column can be selected in a simple query or in a `JOIN` query.
@@ -225,7 +214,6 @@ WHERE metric IN ('temperature', 'status') AND datetime >= '2016-10-13T08:00:00Z'
 ```
 
 ### Issue 3465
---------------
 
 The new parameter `addMeta` was added to [series](../../api/data/series/query.md) and property methods
 so that clients can retrieve entity and metric fields and tags in one request, saving an extra round-trip. Another advantage is that the `addMeta` parameter doesn't require the user to
@@ -261,21 +249,18 @@ Response:
 ```
 
 ### Issue 3438
---------------
 
 The Enterprise Edition now supports LDAP authentication to simplify and centralize credentials management in large organizations:
 
 ![Figure 5](Images/Figure5.png)
 
 ### Issue 3309
---------------
 
 [https://github.com/axibase/grafana-data-source](https://github.com/axibase/grafana-data-source)
 
 ## Collector
 
 ### Issue 3644
---------------
 
 A new Item List type was implemented to load data from property records in ATSD. This allows automating monitoring and data collection jobs, for example, to TCP-check open ports for a
 list of containers retrieved by the Docker job.

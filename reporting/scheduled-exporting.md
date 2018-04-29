@@ -2,16 +2,16 @@
 
 Scheduled exporting enables exporting of historical data and forecasts to the local file system in CSV or Excel formats, as well as delivery of produced reports to email subscribers.
 
-#### Scheduled Exporting Settings
+## Scheduled Exporting Settings
 
-##### Schedule
+### Schedule
 
 | Field | Description |
 | --- | --- |
 |  Enabled  |  Enable the current scheduled export job.  |
 |  Schedule  |  Cron expression specifying when the export job will be executed.<br>Field order: `seconds minutes hours day-of-month month day-of-week year`.<br>By default all export jobs are executed daily at 02:00 AM local server time: `0 0 2 * * *`.  |
 
-##### Schedule Syntax Examples
+### Schedule Syntax Examples
 
 | Schedule | Expression |
 | --- | --- |
@@ -31,7 +31,7 @@ Export job settings in the server.properties file:
 
 If new jobs are added for executing when the queue is full, such jobs will be rejected.
 
-##### Export Job Logging
+### Export Job Logging
 
 Each export job execution is logged in ATSD. Messages are saved to track the status. Below are their parameters.
 
@@ -51,7 +51,7 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 
 > * Raised when the job starts while the previous instance of the same job is still running.
 
-##### Dataset
+### Dataset
 
 | Field | Description |
 | --- | --- |
@@ -73,7 +73,7 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 |  Interpolation  |  Insert missing periods in aggregated results. The period is considered missing if it contains no detailed samples. Supported options: `STEP` – value of missing period equals value of the previous period; `LINEAR` – value is linearly interpolated between previous and next available value; `NONE` – missing periods are not inserted.  |
 |  Aggregate Statistics  |  One or multiple aggregation functions: average, minimum, maximum, sum, count, standard deviation, weighted average, weighted time average, median (percentile 50), first, last, percentile 50/75/90/95/99/99.5/99.9, `MinValueTime`, `MaxValueTime`.  |
 
-##### Output
+### Output
 
 | Field | Description |
 | --- | --- |
@@ -87,7 +87,7 @@ common tags: `type=application`, `source=atsd_export`, `hostname={HOST}`
 |  Decimal Precision  |  Number of fractional digits displayed. If a negative value such as -1 is specified, stored numbers are displayed 'as is' without any formatting.  |
 |  Time Format  |  Format for displaying series sample timestamps: Local Time (server time zone) or ISO (UTC time).<br>Local = `yyyy-MM-dd HH:mm:ss`<br>ISO = `yyyy-MM-dd'T'HH:mm:ss'Z'`  |
 
-##### Distribution
+### Distribution
 
 | Field | Description |
 | --- | --- |

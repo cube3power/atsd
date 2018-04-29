@@ -12,7 +12,7 @@ Install Oracle JDK or Open JDK on the server where ATSD will be running.
 
 ### Oracle JDK Installation
 
-https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+[Oracle JDK 7 Downloads](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
 
 ### Open JDK Installation
 

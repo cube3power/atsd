@@ -30,7 +30,6 @@
 ## ATSD
 
 ### Issue 3690
---------------
 
 In previous versions of ATSD, the user's role, group membership, and entity permissions were cached while the user's session was active. If the user's authorization was changed by an
 administrator, it would not apply until the user's active sessions would timeout or until the user re-logged into the application. We updated ATSD so that the user's
@@ -40,7 +39,6 @@ apply any new settings. In addition, the administrator is now able to view which
 ![Figure 5](Images/Figure5.png)
 
 ### Issue 3688
---------------
 
 ```sql
 SELECT value AS 'code', ISNULL(LOOKUP('tcp-status-codes', value), value) AS 'name', COUNT(value)
@@ -50,7 +48,6 @@ WHERE datetime > now - 15 * MINUTE
 ```
 
 ### Issue 3675
---------------
 
 ```sql
 SELECT ISNULL(value, -1)
@@ -58,7 +55,6 @@ FROM test_is_null
 ```
 
 ### Issue 3650
---------------
 
 The administrative interface in ATSD has been simplified by consolidating multiple pages into one view:
 
@@ -91,7 +87,6 @@ The administrative interface in ATSD has been simplified by consolidating multip
    The section displays Current and Start times, as well as the applicable Time Zone.
 
 ### Issue 3631
---------------
 
 ```sql
 SELECT datetime, value FROM 'interpTest'
@@ -100,7 +95,6 @@ WITH INTERPOLATE(15 SECOND, LINEAR, OUTER, EXTEND)
 ```
 
 ### Issue 3516
---------------
 
 ```sql
 SELECT metric.label
@@ -110,7 +104,6 @@ LIMIT 3
 ```
 
 ### Issue 3515
---------------
 
 ```sql
 SELECT tags FROM disk_used
@@ -118,7 +111,6 @@ WHERE tags IS NOT NULL and datetime > now -1*minute
 ```
 
 ### Issue 3463
---------------
 
 ```sql
 SELECT t1.datetime, t1.entity, t1.value, t2.value, t3.value, t4.value, t5.value, t5.text, t6.text
@@ -135,7 +127,6 @@ WITH INTERPOLATE(60 SECOND, AUTO, OUTER, EXTEND, START_TIME)
 ## Collector
 
 ### Issue 3664
---------------
 
 In Collector, the following metrics were added for each active container. These metrics are collected only when the Docker command `TOP` is enabled.
 
@@ -148,7 +139,6 @@ If the container was running in a prior iteration, and is not running in the nex
 ![Figure 8](Images/Figure8.png)
 
 ### Issue 3559
---------------
 
 `METRIC` and `ENTITY` commands have been implemented in the JDBC job to allow you to configure collected metrics and entities in ATSD.
 

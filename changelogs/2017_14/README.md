@@ -30,7 +30,6 @@
 ## ATSD
 
 ### Issue 4057
---------------
 
 ```sql
 SELECT entity, datetime, value,
@@ -43,7 +42,6 @@ WHERE datetime >= previous_minute
 ```
 
 ### Issue 4083
---------------
 
 ```sql
 SELECT entity, metric, datetime, value
@@ -54,7 +52,6 @@ ORDER BY datetime
 ```
 
 ### Issue 4060
---------------
 
 ```sql
 SELECT datetime, LAG(value), value, LEAD(value)
