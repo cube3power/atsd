@@ -18,7 +18,7 @@ Extended Format:
 metric.name:value|type|@sample_rate|#tag1:value,tag2
 ```
 
-#### StatsD Installation and Configuration
+## StatsD Installation and Configuration
 
 Download and install StatsD:
 
@@ -65,7 +65,7 @@ Start StatsD:
 sudo service statsd start
 ```
 
-#### StatsD WordPress Example
+## StatsD WordPress Example
 
 Go to the Plugins menu on your WordPress administration page:
 

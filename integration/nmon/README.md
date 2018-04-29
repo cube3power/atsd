@@ -43,12 +43,13 @@ nmon source code repository:
 [https://github.com/axibase/nmon](https://github.com/axibase/nmon)
 
 ## Portals
+
 ![](resources/nmon-use-case-ATSD1.jpg "nmon use case ATSD")
 
 [Live AIX nmon Portal](https://axibase.com/chartlab/b69e4fcd/3/)
 
 ![](resources/nmon-aix-portal-1500.png "nmon aix portal 1500")
 
-[Live Linux nmon Portal ](https://axibase.com/chartlab/ac003f06)
+[Live Linux nmon Portal](https://axibase.com/chartlab/ac003f06)
 
 ![](resources/linux_nmon_portal.png "linux_nmon_portal")

@@ -1,4 +1,4 @@
-## Re-configure ODBC Data Source
+# Re-configure ODBC Data Source
 
 This document describes how to reconfigure the ODBC data source if the list of tables displayed in a client application needs to be updated.
 

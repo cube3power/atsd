@@ -18,7 +18,7 @@ ATSD has a Storage Finder for Graphite-Web, which means that you can use ATSD as
 
 ![](resources/atsd_protocols_finders3.png)
 
-##### List of key tools that support Graphite Format
+### List of key tools that support Graphite Format
 
 * [collectd](http://collectd.org/) – a daemon which collects system performance statistics periodically.
 * [collectl](http://collectl.sourceforge.net/) – a collection tool for system metrics that can be run both interactively and as a daemon, and has support for collecting from a broad set of subsystems.

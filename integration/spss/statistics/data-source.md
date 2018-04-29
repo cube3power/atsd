@@ -1,4 +1,4 @@
-### Configuring the Data Source in IBM SPSS Statistics
+# Configuring the Data Source in IBM SPSS Statistics
 
 * Open the attached scripts:
 

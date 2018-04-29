@@ -1,22 +1,22 @@
-## OpenLink ODBC-JDBC Bridge
+# OpenLink ODBC-JDBC Bridge
 
-### Overview
+## Overview
 
 This document describes how to install an ODBC-JDBC bridge on a Windows machine. The purpose of the bridge is to serve as a data link between the Axibase Time Series Database and Windows applications that do not support [JDBC](https://docs.oracle.com/javase/tutorial/jdbc/overview/) driver technology.
 
 The bridge intercepts SQL queries from the client applications via the Microsoft [ODBC](https://docs.microsoft.com/en-us/sql/odbc/microsoft-open-database-connectivity-odbc) protocol and transmits the queries into ATSD using the [ATSD JDBC driver](https://github.com/axibase/atsd-jdbc).
 
-### Downloads and Prerequisites
+## Downloads and Prerequisites
 
 * Download and install Java Runtime Environment 7 for the Windows Operating System.
 * [Download](https://github.com/axibase/atsd-jdbc/releases) ATSD JDBC driver with dependencies.
 * Add Windows Environment variable `Classpath` containing the path to the ATSD JDBC driver 'jar' file.
-Open **Environment variables**, click the **New** button under the **System variables** list.
-Type `Classpath` as **Variable name** and the path to the ATSD JDBC driver 'jar' file as **Variable value**.
+  * Open **Environment variables**, click the **New** button under the **System variables** list.
+  & Type `Classpath` as **Variable name** and the path to the ATSD JDBC driver 'jar' file as **Variable value**.
 
 ![](images/system_properties.png)
 
-* Register an account with the ODBC-JDBC Bridge vendor at https://uda.openlinksw.com/ (required for trial activation).
+* Register an account with the ODBC-JDBC Bridge [vendor](https://uda.openlinksw.com/) (required for trial activation).
 * Generate license for the bridge program as displayed:
 
 ![](images/openlink_license.png)
@@ -24,7 +24,7 @@ Type `Classpath` as **Variable name** and the path to the ATSD JDBC driver 'jar'
 * Choose the desired OS version
 * You will receive the installation link and license files via email.
 
-### Install Bridge
+## Install Bridge
 
 Install and activate the bridge as follows:
 
@@ -34,7 +34,7 @@ Install and activate the bridge as follows:
 * Select the **Complete** option.
 * Confirm and finish the installation.
 
-### Configure ODBC Data Source
+## Configure ODBC Data Source
 
 Open **Start**, type `ODBC` and launch the ODBC Data Source Manager from an Administrator account.
 

@@ -16,9 +16,9 @@ The Metrics library provides 5 types of metrics:
 * [Histogram](https://dropwizard.github.io/metrics/3.1.0/getting-started/#histograms) – statistical distribution of values.
 * [Timer](https://dropwizard.github.io/metrics/3.1.0/getting-started/#timers) – rate at which the method is invoked and the distribution of its duration.
 
-### Configurations and Settings
+## Configurations and Settings
 
-#### Configuring the Sender
+### Configuring the Sender
 
 TCP
 
@@ -32,7 +32,7 @@ UDP
 final AtsdUDPSender sender = new AtsdUDPSender("atsd.example.com", 8082);
 ```
 
-#### Configuring the Builder
+### Configuring the Builder
 
 | Name | Required | Default | Description |
 | --- | --- | --- | --- |
@@ -44,7 +44,7 @@ final AtsdUDPSender sender = new AtsdUDPSender("atsd.example.com", 8082);
 |  `public Builder filter(MetricFilter filter)`  |  No  |  `MetricFilter.ALL`  |  Only report metrics matching the specified filter.  |
 |  `public AtsdReporter build(AtsdSender sender)`  |  Yes  |  –  |  Sending metrics using the specified AtsdSender.  |
 
-#### Add Metric
+### Add Metric
 
 Add metric to monitor:
 
@@ -71,7 +71,7 @@ public class UserLogin {
 }
 ```
 
-#### Create Reporter
+### Create Reporter
 
 ```java
 static void atsdTCPReport() {
@@ -88,7 +88,7 @@ static void atsdTCPReport() {
 }
 ```
 
-#### Collect Metric Values
+### Collect Metric Values
 
 ```java
 static void login() {
@@ -97,7 +97,7 @@ static void login() {
 }
 ```
 
-#### Start Reporter
+### Start Reporter
 
 ```java
 static void startReporter() {

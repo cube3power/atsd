@@ -39,6 +39,7 @@ There are two ways of enabling the ATSD JDBC driver in MatLab: static and dynami
 * Run the `prefdir` command in the MatLab Command Window. This command displays the path to a directory used in subsequent steps.
 
 ![](resources/prefdir.png)
+
 * Close MatLab if it's running.
 * Navigate to the `prefdir` directory above and create a file named `javaclasspath.txt`.
 * Open the `javaclasspath.txt` file. Add the full path to the ATSD driver JAR file, for example, `/home/user/MATLAB/atsd-jdbc-1.2.22-DEPS.jar`
@@ -61,8 +62,7 @@ Example:
 * Click **Configure Data Source > Configure JDBC Data Source**
 * Select **Vendor > OTHER**.
 * Set the Driver field to `com.axibase.tsd.driver.jdbc.AtsdDriver`
-* Specify a JDBC URL like `jdbc:atsd://atsd_hostname:8443;expandTags=true`
-[Information about ATSD JDBC URL parameters](https://github.com/axibase/atsd-jdbc/blob/master/README.md)
+* Specify a JDBC URL like `jdbc:atsd://atsd_hostname:8443;expandTags=true` [Information about ATSD JDBC URL parameters](https://github.com/axibase/atsd-jdbc/blob/master/README.md)
 * Click **Test**, specify ATSD login and password
 * If connection is successful click **Save** and close _JDBC Data Source Configuration_ window
 
@@ -220,6 +220,7 @@ weights = repmat(weights, 5, 1);
 % element-wise multiply of 2 columns (1000 value is here because weights is a proportion out of 1000)
 inflation_cpi_price = prices .* weights / 1000;
 ```
+
 ![](resources/inflation_1.png)
 
 ```matlab

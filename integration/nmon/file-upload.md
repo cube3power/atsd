@@ -1,16 +1,16 @@
-#File Upload
+# File Upload
 
 Uploading `nmon` files can be done using a `wget` command or using the ATSD user interface.
 
 Below are the commands and settings for uploading `nmon` files using a `wget` command.
 
-**Plain**
+## Plain
 
 ```sh
 wget --header="Content-type: text/csv" --post-file=file.nmon 'http://server:port/nmon/wget?config=config_name&amp;entity=entity_name&amp;timeZone=time_zone_id'
 ```
 
-**Gzip**
+## GZIP
 
 ```sh
 wget --header="Content-type: text/csv" --header="Content-Encoding: gzip" --post-file=file.nmon.gz 'http://server:port/nmon/wget?config=config_name&amp;entity=entity_name&amp;timeZone=time_zone_id'

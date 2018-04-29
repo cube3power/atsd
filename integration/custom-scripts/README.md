@@ -76,7 +76,7 @@ cd collectors
 chmod a+x *
 ```
 
-##### Set ATSD server options
+#### Set ATSD server options
 
 Edit the script `immortal_nc.sh`. Set the following parameters:
 

@@ -59,13 +59,13 @@ nmon.s = 60
 nmon.c = 1440
 nmon.cron.hour = 12
 nmon.cron.minute = 19
- 
+
 atsd.protocol = telnet
 atsd.port = 8081
 #atsd.key=./id_rsa_atsdreadonly
 #atsd.user=atsdreadonly
 atsd.hostname = atsdserver.com
- 
+
 deploy.user = nmonuser
 deploy.key = ./id_dsa_nmonuser
 deploy.password=secret-pwd

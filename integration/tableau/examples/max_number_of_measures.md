@@ -18,8 +18,8 @@ Build a report showing the number of filings per day of month.
 * Change _Automatic_ to _Pie_ in drop-down at Marks Card
 * Drag-and-drop `Value` to the Marks Card, change aggregation from **SUM** to **COUNT**, replace _Detail_ with _Angle_
 
- ## Results
+## Results
 
- Most records were reported on the 31st day of month:
+Most records were reported on the 31st day of month:
 
- ![](../images/pie.png)
+![](../images/pie.png)

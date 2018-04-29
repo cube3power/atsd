@@ -106,7 +106,7 @@ To obtain the license key, contact Axibase support with the following informatio
 * Output of the `ip addr` command.
 
 ```sh
-$ ip addr
+ip addr
 ```
 
 ```txt
@@ -127,7 +127,7 @@ $ ip addr
 * Output of the `hostname` command.
 
 ```sh
-$ hostname
+hostname
 ```
 
 ```txt

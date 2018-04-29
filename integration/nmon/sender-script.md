@@ -1,6 +1,6 @@
 # Sender Script
 
-**SSH Tunnel**
+## SSH Tunnel
 
 The sender script is used to stream nmon data into ATSD as it is written into the nmon file.
 
@@ -12,7 +12,7 @@ The [SSH Tunneling](https://axibase.com/products/axibase-time-series-database/wr
 
 Unpack the script to the `/opt/nmon` directory, as described in the [SSH File Streaming guide](https://axibase.com/products/axibase-time-series-database/writing-data/nmon/file-streaming/).
 
-**Telnet**
+## Telnet
 
 The `nmon_sender_telnet.sh script` uses Telnet to send nmon data to ATSD.
 
@@ -20,7 +20,7 @@ The `nmon_sender_telnet.sh script` uses Telnet to send nmon data to ATSD.
 
 Unpack the script to the `/opt/nmon directory`, as described in the [Telnet File Streaming guide](https://axibase.com/products/axibase-time-series-database/writing-data/nmon/nmon-file-streaming/).
 
-#### Script Arguments
+## Script Arguments
 
 Example crontab setup:
 

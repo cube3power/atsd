@@ -7,6 +7,7 @@ Display the minimum exports each year.
 ## Data Source
 
 * Table: `bi.ex_net1.m`
+
 ## Steps
 
 * Drag-and-drop the table to Canvas area

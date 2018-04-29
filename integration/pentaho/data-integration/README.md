@@ -64,6 +64,7 @@ To calculate a weighted inflation index we need to multiply the CPI of each cate
 * Modify the `tables` parameter in the `Custom Connection URL` field. The parameter is a list of comma-separated metrics or metric expressions to be displayed as tables in the Database Browser.
 
 Filter examples:
+
 * `%java%` for metrics that contains `java` keyword
 * `custom.metric%` for metrics whose name starts with `custom.metric`
 * `%2017` for metrics whose name ends with `2017`

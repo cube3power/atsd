@@ -37,8 +37,7 @@ sudo apt-get install nmon
 
 #### Option 2: install nmon from Axibase GitHub
 
- - Download nmon from Axibase github:
-    - See releases and branches available for download: [https://github.com/axibase/nmon/releases](https://github.com/axibase/nmon/releases "Available nmon releases") and [https://github.com/axibase/nmon/branches](https://github.com/axibase/nmon/branches "Available nmon branches")
+* Download nmon from Axibase repository on GitHub. See releases and branches available for download: [https://github.com/axibase/nmon/releases](https://github.com/axibase/nmon/releases "Available nmon releases") and [https://github.com/axibase/nmon/branches](https://github.com/axibase/nmon/branches "Available nmon branches").
 
 ```sh
     git clone git://github.com/axibase/nmon.git -b 15e

@@ -1,25 +1,25 @@
-## ODBC-JDBC Bridge
+# ODBC-JDBC Bridge
 
-### Overview
+## Overview
 
 This document describes how to install an ODBC-JDBC bridge on a Windows machine. The bridge serves as a data link between the Axibase Time Series Database and Windows applications that do not support [JDBC](https://docs.oracle.com/javase/tutorial/jdbc/overview/) driver technology.
 
 The bridge intercepts SQL queries from the client applications via the Microsoft [ODBC](https://docs.microsoft.com/en-us/sql/odbc/microsoft-open-database-connectivity-odbc) protocol and transmits the queries into ATSD using the [ATSD JDBC driver](https://github.com/axibase/atsd-jdbc).
 
-### Prerequisites
+## Prerequisites
 
 * Windows 7, 8, 10 operating system, **64-bit edition**.
 * Java 7.
 * [ODBC-JDBC](https://www.easysoft.com/products/data_access/odbc_jdbc_gateway/#section=tab-1) bridge.
 
-### Downloads
+## Downloads
 
 1. Download and install **Java 7**. Note that **Java 8** is not fully supported by the ODBC-JDBC bridge vendor.
 2. [Register](https://www.easysoft.com/cgi-bin/account/register.cgi) an account with the bridge vendor. The account is required for trial license activation.
 3. [Download](https://www.easysoft.com/products/data_access/odbc_jdbc_gateway/#section=tab-1) the trial version of the ODBC-JDBC bridge.
 4. [Download](https://github.com/axibase/atsd-jdbc/releases) ATSD JDBC driver with dependencies.
 
-### Bridge Installation
+## Bridge Installation
 
 Install and activate the bridge:
 
@@ -47,7 +47,7 @@ Install and activate the bridge:
 
   ![](images/easysoft_install_5.PNG)
 
-### License Activation
+## License Activation
 
 A license manager window will appear after exiting from the installation wizard. If the window fails to appear go to **Start** and search for **License Manager**. Fill out the form fields as entered in the registered account and click **Request License**
 
@@ -73,7 +73,7 @@ A license manager window will appear after exiting from the installation wizard.
 
   ![](images/easysoft_activate_6.PNG)
 
-### Configure ODBC Data Source
+## Configure ODBC Data Source
 
 * Go to **Start**, type `ODBC` and launch ODBC Data Source Manager under an Administrator account.
 

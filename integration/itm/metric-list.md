@@ -1,6 +1,7 @@
 # Collected ITM metrics
 
 ## Linux OS
+
 ```css
  klzcpu.busy_cpu
  klzcpu.busyc_whsc
@@ -536,6 +537,7 @@
 ```
 
 ## VMware
+
 ```css
 kvmcltrdst.accessible
 kvmcltrdst.capacity

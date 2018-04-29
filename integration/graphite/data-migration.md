@@ -10,7 +10,7 @@ Below are the available configurations and examples.
 
 `migrate.py` supports only Whisper files (`.wsp`).
 
-Data sent into ATSD by the `migrate.py` utility is parsed according to rules specified in the `graphite.conf `file.
+Data sent into ATSD by the `migrate.py` utility is parsed according to rules specified in the `graphite.conf` file.
 
 Using `migrate.py`:
 
@@ -18,7 +18,7 @@ Using `migrate.py`:
 migrate.py [-h] [--whisper-base BASE] [-R] path atsd_hostname atsd_tcp_port
 ```
 
-#### migrate.py settings
+## migrate.py settings
 
 | Setting | Required | Description |
 | --- | --- | --- |
@@ -29,7 +29,7 @@ migrate.py [-h] [--whisper-base BASE] [-R] path atsd_hostname atsd_tcp_port
 |  `atsd_hostname`  |  yes  |  ATSD hostname or IP.  |
 |  `atsd_tcp_port`  |  yes  |  ATSD TCP listening port. Default ATSD TCP port is 8081.  |
 
-#### Examples
+## Examples
 
 Base path to the Whisper database directory is set with `-R` to migrate all the data and metrics.
 
@@ -68,7 +68,7 @@ collectd.NURSWGDKR002.memory.memory-free 31409938432.0 1436867400
 collectd.NURSWGDKR002.memory.memory-free 31384133632.0 1436867460
 ```
 
-#### Test Data Migration
+## Test Data Migration
 
 Launch `nc` in server mode to record incoming commands to the `test.txt` file.
 

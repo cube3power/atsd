@@ -4,7 +4,7 @@ Axibase Time Series Database has a storage driver for Spring Boot.
 
 [You can find the ATSD Spring Boot Storage Driver on GitHub.](https://github.com/axibase/spring-boot)
 
-#### Settings
+## Settings
 
 | Name | Required | Default Value | Description |
 | --- | --- | --- | --- |
@@ -16,7 +16,7 @@ Axibase Time Series Database has a storage driver for Spring Boot.
 |  `metrics.names.metricPrefix`  |  No  |  –  |  A prefix to be added to the original metric name.  |
 |  `metrics.names.tags.*`  |  No  |  –  |  Optional set of key-value pairs in the ATSD time series identifier.  |
 
-#### Configuration
+## Configuration
 
 Configuration settings are specified in the `application.properties` file.
 
@@ -33,7 +33,7 @@ metrics.names.tags.ip: 127.0.0.1
 metrics.names.tags.organization: Axibase
 ```
 
-#### Metrics
+## Metrics
 
 In order for the application to know about `metrics.export.` and `metrics.names.`, these metrics need to be specified in the configuration: [AtsdNamingStrategy and AtsdMetricWriter](https://github.com/axibase/spring-boot/blob/master/spring-boot-samples/spring-boot-sample-metrics-atsd/src/main/java/sample/metrics/atsd/SampleAtsdExportApplication.java).
 
@@ -44,7 +44,7 @@ Enable public metrics export:
     public MetricsEndpointMetricReader metricsEndpointMetricReader(MetricsEndpoint metricsEndpoint) {
         return new MetricsEndpointMetricReader(metricsEndpoint);
     }
- 
+
         @Bean
     @ExportMetricWriter
     @ConfigurationProperties("metrics.export")
@@ -53,7 +53,7 @@ Enable public metrics export:
         writer.setNamingStrategy(namingStrategy());
         return writer;
     }
- 
+
     @Bean
     @ConfigurationProperties("metrics.names")
     public AtsdNamingStrategy namingStrategy() {
@@ -61,7 +61,7 @@ Enable public metrics export:
     }
 ```
 
-##### Wrapping Methods using Custom Metrics
+### Wrapping Methods using Custom Metrics
 
 Wrap all class methods using custom metrics:
 

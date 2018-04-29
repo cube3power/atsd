@@ -4,9 +4,7 @@
 
 ChartLab is a publicly hosted NodeJS application that makes it easy to experiment with the visualization library implemented in Axibase Time Series Database.
 
-The ChartLab is hosted at the following URL:
-
-* https://apps.axibase.com/chartlab
+The ChartLab is hosted at the following URL: `https://apps.axibase.com/chartlab`.
 
 ChartLab's primary role is to provide a simple user interface to view and save portal and widget examples. Each example consists of one or multiple widgets built with the ATSD JavaScript visualization library. The widgets, created with JavaScript, serve as API clients and load series, properties and messages from ATSD Data API endpoints.
 
@@ -45,9 +43,7 @@ The widgets can be configured to load data from the following sources:
   /opt/atsd/bin/atsd-tsd.sh start
 ```
 
-* Open ChartLab on the plain text protocol to avoid security errors.
-
-  https://apps.axibase.com/chartlab/
+* Open [ChartLab](https://apps.axibase.com/chartlab/) on the plain text protocol to avoid security errors.
 
   > The error will be raised in the browser if the custom ATSD instance is using a self-signed/untrusted SSL certificate.
 

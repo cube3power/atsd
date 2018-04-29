@@ -1,6 +1,6 @@
 # Graphite Format
 
-#### Patterns and `graphite.conf`
+## Patterns and `graphite.conf`
 
 The `graphite.conf` file in the `/opt/atsd/atsd/conf/graphite.conf` directory controls how graphite commands are mapped into ATSD commands.
 
@@ -37,10 +37,9 @@ String constants in brackets(tokens) will be replaced.
 String constants without brackets(tokens) will be added.
 
 > NOTE: Empty tokens will be omitted.
-
 > NOTE: Empty `atsd-pattern` will drop all incoming metrics that satisfy `pattern`.
 
-##### Examples
+### Examples
 
 ```txt
 INPUT: awgswgvml001.counters.axibase_com.wordpress.http.counts.api_bruteprotect_com.count
@@ -126,7 +125,7 @@ OUTPUT: e:nurdkr002 m:collectd.df.percent_bytes-used t:id=run-shm
 
 > Note how `df` is used to add it as a part of metric.
 
-#### Collectl Example
+## Collectl Example
 
 [Collectl](http://collectl.sourceforge.net/index.html) is a universal system performance monitoring tool for Linux systems. Collectl can monitor a broad set of subsystems, which currently include `buddyinfo`, `cpu`, `disk`, `inodes`, `infiniband`, `lustre`, `memory`, `network`, `nfs`, `processes`, `quadrics`, `slabs`, `sockets`, and `tcp`.
 
@@ -187,7 +186,7 @@ nurswgvml031.disktotals.writekbs 36 1434010411
 
 The entity and metrics collected by Collectl will be visible under the Entity and Metrics tabs in ATSD.
 
-#### Sensu Example
+### Sensu Example
 
 [Sensu](https://sensuapp.org/) is a monitoring tool written in Ruby that uses RabbitMQ as a message broker and Redis for storing data. It is well-suited for monitoring cloud environments.
 
@@ -199,7 +198,7 @@ To set up the server and client on separate machines please refer to the follow
 
 [https://www.digitalocean.com/community/tutorials/how-to-configure-sensu-monitoring-rabbitmq-and-redis-on-ubuntu-14-04](https://www.digitalocean.com/community/tutorials/how-to-configure-sensu-monitoring-rabbitmq-and-redis-on-ubuntu-14-04)
 
-##### Configure Sensu to send data to ATSD
+#### Configure Sensu to send data to ATSD
 
 To send data into ATSD, you need a TCP handler, for example:
 

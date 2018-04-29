@@ -10,7 +10,7 @@ The header of the nmon file contains all the system configuration details and sy
 
 Below are the header and system commands extracts from an nmon file.
 
-#### Header Extract
+## Header Extract
 
 ```txt
 AAA,progname,topas_nmon
@@ -37,7 +37,7 @@ AAA,NodeName,itm-aix
 AAA,timestampsize,0
 ```
 
-#### System Command Extract
+## System Command Extract
 
 ```txt
 BBBB,0000,name,size(GB),disc attach type
@@ -69,8 +69,8 @@ BBBC,216,hdisk48:
 BBBC,217,LV NAME LPs PPs DISTRIBUTION MOUNT POINT
 BBBC,218,PDIsapdata5Lv 1999 1999 400..400..399..400..400 /oracle/PDI/sapdata5
 ```
-<a name="properties"></a>
-#### List of nmon Configuration Properties with Examples
+
+## List of nmon Configuration Properties with Examples
 
 ```txt
 "aix": "7.1.3.16",

@@ -88,6 +88,7 @@ Result of `SELECT 1` test query:
 `TABLE_NAME_FILTER` is a list of comma-separated metrics or metric expressions to be displayed as tables in the Pentaho Report Designer.
 
 `TABLE_NAME_FILTER` examples:
+
 * `%java%` for metrics that contains word `java`
 * `custom.metric%` for metrics whose name starts with `custom.metric`
 * `%2017` for metrics whose name ends with `2017`
