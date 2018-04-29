@@ -5,15 +5,11 @@ Groups multiple input series into one series and applies a statistical function 
 The group process is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` for each series separately. `startDate` is inclusive and `endDate` is exclusive.
-2. Group multiple series:
-  - If `period` is specified in the query:
-<br> Split each series' `time:value` array into periods based on the `period`  parameter. Discard periods with start time earlier than `startDate` or greater than `endDate`. Group multiple series samples within the same period. Timestamp of a group equals to the period start time.
-  - If `period` is not specified:
-Multiple series samples are grouped at all unique timestamps in the input series.
-Each group has an ordered list of pairs: [timestamp | samples of several series with given timestamp].
-3. Interpolate grouped series according to the `interpolate` field.
-4. Truncate grouped series if `truncate` field is `true`.
-5. Apply [statistical function](../../../api/data/aggregation.md) to values in each group and return a `time:value` array, where time is the period start time and value is the result of the statistical function.
+1. a. Group multiple series if `period` is specified in the query.<br>Split each series' `time:value` array into periods based on the `period`  parameter. Discard periods with start time earlier than `startDate` or greater than `endDate`. Group multiple series samples within the same period. Timestamp of a group equals to the period start time.
+1. b. Group multiple series if `period` is not specified.<br> Multiple series samples are grouped at all unique timestamps in the input series. Each group has an ordered list of pairs: `[timestamp | samples of several series with given timestamp]`.
+1. Interpolate grouped series according to the `interpolate` field.
+1. Truncate grouped series if `truncate` field is `true`.
+1. Apply [statistical function](../../../api/data/aggregation.md) to values in each group and return a `time:value` array, where time is the period start time and value is the result of the statistical function.
 
 | **Parameter** | **Type** | **Description**  |
 |:---|:---|:---|
@@ -287,11 +283,12 @@ Since `extend` is performed prior to truncation, `truncate` setting has no effec
 
 Interpolation fills the gaps in the raw series. Its behavior depends on the `period` parameter specified in the group processor.
 
-#### `period` parameter is not specified.
+#### `period` parameter is not specified
 
 The `interpolate` function is applied to two consecutive samples of the same series to calculate an interim value for a known timestamp.
 
 Query:
+
 ```json
 [
   {
@@ -338,7 +335,7 @@ Two interpolated values were added to the second series:
 | 2016-06-25T08:00:59Z | -        | 19       | 19  |
 ```
 
-#### `period` parameter is specified.
+#### `period` parameter is specified
 
 Let `t1`, `t2`, `t3` be timestamps of consecutive periods, and lets assume the series has no samples in the `t2` period. Then interpolated value of the `t2` period will be calculated based on two samples: `(t1, v1)` and `(t3, v3)`, where `v1` - is the last series value within the `t1` period, and `v3` is the first series value within the `t3` period.
 
@@ -359,6 +356,7 @@ Query:
 ```
 
 Response
+
 ```json
 [{
     "entity": "*", ...,

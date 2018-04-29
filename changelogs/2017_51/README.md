@@ -1,5 +1,4 @@
-Weekly Change Log: December 18, 2017 - December 25, 2017
-==================================================
+# Weekly Change Log: December 18, 2017 - December 25, 2017
 
 ## ATSD
 

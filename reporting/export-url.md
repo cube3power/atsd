@@ -37,32 +37,32 @@ http://server:port/export?settings={"m":"cpu_used","e":"nurswgvml001","si":"1-WE
 
 #### Aggregation Functions
 
-- AVG
-- MIN
-- MAX
-- SUM
-- COUNT
-- STANDARD_DEVIATION
-- WAVG
-- WTAVG
-- PERCENTILE_50
-- PERCENTILE_75
-- PERCENTILE_90
-- PERCENTILE_95
-- PERCENTILE_99
-- PERCENTILE_995
-- PERCENTILE_999
+* AVG
+* MIN
+* MAX
+* SUM
+* COUNT
+* STANDARD_DEVIATION
+* WAVG
+* WTAVG
+* PERCENTILE_50
+* PERCENTILE_75
+* PERCENTILE_90
+* PERCENTILE_95
+* PERCENTILE_99
+* PERCENTILE_995
+* PERCENTILE_999
 
 #### Interval Time Units
 
-- SECOND
-- MINUTE
-- HOUR
-- DAY
-- WEEK
-- MONTH
-- QUARTER
-- YEAR
+* SECOND
+* MINUTE
+* HOUR
+* DAY
+* WEEK
+* MONTH
+* QUARTER
+* YEAR
 
 #### Interpolation Functions
 

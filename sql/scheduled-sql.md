@@ -117,20 +117,20 @@ Placeholders can be included in the `Output Path` and `Email Subject` fields.
 
 The date placeholder may include the following calendar units:
 
-- `yyyy` - 4-digit year
-- `yy` - 2-digit year
-- `MM` - 2-digit numeric month
-- `MMM` - 3-letter month, for example 'Jan'
-- `dd` - day of month
-- `HH` - hour of the day in 24-hour format
-- `ss` - seconds
-- `SSS` - milliseconds
+* `yyyy` - 4-digit year
+* `yy` - 2-digit year
+* `MM` - 2-digit numeric month
+* `MMM` - 3-letter month, for example 'Jan'
+* `dd` - day of month
+* `HH` - hour of the day in 24-hour format
+* `ss` - seconds
+* `SSS` - milliseconds
 
 Examples:
 
-- `${yyyy-MM-dd}`
-- `${yyyy/MM/dd}`
-- `${yyyy-MM-dd-HH-mm-ss.SSS}`
+* `${yyyy-MM-dd}`
+* `${yyyy/MM/dd}`
+* `${yyyy-MM-dd-HH-mm-ss.SSS}`
 
 A date placeholder will be evaluated **after** the query is completed.
 
@@ -138,11 +138,11 @@ A date placeholder will be evaluated **after** the query is completed.
 
 Form placeholders return an empty string if the requested field is not found or contains no text.
 
-- `${name}` - Report name as specified in the 'Name' field.
-- `${author}` - Report author as specified in the 'Author' field.
-- `${description}` - Report description as specified in the 'Description' field.
-- `${id}` - Report numeric identifier.
-- `${link}` - Report URL based on `server.url` setting, for example `https://atsd_hostname:8443/export/queries/query.xhtml?queryId=23`
+* `${name}` - Report name as specified in the 'Name' field.
+* `${author}` - Report author as specified in the 'Author' field.
+* `${description}` - Report description as specified in the 'Description' field.
+* `${id}` - Report numeric identifier.
+* `${link}` - Report URL based on `server.url` setting, for example `https://atsd_hostname:8443/export/queries/query.xhtml?queryId=23`
 
 ## Metadata
 

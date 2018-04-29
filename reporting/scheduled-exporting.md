@@ -26,8 +26,8 @@ Concurrent execution for the same job is not allowed.
 
 Export job settings in the server.properties file:
 
-- `export.worker.count (default = 8)` – number of export jobs that can be executed at the same time
-- `export.worker.queue (default = 8)` – number of export jobs that can be queued for execution
+* `export.worker.count (default = 8)` – number of export jobs that can be executed at the same time
+* `export.worker.queue (default = 8)` – number of export jobs that can be queued for execution
 
 If new jobs are added for executing when the queue is full, such jobs will be rejected.
 

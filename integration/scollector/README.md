@@ -28,21 +28,21 @@ Entities collecting scollector data are automatically grouped in ATSD:
 
 Entity Groups:
 
-- `scollector-linux`
-- `scollector-windows`
-- `scollector-dotnet`
-- `scollector-iis`
-- `scollector-mssql`
+* `scollector-linux`
+* `scollector-windows`
+* `scollector-dotnet`
+* `scollector-iis`
+* `scollector-mssql`
 
 Default portals are assigned to scollector entity groups.
 
 Portals:
 
-- `scollector-Linux`
-- `scollector-Windows`
-- `scollector-IIS`
-- `scollector-.NET`
-- `scollector-MS SQL`
+* `scollector-Linux`
+* `scollector-Windows`
+* `scollector-IIS`
+* `scollector-.NET`
+* `scollector-MS SQL`
 
 ##### scollector-Linux Portal
 

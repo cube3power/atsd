@@ -19,23 +19,23 @@ Custom portals can be created as described in the following [guide](portals-over
 
 ATSD contains built-in portals which are listed on the [Portals](portals-overview.md#portals-page) page.
 
-- ATSD (self monitoring)
-- Linux nmon
-- AIX nmon
-- Amazon Web Services EC2
-- Amazon Web Services EBS
-- Google cAdvisor
-- Docker Host, Container
-- Microsoft SCOM
-- ITM Operating System
-- ActiveMQ Broker
-- SolarWinds
-- tcollector
-- scollector
-- collectd
-- VMware
-- JVM
-- nginx Web Server
+* ATSD (self monitoring)
+* Linux nmon
+* AIX nmon
+* Amazon Web Services EC2
+* Amazon Web Services EBS
+* Google cAdvisor
+* Docker Host, Container
+* Microsoft SCOM
+* ITM Operating System
+* ActiveMQ Broker
+* SolarWinds
+* tcollector
+* scollector
+* collectd
+* VMware
+* JVM
+* nginx Web Server
 
 The built-in portals can be customized by changing their configuration text and used as a foundation when developing custom portals.
 

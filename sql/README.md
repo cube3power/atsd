@@ -113,7 +113,6 @@ WHERE metric = 'mpstat.cpu_busy'
 ```
 
 > The number of metrics retrieved with the `metric LIKE (expr)` condition is subject to a limit set by the `sql.metric.like.limit` setting. The default limit is `50`.
-
 > Note that `LIKE` operator is case-**sensitive**.
 
 ### WHERE Clause
@@ -130,7 +129,6 @@ The clause can be built from multiple conditions, each comparing values using op
 * String operators: `<, >, <=, >=, =, <>, !=, LIKE, REGEX, IS`.
 
 > The operators `!=` and `<>` cannot be applied to columns `time` and `datetime`.
-
 > The operators `<, >, <=, >=` applied to string values, such as series/entity/metric tag values, perform [lexicographical comparisons](examples/filter-operators-string.md).
 
 The result of evaluating a condition is a boolean value. Multiple conditions can be combined using the logical operators `AND`, `OR`, and `NOT`.
@@ -1072,7 +1070,7 @@ The `CALENDAR` alignment calculates the initial period according to the rules be
 * If the period starting with the _base time_ intersects with the selection interval, it becomes the initial period.
 * Otherwise, the period starting with _base time_ is incremented (decremented if _base time_ exceeds start time) to find the earliest period intersecting with the selection interval. This period becomes the initial period.
 
-**Rounding Rules**
+##### Rounding Rules
 
 | **Time Unit**   | **Base Time (Rounded)** |
 |-------------|-----------|
@@ -1207,10 +1205,10 @@ GROUP BY entity, period(5 MINUTE, LINEAR, EXTEND)
 
 ### Interpolation Examples
 
-- [Interpolate](examples/interpolate.md)
-- [Interpolate Edges](examples/interpolate-edges.md)
-- [Interpolate with Extend](examples/interpolate-extend.md)
-- [ChartLab](https://apps.axibase.com/chartlab/d8c03f11/3/)
+* [Interpolate](examples/interpolate.md)
+* [Interpolate Edges](examples/interpolate-edges.md)
+* [Interpolate with Extend](examples/interpolate-extend.md)
+* [ChartLab](https://apps.axibase.com/chartlab/d8c03f11/3/)
 
 ## Regularization
 
@@ -1322,8 +1320,8 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 
 ### Regularization Examples
 
-- [LINEAR Function](examples/regularize.md#interpolation-function-linear)
-- [PREVIOUS (Step) Function](examples/regularize.md#interpolation-function-previous)
+* [LINEAR Function](examples/regularize.md#interpolation-function-linear)
+* [PREVIOUS (Step) Function](examples/regularize.md#interpolation-function-previous)
 
 ## Grouping
 
@@ -1822,15 +1820,15 @@ The `ON` condition can compare only the predefined columns: `entity`, `time`, ``
 
 | **Compact Syntax** | **SQL-92 Syntax** |
 |:---|---|
-| `FROM tbl_1 t1`<br>` JOIN tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl t2`<br>` ON t1.time AND t2.time`<br>` AND t1.entity = t2.entity AND t1.tags = t2.tags` |
-| `FROM tbl_1 t1`<br>` FULL OUTER JOIN tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>` ON t1.time AND t2.time`<br>` AND t1.entity = t2.entity AND t1.tags = t2.tags` |
+| `FROM tbl_1 t1`<br>`JOIN tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl t2`<br>`ON t1.time AND t2.time`<br>`AND t1.entity = t2.entity AND t1.tags = t2.tags` |
+| `FROM tbl_1 t1`<br>`FULL OUTER JOIN tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>`ON t1.time AND t2.time`<br>`AND t1.entity = t2.entity AND t1.tags = t2.tags` |
 
 The `ON` condition can be modified with the `USING entity` instruction in which case series `tags` are ignored, and records are joined on `entity` and `time` columns instead.
 
 | **Compact Syntax** | **SQL-92 Syntax** |
 |:---|---|
-| `FROM tbl_1 t1`<br>` JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl_2 t2`<br>` ON t1.time AND t2.time`<br>` AND t1.entity = t2.entity` |
-| `FROM tbl_1 t1`<br>` FULL OUTER JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>` ON t1.time AND t2.time`<br>` AND t1.entity = t2.entity` |
+| `FROM tbl_1 t1`<br>`JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl_2 t2`<br>`ON t1.time AND t2.time`<br>`AND t1.entity = t2.entity` |
+| `FROM tbl_1 t1`<br>`FULL OUTER JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>`ON t1.time AND t2.time`<br>`AND t1.entity = t2.entity` |
 
 > Note that self-joins (table is merged with itself) is not supported.
 
@@ -2038,7 +2036,7 @@ GROUP BY PERIOD(1 MINUTE), server
 | 2017-06-16T13:01:00Z | nurswgvml007 | 3.5     | 252451.0 |
 ```
 
->  Note that records returned by a `JOIN USING entity` condition include series with a last insert date greater than the start date specified in the query.
+> Note that records returned by a `JOIN USING entity` condition include series with a last insert date greater than the start date specified in the query.
 
 ### JOIN with `atsd_series` table
 

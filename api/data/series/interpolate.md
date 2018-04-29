@@ -40,9 +40,7 @@ Examples:
 | `AUTO`  | Applies the interpolation function specified in the metric [interpolate](../../meta/metric/list.md#fields) field. Default: `LINEAR`.  |
 
 > Detailed values with timestamps that are equal interpolated timestamps are returned `as is`, without changes.
-
 > The `LINEAR` function returns an interpolated value only if the preceding and the next value is present.
-
 > The `PREVIOUS` function requires a preceding value to be present. The last detailed value is used to calculate one last interpolated value.
 
 ### boundary
@@ -75,7 +73,7 @@ Examples:
 
 ## Examples
 
-**Dataset**
+Dataset:
 
 ```ls
 series e:nurswgvml007 m:cpu_busy=-1 d:2016-12-31T23:30:00Z
@@ -109,7 +107,7 @@ series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
 }]
 ```
 
-**Response**
+Response:
 
 In the default `INNER` mode the values outside of the selection interval are ignored.
 
@@ -145,7 +143,7 @@ In the default `INNER` mode the values outside of the selection interval are ign
 }]
 ```
 
-**Response**
+Response:
 
 ```ls
 | datetime         | value |
@@ -174,7 +172,7 @@ In the default `INNER` mode the values outside of the selection interval are ign
 }]
 ```
 
-**Response**
+Response:
 
 In the default `INNER` mode the values outside of the selection interval are ignored.
 
@@ -203,7 +201,7 @@ In the default `INNER` mode the values outside of the selection interval are ign
 }]
 ```
 
-**Response**
+Response:
 
 In the `OUTER` mode the values outside of the selection interval are used to interpolate leading and trailing values.
 
@@ -231,7 +229,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 }]
 ```
 
-**Response**
+Response:
 
 ```ls
 | datetime         | value |
@@ -257,7 +255,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 }]
 ```
 
-**Response**
+Response:
 
 ```ls
 | datetime         | value |
@@ -285,7 +283,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 }]
 ```
 
-**Response**
+Response:
 
 ```ls
 | datetime         | value |

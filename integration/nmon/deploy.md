@@ -4,10 +4,10 @@ In order to install nmon and the Axibase sender script on multiple Linux machine
 
 The `nmon_deploy.sh` script will execute the following steps on each specified target machine:
 
-- Connect to the remote machine over ssh
-- Copy the nmon binary file
-- Copy the atsd sender script
-- Add a cron task to restart the nmon data collection on a schedule
+* Connect to the remote machine over ssh
+* Copy the nmon binary file
+* Copy the atsd sender script
+* Add a cron task to restart the nmon data collection on a schedule
 
 Download `nmon_deploy.sh` and sender script from the `nmon` repository: [https://github.com/axibase/nmon](https://github.com/axibase/nmon)
 
@@ -26,10 +26,10 @@ Use `#` to uncomment optional parameters.
 
 The following files must be located in the same directory as the `nmon_deploy.sh` script (path to files is set in the `deploy.properties` file):
 
-- nmon binary file
-- Sender script
-- Target machine user ssh key
-- atsdreadonly ssh key
+* nmon binary file
+* Sender script
+* Target machine user ssh key
+* atsdreadonly ssh key
 
 | Setting | Description |
 | --- | --- |

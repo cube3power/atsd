@@ -6,8 +6,8 @@ Returns minimum and maximum values, as well as timestamps, when these values occ
 
 * ChartLab: https://apps.axibase.com/chartlab/2350319f
 * Source data
-  - CSV: https://duckduckgo.com/traffic_data/direct.csv
-  - HTML: https://duckduckgo.com/traffic.html
+  * CSV: https://duckduckgo.com/traffic_data/direct.csv
+  * HTML: https://duckduckgo.com/traffic.html
 
 ## Request
 

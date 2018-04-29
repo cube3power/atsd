@@ -1,5 +1,4 @@
-Weekly Change Log: February 13 - February 19, 2017
-==================================================
+# Weekly Change Log: February 13 - February 19, 2017
 
 ### ATSD
 

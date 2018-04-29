@@ -1,5 +1,4 @@
-Weekly Change Log: July 24, 2017 - July 30, 2017
-==================================================
+# Weekly Change Log: July 24, 2017 - July 30, 2017
 
 ### ATSD
 

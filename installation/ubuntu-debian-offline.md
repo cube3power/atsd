@@ -7,13 +7,13 @@ and copying them to the target machine for offline installation.
 
 ## Supported Versions
 
-- Ubuntu 16.04
-- Debian 8.x/9.x
+* Ubuntu 16.04
+* Debian 8.x/9.x
 
 ## Requirements
 
-- Minimum RAM: 2 GB
-- See [Requirements](../administration/requirements.md) for additional information.
+* Minimum RAM: 2 GB
+* See [Requirements](../administration/requirements.md) for additional information.
 
 ## Installation Steps
 

@@ -93,12 +93,12 @@ Calendar arithmetic such as adding or subtracting an interval is implemented wit
 
 ## Interval Units
 
-- millisecond
-- second
-- minute
-- hour
-- day
-- week
-- month
-- quarter
-- year
+* millisecond
+* second
+* minute
+* hour
+* day
+* week
+* month
+* quarter
+* year

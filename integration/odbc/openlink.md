@@ -8,31 +8,31 @@ The bridge intercepts SQL queries from the client applications via the Microsoft
 
 ### Downloads and Prerequisites
 
-- Download and install Java Runtime Environment 7 for the Windows Operating System.
-- [Download](https://github.com/axibase/atsd-jdbc/releases) ATSD JDBC driver with dependencies.
-- Add Windows Environment variable `Classpath` containing the path to the ATSD JDBC driver 'jar' file.
+* Download and install Java Runtime Environment 7 for the Windows Operating System.
+* [Download](https://github.com/axibase/atsd-jdbc/releases) ATSD JDBC driver with dependencies.
+* Add Windows Environment variable `Classpath` containing the path to the ATSD JDBC driver 'jar' file.
 Open **Environment variables**, click the **New** button under the **System variables** list.
 Type `Classpath` as **Variable name** and the path to the ATSD JDBC driver 'jar' file as **Variable value**.
 
 ![](images/system_properties.png)
 
-- Register an account with the ODBC-JDBC Bridge vendor at https://uda.openlinksw.com/ (required for trial activation).
-- Generate license for the bridge program as displayed:
+* Register an account with the ODBC-JDBC Bridge vendor at https://uda.openlinksw.com/ (required for trial activation).
+* Generate license for the bridge program as displayed:
 
 ![](images/openlink_license.png)
 
-- Choose the desired OS version
-- You will receive the installation link and license files via email.
+* Choose the desired OS version
+* You will receive the installation link and license files via email.
 
 ### Install Bridge
 
 Install and activate the bridge as follows:
 
-- Skip the welcome page.
-- Accept the license agreement.
-- Choose the directory containing the downloaded license file.
-- Select the **Complete** option.
-- Confirm and finish the installation.
+* Skip the welcome page.
+* Accept the license agreement.
+* Choose the directory containing the downloaded license file.
+* Select the **Complete** option.
+* Confirm and finish the installation.
 
 ### Configure ODBC Data Source
 

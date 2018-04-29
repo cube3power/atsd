@@ -7,7 +7,7 @@ Insert messages.
 * Entity name, source, type, severity, and tag names cannot contain non-printable characters. They are case-insensitive and are converted to lower case when stored.
 * Message text and message tag values are **case-sensitive** and are stored as submitted.
 * Field values are trimmed of leading and trailing non-printable characters including tab, line feed, and space.
-* Primary key of the message is composed of type, source, entity, severity, and time. Messages that have the same primary key but different values in other fields, such as message text or tags, are deduplicated by retaining only the last copy.
+* Primary key of the message is composed of type, source, entity, severity, and time. Messages that have the same primary key but different values in other fields, such as message text or tags, are de-duplicated by retaining only the last copy.
 * The number of message tags cannot exceed 1024.
 
 Date limits:
@@ -79,7 +79,8 @@ POST https://atsd_hostname:ame:8443/api/v1/messages/insert
 ]
 ```
 
-#### curl
+#### `curl`
+
 ```elm
 curl https://atsd_hostname:ame:8443/api/v1/messages/insert \
   --insecure --verbose --user {username}:{password} \
@@ -89,6 +90,7 @@ curl https://atsd_hostname:ame:8443/api/v1/messages/insert \
 ```
 
 ## Additional Examples
+
 * [Message with Date](examples/insert/messages-insert-messages-with-date.md)
 * [Message with Tags](examples/insert/messages-insert-messages-with-tags.md)
 * [Multiple Messages with Date](examples/insert/messages-insert-multiple-messages-for-date.md)

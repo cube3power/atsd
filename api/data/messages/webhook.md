@@ -18,12 +18,12 @@ This method can be used to ingest HTTP notifications from services that support 
 * [Entity Mapping](#entity-mapping)
 * [Default Message Field Values](#default-message-field-values)
 * [Reserved Request Parameters](#reserved-request-parameters)
-    * [Literal Value Parameters](#literal-value-parameters)
-    * [Command Parameters](#command-parameters)
-    * [Header Parameters](#header-parameters)
-    * [Filter Parameters](#filter-parameters)
-    * [Parse Parameters](#parse-parameters)
-    * [Control Parameters](#control-parameters)
+  * [Literal Value Parameters](#literal-value-parameters)
+  * [Command Parameters](#command-parameters)
+  * [Header Parameters](#header-parameters)
+  * [Filter Parameters](#filter-parameters)
+  * [Parse Parameters](#parse-parameters)
+  * [Control Parameters](#control-parameters)
 * [Parameter Precedence](#parameter-precedence)
 * [Sample URLs](#sample-urls)
 * [Example](#example)
@@ -118,48 +118,46 @@ Since each message must be associated with an entity, the request should instruc
 
 1. By default, the entity will be set to the remainder of the path following the `/api/v1/messages/webhook/` prefix.
 
-```elm
-  /api/v1/messages/webhook/jenkins?hello=world
-```
+    ```elm
+      /api/v1/messages/webhook/jenkins?hello=world
+    ```
 
-```elm
-  entity = jenkins
-```
+    ```elm
+      entity = jenkins
+    ```
 
-2. The entity may be specified literally by adding an `entity` parameter to the query string, for example `/api/v1/messages/webhook/jenkins?entity=test-1`
+1. The entity may be specified literally by adding an `entity` parameter to the query string, for example `/api/v1/messages/webhook/jenkins?entity=test-1`
 
-```elm
-  entity = test-1
-```
+    ```elm
+      entity = test-1
+    ```
 
-3. The entity can be extracted from a JSON field by referencing the field's full name with `command.entity` parameter, for example `/api/v1/messages/webhook/jenkins?command.entity=server.name`
+1. The entity can be extracted from a JSON field by referencing the field's full name with `command.entity` parameter, for example `/api/v1/messages/webhook/jenkins?command.entity=server.name`
 
-```json
-  {
-    "server": {
-      "name": "test-2",
-      "site": "NUR"
-    }
-  }
-```
+    ```json
+      {
+        "server": {
+          "name": "test-2",
+          "site": "NUR"
+        }
+      }
+    ```
 
-```elm
-  entity = test-2
-```
+    ```elm
+      entity = test-2
+    ```
 
-4. The entity can be extracted from request headers by specifying the header name, for example `/api/v1/messages/webhook/jenkins?header.entity=X-AXI-Region`
+1. The entity can be extracted from request headers by specifying the header name, for example `/api/v1/messages/webhook/jenkins?header.entity=X-AXI-Region`
 
-  HTTP request headers:
+    HTTP request headers:
 
-```txt
-  ...
-  X-AXI-Region: us-east-01
-  ...
-```
+    ```txt
+      X-AXI-Region: us-east-01
+    ```
 
-```elm
-  entity = us-east-01
-```
+    ```elm
+      entity = us-east-01
+    ```
 
 ## Default Message Field Values
 

@@ -12,8 +12,8 @@ The configurations are set under `ATSD_CONF`.
 
 There are two versions of the ATSD Storage Finder:
 
-- ATSD Storage Finder Default – allows you to view metrics as they are stored in ATSD.
-- ATSD Storage Finder Virtual – allows you to create custom paths to entities, metrics, and tags.
+* ATSD Storage Finder Default – allows you to view metrics as they are stored in ATSD.
+* ATSD Storage Finder Virtual – allows you to create custom paths to entities, metrics, and tags.
 
 ATSD Storage Finder settings in `local_settings.py`:
 

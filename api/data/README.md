@@ -1,35 +1,35 @@
-## Overview
+# Overview
 
 The Data API lets you insert and retrieve series, properties, messages, and alerts from the Axibase Time Series Database.
 
 ## Categories
 
 * [Series](series#data-api-series-methods)
-  - [insert](series/insert.md)
-  - [query](series/query.md)
-  - [csv insert](series/csv-insert.md)
-  - [url query](series/url-query.md)
+  * [insert](series/insert.md)
+  * [query](series/query.md)
+  * [csv insert](series/csv-insert.md)
+  * [url query](series/url-query.md)
 * [Properties](properties#data-api-properties-methods)
-  - [insert](properties/insert.md)
-  - [query](properties/query.md)
-  - [url query](properties/url-query.md)
-  - [type query](properties/type-query.md)
-  - [delete](properties/delete.md)
+  * [insert](properties/insert.md)
+  * [query](properties/query.md)
+  * [url query](properties/url-query.md)
+  * [type query](properties/type-query.md)
+  * [delete](properties/delete.md)
 * [Messages](messages#data-api-messages-methods)
-  - [insert](messages/insert.md)
-  - [webhook](messages/webhook.md)
-  - [query](messages/query.md)
-  - [delete](messages/delete.md)
-  - [statistics](messages/stats-query.md)
+  * [insert](messages/insert.md)
+  * [webhook](messages/webhook.md)
+  * [query](messages/query.md)
+  * [delete](messages/delete.md)
+  * [statistics](messages/stats-query.md)
 * [Alerts](alerts#data-api-alerts-methods)
-  - [query](alerts/query.md)
-  - [update](alerts/update.md)
-  - [delete](alerts/delete.md)
-  - [history query](alerts/history-query.md)
+  * [query](alerts/query.md)
+  * [update](alerts/update.md)
+  * [delete](alerts/delete.md)
+  * [history query](alerts/history-query.md)
 * [Extended](ext#data-api-extended-methods)
-  - [command insert](ext/command.md)
-  - [csv upload](ext/csv-upload.md)
-  - [nmon upload](ext/nmon-upload.md)
+  * [command insert](ext/command.md)
+  * [csv upload](ext/csv-upload.md)
+  * [nmon upload](ext/nmon-upload.md)
 
 ## Request Methods
 

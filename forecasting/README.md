@@ -1,9 +1,9 @@
 # Data Forecasting
 
-- Axibase Time Series Database (ATSD) includes built-in forecasting algorithms that can predict abnormalities based on historical data.
-- The accuracy of predictions and the percentage of false positives/negatives depends on the frequency of data collection, the retention interval, and algorithms.
-- Built-in auto-regressive time series extrapolation algorithms (Holt-Winters, ARIMA, etc.) in ATSD can predict failures at early stages.
-- Dynamic predictions eliminate the need to set manual thresholds.
+* Axibase Time Series Database (ATSD) includes built-in forecasting algorithms that can predict abnormalities based on historical data.
+* The accuracy of predictions and the percentage of false positives/negatives depends on the frequency of data collection, the retention interval, and algorithms.
+* Built-in auto-regressive time series extrapolation algorithms (Holt-Winters, ARIMA, etc.) in ATSD can predict failures at early stages.
+* Dynamic predictions eliminate the need to set manual thresholds.
 
 #### Forecasting Example with Abnormal Deviation
 
@@ -13,11 +13,11 @@
 
 #### Forecast Settings
 
-- Forecasting settings can be left in their default, automatic mode for easy setup.
-- ATSD selects the most accurate forecasting algorithm for each time series separately based on a ranking system.
-- The winning algorithm is used to compute forecasts for the next day, week, or month.
-- Pre-computed forecasts can be used in the rule engine.
-- Basic automatic ad hoc forecasting can be used directly in graphs and widgets, and forecasts will be calculated for 1 week with automatic settings.
+* Forecasting settings can be left in their default, automatic mode for easy setup.
+* ATSD selects the most accurate forecasting algorithm for each time series separately based on a ranking system.
+* The winning algorithm is used to compute forecasts for the next day, week, or month.
+* Pre-computed forecasts can be used in the rule engine.
+* Basic automatic ad hoc forecasting can be used directly in graphs and widgets, and forecasts will be calculated for 1 week with automatic settings.
 
 ![](resources/forecasts3.png)
 

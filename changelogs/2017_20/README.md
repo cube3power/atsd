@@ -1,5 +1,5 @@
-Weekly Change Log: May 15, 2017 - May 21, 2017
-==================================================
+# Weekly Change Log: May 15, 2017 - May 21, 2017
+
 ### ATSD
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|

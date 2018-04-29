@@ -9,13 +9,13 @@ Display the minimum exports each year.
 * Table: `bi.ex_net1.m`
 ## Steps
 
-- Drag-and-drop the table to Canvas area
-- Press **Sheet 1**
-- Press **OK** to acknowledge the warning about limitations
-- Drag-and-drop `Value` to the Marks Card, right click > **Measure** > **Minimum**, replace _Detail_ with _Size_
-- Drag-and-drop `Datetime` to the Marks Card, replace _Detail_ with `Color`
-- Drag-and-drop `Datetime` to the Marks Card, right-click on the _QUARTER > YEAR_, replace _Detail_ with _Label_
-- Change _Automatic_ to _Circle_ in the dropdown at Marks Card
+* Drag-and-drop the table to Canvas area
+* Press **Sheet 1**
+* Press **OK** to acknowledge the warning about limitations
+* Drag-and-drop `Value` to the Marks Card, right click > **Measure** > **Minimum**, replace _Detail_ with _Size_
+* Drag-and-drop `Datetime` to the Marks Card, replace _Detail_ with `Color`
+* Drag-and-drop `Datetime` to the Marks Card, right-click on the _QUARTER > YEAR_, replace _Detail_ with _Label_
+* Change _Automatic_ to _Circle_ in the dropdown at Marks Card
 
 ## Results
 

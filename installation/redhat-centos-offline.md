@@ -7,13 +7,13 @@ and copying them to the target machine with similar characteristics for offline 
 
 ## Supported Versions
 
-- RedHat Enterprise Linux 7.x
-- CentOS 7.x
+* RedHat Enterprise Linux 7.x
+* CentOS 7.x
 
 ## Requirements
 
-- Minimum RAM: 2 GB
-- See [Requirements](../administration/requirements.md) for additional information.
+* Minimum RAM: 2 GB
+* See [Requirements](../administration/requirements.md) for additional information.
 
 ## Configuration
 

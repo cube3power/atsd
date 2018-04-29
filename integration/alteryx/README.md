@@ -23,35 +23,35 @@ these commands on the **Metrics > Data Entry** page.
 
 ## Prerequisites
 
-- Install [Alteryx Designer](https://www.alteryx.com/products/alteryx-designer), version 11.x.
-- Install [ODBC-JDBC gateway](../odbc/README.md).
+* Install [Alteryx Designer](https://www.alteryx.com/products/alteryx-designer), version 11.x.
+* Install [ODBC-JDBC gateway](../odbc/README.md).
 
 ## Create Database Connection
 
-- Create a new Alteryx Designer workflow.
+* Create a new Alteryx Designer workflow.
 
-- Add the **Input Data** tool to your workflow.
+* Add the **Input Data** tool to your workflow.
 
   ![](images/input_data.png)
 
-- Choose **Other Databases > ODBC...** in the 'Input Data' configuration window.
-- Open **ODBC Connection** dialog.
+* Choose **Other Databases > ODBC...** in the 'Input Data' configuration window.
+* Open **ODBC Connection** dialog.
 
   ![](images/choose_odbc.png)
 
   ![](images/no_dsn.png)
 
-- Open the **ODBC Data Source Administrator** window by pressing the **ODBC Admin** button in the **ODBC Connection** dialog.
+* Open the **ODBC Data Source Administrator** window by pressing the **ODBC Admin** button in the **ODBC Connection** dialog.
 
-- Configure the [data source](../odbc/README.md#configure-odbc-data-source).
+* Configure the [data source](../odbc/README.md#configure-odbc-data-source).
 
-- Add the [`missingMetric=error`](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) property to the DSN URL to ensure that the driver functions properly.
+* Add the [`missingMetric=error`](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) property to the DSN URL to ensure that the driver functions properly.
 
 ```txt
     jdbc:atsd://atsd_hostname:8443;missingMetric=error
 ```
 
-- If the target ATSD installation contains more than 10000 metrics, consider adding the `tables` property to the DSN URL to filter metrics by name in the Query Builder. For example, `tables=infla%` shows only metrics that start with the characters `infla`.
+* If the target ATSD installation contains more than 10000 metrics, consider adding the `tables` property to the DSN URL to filter metrics by name in the Query Builder. For example, `tables=infla%` shows only metrics that start with the characters `infla`.
 
 ```txt
     jdbc:atsd://atsd_hostname:8443;missingMetric=error;tables=infla%
@@ -59,11 +59,11 @@ these commands on the **Metrics > Data Entry** page.
 
 > Refer to the [JDBC driver](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) documentation for additional details.
 
-- Check (enable) the **Strip Quote** and **Strip Escape** options, press **OK**.
+* Check (enable) the **Strip Quote** and **Strip Escape** options, press **OK**.
 
   ![](images/odbc_quotes.png)
 
-- Select the name you specified for DSN during bridge configuration from the **Data
+* Select the name you specified for DSN during bridge configuration from the **Data
   Source Name** list and press **OK**.
 
   ![](images/dsn_list.png)
@@ -77,13 +77,13 @@ After creating a connection you will see the **Choose Table or Specify Query** d
 This allows you build a query by choosing a table or entering query
 text manually.
 
-- Table names visible in the **Tables** tab satisfy the `tables` pattern
+* Table names visible in the **Tables** tab satisfy the `tables` pattern
   specified in the DSN URL. Click the **Refresh** button to reload the list, if
   necessary.
 
   ![](images/metrics_list.png)
 
-- In the **Visual Query Tab**, you can specify particular columns in the `SELECT` expression as well as add optional
+* In the **Visual Query Tab**, you can specify particular columns in the `SELECT` expression as well as add optional
   sorting and grouping to prepare your
   data before processing it in the workflow. Below is an SQL query and corresponding
   configuration.
@@ -98,10 +98,10 @@ text manually.
 
   ![](images/visual_builder.png)
 
-- The **SQL Editor** allows you to review and modify pre-built queries or write
+* The **SQL Editor** allows you to review and modify pre-built queries or write
   your own.
 
-- The **Test Query** button truncates the query after the `FROM` clause and sends only the remaining
+* The **Test Query** button truncates the query after the `FROM` clause and sends only the remaining
   `SELECT ... FROM ...` expression to the database for validation.
 
   ![](images/sql_editor.png)

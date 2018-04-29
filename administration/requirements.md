@@ -10,18 +10,18 @@
 
 ## Disk Space
 
-- Application files: 5 GB
-- Data Files: depends on the amount of collected data, [compression](compaction/README.md) settings, and the replication factor.
+* Application files: 5 GB
+* Data Files: depends on the amount of collected data, [compression](compaction/README.md) settings, and the replication factor.
 
 ## Architecture
 
-- x86_64 / 64 bit
+* x86_64 / 64 bit
 
 ## Operating Systems
 
-- Ubuntu 16.04
-- RedHat Enterprise Linux 7.x
-- SUSE Linux Enterprise Server 12.x
-- Debian 8.x/9.x
-- CentOS 7.x
-- Other RPM and Debian based systems at compatible levels
+* Ubuntu 16.04
+* RedHat Enterprise Linux 7.x
+* SUSE Linux Enterprise Server 12.x
+* Debian 8.x/9.x
+* CentOS 7.x
+* Other RPM and Debian based systems at compatible levels

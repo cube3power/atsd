@@ -70,10 +70,10 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 
 ### Upload CSV Parsers into ATSD
 
-- Log in to the ATSD web interface.
-- Open the **Configuration > Parsers: CSV** page.
-- Click the [Create] drop-down, select [Import].
-- Upload the CSV parser xml files that you downloaded previously.
+* Log in to the ATSD web interface.
+* Open the **Configuration > Parsers: CSV** page.
+* Click the [Create] drop-down, select [Import].
+* Upload the CSV parser xml files that you downloaded previously.
 
 ### Configure `inotify` Script to Read CSV files and Upload Them into ATSD
 
@@ -134,9 +134,9 @@ Because statistics from ITM agents are received by ATSD with no delay, this type
 
 ### Entity Groups
 
-- `ITM - Linux OS`
+* `ITM - Linux OS`
 
 ### Portals
-- [ITM – Linux OS Portal](https://apps.axibase.com/chartlab/43f054ee)
+* [ITM – Linux OS Portal](https://apps.axibase.com/chartlab/43f054ee)
 
 ![](images/itm_linux_portal.png "itm_linux_portal")

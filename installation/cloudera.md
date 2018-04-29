@@ -67,7 +67,7 @@ To obtain a license key, contact Axibase support with the following information 
 * Output of the `ip addr` command.
 
 ```sh
-$ ip addr
+ip addr
 ```
 
 ```txt
@@ -88,7 +88,7 @@ $ ip addr
 * Output of the `hostname -f` command.
 
 ```sh
-$ hostname -f
+hostname -f
 ```
 
 ```txt
@@ -148,13 +148,13 @@ If the HBase Secure Authorization is disabled you can access HBase as is. Procee
 
 Otherwise, you need to allow the newly created `axibase` principal to access HBase using one of the following options:
 
-1. Add the `axibase` principal to the HBase super users via HBase Configuration.
+#### Option 1. Add the `axibase` principal to the HBase super users via HBase Configuration
 
 > Don't forget to deploy updated configuration and restart HBase.
 
- ![](images/cloudera-manager-superuser.png)
+![](images/cloudera-manager-superuser.png)
 
-2. Grant **RWXC** (read,write,execute,create) permissions to the `axibase` principal.
+#### Option 2. Grant **RWXC** (read,write,execute,create) permissions to the `axibase` principal
 
 Login into the HMaster server and locate the `hbase.keytab` file.
 
@@ -232,7 +232,6 @@ kerberos.keytab.path=/opt/atsd/atsd/conf/axibase.keytab
 ```
 
 > The `keytab` file needs to be updated whenever the password is changed.
-
 > For added security, ensure that the `keytab` file has 400 permission (read by owner).
 
 ### `hbase-site.xml` File
@@ -435,47 +434,47 @@ su - axibase -c /opt/atsd/atsd/bin/start-atsd.sh
 
 ### Option 1. Co-processor Update is NOT Required
 
-- Login as an `axibase` user into the server where ATSD is installed.
+Login as an `axibase` user into the server where ATSD is installed.
 
-- Download the latest ATSD release, or a specific version based on the link provided by Axibase support.
+Download the latest ATSD release, or a specific version based on the link provided by Axibase support.
 
 ```sh
 cd ~
 curl -O https://axibase.com/public/atsd_ee_hbase_1.0.3.tar.gz
 ```
 
-- Extract the files.
+Extract the files.
 
 ```sh
 tar -xvf atsd_ee_hbase_1.0.3.tar.gz
 ```
 
-- Stop the ATSD process.
+Stop the ATSD process.
 
 ```sh
 /opt/atsd/atsd/bin/stop-atsd.sh
 ```
 
-- Update start/script files. Required for ATSD installations older than revision 15060.
+Update start/script files. Required for ATSD installations older than revision 15060.
 
 ```sh
 sed -i 's~^atsd_executable="$atsd_home/bin/atsd.*~atsd_executable=`ls $atsd_home/bin/atsd*.jar`~g' /opt/atsd/atsd/bin/stop-atsd.sh
 sed -i 's~^atsd_executable="$atsd_home/bin/atsd.*~atsd_executable=`ls $atsd_home/bin/atsd*.jar`~g' /opt/atsd/atsd/bin/start-atsd.sh
 ```
 
-- Delete previous ATSD jar files on the ATSD server.
+Delete previous ATSD jar files on the ATSD server.
 
 ```sh
 rm /opt/atsd/atsd/bin/atsd*.jar
 ```
 
-- Copy new ATSD jar files on the ATSD server.
+Copy new ATSD jar files on the ATSD server.
 
 ```sh
 cp atsd/atsd/bin/atsd*.jar /opt/atsd/atsd/bin/
 ```
 
-- Compare atsd-hbase jar revision with the revision installed on HBase region servers
+Compare atsd-hbase jar revision with the revision installed on HBase region servers
 
 ```sh
 ls atsd/hbase/lib/atsd-hbase.*.jar
@@ -483,7 +482,7 @@ ls atsd/hbase/lib/atsd-hbase.*.jar
 
 Compare the displayed revision with atsd-hbase file revision in `/usr/lib/hbase/lib` directory located on the HBase region servers. If the revision is the same, skip HBase region server upgrades. Otherwise, if the new file's revision is greater than what's installed on HBase region servers, shutdown each region server and replace old versions of the jar file with the current copy.
 
-- Start ATSD process.
+Start ATSD process.
 
 ```sh
 /opt/atsd/atsd/bin/start-atsd.sh

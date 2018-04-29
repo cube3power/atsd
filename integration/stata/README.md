@@ -1,15 +1,15 @@
 # Stata
 
-- [Prerequisites](#prerequisites)
-- [Loading Data](#loading-data)
-- [Exporting Data](#exporting-data)
-- [Calculating Derived Series](#calculating-derived-series)
-- [Reference](#reference)
+* [Prerequisites](#prerequisites)
+* [Loading Data](#loading-data)
+* [Exporting Data](#exporting-data)
+* [Calculating Derived Series](#calculating-derived-series)
+* [Reference](#reference)
 
 ## Prerequisites
 
-- Install [Stata](http://www.stata.com/order/) 15
-- Install [ODBC-JDBC Bridge](../odbc/README.md)
+* Install [Stata](http://www.stata.com/order/) 15
+* Install [ODBC-JDBC Bridge](../odbc/README.md)
 
 > If your ATSD installation has too many metrics (more than 10000), add a `tables={filter}` parameter to the [JDBC URL](https://github.com/axibase/atsd-jdbc#jdbc-connection-properties-supported-by-driver) to filter the list of tables visible in Stata.
 
@@ -21,31 +21,31 @@ This configures Stata to interface with ODBC in ANSI mode to prevent string valu
 
 ### Load Data using Import Wizard
 
-- Click on **File > Import > ODBC data sources**
-- Select the ATSD connection in **ODBC data sources**
-- Select a table in the 'Tables' list
-- Choose one or multiple columns from the `Columns` list
-- Click **OK** to import rows containing data in these columns into Stata memory
+* Click on **File > Import > ODBC data sources**
+* Select the ATSD connection in **ODBC data sources**
+* Select a table in the 'Tables' list
+* Choose one or multiple columns from the `Columns` list
+* Click **OK** to import rows containing data in these columns into Stata memory
 
 ![](resources/import_wizard.png)
 
 ### Load Data with Stata Console
 
-- Type [`odbc list`](https://stata.com/manuals13/dodbc.pdf) in the Stata Console.
-- Click on the ATSD Data Source Name (DSN) that you have configured in the ODBC-JDBC Bridge
+* Type [`odbc list`](https://stata.com/manuals13/dodbc.pdf) in the Stata Console.
+* Click on the ATSD Data Source Name (DSN) that you have configured in the ODBC-JDBC Bridge
 
 ![](resources/metric_list.png)
 
-- Click on a table from the list to view the table's description:
+* Click on a table from the list to view the table's description:
 
 ![](resources/table_description.png)
 
-- Click on `load` to load the entire table as a dataset into memory.
-- Click on `query` to re-load the list of tables.
+* Click on `load` to load the entire table as a dataset into memory.
+* Click on `query` to re-load the list of tables.
 
 ## Load Data with SQL Query
 
-- Execute [`odbc load`](https://www.stata.com/manuals13/dodbc.pdf) to load results for a custom SQL query results into memory:
+* Execute [`odbc load`](https://www.stata.com/manuals13/dodbc.pdf) to load results for a custom SQL query results into memory:
 
 ```txt
 odbc load, exec("SELECT time, value, tags.name FROM java_method_invoke_last ORDER BY datetime LIMIT 100") bigintasdouble
@@ -53,8 +53,8 @@ odbc load, exec("SELECT time, value, tags.name FROM java_method_invoke_last ORDE
 
 Syntax:
 
-- `exec("SqlStmt")` allows to issue an SQL SELECT statement to generate a table to be read into Stata.
-- `bigintasdouble` specifies that data stored in 64-bit integer (BIGINT) database columns be converted to Stata doubles.
+* `exec("SqlStmt")` allows to issue an SQL SELECT statement to generate a table to be read into Stata.
+* `bigintasdouble` specifies that data stored in 64-bit integer (BIGINT) database columns be converted to Stata doubles.
 
 Description of resultset:
 
@@ -75,14 +75,14 @@ Description of resultset:
 
 ### Export Data using Export Wizard
 
-- Follow the path **File > Export > ODBC** data source.
-- Click on the ATSD connection in `ODBC data sources`.
-- Type the table name into `Tables` field. This will be the metric name holding the exported data.
-- Choose the variables to export in the `Variables` drop-down list.
-- Type column names from the target metric according to variables selected in the previous step.
-- Choose `Append data into existing table` in `Insertion options`.
-- Check `Use block inserts` option.
-- Click `OK` to export the selected variables into ATSD.
+* Follow the path **File > Export > ODBC** data source.
+* Click on the ATSD connection in `ODBC data sources`.
+* Type the table name into `Tables` field. This will be the metric name holding the exported data.
+* Choose the variables to export in the `Variables` drop-down list.
+* Type column names from the target metric according to variables selected in the previous step.
+* Choose `Append data into existing table` in `Insertion options`.
+* Check `Use block inserts` option.
+* Click `OK` to export the selected variables into ATSD.
 
 ### Export Data using Stata Console
 
@@ -96,11 +96,11 @@ odbc insert var1 var2 var3, as("entity datetime value") dsn("ATSD") table("targe
 
 Syntax:
 
-- `var1 var2 var3` is a list of variables from the in-memory dataset in Stata.
-- `as("entity datetime value")` is a list of columns in the ATSD metric. It should be sorted according to list of variables.
-- `dsn("ATSD")` is a name of ODBC connection to ATSD.
-- `table("metric_name")` is a name of the metric which will contain exported dataset.
-- `block` is a parameter to force using block inserts.
+* `var1 var2 var3` is a list of variables from the in-memory dataset in Stata.
+* `as("entity datetime value")` is a list of columns in the ATSD metric. It should be sorted according to list of variables.
+* `dsn("ATSD")` is a name of ODBC connection to ATSD.
+* `table("metric_name")` is a name of the metric which will contain exported dataset.
+* `block` is a parameter to force using block inserts.
 
 ## Calculating Derived Series
 
@@ -254,19 +254,19 @@ SELECT entity, datetime, value FROM inflation.cpi.composite.price
 
 ## Script File
 
-- [Link to the `do` file](resources/script.do) that contains all the steps.
+* [Link to the `do` file](resources/script.do) that contains all the steps.
 
 ## Reference
 
 Stata commands used in this example:
 
-- [`adbc`](http://www.stata.com/manuals13/dodbc.pdf)
-- [`save`](http://www.stata.com/manuals13/dsave.pdf)
-- [`clear`](http://www.stata.com/manuals13/dclear.pdf)
-- [`cross`](http://www.stata.com/manuals13/dcross.pdf)
-- [`merge`](http://www.stata.com/manuals13/dmerge.pdf)
-- [`drop`](http://www.stata.com/manuals13/ddrop.pdf)
-- [`generate`](http://www.stata.com/manuals13/dgenerate.pdf)
-- [`by / bysort`](http://www.stata.com/help.cgi?bysort)
-- [`egen`](http://www.stata.com/manuals13/degen.pdf)
-- [`sort`](http://www.stata.com/manuals13/dsort.pdf)
+* [`adbc`](http://www.stata.com/manuals13/dodbc.pdf)
+* [`save`](http://www.stata.com/manuals13/dsave.pdf)
+* [`clear`](http://www.stata.com/manuals13/dclear.pdf)
+* [`cross`](http://www.stata.com/manuals13/dcross.pdf)
+* [`merge`](http://www.stata.com/manuals13/dmerge.pdf)
+* [`drop`](http://www.stata.com/manuals13/ddrop.pdf)
+* [`generate`](http://www.stata.com/manuals13/dgenerate.pdf)
+* [`by / bysort`](http://www.stata.com/help.cgi?bysort)
+* [`egen`](http://www.stata.com/manuals13/degen.pdf)
+* [`sort`](http://www.stata.com/manuals13/dsort.pdf)

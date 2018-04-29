@@ -102,9 +102,9 @@ Open the **Filters** section and enable **Display Versions** setting on export p
 
 ![](resources/4.png)
 
-- Records with version history are highlighted with _blue_ and _brown_-colored borders: _blue_ border represents the latest value, _brown_ border represents a historical, overwritten value.
-- `NaN` represents deleted values.
-- Aggregation functions and other calculations ignore historical and deleted values.
+* Records with version history are highlighted with _blue_ and _brown_-colored borders: _blue_ border represents the latest value, _brown_ border represents a historical, overwritten value.
+* `NaN` represents deleted values.
+* Aggregation functions and other calculations ignore historical and deleted values.
 
 #### Version Filters
 

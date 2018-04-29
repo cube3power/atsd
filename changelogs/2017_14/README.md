@@ -1,5 +1,4 @@
-Weekly Change Log: April 3 - April 9, 2017
-==================================================
+# Weekly Change Log: April 3 - April 9, 2017
 
 ### ATSD
 

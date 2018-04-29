@@ -1,5 +1,4 @@
-Weekly Change Log: June 19, 2017 - June 25, 2017
-==================================================
+# Weekly Change Log: June 19, 2017 - June 25, 2017
 
 ### ATSD
 

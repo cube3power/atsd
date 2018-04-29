@@ -1,5 +1,4 @@
-nmon File Streaming over Telnet
-===============================
+# nmon File Streaming over Telnet
 
 Execute the steps in this guide in order to start streaming nmon data into the Axibase Time Series Database over Telnet.
 
@@ -17,8 +16,8 @@ All AIX systems come with nmon pre-installed, but Linux systems need the nmon to
 
 ## nmon Resources
 
-- [IBM](https://www.ibm.com/developerworks/aix/library/au-analyze_aix/)
-- [Nmon SourceForge](http://nmon.sourceforge.net/pmwiki.php?n=Main.HomePage)
+* [IBM](https://www.ibm.com/developerworks/aix/library/au-analyze_aix/)
+* [Nmon SourceForge](http://nmon.sourceforge.net/pmwiki.php?n=Main.HomePage)
 
 ### Install nmon
 
@@ -45,7 +44,7 @@ sudo apt-get install nmon
     git clone git://github.com/axibase/nmon.git -b 15e
 ```
 
-- Move the downloaded nmon files to the `/opt/nmon` directory:
+* Move the downloaded nmon files to the `/opt/nmon` directory:
 
 ```sh
     mv nmon/* /opt/nmon
@@ -57,13 +56,13 @@ sudo apt-get install nmon
     x86_ubuntu134
 ```
 
-- Set permissions for nmon:
+* Set permissions for nmon:
 
 ```sh
     sudo chmod 774 nmon
 ```
 
-- Make nmon executable:
+* Make nmon executable:
 
 ```sh
     chmod +x nmon
@@ -71,26 +70,26 @@ sudo apt-get install nmon
 
 #### Option 3: install nmon from binaries
 
-- Download the appropriate nmon binary: [http://nmon.sourceforge.net/pmwiki.php?n=Site.Download](http://nmon.sourceforge.net/pmwiki.php?n=Site.Download "nmon Binaries")
+* Download the appropriate nmon binary: [http://nmon.sourceforge.net/pmwiki.php?n=Site.Download](http://nmon.sourceforge.net/pmwiki.php?n=Site.Download "nmon Binaries")
 
 ```sh
     wget http://sourceforge.net/projects/nmon/files/nmon15d_power.tar.gz
 ```
 
-- Extract nmon
+* Extract nmon
 
 ```sh
     tar xzf nmon15d_power.tar.gz
 ```
 
-- After extracting the downloaded nmon archive, choose the appropriate binary file for your system. For example: `nmon\_linux\_x86\_64`
-- Change the name of the correct binary to nmon
+* After extracting the downloaded nmon archive, choose the appropriate binary file for your system. For example: `nmon\_linux\_x86\_64`
+* Change the name of the correct binary to nmon
 
 ```sh
     mv nmon_linux_x86_64 nmon
 ```
 
-- Set permissions for nmon
+* Set permissions for nmon
 
 ```sh
     sudo chmod 774 nmon

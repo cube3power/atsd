@@ -1,7 +1,6 @@
-Weekly Change Log: August 28, 2017 - September 03, 2017
-==================================================
+# Weekly Change Log: August 28, 2017 - September 03, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
@@ -16,21 +15,19 @@ Weekly Change Log: August 28, 2017 - September 03, 2017
 | 4410 | Bug | Java API | Add missing metric methods to the [Java API Client](https://github.com/axibase/atsd-api-java). |
 | [4351](#issue-4351) | jdbc | Feature | Add support for extended [tag methods](https://github.com/axibase/atsd-jdbc#tag-columns) in the JDBC driver. |
 
-### ATSD
-
-#### Issue 4532
+### Issue 4532
 
 The "Guest Access" check box controls unauthenticated access to a selected portal.
 
 ![](Images/issue-4532.png)
 
-#### Issue 4525
+### Issue 4525
 
 The Summary Table in **Configuration** > **Database Tables** displays totals for key data tables.
 
 ![](Images/issue-4525.png)
 
-#### Issue 4351
+### Issue 4351
 
 ```java
 //serialize

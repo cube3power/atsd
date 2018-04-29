@@ -1,5 +1,4 @@
-Weekly Change Log: October 2, 2017 - October 8, 2017
-==================================================
+# Weekly Change Log: October 2, 2017 - October 8, 2017
 
 ## ATSD
 

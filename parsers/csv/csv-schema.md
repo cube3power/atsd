@@ -31,13 +31,13 @@ tag('status', cell(row, col+1).toLowerCase());
 
 Explanation:
 
-- `select("#row=2-*")` – RFC7111 selection. Read rows starting with 2nd row with step 1 > `'2015-10-29T00:00:00Z; 19.2; provis; 11.3; ok'`.
-- `select("#col=2-*!2")` – RFC7111 selection. Read columns in the current row starting with 2nd column with step 2: 2,4,6. etc. > `'19.2'`.
-- `timestamp(cell(row, 1))` – Set time to `'2015-10-29T00:00:00Z'` which is the value of the cell located in the current row, 1st column.
-- `entity(cell(1, col))` – Set entity to `'sensor01'` which is value of cell located in the 1st row, current column.
-- `metric('power_kwh')` - Set metric name to a predefined value.
-- `tag('status',cell(row, col+1).toLowerCase())` – Set tag `status` to `'provis'` which is the lowercased value of the cell located in the current row to the right of the current column `(col + 1)`.
-- Iterate to the next column with step 2, `select("#col=2-*!2")`, to cell `'11.3'`. Repeat chained functions after `addSeries()`.
+* `select("#row=2-*")` – RFC7111 selection. Read rows starting with 2nd row with step 1 > `'2015-10-29T00:00:00Z; 19.2; provis; 11.3; ok'`.
+* `select("#col=2-*!2")` – RFC7111 selection. Read columns in the current row starting with 2nd column with step 2: 2,4,6. etc. > `'19.2'`.
+* `timestamp(cell(row, 1))` – Set time to `'2015-10-29T00:00:00Z'` which is the value of the cell located in the current row, 1st column.
+* `entity(cell(1, col))` – Set entity to `'sensor01'` which is value of cell located in the 1st row, current column.
+* `metric('power_kwh')` - Set metric name to a predefined value.
+* `tag('status',cell(row, col+1).toLowerCase())` – Set tag `status` to `'provis'` which is the lowercased value of the cell located in the current row to the right of the current column `(col + 1)`.
+* Iterate to the next column with step 2, `select("#col=2-*!2")`, to cell `'11.3'`. Repeat chained functions after `addSeries()`.
 
 Commands:
 
@@ -50,21 +50,21 @@ series e:sensor02 m:power_kwh=12.9 d:2015-10-29T00:05:00Z t:status=ok
 
 If Schema parsing is enabled, only the following fields from the parser configuration are applied:
 
-- Delimiter
-- Line Delimiter
-- Text Qualifier
-- Comment Symbol
-- Padding Symbol
-- Decimal Separator
-- Grouping Separator
-- Fields Lengths
-- Date fields: Time Pattern, Offset, Time Zone
-- Replace Entities
-- Process Events
-- Discard NaN
-- Ignore Line Errors
-- Renamed Columns
-- Filter
+* Delimiter
+* Line Delimiter
+* Text Qualifier
+* Comment Symbol
+* Padding Symbol
+* Decimal Separator
+* Grouping Separator
+* Fields Lengths
+* Date fields: Time Pattern, Offset, Time Zone
+* Replace Entities
+* Process Events
+* Discard NaN
+* Ignore Line Errors
+* Renamed Columns
+* Filter
 
 ### Schema Functions
 
@@ -119,12 +119,12 @@ If Schema parsing is enabled, only the following fields from the parser configu
 
 #### Notes
 
-- Row and column indexes start with 1.
-- Row index of the active cell can be referenced with the `row` parameter.
-- Column index of the active cell can be referenced with the `col` parameter.
-- Relative index is specified with `+/-`, for example `col+1`.
-- Row index can be smaller or equal to the index of the current row due to the streaming nature of the parser.
-- If index is not specified, the current index is used. Same as `+0` or `-0`.
+* Row and column indexes start with 1.
+* Row index of the active cell can be referenced with the `row` parameter.
+* Column index of the active cell can be referenced with the `col` parameter.
+* Relative index is specified with `+/-`, for example `col+1`.
+* Row index can be smaller or equal to the index of the current row due to the streaming nature of the parser.
+* If index is not specified, the current index is used. Same as `+0` or `-0`.
 
 #### RFC 7111 Step Extension Syntax
 
@@ -142,24 +142,24 @@ RFC 7111 base syntax: [https://tools.ietf.org/html/rfc7111#section-3](https://to
 
 Examples:
 
-- `#row=1-*!2`                    – Select odd rows.
-- `#col=10-*!3`             – Select every 3rd column starting with column 10.
-- `#cell=1,2-5,*!1,2`     – Select even columns in the first 5 rows.
+* `#row=1-*!2`                    – Select odd rows.
+* `#col=10-*!3`             – Select every 3rd column starting with column 10.
+* `#cell=1,2-5,*!1,2`     – Select even columns in the first 5 rows.
 
 #### Schema-based Parser Examples
 
-- [Basic Example](examples/basic.md)
-- [Columnar Format](examples/columnar-schema.md)
-- [Columnar Period Format](examples/columnar-period-schema.md)
-- [No Header](examples/no-header.md)
-- [Multi-Column Timestamp](examples/multi-column-timestamp.md)
-- [Multiple Metrics in Header](examples/multiple-metrics-in-header.md)
-- [Metric Column](examples/metric-column-schema.md)
-- [Messages](examples/message-schema.md)
-- [Properties](examples/properties.md)
-- [Messages with Filter](examples/message-with-filter-schema.md)
-- [Series with Tags](examples/series-tags-schema.md)
-- [`notEmptyUp`](examples/notemptyup-schema.md)
-- [`notEmptyLeft`](examples/not-empty-left-schema.md)
-- [Versioned Series](examples/versioned-series-schema.md)
-- [Block-Appended](examples/block-appended-schema.md)
+* [Basic Example](examples/basic.md)
+* [Columnar Format](examples/columnar-schema.md)
+* [Columnar Period Format](examples/columnar-period-schema.md)
+* [No Header](examples/no-header.md)
+* [Multi-Column Timestamp](examples/multi-column-timestamp.md)
+* [Multiple Metrics in Header](examples/multiple-metrics-in-header.md)
+* [Metric Column](examples/metric-column-schema.md)
+* [Messages](examples/message-schema.md)
+* [Properties](examples/properties.md)
+* [Messages with Filter](examples/message-with-filter-schema.md)
+* [Series with Tags](examples/series-tags-schema.md)
+* [`notEmptyUp`](examples/notemptyup-schema.md)
+* [`notEmptyLeft`](examples/not-empty-left-schema.md)
+* [Versioned Series](examples/versioned-series-schema.md)
+* [Block-Appended](examples/block-appended-schema.md)

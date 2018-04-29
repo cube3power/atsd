@@ -290,8 +290,8 @@ network_size.writesize
 
 #### Derived Metrics
 
-- Derived metrics are calculated to simplify rule development and visualization tasks.
-- The derived metrics are stored similar to original metrics and are available in rule expressions, forecasts, and widgets.
+* Derived metrics are calculated to simplify rule development and visualization tasks.
+* The derived metrics are stored similar to original metrics and are available in rule expressions, forecasts, and widgets.
 
 | Derived Metric | Original Metrics |
 | --- | --- |

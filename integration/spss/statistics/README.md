@@ -1,14 +1,14 @@
 # IBM SPSS Data Analysis
 
-- [Load Sample Data into ATSD](#load-sample-data-into-atsd)
-- [Import Data into SPSS](#import-data-into-spss)
-     * [Import Data from Database](#import-data-from-database)
-     * [Import from CSV Files](#import-from-csv-files)
-- [Merge Datasets](#merge-datasets)
-- [Analyze Dataset](#analyze-dataset)
-- [Export Derived Series into ATSD](#export-derived-series-into-atsd)
-- [Verify Insertion](#verify-insertion)
-- [Exporting Data from ATSD into CSV Files](#exporting-data-from-atsd-into-csv-files)
+* [Load Sample Data into ATSD](#load-sample-data-into-atsd)
+* [Import Data into SPSS](#import-data-into-spss)
+  * [Import Data from Database](#import-data-from-database)
+  * [Import from CSV Files](#import-from-csv-files)
+* [Merge Datasets](#merge-datasets)
+* [Analyze Dataset](#analyze-dataset)
+* [Export Derived Series into ATSD](#export-derived-series-into-atsd)
+* [Verify Insertion](#verify-insertion)
+* [Exporting Data from ATSD into CSV Files](#exporting-data-from-atsd-into-csv-files)
 
 ## Overview
 
@@ -49,15 +49,16 @@ You can import ATSD data into SPSS by configuring an ODBC data source on a Windo
 
 * Configure an [ODBC-JDBC bridge](../../../integration/odbc) for ATSD:
 
-    - specify URL property `compatibility=odbc2`: `jdbc:atsd://atsd_hostname:ATSD_PORT;compatibility=odbc2`.
+  * Specify URL property `compatibility=odbc2`: `jdbc:atsd://atsd_hostname:ATSD_PORT;compatibility=odbc2`.
+
 * Disable UNICODE mode:
 
-    - launch SPSS Statistics;
-    - do not open any existing data file;
-    - select the 'Edit' menu;
-    - select the 'Options' menu;
-    - select the 'Language' tab;
-    - in the section labeled 'Character Encoding for Data and Syntax', select 'Locale's writing system'.
+  * Launch SPSS Statistics;
+  * Do not open any existing data file;
+  * Select the 'Edit' menu;
+  * Select the 'Options' menu;
+  * Select the 'Language' tab;
+  * In the section labeled 'Character Encoding for Data and Syntax', select 'Locale's writing system'.
 
 #### Option 1: Load Prices and Weights As Separate Datasets
 
@@ -83,7 +84,7 @@ You can import ATSD data into SPSS by configuring an ODBC data source on a Windo
 
 * Open **File > Import Data > Database > New query...**.
 * Select the `datetime` column from both the `inflation.cpi.categories.price` and `inflation.cpi.categories.weight` tables.
-![](images/merged_import/step1.png)
+  ![](images/merged_import/step1.png)
 * Skip the next steps until a query editor is displayed.
 * Enter the following query which executes a FULL OUTER JOIN with interpolation for the missing weight records:
 
@@ -94,6 +95,7 @@ FROM "inflation.cpi.categories.price" T0
 WHERE T0.datetime BETWEEN '2013-01-01T00:00:00Z' AND '2017-01-01T00:00:00Z'
   WITH INTERPOLATE (1 YEAR, PREVIOUS, INNER, EXTEND)
 ```
+
 ![](images/merged_import/step_3.png)
 
 * Click 'Finish'
@@ -117,7 +119,7 @@ Data from the CSV files are now available as SPSS datasets `prices.sav` and `wei
 
 ### Change Names of Columns
 
-SPSS merges datasets using matching column names, similar to the `SELF JOIN` command in the SQL syntax.
+SPSS merges datasets using equal column names, similar `SELF JOIN` in SQL.
 
 To prevent the `datetime` and `value` columns from being merged, their names must be changed in the `weights.sav` dataset using `Variable View` tab, otherwise the merged dataset produced by SPSS will only contain data for 2017.
 
@@ -134,7 +136,7 @@ Merge the two datasets by adding the `weight` column from the `weights.sav` data
 * Check 'Match cases on key variables'.
 * Select `time` in the 'New Active Dataset' pane, add to 'Key Variables' Pane.
 
-![](images/merge_editor.png)
+  ![](images/merge_editor.png)
 * Click 'Ok'.
 * Remove `time` column using `Variable View`.
 
@@ -200,8 +202,9 @@ SPSS provides two alternatives to aggregate data by period.
 
 ## Export Derived Series into ATSD
 
-- Create a new metric in ATSD that will be used to store new series calculated in SPSS.
-- Login into ATSD, open **Metrics** > **Data entry** page and send a `metric` command:
+Create a new metric in ATSD that will be used to store new series calculated in SPSS.
+
+* Login into ATSD, open **Metrics** > **Data entry** page and send a `metric` command:
 
 ```ls
 metric m:cpi_price
@@ -209,46 +212,46 @@ metric m:cpi_price
 
 ![](images/atsd_export_1.png)
 
-- Open the previously created dataset in SPSS.
+* Open the previously created dataset in SPSS.
 
-- Select **Transform > Compute Variable...**
+* Select **Transform > Compute Variable...**
 
-![](images/atsd_export_2.png)
+  ![](images/atsd_export_2.png)
 
-  - Enter `entity` in the **Target Variable** field.
-  - Enter `"bls.gov"` in the **Numeric Expression** field.
+  * Enter `entity` in the **Target Variable** field.
+  * Enter `"bls.gov"` in the **Numeric Expression** field.
 
 ![](images/atsd_export_3.png)
 
-- Click **Type & Label...** button.
+* Click **Type & Label...** button.
 
 ![](images/atsd_export_4.png)
 
-- Set **Type** to **String** and click **Continue**.
+* Set **Type** to **String** and click **Continue**.
 
 ![](images/atsd_export_5.png)
 
-- Click **OK** to apply the changes. Column `entity` should now appear in the dataset.
+* Click **OK** to apply the changes. Column `entity` should now appear in the dataset.
 
 ![](images/atsd_export_6.png)
 
-- Open the **File** menu and select **Export > Database...**.
+* Open the **File** menu and select **Export > Database...**.
 
 ![](images/atsd_export_7.png)
 
-- Select `ATSD` data source, click **Next**.
+* Select `ATSD` data source, click **Next**.
 
 ![](images/atsd_export_8.png)
 
-- Select **Append new records to an existing table** and click **Next**
+* Select **Append new records to an existing table** and click **Next**
 
 ![](images/atsd_export_9.png)
 
-- Choose `cpi_price` table and click **Next**. The list of tables is based on the `tables=` driver property specified in the JDBC URL. If you don't see the desired table in the list, update ODBC data source as described [here](../../odbc/table-config.md) and re-open the export wizard.
+* Choose `cpi_price` table and click **Next**. The list of tables is based on the `tables=` driver property specified in the JDBC URL. If you don't see the desired table in the list, update ODBC data source as described [here](../../odbc/table-config.md) and re-open the export wizard.
 
 ![](images/atsd_export_10.png)
 
-- Associate table columns with metric fields.
+* Associate table columns with metric fields.
 
 ![](images/atsd_export11.png)
 
@@ -256,11 +259,11 @@ The result should look as follows. Click **Next**
 
 ![](images/atsd_export12.png)
 
- - Select **ODBC** - **Row-wise binding**, select **Paste the syntax** and click **Finish**
+* Select **ODBC** - **Row-wise binding**, select **Paste the syntax** and click **Finish**
 
 ![](images/atsd_export_13.png)
 
-- Paste the following script into the dialog window:
+* Paste the following script into the dialog window:
 
 ```sh
 SAVE TRANSLATE /TYPE=ODBC
@@ -274,7 +277,7 @@ SAVE TRANSLATE /TYPE=ODBC
 
 ![](images/atsd_export_14.png)
 
-- Right click on the script window and select **Run All** to export the data into ATSD.
+* Right click on the script window and select **Run All** to export the data into ATSD.
 
 ![](images/atsd_export_15.png)
 
@@ -282,7 +285,7 @@ SAVE TRANSLATE /TYPE=ODBC
 
 To check that data is successfully exported to ATSD, open the ATSD web interface.
 
-- Open the **SQL** tab and execute the following query:
+* Open the **SQL** tab and execute the following query:
 
 ```sql
 SELECT entity, datetime, value FROM cpi_price

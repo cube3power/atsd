@@ -1,5 +1,4 @@
-Monthly Change Log: February 2018
-==================================================
+# Monthly Change Log: February 2018
 
 ## ATSD
 

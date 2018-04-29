@@ -1,6 +1,7 @@
-Weekly Change Log: August 21, 2017 - August 28, 2017
-==================================================
-### ATSD
+# Weekly Change Log: August 21, 2017 - August 28, 2017
+
+## ATSD
+
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4512 | core | Bug | Normalize compression algorithm names supported by <br>`hbase.compression.type` and `hbase.compression.type.raw` settings: `none`, `gz`, `lzo`. |
