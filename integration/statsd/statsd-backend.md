@@ -58,7 +58,7 @@ Possible variables:
 
 StatsD has an [open bug](https://github.com/etsy/statsd/issues/462) regarding the inability of the configuration to sometimes reload during operation. Changing the configuration file while StatsD is running may result in StatsD crashing. Until the bug is fixed, add `automaticConfigReload: false` to your configuration and restart StatsD for the changed configuration to take effect.
 
-#### Patterns
+## Patterns
 
 Patterns enable the conversion of native StatsD metric names into ATSD entity/metric/tags.
 
