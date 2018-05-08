@@ -30,7 +30,7 @@ The request contains an array of series objects, each containing an array of tim
 |:---|:---|:---|
 | `entity` | string | [**Required**] Entity name |
 | `metric` | string | [**Required**] Metric name |
-| `tags` | object | Object containing series tags, where field name represents tag name and field value is tag value.<br>`{"tag-1":string,"tag-2":string}` |
+| `tags` | object | Series tags object, where field name represents tag name and field value is tag value,<br> for example `{"tag-1":"val-1","tag-2":"val2"}` |
 | `type` | string | Type of inserted data: `HISTORY`, `FORECAST`. Default: `HISTORY` |
 | `forecastName` | string | Forecast name. <br>Applicable if `type` is `FORECAST`.<br>`forecastName` can be used to store a custom forecast identified by name. <br>If `forecastName` is omitted, the values overwrite the default forecast.  |
 | `data` | array | [**Required**] Array of [Value](#value-object) objects.<br>Example `[{"d":"2016-06-01T12:08:42.518Z", "v":50.8}]`.|

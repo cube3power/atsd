@@ -3,7 +3,7 @@
 ## Data API
 
 * [Overview](data#overview)
-* [Series](data/series/README.md): [query](data/series/query.md), [insert](data/series/insert.md), [csv insert](data/series/csv-insert.md), [url query](data/series/url-query.md)
+* [Series](data/series/README.md): [query](data/series/query.md), [url query](data/series/url-query.md), [insert](data/series/insert.md), [csv insert](data/series/csv-insert.md), [delete](data/series/delete.md)
 * [Properties](data/properties/README.md): [query](data/properties/query.md), [insert](data/properties/insert.md), [url query](data/properties/url-query.md), [type query](data/properties/type-query.md), [delete](data/properties/delete.md)
 * [Messages](data/messages/README.md): [query](data/messages/query.md), [insert](data/messages/insert.md), [webhook](data/messages/webhook.md), [delete](data/messages/delete.md), [statistics](data/messages/stats-query.md)
 * [Alerts](data/alerts/README.md): [query](data/alerts/query.md), [update](data/alerts/update.md), [delete](data/alerts/delete.md), [history query](data/alerts/history-query.md)

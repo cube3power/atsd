@@ -9,6 +9,7 @@ The Data API lets you insert and retrieve series, properties, messages, and aler
   * [query](series/query.md)
   * [csv insert](series/csv-insert.md)
   * [url query](series/url-query.md)
+  * [delete](series/delete.md)
 * [Properties](properties#data-api-properties-methods)
   * [insert](properties/insert.md)
   * [query](properties/query.md)

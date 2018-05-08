@@ -8,6 +8,7 @@
 | [CSV Insert](series/csv-insert.md) | POST | `api/v1/series/csv/{entity}` | `text/csv` | Insert series values for the specified entity and series tags in CSV format.|
 | [Query](series/query.md) | POST | `/api/v1/series/query` | `application/json` | Retrieve series with timestamped values for specified filters.|
 | [URL Query](series/url-query.md) | GET | `/api/v1/series/{format}/{entity}/{metric}` |  | Retrieve series values for the specified entity, metric, and optional series tags in CSV and JSON format. |
+| [Delete](series/delete.md) | POST | `/api/v1/series/delete` | `application/json` | Delete series that match specified filters. |
 
 ## Properties
 
@@ -26,7 +27,7 @@
 | [Insert](messages/insert.md) | POST | `/api/v1/messages/insert` | `application/json` | Insert an array of messages. |
 | [Webhook](messages/webhook.md) | POST | `/api/v1/messages/webhook/*` | `application/json` | Convert the request into a message and store it. |
 | [Query](messages/query.md) | POST | `/api/v1/messages/query` | `application/json` | Retrieve message records for the specified filters. |
-| [Statistics Query](messages/stats-query.md) | POST | `/api/v1/messages/stas/query` | `application/json` |  Retrieve message counters as series for the specified filters.  |
+| [Statistics Query](messages/stats-query.md) | POST | `/api/v1/messages/stats/query` | `application/json` |  Retrieve message counters as series for the specified filters.  |
 
 ## Alerts
 
