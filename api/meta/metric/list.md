@@ -14,27 +14,31 @@ Retrieve a list of metrics matching the specified filters.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| `expression` |string|Include metrics that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators. Supported wildcards: `*` and `?`.|
-| `minInsertDate` |string|Include metrics with `lastInsertDate` equal or greater than `minInsertDate`.<br>The parameter can be specified in ISO-8601 format or using [calendar](../../../shared/calendar.md) keyword.|
-| `maxInsertDate` |string|Include metrics with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>The parameter can be specified in ISO format or using [calendar](../../../shared/calendar.md) keyword.|
+| `expression` |string|Include metrics that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators. Example: `name LIKE 'cpu*'`.<br>Supported wildcards: `*` and `?`.|
+| `minInsertDate` |string|Include metrics with `lastInsertDate` equal or greater than `minInsertDate`.<br>ISO-8601 date or a [calendar](../../../shared/calendar.md) expression.|
+| `maxInsertDate` |string|Include metrics with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>ISO-8601 date or a [calendar](../../../shared/calendar.md) expression.|
 | `limit` |integer|Maximum number of metrics to retrieve, ordered by name.|
 | `tags` |string|Comma-separated list of metric tag names to include in the response, for example, `tags=table,frequency`.<br>Specify `tags=*` to include all metric tags.<br>Specify `tags=env.*` to include all metric tags starting with `env.`.|
 
 #### Expression
 
-The expression can include all fields listed below except `lastInsertDate`.
+The expression can include any field listed below, such as `name`, `label`, and `minValue`, except the `lastInsertDate` field which can be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
+
+String literals must be enclosed in single or double quotes.
 
 Examples:
 
-```java
+```javascript
 name LIKE 'meminfo.*'
-
-name NOT LIKE 'cpu*' AND createdDate > '2017-10-01T00:00:00Z'
-
-retentionDays > 0 OR seriesRetentionDays > 0
 ```
 
-The `lastInsertDate` field should be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
+```javascript
+name NOT LIKE 'cpu*' AND createdDate > '2017-10-01T00:00:00Z'
+```
+
+```javascript
+retentionDays > 0 OR seriesRetentionDays > 0
+```
 
 ## Response
 
@@ -78,7 +82,7 @@ Default data type for new metrics, when auto-created, is **float**.
 
 ### Invalid Actions
 
- Invalid Action is triggered if the received series value is less than the Minimum value, or if it's greater than the Maximum value.
+Invalid Action is triggered if the received series value is less than the Minimum value, or if it's greater than the Maximum value.
 
 |**Action**|**Description**|
 |:---|:---|
@@ -161,7 +165,7 @@ curl https://atsd_hostname:8443/api/v1/metrics?limit=2 \
 
 Expression text:
 
-```txt
+```javascript
 name != "" OR tags.keyName != "" OR label! = "" OR description != "" OR enabled = true OR persistent=true OR persistenceFilter != "" OR retentionDays=0 OR dataType="FLOAT" OR timePrecision="MILLISECONDS" OR versioning=false AND invalidAction="NONE" OR timeZone="" OR interpolate="LINEAR"
 ```
 
