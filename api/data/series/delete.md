@@ -39,6 +39,12 @@ An array of objects containing fields for filtering records for deletion.
 
 ## Response
 
+In case of a successful operation the response contains a count of deleted series:
+
+```json
+{ "series": 1 }
+```
+
 The service responds with an error message if the metric or entity is not found, or if no series are matched.
 
 ```json
@@ -56,14 +62,14 @@ POST https://atsd_hostname:8443/api/v1/series/delete
 ### Payload
 
 ```json
-[  {
-    "metric": "tcp-connect-status",
-    "entity": "nurswgvml007",
-    "exactMatch": true,
-    "tags": {
-      "port": 22080
-    }
-  }]
+[{
+  "metric": "tcp-connect-status",
+  "entity": "nurswgvml007",
+  "exactMatch": true,
+  "tags": {
+    "port": 22080
+  }
+}]
 ```
 
 ### curl
@@ -87,11 +93,11 @@ POST https://atsd_hostname:8443/api/v1/series/delete
 ### Payload
 
 ```json
-[  {
-    "metric": "tcp-connect-status",
-    "entity": "nurswgvml007",
-    "exactMatch": false
-  }]
+[{
+  "metric": "tcp-connect-status",
+  "entity": "nurswgvml007",
+  "exactMatch": false
+}]
 ```
 
 ### curl
