@@ -1,5 +1,9 @@
 # Forecast Tools
 
+  * [Exceptions](#exceptions)
+  * [Calendar](#calendar)
+  * [Testing](#testing)
+
 ## Exceptions
 
 The purpose of exceptions is to exclude specific intervals from the data selection interval. This is necessary when unusual data is recorded for the time series and this unusual data distorts the forecast. 
@@ -43,11 +47,17 @@ Calendars in comparison with Exceptions allow to exclude data related to Forecas
 
 Testing allows to calculate forecasts based on data in the CSV file or in the text area. The database is not involved and the forecast is not saved. The first row in the CSV is ignored.
 
-```ls
-Timestamp,Value
-2018-03-21 00:00:00,1
-2018-03-22 00:00:00,2
-2018-03-23 00:00:00,3
-2018-03-24 00:00:00,4
-2018-03-25 00:00:00,5
-```
+![](resources/calendar_exceptions_testing_4.png)
+
+### Settings
+
+| Setting | Description |
+|---|---|
+|Period|Specify seasonality of the underlying series.|
+|Data Selection Interval|Time frame for selecting detailed data that will be used as forecast input.<br>End of the Selection Interval can be optionally specified in End Time field, otherwise it is set to current time.|
+|Averaging Interval|Period of time over which the detailed samples are aggregated.|
+|Auto Period|Let server automatically identify seasonality of the underlying series that produces the most accurate forecast - forecast with minimum variance from observed historical data.|
+|Auto Parameters|Let server automatically identify algorithm parameters that produce the most accurate forecast - forecast with minimum variance from observed historical data.|
+|Auto Aggregate|Let server automatically identify an aggregation period that produces the most accurate forecast - forecast with minimal variance from observed historical data.|
+|Algorithm|Select Holt-Winters or ARIMA forecasting algorithms.|
+|Score Interval|Part of Selection Interval that will be used to compute variance between observed values and forecast to rank forecasts by variance. The shorter the Score Interval - the more weight is assigned to the recently observed values.|
