@@ -1,5 +1,4 @@
-Weekly Change Log: October 2, 2017 - October 8, 2017
-==================================================
+# Weekly Change Log: October 2, 2017 - October 8, 2017
 
 ## ATSD
 
@@ -10,7 +9,7 @@ Weekly Change Log: October 2, 2017 - October 8, 2017
 | 4613 | admin | Bug | Default alert logger is deleted when logback configuration is reloaded. |
 | 4607 | entity | Feature | Speed up adding new entities to expression-based groups. |
 | 4606 | jdbc | Bug | Remove 'commons-lang3' dependency conflict. |
-| 4606 | installation | Feature | Include default entity tag templates for 'docker*' entitiies in the distribution. |
+| 4606 | installation | Feature | Include default entity tag templates for 'docker*' entities in the distribution. |
 | [4589](#issue-4589) | core | Feature | Implement administrator interface to split and merge regions. |
 | 4580 | client | Feature | Upgrade the [Python client](https://github.com/axibase/atsd-api-python) with new methods and parameters. |
 
@@ -26,7 +25,7 @@ Weekly Change Log: October 2, 2017 - October 8, 2017
 ### Issue 4619
 
 ```elm
-GET https://atsd_host:8443/api/v1/metrics?maxInsertDate=1970-01-01T00:00:00Z&limit=3
+GET https://atsd_hostname:8443/api/v1/metrics?maxInsertDate=1970-01-01T00:00:00Z&limit=3
 ```
 
 Refer to [entity](../../api/meta/entity/list.md#additional-examples) examples and [metric](../../api/meta/metric/list.md#additional-examples) examples.

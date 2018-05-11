@@ -1,7 +1,6 @@
-Weekly Change Log: July 24, 2017 - July 30, 2017
-==================================================
+# Weekly Change Log: July 24, 2017 - July 30, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
@@ -13,9 +12,7 @@ Weekly Change Log: July 24, 2017 - July 30, 2017
 | [4361](#Issue-4361) | sql | Feature | Add support for compressed CSV files in scheduled [SQL query export](../../sql/scheduled-sql.md) |
 | [3918](#Issue-3918) | api-rest | Bug | Replace `last=true` with `limit=1` in Series [URL query](../../api/data/series/url-query.md) method. |
 
-### ATSD
-
-#### Issue 4416
+### Issue 4416
 
 **[`metric`](../../api/network/metric.md#metric-command) Command Syntax**:
 
@@ -23,42 +20,42 @@ Weekly Change Log: July 24, 2017 - July 30, 2017
 metric m:{metric} b:{enabled} p:{data-type} l:{label} d:{description} i:{interpolate} u:{units} f:{filter} z:{timezone} v:{versioning} a:{invalid_action} min:{minimum_value} max:{maximum_value} t:{tag-1}={text} t:{tag-2}={text}
 ```
 
-#### Issue 4403
+### Issue 4403
 
 This query will now cause an error:
 
 ```sql
-SELECT * FROM jvm_memory_used 
-  WHERE value IN 169328488 
+SELECT * FROM jvm_memory_used
+  WHERE value IN 169328488
   AND datetime > NOW - 10*HOUR
 ```
 
 The correct syntax is to use brackets:
 
 ```sql
-SELECT * FROM jvm_memory_used 
-  WHERE value IN (169328488) 
+SELECT * FROM jvm_memory_used
+  WHERE value IN (169328488)
   AND datetime > NOW - 10*HOUR
 ```
 
-#### Issue 4377
+### Issue 4377
 
 Add support for selecting all columns with an asterisk (`*`) symbol in inline views:
 
 ```sql
-SELECT TableauSQL.datetime AS datetime,     
-  TableauSQL.value AS value 
-FROM ( select * from table_size ) TableauSQL 
+SELECT TableauSQL.datetime AS datetime,
+  TableauSQL.value AS value
+FROM ( select * from table_size ) TableauSQL
   LIMIT 10
 ```
 
-#### Issue 4361
+### Issue 4361
 
 Compression for CSV report files can be selected on the **Configuration > SQL Queries** page.
 
 ![](Images/4361.png)
 
-#### Issue 3918
+### Issue 3918
 
  `last=true` is replaced with `limit=1` and `direction=DESC`.
 

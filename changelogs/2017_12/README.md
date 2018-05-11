@@ -1,7 +1,6 @@
-Weekly Change Log: March 20 - March 26, 2017
-==================================================
+# Weekly Change Log: March 20 - March 26, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
@@ -11,7 +10,7 @@ Weekly Change Log: March 20 - March 26, 2017
 | 4008 | sql | Feature | Implement a custom serializer for external sorting. |
 | 3924 | UI | Feature | Add syntax highlighting to configuration files in the [Configuration Files Editor](../../administration/editing-configuration-files.md). |
 | 3852 | sql | Feature | Add support for [column alias](../../sql/examples/alias-column.md) for columns created with [`CASE`](../../sql#case) expression. |
-| 4034 | sql | Bug | Incorrect filterting of rows with multiple [`LIKE` expressions](../../sql#like-expression) combined with OR operator. |
+| 4034 | sql | Bug | Incorrect filtering of rows with multiple [`LIKE` expressions](../../sql#like-expression) combined with OR operator. |
 | 4030 | sql | Bug | Add support for metric [`LIKE` expression](../../sql#like-expression) in `FROM atsd_series` queries. |
 | [4029](#issue-4029) | UI | Feature | Consolidate diagnostic tool links on the **Admin: Diagnostics** page. |
 | 4027 | sql | Bug | Metric tags and fields are set to `null` in [`JOIN`](../../sql#joins) queries.|
@@ -35,17 +34,16 @@ Weekly Change Log: March 20 - March 26, 2017
 | 4019 | docker | Bug | Do not interrupt the job if there are no free ATSD connections in pool. |
 | 4025 | core | Bug | Remove `m:{name}=NaN` field in series command if text value is specified. |
 
-
-### ATSD
-
 ### Issue 3915
---------------
+
 [Documentation](../../api/data/series/query.md)
 
 URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
+
 Payload
 
 ```json
@@ -57,27 +55,29 @@ Payload
   "tagExpression": "tags.file_system NOT LIKE '*your-backup*'",
   "limit": 1
 }]
+
 ```
+
 Response
+
 ```json
 [{"entity":"nurswgvml007","metric":"disk_used","tags":{"file_system":"/dev/mapper/vg_nurswgvml007-lv_root","mount_point":"/"},"type":"HISTORY","aggregate":{"type":"DETAIL"},"data":[{"d":"2017-02-13T08:59:53.000Z","v":9242420.0}]}]
 ```
 
 ### Issue 4029
---------------
 
 ![](Images/Figure1.png)
 
 ### Issue 3882
---------------
+
 [List of predefined columns](../../sql/README.md#predefined-columns)
 
 ### Collector
 
 ### Issue 3682
---------------
+
 ![](Images/Figure2.png)
 
 ### Issue 3996
---------------
+
 ![](Images/Figure3.png)

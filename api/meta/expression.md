@@ -1,4 +1,3 @@
-
 # Expression Syntax
 
 ## Variables
@@ -6,7 +5,7 @@
 | Name | Description |
 |:---|:---|
 | `name` | Entity or metric name. |
-| `label` | Entity or metric label. | 
+| `label` | Entity or metric label. |
 | `{field-name}` | Entity or metric field by name, such as `createdDate` or `retentionDays`. |
 | `tags.{tag-name}` | Value of tag with name `tag-name`, for example, `tags.location` or `tags.table`. |
 
@@ -24,7 +23,7 @@ Collections operator: `IN`, for example `tags.location IN ('SVL', 'NUR')`
 
 ## Wildcards
 
-Wildcard `*` means zero or more characters. 
+Wildcard `*` means zero or more characters.
 
 Wildcard `?` means any character.
 
@@ -32,41 +31,41 @@ Wildcard `?` means any character.
 
 * Returns record with name equal to `nurswgvml003`
 
-  ```sql
+```sql
   name = 'nurswgvml003'
-  ```
+```
 
 * Returns records with name starting with `nur`
 
-  ```sql
+```sql
   name LIKE 'nur*'
-  ```
+```
 
 * Returns records that have the `location` tag defined
 
-  ```sql
+```sql
   tags.location != ''
-  ```
+```
 
 * Returns records with name that starts with `nur` and with the tag `os` equal to 'Linux'
 
-  ```sql
+```sql
   name LIKE 'nur*' AND tags.os = 'Linux'
-  ```
+```
 
 * Returns records with the tag `ip` starting with `10.` and ending with `22`
 
-  ```sql
+```sql
   tags.ip LIKE '10.*22'
-  ```
+```
 
 ## Utility Functions
 
 | **Function**   | **Description**  |
 |:---|:---|
-| list       | `list('svl,nyc,sfo')`<br>Returns a collection of strings. <br>Splits a string by delimiter (default is comma).          |
-| likeAll    | `likeAll(entity.hostname, collection('hostname_ignore'))`<br>Returns true, if every element in the collection of patterns matches the first string argument.        |
-| likeAny    | `likeAny(entity.location, list('svl,nyc,sfo'))`<br>Returns true, if at least one element in the collection of patterns matches the first string argument. |
-| upper      | `upper('svl')`<br>Converts the argument to upper case.  |
-| lower      | `lower('SFO')`<br>Converts the argument to lower case.  |
-| collection | `collection('ip_address_ignore')`Returns a pre-defined named collection by name.  |
+| `list`       | `list('svl,nyc,sfo')`<br>Returns a collection of strings. <br>Splits a string by delimiter (default is comma).          |
+| `likeAll`    | `likeAll(entity.hostname, collection('hostname_ignore'))`<br>Returns true, if every element in the collection of patterns matches the first string argument.        |
+| `likeAny`    | `likeAny(entity.location, list('svl,nyc,sfo'))`<br>Returns true, if at least one element in the collection of patterns matches the first string argument. |
+| `upper`      | `upper('svl')`<br>Converts the argument to upper case.  |
+| `lower`      | `lower('SFO')`<br>Converts the argument to lower case.  |
+| `collection` | `collection('ip_address_ignore')`Returns a pre-defined named collection by name.  |

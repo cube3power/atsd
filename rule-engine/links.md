@@ -16,12 +16,12 @@ The URLs are automatically [inlined](#inline-links) in email notifications and i
 
 ## Reference
 
-* [serverLink](#serverlink)
-* [ruleLink](#rulelink)
-* [chartLink](#chartlink)
-* [csvExportLink](#csvexportlink)
-* [htmlExportLink](#htmlexportlink)
-* [entityLink](#entitylink)
+* [`serverLink`](#serverlink)
+* [`ruleLink`](#rulelink)
+* [`chartLink`](#chartlink)
+* [`csvExportLink`](#csvexportlink)
+* [`htmlExportLink`](#htmlexportlink)
+* [`entityLink`](#entitylink)
 
 ### `serverLink`
 
@@ -34,7 +34,7 @@ Link to the ATSD server specified in `server.url` property on the **Settings > S
 Example:
 
 ```elm
-https://atsd_host:8443/
+https://atsd_hostname:8443/
 ```
 
 The `serverLink` field can be used to assemble custom links to various pages in the ATSD web interface:
@@ -58,7 +58,7 @@ Displayed as rule name in inline mode.
 Example:
 
 ```elm
-https://atsd_host:8443/rule/edit.xhtml?name=docker-container-lifecycle-restart
+https://atsd_hostname:8443/rule/edit.xhtml?name=docker-container-lifecycle-restart
 ```
 
 ### `chartLink`
@@ -76,7 +76,7 @@ Displayed as 'Default' link in inline mode.
 Example:
 
 ```elm
-https://atsd_host:8443/portals/series?metric=docker&entity=nurswgvml007&add%20params%3D%7B%22markers%22%3A%22false%22%2C%22timespan%22%3A%221%20HOUR%22%7D
+https://atsd_hostname:8443/portals/series?metric=docker&entity=nurswgvml007&add%20params%3D%7B%22markers%22%3A%22false%22%2C%22timespan%22%3A%221%20HOUR%22%7D
 ```
 
 ### `csvExportLink`
@@ -94,7 +94,7 @@ Displayed as 'CSV Export' link in inline mode.
 Example:
 
 ```elm
-https://atsd_host:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22nurswgvml007%22%2C%22si%22%3A%221-DAY%22%2C%22t%22%3A%22HISTORY%22%2C%22v%22%3Afalse%7D
+https://atsd_hostname:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22nurswgvml007%22%2C%22si%22%3A%221-DAY%22%2C%22t%22%3A%22HISTORY%22%2C%22v%22%3Afalse%7D
 ```
 
 ### `htmlExportLink`
@@ -112,9 +112,8 @@ Displayed as an 'HTML Export' link in inline mode.
 Example:
 
 ```elm
-https://atsd_host:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22nurswgvml007%22%2C%22si%22%3A%221-HOUR%22%2C%22t%22%3A%22HISTORY%22%7D
+https://atsd_hostname:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22nurswgvml007%22%2C%22si%22%3A%221-HOUR%22%2C%22t%22%3A%22HISTORY%22%7D
 ```
-
 
 ### `entityLink`
 
@@ -122,14 +121,14 @@ https://atsd_host:8443/export?settings=%7B%22m%22%3A%22docker%22%2C%22e%22%3A%22
 ${entityLink}
 ```
 
-Link to current entity that is initialized in the rule window. 
+Link to current entity that is initialized in the rule window.
 
 Displayed as an entity label in inline mode.
 
 Example:
 
 ```elm
-https://atsd_host:8443/entities/nurswgvml007
+https://atsd_hostname:8443/entities/nurswgvml007
 ```
 
 To retrieve the link for another entity, use the [`getEntityLink`](functions-link.md#getentitylink) function.
@@ -147,14 +146,16 @@ The inline link mode improves readability by replacing URLs with user-friendly l
 ### `html`
 
 * Base URL
-  ```elm
-  https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu
-  ```
+
+```elm
+  https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu
+```
 
 * Inline Link
-  ```elm
-  <a href="https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu">nmon_cpu</a>
-  ```
+
+```elm
+  <a href="https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu">nmon_cpu</a>
+```
 
 * Link Label: `nmon_cpu`
 * Enabled in Email message text, HipChat with **Message Format** be set to *html*.
@@ -162,14 +163,16 @@ The inline link mode improves readability by replacing URLs with user-friendly l
 ### `markdown`
 
 * Base URL
-  ```elm
-  https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu
-  ```
+
+```elm
+  https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu
+```
 
 * Inline Link
-  ```elm
-  [nmon_cpu](https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu)
-  ```
+
+```elm
+  [nmon_cpu](https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu)
+```
 
 * Link Label: `nmon_cpu`
 * Enabled in Telegram
@@ -177,14 +180,16 @@ The inline link mode improves readability by replacing URLs with user-friendly l
 ### `pipe`
 
 * Base URL
-  ```elm
-  https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu
-  ```
+
+```elm
+  https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu
+```
 
 * Inline Link
-  ```elm
-  <https://atsd_host:8443/rule/edit.xhtml?name=nmon_cpu|nmon_cpu>
-  ```
+
+```elm
+  <https://atsd_hostname:8443/rule/edit.xhtml?name=nmon_cpu|nmon_cpu>
+```
 
 * Link Label: `nmon_cpu`
 * Enabled in Slack with **Parse Mode** set to *Default* or `false`.

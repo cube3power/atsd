@@ -1,10 +1,10 @@
-## Google Cloud Pub/Sub Send Message Example
+# Google Cloud Pub/Sub Send Message Example
 
 ## Overview
 
-The following example demonstrates how to send a message to a a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic using a [`GCP PS`](gcp-ps.md) web notification.
+The following example demonstrates how to send a message to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) topic using a [`GCP PS`](gcp-ps.md) web notification.
 
-The example invokes the [Coogle Cloud Pub/Sub API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) `projects.topics.publish` method.
+The example invokes the [Google Cloud Pub/Sub API](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics/publish) `projects.topics.publish` method.
 
 ## Configuration
 
@@ -26,25 +26,25 @@ Enter a name and specify the following parameters:
 
 Modify the `Project ID` by replacing the `<PROJECT_ID>` value with your project ID, for example:
 
-```
+```txt
 charged-thought-189815
 ```
 
 Modify the `Topic` by replacing the `<TOPIC>` value with your topic name, for example:
 
-```
+```txt
 my-topic
 ```
 
 Modify the `Service Account` by replacing the `<SERVICE_ACCOUNT>` value with your [service account](gcp-service-account-key.md#create-service-account), for example:
 
-```
+```txt
 publisher
 ```
 
 Modify the `Private Key Alias` by selecting the alias for [imported account's private key](gcp-service-account-key.md#import-accounts-private-key), for example:
 
-```
+```txt
 gcp_publisher
 ```
 
@@ -92,9 +92,9 @@ Specify the message text into the `Message` parameter for all triggers.
 
 ## Test
 
-In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
+Test the integration by submitting a sample `series` command on the **Data > Data Entry** page.
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 

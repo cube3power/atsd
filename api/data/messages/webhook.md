@@ -2,38 +2,60 @@
 
 ## Description
 
-The method converts event notifications received from external web services such as GitHub, AWS, Jenkins, Slack, Telegram into messages which can be processed in the rule engine and stored in the database.
+This method accepts `GET` and `POST` requests with optional JSON or form payload and converts the request into message fields. The produced message is stored in the database and processed in the rule engine.
 
-The method provides a variety of parameters to map incoming JSON documents to message fields and to discard unnecessary data.
+A set of reserved parameter names, specified in the query string, instruct the server how to parse incoming requests. The reserved parameters determine mappings between the request content and message fields as well as define which data is discarded as extraneous.
+
+This method can be used to ingest HTTP notifications from services that support outgoing webhooks such as GitHub, AWS SNS, Jenkins, Docker Hub, Slack/Telegram/Discord Bots etc.
+
+## Reference
+
+* [Request](#request)
+* [Authentication](#authentication)
+* [Authorization](#authorization)
+* [Request Parameters](#request-parameters)
+* [JSON Payload](#json-payload)
+* [Entity Mapping](#entity-mapping)
+* [Default Message Field Values](#default-message-field-values)
+* [Reserved Request Parameters](#reserved-request-parameters)
+  * [Literal Value Parameters](#literal-value-parameters)
+  * [Command Parameters](#command-parameters)
+  * [Header Parameters](#header-parameters)
+  * [Filter Parameters](#filter-parameters)
+  * [Parse Parameters](#parse-parameters)
+  * [Control Parameters](#control-parameters)
+* [Parameter Precedence](#parameter-precedence)
+* [Sample URLs](#sample-urls)
+* [Example](#example)
+* [Diagnostics](#diagnostics)
 
 ## Request
-
-The endpoint accepts `POST` and `GET` requests.
 
 | **Method** | **Path** | **Payload** | **Content-Type Header** |
 |:---|:---|---|---:|
 | POST | `/api/v1/messages/webhook/*` | JSON | `application/json` |
+| POST | `/api/v1/messages/webhook/*` | `key=value` | `application/x-www-form-urlencoded` |
 | GET | `/api/v1/messages/webhook/*` | None | - |
 
-The URL can include any path after the `/webhook` part, for example, `/api/v1/messages/webhook/service-1`.
+The URL may point to any path after `/webhook`, for example, `/api/v1/messages/webhook/service-1`.
 
 ## Authentication
 
-The request must be authenticated.
+Requests must be authenticated.
 
-When initiating the request with an http client, user credentials can be included in the request URL as follows:
+When initiating a request with an http client, user credentials are included in the request URL as follows:
 
 ```elm
-https://usr:pwd@atsd_host:8443/api/v1/messages/webhook/jenkins?entity=jen01
+https://user:password@atsd_hostname:8443/api/v1/messages/webhook/jenkins?entity=jen01
 ```
 
 ## Authorization
 
-The user must have the `API_DATA_WRITE` role and `write` permissions for the target entity.
+The user must have `API_DATA_WRITE` role and `write` permissions for the target entity.
 
 ### Webhook User Wizard
 
-To create a new user with permissions to write data for one specific entity, open **Settings > Users** page and select **Create Webhook User** option from the split button located below the 'Users' table.
+To create a new user with permissions to write data for a specific entity, open **Settings > Users** and select **Create Webhook User** from the split button located below the 'Users' table.
 
 ![](images/webhook-user.png)
 
@@ -41,9 +63,9 @@ The wizard will automatically create user and entity groups and grant necessary 
 
 ![](images/webhook-permissions.png)
 
-### Parameters
+## Request Parameters
 
-Request parameters, except for reserved parameters, are converted into message **tags** where tag name equals parameter name and tag value equals parameter value. Tag names are lowercased. Non-printable characters such as whitespace in tag names are replaced with underscore.
+Request parameters, except for reserved parameters, are converted into message **tags** where tag names equal parameter names and tag values equal parameter values. Tag names are converted to lower case. Non-printable characters such as whitespace in tag names are replaced with an underscore.
 
 Request URL:
 
@@ -56,18 +78,11 @@ action=started
 repeat=1
 ```
 
-### Payload
+## JSON Payload
 
-JSON fields of primitive type (string, number, boolean) are converted into message **tags**, where tag name equals the field's full name (contains parent object names, separated by `.` character) and tag value equals field value.
-
-`string` fields are automatically unquoted by removing leading and trailing single and double quotes, if present.
-
-Array elements are assigned names based on array name and element index, starting with `0` for the first element.
-
-Tag names are lowercased. Non-printable characters such as whitespace in tag names are replaced with underscore.
+The JSON payload is parsed to locate numeric, string, and boolean fields which are added to the message as **tags**. The tag's name is set from the field's path, which is composed from the parent object's path, followed by dot `.` and the field's own name. Tag names are converted to lower case with non-printable characters such as whitespace replaced with an underscore.
 
 Input document:
-
 
 ```json
 {
@@ -77,7 +92,7 @@ Input document:
     "public": true,
     "Full Name": "Axibase TSD",
     "references": [],
-    "authors": ["john", "sam"],
+    "authors": ["john", "sam"]
   }
 }
 ```
@@ -93,95 +108,108 @@ repository.authors[0] = john
 repository.authors[1] = sam
 ```
 
-### Requirements
+String fields are unquoted by removing leading and trailing single or double quotes, if present.
+
+Array elements are assigned names based on array name and element index, starting with `0` for the first element.
+
+## Entity Mapping
 
 Since each message must be associated with an entity, the request should instruct the server how to determine the entity name from the request parameters and the payload.
 
-1. The entity can be specified literally by adding an `entity` parameter to the query string, for example `/api/v1/messages/webhook/jenkins?entity=test-1`
+1. By default, the entity will be set to the remainder of the path following the `/api/v1/messages/webhook/` prefix.
 
-  ```
-  entity = test-1
-  ```
+    ```elm
+      /api/v1/messages/webhook/jenkins?hello=world
+    ```
 
-2. The entity can be extracted from a JSON field by specifying the field's full name, for example `/api/v1/messages/webhook/jenkins?command.entity=server.name`
+    ```elm
+      entity = jenkins
+    ```
 
-  ```json
-  {
-    "server": {
-      "name": "test-2",
-      "site": "NUR"
-    }
-  }
-  ```
+1. The entity may be specified literally by adding an `entity` parameter to the query string, for example `/api/v1/messages/webhook/jenkins?entity=test-1`
 
-  ```
-  entity = test-2
-  ```
+    ```elm
+      entity = test-1
+    ```
 
-3. The entity can be extracted from request headers by specifying the header name, for example `/api/v1/messages/webhook/jenkins?header.entity=X-AXI-Region`
+1. The entity can be extracted from a JSON field by referencing the field's full name with `command.entity` parameter, for example `/api/v1/messages/webhook/jenkins?command.entity=server.name`
 
-  HTTP request headers:
+    ```json
+      {
+        "server": {
+          "name": "test-2",
+          "site": "NUR"
+        }
+      }
+    ```
 
-  ```
-  ...
-  X-AXI-Region: us-east-01
-  ...
-  ```
+    ```elm
+      entity = test-2
+    ```
 
-  ```
-  entity = us-east-01
-  ```
+1. The entity can be extracted from request headers by specifying the header name, for example `/api/v1/messages/webhook/jenkins?header.entity=X-AXI-Region`
 
-### Default Message Field Values
+    HTTP request headers:
+
+    ```txt
+      X-AXI-Region: us-east-01
+    ```
+
+    ```elm
+      entity = us-east-01
+    ```
+
+## Default Message Field Values
 
 * Message `type` is 'webhook'.
 * Message `source` is set to the remainder of the URL path after the `/webhook/` part (and before the query string). If the remainder is empty, the `source` is set to empty string.
 
-  ```ls
+```ls
   source = incoming for /api/v1/messages/webhook/incoming?entity=test
   source =          for /api/v1/messages/webhook?entity=test
-  ```
+```
 
+* Message `entity` is set to the remainder of the URL path after `/webhook/` (but before the query string). If the remainder is empty, the `entity` **must** be specified as described in the 'Entity Mapping' section above.
 * Message `severity` is undefined.
 * Message `date` is set to current server time.
 * Message tag `request_ip` is set to the remote IP address of the http client that initiated the request.
 
-### Reserved Request Parameters
+## Reserved Request Parameters
 
-#### Literal Value Parameters
+### Literal Value Parameters
 
 These parameters set message fields to literal values.
 
 | **Name** | **Description** |
 |---|---|
-| type | Message type.|
-| source | Message source. |
-| entity | [**Required**] Message entity |
-| date | Message datetime in ISO format. |
-| message | Message text. |
-| severity | Message severity specified as an integer or as a string constant. |
-| datetimePattern | Datetime pattern applied to `command.date` field: `iso` (default), `seconds`, `milliseconds`, user-defined [pattern](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). |
+| `type` | Message type.|
+| `source` | Message source. |
+| `entity` | Message entity. |
+| `date` | Message date and time in ISO format. |
+| `message` | Message text. |
+| `severity` | Message severity specified as an integer or as a string constant. |
+| `datetimePattern` | Date pattern applied to `command.date` field: `iso` (default), `seconds`, `milliseconds`, user-defined [date pattern](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html). |
 
 `/api/v1/messages/webhook/jenkins?entity=test-1&type=ci&severity=3`
 
-```
+```elm
   entity = test-1
   type = ci
   severity = WARNING
 ```
 
-#### Command Parameters
+### Command Parameters
 
 Command parameters set message field values from JSON field values.
 
 | **Name** | **Description** |
 |---|---|
-| command.type | Message type. If not specified, set to `webhook`. |
-| command.source | Message source. If not specified, set to URL path after `./webhook/`. |
-| command.entity | [**Required**] Message entity. |
-| command.date | Message time in ISO format, UNIX milliseconds/seconds, or user-defined format specified with `datetimePattern` parameter. |
-| command.message | Message text. |
-| command.severity | Message severity specified as an integer or as a constant. |
+| `command.type` | Message type.  |
+| `command.source` | Message source.  |
+| `command.entity` | Message entity.  |
+| `command.date` | Message time in ISO format, UNIX milliseconds/seconds, or user-defined format specified with `datetimePattern` parameter. |
+| `command.message` | Message text. |
+| `command.severity` | Message severity specified as an integer or as a constant. |
 
 `/api/v1/messages/webhook/jenkins?command.entity=server&command.type=event`
 
@@ -192,26 +220,26 @@ Command parameters set message field values from JSON field values.
   }
 ```
 
-```
+```elm
   entity = test-2
   type = deploy
 ```
 
-#### Header Parameters
+### Header Parameters
 
 Header parameters set message field values from header values.
 
 | **Name** | **Description** |
 |---|---|
-| header.type | Message type. If not specified, set to `webhook`. |
-| header.source | Message source. If not specified, set to URL path after `./webhook/`. |
-| header.entity | [**Required**] Message entity. |
-| header.date | Message datetime in ISO format. |
-| header.message | Message text. |
-| header.tag.{name} | Message tag. |
-| header.severity | Message severity specified as an integer or as a constant. |
+| `header.type` | Message type.  |
+| `header.source` | Message source.  |
+| `header.entity` | Message entity.  |
+| `header.date` | Message date and time in ISO format. |
+| `header.message` | Message text. |
+| `header.tag.{name}` | Message tag. |
+| `header.severity` | Message severity specified as an integer or as a constant. |
 
-`/api/v1/messages/webhook/jenkins?entity=test-3&header.tag.event=X-GitHub-Event`
+`/api/v1/messages/webhook/github?header.tag.event=X-GitHub-Event`
 
 ```json
   User-Agent: GitHub-Hookshot/5ee1da1
@@ -220,66 +248,119 @@ Header parameters set message field values from header values.
   X-Hub-Signature: sha1=b0d4aa86d17c6b77e5b35e7482769955ad9aca4d
 ```
 
-```
-  entity = test-3
-  tag.event = watch
+```elm
+  entity = github
+  tags.event = watch
 ```
 
-#### Filter Parameters
+### Filter Parameters
 
 The filter parameters contain patterns that the converted message tags must satisfy in order to be included in the generated message command.
 
 | **Name** | **Description** |
 |---|---|
-| `include` | Include only tags with **names** that satisfy the specified pattern. |
-| `exclude` | Exclude tags with **names** that satisfy the specified pattern. |
-| `includeValues` | Include only tags with **values** that satisfy the specified pattern. |
-| `excludeValues` | Exclude tags with **values** that satisfy the specified pattern. |
+| `exclude` | Exclude tags with **names** that match the specified pattern. |
+| `excludeValues` | Exclude tags with **values** that match the specified pattern. |
+| `include` | Override `exclude` rules by including tags with **names** that match the specified pattern. |
+| `includeValues` | Override `excludeValues` rules by including tags with **values** that match the specified pattern. |
 
 * The patterns support `*` as a wildcard.
 * Tag name match is case-**IN**sensitive.
-* The `include` parameter takes precedence over the `exclude` parameter. If the `include` parameter is present, the `exclude` parameter is ignored.
-* The `includeValues` parameter takes precedence over the `excludeValues` parameter. If the `includeValues` parameter is present, the `excludeValues` parameter is ignored.
-* The parameters may contain multiple patterns separated by semi-colon `;`. Alternatively, the parameters can be repeated in the query string.
+* The parameters may contain multiple patterns separated by semi-colon `;`.
 
+```elm
+  &exclude=repository.*;sender.location
 ```
-&exclude=repository.*;sender.location
-&exclude=repository.*&exclude=sender.location
+
+* Parameters may be repeated in the query string.
+
+```elm
+  &exclude=repository.*&exclude=sender.location
 ```
 
 Example:
 
-  ```
-	exclude = repository.*
-  ```
+```elm
+  &exclude=repository.*&include=repository.name
+```
 
-  ```json
-	{
-	  "event": "commit",
-	  "result": "ok",
-	  "repository": {
-	    "name": "atsd",
-	    "public": true,
-	    "Full Name": "Axibase TSD",
-	    "references": []
-	  }
-	}
-  ```
+```json
+{
+  "event": "commit",
+  "result": "ok",
+  "repository": {
+    "name": "atsd",
+    "public": true,
+    "Full Name": "Axibase TSD",
+    "references": []
+  }
+}
+```
 
   Message fields:
 
-  ```
+```elm
     tag.event = commit
     tag.result = ok
-  ```
+    tag.repository.name = atsd
+```
 
-#### Control Parameters
+### Parse Parameters
 
 | **Name** | **Description** |
 |---|---|
-| debug | If set to `true`, the response includes the message record in JSON format. |
+| `json.parse` | Name of the request parameter or a field in the JSON payload to be parsed as a JSON document and converted into message tags similar to the [JSON payload](#json-payload) itself.|
 
-### Parameter Precedence
+Examples:
+
+* **Form content type**
+
+`/api/v1/messages/webhook/travis-ci?json.parse=payload`
+
+In this example the `payload` parameter contains a JSON string which is parsed into message tags using the `json.parse=payload` instruction.
+
+```txt
+  event=build&payload={"id":371662529,"number":"217","config":{"os":"linux"}}
+```
+
+Message tags:
+
+```elm
+  event=build
+  payload.id=371662529
+  payload.number=217
+  payload.config.os=linux
+```
+
+* **JSON content type**
+
+`/api/v1/messages/webhook/aws-cloudwatch?json.parse=Message`
+
+The `Message` field in the JSON payload contains a string which is a JSON document itself. The `Message` field value is parsed and converted into message tags using the `json.parse=Message` instruction.
+
+```json
+{
+  "Type": "Notification",
+  "Message": "{\"version\":\"0\",\"source\":\"aws.ec2\",\"region\":\"us-east-1\"}"
+}
+```
+
+Message tags:
+
+```elm
+  type=Notification
+  message.version=0
+  message.source=aws.ec2
+  message.region=us-east-1
+```
+
+### Control Parameters
+
+| **Name** | **Description** |
+|---|---|
+| `debug` | If set to `true`, the response includes the message record in JSON format.|
+
+## Parameter Precedence
 
 The reserved parameters have the following precedence:
 
@@ -291,34 +372,34 @@ Example:
 
 * Request URL:
 
-  ```
+```elm
     /api/v1/messages/webhook/github?entity=test-1&header.entity=User-Agent&command.entity=server
-  ```
+```
 
 * Request Headers:
 
-  ```
+```txt
     User-Agent: GitHub-Hookshot/5ee1da1
-  ```
+```
 
 * Request Payload:
 
-  ```
+```json
     {
       "server": "test-2"
     }
-  ```
+```
 
 * Message Command:
 
-  ```
-	type=github
-	source=webhook
-	entity=test-1
-	tags:
-	    server=test-2
-	    request_ip=...
-  ```
+```elm
+    type=github
+    source=webhook
+    entity=test-1
+    tags:
+        server=test-2
+        request_ip=...
+```
 
 ## Sample URLs
 
@@ -326,40 +407,48 @@ Example:
 
 Subscribe to GitHub repository events.
 
-```
-/api/v1/messages/webhook/github?type=webhook&entity=github&exclude=organization.*%3Brepository.*%3B*.signature%3B*.payload%3B*.sha%3B*.ref%3B*_at%3B*.id&header.tag.event=X-GitHub-Event&repo=atsd&excludeValues=http*&debug=true
+```elm
+/api/v1/messages/webhook/github?exclude=organization.*;repository.*;*.signature;*.payload;*.sha;*.ref;*_at;*.id&include=repository.name;repository.full_name&header.tag.event=X-GitHub-Event&excludeValues=http*&debug=true
 ```
 
 ### Amazon WS
 
 Receive AWS SNS subscription notifications.
 
-```
-/api/v1/messages/webhook/aws-cw?type=webhook&entity=aws-cw&command.date=Timestamp&json.parse=Message&exclude=Signature;SignatureVersion;SigningCertURL;SignatureVersion;UnsubscribeURL;MessageId;Message.detail.instance-id;Message.time;Message.id;Message.version
+```elm
+/api/v1/messages/webhook/aws-cw?command.date=Timestamp&json.parse=Message&exclude=Signature;SignatureVersion;SigningCertURL;SignatureVersion;UnsubscribeURL;MessageId;Message.detail.instance-id;Message.time;Message.id;Message.version
 ```
 
 ### Jenkins
 
 Subscribe to build status events from Jenkins.
 
+```elm
+/api/v1/messages/webhook/jenkins?command.date=build.timestamp&datetimePattern=milliseconds&exclude=build.url;url;build.artifacts*
 ```
-/api/v1/messages/webhook/jenkins?type=webhook&entity=jenkins&command.date=build.timestamp&datetimePattern=milliseconds&exclude=build.url;url;build.artifacts*
+
+### Travis CI
+
+Subscribe to build status events from Travis CI.
+
+```sh
+/api/v1/messages/webhook/travis-ci?json.parse=payload&exclude=payload.id;payload.number;payload.config*;payload.repository*;payload.matrix*;payload.*commit*;payload.status_message;payload.result&include=payload.repository.name&command.message=payload.result_message
 ```
 
 ### Slack
 
 Receive incoming bot events using Slack Event API. Refer to the Slack webhook configuration [instructions](../../../rule-engine/notifications/outgoing-webhook-slack.md).
 
-```
-/api/v1/messages/webhook/slack?type=webhook&entity=slack&command.message=event.text&command.date=event.ts&exclude=event.event_ts&exclude=event_time&exclude=event.icons.image*&exclude=*thumb*&exclude=token&exclude=event_id&exclude=event.message.edited.ts&exclude=*.ts
+```elm
+/api/v1/messages/webhook/slack?command.message=event.text&command.date=event.ts&exclude=event.event_ts&exclude=event_time&exclude=event.icons.image*&exclude=*thumb*&exclude=token&exclude=event_id&exclude=event.message.edited.ts&exclude=*.ts
 ```
 
 ### Telegram
 
 Receive incoming bot messages. Refer to the Telegram webhook configuration [instructions](../../../rule-engine/notifications/outgoing-webhook-telegram.md).
 
-```
-/api/v1/messages/webhook/telegram?type=webhook&entity=telegram&command.message=message.text
+```elm
+/api/v1/messages/webhook/telegram?command.message=message.text
 ```
 
 ## Example
@@ -367,15 +456,15 @@ Receive incoming bot messages. Refer to the Telegram webhook configuration [inst
 Request:
 
 ```elm
-POST https://usr:pwd@atsd_host:8443/api/v1/messages/webhook/github?debug=true&entity=github&header.tag.event=X-GitHub-Event&repo=atsd&excludeValues=http*&exclude=organization.*%3Brepository.*
+POST https://usr:pwd@atsd_hostname:8443/api/v1/messages/webhook/github?exclude=organization.*;repository.*;*.signature;*.payload;*.sha;*.ref;*_at;*.id&include=repository.name;repository.full_name&header.tag.event=X-GitHub-Event&excludeValues=http*&debug=true
 ```
 
 Notes:
 
 * Fields with name starting with `organization.` are excluded.
-* Fields with name starting with `repository.` are excluded.
+* Fields with name starting with `repository.` are excluded (except `repository.name`).
+* Fields `repository.name` and `repository.full_name` are included.
 * Fields with values starting with `http` are excluded.
-* Tag `repo` is set to `atsd` with a corresponding request parameter.
 * Tag `event` is retrieved from the `X-GitHub-Event` header.
 
 Payload:
@@ -479,21 +568,22 @@ Command:
 
 ```json
 {
-	"entity": "github",
-	"type": "webhook",
-	"source": "github",
-	"severity": null,
-	"tags": {
-		"action": "started",
-		"event": "watch",
-		"repo": "atsd",
-		"request_ip": "192.30.253.29",
-		"sender.id": "2098022",
-		"sender.login": "rodionos",
-		"sender.site_admin": "false",
-		"sender.type": "User"
-	},
-	"date": "2017-12-22T13:32:50.901Z"
+    "entity": "github",
+    "type": "webhook",
+    "source": "github",
+    "severity": null,
+    "tags": {
+        "action": "started",
+        "event": "watch",
+        "repository.name": "atsd",
+        "repository.full_name": "axibase/atsd",
+        "request_ip": "192.30.253.29",
+        "sender.id": "2098022",
+        "sender.login": "rodionos",
+        "sender.site_admin": "false",
+        "sender.type": "User"
+    },
+    "date": "2017-12-22T13:32:50.901Z"
 }
 ```
 

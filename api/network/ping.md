@@ -17,18 +17,18 @@ None.
 
 ## ABNF Syntax
 
-```
+```txt
 command = "ping"
 ```
 
 ## Examples
 
-```
+```txt
 ping
 ```
 
 > Response
 
-```
+```txt
 ok
 ```

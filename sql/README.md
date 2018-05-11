@@ -1,5 +1,4 @@
-﻿Overview
-==============================================
+﻿# Overview
 
 The Axibase Time Series Database supports Structured Query Language (SQL) for retrieving time series records from the database.
 
@@ -60,7 +59,7 @@ SELECT { * | { expr [ .* | [ AS ] alias ] } }
   [ HAVING expr(boolean) ]
   [ WITH ROW_NUMBER expr ]
 [ WITH LAST_TIME expr ]
-[ WITH INTERPOLATE expr ]  
+[ WITH INTERPOLATE expr ]
 [ ORDER BY expr [{ ASC | DESC }] [, ...] ]
 [ LIMIT count [ OFFSET skip ]]
   [ OPTION(expr) [...]]
@@ -77,7 +76,7 @@ WHERE datetime >= '2017-06-15T00:00:00Z'    -- WHERE clause
 
 The statement may be terminated with a semicolon character.
 
-### SELECT expression
+### SELECT Expression
 
 The SELECT expression consists of one or multiple columns and expressions applied to the query results.
 
@@ -95,7 +94,7 @@ SELECT datetime, entity, value
 WHERE datetime >= '2017-06-15T00:00:00Z'
 ```
 
-In the example above, the "mpstat.cpu_busy" table contains records for the `mpstat.cpu_busy` metric.
+In the example above, the `"mpstat.cpu_busy"` table contains records for the `mpstat.cpu_busy` metric.
 
 > Virtual tables are currently supported only for series. Access to properties, messages, and alerts is currently not available.
 
@@ -113,7 +112,8 @@ WHERE metric = 'mpstat.cpu_busy'
   AND datetime >= '2017-06-15T00:00:00Z'
 ```
 
-> The number of metrics retrieved with the `metric LIKE (expr)` condition is limited to 50.
+> The number of metrics retrieved with the `metric LIKE (expr)` condition is subject to a limit set by the `sql.metric.like.limit` setting. The default limit is `50`.
+> Note that `LIKE` operator is case-**sensitive**.
 
 ### WHERE Clause
 
@@ -129,7 +129,6 @@ The clause can be built from multiple conditions, each comparing values using op
 * String operators: `<, >, <=, >=, =, <>, !=, LIKE, REGEX, IS`.
 
 > The operators `!=` and `<>` cannot be applied to columns `time` and `datetime`.
-
 > The operators `<, >, <=, >=` applied to string values, such as series/entity/metric tag values, perform [lexicographical comparisons](examples/filter-operators-string.md).
 
 The result of evaluating a condition is a boolean value. Multiple conditions can be combined using the logical operators `AND`, `OR`, and `NOT`.
@@ -251,7 +250,7 @@ Comments are not allowed after the statement termination character `;`.
 
 ### Predefined Columns
 
-Virtual tables have the same pre-defined columns since all the the underlying data is physically stored in a single partitioned table.
+Virtual tables have the same pre-defined columns since all the underlying data is physically stored in a single partitioned table.
 
 #### Series Columns
 
@@ -264,7 +263,7 @@ Virtual tables have the same pre-defined columns since all the the underlying da
 |`tags.{name}`    |string   | Series tag value. Returns `NULL` if the specified tag does not exist for this series.|
 |`tags`           |string   | All series tags, concatenated to `name1=value;name2=value` format.|
 |`tags.*`         |string   | Expands to multiple columns, each column containing a separate series tag.|
-|`datetime`       |datetime | Sample time in ISO 8601 format, for example `2017-06-10T14:00:15.020Z`.<br>In `GROUP BY PERIOD` queries, the `datetime` column returns the period's **start** time in ISO format, same as `date_format(PERIOD(...))`.|
+|`datetime`       |timestamp | Sample time in ISO 8601 format, for example `2017-06-10T14:00:15.020Z`.<br>In `GROUP BY PERIOD` queries, the `datetime` column returns the period's **start** time in ISO format, same as `date_format(PERIOD(...))`.|
 |`time`           |long     | Sample time in Unix milliseconds since 1970-01-01T00:00:00Z, for example `1408007200000`.<br>In `GROUP BY PERIOD` queries, the `time` column returns the period's **start** time.|
 
 #### Metric Columns
@@ -304,14 +303,13 @@ Virtual tables have the same pre-defined columns since all the the underlying da
 |`entity.groups`  |string   | List of entity groups, to which the entity belongs, separated by semi-colon `;`.|
 |`entity.enabled` |boolean  | Enabled status. Incoming data is discarded for disabled entity.|
 
-
 New columns can be created by applying functions and arithmetic expressions to existing columns. The computed columns can be included both in the `SELECT` expression, as well as in the `WHERE`, `HAVING`, and `ORDER BY` clauses.
 
 ```sql
 SELECT t1.datetime, t1.entity, t1.value + t2.value AS cpu_sysusr
   FROM "mpstat.cpu_system" t1
   JOIN "mpstat.cpu_user" t2
-WHERE t1.datetime >= '2017-06-15T00:00:00Z' 
+WHERE t1.datetime >= '2017-06-15T00:00:00Z'
   AND cpu_sysusr > 10
 ```
 
@@ -361,13 +359,13 @@ WHERE t1.datetime BETWEEN '2017-06-16T13:00:00Z' AND '2017-06-16T13:10:00Z'
 | null                 | null              | 1497618021000 | 2017-06-16T13:00:21Z | 76980    | null    | memfree   | nurswgvml006 | null    |
 ```
 
-The `time` and `datetime` columns are interchangeable and can be used equivalently, for instance in the `GROUP BY` clause and the `SELECT` expression.
+The `time` and `datetime` columns contain the same value (record time) in different data types and can be used interchangeably, for instance in the `GROUP BY` clause and the `SELECT` expression.
 
 ```sql
-SELECT datetime, entity, count(*)
+SELECT datetime, entity, count(*)   -- 'time' column in SELECT
   FROM "df.disk_used"
-WHERE datetime BETWEEN '2017-06-15T21:02:00Z' AND '2017-06-15T21:02:15Z'
-  GROUP BY time, entity
+WHERE datetime BETWEEN '2017-06-15' AND '2017-06-15' -- 'datetime' column in WHERE
+  GROUP BY time, entity             -- 'time' column in GROUP BY
 ```
 
 The `SELECT` expression in `JOIN` queries can include both fully qualified column names such as `{table}.datetime` and short names `datetime` and `time` containing row timestamp calculated as `COALESCE(t1.datetime, t2.datetime, ...)`.
@@ -550,6 +548,8 @@ WHERE entity LIKE 'nurswgvml00%'
 ORDER BY datetime
 ```
 
+> Note that `LIKE` operator is case-**sensitive**.
+
 ```ls
 | datetime             | entity       | value | entity.groups                            |
 |----------------------|--------------|-------|------------------------------------------|
@@ -601,20 +601,20 @@ Columns referenced in the `SELECT` expression must be included in the `GROUP BY`
 
 ## Literals
 
-The literal is a constant value specified in the query, such as `'nurswvml007'`, `75`, or `'2017-08-15T00:00:00Z'`. The database supports literals for string, datetime, and number data types.
+The literal is a constant value specified in the query, such as `'nurswvml007'`, `75`, or `'2017-08-15T00:00:00Z'`. The database supports literals for `string`, `timestamp`, and `number` data types.
 
 ```sql
 -- string literal
 WHERE entity = 'nurswgvml007'
 
--- datetime literal
+-- timestamp literal
 WHERE datetime >= '2017-08-15T00:00:00Z'
 
 -- number literal
 WHERE value < 75
 ```
 
-The string and datetime literals must be enclosed in **single** quotation marks.
+The string and timestamp literals must be enclosed in **single** quotation marks.
 
 A literal value containing single quotes can be escaped by doubling the single quote symbol.
 
@@ -625,15 +625,13 @@ WHERE entity LIKE '%a''b%'
 SELECT date_format(time, 'yyyy-mm-dd''T''HH:mm:ss''Z''')
 ```
 
-
 ## Identifiers
 
 Use **double quotation marks** to enquote a table name, column name, and alias if it contains a reserved column name, a [keyword](#keywords), a function name, or a special character including whitespace, `.`,`+`,`-`,`*`,`/`,`,`,`"`,`'`.
 
-
 ```sql
 -- Special character
-SELECT entity.tags."file-system" FROM "disk.io" 
+SELECT entity.tags."file-system" FROM "disk.io"
 
 -- Reserved column name
 SELECT value*5 AS "value"
@@ -674,21 +672,21 @@ For aliased columns, the underlying column and table names, or expression text, 
 
 ```json
 "tableSchema": {
-	"columns": [{
-		"columnIndex": 1,
-		"name": "cpu_percent",
-		"titles": "tbl.value*100",
-		"datatype": "float",
-		"table": "tbl"
-	}, {
-		"columnIndex": 2,
-		"name": "sample-date",
-		"titles": "datetime",
-		"datatype": "xsd:dateTimeStamp",
-		"table": "tbl",
-		"propertyUrl": "atsd:datetime",
-		"dc:description": "Sample time in ISO8601 format"
-	}]
+  "columns": [{
+  "columnIndex": 1,
+  "name": "cpu_percent",
+  "titles": "tbl.value*100",
+  "datatype": "float",
+  "table": "tbl"
+  }, {
+  "columnIndex": 2,
+  "name": "sample-date",
+  "titles": "datetime",
+  "datatype": "xsd:dateTimeStamp",
+  "table": "tbl",
+  "propertyUrl": "atsd:datetime",
+  "dc:description": "Sample time in ISO8601 format"
+  }]
 }
 ```
 
@@ -733,13 +731,13 @@ WHERE entity IN ('nurswgvml006', 'nurswgvml007', 'nurswgvml008')
 
 ### LIKE Expression
 
-The `LIKE` expression returns true if the value matches the specified string pattern which supports `%` and `_` wildcards. 
+The `LIKE` expression returns true if the value matches the specified string pattern which supports `%` and `_` wildcards.
 
 * Percent sign `%` matches zero or more characters in the value.
 
 * Underscore `_` matches exactly one character in the value.
 
-The comparison is case-sensitive, including **entity and metric** names.
+The comparison is case-**sensitive**, including **entity and metric** names which are converted to lower case when stored in the database.
 
 ```sql
 SELECT datetime, entity, value, tags.mount_point, tags.file_system
@@ -766,7 +764,7 @@ In the example above, the underscore is evaluated as a regular character (not as
 
 ### REGEX Expression
 
-The `REGEX` expression matches column value against a [regex](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html) pattern and returns `true` if the text is matched.
+The `REGEX` expression matches column value against a [regular expression](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html) and returns `true` if the text is matched.
 
 The comparison is case-sensitive, even for entity and metric names.
 
@@ -791,7 +789,7 @@ WHERE entity = 'nurswgvml007'
    AND tags.file_system REGEX '.*map.*|.*mnt.*|.*dev.*'
 ```
 
-Special constructs such as `(?i)` can be applied to enable a [case-insensitive match](http://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#CASE_INSENSITIVE) as an example.
+Special constructs such as `(?i)` can be applied to enable a [case-insensitive match](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#CASE_INSENSITIVE) as an example.
 
 ```sql
   WHERE entity REGEX '(?i)Nurswgvml00.*'
@@ -809,7 +807,7 @@ An interval condition determines the selection interval and is specified in the 
 | `yyyy-MM-dd HH:mm:ss[.NNNNNNNNN]`| Database  | `2017-12-10 15:30:00.077`<br>`2017-12-10 15:30:00` |
 | `yyyy[-MM[-dd]]`| Database  | `2017`<br>`2017-12`<br>`2017-12-15` |
 
-The UTC time zone is specified as the `Z` suffix ("Zulu time") or as the zero UTC offset `+00:00`. If the time zone is not specified in the literal value, the database timezone is used to convert strings into date objects.
+The UTC time zone is specified as the `Z` suffix ("Zulu time") or as the zero UTC offset `+00:00`. If the time zone is not specified in the literal value, the database time zone is used to convert strings into date objects.
 
 ```sql
 SELECT datetime, entity, value
@@ -856,7 +854,7 @@ WHERE time >= NOW - 15 * MINUTE
   AND datetime < CURRENT_MINUTE
 ```
 
-The calendar expressions are evaluated according to the database [time zone](../shared/timezone-list.md) which can be customized using the [`endtime()`](#endtime) function.
+The calendar expressions are evaluated according to the database [time zone](../shared/timezone-list.md) which can be customized using the [`endtime`](#endtime) function.
 
 ```sql
 SELECT value, datetime,
@@ -878,9 +876,9 @@ AND datetime BETWEEN endtime(YESTERDAY, 'US/Pacific') AND endtime(CURRENT_DAY, '
 | 2.97  | 2017-06-17T06:59:45Z | 2017-06-17T06:59:45UTC | 2017-06-16T23:59:45PDT |
 ```
 
-### Local Time Bounderies
+### Local Time Boundaries
 
-To specify the interval range in local time, use the `date_parse` function to convert the string datetime into Unix milliseconds.
+To specify the interval range in local time, use the `date_parse` function to convert the `timestamp` literal into Unix milliseconds.
 
 ```sql
 SELECT datetime as utc_time, date_format(time, 'yyyy-MM-dd HH:mm:ss', 'Europe/Vienna') AS local_datetime, value
@@ -911,20 +909,20 @@ To select rows for a date range based on each entity's local time zone, supply `
 ```sql
 SELECT entity, entity.timeZone,
   AVG(value),
-  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "Period Start: UTC datetime", 
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "Period Start: UTC datetime",
   date_format(time, 'yyyy-MM-dd HH:mm z', entity.timeZone) AS "Period Start: Local datetime"
 FROM "mpstat.cpu_busy"
-  WHERE datetime >= ENDTIME(PREVIOUS_DAY, entity.timeZone) 
+  WHERE datetime >= ENDTIME(PREVIOUS_DAY, entity.timeZone)
     AND datetime < ENDTIME(CURRENT_DAY, entity.timeZone)
 GROUP BY entity, PERIOD(1 DAY, entity.timeZone)
 ```
 
 ```ls
-| entity       | entity.timeZone | avg(value) | Period Start: UTC datetime | Period Start: Local datetime | 
-|--------------|-----------------|------------|----------------------------|------------------------------| 
-| nurswgvml007 | PST             | 12.3       | 2017-08-17 07:00 UTC       | 2017-08-17 00:00 PDT         | 
-| nurswgvml006 | US/Mountain     | 9.2        | 2017-08-17 06:00 UTC       | 2017-08-17 00:00 MDT         | 
-| nurswgvml010 | null            | 5.8        | 2017-08-17 00:00 UTC       | 2017-08-17 00:00 GMT         | 
+| entity       | entity.timeZone | avg(value) | Period Start: UTC datetime | Period Start: Local datetime |
+|--------------|-----------------|------------|----------------------------|------------------------------|
+| nurswgvml007 | PST             | 12.3       | 2017-08-17 07:00 UTC       | 2017-08-17 00:00 PDT         |
+| nurswgvml006 | US/Mountain     | 9.2        | 2017-08-17 06:00 UTC       | 2017-08-17 00:00 MDT         |
+| nurswgvml010 | null            | 5.8        | 2017-08-17 00:00 UTC       | 2017-08-17 00:00 GMT         |
 ```
 
 ### Multiple Intervals
@@ -989,7 +987,7 @@ Period syntax:
 PERIOD({count} {unit} [, option])
 ```
 
-`option` = interpolate | align | extend | timezone
+`option` = `interpolate` | `align` | `extend` | `timezone`
 
 * `interpolate` = PREVIOUS | NEXT | LINEAR | VALUE {number}
 * `extend` = EXTEND
@@ -1009,13 +1007,12 @@ PERIOD(1 DAY, entity.timeZone)
 
 | **Name** | **Description** |
 |:---|:---|
-| count | [**Required**] Number of time units contained in the period. |
-| unit | [**Required**] [Time unit](../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
-| interpolate | Apply an [interpolation function](#interpolation), such as `LINEAR` or `VALUE 0`, to add missing periods.|
-| extend | Add missing periods at the beginning and end of the selection interval using `VALUE {n}` or the `PREVIOUS` and `NEXT` interpolation functions.|
-| align | Align the period's start/end. Default: `CALENDAR`. <br>Possible values: `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`, `CALENDAR`.<br>Refer to [period alignment](#period-alignment).|
-| timezone | Time zone for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default value: current database timezone.|
-
+| `count` | [**Required**] Number of time units contained in the period. |
+| `unit` | [**Required**] [Time unit](../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
+| `interpolate` | Apply an [interpolation function](#interpolation), such as `LINEAR` or `VALUE 0`, to add missing periods.|
+| `extend` | Add missing periods at the beginning and end of the selection interval using `VALUE {n}` or the `PREVIOUS` and `NEXT` interpolation functions.|
+| `align` | Align the period's start/end. Default: `CALENDAR`. <br>Possible values: `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`, `CALENDAR`.<br>Refer to [period alignment](#period-alignment).|
+| `timezone` | Time zone for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default value: current database time zone.|
 
 ```sql
 SELECT entity, date_format(PERIOD(5 MINUTE, END_TIME)), AVG(value)
@@ -1050,10 +1047,10 @@ For example, `period(1 HOUR)` initializes 1-hour long periods starting at `0` mi
 
 | **Alignment** | **Description**|
 |:---|:---|
-| CALENDAR | Period starts are aligned to the calendar. |
-| START_TIME | First period begins at start time specified in the query. |
-| FIRST_VALUE_TIME | First period begins at the time of first retrieved value. |
-| END_TIME | Last period ends on end time specified in the query. |
+| `CALENDAR` | Period starts are aligned to the calendar. |
+| `START_TIME` | First period begins at start time specified in the query. |
+| `FIRST_VALUE_TIME` | First period begins at the time of first retrieved value. |
+| `END_TIME` | Last period ends on end time specified in the query. |
 
 * For the `START_TIME` and `END_TIME` options, the `WHERE` clause must contain the start and end time of the selection interval, respectively.
 
@@ -1067,13 +1064,13 @@ GROUP BY entity, PERIOD(5 MINUTE, END_TIME)
 
 #### `CALENDAR` Alignment
 
-The `CALENDAR` alignment calculates the initial period according to the rules below and creates subsequent periods by incrementing the duration specified by the `PERIOD` function. The inital period is defined as the earliest period that intersects with the selection interval.
+The `CALENDAR` alignment calculates the initial period according to the rules below and creates subsequent periods by incrementing the duration specified by the `PERIOD` function. The initial period is defined as the earliest period that intersects with the selection interval.
 
 * The start time of a selection interval is rounded to calculate the _base time_ using the rule table below.
 * If the period starting with the _base time_ intersects with the selection interval, it becomes the initial period.
 * Otherwise, the period starting with _base time_ is incremented (decremented if _base time_ exceeds start time) to find the earliest period intersecting with the selection interval. This period becomes the initial period.
 
-**Rounding Rules**
+##### Rounding Rules
 
 | **Time Unit**   | **Base Time (Rounded)** |
 |-------------|-----------|
@@ -1208,10 +1205,10 @@ GROUP BY entity, period(5 MINUTE, LINEAR, EXTEND)
 
 ### Interpolation Examples
 
-- [Interpolate](examples/interpolate.md)
-- [Interpolate Edges](examples/interpolate-edges.md)
-- [Interpolate with Extend](examples/interpolate-extend.md)
-- [Chartlab](https://apps.axibase.com/chartlab/d8c03f11/3/)
+* [Interpolate](examples/interpolate.md)
+* [Interpolate Edges](examples/interpolate-edges.md)
+* [Interpolate with Extend](examples/interpolate-extend.md)
+* [ChartLab](https://apps.axibase.com/chartlab/d8c03f11/3/)
 
 ## Regularization
 
@@ -1238,7 +1235,7 @@ WITH INTERPOLATE(30 SECOND)
 
 ### Syntax
 
-```ls
+```sql
 WITH INTERPOLATE (period [, inter_func[, boundary[, fill [, alignment[, timezone]]]]])
 ```
 
@@ -1286,7 +1283,7 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 |:---|:---|
 | `LINEAR` | Calculates the value at the desired timestamp by linearly interpolating prior and next values.|
 | `PREVIOUS` | Sets the value at the desired timestamp based on the previously recorded raw value.<br>This step-like function is appropriate for metrics with discrete values (digital signals).|
-| `AUTO` | [**Default**] Applies an interpolation function (`LINEAR` or `PREVIOUS`) based on the metric's Interpolation setting.<br>If multiple metrics are specified in the query, `AUTO` applies its own interpolation mode for each metric.  |
+| `AUTO` | [**Default**] Applies an interpolation function (`LINEAR` or `PREVIOUS`) based on the metric Interpolation setting.<br>If multiple metrics are specified in the query, `AUTO` applies its own interpolation mode for each metric.  |
 
 * NaN (Not-A-Number) values are ignored from interpolation.
 * The `value` condition in the `WHERE` clause applies to interpolated series values instead of raw values. Filtering out raw values prior to interpolation is not supported.
@@ -1323,8 +1320,8 @@ The `DETAIL` mode can be used to fill missing values in `FULL OUTER JOIN` querie
 
 ### Regularization Examples
 
-- [LINEAR Function](examples/regularize.md#interpolation-function-linear)
-- [PREVIOUS (Step) Function](examples/regularize.md#interpolation-function-previous)
+* [LINEAR Function](examples/regularize.md#interpolation-function-linear)
+* [PREVIOUS (Step) Function](examples/regularize.md#interpolation-function-previous)
 
 ## Grouping
 
@@ -1542,12 +1539,12 @@ ORDER BY row_number() DESC
 The `last_time` function returns the last time, in milliseconds, when data was received for a given series. It enables filtering of records based on the last insertion date for the given series.
 
 ```sql
-WITH time comparision_operator last_time_expression
-WITH last_time_expression comparision_operator time
+WITH time comparison_operator last_time_expression
+WITH last_time_expression comparison_operator time
 ```
 
 * `time` is the pre-defined time column which represents the timestamp of the sample.
-* A `comparision_operator` is one of the following operators: `>`, `>=`, `<`, `<=`, `=`.
+* A `comparison_operator` is one of the following operators: `>`, `>=`, `<`, `<=`, `=`.
 * A `last_time_expression` consists of the `last_time` keyword and an optional calendar expression.
 
 ```sql
@@ -1659,7 +1656,7 @@ The above query retrieves all records for the 'm-1' metric, even though it retur
 
 ## Inline Views
 
-Inline view is a subquery specified in the `FROM` clause. It defines a virtual table to be processed by the parent query. 
+Inline view is a subquery specified in the `FROM` clause. It defines a virtual table to be processed by the parent query.
 
 ```sql
 -- parent query
@@ -1667,7 +1664,7 @@ SELECT env, MAX(avg_val)
 FROM (
   -- subquery acting as table
   SELECT entity, entity.tags.environment AS env, avg(value) AS avg_val
-    FROM "cpu_busy" 
+    FROM "cpu_busy"
     WHERE datetime >= CURRENT_DAY
   GROUP BY entity
 )
@@ -1675,16 +1672,16 @@ GROUP BY env
 ```
 
 ```ls
-| env  | max(avg_val) | 
-|------|--------------| 
-| prod |         24.1 | 
-| test |          8.2 | 
+| env  | max(avg_val) |
+|------|--------------|
+| prod |         24.1 |
+| test |          8.2 |
 ```
 
-The example below calculates hourly maximums from which the parent query computes a daily average (average hourly maximum).
- 
+The example below calculates hourly maximum from which the parent query computes a daily average (average hourly maximum).
+
 ```sql
-SELECT datetime, AVG(value) AS "daily_average" 
+SELECT datetime, AVG(value) AS "daily_average"
   FROM (
     SELECT datetime, MAX(value) AS "value"
       FROM "mpstat.cpu_busy" WHERE datetime >= CURRENT_WEEK
@@ -1694,11 +1691,11 @@ GROUP BY PERIOD(1 DAY)
 ```
 
 ```ls
-| datetime            | daily_average | 
-|---------------------|---------------| 
-| 2017-08-14 00:00:00 | 96.1          | 
-| 2017-08-15 00:00:00 | 96.6          | 
-| 2017-08-16 00:00:00 | 98.8          | 
+| datetime            | daily_average |
+|---------------------|---------------|
+| 2017-08-14 00:00:00 | 96.1          |
+| 2017-08-15 00:00:00 | 96.6          |
+| 2017-08-16 00:00:00 | 98.8          |
 ```
 
 If the subquery column is based on an expression or function, rename it with an alias that can be referenced in the parent query.
@@ -1707,7 +1704,7 @@ If the subquery column is based on an expression or function, rename it with an 
 MAX(value) AS "mval"
 ```
 
-A subquery can include a nested subquery. Unlimited nested subqueries are supported. 
+A subquery can include a nested subquery. Unlimited nested subqueries are supported.
 
 ```sql
 SELECT MAX(value) FROM (
@@ -1732,7 +1729,7 @@ An inline view may contain subqueries that join multiple tables.
 SELECT datetime, MAX(value) AS "5-min Peak" FROM (
   SELECT datetime, AVG(t1.value * t2.value) AS "value"
     FROM "cpu_allocated_units" t1
-    JOIN "cpu_used_percent" t2 
+    JOIN "cpu_used_percent" t2
     WHERE datetime >= PREVIOUS_HOUR
     GROUP BY PERIOD(5 MINUTE)
 )
@@ -1747,26 +1744,25 @@ The `JOIN` clause merges records from multiple tables. The database implements i
 
 * Rows returned by an outer join contain equal or `null` values for joined columns.
 
-
 ### JOIN Example
 
 Metric `m_1` records:
 
 ```ls
-| m_1.datetime     | m_1.value  | m_1.entity | 
-|------------------|------------|------------| 
-| 2018-03-15 18:00 | 1.0        | e_1        | 
-| 2018-03-15 18:05 | 3.0        | e_1        | 
+| m_1.datetime     | m_1.value  | m_1.entity |
+|------------------|------------|------------|
+| 2018-03-15 18:00 | 1.0        | e_1        |
+| 2018-03-15 18:05 | 3.0        | e_1        |
 ```
 
 Metric `m_2` records:
 
 ```ls
-| m_2.datetime     | m_2.value  | m_2.entity | 
-|------------------|------------|------------| 
-| 2018-03-15 18:01 | 2.0        | e_1        | 
-| 2018-03-15 18:05 | 4.0        | e_1        | 
-| 2018-03-15 18:10 | 6.0        | e_1        | 
+| m_2.datetime     | m_2.value  | m_2.entity |
+|------------------|------------|------------|
+| 2018-03-15 18:01 | 2.0        | e_1        |
+| 2018-03-15 18:05 | 4.0        | e_1        |
+| 2018-03-15 18:10 | 6.0        | e_1        |
 ```
 
 * Inner Join Query
@@ -1774,7 +1770,7 @@ Metric `m_2` records:
 ```sql
 SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
   FROM m_1
-  JOIN m_2 
+  JOIN m_2
   /*  ON m_1.time = m_2.time
        AND m_1.entity = m_2.entity
        AND m_1.tags = m_2.tags */
@@ -1782,9 +1778,9 @@ SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
 ```
 
 ```ls
-| m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value | 
-|-------------------|-------------------|------------|-----------| 
-| 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       | 
+| m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value |
+|-------------------|-------------------|------------|-----------|
+| 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       |
 ```
 
 * Outer Join Query
@@ -1792,7 +1788,7 @@ SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
 ```sql
 SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
   FROM m_1
-  OUTER JOIN m_2 
+  OUTER JOIN m_2
   /*  ON m_1.time = m_2.time
        AND m_1.entity = m_2.entity
        AND m_1.tags = m_2.tags */
@@ -1800,12 +1796,12 @@ SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
 ```
 
 ```ls
-| m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value | 
-|-------------------|-------------------|------------|-----------| 
-| 2018-03-15 18:00  | null              | 1.0        | null      | 
-| null              | 2018-03-15 18:01  | null       | 2.0       | 
-| 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       | 
-| null              | 2018-03-15 18:10  | null       | 6.0       | 
+| m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value |
+|-------------------|-------------------|------------|-----------|
+| 2018-03-15 18:00  | null              | 1.0        | null      |
+| null              | 2018-03-15 18:01  | null       | 2.0       |
+| 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       |
+| null              | 2018-03-15 18:10  | null       | 6.0       |
 ```
 
 ### JOIN Syntax
@@ -1813,26 +1809,26 @@ SELECT m_1.datetime, m_2.datetime, m_1.value, m_2.value
 The syntax follows the `SQL-92` notation for enumerating the compared columns.
 
 ```sql
-  FROM tbl t1 
-     JOIN tbl t2 
-      ON  t1.time AND t2.time 
-      AND t1.entity = t2.entity 
+  FROM tbl t1
+     JOIN tbl t2
+      ON  t1.time AND t2.time
+      AND t1.entity = t2.entity
       AND t1.tags = t2.tags
 ```
 
-The `ON` condition can compare only the predefined columns `entity`, `time/datetime`, and `tags`. Since the tables contain the same predefined columns, the `ON` condition is optional and can be omitted.
+The `ON` condition can compare only the predefined columns: `entity`, `time`, ``datetime`, and `tags`. Since the virtual tables contain the same predefined columns, the `ON` condition is optional and can be omitted.
 
 | **Compact Syntax** | **SQL-92 Syntax** |
 |:---|---|
-| `FROM tbl_1 t1`<br>` JOIN tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl t2`<br>` ON t1.time AND t2.time`<br>` AND t1.entity = t2.entity AND t1.tags = t2.tags` |
-| `FROM tbl_1 t1`<br>` FULL OUTER JOIN tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>` ON t1.time AND t2.time`<br>` AND t1.entity = t2.entity AND t1.tags = t2.tags` |
+| `FROM tbl_1 t1`<br>`JOIN tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl t2`<br>`ON t1.time AND t2.time`<br>`AND t1.entity = t2.entity AND t1.tags = t2.tags` |
+| `FROM tbl_1 t1`<br>`FULL OUTER JOIN tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>`ON t1.time AND t2.time`<br>`AND t1.entity = t2.entity AND t1.tags = t2.tags` |
 
 The `ON` condition can be modified with the `USING entity` instruction in which case series `tags` are ignored, and records are joined on `entity` and `time` columns instead.
 
 | **Compact Syntax** | **SQL-92 Syntax** |
 |:---|---|
-| `FROM tbl_1 t1`<br>` JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl_2 t2`<br>` ON t1.time AND t2.time`<br>` AND t1.entity = t2.entity` |
-| `FROM tbl_1 t1`<br>` FULL OUTER JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>` ON t1.time AND t2.time`<br>` AND t1.entity = t2.entity` |
+| `FROM tbl_1 t1`<br>`JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 JOIN tbl_2 t2`<br>`ON t1.time AND t2.time`<br>`AND t1.entity = t2.entity` |
+| `FROM tbl_1 t1`<br>`FULL OUTER JOIN USING entity tbl_2 t2` | `FROM tbl_1 t1 FULL OUTER JOIN tbl_2 t2`<br>`ON t1.time AND t2.time`<br>`AND t1.entity = t2.entity` |
 
 > Note that self-joins (table is merged with itself) is not supported.
 
@@ -1852,17 +1848,17 @@ In addition to default columns, the `JOIN` query results include `datetime` and 
 ```sql
 SELECT datetime, m_1.datetime, m_2.datetime, m_1.value, m_2.value
   FROM m_1
-  OUTER JOIN m_2 
+  OUTER JOIN m_2
   WHERE datetime BETWEEN '2018-03-15 18:00:00' AND '2018-03-15 18:15:00'
 ```
 
 ```ls
-| datetime          | m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value | 
-|-------------------|-------------------|-------------------|------------|-----------| 
-| 2018-03-15 18:00  | 2018-03-15 18:00  | null              | 1.0        | null      | 
-| 2018-03-15 18:01  | null              | 2018-03-15 18:01  | null       | 2.0       | 
-| 2018-03-15 18:05  | 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       | 
-| 2018-03-15 18:10  | null              | 2018-03-15 18:10  | null       | 6.0       | 
+| datetime          | m_1.datetime      | m_2.datetime      | m_1.value  | m_2.value |
+|-------------------|-------------------|-------------------|------------|-----------|
+| 2018-03-15 18:00  | 2018-03-15 18:00  | null              | 1.0        | null      |
+| 2018-03-15 18:01  | null              | 2018-03-15 18:01  | null       | 2.0       |
+| 2018-03-15 18:05  | 2018-03-15 18:05  | 2018-03-15 18:05  | 3.0        | 4.0       |
+| 2018-03-15 18:10  | null              | 2018-03-15 18:10  | null       | 6.0       |
 ```
 
 ### `JOIN` Filtering
@@ -1879,11 +1875,11 @@ WHERE datetime BETWEEN '2018-03-09T07:07:00Z' AND '2018-03-09T07:08:00Z'
 
 Note that the `t1.entity` column below contains rows with `null` values even though this column was checked in the `WHERE` condition. In this example, `null` values were created at the `OUTER JOIN` stage.
 
-```
-| t1.datetime           | t1.entity     | t1.value  | t2.datetime           | t2.entity     | t2.value  | t2.tags                                | 
-|-----------------------|---------------|-----------|-----------------------|---------------|-----------|----------------------------------------| 
-| 2018-03-09T07:07:05Z  | nurswghbs001  | 4.4       | null                  | null          | null      | null                                   | 
-| null                  | null          | null      | 2018-03-09T07:07:42Z  | nurswghbs001  | 248909.0  | file_system=/dev/md2;mount_point=/     | 
+```ls
+| t1.datetime           | t1.entity     | t1.value  | t2.datetime           | t2.entity     | t2.value  | t2.tags                                |
+|-----------------------|---------------|-----------|-----------------------|---------------|-----------|----------------------------------------|
+| 2018-03-09T07:07:05Z  | nurswghbs001  | 4.4       | null                  | null          | null      | null                                   |
+| null                  | null          | null      | 2018-03-09T07:07:42Z  | nurswghbs001  | 248909.0  | file_system=/dev/md2;mount_point=/     |
 
 ```
 
@@ -1901,7 +1897,7 @@ If the timestamps for joined metrics are identical, the `JOIN` operation merges 
 | 2017-06-16T13:00:33Z | nurswgvml006 | 0.0      | 1.0      | 0.0      |
 ```
 
-As in the example above, 'cpu_system', 'cpu_user', 'cpu_iowait' were recorded and inserted with the same time.
+As in the example above, the `cpu_system`, `cpu_user`, `cpu_iowait` metrics were recorded and inserted with the same time.
 
 ```ls
 datetime d:2017-06-16T13:00:01Z e:nurswgvml006 m:mpstat.cpu_system=13.3 m.mpstat.cpu_user=21.0 m:mpstat.cpu_iowait=2.9
@@ -1969,7 +1965,6 @@ WHERE t1.datetime >= '2017-06-16T13:00:00Z' AND t1.datetime < '2017-06-16T13:10:
 | 2017-06-16T13:00:59Z | nurswgvml006 | 1743057408.0 | 83.1     | //u113452.nurstr003/backup      | /mnt/u113452        |
 ```
 
-
 ### OUTER JOIN
 
 To combine all records from joined tables, use `FULL OUTER JOIN` (synonyms `OUTER JOIN` or `FULL JOIN`), which returns rows with equal time, entity, and tags as well as rows from one table for which no rows from the other table satisfy the join condition.
@@ -1995,7 +1990,6 @@ WHERE t1.datetime >= '2017-06-16T13:00:00Z' AND t1.datetime < '2017-06-16T13:10:
 | 2017-06-16T13:00:17Z | nurswgvml006 | 16   | null                 | null         | null  |
 | null                 | null         | null | 2017-06-16T13:00:27Z | nurswgvml006 | 73620 |
 ```
-
 
 To regularize the merged series in join queries, apply interpolation or period aggregation using a statistical function.
 
@@ -2042,7 +2036,7 @@ GROUP BY PERIOD(1 MINUTE), server
 | 2017-06-16T13:01:00Z | nurswgvml007 | 3.5     | 252451.0 |
 ```
 
->  Note that records returned by a `JOIN USING entity` condition include series with a last insert date greater than the start date specified in the query.
+> Note that records returned by a `JOIN USING entity` condition include series with a last insert date greater than the start date specified in the query.
 
 ### JOIN with `atsd_series` table
 
@@ -2071,7 +2065,7 @@ ORDER BY base.datetime
 
 ## Keywords
 
-```
+```ls
 |-------------|-------------|-------------|-------------|
 | AND         | AS          | ASC         | BETWEEN     |
 | BY          | CASE        | CAST        | DESC        |
@@ -2084,7 +2078,7 @@ ORDER BY base.datetime
 | ROW_NUMBER  | SELECT      | THEN        | USING       |
 | VALUE       | WHEN        | WHERE       | WITH        |
 |-------------|-------------|-------------|-------------|
- ```
+```
 
  The reserved keywords also include [calendar](../shared/calendar.md#keywords) keywords such as `NOW`, `PREVIOUS_HOUR` and [interval units](../shared/calendar.md#interval-units) such as `MINUTE`, `HOUR`.
 
@@ -2092,7 +2086,7 @@ ORDER BY base.datetime
 
 The following functions aggregate values in a column by producing a single value from a list of values appearing in a column.
 
-```
+```ls
 |----------------|----------------|----------------|----------------|
 | AVG            | CORREL         | COUNT          | COUNTER        |
 | DELTA          | FIRST          | LAST           | MAX            |
@@ -2136,11 +2130,11 @@ The `PERCENTILE` function accepts `percentile` parameter (0 to 100) as the first
 
 ### FIRST
 
-The `FIRST` function returns the value of the first sample (or the value of expression `expr` for the first row) in the set which is ordered by datetime in ascending order.
+The `FIRST` function returns the value of the first sample (or the value of expression `expr` for the first row) in the set which is ordered by time in ascending order.
 
 ### LAST
 
-The `LAST` function returns the value of the last sample (or the value of expression `expr` for the last row) in the set which is ordered by datetime in ascending order.
+The `LAST` function returns the value of the last sample (or the value of expression `expr` for the last row) in the set which is ordered by time in ascending order.
 
 ### MIN_VALUE_TIME
 
@@ -2212,7 +2206,7 @@ SELECT entity, datetime, metric.timeZone AS "Metric TZ", entity.timeZone AS "Ent
   date_format(time) AS "default",
   date_format(time, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS "ISO 8601",
   date_format(time, 'yyyy-MM-dd HH:mm:ss') AS "Local Database",
-  date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-08:00') AS "GMT Offset",  
+  date_format(time, 'yyyy-MM-dd HH:mm:ss', 'GMT-08:00') AS "GMT Offset",
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PDT') AS "PDT",
   date_format(time, 'yyyy-MM-dd HH:mm:ssZZ', 'PDT') AS " PDT t/z",
   date_format(time, 'yyyy-MM-dd HH:mm:ssZZ', AUTO) AS "AUTO: CST", -- nurswgvml006 is in CST
@@ -2299,18 +2293,18 @@ GROUP BY PERIOD(1 hour)
 ```
 
 ```ls
-| datetime             | day of week  | avg(value)  | count(value) | 
-|----------------------|--------------|-------------|--------------| 
-| 2018-03-12 08:00:00  | Mon          | 14.535      | 223          | 
-| 2018-03-12 09:00:00  | Mon          | 12.626      | 225          | 
-| 2018-03-12 10:00:00  | Mon          | 12.114      | 225          | 
-| 2018-03-12 11:00:00  | Mon          | 11.314      | 225          | 
+| datetime             | day of week  | avg(value)  | count(value) |
+|----------------------|--------------|-------------|--------------|
+| 2018-03-12 08:00:00  | Mon          | 14.535      | 223          |
+| 2018-03-12 09:00:00  | Mon          | 12.626      | 225          |
+| 2018-03-12 10:00:00  | Mon          | 12.114      | 225          |
+| 2018-03-12 11:00:00  | Mon          | 11.314      | 225          |
 ...
 ```
 
 ### DATE_PARSE
 
-The `date_parse` function parses the datetime string into Unix milliseconds.
+The `date_parse` function parses the date and time string into Unix milliseconds.
 
 ```java
 date_parse(string datetime[, string time_format[, string time_zone]])
@@ -2329,10 +2323,10 @@ date_parse('2017-03-31T12:36:03Z', 'yyyy-MM-dd''T''HH:mm:ssZZ')
 /* Parse date using the database time zone. */
 date_parse('31.03.2017 12:36:03.283', 'dd.MM.yyyy HH:mm:ss.SSS')
 
-/* Parse date using the offset specified in the datetime string. */
+/* Parse date using the offset specified in the timestamp string. */
 date_parse('31.03.2017 12:36:03.283 -08:00', 'dd.MM.yyyy HH:mm:ss.SSS ZZ')
 
-/* Parse date using the time zone specified in the datetime string. */
+/* Parse date using the time zone specified in the timestamp string. */
 date_parse('31.03.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ')
 
 /* Parse date using the time zone provided as the third argument. */
@@ -2341,7 +2335,7 @@ date_parse('31.01.2017 12:36:03.283', 'dd.MM.yyyy HH:mm:ss.SSS', 'Europe/Berlin'
 /* Parse date using the UTC offset provided as the third argument. */
 date_parse('31.01.2017 12:36:03.283', 'dd.MM.yyyy HH:mm:ss.SSS', '+01:00')
 
-/* If the time zone (offset) is specified in the datetime string,
+/* If the time zone (offset) is specified in the timestamp string,
 it should be exactly the same as provided by the third argument. */
 date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ', 'Europe/Berlin')
 ```
@@ -2593,7 +2587,7 @@ WHERE entity = 'qz-1211'
 | datetime             | text     | lag(text) |
 |----------------------|----------|-----------|
 | 2017-10-04T01:52:05Z | 700      | null      | -- excluded: text is '900' and LAG is null
-| 2017-10-04T02:00:34Z | Inactive | 700       | -- excluded: text is 'Inactive' and LAG = '700'  
+| 2017-10-04T02:00:34Z | Inactive | 700       | -- excluded: text is 'Inactive' and LAG = '700'
 | 2017-10-04T02:01:20Z | 800      | Inactive  |
 | 2017-10-04T02:03:05Z | Inactive | 800       |
 | 2017-10-04T02:03:10Z | 800      | Inactive  |
@@ -2655,6 +2649,7 @@ The `CAST` function transforms a string into a number, or a number into a string
 CAST(inputString AS number)
 CAST(inputNumber AS string)
 ```
+
 The returned number can be used in arithmetic expressions, whereas the returned string can be passed as an argument into string functions.
 
 ```sql
@@ -2704,7 +2699,7 @@ ORDER BY datetime
 | mpstat.cpu_steal  | 2017-04-06T16:00:18Z | 0.0   |
 ```
 
-### endtime()
+### `endtime()`
 
 The `endtime()` function evaluates the specified [calendar](../shared/calendar.md) keywords in the user-defined [time zone](../shared/timezone-list.md).
 
@@ -2758,7 +2753,7 @@ WHERE datetime >= NOW - 5*MINUTE
 
 If the searched key is a number provided by the `value` column or an arithmetic expression, it is formatted into a string with a `#.##` pattern.
 
-```
+```ls
 1.0     -> 1
 1.20    -> 1.2
 1.23    -> 1.23
@@ -2822,11 +2817,11 @@ The `CASE` expression provides a way to use `IF THEN` logic in various parts of 
 The searched `CASE` expression evaluates a sequence of boolean expressions and returns a matching result expression.
 
 ```sql
-CASE  
+CASE
      WHEN search_expression THEN result_expression
      [ WHEN search_expression THEN result_expression ]
      [ ELSE result_expression ]
-END  
+END
 ```
 
 Each `search_expression` should evaluate to a boolean (true/false) value.
@@ -2896,7 +2891,7 @@ CASE input_expression
      WHEN compare_expression THEN result_expression
      [ WHEN compare_expression THEN result_expression ]
      [ ELSE result_expression ]
-END  
+END
 ```
 
 ```sql
@@ -2913,21 +2908,21 @@ FROM "mpstat.cpu_busy"
 The `CASE` expressions can be nested by using `CASE` within the `result_expression`:
 
 ```sql
-CASE date_format(time, 'yyyy')           
+CASE date_format(time, 'yyyy')
     WHEN '2016' THEN
       CASE
         WHEN CAST(date_format(time, 'D') AS NUMBER) > 5 THEN '17'
         ELSE '16'
       END
     WHEN '2017' THEN '18'
-    WHEN '2018' THEN '17'      
+    WHEN '2018' THEN '17'
     ELSE '15'
 END AS "Tax Day"
 ```
 
 ## Interval Number
 
-The `INTERVAL_NUMBER()` function can be referenced in the `SELECT` expression. It returns an index, starting with 1, of the current time interval in queries selecting [multiple intervals](#interval-condition) using a datetime `OR` condition or datetime subquery.
+The `INTERVAL_NUMBER()` function can be referenced in the `SELECT` expression. It returns an index, starting with `1`, of the current time interval in queries selecting [multiple intervals](#interval-condition) using a `datetime` `OR` condition or `datetime` subquery.
 
 ```sql
 SELECT datetime, count(*), INTERVAL_NUMBER()
@@ -2948,9 +2943,9 @@ GROUP BY PERIOD(1 DAY)
 ## Case Sensitivity
 
 * SQL keywords are case-insensitive.
-* Entity column values, metric column values, and tag names are case-insensitive, except in `LIKE` and `REGEX` operators.
-* Text column values are **case-sensitive**.
-* Tag column values are **case-sensitive**.
+* Entity column values, metric column values, and tag names are case-**insensitive**, except in `LIKE` and `REGEX` operators.
+* Text column values are case-**sensitive**.
+* Tag column values are case-**sensitive**.
 
 ```sql
 SELECT metric, entity, datetime, value, tags.*
@@ -3039,7 +3034,7 @@ The query may contain multiple `OPTION` clauses specified at the end of the stat
 
 ### `ROW_MEMORY_THRESHOLD` Option
 
-The database may choose to process rows using the local filesystem as opposed to memory if the query includes one of the following clauses:
+The database may choose to process rows using the local file system as opposed to memory if the query includes one of the following clauses:
 
 * `JOIN`
 * `ORDER BY`
@@ -3129,25 +3124,25 @@ Query Detail Fields:
 
 | **Name** | **Description** |
 |:---|:---|
-| Status | New, Running, Completed, Error, Cancelled. |
-| Source | api, console, scheduled. |
-| User | Name of the user who initiated the query.<br>For API clients, username specified in login credentials. |
-| Query Id | Unique query identifier. |
-| Query Text | Query statement text. |
-| Start Time | Query start time. |
-| Elapsed Time | Time elapsed between start time and completion (or current) time. |
-| Returned Records | Number of rows returned to the client. |
-| Records Fetched | Number of time:value pairs. |
-| Rows Fetched | Number of HBase rows. |
-| Result Bytes| Number of bytes in Result objects from HBase region servers. |
-| Remote Result Bytes | Number of bytes in Result objects from remote region servers. |
-| Millis between next() | Total number of milliseconds spent between sequential scan.next() calls. |
-| RPC Calls | Number of RPC calls. |
-| RPC Remote Calls | Number of remote RPC calls. |
-| RPC Retries | Number of RPC retries. |
-| RPC Remote Retries | Number of remote RPC retries.  |
-| Regions Scanned | Number of regions scanned. |
-| Regions Not Serving | Number of NotServingRegionException caught. |
+| `Status` | New, Running, Completed, Error, Cancelled. |
+| `Source` | api, console, scheduled. |
+| `User` | Name of the user who initiated the query.<br>For API clients, username specified in login credentials. |
+| `Query Id` | Unique query identifier. |
+| `Query Text` | Query statement text. |
+| `Start Time` | Query start time. |
+| `Elapsed Time` | Time elapsed between start time and completion (or current) time. |
+| `Returned Records` | Number of rows returned to the client. |
+| `Records Fetched` | Number of time:value pairs. |
+| `Rows Fetched` | Number of HBase rows. |
+| `Result Bytes` | Number of bytes in Result objects from HBase region servers. |
+| `Remote Result Bytes` | Number of bytes in Result objects from remote region servers. |
+| `Millis between next()` | Total number of milliseconds spent between sequential scan.next() calls. |
+| `RPC Calls` | Number of RPC calls. |
+| `RPC Remote Calls` | Number of remote RPC calls. |
+| `RPC Retries` | Number of RPC retries. |
+| `RPC Remote Retries` | Number of remote RPC retries.  |
+| `Regions Scanned` | Number of regions scanned. |
+| `Regions Not Serving` | Number of `NotServingRegionException` instances caught. |
 
 ![Query Details](images/sql-query-details.png)
 
@@ -3165,7 +3160,7 @@ Queries executed by the database are recorded in the main application log `atsd.
 
 Each query is assigned a unique identifier for correlating starting and closing events.
 
-```
+```txt
 2017-08-15 18:44:01,183;INFO;qtp1878912978-182;com.axibase.tsd.service.sql.SqlQueryServiceImpl;Starting sql query execution. [uid=218], user: user003, source: scheduled, sql: SELECT entity, AVG(value) AS "Average", median(value), MAX(value), count(*),
    percentile(50, value), percentile(75, value), percentile(90, value),  percentile(99, value) FROM "mpstat.cpu_busy"
   WHERE time BETWEEN PREVIOUS_DAY and CURRENT_DAY GROUP BY entity ORDER BY AVG(value) DESC
@@ -3183,10 +3178,10 @@ The following message tags are available for filtering and grouping:
 
 | **Name** | **Description** |
 |:---|:---|
-| uid    | Unique query id which is reset on application restart. |
-| format | Result set format: csv, json, html. |
-| user   | User initiating the query. |
-| query  | Query text. |
+| `uid`    | Unique query id which is reset on application restart. |
+| `format` | Result set format: csv, json, html. |
+| `user`   | User initiating the query. |
+| `query`  | Query text. |
 
 > Messages for scheduled queries include additional tags `query_name`, `query_id`, `output_path`, `email_subject`, and `email_subscribers`.
 
@@ -3205,13 +3200,13 @@ Given the massive amount of data stored in ATSD, it is possible to build a query
 
 Consider the following recommendations when developing queries:
 
-- Pre-test queries on a smaller dataset in an ATSD-development instance.
-- Avoid queries without any conditions. Apply `LIMIT` to reduce the number of rows returned.
-- Add the `WHERE` clause. Include as many conditions to the `WHERE` clause as possible, in particular add entity and [interval conditions](#interval-condition).
-- Make `WHERE` conditions narrow and specific, for example, specify a small time interval.
-- Avoid the `ORDER BY` clause since it may cause a full scan and a copy of data to a temporary table.
-- Add the `LIMIT 1` clause to reduce the number of rows returned. Note that `LIMIT` will not prevent expensive queries with `ORDER BY` and `GROUP BY` clauses because `LIMIT` is applied to final results and not to the number of rows read from the database.
-- Develop a simple query first. Adjust conditions gradually as you inspect the results. Add grouping, partitioning, and ordering to finalize the query.
+* Pre-test queries on a smaller dataset in an ATSD-development instance.
+* Avoid queries without any conditions. Apply `LIMIT` to reduce the number of rows returned.
+* Add the `WHERE` clause. Include as many conditions to the `WHERE` clause as possible, in particular add entity and [interval conditions](#interval-condition).
+* Make `WHERE` conditions narrow and specific, for example, specify a small time interval.
+* Avoid the `ORDER BY` clause since it may cause a full scan and a copy of data to a temporary table.
+* Add the `LIMIT 1` clause to reduce the number of rows returned. Note that `LIMIT` will not prevent expensive queries with `ORDER BY` and `GROUP BY` clauses because `LIMIT` is applied to final results and not to the number of rows read from the database.
+* Develop a simple query first. Adjust conditions gradually as you inspect the results. Add grouping, partitioning, and ordering to finalize the query.
 
 To assist in inspecting query results, the following `LIMIT 1` queries have been locally optimized to provide improved performance:
 
@@ -3232,7 +3227,6 @@ SELECT * FROM "mpstat.cpu_busy" WHERE datetime >= CURRENT_DAY ORDER BY time DESC
 SELECT * FROM "mpstat.cpu_busy" WHERE entity = 'nurswgvml007' ORDER BY datetime DESC LIMIT 1
 ```
 
-
 ## SQL Compatibility
 
 While the [differences](https://github.com/axibase/atsd-jdbc/blob/master/capabilities.md#database-capabilities) between SQL dialect implemented in ATSD and SQL specification standards are numerous, the following exceptions to widely used constructs are worth mentioning:
@@ -3247,107 +3241,107 @@ While the [differences](https://github.com/axibase/atsd-jdbc/blob/master/capabil
 
 ## Examples
 
-### Selecting
+### Selecting Examples
 
-- [All Columns](examples/select-all-columns.md)
-- [Defined Columns](examples/select-pre-defined-columns.md)
-- [All Series Tags](examples/select-all-tags.md)
-- [Text Value Column](examples/select-text-value.md)
-- [Field Columns](examples/select-field-columns.md)
-- [Entity Tag Columns](examples/select-entity-tag-columns.md)
-- [Entity Metadata](examples/select-metadata.md)
-- [Metric Tag Columns](examples/select-metric-tag-columns.md)
-- [Computed Columns](examples/select-computed-columns.md)
-- [Mathematical Functions](examples/select-math.md)
-- [String Functions](examples/string-functions.md)
-- [LOOKUP Function](examples/lookup.md)
-- [CASE Expression](examples/case.md)
-- [Interval Number](examples/select-interval-number.md)
-- [Column Alias](examples/alias-column.md)
-- [Table Alias](examples/alias-table.md)
-- [Escape Quotes](examples/select-escape-quote.md)
-- [atsd_series Table](examples/select-atsd_series.md)
-- [Datetime Format](examples/datetime-format.md)
-- [Date Extract Functions](examples/date-extract.md)
-- [Date Utility Functions](examples/date-functions.md)
-- [Limit Row Count](examples/limit.md)
-- [Limit by Partition](examples/limit-partition.md)
+* [All Columns](examples/select-all-columns.md)
+* [Defined Columns](examples/select-pre-defined-columns.md)
+* [All Series Tags](examples/select-all-tags.md)
+* [Text Value Column](examples/select-text-value.md)
+* [Field Columns](examples/select-field-columns.md)
+* [Entity Tag Columns](examples/select-entity-tag-columns.md)
+* [Entity Metadata](examples/select-metadata.md)
+* [Metric Tag Columns](examples/select-metric-tag-columns.md)
+* [Computed Columns](examples/select-computed-columns.md)
+* [Mathematical Functions](examples/select-math.md)
+* [String Functions](examples/string-functions.md)
+* [LOOKUP Function](examples/lookup.md)
+* [CASE Expression](examples/case.md)
+* [Interval Number](examples/select-interval-number.md)
+* [Column Alias](examples/alias-column.md)
+* [Table Alias](examples/alias-table.md)
+* [Escape Quotes](examples/select-escape-quote.md)
+* [atsd_series Table](examples/select-atsd_series.md)
+* [Date Format](examples/datetime-format.md)
+* [Date Extract Functions](examples/date-extract.md)
+* [Date Utility Functions](examples/date-functions.md)
+* [Limit Row Count](examples/limit.md)
+* [Limit by Partition](examples/limit-partition.md)
 
-### Filtering
+### Filtering Examples
 
-- [Filter by Date](examples/filter-by-date.md)
-- [Filter by Series Tag](examples/filter-by-series-tag.md)
-- [Filter by NULL Series Tag](examples/filter-null-tag.md)
-- [Filter by Series Tag with Comparison Operators](examples/filter-operators-string.md)
-- [Filter by Entity](examples/filter-by-entity.md)
-- [Filter by Entity Tag](examples/filter-by-entity-tag.md)
-- [Filter by Entity Group](examples/filter-by-entity-group.md)
-- [Filter Not-a-Number](examples/filter-not-a-number.md)
+* [Filter by Date](examples/filter-by-date.md)
+* [Filter by Series Tag](examples/filter-by-series-tag.md)
+* [Filter by NULL Series Tag](examples/filter-null-tag.md)
+* [Filter by Series Tag with Comparison Operators](examples/filter-operators-string.md)
+* [Filter by Entity](examples/filter-by-entity.md)
+* [Filter by Entity Tag](examples/filter-by-entity-tag.md)
+* [Filter by Entity Group](examples/filter-by-entity-group.md)
+* [Filter Not-a-Number](examples/filter-not-a-number.md)
 
-### Ordering
+### Ordering Examples
 
-- [Order By Time](examples/order-by-time.md)
-- [Order By Value](examples/order-by-value.md)
-- [Order By Multiple Columns](examples/order-by-multiple-columns.md)
-- [String Collation](examples/order-by-string-collation.md)
+* [Order By Time](examples/order-by-time.md)
+* [Order By Value](examples/order-by-value.md)
+* [Order By Multiple Columns](examples/order-by-multiple-columns.md)
+* [String Collation](examples/order-by-string-collation.md)
 
 ### Aggregation
 
-- [Average Value](examples/aggregate.md)
-- [Percentiles](examples/aggregate-percentiles.md)
-- [First/Last](examples/aggregate-first-last.md)
-- [Counter Aggregator](examples/aggregate-counter.md)
-- [Maximum Value Time](examples/aggregate-max-value-time.md)
-- [Period Aggregation](examples/aggregate-period.md)
-- [Sliding Window Statistics](examples/aggregate-sliding-window.md)
+* [Average Value](examples/aggregate.md)
+* [Percentiles](examples/aggregate-percentiles.md)
+* [First/Last](examples/aggregate-first-last.md)
+* [Counter Aggregator](examples/aggregate-counter.md)
+* [Maximum Value Time](examples/aggregate-max-value-time.md)
+* [Period Aggregation](examples/aggregate-period.md)
+* [Sliding Window Statistics](examples/aggregate-sliding-window.md)
 
-### Grouping
+### Grouping Examples
 
-- [Group by Query with Order By](examples/group-by-query-with-order-by.md)
-- [Grouped Average](examples/grouped-average.md)
-- [Group by Tags](examples/group-by-tags.md)
-- [Group with Having](examples/group-having.md)
-- [Grouped and Having](examples/grouped-having.md)
+* [Group by Query with Order By](examples/group-by-query-with-order-by.md)
+* [Grouped Average](examples/grouped-average.md)
+* [Group by Tags](examples/group-by-tags.md)
+* [Group with Having](examples/group-having.md)
+* [Grouped and Having](examples/grouped-having.md)
 
-### Interpolation
+### Interpolation Examples
 
-- [Interpolate](examples/interpolate.md)
-- [Interpolate with Extend](examples/interpolate-extend.md)
-- [Interpolate Edges](examples/interpolate-edges.md)
+* [Interpolate](examples/interpolate.md)
+* [Interpolate with Extend](examples/interpolate-extend.md)
+* [Interpolate Edges](examples/interpolate-edges.md)
 
-### Regularization
+### Regularization Examples
 
-- [Linear Function](examples/regularize.md#interpolation-function-linear)
-- [Previous (Step) Function](examples/regularize.md#interpolation-function-previous)
-- [Auto Function](examples/regularize.md#interpolation-function-auto)
-- [Fill](examples/regularize.md#fill-nan)
-- [Alignment](examples/regularize.md#alignment)
-- [Comparison with GROUP BY](examples/regularize.md#group-by-period-compared-to-with-interpolate)
-- [Join regularized series](examples/regularize.md#join-example)
-- [Interpolated Value Filter](examples/regularize.md#value-filter)
+* [Linear Function](examples/regularize.md#interpolation-function-linear)
+* [Previous (Step) Function](examples/regularize.md#interpolation-function-previous)
+* [Auto Function](examples/regularize.md#interpolation-function-auto)
+* [Fill](examples/regularize.md#fill-nan)
+* [Alignment](examples/regularize.md#alignment)
+* [Comparison with GROUP BY](examples/regularize.md#group-by-period-compared-to-with-interpolate)
+* [Join regularized series](examples/regularize.md#join-example)
+* [Interpolated Value Filter](examples/regularize.md#value-filter)
 
-### Partitioning
+### Partitioning Examples
 
-- [Partitioning using Row Number Function](examples/partition-row-number.md)
-- [Top-N Query using Row Number Function](examples/partition-row-number-top-N-tags.md)
-- [Last Time](examples/last-time.md)
+* [Partitioning using Row Number Function](examples/partition-row-number.md)
+* [Top-N Query using Row Number Function](examples/partition-row-number-top-N-tags.md)
+* [Last Time](examples/last-time.md)
 
-### Subqueries
+### Subquery Examples
 
-- [Inline Views](examples/inline-view.md)
+* [Inline Views](examples/inline-view.md)
 
-### Joins
+### Join Examples
 
-- [Join](examples/join.md)
-- [Join Using Entity](examples/join-using-entity.md)
-- [Join: Derived Series](examples/join-derived-series.md)
-- [Outer Join With Aggregation](examples/outer-join-with-aggregation.md)
-- [Outer Join](examples/outer-join.md)
+* [Join](examples/join.md)
+* [Join Using Entity](examples/join-using-entity.md)
+* [Join: Derived Series](examples/join-derived-series.md)
+* [Outer Join With Aggregation](examples/outer-join-with-aggregation.md)
+* [Outer Join](examples/outer-join.md)
 
-### Security
+### Security Examples
 
-- [Permissions](permissions.md)
+* [Permissions](permissions.md)
 
-### Consolidated
+### Consolidated Examples
 
-- [PI Compatibility](examples/pi.md)
+* [PI Compatibility](examples/pi.md)

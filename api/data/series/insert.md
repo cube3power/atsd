@@ -28,12 +28,12 @@ The request contains an array of series objects, each containing an array of tim
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| entity | string | [**Required**] Entity name |
-| metric | string | [**Required**] Metric name |
-| tags | object | Object containing series tags, where field name represents tag name and field value is tag value.<br>`{"tag-1":string,"tag-2":string}` |
-| type | string | Type of inserted data: `HISTORY`, `FORECAST`. Default: `HISTORY` |
-| forecastName | string | Forecast name. <br>Applicable if `type` is `FORECAST`.<br>`forecastName` can be used to store a custom forecast identified by name. <br>If `forecastName` is omitted, the values overwrite the default forecast.  |
-| data | array | [**Required**] Array of [Value](#value-object) objects.<br>Example `[{"d":"2016-06-01T12:08:42.518Z", "v":50.8}]`.|
+| `entity` | string | [**Required**] Entity name |
+| `metric` | string | [**Required**] Metric name |
+| `tags` | object | Series tags object, where field name represents tag name and field value is tag value,<br> for example `{"tag-1":"val-1","tag-2":"val2"}` |
+| `type` | string | Type of inserted data: `HISTORY`, `FORECAST`. Default: `HISTORY` |
+| `forecastName` | string | Forecast name. <br>Applicable if `type` is `FORECAST`.<br>`forecastName` can be used to store a custom forecast identified by name. <br>If `forecastName` is omitted, the values overwrite the default forecast.  |
+| `data` | array | [**Required**] Array of [Value](#value-object) objects.<br>Example `[{"d":"2016-06-01T12:08:42.518Z", "v":50.8}]`.|
 
 #### Value Object
 
@@ -44,19 +44,19 @@ The request contains an array of series objects, each containing an array of tim
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| t | integer | [**Required**] Sample time in Epoch milliseconds.<br>Example `{"t":1464782922000, "v":50.8}`.|
-| d | string | [**Required**] Sample time in ISO format.<br>Example `{"d":"2016-06-01T12:08:42Z", "v":50.8}`. |
-| v | number | [**Required**] Numeric sample value at time `t`/`d`. <br>`null` is supported and will be stored as `NaN` (Not a Number).<br>Example `{"d":"2016-06-01T12:08:42Z", "v": null}` |
-| s | number | Standard deviation of the forecast value `v`.<br>Example  `{"d":"2016-06-01T12:08:42Z", "v":50.8, "s":12.340}`.<br>Applicable if `type` is `FORECAST`.|
-| x | string | Optional text sample value at time `t`/`d`. <br>Empty string `""` is supported and will be stored as `""`.<br>Example `{"d":"2016-06-01T12:08:42Z", "v": null, "x": "Shutdown"}` |
-| version | object | Object containing version source and status fields for versioned metrics.<br>`{"source":string, "status":string}`.<br>Applicable if the metric is versioned. |
+| `t` | integer | [**Required**] Sample time in Epoch milliseconds.<br>Example `{"t":1464782922000, "v":50.8}`.|
+| `d` | string | [**Required**] Sample time in ISO format.<br>Example `{"d":"2016-06-01T12:08:42Z", "v":50.8}`. |
+| `v` | number | [**Required**] Numeric sample value at time `t`/`d`. <br>`null` is supported and will be stored as `NaN` (Not a Number).<br>Example `{"d":"2016-06-01T12:08:42Z", "v": null}` |
+| `s` | number | Standard deviation of the forecast value `v`.<br>Example  `{"d":"2016-06-01T12:08:42Z", "v":50.8, "s":12.340}`.<br>Applicable if `type` is `FORECAST`.|
+| `x` | string | Optional text sample value at time `t`/`d`. <br>Empty string `""` is supported and will be stored as `""`.<br>Example `{"d":"2016-06-01T12:08:42Z", "v": null, "x": "Shutdown"}` |
+| `version` | object | Object containing version source and status fields for versioned metrics.<br>`{"source":string, "status":string}`.<br>Applicable if the metric is versioned. |
 
 `data` example:
 
 ```json
 "data": [
-	{ "d": "2016-06-05T05:49:18.127Z", "v": 17.7 },
-	{ "d": "2016-06-05T05:49:25.127Z", "v": 14.0 }
+    { "d": "2016-06-05T05:49:18.127Z", "v": 17.7 },
+    { "d": "2016-06-05T05:49:25.127Z", "v": 14.0 }
 ]
 ```
 
@@ -66,7 +66,7 @@ The request contains an array of series objects, each containing an array of tim
 * The exponent consists of the character 'e' ('\u0065') or 'E' ('\u0045') followed by an optional sign, '+' ('\u002B') or '-' ('\u002D'), followed by one or more decimal digits.
 * The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction.
 * The number formed by the sign, the integer, and the fraction is referred to as the [**significand**](https://en.wikipedia.org/wiki/Significand).
-* The **significand** value stripped from trailing zeros should be within Long.MAX_VALUE `9223372036854775807` and Long.MIN_VALUE  `-9223372036854775808` (19 digits). Otherwise the database will throw an **llegalArgumentException: BigDecimal significand overflows the long type** for decimal metrics or round the value for non-decimal metrics. For example, significand for `1.1212121212121212121212121212121212121212121` contains 44 digits and will be rounded to `1.121212121212121212` if inserted for non-decimal metric.
+* The **significand** value stripped from trailing zeros should be within Long.MAX_VALUE `9223372036854775807` and Long.MIN_VALUE  `-9223372036854775808` (19 digits). Otherwise the database will return an `llegalArgumentException: BigDecimal significand overflows the long type` for decimal metrics or round the value for non-decimal metrics. For example, significand for `1.1212121212121212121212121212121212121212121` contains 44 digits and will be rounded to `1.121212121212121212` if inserted for non-decimal metric.
 
 ## Response
 
@@ -78,12 +78,12 @@ None.
 
 |  **Status Code**  | **Description** |
 |:---|:---|
-| 400 | IllegalArgumentException: Empty entity.|
-| 400 | IllegalArgumentException: Negative timestamp.|
-| 400 | IllegalArgumentException: No data. |
-| 400 | IllegalArgumentException: BigDecimal significand overflows the long type. |
-| 500 | JsonParseException: Unexpected character "}" |
-| 500 | JsonMappingException: No enum constant in field type.|
+| 400 | `IllegalArgumentException: Empty entity.`|
+| 400 | `IllegalArgumentException: Negative timestamp.`|
+| 400 | `IllegalArgumentException: No data.` |
+| 400 | `IllegalArgumentException: BigDecimal significand overflows the long type.` |
+| 500 | `JsonParseException: Unexpected character "}"` |
+| 500 | `JsonMappingException: No enum constant in field type.`|
 
 ## Example
 
@@ -92,7 +92,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/insert
+POST https://atsd_hostname:8443/api/v1/series/insert
 ```
 
 #### Payload
@@ -102,8 +102,8 @@ POST https://atsd_host:8443/api/v1/series/insert
     "entity": "nurswgvml007",
     "metric": "mpstat.cpu_busy",
     "data": [
-		{ "d": "2016-06-05T05:49:18.127Z", "v": 17.7 },
-		{ "d": "2016-06-05T05:49:25.127Z", "v": 14.0 }
+        { "d": "2016-06-05T05:49:18.127Z", "v": 17.7 },
+        { "d": "2016-06-05T05:49:25.127Z", "v": 14.0 }
     ]
 }]
 ```
@@ -113,22 +113,22 @@ POST https://atsd_host:8443/api/v1/series/insert
 * `--data` Payload
 
 ```elm
-curl https://atsd_host:8443/api/v1/series/insert \
+curl https://atsd_hostname:8443/api/v1/series/insert \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \
   --data '[{"entity": "nurswgvml007", "metric": "mpstat.cpu_busy", "data": [{ "t": 1462427358127, "v": 22.0 }]}]'
-  ```
+```
 
 * file
 
 ```elm
-curl https://atsd_host:8443/api/v1/series/insert \
+curl https://atsd_hostname:8443/api/v1/series/insert \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \
   --data @file.json
-  ```
+```
 
 ## Additional Examples
 

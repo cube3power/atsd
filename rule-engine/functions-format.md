@@ -8,21 +8,15 @@ These functions format numbers, dates, collections, and maps to strings accordin
 
 Number formatting functions:
 
-* [formatNumber](#formatnumber)
-* [formatBytes](#formatbytes)
-* [convert](#convert)
+* [`formatNumber`](#formatnumber)
+* [`formatBytes`](#formatbytes)
+* [`convert`](#convert)
 
 Date formatting functions:
 
-* [date_format](#date_format)
-* [formatInterval](#formatinterval)
-* [formatIntervalShort](#formatintervalshort)
-
-Map and list formatting functions:
-
-* [addTable for map](#addtable-for-map)
-* [addTable for maps](#addtable-for-maps)
-* [addTable for list](#addtable-for-list)
+* [`date_format`](#date_format)
+* [`formatInterval`](#formatinterval)
+* [`formatIntervalShort`](#formatintervalshort)
 
 ### `formatNumber`
 
@@ -30,17 +24,17 @@ Map and list formatting functions:
   formatNumber(double x, string s) string
 ```
 
-Formats number `x` with the specified [DecimalFormat](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) pattern `s` using the server locale (US/US).
+Formats number `x` with the specified [`DecimalFormat`](https://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html) pattern `s` using the server locale (US/US).
 
 Example:
 
-  ```javascript
-    // returns 3.14  
+```javascript
+    // returns 3.14
     formatNumber(3.14159, '#.##')
-  ```
-  
+```
+
 ### `formatBytes`
-  
+
 ```javascript
   formatBytes(number x, boolean si) string
 ```
@@ -49,7 +43,7 @@ The function returns the total number of bytes `x` in a human-readable format. T
 
 For example, if the unit is `1000` (`si` set to `true`):
 
-```
+```txt
  999 -> 999.0 B  (unit is byte)
 1000 ->   1.0 kB (unit is kilobyte)
 ```
@@ -58,7 +52,7 @@ The formatted number always contains one fractional digit.
 
 Examples:
 
-```
+```txt
                         si=false    si=true
                    0:        0 B        0 B
                   27:       27 B       27 B
@@ -86,27 +80,27 @@ The function divides the number `x` by the specified measurement unit `s` and fo
 
 The unit prefix is case-insensitive and should be one of the following:
 
-  * 'K', 'Kb' (1000)
-  * 'Ki', 'KiB' (1024)
-  * 'M', 'Mb' (1000^2)
-  * 'Mi', 'MiB' (1024^2)
-  * 'G', 'Gb' (1000^3)
-  * 'Gi', 'GiB' (1024^3)
-  * 'T', 'Tb' (1000^4)
-  * 'Ti', 'TiB' (1024^4)
-  * 'P', 'Pb' (1000^5)
-  * 'Pi', 'PiB' (1024^5)
-  * 'E', 'Eb' (1000^6)
-  * 'Ei', 'EiB' (1024^6)
-  
+* `K`, `Kb` (1000)
+* `Ki`, `KiB` (1024)
+* `M`, `Mb` (1000^2)
+* `Mi`, `MiB` (1024^2)
+* `G`, `Gb` (1000^3)
+* `Gi`, `GiB` (1024^3)
+* `T`, `Tb` (1000^4)
+* `Ti`, `TiB` (1024^4)
+* `P`, `Pb` (1000^5)
+* `Pi`, `PiB` (1024^5)
+* `E`, `Eb` (1000^6)
+* `Ei`, `EiB` (1024^6)
+
 Examples:
 
-  ```javascript
+```javascript
     // returns 20.0
     // same as formatNumber(20480/1024, '#.#')
     convert(20480, 'KiB') // 20.0
     convert(1000 * 1000, 'M') // 1.0
-  ```
+```
 
 ### `date_format`
 
@@ -114,7 +108,7 @@ Examples:
   date_format(long t, string p, string z) string
 ```
 
-Converts timestamp `t` to a string according to the specified [datetime pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and the [timezone](../shared/timezone-list.md) `z`.
+Converts timestamp `t` to a string according to the specified [date pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and the [time zone](../shared/timezone-list.md) `z`.
 
 The input timestamp is specified as UNIX milliseconds.
 
@@ -125,9 +119,9 @@ Example:
   date_format(milliseconds('2018-01-09T14:23:40Z'), "yyyy-MM-dd HH:mm:ss:SSS ZZZ", "Europe/Berlin")
 ```
 
-Datetime Pattern reference:
+Date Pattern reference:
 
-  ```
+```txt
    Symbol  Meaning                      Presentation  Examples
    ------  -------                      ------------  -------
    G       era                          text          AD
@@ -159,7 +153,7 @@ Datetime Pattern reference:
 
    '       escape for text              delimiter
    ''      single quote                 literal       '
-  ```
+```
 
 ### `formatInterval`
 
@@ -169,11 +163,15 @@ Datetime Pattern reference:
 
 Converts interval in UNIX milliseconds to a formatted interval consisting of non-zero years, days, hours, minutes, and seconds.
 
-Example:
+Examples:
 
 ```javascript
   /* Return formatted interval: 2y 139d 16h 47m 15s */
   formatInterval(75228435000L)
+```
+
+```javascript
+  formatInterval(elapsedTime(milliseconds(tags.last_updated)))
 ```
 
 ### `formatIntervalShort`
@@ -189,319 +187,9 @@ Examples:
 ```javascript
   /* Return formatted interval: 2y 139d */
   formatIntervalShort(75228435000L)
+```
 
+```javascript
   /* Assuming current time of 2017-08-15T00:01:30Z, returns a short interval of elapsed time: 1m 30s */
-  formatIntervalShort(elapsedTime("2017-08-15T00:00:00Z"))  
-```  
-
-### `addTable` for map
-
-```javascript
-   addTable([] m, string f) string
-```
-
-This function prints the input map `m` as a two-column table in the specified format `f`.
-
-The first column in the table contains map keys, whereas the second column contains the corresponding map values.
-
-The input map `m` typically refers to map fields such as `tags`, `entity.tags`, or `variables`.
-
-Supported formats:
-
-* 'markdown'
-* 'ascii'
-* 'property'
-* 'csv'
-* 'html'
-
-An empty string is returned if the map `m` is `null` or has no records.
-
-Map records with empty or `null` values are ignored.
-
-Numeric values are automatically rounded in web and email notifications and are printed `as is` in other cases.
-
-The default table header is 'Name, Value'.
-
-Examples:
-
-* `markdown` format
-
-```javascript
-  addTable(property_map('nurswgvml007','disk::', 'today'), 'markdown')
-```
-
-```ls
-| **Name** | **Value**  |
-|:---|:--- |
-| id | sda5 |
-| disk_%busy | 0.6 |
-| disk_block_size | 16.1 |
-| disk_read_kb/s | 96.8 |
-| disk_transfers_per_second | 26.0 |
-| disk_write_kb/s | 8.1 |
-```
-
-* `csv` format
-
-```javascript
-  addTable(entity.tags, 'csv')
-```
-
-```ls
-Name,Value
-alias,007
-app,ATSD
-cpu_count,1
-os,Linux
-```
-
-* `ascii` format
-
-```javascript
-  addTable(entity_tags(tags.host, true, true), 'ascii')
-```
-
-```ls
-+-------------+------------+
-| Name        | Value      |
-+-------------+------------+
-| alias       | 007        |
-| app         | ATSD       |
-| cpu_count   | 1          |
-| os          | Linux      |
-+-------------+------------+
-```
-
-* `html` format
-
-The HTML format includes the response rendered as a `<table>` node with inline CSS styles for better compatibility with legacy email clients such as Microsoft Outlook.
-
-```javascript
-  addTable(property_map('nurswgvml007', 'cpu::*'), 'html')
-```
-
-```html
-<table style="font-family: monospace, consolas, sans-serif; border-collapse: collapse; font-size: 12px; margin-top: 5px"><tbody><tr><th bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">Name</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value</th></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">id</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">1</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">cpu.idle%</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">91.5</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">cpu.steal%</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">0.0</td></tr>
-</tbody></table>
-```
-
-* `property` format
-
-```javascript
-  addTable(excludeKeys(entity.tags, ['ip', 'loc_code', 'loc_area']), 'property')
-```
-
-```ls
-alias=007
-app=ATSD
-cpu_count=1
-os=Linux
-```
-
-### `addTable` for maps
-
-```javascript
-  addTable([[] m], string f[, [string h]]) string
-```
-
-The function prints a collection of maps `m` as a multiple-column table in the specified format `f`, with optional header `h`.
-
-The first column in the table contains unique keys from all maps in the collection, whereas the second and subsequent columns contain map values for the corresponding key in the first column.
-
-The default table header is 'Name, Value-1, ..., Value-N'.
-
-If the header argument `h` is specified as a collection of strings, it replaces the default header. The number of elements in the header collection must be the same as the number of maps plus `1`.
-
-Examples:
-
-`property_maps('nurswgvml007','jfs::', 'today')` returns the following collection:
-
-```ls
-[
-  {id=/, jfs_filespace_%used=12.8}, 
-  {id=/dev, jfs_filespace_%used=0.0}, 
-  {id=/mnt/u113452, jfs_filespace_%used=34.9}, 
-  {id=/run, jfs_filespace_%used=7.5}, 
-  {id=/var/lib/lxcfs, jfs_filespace_%used=0.0}
-  ]
-```
-
-* `markdown` format
-
-```javascript  
-  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'markdown')
-```
-
-```markdown
-| **Name** | **Value 1** | **Value 2** | **Value 3** | **Value 4** | **Value 5**  |
-|:---|:---|:---|:---|:---|:--- |
-| id | / | /dev | /mnt/u113452 | /run | /var/lib/lxcfs |
-| jfs_filespace_%used | 12.8 | 0.0 | 34.9 | 7.5 | 0.0 |
-```
-
-* `csv` format
-
-```javascript  
-  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'csv')
-```
-
-```ls
-Name,Value 1,Value 2,Value 3,Value 4,Value 5
-id,/,/dev,/mnt/u113452,/run,/var/lib/lxcfs
-jfs_filespace_%used,12.7,0.0,34.9,7.5,0.0
-```
-
-* `ascii` format
-
-```javascript
-  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'ascii', ['property', 'root', 'dev', 'mount', 'run', 'var'])
-```
-
-```ls
-+---------------------+------+------+--------------+------+----------------+
-| property            | root | dev  | mount        | run  | var            |
-+---------------------+------+------+--------------+------+----------------+
-| id                  | /    | /dev | /mnt/u113452 | /run | /var/lib/lxcfs |
-| jfs_filespace_%used | 12.8 | 0.0  | 34.9         | 7.5  | 0.0            |
-+---------------------+------+------+--------------+------+----------------+
-```
-
-* `html` format
-
-```javascript
-  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'html')
-```
-
-```ls
-<table style="font-family: monospace, consolas, sans-serif; border-collapse: collapse; font-size: 12px; margin-top: 5px"><tbody><tr><th bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">Name</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 1</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 2</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 3</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 4</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Value 5</th></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">id</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/dev</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/mnt/u113452</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/run</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">/var/lib/lxcfs</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">jfs_filespace_%used</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">12.8</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">0.0</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">34.9</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">7.5</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">0.0</td></tr>
-</tbody></table>
-```
-
-* `property` format
-
-```javascript
-  addTable(property_maps('nurswgvml007','jfs::', 'today'), 'property')
-```
-
-```ls
-id=/=/dev=/mnt/u113452=/run=/var/lib/lxcfs
-jfs_filespace_%used=12.8=0.0=34.9=7.5=0.0
-```
-
-### `addTable` for list
-
-```javascript
-  addTable([[string]] c, string f[, [string] | boolean h]) string
-```
-
-This function prints `c` (list of lists) as a multi-column table in the specified format `f`. Each nested list in the parent list `c` is serialized into its own row in the table.
-
-The number of elements in each collection must be the same.
-
-The default table header is 'Value-1, ..., Value-N'.
-
-The header argument `h` can be used to customize the header.
-
-If `h` is specified as a collection, its elements replace the default header. The size of the header collection must be the same as the number of cells in each row.
-
-If `h` argument is specified as a boolean value `true`, the first row in the table will be used as a header.
-
-An empty string is returned if the list `c` is empty.
-
-Examples:
-
-```javascript
-query = 'SELECT datetime, value FROM http.sessions WHERE datetime > current_hour LIMIT 2'
-```
-
-`executeSqlQuery(query)` returns following collection:
-
-```ls
-[[datetime, value], [2018-01-31T12:00:13.242Z, 37], [2018-01-31T12:00:28.253Z, 36]]
-```
-
-* `markdown` format
-
-```javascript
-  addTable(executeSqlQuery(query), 'markdown', true)
-```
-
-```ls
-| **datetime** | **value**  |
-|:---|:--- |
-| 2018-01-31T12:00:13.242Z | 37 |
-| 2018-01-31T12:00:28.253Z | 36 |
-```
-
-* `csv` format
-
-```javascript
-  addTable([['2018-01-31T12:00:13.242Z', '37'], ['2018-01-31T12:00:28.253Z', '36']], 'csv', ['date', 'count'])
-```
-
-```ls
-date,count
-2018-01-31T12:00:13.242Z,37
-2018-01-31T12:00:28.253Z,36
-```
-
-* `ascii` format
-
-```javascript
-  addTable(executeSqlQuery(query), 'ascii', true)
-```  
-
-```ls
-+--------------------------+-------+
-| datetime                 | value |
-+--------------------------+-------+
-| 2018-01-31T12:00:13.242Z | 37    |
-| 2018-01-31T12:00:28.253Z | 36    |
-+--------------------------+-------+
-```
-
-* `html` format
-
-```javascript
-  addTable(executeSqlQuery(query), 'html', true)
-```
-
-```html
-<table style="font-family: monospace, consolas, sans-serif; border-collapse: collapse; font-size: 12px; margin-top: 5px"><tbody><tr><th bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">datetime</th><th align="left" style="border: 1px solid #d0d0d0;padding: 4px;">value</th></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">2018-01-31T12:00:13.242Z</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">37</td></tr>
-<tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">2018-01-31T12:00:28.253Z</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">36</td></tr>
-</tbody></table>
-```
-
-* `property` format
-
-```javascript
-  addTable(executeSqlQuery(query), 'property')
-```
-```ls
-datetime=value
-2018-01-31T12:00:13.242Z=37
-2018-01-31T12:00:28.253Z=36
-```
-
-```javascript
-  addTable(executeSqlQuery(query), 'property', true)
-```
-```ls
-2018-01-31T12:00:13.242Z=37
-2018-01-31T12:00:28.253Z=36
-```
-
-```javascript
-  addTable(executeSqlQuery(query), 'property', false)
-```
-```ls
-datetime=value
-2018-01-31T12:00:13.242Z=37
-2018-01-31T12:00:28.253Z=36
+  formatIntervalShort(elapsedTime("2017-08-15T00:00:00Z"))
 ```

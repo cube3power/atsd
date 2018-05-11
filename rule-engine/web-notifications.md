@@ -35,7 +35,7 @@ The built-in notification types for chat and collaboration services deliver aler
 | [AZURE-SB](notifications/azure-sb.md) | Queue/Topic and Message | Send a message to an [Azure Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging) |
 | [GCP-PS](notifications/gcp-ps.md) | Topic and Message | Send a message to a [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) topic. |
 | [WEBHOOK](notifications/webhook.md) | None | Send pre-defined fields as a JSON document or form to an HTTP endpoint. |
-| [CUSTOM](notifications/custom.md) | All | Send any JSON content or form parameters to an HTTP endpoint. Examples: [pagerduty](notifications/custom-pagerduty.md), [zendesk](notifications/custom-zendesk.md), [github](notifications/custom-github.md), [circleci](notifications/custom-circleci.md), [jenkins](notifications/custom-jenkins.md), [ifttt](notifications/custom-ifttt.md)|
+| [CUSTOM](notifications/custom.md) | All | Send any JSON content or form parameters to an HTTP endpoint. Examples: [`pagerduty`](notifications/custom-pagerduty.md), [`zendesk`](notifications/custom-zendesk.md), [`github`](notifications/custom-github.md), [`circleci`](notifications/custom-circleci.md), [`jenkins`](notifications/custom-jenkins.md), [`ifttt`](notifications/custom-ifttt.md)|
 
 ## Window Status
 
@@ -53,7 +53,7 @@ The window for the given metric/entity/tags is created only when the first comma
 
 The new windows are assigned initial status of `CANCEL` which is then updated based on results of the condition (`true` or `false`).
 
-### Window Lifecycle
+### Window Life Cycle
 
 All windows for the current rule are deleted from memory if the rule is deleted or modified and saved in the editor.
 
@@ -84,7 +84,7 @@ While the window is in `REPEAT` status, a notification can be sent with the freq
 
 ### `CANCEL` State
 
-`CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the the condition changes from `true` to `false` or when the window is deleted on rule modification.
+`CANCEL` is the initial status assigned to new windows. It is also assigned to the window when the condition changes from `true` to `false` or when the window is deleted on rule modification.
 
 Triggering a repeat notification in `CANCEL` status is not supported. Such behavior can be emulated by creating a separate rule with a negated expression which returns `true` instead of `false` for the same condition.
 
@@ -199,7 +199,7 @@ The option `Attach Portals` sends one or more portals when active. If a portal i
 
 ![](images/notify-attach-4.png)
 
-The option `Series Chart` sends the default portal for the current metric, entity and tags as an image when active. 
+The option `Series Chart` sends the default portal for the current metric, entity and tags as an image when active.
 
 ![](images/notify-attach-1.png)
 
@@ -209,10 +209,9 @@ The option `Attach Details` sends an alert details table when active. It is poss
 
 ![](images/notify-attach-3.png)
 
-
 ### Multiple Endpoints
 
-In order to update multiple endpoints for the same status change event, add notifications, identified by unique name, in the rule editor. The order in which notifications are delivered is nondeterministic.
+To send requests to multiple endpoints for the same status change event, add multiple notifications in the rule editor. The order in which notifications are delivered is non-deterministic.
 
 ## Stopping Messages
 
@@ -225,7 +224,7 @@ To temporarily disable sending alerts from all rules through the selected notifi
 Notification results are recorded in the database as messages and can be viewed under the 'notification' type on the Message Search page.
 
 ```elm
-https://atsd_host:8443/messages?search=1&search=&type=notification&interval.intervalCount=1&interval.intervalUnit=WEEK
+https://atsd_hostname:8443/messages?search=1&search=&type=notification&interval.intervalCount=1&interval.intervalUnit=WEEK
 ```
 
 ![](images/notify-error.png)
@@ -235,7 +234,7 @@ https://atsd_host:8443/messages?search=1&search=&type=notification&interval.inte
 The number of notifications sent per minute can be monitored with the [`web_service_notifications_per_minute`](../administration/monitoring.md#rule-engine) metric collected by the database.
 
 ```elm
-https://atsd_host:8443/portals/series?entity=atsd&metric=web_service_notifications_per_minute
+https://atsd_hostname:8443/portals/series?entity=atsd&metric=web_service_notifications_per_minute
 ```
 
 ![](images/notifications-monitoring.png)
@@ -258,30 +257,30 @@ If the ATSD server cannot connect to the remote API server directly due to netwo
 
   NGINX configuration for Slack:
 
-  ```
+```txt
     location /api/chat.postMessage {
         proxy_pass https://slack.com/api/chat.postMessage;
     }
     location /api/files.upload {
         proxy_pass https://slack.com/api/files.upload;
     }
-  ```
+```
 
   NGINX configuration for Telegram:
 
-  ```
+```txt
     location /bot {
         proxy_pass https://api.telegram.org/bot;
     }
-  ```
+```
 
   NGINX configuration for Discord:
 
-  ```
+```txt
     location /api/webhooks {
         proxy_pass https://discordapp.com/api/webhooks;
     }
-  ```  
+```
 
   Modify the `Base URL` by replacing it with the corresponding API gateway URL.
 

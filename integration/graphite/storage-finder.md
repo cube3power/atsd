@@ -12,14 +12,12 @@ The configurations are set under `ATSD_CONF`.
 
 There are two versions of the ATSD Storage Finder:
 
-
-- ATSD Storage Finder Default – allows you to view metrics as they are stored in ATSD.
-- ATSD Storage Finder Virtual – allows you to create custom paths to entities, metrics, and tags.
-
+* ATSD Storage Finder Default – allows you to view metrics as they are stored in ATSD.
+* ATSD Storage Finder Virtual – allows you to create custom paths to entities, metrics, and tags.
 
 ATSD Storage Finder settings in `local_settings.py`:
 
-```
+```python
 STORAGE_FINDERS = (
     'atsd_finder.AtsdFinder',
     'atsd_finder.AtsdFinderV',
@@ -29,9 +27,9 @@ STORAGE_FINDERS = (
 
 ATSD Storage Finder and ATSD Storage Finder Virtual can be used together (their settings can be combined in `ATSD_CONF`).
 
-#### ATSD Storage Finder Default
+## ATSD Storage Finder Default
 
-```
+```python
 STORAGE_FINDERS = (
     'atsd_finder.AtsdFinder',
 )
@@ -48,18 +46,17 @@ STORAGE_FINDERS = (
 |  metric_folders  |  List of folders for grouping metrics by name.<br>Grouping is done according to the beginning of each metric name.<br>If it is matched to a folder name, then it will be visible in that folder.<br>For example if a metric name begins with<br>`statsd` (`statsd_cpuload_avg5`)<br>then it will be placed into the folder called `'statsd'`.<br>If metric name does not satisfy any of the listed folder names, then it will be placed into the `"_"` folder by default.  |  `'metric_folders' : 'abcdefghijklmnopqrstuvwxyz_'`<br>Will result in folders from a to z, iterates through the string.  |
 |  aggregators  |  List of aggregators.  |  `'aggregators' : {<br>                'avg'               : 'Average',<br>                'min'               : 'Minimum',<br>                'max'               : 'Maximum',<br>                'sum'               : 'Sum',<br>                'count'             : 'Count',<br>                'first'             : 'First value',<br>                'last'              : 'Last value',<br>                'percentile_999'    : 'Percentile 99.9%',<br>                'percentile_99'     : 'Percentile 99%',<br>                'percentile_995'    : 'Percentile 99.5%',<br>                'percentile_95'     : 'Percentile 95%',<br>                'percentile_90'     : 'Percentile 90%',<br>                'percentile_75'     : 'Percentile 75%',<br>                'median'            : 'Median',<br>                'standard_deviation': 'Standard deviation',<br>                'delta'             : 'Delta',<br>                'wavg'              : 'Weighted average',<br>                'wtavg'             : 'Weighted time average'<br>}`  |
 
-
 If you use an underscore at the beginning of a setting value (`entity_folders` or `metric_folders`), then all folders that do not satisfy any other setting will be placed there.
 
 For example:
 
 `'_other'`
 
-##ATSD Storage Finder `local_settings.py` example:##
+## ATSD Storage Finder `local_settings.py` example
 
-```
+```python
 ATSD_CONF = {
-    'url': 'http://atsd_server:8088',
+    'url': 'http://atsd_hostname:8088',
     'username': 'atsd_user',
     'password': 'secrect_pwd',
     'entity_folders': ['_other',
@@ -83,9 +80,9 @@ ATSD_CONF = {
 }
 ```
 
-#### ATSD Storage Finder Virtual
+## ATSD Storage Finder Virtual
 
-```
+```python
 STORAGE_FINDERS = (
     'atsd_finder.AtsdFinderV',
 )
@@ -107,34 +104,27 @@ Under `views`, use `type` to control which folders and the order you would like 
 |  `'type': 'aggregator'`  |  Node representing statistics.  |
 |  `'type': 'period'`  |  Node representing statistics periods.  |
 
+## `local_settings.py` example with "views"
 
-##`local_settings.py` example with "views":##
-
-```
+```python
 ATSD_CONF = {
- 
+
     'views': {'DistributedGeoMon': [{'type': 'entity folder',
                                      'value': [{'com.axibase'  : 'com.axibase'},
                                                {'com.axibase.*': 'com.axibase.*'}]},
- 
                                     {'type': 'entity',
                                      'value': ['*']},
- 
                                     {'type': 'tag',
                                      'value': ['path'],
                                      'global': [{'type': 'metric',
                                                  'value': ['distgeomon.connect-dns']}]},
- 
                                     {'type': 'tag',
                                      'value': ['geo-target', 'geo-source']},
- 
                                     {'type': 'metric folder',
                                      'value': [{'distgeomon.response*': 'response'},
                                                {'distgeomon.connect*' : 'connect'}]},
- 
                                     {'type': 'metric',
                                      'value': ['*']},
- 
                                     {'type': 'interval',
                                      'value': [{'count': '30',
                                                 'unit': 'minute',
@@ -145,15 +135,12 @@ ATSD_CONF = {
                                                {'count': '1',
                                                 'unit': 'day',
                                                 'label': '1 day'}]},
- 
                                     {'type': 'collection',
                                      'value': [{'type': 'aggregator',
                                                 'value': [{'detail': 'Detail'}],
                                                 'is leaf': True},
- 
                                                {'type': 'const',
                                                 'value': ['Aggregate']}]},
- 
                                     {'type': 'aggregator',
                                      'value': [{'count'        : 'Count'},
                                                {'min'          : 'Minimum'},
@@ -163,7 +150,6 @@ ATSD_CONF = {
                                                {'sum'          : 'Sum'},
                                                {'percentile_75': 'Percentile 75%'},
                                                {'delta'        : 'Delta'}]},
- 
                                     {'type': 'period',
                                      'value': [{'count': '30',
                                                 'unit': 'second',
@@ -179,11 +165,11 @@ ATSD_CONF = {
 
 ![](resources/00.png)
 
-##### "views" example breakdown:
+## "views" example breakdown
 
 ![](resources/01.png)
 
-```
+```python
 {'type': 'entity folder',
  'value': [{'com.axibase'  : 'com.axibase'},
            {'com.axibase.*': 'com.axibase.*'}]}
@@ -193,7 +179,7 @@ Below two entity folders are shown. One filters out only the entity `com.axibas
 
 ![](resources/02.png)
 
-```
+```python
 {'type': 'entity',
  'value': ['*']}
 ```
@@ -202,7 +188,7 @@ List of entities filtered by the folder they’re in.
 
 ![](resources/03.png)
 
-```
+```python
 {'type': 'tag',
  'value': ['path'],
  'global': [{'type': 'metric',
@@ -213,7 +199,7 @@ Values of the tag path. To retrieve tags we need a metric; however, it hasn’t 
 
 ![](resources/04.png)
 
-```
+```python
 {'type': 'tag',
  'value': ['geo-target', 'geo-source']}
 ```
@@ -222,7 +208,7 @@ Values of tags `geo-target` and `geo-source` separated by a comma.
 
 ![](resources/05.png)
 
-```
+```python
 {'type': 'metric folder',
  'value': [{'distgeomon.response*': 'response'},
            {'distgeomon.connect*' : 'connect'}]}
@@ -232,7 +218,7 @@ Two metric folders.
 
 ![](resources/06.png)
 
-```
+```python
 {'type': 'metric',
  'value': ['*']}
 ```
@@ -241,7 +227,7 @@ List of metrics.
 
 ![](resources/07.png)
 
-```
+```python
 {'type': 'interval',
  'value': [{'count': 30,
             'unit': 'minute',
@@ -258,12 +244,11 @@ List of aggregation intervals.
 
 ![](resources/08.png)
 
-```
+```python
 {'type': 'collection',
  'value': [{'type': 'aggregator',
             'value': [{'detail': 'Detail'}],
             'is leaf': True},
- 
            {'type': 'const',
             'value': ['Aggregate']}]}
 ```
@@ -272,7 +257,7 @@ If we want to make two different types of tokens at the same level, i.e. a leaf 
 
 ![](resources/09.png)
 
-```
+```python
 {'type': 'aggregator',
  'value': [{'count'        : 'Count'},
            {'min'          : 'Minimum'},
@@ -288,7 +273,7 @@ Here is a list of aggregators. First we define an ATSD aggregator we want to use
 
 ![](resources/10.png)
 
-```
+```python
 {'type': 'period',
  'value': [{'count': 30,
             'unit': 'second',

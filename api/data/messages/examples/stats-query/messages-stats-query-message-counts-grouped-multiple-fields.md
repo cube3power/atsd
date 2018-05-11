@@ -5,9 +5,11 @@
 ## Request
 
 ### URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/messages/stats/query
+POST https://atsd_hostname:8443/api/v1/messages/stats/query
 ```
+
 ### Payload
 
 ```json
@@ -15,7 +17,7 @@ POST https://atsd_host:8443/api/v1/messages/stats/query
   {
     "entities": "nurswgvml006",
     "metric": "message-count",
-    
+
     "groupKeys": [
       "entity",
       "type",
@@ -40,6 +42,7 @@ POST https://atsd_host:8443/api/v1/messages/stats/query
 ## Response
 
 ### Payload
+
 ```json
 [
   {
@@ -113,4 +116,3 @@ POST https://atsd_host:8443/api/v1/messages/stats/query
   }
 ]
 ```
-

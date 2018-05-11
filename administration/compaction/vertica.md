@@ -32,7 +32,7 @@ The file contains over 2 million lines. The OHLC metrics contain values with up 
 
 Each row consists of 5 metrics for a given 1-minute interval:
 
-```
+```txt
 09/08/2017,15:42,142.53,142.5399,142.49,142.49,10031
 ...
 time   = 09/08/2017 15:42
@@ -226,7 +226,6 @@ SELECT column_name, encodings, compressions FROM column_storage WHERE ANCHOR_TAB
 | epoch       | Int_Delta    | none         |
 +-------------+--------------+--------------+
 
-
 SELECT * FROM Metrics;
 
 +----+--------+
@@ -263,7 +262,7 @@ Verify the row count:
 wc -l IBM_adjusted.txt
 ```
 
-```
+```txt
 2045514 IBM_adjusted.txt
 ```
 
@@ -271,11 +270,11 @@ wc -l IBM_adjusted.txt
 
 Start a Vertica v7.1.1-0 container. Mount `/tmp/test` directory to the container.
 
-```properties
+```elm
 docker run --name=vertica -v /tmp/test:/data -d sumitchawla/vertica
 ```
 
-### Execute SQL scripts for the **Trade Table** Schema.
+### Execute SQL scripts for the **Trade Table** Schema
 
 ```sh
 curl -o /tmp/test/vertica-trade-table.sql \
@@ -296,7 +295,7 @@ cat /tmp/test/vertica-trade-table.sql | \
 +-------------------+-----------+------------+
 ```
 
-### Execute SQL scripts for the **Universal Table** Schema.
+### Execute SQL scripts for the **Universal Table** Schema
 
 ```sh
 curl -o /tmp/test/vertica-universal-table.sql \

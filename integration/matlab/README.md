@@ -1,18 +1,18 @@
 # MATLAB
 
-- [Prerequisites](#prerequisites)
-- [Configure Database Connection](#configure-database-connection)
-- [Verify Connection](#verify-connection)
-- [Review Tables in Database Explorer](#review-tables-in-database-explorer)
-- [Load Data](#load-data)
-- [Write Data](#write-data)
-- [Calculate Derived Series](#calculate-derived-series)
+* [Prerequisites](#prerequisites)
+* [Configure Database Connection](#configure-database-connection)
+* [Verify Connection](#verify-connection)
+* [Review Tables in Database Explorer](#review-tables-in-database-explorer)
+* [Load Data](#load-data)
+* [Write Data](#write-data)
+* [Calculate Derived Series](#calculate-derived-series)
 
 ## Prerequisites
 
 ### Install MatLab
 
-- Install [MatLab](https://www.mathworks.com/products/matlab.html) R2017b with Database Toolbox
+* Install [MatLab](https://www.mathworks.com/products/matlab.html) R2017b with Database Toolbox
 
 ### Load Sample Data
 
@@ -36,18 +36,19 @@ There are two ways of enabling the ATSD JDBC driver in MatLab: static and dynami
 
 #### Static
 
-- Run the `prefdir` command in the MatLab Command Window. This command displays the path to a directory used in subsequent steps.
+* Run the `prefdir` command in the MatLab Command Window. This command displays the path to a directory used in subsequent steps.
 
 ![](resources/prefdir.png)
-- Close MatLab if it's running.
-- Navigate to the `prefdir` directory above and create a file named `javaclasspath.txt`.
-- Open the `javaclasspath.txt` file. Add the full path to the ATSD driver JAR file, for example, `/home/user/MATLAB/atsd-jdbc-1.2.22-DEPS.jar`
-- Save and close `javaclasspath.txt`.
-- Restart MatLab.
+
+* Close MatLab if it's running.
+* Navigate to the `prefdir` directory above and create a file named `javaclasspath.txt`.
+* Open the `javaclasspath.txt` file. Add the full path to the ATSD driver JAR file, for example, `/home/user/MATLAB/atsd-jdbc-1.2.22-DEPS.jar`
+* Save and close `javaclasspath.txt`.
+* Restart MatLab.
 
 #### Dynamic
 
-- Run the `javaaddpath('dpath')` command in the MatLab Command Window, where `'dpath'` is the full path to the ATSD driver JAR file.
+* Run the `javaaddpath('dpath')` command in the MatLab Command Window, where `'dpath'` is the full path to the ATSD driver JAR file.
 
 Example:
 
@@ -57,20 +58,19 @@ Example:
 
 ### Connect in Database Explorer
 
-- **Apps > Database Explorer**
-- Click **Configure Data Source > Configure JDBC Data Source**
-- Select **Vendor > OTHER**.
-- Set the Driver field to `com.axibase.tsd.driver.jdbc.AtsdDriver`
-- Specify a JDBC URL like `jdbc:atsd://ATSD_HOSTNAME:8443;expandTags=true`
-[Information about ATSD JDBC URL parameters](https://github.com/axibase/atsd-jdbc/blob/master/README.md)
-- Click **Test**, specify ATSD login and password
-- If connection is successful click **Save** and close _JDBC Data Source Configuration_ window
+* **Apps > Database Explorer**
+* Click **Configure Data Source > Configure JDBC Data Source**
+* Select **Vendor > OTHER**.
+* Set the Driver field to `com.axibase.tsd.driver.jdbc.AtsdDriver`
+* Specify a JDBC URL like `jdbc:atsd://atsd_hostname:8443;expandTags=true` [Information about ATSD JDBC URL parameters](https://github.com/axibase/atsd-jdbc/blob/master/README.md)
+* Click **Test**, specify ATSD login and password
+* If connection is successful click **Save** and close _JDBC Data Source Configuration_ window
 
 Example:
 
 ![](resources/jdbc_data_source_new.png)
 
-`ATSD_HOSTNAME` is the hostname address of the ATSD instance you want to connect to.
+`atsd_hostname` is the hostname address of the ATSD instance you want to connect to.
 
 ### Connect to the MatLab Command Window
 
@@ -78,7 +78,7 @@ Example of https connection to ATSD:
 
 ```matlab
 driver = 'com.axibase.tsd.driver.jdbc.AtsdDriver';
-url = 'jdbc:atsd://ATSD_HOSTNAME:8443';
+url = 'jdbc:atsd://atsd_hostname:8443';
 username = 'USERNAME';
 password = 'PASSWORD';
 conn_atsd = database('', username, password, driver, url);
@@ -102,8 +102,8 @@ Expected result:
 
 ## Review Tables in the Database Explorer
 
-- Specify a JDBC URL like `jdbc:atsd://ATSD_HOSTNAME:8443;tables=%jvm%` at _JDBC Data Source Configuration_ window
-- Click **New Query**, select _ATSD_ at _Data Source_ drop-down, specify ATSD login and password
+* Specify a JDBC URL like `jdbc:atsd://atsd_hostname:8443;tables=%jvm%` at _JDBC Data Source Configuration_ window
+* Click **New Query**, select _ATSD_ at _Data Source_ drop-down, specify ATSD login and password
 
 The _Database Browser_ would display a set of tables matching the expression:
 
@@ -111,7 +111,7 @@ The _Database Browser_ would display a set of tables matching the expression:
 
 Select one or more columns to open the Data Preview window displaying the first N rows of the resultset (10 by default).
 
-An example with the datetime, value, and text fields selected:
+An example with the `datetime`, `value`, and `text` fields selected:
 
 ![](resources/prewiew_data.png)
 
@@ -151,7 +151,7 @@ insert(conn_atsd, 'METRIC_NAME', colnames, data);
 
 ```matlab
 driver = 'com.axibase.tsd.driver.jdbc.AtsdDriver';
-url = 'jdbc:atsd://ATSD_HOSTNAME:8443';
+url = 'jdbc:atsd://atsd_hostname:8443';
 username = 'USERNAME';
 password = 'PASSWORD';
 conn_atsd = database('', username, password, driver, url);
@@ -220,6 +220,7 @@ weights = repmat(weights, 5, 1);
 % element-wise multiply of 2 columns (1000 value is here because weights is a proportion out of 1000)
 inflation_cpi_price = prices .* weights / 1000;
 ```
+
 ![](resources/inflation_1.png)
 
 ```matlab
@@ -257,18 +258,18 @@ insert(conn_atsd, 'inflation.cpi.composite.price', colnames, payload);
 
 ### MatLab script file
 
-- [Link to file](resources/script.m) that contains all the steps
+* [Link to file](resources/script.m) that contains all the steps
 
 ## Reference
 
 MATLAB functions:
 
-- [database](https://www.mathworks.com/help/database/ug/database.html)
-- [exec](https://www.mathworks.com/help/database/ug/exec.html)
-- [fetch](https://www.mathworks.com/help/database/ug/fetch.html)
-- [cell2mat](https://www.mathworks.com/help/matlab/ref/cell2mat.html)
-- [repmat](https://www.mathworks.com/help/matlab/ref/repmat.html)
-- [sum](https://www.mathworks.com/help/matlab/ref/sum.html)
-- [reshape](https://www.mathworks.com/help/matlab/ref/reshape.html)
-- [cellstr](https://www.mathworks.com/help/matlab/ref/cellstr.html)
-- [datestr](https://www.mathworks.com/help/matlab/ref/datestr.html)
+* [`database`](https://www.mathworks.com/help/database/ug/database.html)
+* [`exec`](https://www.mathworks.com/help/database/ug/exec.html)
+* [`fetch`](https://www.mathworks.com/help/database/ug/fetch.html)
+* [`cell2mat`](https://www.mathworks.com/help/matlab/ref/cell2mat.html)
+* [`repmat`](https://www.mathworks.com/help/matlab/ref/repmat.html)
+* [`sum`](https://www.mathworks.com/help/matlab/ref/sum.html)
+* [`reshape`](https://www.mathworks.com/help/matlab/ref/reshape.html)
+* [`cellstr`](https://www.mathworks.com/help/matlab/ref/cellstr.html)
+* [`datestr`](https://www.mathworks.com/help/matlab/ref/datestr.html)

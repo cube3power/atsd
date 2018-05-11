@@ -12,11 +12,11 @@ Data collected by the entity will be removed asynchronously in the background.
 |:---|:---|---:|
 | DELETE | `/api/v1/entities/{entity}` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| entity |string|Entity name.|
+| `entity` |string|Entity name.|
 
 ## Response
 
@@ -31,16 +31,17 @@ None.
 #### URI
 
 ```elm
-DELETE https://atsd_host:8443/api/v1/entities/nurswgvml001
+DELETE https://atsd_hostname:8443/api/v1/entities/nurswgvml001
 ```
+
 #### Payload
 
 None.
 
-#### curl 
+#### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/entities/nurswgvml001 \
+curl https://atsd_hostname:8443/api/v1/entities/nurswgvml001 \
   --insecure --verbose --user {username}:{password} \
   --request DELETE
 ```
@@ -50,4 +51,3 @@ curl https://atsd_host:8443/api/v1/entities/nurswgvml001 \
 None.
 
 ## Additional Examples
-

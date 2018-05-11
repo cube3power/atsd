@@ -4,7 +4,7 @@
 
 The `rule` functions provide a way to check windows created by other rules. The matching windows may contain data for series that are different from the series in the current window. These functions may be used for correlation purposes.
 
-Windows are matched using their [grouping](grouping.md) tags, irrespective of tags present in the last command. 
+Windows are matched using their [grouping](grouping.md) tags, irrespective of tags present in the last command.
 For example, if the window is grouped by entity and tags `t1` and `t2` and the expression checks for `tags.t3 NOT LIKE ""`, such an expression will return `false` even if `t3` is present in the last command because `t3` is not included in the grouping tags.
 
 The current window is excluded from matching.
@@ -35,15 +35,12 @@ Returns the first matching window for the specified rule `r`, entity `e` and exp
 
 The function returns `null` if no matching windows are found.
 
-The following window fields can be accessed via the dot notation, for example `rule_window('jvm_derived').entity`:
+Window [fields](window.md#base-fields) except `repeat_interval` can be accessed via the dot notation, for example `rule_window('jvm_derived').entity`. In addition, the matched window provides the `lastText` field which contains the last message text received by the window.
 
- * [base fields](window.md#base-fields), excluding `repeat_interval`
- * `lastText`
-
-> Note: 
-> * `entity` and `tags` are the same as in the last window command;
-> * if minimum interval is not set then `min_interval_expired = true`;
-> * `threshold` - the threshold matched by the last command.
+> Note:
+> * `entity` and `tags` are the same as in the last window command.
+> * If minimum interval is not set then `min_interval_expired = true`.
+> * `threshold` - the threshold value matched by the last command.
 
 ---
 
@@ -55,19 +52,19 @@ The following match conditions are applied:
 
 * Expression:
   * The expression `p` can include the following fields and supports wildcards in field values:
-   
+
     |**Name**|**Description**|
     |---|---|
     |message |The text value, which is equal to 'message' field in case of message command.|
     |tags and tags.{name}/tags['name']|Command tags.|
     |status|Window [status](README.md#window-status).|
-  * The expression `p` can include window [fields](window.md#window-fields) as placeholders.  
+  * The expression `p` can include window [fields](window.md#window-fields) as placeholders.
 
-### `rule_open` Examples 
+### `rule_open` Examples
 
 ```javascript
   /*
-  Evaluates to `true` if the average value of samples in the current window exceeds 10 
+  Evaluates to `true` if the average value of samples in the current window exceeds 10
   and if the 'disk_used_check' rule is open for the same entity.
   */
   avg() > 10 && rule_open('disk_used_check')
@@ -80,38 +77,39 @@ The following match conditions are applied:
 
 Assume the following windows have status 'REPEAT' and the function is called from the rule 'test_rule_open':
 
-```
+```txt
 +----------------+------------------------------+
 | Entity         | nurswgvml007                 |
 | Entity Label   | NURswgvml007                 |
-| Metric	 | message                      |
-| Tags	         | container-name = axibase     | 
+| Metric         | message                      |
+| Tags           | container-name = axibase     |
 |                | container-status = UP        |
 |                | host = 172.17.0.3            |
 |                | port = 22                    |
-| Rule	         | jvm_derived                  |
+| Rule           | jvm_derived                  |
 | Rule Expression| true                         |
-| Text Value	 | Starting sql query execution.|
+| Text Value     | Starting sql query execution.|
 +----------------+------------------------------+
 ```
-```
+
+```txt
 +----------------+------------------------------+
 | Entity         | atsd                         |
 | Entity Label   | ATSD                         |
-| Metric	 | message                      |
-| Tags	         | container-name = axibase2    |
+| Metric         | message                      |
+| Tags           | container-name = axibase2    |
 |                | external-port = 43022        |
-| Rule	         | test_rule_open               |
+| Rule           | test_rule_open               |
 | Rule Expression| true                         |
-| Text Value	 | Send 300 commands to ATSD.   |
+| Text Value     | Send 300 commands to ATSD.   |
 +----------------+------------------------------+
 ```
 
 * No optional parameters
 
 ```javascript
-  /* 
-  Returns 'false' because the entity in window of the referenced rule is different 
+  /*
+  Returns 'false' because the entity in window of the referenced rule is different
   */
   rule_open('jvm_derived')
 ```
@@ -121,10 +119,10 @@ Assume the following windows have status 'REPEAT' and the function is called fro
 ```javascript
   /* Returns 'true' */
   rule_open('jvm_derived', 'nurswgvml007')
-  
+
   /* Returns 'true' */
   rule_open('jvm_derived', '')
-  
+
   /* Returns 'true' */
   rule_open('jvm_derived', null)
 ```
@@ -134,7 +132,7 @@ Assume the following windows have status 'REPEAT' and the function is called fro
 ```javascript
   /* Returns 'true' */
   rule_open('jvm_derived', 'nurswgvml007', "tags.container-status != ''")
-  
+
   /* Returns 'true' */
   rule_open('jvm_derived', 'nurswgvml007', "tags.container-name LIKE 'axi*'")
 ```
@@ -144,7 +142,7 @@ Assume the following windows have status 'REPEAT' and the function is called fro
 ```javascript
   /* Returns 'true' */
   rule_open('jvm_derived', 'nurswgvml007', "message != ''")
-  
+
   /* Returns 'false' */
   rule_open('jvm_derived', 'nurswgvml007', "message NOT LIKE 'Starting*'")
 ```
@@ -154,16 +152,16 @@ Assume the following windows have status 'REPEAT' and the function is called fro
 ```javascript
   /* Returns 'true' */
   rule_open('jvm_derived', 'nurswgvml007', "message != '' AND tags.host='172.17.0.3'")
-  
+
   /* Returns 'true' */
   rule_open('jvm_derived', 'nurswgvml007', "tags.port != '23' && message LIKE 'Starting*'")
-  
 ```
+
 ### `rule_window` Examples
 
 ```javascript
   /*
-  Evaluates to `true` if the average value of samples in the current window exceeds 10 
+  Evaluates to `true` if the average value of samples in the current window exceeds 10
   and if the first window for 'disk_used_check' rule in the same entity has any other status except 'OPEN'.
   */
   avg() > 10 && rule_window('disk_used_check') != null && rule_window('disk_used_check').status != 'OPEN'
@@ -182,7 +180,7 @@ Assume the following windows have status 'REPEAT' and the function is called fro
   Used the same entity as in the current window.
   */
   rule_window('slack-bot-cmd-confirm', entity, 'tags.event.user!="' + tags.event.user + '" AND message="' + message + '" AND status!="CANCEL"')
-  ```
+```
 
 ## `rule_windows`
 
@@ -195,23 +193,20 @@ Returns the collection of windows for the specified rule `r`, expression `p` and
 The following match conditions are applied:
 
 * The expression `p` can include the following fields and supports wildcards in field values:
-   
+
     |**Name**|**Description**|
     |---|---|
     |message |The text value, which is equal to 'message' field in case of message command.|
     |tags and tags.{name}/tags['name']|Command tags.|
     |status|Window [status](README.md#window-status).|
-    
-* The expression `p` can include window [fields](window.md#window-fields) as placeholders.  
- 
+
+* The expression `p` can include window [fields](window.md#window-fields) as placeholders.
+
 To access the n-th element in the collection, use square brackets `[index]` or `get(index)` method (starting with 0 for the first element).
 
-The following window fields can be accessed via the dot notation, for example `rule_windows('jvm_derived', 'status="CANCEL"')[0].entity`:
+Window [fields](window.md#base-fields) except `repeat_interval` can be accessed via the dot notation, for example `rule_windows('jvm_derived', 'status="CANCEL"')[0].entity`. In addition, the matched windows provide the `lastText` field which contains the last message text received by the window.
 
- * [base fields](window.md#base-fields), excluding `repeat_interval`
- * `lastText`
-
-> Note: 
+> Note:
 > * `tags` are the same as in the last window command;
 > * if minimum interval is not set then `min_interval_expired = true`;
 > * `threshold` - the threshold matched by the last command.
@@ -219,9 +214,9 @@ The following window fields can be accessed via the dot notation, for example `r
 Examples:
 
 ```javascript
-  /* 
-  Returns open windows of 'jvm_derived' rule 
-  with the same value for 'tags.host' as at the current window. 
+  /*
+  Returns open windows of 'jvm_derived' rule
+  with the same value for 'tags.host' as at the current window.
   */
   rule_windows('jvm_derived',"tags.host='" + tags.host + "'")
 

@@ -12,6 +12,7 @@ addPortal(string portal, string entity / List<?> entities)
 addPortal(string portal, string entity / List<?> entities, string comment)
 addPortal(string portal, string entity / List<?> entities, string comment, [] additionalParams)
 ```
+
 * [**required**] `portal` - Name of the preconfigured portal. If asterisk `*` is specified, all portals for the given entity will be attached to the notification. If the portal is not found by the specified name, a case-insensitive match without non-alphanumeric characters is used, e.g. 'tcollector - Linux' becomes 'tcollectorlinux' and the function returns the first matching portal.
 * `entity` or `entities` - Entities for which the portal will be generated. Required if the portal type is [template](../portals/portals-overview.md#template-portals).
   * `entity` - Entity name `string` is converted to `entity` url parameter (`&entity=test_e`). If entity is not found by name, it will be matched by case-insensitive label.
@@ -31,7 +32,7 @@ The function is supported in:
 * [Telegram](notifications/telegram.md)
 * [Slack](notifications/slack.md)
 * [Discord](notifications/discord.md)
-* [Hipchat](notifications/hipchat.md)
+* [HipChat](notifications/hipchat.md)
 
 When used with other configurations, the function will return an empty string.
 
@@ -42,20 +43,21 @@ When used with other configurations, the function will return an empty string.
 ```javascript
 addPortal('ATSD')
 ```
-![](images/functions-portal-1.png)
 
+![](images/functions-portal-1.png)
 
 * Template Portal for Specific Entity
 
 ```javascript
 addPortal('Linux nmon', 'nurswgvml007')
 ```
-![](images/functions-portal-2.png)
 
+![](images/functions-portal-2.png)
 
 * Custom Caption
 
 ```javascript
 addPortal('collectd', 'nurswgvml007', '$caption | <@' + tags.event.user + '>')
 ```
+
 ![](images/functions-portal-3.png)

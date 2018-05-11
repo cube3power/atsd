@@ -7,9 +7,11 @@ Query for all dates. Select last message with limit = 1. The database can store 
 ## Request
 
 ### URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/messages/query
+POST https://atsd_hostname:8443/api/v1/messages/query
 ```
+
 ### Payload
 
 ```json
@@ -18,7 +20,7 @@ POST https://atsd_host:8443/api/v1/messages/query
     "entity": "nurswgvml007",
     "startDate": "1970-01-01T00:00:00.000Z",
     "endDate": "9999-12-31T23:59:59.999+23:59",
-	"limit": 1
+    "limit": 1
   }
 ]
 ```
@@ -26,6 +28,7 @@ POST https://atsd_host:8443/api/v1/messages/query
 ## Response
 
 ### Payload
+
 ```json
 [
   {

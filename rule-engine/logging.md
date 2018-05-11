@@ -88,46 +88,46 @@ Placeholders can be incorporated in the encoder pattern using the `%X{name}` syn
 
 **Name**|**Example**
 :---|:---
-alert_duration | 00:00:05:12
+alert_duration | `00:00:05:12`
 alert_duration_interval |
-alert_message | Alert open: ${entity}, ${metric}, ${tags}.
-alert_type | OPEN
-columns | {memkb = round(value/1024)} - variables
-entity | atsd
-entity_label | Axibase TSD
-entity_tags | {version=community}
-entity_tags.tag_name | community
-event_tags | {location=dc-5}
-expression | value < 512 * 1024 * 1024
-metric | jvm_memory_free
-open_value | 3103100000
+alert_message | `Alert open: ${entity}, ${metric}, ${tags}.`
+alert_type | `OPEN`
+columns | `{memkb = round(value/1024)}` - variables
+entity | `atsd`
+entity_label | `Axibase TSD`
+entity_tags | `{version=community}`
+entity_tags.tag_name | `community`
+event_tags | `{location=dc-5}`
+expression | `value < 512 * 1024 * 1024`
+metric | `jvm_memory_free`
+open_value | `3103100000`
 properties |
-repeat_count | 0
-repeat_interval | 1 MINUTE
-rule | memory_low
-rule_expression | value < 512 * 1024 * 1024
-rule_filter | entity != 'nurswghbs001'
-rule_name | memory_low
-schedule | * * * * MON-FRI
-severity | warning
-status | OPEN
-tags.tag_name | nurswgvml003
-tags | host=nurswgvml003
-timestamp | 145678784500 (Unix milliseconds)
-value | 3103100000
-window | length(1)
-threshold | max() > 20
+repeat_count | `0`
+repeat_interval | `1 MINUTE`
+rule | `memory_low`
+rule_expression | `value < 512 * 1024 * 1024`
+rule_filter | `entity != 'nurswghbs001'`
+rule_name | `memory_low`
+schedule | `* * * * MON-FRI`
+severity | `warning`
+status | `OPEN`
+tags.tag_name | `nurswgvml003`
+tags | `host=nurswgvml003`
+timestamp | `145678784500` (Unix milliseconds)
+value | `3103100000`
+window | `length(1)`
+threshold | `max() > 20`
 
 #### Time Placeholders
 
-* alert_open_time
-* alert_open_datetime
-* received_time
-* received_datetime
-* event_time
-* event_datetime
-* window_first_time
-* window_first_datetime
+* `alert_open_time`
+* `alert_open_datetime`
+* `received_time`
+* `received_datetime`
+* `event_time`
+* `event_datetime`
+* `window_first_time`
+* `window_first_datetime`
 
-> Placeholders ending with `_time` keep time in the local server timezone, for example 2017-05-30 14:05:39 PST.
-> Placeholders ending with `_datetime` keep time in ISO 8601 format in UTC timezone, for example 2017-05-30T06:05:39Z.
+> Placeholders ending with `_time` keep time in the local server time zone, for example `2017-05-30 14:05:39 PST`.
+> Placeholders ending with `_datetime` keep time in ISO 8601 format in UTC time zone, for example `2017-05-30T06:05:39Z`.

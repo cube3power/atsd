@@ -7,7 +7,7 @@ Inline view is a subquery specified in the `FROM` clause instead of the actual t
 Using Inline view, identify the maximum value in each hour and then calculate the average hourly maximum for each day of the week.
 
 ```sql
-SELECT datetime, AVG(value) AS "daily_average" 
+SELECT datetime, AVG(value) AS "daily_average"
   FROM -- actual table replaced with subquery
   (
     SELECT datetime, MAX(value) AS "value"
@@ -115,8 +115,6 @@ GROUP BY tags.application, tags.transaction, PERIOD(1 hour)
 
 ## Query
 
-
-
 ```sql
 SELECT app,
   SUM(mem_val) AS "apps.usage_memory",
@@ -125,14 +123,14 @@ SELECT app,
   COUNT(mem_val) AS "apps.active_containers"
   FROM (
     SELECT mem.entity.tags."env.marathon_app_id" AS app,
-		  AVG(mem.value)/(1024*1024) AS mem_val,
-		  AVG(rss.value)/(1024*1024) AS rss_val,
-    	AVG(cpup.value) AS cpup_val         
-	  FROM "docker.memory.usage" AS mem
-		  OUTER JOIN "docker.memory.rss" as rss
-		  OUTER JOIN "docker.cpu.avg.usage.total.percent" AS cpup
-	  WHERE mem.entity.tags."env.marathon_app_id" IS NOT NULL
-		  AND datetime BETWEEN NOW - 5*minute AND NOW
+          AVG(mem.value)/(1024*1024) AS mem_val,
+          AVG(rss.value)/(1024*1024) AS rss_val,
+        AVG(cpup.value) AS cpup_val
+      FROM "docker.memory.usage" AS mem
+          OUTER JOIN "docker.memory.rss" as rss
+          OUTER JOIN "docker.cpu.avg.usage.total.percent" AS cpup
+      WHERE mem.entity.tags."env.marathon_app_id" IS NOT NULL
+          AND datetime BETWEEN NOW - 5*minute AND NOW
     GROUP BY mem.entity
 ) GROUP BY app
 ```

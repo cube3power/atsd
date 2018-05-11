@@ -2,7 +2,7 @@
 
 ## Overview
 
-Perform this compaction test to calculate ATSD storage efficiency and estimate disk space requirements for a custom dataset. 
+Perform this compaction test to calculate ATSD storage efficiency and estimate disk space requirements for a custom dataset.
 
 ## Instructions
 

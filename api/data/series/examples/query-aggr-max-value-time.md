@@ -4,10 +4,10 @@
 
 Returns minimum and maximum values, as well as timestamps, when these values occurred for the first time in each period.
 
-* Chartlab: https://apps.axibase.com/chartlab/2350319f
-* Source data 
-  - CSV: https://duckduckgo.com/traffic_data/direct.csv
-  - HTML: https://duckduckgo.com/traffic.html
+* [ChartLab](https://apps.axibase.com/chartlab/2350319f)
+* Source data
+  * [CSV](https://duckduckgo.com/traffic_data/direct.csv)
+  * [HTML](https://duckduckgo.com/traffic.html)
 
 ## Request
 
@@ -17,9 +17,9 @@ Returns minimum and maximum values, as well as timestamps, when these values occ
         "entity": "duckduckgo",
         "metric": "direct.queries",
         "aggregate": {
-		  "types": ["MAX", "MAX_VALUE_TIME", "MIN", "MIN_VALUE_TIME"], 
-		  "period": {"count": 1, "unit": "YEAR"}
-		},
+          "types": ["MAX", "MAX_VALUE_TIME", "MIN", "MIN_VALUE_TIME"],
+          "period": {"count": 1, "unit": "YEAR"}
+        },
         "startDate": "2016-01-01T00:00:00Z",
         "endDate": "now"
     }

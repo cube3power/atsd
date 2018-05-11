@@ -7,15 +7,18 @@ Retrieve messages for all types and sources. Same results would be returned with
 ## Request
 
 ### URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/messages/query
+POST https://atsd_hostname:8443/api/v1/messages/query
 ```
+
 ### Payload
+
 ```json
 [
   {
     "entity": "nurswgvml007",
-	"type": "",
+    "type": "",
     "startDate": "2016-06-17T13:05:00Z",
     "endDate": "2016-06-17T13:10:00.000Z"
   }
@@ -25,6 +28,7 @@ POST https://atsd_host:8443/api/v1/messages/query
 ## Response
 
 ### Payload
+
 ```json
 [
   {

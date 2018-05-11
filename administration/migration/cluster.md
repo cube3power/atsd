@@ -17,7 +17,7 @@ For non-distributed installations, refer to the following [migration guide](READ
 
 The migration procedure requires up to 30% of the current `atsd_d` table size to store new records before old data can be deleted.
 
-Open **Clusters > Cluster > HDFS > Status** page in Clouder Manager.
+Open **Clusters > Cluster > HDFS > Status** page in Cloudera Manager.
 
 Be sure that enough configured capacity is available in HDFS.
 
@@ -47,7 +47,7 @@ Stop ATSD.
 /opt/atsd/atsd/bin/stop-atsd.sh
 ```
 
-Take note of the **table prefix** specified in the `/opt/atsd/atsd/conf/server.properties` file. 
+Take note of the **table prefix** specified in the `/opt/atsd/atsd/conf/server.properties` file.
 
 ```sh
 cat /opt/atsd/atsd/conf/server.properties | grep "hbase.table.prefix" | cut -f 2 -d "="
@@ -73,35 +73,35 @@ Log in to the server where YARN ResourceManager is running.
 
 Locate the `yarn.keytab` file.
 
-```bash
+```sh
 sudo find / -name "yarn.keytab" | xargs ls -la | tail -n 1
 -rw------- 1 yarn        hadoop        448 Jul 29 16:44 /run/cloudera-scm-agent/process/7947-yarn-RESOURCEMANAGER/yarn.keytab
 ```
 
 Switch to the 'yarn' user.
 
-```bash
+```sh
 sudo su yarn
 ```
 
-### Initiate a Kerberos session.
+### Initiate a Kerberos session
 
 Obtain the fully qualified hostname of the YARN ResourceManager server.
 
-```bash
+```sh
 hostname -f
 ```
 
 Authenticate with Kerberos using the located `yarn.keytab` file and the full hostname of the YARN ResourceManager.
 
-```bash
+```sh
 kinit -k -t /run/cloudera-scm-agent/process/7947-yarn-RESOURCEMANAGER/yarn.keytab yarn/{yarn_rm_full_hostname}
 ```
 
 Download the `migration.jar` file to the temporary `/tmp/migration/` directory.
 
 ```sh
-mkdir /tmp/migration 
+mkdir /tmp/migration
 curl -o /tmp/migration/migration.jar https://axibase.com/public/atsd-125-migration/migration-hbase-1.2.0-cdh5.10.0.jar
 ```
 
@@ -132,7 +132,7 @@ Run the `TableCloner` task to rename `atsd_d` table as `atsd_d_backup`.
 java com.axibase.migration.admin.TableCloner --table_name=atsd_d
 ```
 
-If a custom table prefix is specifed in the `server.properties` file, for example it is set to 'atsd_custom_', change the `table_name` parameter accordingly:
+If a custom table prefix is specified in the `server.properties` file, for example it is set to 'atsd_custom_', change the `table_name` parameter accordingly:
 
 ```sh
 java com.axibase.migration.admin.TableCloner --table_name=atsd_custom_d
@@ -160,13 +160,13 @@ nohup yarn com.axibase.migration.mapreduce.DataMigrator --forced --drop_annotati
 
 #### Monitoring Job Progress
 
-The job may take several hours to complete. 
+The job may take several hours to complete.
 
-Open **Clusters > Cluster > YARN > Web UI > ResourseManager Web UI** in Cloudera Manager.
+Open **Clusters > Cluster > YARN > Web UI > ResourceManager Web UI** in Cloudera Manager.
 
 Monitor the job progress.
 
-```
+```sh
 tail -f /tmp/migration/migration.log
 ```
 
@@ -174,7 +174,7 @@ Note that the Yarn interface will be stopped automatically once the job is finis
 
 Once the job is complete, the `migration.log` file should contain the following line:
 
-```
+```txt
 17/08/01 10:44:31 INFO mapreduce.DataMigrator: HFiles loaded, data table migration job completed, elapsedTime: 45 minutes.
 ```
 
@@ -183,7 +183,7 @@ Once the job is complete, the `migration.log` file should contain the following 
 ### Copy New Coprocessors into HDFS
 
 Log in to HDFS NameNode server or another server with the DFS client.
- 
+
 Switch to the 'hdfs' user.
 
 ```sh
@@ -193,7 +193,7 @@ sudo su hdfs
 Copy `atsd-hbase.17326.jar` to the HDFS `hbase.dynamic.jars.dir` directory.
 The path to this directory is set to `${hbase.rootdir}/lib` by default in HBase.
 
-```
+```txt
 hadoop fs -ls /hbase/lib/       #   check existence
 hadoop fs -mkdir /hbase/lib/    #   if not exists
 curl -O https://axibase.com/public/atsd-125-migration/atsd-hbase.17326.jar
@@ -207,7 +207,7 @@ Note that this path should match the `coprocessors.jar` setting specified in the
 
 ### Remove Old Coprocessors
 
-ATSD coprocessors that were added to HBase CoprocessorRegion Classes have been loaded automatically and therefore must be removed from HBase settings in Cloudera Manager. 
+ATSD coprocessors that were added to HBase CoprocessorRegion Classes have been loaded automatically and therefore must be removed from HBase settings in Cloudera Manager.
 
 The old jar files should be removed from the local file system on each HBase Region Server.
 
@@ -227,7 +227,7 @@ Remove all ATSD coprocessors and save settings:
 
 Find ATSD coprocessors jar files on each Region Server:
 
-```bash
+```sh
 sudo find /opt/cloudera/parcels/CDH-5.10.0-1.cdh5.10.0.p0.41/ -name "atsd*.jar"
 ```
 
@@ -253,7 +253,7 @@ sed -i '/^hbase.regionserver.lease.period/d' /opt/atsd/atsd/conf/hadoop.properti
 
 Add path to co-processor jar file.
 
-```bash
+```sh
 echo "coprocessors.jar=hdfs:///hbase/lib/atsd-hbase.jar" >> /opt/atsd/atsd/conf/server.properties
 ```
 
@@ -275,11 +275,11 @@ Update `JAVA_HOME` in the `start-atsd.sh` file:
 jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" /opt/atsd/atsd/bin/start-atsd.sh
 ```
 
-Edit the `/opt/atsd/atsd/conf/atsd-env.sh` file. 
+Edit the `/opt/atsd/atsd/conf/atsd-env.sh` file.
 
 Increase 'Xmx' memory to 50% of available RAM memory on the ATSD server:
 
-```bash
+```sh
 JAVA_OPTS="-server -Xmx4096M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="$atsd_home"/logs"
 ```
 

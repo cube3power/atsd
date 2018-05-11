@@ -1,12 +1,11 @@
-Weekly Change Log: December 19-25, 2016
-=======================================
+# Weekly Change Log: December 19-25, 2016
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                                                                                               |
 |------|-------------|---------|-------------------------------------------------------------------------------------------------------|
 | [3737](#issue-3737) | sql         | Bug     | Fixed issue with long scan, followed by a timeout for an entity that does not collect the specified metric. |
-| [3735](#issue-3735) | sql         | Bug     | Math functions do not accept arithmetic expressions in the `WHERE` clause. Updated error message to read 'IllegalArgumentException: Aggregate functions are not supported in the WHERE clause'. |
+| [3735](#issue-3735) | sql         | Bug     | Math functions do not accept arithmetic expressions in the `WHERE` clause. Updated error message to read `IllegalArgumentException: Aggregate functions are not supported in the WHERE clause`. |
 | 3731 | api-rest    | Bug     | Fixed issue with property queries (`addMeta`:true) not returning metadata if the property type was set to `$entity_tags`. |
 | 3729 | api-rest    | Bug     | Updated error URL and message text for requests to non-existent URLs. |
 | [3727](#issue-3727) | api-network | Feature | Optimized TCP handler for faster processing of `series` commands streamed by a single TCP client. |
@@ -27,21 +26,18 @@ Weekly Change Log: December 19-25, 2016
 | [3555](#issue-3555) | sql         | Feature | Implemented [`LOOKUP`](../../sql#lookup) function to translate the key into a value using the specified replacement table. |
 | [3421](#issue-3421) | sql         | Feature | Implemented the `searched case` variant of the [`CASE`](../../sql#case) expression. |
 
-### Collector
+## Collector
 
 | Issue| Category    | Type    | Subject                                                                                               |
 |------|-------------|---------|-------------------------------------------------------------------------------------------------------|
 | 3732 | core        | Feature | Modified Collector start-up routine to wait until ATSD is ready when running jobs from the [docker-compose](https://github.com/axibase/atsd-use-cases/blob/master/USMortality/resources/docker-compose.yml) file. |
-| 3724 | core        | Feature     | Created a `docker-compose` file to launch socrata-cdc and the ATSD/Collector container bundle, used for computing [mortality statistics](https://github.com/axibase/atsd-use-cases/blob/master/USMortality/README.md). |
+| 3724 | core        | Feature     | Created a `docker-compose` file to launch `socrata-cdc` and the ATSD/Collector container bundle, used for computing [mortality statistics](https://github.com/axibase/atsd-use-cases/blob/master/USMortality/README.md). |
 | 3723 | data-source | Bug     | Added missing Avatica package dependencies to the ATSD JDBC driver. |
 | 3722 | core        | Feature | Send property command with collector details to ATSD after a startup is completed. |
 | 3686 | core        | Support | Added a list of pre-configured jobs and their xml files [here](https://github.com/axibase/axibase-collector/blob/master/job-autostart.md). |
 | 3571 | admin       | Bug     | Modified Dockerfile to speed up Collector application startup at the expense of a slight larger image size. |
 
-## ATSD
-
 ### Issue 3737
---------------
 
 ```sql
 SELECT entity, tags.*, value, datetime
@@ -52,7 +48,6 @@ WHERE datetime > now - 1 * day
 ```
 
 ### Issue 3735
---------------
 
 ```sql
 SELECT entity, avg(value), ABS((last(value) / avg(value) - 1)*100)
@@ -64,7 +59,6 @@ GROUP BY entity
 ```
 
 ### Issue 3727
--------------
 
 The TCP handler, running on the default port 8081, was optimized for faster processing of `series` commands streamed by a single TCP client. The new implementation provides a pool of
 threads instead of a single one to offload parsing and processing from the TCP handler. The size of the pool is controlled with the `series.processing.pool.size` parameter on the
@@ -73,7 +67,6 @@ Admin > Server Properties -> Network page. The default value is 2 and is recomme
 As a result, the TCP processing and parsing throughput (measured in commands per second) has increased by 40% on average.
 
 ### Issue 3725
---------------
 
 Previously, execution of queries with the `LIMIT` clause involved copying selected rows into a temporary table, even if only a small subset of the rows, restricted with `LIMIT`, was required.
 Both `ASC` and `DESC` ordered results were optimized by reducing the number of rows copied into a temporary table. The following queries should see a 90% speedup in execution time.
@@ -93,7 +86,6 @@ LIMIT 10
 ```
 
 ### Issue 3719
---------------
 
 We added an optimization to narrow the start date in [windowing](../../sql#last_time-syntax) queries which is now determined as the minimum (last insert date) for all series.
 Prior to this change, the start date was set to 0 (not applied) if it was not specified explicitly in the query.
@@ -117,7 +109,6 @@ For example, if we have 3 series with the following last insert dates:
 The SQL optimizer will add a condition `AND datetime >= '2016-20-05T00:00:00Z'`, even if it is not set in the query.
 
 ### Issue 3713
---------------
 
 ```sql
 SELECT tot.datetime, tot.tags.city as 'city', tot.tags.state as 'state',
@@ -142,7 +133,6 @@ OPTION (ROW_MEMORY_THRESHOLD 500000)
 ```
 
 ### Issue 3703
---------------
 
 Now aggregate functions such as `MAX`, `MIN`, and `DELTA` can be applied to the `time` column, which returns the sampling time in Unix milliseconds.
 One of the use cases is to display the most recent time in windowing queries where the [last_time](../../sql#last_time-syntax) function can be utilized to select data for a sliding interval, such as the most recent 4 weeks for each series in the example below.
@@ -166,7 +156,6 @@ ORDER BY max(time)
 ```
 
 ### Issue 3697
---------------
 
 The sequence of period interpolation and period filtering with the [HAVING](../../sql#having-filter) clause was modified.
 Now, the `HAVING` filter is applied after [PERIOD interpolation](../../sql#interpolation) whereas before it was the opposite.
@@ -185,7 +174,7 @@ Assuming there were no detailed records for this series in October 2016, the cur
 
 ```ls
 | date_format(period(1 MONTH)) | sum(value) | count(value) |
-|------------------------------|------------|--------------|  
+|------------------------------|------------|--------------|
 | 2016-09-01T00:00:00.000Z     | 537.0      | 4.0          |
 | 2016-11-01T00:00:00.000Z     | 234.0      | 4.0          |
 ```
@@ -194,14 +183,13 @@ Previous result:
 
 ```ls
 | date_format(period(1 MONTH)) | sum(value) | count(value) |
-|------------------------------|------------|--------------|  
+|------------------------------|------------|--------------|
 | 2016-09-01T00:00:00.000Z     | 537.0      | 4.0          |
 | 2016-10-01T00:00:00.000Z     | 0.0        | 0.0          | <- this period was added by interpolation set in period(1 MONTH, VALUE 0), after HAVING.
 | 2016-11-01T00:00:00.000Z     | 234.0      | 4.0          |
 ```
 
 ### Issue 3696
---------------
 
 ```sql
 SELECT date_format(period(1 MONTH)), sum(value), count(value)
@@ -214,7 +202,6 @@ ORDER BY 1
 ```
 
 ### Issue 3694
---------------
 
 The query optimizer was modified to apply tag filter specified in `JOIN` queries on one of the tables to the remaining tables, since
 [JOINs](../../sql#joins) in ATSD perform merging of rows on time, entity, and series tags anyway. Prior to this change, the tag filter
@@ -223,13 +210,11 @@ was applied only to those tables where the filter was set explicitly.
 ![Figure 2](Images/Figure2.png)
 
 ### Issue 3689
---------------
 
 Implemented the special `SELECT 1` query, which is typically used to [test connectivity](../../sql#validation-query) and validate open
 connections in the shared connection pool in active state.
 
 ### Issue 3672
---------------
 
 SQL Query Plan is used for diagnosing slow query response times. The plan was extended to:
 
@@ -239,7 +224,6 @@ SQL Query Plan is used for diagnosing slow query response times. The plan was ex
 ![Figure 3](Images/Figure3.png)
 
 ### Issue 3555
---------------
 
 Implemented the [LOOKUP](../../sql#lookup) function, which translates the key into a value using the specified replacement table.
 
@@ -262,14 +246,13 @@ LIMIT 10
 ```
 
 ### Issue 3421
---------------
 
 Implemented the `searched case` variant of the [CASE](../../sql#case) expression.
 
 The `CASE` expression evaluates a sequence of boolean expressions and returns a matching result expression.
 
 ```sql
-CASE  
+CASE
      WHEN search_expression THEN result_expression
      [ WHEN search_expression THEN result_expression ]
      [ ELSE result_expression ]
@@ -289,7 +272,6 @@ SELECT entity, avg(value),
 WHERE datetime > current_hour
   GROUP BY entity
 ```
-
 
 ```ls
 | entity       | avg(value) | Utilization    |

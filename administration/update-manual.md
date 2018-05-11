@@ -9,7 +9,7 @@ cd /opt/atsd
 
 ## Download the Latest ATSD Distribution Files
 
-* [hbase 1.2.5](https://www.axibase.com/public/atsd_update_latest.htm)
+* [HBase 1.2.5](https://www.axibase.com/public/atsd_update_latest.htm)
 
 The archive will contain the latest ATSD release with the revision number included in the file name, for example `atsd.17239.tar.gz`.
 
@@ -59,7 +59,7 @@ It may take up to 5 minutes for the database to initialize.
 ## Login into ATSD user interface
 
 ```sh
-https://atsd_host:8443/
+https://atsd_hostname:8443/
 ```
 
 * Open the **Settings > System Information** page.

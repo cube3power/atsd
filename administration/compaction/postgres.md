@@ -28,11 +28,11 @@ Date,Time,Open,High,Low,Close,Volume
 
 The records be downloaded from the following url: [http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest](http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest).
 
-The file contains over 2 million lines. The OHLC metrics contain values with up to four decimal places. The volume metric is an integer. The dates are recorded in the the `US/Eastern` timezone.
+The file contains over 2 million lines. The OHLC metrics contain values with up to four decimal places. The volume metric is an integer. The dates are recorded in the `US/Eastern` time zone.
 
 Each row consists of 5 metrics for a given 1-minute interval:
 
-```
+```txt
 09/08/2017,15:42,142.53,142.5399,142.49,142.49,10031
 ...
 time   = 09/08/2017 15:42
@@ -195,7 +195,7 @@ Verify the row count:
 wc -l IBM_adjusted.txt
 ```
 
-```
+```txt
 2045926 IBM_adjusted.txt
 ```
 
@@ -203,7 +203,7 @@ wc -l IBM_adjusted.txt
 
 Start a PostgreSQL 9.6 container. Mount `/tmp/test` directory to the container.
 
-```properties
+```elm
 docker run --name postgres \
    -e POSTGRES_USER=axibase \
    -e POSTGRES_PASSWORD=axibase \
@@ -211,7 +211,7 @@ docker run --name postgres \
    -d  postgres:9.6
 ```
 
-### Execute SQL scripts for the **Trade Table** Schema.
+### Execute SQL scripts for the **Trade Table** Schema
 
 ```sh
 curl -o /tmp/test/postgres-trade-table.sql \
@@ -239,7 +239,7 @@ docker exec -i postgres \
 +-----------+---------------------+---------------------+
 ```
 
-### Execute SQL scripts for the **Universal Table** Schema.
+### Execute SQL scripts for the **Universal Table** Schema
 
 ```sh
 curl -o /tmp/test/postgres-universal-table.sql \

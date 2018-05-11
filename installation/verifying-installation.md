@@ -10,7 +10,7 @@ At the end of the installation process the script displays the ATSD IP address a
 
 Access the ATSD web interface on the secure port (8443 by default):
 
-```
+```txt
 https://10.102.0.116:8443
 ```
 
@@ -49,7 +49,7 @@ sudo service atsd stop
 sudo service atsd start
 ```
 
-If running ATSD on a shared server with heavy workloads, edit the `/etc/systemd/system/atsd.service` file and replace type 'oneshot' with 'forking'
+If running ATSD on a shared server with heavy workloads, edit the `/etc/systemd/system/atsd.service` file and replace type `oneshot` with `forking`.
 
 ```yaml
 [Service]

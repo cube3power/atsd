@@ -1,5 +1,4 @@
-Weekly Change Log: October 9, 2017 - October 15, 2017
-==================================================
+# Weekly Change Log: October 9, 2017 - October 15, 2017
 
 ## ATSD
 
@@ -19,8 +18,7 @@ Weekly Change Log: October 9, 2017 - October 15, 2017
 | 4554 | sql | Bug | Change behavior of `datetime !=` operator. |
 | 4489 | sql | Bug | Incorrect reference to the `value` column in the `WHERE` clause. |
 | [4353](#issue-4353) | sql | Feature | Allow column aliases to be the same as column names. |
-| 4103 | sql | Bug | Fix `WITH INTERPOLATE` clause with user-defined timezone. |
-
+| 4103 | sql | Bug | Fix `WITH INTERPOLATE` clause with user-defined time zone. |
 
 ## Axibase Collector
 
@@ -114,7 +112,7 @@ Add support for the following environment variables:
 ```ls
   --env COLLECTOR_USER_NAME=cuser
   --env COLLECTOR_USER_PASSWORD=cpassword
-  --env ATSD_URL=https://atsd_host:8443
+  --env ATSD_URL=https://atsd_hostname:8443
 ```
 
 ### Issue 4616

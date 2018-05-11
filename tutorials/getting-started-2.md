@@ -1,40 +1,40 @@
 # Getting Started: Part 2
 
-### Create Portal
+## Create Portal
 
 * Click on **Portals** link in the top menu.
-  
+
   ![](resources/getting-started-2_1.png)
 
 * Click on **Create**.
 
   ![](resources/getting-started-2_2.png)
-  
-* Copy the following configuration into the **Content** area: 
 
-    ```ls
+* Copy the following configuration into the **Content** area:
+
+```ls
     [configuration]
       height-units = 2
       width-units = 2
       time-span = 12 hour
-    
+
     [group]
-    
+
       [widget]
         type = chart
         [series]
           entity = my-entity
           metric = my-metric
-    
+
       [widget]
         type = gauge
         thresholds = 0, 60, 80, 100
         [series]
           entity = my-entity
           metric = my-metric
-    ```
+```
 
-* Enter a portal name. 
+* Enter a portal name.
 * Press **Save**.
 
     ![](resources/getting-started-2_3.png)

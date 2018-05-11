@@ -5,23 +5,19 @@ Groups multiple input series into one series and applies a statistical function 
 The group process is implemented as follows:
 
 1. Load detailed data within the specified `startDate` and `endDate` for each series separately. `startDate` is inclusive and `endDate` is exclusive.
-2. Group multiple series:
-  - If `period` is specified in the query:
-<br> Split each series' `time:value` array into periods based on the `period`  parameter. Discard periods with start time earlier than `startDate` or greater than `endDate`. Group multiple series samples within the same period. Timestamp of a group equals to the period start time.
-  - If `period` is not specified:
-Multiple series samples are grouped at all unique timestamps in the input series.
-Each group has an ordered list of pairs: [timestamp | samples of several series with given timestamp].
-3. Interpolate grouped series according to the `interpolate` field.
-4. Truncate grouped series if `truncate` field is `true`.
-5. Apply [statistical function](../../../api/data/aggregation.md) to values in each group and return a `time:value` array, where time is the period start time and value is the result of the statistical function.
+1. a. Group multiple series if `period` is specified in the query.<br>Split each series' `time:value` array into periods based on the `period`  parameter. Discard periods with start time earlier than `startDate` or greater than `endDate`. Group multiple series samples within the same period. Timestamp of a group equals to the period start time.
+1. b. Group multiple series if `period` is not specified.<br> Multiple series samples are grouped at all unique timestamps in the input series. Each group has an ordered list of pairs: `[timestamp | samples of several series with given timestamp]`.
+1. Interpolate grouped series according to the `interpolate` field.
+1. Truncate grouped series if `truncate` field is `true`.
+1. Apply [statistical function](../../../api/data/aggregation.md) to values in each group and return a `time:value` array, where time is the period start time and value is the result of the statistical function.
 
 | **Parameter** | **Type** | **Description**  |
 |:---|:---|:---|
-| type          | string          | **[Required]** Grouping [function](#grouping-functions) applied to values of the input series. |
-| period      | object           | [Period](period.md). Splits the merged series into periods and applies the statistical function to values in each period separately. |
-| interpolate   | object           | [Interpolation](#interpolation) function to fill gaps in input series (no period) or in grouped series (if period is specified). |
-| truncate      | boolean           | Discards samples at the beginning of the interval until values for all input series are established. Default: false.  |
-| order         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
+| `type`          | string          | **[Required]** Grouping [function](#grouping-functions) applied to values of the input series. |
+| `period`      | object           | [Period](period.md). Splits the merged series into periods and applies the statistical function to values in each period separately. |
+| `interpolate`   | object           | [Interpolation](#interpolation) function to fill gaps in input series (no period) or in grouped series (if period is specified). |
+| `truncate`      | boolean           | Discards samples at the beginning of the interval until values for all input series are established. Default: false.  |
+| `order`         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
 
 ## Grouping Functions
 
@@ -56,9 +52,9 @@ Each group has an ordered list of pairs: [timestamp | samples of several series 
 
 | **Name** | **Type**  | **Description**   |
 |:---|:---|:---|
-| type  | string | [**Required**] Interpolation [function](#interpolation-functions). |
-| value | number | [**Required by `VALUE` function**] Constant number used to set value for the missing periods. |
-| extend  | boolean | Add missing periods at the beginning and the end of the selection interval. Default: `false`. |
+| `type`  | string | [**Required**] Interpolation [function](#interpolation-functions). |
+| `value` | number | [**Required by `VALUE` function**] Constant number used to set value for the missing periods. |
+| `extend`  | boolean | Add missing periods at the beginning and the end of the selection interval. Default: `false`. |
 
 Values added by `extend` setting are determined as follows:
 
@@ -69,11 +65,11 @@ Values added by `extend` setting are determined as follows:
 
 | **Type** | **Description** |
 |:---|:---|
-| NONE | No interpolation. Periods without any raw values are excluded from results. |
-| PREVIOUS | Set value for the period based on the previous period's value. |
-| NEXT | Set value for the period based on the next period's value. |
-| LINEAR | Calculate period value using linear interpolation between previous and next period values. |
-| VALUE| Set value for the period to a specific number. |
+| `NONE` | No interpolation. Periods without any raw values are excluded from results. |
+| `PREVIOUS` | Set value for the period based on the previous period's value. |
+| `NEXT` | Set value for the period based on the next period's value. |
+| `LINEAR` | Calculate period value using linear interpolation between previous and next period values. |
+| `VALUE` | Set value for the period to a specific number. |
 
 ## Examples
 
@@ -135,16 +131,16 @@ On the other hand, the `SUM` returns 3 (3 + null->0) at `2016-06-25T08:00:05Z` b
 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
-	"aggregate":{"type":"DETAIL"},
-	"group":{"type":"SUM","order":0},
+    "aggregate":{"type":"DETAIL"},
+    "group":{"type":"SUM","order":0},
   "data":[
-	{"d":"2016-06-25T08:00:00Z","v":12.0},
-	{"d":"2016-06-25T08:00:05Z","v":3.0},
-	{"d":"2016-06-25T08:00:10Z","v":5.0},
-	{"d":"2016-06-25T08:00:15Z","v":16.0},
-	{"d":"2016-06-25T08:00:30Z","v":16.0},
-	{"d":"2016-06-25T08:00:45Z","v":20.0},
-	{"d":"2016-06-25T08:00:59Z","v":19.0}
+    {"d":"2016-06-25T08:00:00Z","v":12.0},
+    {"d":"2016-06-25T08:00:05Z","v":3.0},
+    {"d":"2016-06-25T08:00:10Z","v":5.0},
+    {"d":"2016-06-25T08:00:15Z","v":16.0},
+    {"d":"2016-06-25T08:00:30Z","v":16.0},
+    {"d":"2016-06-25T08:00:45Z","v":20.0},
+    {"d":"2016-06-25T08:00:59Z","v":19.0}
 ]}]
 ```
 
@@ -196,7 +192,7 @@ Sample for series `e-2` at `2016-06-25T08:00:59Z` is discarded because there is 
     "metric": "m-1",
     "group": {
       "type": "SUM",
-	    "truncate": true
+        "truncate": true
     }
   }
 ]
@@ -204,12 +200,12 @@ Sample for series `e-2` at `2016-06-25T08:00:59Z` is discarded because there is 
 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
-	"aggregate":{"type":"DETAIL"},
-	"group":{"type":"SUM","truncate":true,"order":0},
+    "aggregate":{"type":"DETAIL"},
+    "group":{"type":"SUM","truncate":true,"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:15Z","v":16.0},
-	{"d":"2016-06-25T08:00:30Z","v":16.0},
-	{"d":"2016-06-25T08:00:45Z","v":20.0}
+    {"d":"2016-06-25T08:00:15Z","v":16.0},
+    {"d":"2016-06-25T08:00:30Z","v":16.0},
+    {"d":"2016-06-25T08:00:45Z","v":20.0}
 ]}]
 ```
 
@@ -245,9 +241,9 @@ An opposite operation to truncation, extend adds missing values at the beginning
     "metric": "m-1",
     "group": {
       "type": "SUM",
-      "interpolate": { 
+      "interpolate": {
         "type": "NONE",
-        "extend": true 
+        "extend": true
       }
     }
   }
@@ -256,15 +252,15 @@ An opposite operation to truncation, extend adds missing values at the beginning
 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
-	"aggregate":{"type":"DETAIL"},
-	"group":{"type":"SUM","interpolate":{"type":"NONE","value":0.0,"extend":true},"order":0},
+    "aggregate":{"type":"DETAIL"},
+    "group":{"type":"SUM","interpolate":{"type":"NONE","value":0.0,"extend":true},"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:05Z","v":11.0},
-	{"d":"2016-06-25T08:00:10Z","v":13.0},
-	{"d":"2016-06-25T08:00:15Z","v":16.0},
-	{"d":"2016-06-25T08:00:30Z","v":16.0},
-	{"d":"2016-06-25T08:00:45Z","v":20.0},
-	{"d":"2016-06-25T08:00:59Z","v":24.0}
+    {"d":"2016-06-25T08:00:05Z","v":11.0},
+    {"d":"2016-06-25T08:00:10Z","v":13.0},
+    {"d":"2016-06-25T08:00:15Z","v":16.0},
+    {"d":"2016-06-25T08:00:30Z","v":16.0},
+    {"d":"2016-06-25T08:00:45Z","v":20.0},
+    {"d":"2016-06-25T08:00:59Z","v":24.0}
 ]}]
 ```
 
@@ -287,11 +283,12 @@ Since `extend` is performed prior to truncation, `truncate` setting has no effec
 
 Interpolation fills the gaps in the raw series. Its behavior depends on the `period` parameter specified in the group processor.
 
-#### `period` parameter is not specified.
+#### `period` parameter is not specified
 
 The `interpolate` function is applied to two consecutive samples of the same series to calculate an interim value for a known timestamp.
 
 Query:
+
 ```json
 [
   {
@@ -301,7 +298,7 @@ Query:
     "metric": "m-1",
     "group": {
       "type": "SUM",
-	    "interpolate": { "type": "PREVIOUS" }
+        "interpolate": { "type": "PREVIOUS" }
     }
   }
 ]
@@ -311,16 +308,16 @@ Response:
 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
-	"aggregate":{"type":"DETAIL"},
-	"group":{"type":"SUM","interpolate":{"type":"PREVIOUS","value":0.0,"extend":false},"order":0},
+    "aggregate":{"type":"DETAIL"},
+    "group":{"type":"SUM","interpolate":{"type":"PREVIOUS","value":0.0,"extend":false},"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:00Z","v":12.0},
-	{"d":"2016-06-25T08:00:05Z","v":14.0},
-	{"d":"2016-06-25T08:00:10Z","v":16.0},
-	{"d":"2016-06-25T08:00:15Z","v":16.0},
-	{"d":"2016-06-25T08:00:30Z","v":16.0},
-	{"d":"2016-06-25T08:00:45Z","v":20.0},
-	{"d":"2016-06-25T08:00:59Z","v":19.0}
+    {"d":"2016-06-25T08:00:00Z","v":12.0},
+    {"d":"2016-06-25T08:00:05Z","v":14.0},
+    {"d":"2016-06-25T08:00:10Z","v":16.0},
+    {"d":"2016-06-25T08:00:15Z","v":16.0},
+    {"d":"2016-06-25T08:00:30Z","v":16.0},
+    {"d":"2016-06-25T08:00:45Z","v":20.0},
+    {"d":"2016-06-25T08:00:59Z","v":19.0}
 ]}]
 ```
 
@@ -337,7 +334,8 @@ Two interpolated values were added to the second series:
 | 2016-06-25T08:00:45Z | 5        | 15       | 20  |
 | 2016-06-25T08:00:59Z | -        | 19       | 19  |
 ```
-#### `period` parameter is specified.
+
+#### `period` parameter is specified
 
 Let `t1`, `t2`, `t3` be timestamps of consecutive periods, and lets assume the series has no samples in the `t2` period. Then interpolated value of the `t2` period will be calculated based on two samples: `(t1, v1)` and `(t3, v3)`, where `v1` - is the last series value within the `t1` period, and `v3` is the first series value within the `t3` period.
 
@@ -358,6 +356,7 @@ Query:
 ```
 
 Response
+
 ```json
 [{
     "entity": "*", ...,
@@ -390,7 +389,6 @@ Interpolated values were added to each of the grouped series:
 | 2016-06-25T08:00:59Z | -        | 19       |                      |              |              |     |
 ```
 
-
 ### Group Aggregation
 
 By default, the `group` function is applied to all unique sample times from the merged series.
@@ -405,7 +403,7 @@ To split values into periods, specify a period.
     "metric": "m-1",
     "group": {
       "type": "SUM",
-	    "period": {"count": 10, "unit": "SECOND"}
+        "period": {"count": 10, "unit": "SECOND"}
     }
   }
 ]
@@ -413,14 +411,14 @@ To split values into periods, specify a period.
 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
-	"aggregate":{"type":"DETAIL"},
-	"group":{"type":"SUM","period":{"count":10,"unit":"SECOND","align":"CALENDAR"},"order":0},
+    "aggregate":{"type":"DETAIL"},
+    "group":{"type":"SUM","period":{"count":10,"unit":"SECOND","align":"CALENDAR"},"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:00Z","v":15.0},
-	{"d":"2016-06-25T08:00:10Z","v":21.0},
-	{"d":"2016-06-25T08:00:30Z","v":16.0},
-	{"d":"2016-06-25T08:00:40Z","v":20.0},
-	{"d":"2016-06-25T08:00:50Z","v":19.0}
+    {"d":"2016-06-25T08:00:00Z","v":15.0},
+    {"d":"2016-06-25T08:00:10Z","v":21.0},
+    {"d":"2016-06-25T08:00:30Z","v":16.0},
+    {"d":"2016-06-25T08:00:40Z","v":20.0},
+    {"d":"2016-06-25T08:00:50Z","v":19.0}
 ]}]
 ```
 
@@ -436,7 +434,7 @@ This is equivalent to `Group <-> Aggregation` processing in case of `SUM`+`SUM` 
     "aggregate": {
       "type": "SUM",
       "period": {"count": 10, "unit": "SECOND"}
-    },    
+    },
     "group": {
       "type": "SUM",
       "period": {"count": 10, "unit": "SECOND"}
@@ -444,7 +442,6 @@ This is equivalent to `Group <-> Aggregation` processing in case of `SUM`+`SUM` 
   }
 ]
 ```
-
 
 ### Aggregation -> Group
 
@@ -473,11 +470,11 @@ The timestamps used for grouping combine period start times from the underlying 
     "aggregate": {
       "type": "COUNT",
       "period": {"count": 10, "unit": "SECOND"},
-	    "order": 0
-    },    
+        "order": 0
+    },
     "group": {
       "type": "SUM",
-	    "order": 1
+        "order": 1
     }
   }
 ]
@@ -488,11 +485,11 @@ The timestamps used for grouping combine period start times from the underlying 
 "aggregate":{"type":"COUNT","period":{"count":10,"unit":"SECOND","align":"CALENDAR"}},
 "group":{"type":"SUM","order":1},
 "data":[
-	{"d":"2016-06-25T08:00:00Z","v":3.0},
-	{"d":"2016-06-25T08:00:10Z","v":3.0},
-	{"d":"2016-06-25T08:00:30Z","v":2.0},
-	{"d":"2016-06-25T08:00:40Z","v":2.0},
-	{"d":"2016-06-25T08:00:50Z","v":1.0}
+    {"d":"2016-06-25T08:00:00Z","v":3.0},
+    {"d":"2016-06-25T08:00:10Z","v":3.0},
+    {"d":"2016-06-25T08:00:30Z","v":2.0},
+    {"d":"2016-06-25T08:00:40Z","v":2.0},
+    {"d":"2016-06-25T08:00:50Z","v":1.0}
 ]}]
 ```
 
@@ -508,7 +505,7 @@ At the first stage, grouping produces the following `SUM` series:
     "startDate": "2016-06-25T08:00:00Z",
     "endDate":   "2016-06-25T08:01:00Z",
     "entities": ["e-1", "e-2"],
-    "metric": "m-1",  
+    "metric": "m-1",
     "group": {
       "type": "SUM"
     }
@@ -542,12 +539,12 @@ The grouped `SUM` series is then aggregated into periods.
     "aggregate": {
       "type": "COUNT",
       "period": {"count": 10, "unit": "SECOND"},
-	    "order": 1
-    },    
+        "order": 1
+    },
     "group": {
       "type": "SUM",
       "period": {"count": 1, "unit": "MILLISECOND"},
-	    "order": 0
+        "order": 0
     }
   }
 ]
@@ -565,13 +562,13 @@ The grouped `SUM` series is then aggregated into periods.
 
 ```json
 [{"entity":"*","metric":"m-1","tags":{},"entities":["e-1","e-2"],"type":"HISTORY",
-	"aggregate":{"type":"COUNT","period":{"count":10,"unit":"SECOND","align":"CALENDAR"}},
-	"group":{"type":"SUM","period":{"count":1,"unit":"MILLISECOND","align":"CALENDAR"},"order":0},
+    "aggregate":{"type":"COUNT","period":{"count":10,"unit":"SECOND","align":"CALENDAR"}},
+    "group":{"type":"SUM","period":{"count":1,"unit":"MILLISECOND","align":"CALENDAR"},"order":0},
 "data":[
-	{"d":"2016-06-25T08:00:00Z","v":2.0},
-	{"d":"2016-06-25T08:00:10Z","v":2.0},
-	{"d":"2016-06-25T08:00:30Z","v":1.0},
-	{"d":"2016-06-25T08:00:40Z","v":1.0},
-	{"d":"2016-06-25T08:00:50Z","v":1.0}
+    {"d":"2016-06-25T08:00:00Z","v":2.0},
+    {"d":"2016-06-25T08:00:10Z","v":2.0},
+    {"d":"2016-06-25T08:00:30Z","v":1.0},
+    {"d":"2016-06-25T08:00:40Z","v":1.0},
+    {"d":"2016-06-25T08:00:50Z","v":1.0}
 ]}]
 ```

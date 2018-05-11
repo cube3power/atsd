@@ -6,13 +6,37 @@ Time functions perform various operations on dates, timestamps, and intervals.
 
 ## Reference
 
-* [window_length_time](#window_length_time)
-* [window_length_count](#window_length_count)
-* [windowStartTime](#windowstarttime)
-* [milliseconds](#milliseconds)
-* [seconds](#seconds)
-* [elapsedTime](#elapsedtime)
-* [date_parse](#date_parse)
+* [`now`](#now)
+* [`window_length_time`](#window_length_time)
+* [`window_length_count`](#window_length_count)
+* [`windowStartTime`](#windowstarttime)
+* [`milliseconds`](#milliseconds)
+* [`seconds`](#seconds)
+* [`elapsedTime`](#elapsedtime)
+* [`date_parse`](#date_parse)
+
+### `now`
+
+```javascript
+  now long
+```
+
+Returns the current time as a [`DateTime`](object-datetime.md) object. The object's fields can be accessed with `get` methods.
+
+```javascript
+  // returns true if it's Thursday
+  now.getDayOfWeek() == 4
+```
+
+```javascript
+  // returns true on Thursday at anytime between 15:00 and 16:00 (exclusive)
+  now.getDayOfWeek() == 4 && now.getHourOfDay() == 15
+```
+
+```javascript
+  // returns true if difference between current time (long, UNIX millis) and create_ms (long, UNIX millis) exceeds 1 hour
+  (now.getMillis() - create_ms) > 60*60000
+```
 
 ### `window_length_time`
 
@@ -44,15 +68,15 @@ Time when the first command was received by the window, in UNIX milliseconds.
   milliseconds(string d [,string p [,string z]]) long
 ```
 
-Parses the datetime string `d` into UNIX milliseconds according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [timezone](http://joda-time.sourceforge.net/timezones.html) `z` (or offset from UTC).
+Parses the date string `d` into UNIX milliseconds according to the specified [date pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [time zone](http://joda-time.sourceforge.net/timezones.html) `z` (or offset from UTC).
 
-The function returns `0` if the datetime `d` is `null` or empty.
+The function returns `0` if the date `d` is `null` or empty.
 
-Available timezones and their offsets are listed in [timezones](../shared/timezone-list.md).
+Available time zones and their offsets are listed in [time zones](../shared/timezone-list.md).
 
-The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default timezone is the server timezone.
+The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default time zone is the server time zone.
 
-> The function will raise an error if the timezone (or offset from UTC) is specified in the datetime string `d` and it differs from the timezone (offset) `z`.
+> The function will raise an error if the time zone (or offset from UTC) is specified in the date string `d` and it differs from the time zone (offset) `z`.
 
 Example:
 
@@ -82,13 +106,13 @@ This function provides the same arguments as the [`milliseconds`](#milliseconds)
 
 Calculates the number of milliseconds between the current time and time `t` which is specified in UNIX milliseconds.
 
-The function accepts time `t` in UNIX milliseconds or the datetime `d` in the following format:
+The function accepts time `t` in UNIX milliseconds or the date `d` in the following format:
 
-```
+```txt
 yyyy-MM-dd[(T| )[hh:mm:ss[.SSS[Z]]]]
 ```
 
-The function returns `0` if the datetime `d` is `null` or empty.
+The function returns `0` if the date `d` is `null` or empty.
 
 Example:
 
@@ -97,17 +121,29 @@ Example:
   elapsedTime("2017-08-15T00:00:00Z")
 ```
 
+```javascript
+  /* Returns elapsed time in milliseconds since ISO date in tags.last_updated */
+  elapsedTime(milliseconds(tags.last_updated))
+```
+
+The interval in milliseconds can be formatted with [`formatInterval`](functions-format.md#formatinterval) or [`formatintervalshort`](functions-format.md#formatintervalshort).
+
+```javascript
+  /* Returns interval in short notation, for example 2y 201d */
+  formatIntervalShort(elapsedTime(milliseconds(tags.last_updated)))
+```
+
 ### `date_parse`
 
 ```javascript
   date_parse(string d [,string p [,string z]]) DateTime
 ```
 
-Parses the input string `d` into a [DateTime](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) object according to the specified [pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [timezone](../shared/timezone-list.md) `z` (or offset from UTC).
+Parses the input string `d` into a [`DateTime`](object-datetime.md) object according to the specified [date pattern](http://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) `p` and [time zone](../shared/timezone-list.md) `z` (or offset from UTC).
 
-The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default timezone is the server timezone.
+The default pattern is ISO8601 format `yyyy-MM-ddTHH:mm:ss.SSSZ` and the default time zone is the server time zone.
 
-> The function will raise an error if the timezone (or offset from UTC) is specified in the datetime string `d` differs from the timezone (offset) `z`. See Exception Examples below.
+> The function will raise an error if the time zone (or offset from UTC) is specified in the date string `d` differs from the time zone (offset) `z`. See Exception Examples below.
 
 The fields of the `DateTime` object can be accessed using the following methods:
 
@@ -115,77 +151,53 @@ The fields of the `DateTime` object can be accessed using the following methods:
   date_parse('2018-01-13T16:45:22.303Z').getDayOfWeek()
 ```
 
-Results for sample date `2018-01-13T16:45:22.303Z` (Saturday):
-
-|**Method**| **Value** |
-|:---|:---|
-|getCenturyOfEra()|20|
-|getDayOfMonth()|13|
-|getDayOfWeek()|6|
-|getDayOfYear()|13|
-|getEra()|1|
-|getHourOfDay()|16|
-|getMillisOfDay()|60322303|
-|getMillisOfSecond()|303|
-|getMinuteOfDay()|1005|
-|getMinuteOfHour()|45|
-|getMonthOfYear()|1|
-|getSecondOfDay()|60322|
-|getSecondOfMinute()|22|
-|getWeekOfWeekyear()|2|
-|getWeekyear()|2018|
-|getYear()|2018|
-|getYearOfCentury()|18|
-|getYearOfEra()|2018|
-
 Examples:
 
-  ```javascript
+```javascript
     /* Returns true if the specified date is a working day. */
     date_parse(property('config::deleted')).getDayOfWeek() < 6
-  ```
+```
 
-  ```javascript
-    /* Uses the server timezone to construct a DateTime object. */
+```javascript
+    /* Uses the server time zone to construct a DateTime object. */
     date_parse("31.01.2017 12:36:03:283", "dd.MM.yyyy HH:mm:ss:SSS")
-  ```
+```
 
-  ```javascript
+```javascript
     /* Uses the offset specified in the datetime string to construct a DateTime object. */
     date_parse("31.01.2017 12:36:03:283 -08:00", "dd.MM.yyyy HH:mm:ss:SSS ZZ")
-  ```
+```
 
-  ```javascript
+```javascript
     /* Uses the time zone specified in the datetime string to construct a DateTime object. */
     date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS ZZZ")
-  ```
+```
 
-  ```javascript
+```javascript
     /* Constructs a DateTime object from the time zone provided as the third argument. */
     date_parse("31.01.2017 12:36:03:283", "dd.MM.yyyy HH:mm:ss:SSS", "Europe/Berlin")
-  ```
+```
 
-  ```javascript
+```javascript
     /* Constructs a DateTime object from the UTC offset provided as the third argument. */
     date_parse("31.01.2017 12:36:03:283", "dd.MM.yyyy HH:mm:ss:SSS", "+01:00")
-  ```
+```
 
-  ```javascript
-    /* If the timezone (offset) is specified in the datetime string,
+```javascript
+    /* If the time zone (offset) is specified in the datetime string,
     it should be exactly the same as provided by the third argument. */
     date_parse("31.01.2017 12:36:03:283 Europe/Berlin", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
-  ```
-Exception Examples:
+```
 
-  ```javascript
+```javascript
     /* These expressions lead to exceptions. */
     date_parse("31.01.2017 12:36:03:283 +01:00", "dd.MM.yyyy HH:mm:ss:SSS ZZ", "Europe/Berlin")
     date_parse("31.01.2017 12:36:03:283 Europe/Brussels", "dd.MM.yyyy HH:mm:ss:SSS ZZZ", "Europe/Berlin")
-  ```
+```
 
-Datetime Pattern reference:
+Date Pattern reference:
 
-  ```
+```txt
    Symbol  Meaning                      Presentation  Examples
    ------  -------                      ------------  -------
    G       era                          text          AD
@@ -217,4 +229,4 @@ Datetime Pattern reference:
 
    '       escape for text              delimiter
    ''      single quote                 literal       '
-  ```  
+```

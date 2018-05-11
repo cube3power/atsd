@@ -13,13 +13,13 @@ ORDER BY avg(value) DESC
 ## Results
 
 ```ls
-| entity       | avg(value) | 
-|--------------|------------| 
-| nurswgvml006 | 19         | 
-| nurswgvml007 | 16         | 
-| nurswgvml010 | 16         | 
-| nurswgvml009 | 15         | 
-| nurswgvml011 | 6          | 
-| nurswgvml502 | 6          | 
-| nurswgvml102 | 1          | 
+| entity       | avg(value) |
+|--------------|------------|
+| nurswgvml006 | 19         |
+| nurswgvml007 | 16         |
+| nurswgvml010 | 16         |
+| nurswgvml009 | 15         |
+| nurswgvml011 | 6          |
+| nurswgvml502 | 6          |
+| nurswgvml102 | 1          |
 ```

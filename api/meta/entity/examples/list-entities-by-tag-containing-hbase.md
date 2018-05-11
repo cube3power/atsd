@@ -1,16 +1,16 @@
-# List Entities Starting with `nur` and with Tag `app` Containing `hbase` 
+# List Entities Starting with `nur` and with Tag `app` Containing `hbase`
 
 ## Request
 
 ### URI
 
 ```elm
-GET https://atsd_server:8443/api/v1/entities?timeFormat=iso&limit=2&tags=app&expression=name%20LIKE%20%27nur%27%20and%20lower%28tags.app%29%20LIKE%20%27hbase%27
+GET https://atsd_hostname:8443/api/v1/entities?timeFormat=iso&limit=2&tags=app&expression=name%20LIKE%20%27nur%27%20and%20lower%28tags.app%29%20LIKE%20%27hbase%27
 ```
 
 ### Expression
 
-```
+```javascript
 name LIKE 'nur*' and lower(tags.app) LIKE '*hbase*'
 ```
 
@@ -29,10 +29,10 @@ name LIKE 'nur*' and lower(tags.app) LIKE '*hbase*'
     "name": "nurswgvml203",
     "enabled": true,
     "tags": {
-        "app": "Hadoop/Hbase master node"
+        "app": "Hadoop/HBase master node"
     }
 }]
 ```
 
-> 'lower(text)' is a built-in utility string function. 
-> Alternatively, any Java string functions can be used to modify the value, for example: 'tags.app.toLowerCase()'
+* `lower(text)` is a built-in utility string function.
+* Java string functions can be used to modify the value, for example: `tags.app.toLowerCase()`

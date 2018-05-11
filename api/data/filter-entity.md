@@ -7,10 +7,10 @@
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| entity   | string | Entity name or entity name pattern.<br>Example: `"entity":"nur007"` or `"entity":"svl*"` |
-| entities | array | Array of entity names or entity name patterns.<br>Example: `"entities":["nur007", "nur010", "svl*"]`|
-| entityGroup | string | Entity group name. <br>Example: `"entityGroup":"nur-prod-servers"`.<br>Returns records for members of the specified group.<br>The result is empty if the group doesn't exist or is empty.|
-| entityExpression | string | Matches entities by name, entity tag, and properties based on the specified [filter expression](#entityexpression-syntax). <br>Example: `"entityExpression":"tags.location = 'SVL'"`  |
+| `entity`   | string | Entity name or entity name pattern.<br>Example: `"entity":"nur007"` or `"entity":"svl*"` |
+| `entities` | array | Array of entity names or entity name patterns.<br>Example: `"entities":["nur007", "nur010", "svl*"]`|
+| `entityGroup` | string | Entity group name. <br>Example: `"entityGroup":"nur-prod-servers"`.<br>Returns records for members of the specified group.<br>The result is empty if the group doesn't exist or is empty.|
+| `entityExpression` | string | Matches entities by name, entity tag, and properties based on the specified [filter expression](#entityexpression-syntax). <br>Example: `"entityExpression":"tags.location = 'SVL'"`  |
 
 ## `entityExpression` Syntax
 
@@ -27,39 +27,32 @@ Supported fields:
 ### Supported Functions
 
 * Property Functions
-
-   * [property(string s)](../../rule-engine/functions-property.md#property)
-   * [property_values(string s)](../../rule-engine/functions-property.md#property_values), access to returned objects is not supported
-   * [properties](./series/examples/query-entity-expr-entity-properties.md#description)
-
+  * [`property(string s)`](../../rule-engine/functions-property.md#property)
+  * [`property_values(string s)`](../../rule-engine/functions-property.md#property_values), access to returned objects is not supported
+  * [`properties`](./series/examples/query-entity-expr-entity-properties.md#description)
 * Lookup Functions
-
-   * [entity_tags(string e)](../../rule-engine/functions-lookup.md#entity_tags)
-   * [collection](../../rule-engine/functions-lookup.md#collection)
-   
+  * [`entity_tags(string e)`](../../rule-engine/functions-lookup.md#entity_tags)
+  * [`collection`](../../rule-engine/functions-lookup.md#collection)
 * Collection Functions
-
-   * [collection](../../rule-engine/functions-collection.md#collection)
-   * [IN](../../rule-engine/functions-collection.md#in)
-   * [likeAny](../../rule-engine/functions-collection.md#likeany)
-   * [matches](../../rule-engine/functions-collection.md#matches)
-   * [contains](../../rule-engine/functions-collection.md#contains)
-   * [size](../../rule-engine/functions-collection.md#size)
-   * [isEmpty](../../rule-engine/functions-collection.md#isempty)
-  
+  * [`collection`](../../rule-engine/functions-collection.md#collection)
+  * [`IN`](../../rule-engine/functions-collection.md#in)
+  * [`likeAny`](../../rule-engine/functions-collection.md#likeany)
+  * [`matches`](../../rule-engine/functions-collection.md#matches)
+  * [`contains`](../../rule-engine/functions-collection.md#contains)
+  * [`size`](../../rule-engine/functions-collection.md#size)
+  * [`isEmpty`](../../rule-engine/functions-collection.md#isempty)
 * Text Functions
+  * [`upper`](../../rule-engine/functions-text.md#upper)
+  * [`lower`](../../rule-engine/functions-text.md#lower)
+  * [`list`](../../rule-engine/functions-text.md#list)
 
-   * [upper](../../rule-engine/functions-text.md#upper)
-   * [lower](../../rule-engine/functions-text.md#lower)
-   * [list](../../rule-engine/functions-text.md#list)
-   
 ## Examples
 
 ### Entity Name Match
 
 ```javascript
   /*
-  Match entities with name starting with 'nurswgvml', 
+  Match entities with name starting with 'nurswgvml',
   for example 'nurswgvml001', 'nurswgvml772'.
   */
   id LIKE 'nurswgvml*'
@@ -79,10 +72,10 @@ Supported fields:
 ```javascript
   /* Match enabled entities. */
   enabled = true
-  
+
   /* Match disabled entities. */
   enabled = false
-  
+
 ```
 
 ### Entity Tag Match
@@ -94,7 +87,7 @@ Supported fields:
   tags.environment = 'production'
 
   /*
-  Match entities with entity tag 'location' starting with 'SVL', 
+  Match entities with entity tag 'location' starting with 'SVL',
   for example 'SVL', 'SVL02'.
   */
   tags.location LIKE 'SVL*'
@@ -114,18 +107,18 @@ Supported fields:
 
 ```javascript
   /*
-  Match entities with a 'java_home' stored in 'docker.container.config.env' 
+  Match entities with a 'java_home' stored in 'docker.container.config.env'
   equal to '/usr/lib/jvm/java-8-openjdk-amd64/jre'.
   */
   property('docker.container.config.env::java_home') = '/usr/lib/jvm/java-8-openjdk-amd64/jre'
-  
+
   /*
   Match entities which have a '/opt' file_system stored in 'nmon.jfs' property type.
   */
   property_values('nmon.jfs::file_system').contains('/opt')
 
   /*
-  Match entities with a 'file_system' which name includes 'ora', 
+  Match entities with a 'file_system' which name includes 'ora',
   stored in 'nmon.jfs' property type.
   */
   matches('*ora*', property_values('nmon.jfs::file_system'))

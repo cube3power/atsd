@@ -20,14 +20,14 @@ Assuming series A,B,C, and D have the following series tags:
 Queries would return the following series:
 
 ```ls
-| exactMatch | requested tags | match   | 
-|------------|----------------|---------| 
+| exactMatch | requested tags | match   |
+|------------|----------------|---------|
 | true       |                | D       | - no tags specified in the request, series with additional tags are ignored because exactMatch=true
 | false      |                | A;B;C;D | - no tags specified in the request, series with additional tags returned because exactMatch=false
 | true       | tag-1=val-1    | B       | - A and B match the requested series tag-1, but A is ignored because exactMatch=true and A has an additional series tag-2
-| false      | tag-1=val-1    | A;B     | - A and B match the requested series tag-1, and A is included because exactMatch=false and A's additional series tag-2 is allowed 
+| false      | tag-1=val-1    | A;B     | - A and B match the requested series tag-1, and A is included because exactMatch=false and A's additional series tag-2 is allowed
 | true       | tag-2=*        | C       | - A and C match the requested series tag-2, but A is ignored because exactMatch=true and A has an additional series tag-1
-| false      | tag-2=*        | A;C     | - A and C match the requested series tag-2, and A is included because exactMatch=false and A's additional series tag-1 is allowed 
+| false      | tag-2=*        | A;C     | - A and C match the requested series tag-2, and A is included because exactMatch=false and A's additional series tag-1 is allowed
 ```
 
 ## Request
@@ -35,7 +35,7 @@ Queries would return the following series:
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 ### Payload
@@ -45,12 +45,12 @@ POST https://atsd_host:8443/api/v1/series/query
     {
         "startDate": "2016-02-22T13:30:00Z",
         "endDate":   "2016-02-22T13:35:00Z",
-        "metric": "m-1",		
+        "metric": "m-1",
         "entity": "e-1",
-        "tags": { 
+        "tags": {
             "tag-1": "val-1"
-		},
-		"exactMatch": true
+        },
+        "exactMatch": true
     }
 ]
 ```

@@ -6,13 +6,11 @@ The collection functions return information about the collection or check it for
 
 A collection can be created by declaring its elements inline, enclosed in square brackets:
 
-
 ```javascript
   ['a@example.org', 'b@example.org']
 ```
 
 Alternatively, it can be loaded using the `collection()` or another [lookup](functions-lookup.md) function.
-
 
 ```javascript
   collection('oncall-emails')
@@ -20,15 +18,16 @@ Alternatively, it can be loaded using the `collection()` or another [lookup](fun
 
 ## Reference
 
-* [collection](#collection)
-* [IN](#in)
-* [likeAny](#likeany)
-* [matchList](#matchlist)
-* [matches](#matches)
-* [contains](#contains)
-* [size](#size)
-* [isEmpty](#isempty)
-* [excludeKeys](#excludekeys)
+* [`collection`](#collection)
+* [`IN`](#in)
+* [`LIKE`](#like)
+* [`likeAny`](#likeany)
+* [`matchList`](#matchlist)
+* [`matches`](#matches)
+* [`contains`](#contains)
+* [`size`](#size)
+* [`isEmpty`](#isempty)
+* [`excludeKeys`](#excludekeys)
 
 ### `collection`
 
@@ -36,17 +35,17 @@ Alternatively, it can be loaded using the `collection()` or another [lookup](fun
   collection(string s) [string]
 ```
 
-Returns an array of strings which have been loaded with the specified string `s`.
+Returns an array of strings contained in the named collection `s`.
 
 The named collections are listed on the **Data > Named Collections** page.
 
-To check the size of the collection, use the `.size()` method.
+To access the size of the array, use the `.size()` method.
 
-To access the n-th element in the collection, use square brackets as in `[index]` or the `get(index)` method (starting with 0 for the first element).
+To access the n-th element in the collection, use square brackets as in `[index]` or the `get(index)` method. The index starts with `0` for the first element.
 
-  ```javascript
+```javascript
     author = (authors.size() == 0) ? 'n/a' : authors[0]
-  ```
+```
 
 ### `IN`
 
@@ -58,13 +57,35 @@ Returns `true` if `s` is contained in the collection of strings enclosed in roun
 
 Examples:
 
-  ```javascript
+```javascript
     entity IN ('nurswgvml007', 'nurswgvml008')
-  ```
+```
 
-  ```javascript
+```javascript
     tags.location IN ('NUR', 'SVL')
-  ```  
+```
+
+### `LIKE`
+
+```javascript
+  string s LIKE (string a[, string b[...]]) boolean
+```
+
+Returns `true` if `s` matches any pattern in the collection of strings enclosed in round brackets. The pattern supports `?` and `*` wildcards. The collection may contain string literals and variables.
+
+Examples:
+
+```javascript
+    entity LIKE ('nurswgvml*', 'nurswghbs*')
+```
+
+```javascript
+    tags.version LIKE ('1.2.*', '1.3.?')
+```
+
+```javascript
+    tags.location LIKE ('NUR*', entity.tags.location)
+```
 
 ### `likeAny`
 
@@ -72,19 +93,23 @@ Examples:
   likeAny(string s, [string] c) boolean
 ```
 
-Returns `true` if `s` is contained in the string collection `c`.
+Returns `true` if string `s` matches any element in the string collection `c`.
 
-The collection `c` can be specified inline as an array of strings or reference a named collection. The collection may include expressions with wildcards.
+The collection `c` can be initialized by referencing a named collection by name or it can be specified inline as an array of strings. The collection may include patterns with `?` and `*` wildcards.
 
 Examples:
 
-  ```javascript
+```javascript
     likeAny(tags.request_ip, ['10.50.102.1', '10.50.102.2'])
-  ```
+```
 
-  ```javascript
+```javascript
+    likeAny(tags.location, ['NUR', 'SVL*'])
+```
+
+```javascript
     likeAny(tags.request_ip, collection('ip_white_list'))
-  ```
+```
 
 ### `matchList`
 
@@ -94,13 +119,13 @@ Examples:
 
 Returns `true` if `s` is contained in the collection named `c`.
 
-The collection `c` may include expressions with wildcards.
+The collection `c` may include patterns with `?` and `*` wildcards.
 
 Example:
 
-  ```javascript
+```javascript
     matchList(tags.request_ip, 'ip_white_list')
-  ```
+```
 
 ### `matches`
 
@@ -108,15 +133,15 @@ Example:
   matches(string p, [string] c) boolean
 ```
 
-Returns `true` if one of the collection `c` elements matches (satisfies) the specified pattern `p`.
+Returns `true` if one of the elements in collection `c` matches (satisfies) the specified pattern `p`.
 
 The pattern supports `?` and `*` wildcards.
 
 Example:
 
-  ```javascript
+```javascript
     matches('*atsd*', property_values('docker.container::image'))
-  ```  
+```
 
 ### `contains`
 
@@ -128,9 +153,9 @@ Returns `true` if `s` is contained in the collection.
 
 Example:
 
-  ```javascript
+```javascript
     collection('ip_white_list').contains(tags.request_ip)
-  ```
+```
 
 ### `size`
 
@@ -144,13 +169,13 @@ Returns the number of elements in the collection.
 
 Examples:
 
-  ```javascript
+```javascript
     collection('ip_white_list').size()
-  ```  
+```
 
-  ```javascript
+```javascript
     entity.tags.size()
-  ```    
+```
 
 ### `isEmpty`
 
@@ -164,9 +189,9 @@ Returns `true` if the number of elements in the collection is zero.
 
 Example:
 
-  ```javascript
+```javascript
     collection('ip_white_list').isEmpty()
-  ```  
+```
 
 ### `excludeKeys`
 
@@ -180,9 +205,11 @@ The keys in collection `c` may contain wildcards ? and * to remove multiple matc
 
 Examples:
 
-  ```javascript
+```javascript
     excludeKeys(replacementTable('oncall-emails'),['a@a.org', 'b@b.org'])
-    
+```
+
+```javascript
     /* Returns ["b1": "w1", "b2": "w2"] */
     excludeKeys(["a1": "v1", "a2": "v2", "b1": "w1", "b2": "w2", "c1": "z1"], ['a*', 'c1'])
-  ```
+```

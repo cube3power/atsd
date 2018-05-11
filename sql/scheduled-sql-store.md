@@ -16,11 +16,13 @@ The **Store** option for scheduled SQL queries may be used to write the results 
 
 Each row in the result set is converted into one or multiple derived series based on column names and data types.
 
-After entity, datetime, and tag columns are mapped based on names, the remaining numeric columns are classified as metric name columns.
+`entity`, `datetime`, and `tag` columns are mapped based on names.
+
+The remaining numeric columns are classified as metric name columns.
 
 ```sql
 SELECT datetime,
-  'DC-1' AS "entity",  
+  'DC-1' AS "entity",
   AVG(value) AS "temp_daily_avg",
   PERCENTILE(90, value) AS "temp_daily_perc_90"
   -- mapped to datetime, entity, for metric with name = temp_daily_avg and for metric with name = temp_daily_perc_90
@@ -54,10 +56,10 @@ Column aliases can be defined to ensure that the query results meet the followin
 
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
-| datetime | string | `0-1` | The date of the record in ISO-8601 format (1).|
-| time | long | `0-1` | The date of the record in UNIX milliseconds (1). |
-| entity | string | `1` | Name of the entity under which the new series will be stored. |
-| - any - | numeric | `1-*` | Metric name for the stored series (2). |
+| `datetime` | string | `0-1` | The date of the record in ISO-8601 format (1).|
+| `time` | long | `0-1` | The date of the record in UNIX milliseconds (1). |
+| `entity` | string | `1` | Name of the entity under which the new series will be stored. |
+| `- any -` | numeric | `1-*` | Metric name for the stored series (2). |
 
 * (1) Only one of the date columns, `datetime` or `time`, must be included in the results.
 * (2) The column is classified as a 'metric' if it has a numeric datatype and does not match the rules applicable to other column types.
@@ -66,26 +68,26 @@ Column aliases can be defined to ensure that the query results meet the followin
 
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
-| tags.{name} | string | `0-*` | Series tag for the stored series.<br>Tag name set by discarding `tags.` prefix.<br>Cell value contains tag value.|
-| tags | string | `0-*` | Series tags for the stored series, encoded as key=value separated by semi-colon.<br>Cell value contains tag names and values.|
+| `tags.{name}` | string | `0-*` | Series tag for the stored series.<br>Tag name set by discarding `tags.` prefix.<br>Cell value contains tag value.|
+| `tags` | string | `0-*` | Series tags for the stored series, encoded as key=value separated by semi-colon.<br>Cell value contains tag names and values.|
 
 #### Optional Metadata Tag Columns
 
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
-| metric.tags.{name} | string | `0-*` | Metric tag for each metric in the row. <br>Tag name set by discarding `metric.tags.` prefix.<br>Cell value contains metric tag value.|
-| metric.tags | string | `0-*` | Metric tags for each metric in the row, encoded as `key=value` separated by semi-colon. <br>Cell value contains metric tag names and values.|
-| entity.tags.{name} | string | `0-*` | Entity tag for the entity in the row. <br>Tag name set by discarding `entity.tags.` prefix.<br>Cell value contains entity tag value.|
-| entity.tags | string | `0-*` | Entity tags for the entity in the row, encoded as `key=value` separated by semi-colon. <br>Cell value contains entity tag names and values.|
+| `metric.tags.{name}` | string | `0-*` | Metric tag for each metric in the row. <br>Tag name set by discarding `metric.tags.` prefix.<br>Cell value contains metric tag value.|
+| `metric.tags` | string | `0-*` | Metric tags for each metric in the row, encoded as `key=value` separated by semi-colon. <br>Cell value contains metric tag names and values.|
+| `entity.tags.{name}` | string | `0-*` | Entity tag for the entity in the row. <br>Tag name set by discarding `entity.tags.` prefix.<br>Cell value contains entity tag value.|
+| `entity.tags` | string | `0-*` | Entity tags for the entity in the row, encoded as `key=value` separated by semi-colon. <br>Cell value contains entity tag names and values.|
 
 #### Optional Metadata Field Columns
 
 | **Name** | **Data Type** | **Occurrence** | **Description** |
 |---|---|---|---|
-| metric.{field-name} | string | `0-*` | [Metric field](README.md#metric-columns) for each metric in the row.<br>Field name set by discarding `metric.` prefix.<br>Cell value contains metric field value.|
-| entity.{field-name} | string | `0-*` | [Entity field](README.md#entity-columns) for the entity in the row.<br>Field name set by discarding `entity.` prefix.<br>Cell value contains entity field value.|
+| `metric.{field-name}` | string | `0-*` | [Metric field](README.md#metric-columns) for each metric in the row.<br>Field name set by discarding `metric.` prefix.<br>Cell value contains metric field value.|
+| `entity.{field-name}` | string | `0-*` | [Entity field](README.md#entity-columns) for the entity in the row.<br>Field name set by discarding `entity.` prefix.<br>Cell value contains entity field value.|
 
-* The following metadata fields are read-only and cannot be set: 'metric.name', 'metric.lastInsertTime', 'entity. groups':
+* The following metadata fields are read-only and cannot be set: `metric.name`, `metric.lastInsertTime`, `entity. groups`.
 
 ### Table Names
 
@@ -102,10 +104,9 @@ SELECT entity ... FROM "my-table"
 
 Columns starting with 'entity.tags.', 'metric.tags.', or 'metric.{field-name}' prefixes generate [`entity`](../api/network/entity.md) and [`metric`](../api/network/metric.md) metadata commands.
 
-
 ```sql
 SELECT datetime,
-  'dc-1' AS "entity",  
+  'dc-1' AS "entity",
   'SVL' as "entity.tags.location",
   'Celcius' AS "metric.units",
   AVG(value) AS "temp_daily_avg"
@@ -135,7 +136,7 @@ series e:dc-1 d:2017-08-02T00:00:00Z m:temp_daily_perc_90=28.24
 
 Since a query can create series commands for dates that were already inserted, the **Check Last Time** option provides a way to control how duplicates are handled.
 
-If **Check Last Time** is enabled, the series command is inserted if its datetime is greater than the timestamp of the previously stored values for the given series key.
+If **Check Last Time** is enabled, the series command is inserted if its timestamp is greater than the timestamp of the previously stored values for the given series key.
 
 ### Validation
 
@@ -147,7 +148,7 @@ Click **Test** to review the produced commands and resolve any errors.
 
 Click **Store** to load the new derived series in the database.
 
-Click **Schedule** to created a scheduled SQL job to create and store new records for derived series continously.
+Click **Schedule** to created a scheduled SQL job to create and store new records for derived series continuously.
 
 ### Monitoring
 
@@ -163,7 +164,7 @@ Scheduled SQL queries with **Store** option can be used to calculate and retain 
 
 Schedule such queries to execute before the raw data is deleted.
 
-In the example below, the query runs every night (at 00:15) to calculate hourly averages and maximums for each series in the underlying metrics.
+In the example below, the query runs every night (at 00:15) to calculate hourly average and maximum for each series in the underlying metrics.
 
 ![](images/sql-scheduled-summarize.png)
 

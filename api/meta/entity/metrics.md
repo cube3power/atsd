@@ -6,26 +6,26 @@ Retrieve a list of metrics collected by the entity.
 
 ## Request
 
-| **Method** | **Path** | 
+| **Method** | **Path** |
 |:---|:---|
 | GET | `/api/v1/entities/{entity}/metrics` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| entity |string|Entity name.|
+| `entity` |string|Entity name.|
 
-### Query Parameters 
+### Query Parameters
 
 |**Name**|**Type**|**Description**|
 |:--|:--|:--|
-| expression | string | Expression to include metrics by name or tags. Use the `name` variable for metric name. The wildcard `*` is supported.|
-| minInsertDate | string | Include metrics with last insert date at or greater than specified time. <br>`minInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
-| maxInsertDate | string | Include metrics with last insert date less than specified time.<br>`maxInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
-| useEntityInsertTime | boolean | If true, `lastInsertDate` is calculated for the specified entity and metric.<br>Otherwise, `lastInsertDate` represents the last time for all entities. Default: false. |
-| limit | integer | Maximum number of metrics to retrieve, ordered by name. |
-| tags | string | Comma-separated list of metric tags to be included in the response.<br>For example, `tags=table,unit`<br>Specify `tags=*` to include all metric tags.|
+| `expression` | string | Expression to include metrics by name or tags. Use the `name` variable for metric name. The wildcard `*` is supported.|
+| `minInsertDate` | string | Include metrics with last insert date at or greater than specified time. <br>`minInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
+| `maxInsertDate` | string | Include metrics with last insert date less than specified time.<br>`maxInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
+| `useEntityInsertTime` | boolean | If true, `lastInsertDate` is calculated for the specified entity and metric.<br>Otherwise, `lastInsertDate` represents the last time for all entities. Default: false. |
+| `limit` | integer | Maximum number of metrics to retrieve, ordered by name. |
+| `tags` | string | Comma-separated list of metric tags to be included in the response.<br>For example, `tags=table,unit`<br>Specify `tags=*` to include all metric tags.|
 
 ## Response
 
@@ -40,7 +40,7 @@ Refer to Fields specified in [Metrics List](../../../api/meta/metric/list.md#fie
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/entities/nurswgvml007/metrics?limit=2
+GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?limit=2
 ```
 
 #### Payload
@@ -49,11 +49,11 @@ None.
 
 #### curl
 
-```elm
-curl https://atsd_host:8443/api/v1/entities/nurswgvml007/metrics?limit=2 \
+```sh
+curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/metrics?limit=2 \
   --insecure --verbose --user {username}:{password} \
   --request GET
-``` 
+```
 
 ### Response
 

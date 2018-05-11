@@ -1,17 +1,16 @@
-Monthly Change Log: January 2018
-==================================================
+# Monthly Change Log: January 2018
 
 ## ATSD
 
-Issue| Category    | Type    | Subject              
+Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
 4940 | rule engine | Feature | Add administrative [setting](../../rule-engine/window.md#cancel-status) to control 'On Cancel' behavior.
-4931 | rule engine | Bug | Zero time filter is not saved on [rule](../../changelogs/rule-engine#rule-engine) XML export.
+4931 | rule engine | Bug | Zero time filter is not saved on [rule](../../rule-engine#rule-engine) XML export.
 4929 | rule engine | Bug | Web notifications: [Telegram](../../rule-engine/notifications/telegram.md) discards long messages.
-4926 | sql | Bug | SQL: Non-boolean datatype for [conditions](../../changelogs/sql#where-clause).
+4926 | sql | Bug | SQL: Non-boolean datatype for [conditions](../../sql#where-clause).
 4923 | rule engine | Bug | [Telegram](../../rule-engine/notifications/telegram.md) `400` error doesn't contain information about the message.
-4921 | security | Bug | [Built-in](../../changelogs/administration/user-authentication.md#built-in-account) user can't log in to take portal screenshot.
-4920 | security | Bug | Disabled [user](../../changelogs/administration/user-authentication.md#user-authentication) is able to execute SQL queries.
+4921 | security | Bug | [Built-in](../../administration/user-authentication.md#built-in-account) user can't log in to take portal screenshot.
+4920 | security | Bug | Disabled [user](../../administration/user-authentication.md#user-authentication) is able to execute SQL queries.
 4914 | rule engine | Bug | Add details to error messages in [HipChat](../../rule-engine/notifications/hipchat.md).
 4913 | client | Feature | Upgrade [R client](https://github.com/axibase/atsd-api-r/blob/master/README.md) to remove dependency on user home directory.
 4911 | rule engine | Bug | Pass query into an [SQL client](../..//sql/client/README.md) containing `>` character.
@@ -25,7 +24,7 @@ Issue| Category    | Type    | Subject
 4893 | UI | Feature | Statistics page: display tag names based on associated metric and entity tag templates.
 4892 | rule engine | Feature | Extend [`excludeKeys`](../../rule-engine/functions-collection.md#excludekeys) function - add support for patterns.
 4889 | rule engine | Bug | Round numbers in [web notifications](../../rule-engine/web-notifications.md).
-4888 | rule engine | Bug | Email [subject](../../administration/setting-up-email-client.md) should not include inline links.
+4888 | rule engine | Bug | Email [subject](../../administration/mail-client.md) should not include inline links.
 4883 | rule engine | Bug | Window remains in [`OPEN`](../../rule-engine/window.md#open-status) status after all commands are removed.
 4879 | rule engine | Feature | Add support for [control flow](../../rule-engine/control-flow.md) in notifications.
 4877 | rule engine | Bug | [`entity_tags`](../../rule-engine/window.md#base-fields) expression fails if used without key.
@@ -42,15 +41,15 @@ Issue| Category    | Type    | Subject
 4865 | rule engine | Bug | The [`milliseconds`](../../rule-engine/functions-time.md#milliseconds) function fails if input is `null`.
 4864 | rule engine | Bug | Change behavior of [text](../../rule-engine/functions-text.md#keepafter) functions.
 4863 | rule engine | Feature | Default value argument for [`lookup`](../../rule-engine/functions-lookup.md#lookup) function.
-4861 | api-rest | Feature | Webhook: set [command time](../../api/data/messages/webhook.md#command-parameters) from (milli)seconds.
+4861 | api-rest | Feature | Webhook: set [command time](../../api/data/messages/webhook.md#command-parameters) from milliseconds and seconds.
 4858 | rule engine | Feature | Implement [`unquote`](../../rule-engine/functions-text.md#unquote) function.
 4857 | rule engine | Bug | Delete [open alerts](../../rule-engine/README.md#window-status) when entity is deleted.
 4856 | rule engine | Bug | Random [function](../../rule-engine/functions-random.md#random-functions) values are cached by subsequent invocations.
 4854 | rule engine | Feature | Implement additional [math](../../rule-engine/functions-math.md#reference) functions.
 4852 | rule engine | Bug | Rule window detail page shows incorrect results for windows with 'Property' data type.
-4851 | rule engine | Feature | Implement [freemarker-style](../../rule-engine/functions-text.md#reference) text functions.
+4851 | rule engine | Feature | Implement [Freemarker-style](../../rule-engine/functions-text.md#reference) text functions.
 4849 | rule engine | Bug | Error in [time](../../rule-engine/functions-format.md#reference) format functions.
-4848 | UI | Bug | Export page: FreeMarker error for forecast [export](../../reporting/ad-hoc-exporting.md).
+4848 | UI | Bug | Export page: Freemarker error for forecast [export](../../reporting/ad-hoc-exporting.md).
 4846 | rule engine | Feature | [Web notifications](../../rule-engine/web-notifications.md): add status column.
 4845 | forecast | Bug | Forecast [settings](../../forecasting/README.md): restored disappeared tooltips.
 4833 | rule engine | Feature | Implement Web Notifications for [Microsoft Azure](../../rule-engine/notifications/azure-sb.md).
@@ -75,7 +74,7 @@ Issue| Category    | Type    | Subject
 
 ## Collector
 
-Issue| Category    | Type    | Subject              
+Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
 4928 | [kafka](https://github.com/axibase/axibase-collector/blob/master/jobs/kafka.md) | Bug | Exception in kafka job with `message format=API` command.
 4924 | core | Bug | Disk usage is abnormal.

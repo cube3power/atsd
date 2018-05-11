@@ -1,6 +1,6 @@
 # Getting Started: Part 4
 
-### Alerts
+## Alerts
 
 Open the **Alerts > Rules** page and click on **Create** to configure an alert rule for `my-entity` and `my-metric` using the built-in [Rule Engine](../rule-engine).
 
@@ -13,6 +13,7 @@ The following expression will raise an alert if the last value is greater than 5
 ```java
 value > 50
 ```
+
 ![](resources/getting-started-4_3.png)
 
 Create the rule manually or import [my-metric-monitor.xml](resources/my-metric-monitor.xml) file by selecting _Import_ on the **Alerts > Rules** page.
@@ -33,9 +34,8 @@ Click on **Windows** button at the rule editor page to review the recently opene
 
 Update Time field value to a later timestamp and insert a value smaller than 50. Verify that the alert was deleted.
 
-To receive alert notifications via email, configure the [mail client](../administration/setting-up-email-client.md) which is accessible at the **Settings > Mail Client** page and specify notification rule on the **Email Notifications** tab in the rule editor.
+To receive alert notifications via email, configure the [mail client](../administration/mail-client.md) which is accessible at the **Settings > Mail Client** page and specify notification rule on the **Email Notifications** tab in the rule editor.
 
 ![](resources/getting-started-4_8.png)
 
 [Continue to Next Page](getting-started-5.md).
-

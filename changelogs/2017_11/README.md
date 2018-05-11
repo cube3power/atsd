@@ -1,7 +1,6 @@
-Weekly Change Log: March 13 - March 19, 2017
-==================================================
+# Weekly Change Log: March 13 - March 19, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
@@ -15,13 +14,13 @@ Weekly Change Log: March 13 - March 19, 2017
 | 4010 | core | Bug | Prevent HBase filters from entering an infinite loop if metric id overflows. |
 | 3950 | sql | Bug | `SUM` function fails to accept arguments. |
 | 3913 | sql | Feature | Add support [`CASE`](../../sql#case) expression as part of another expression. |
-| 3888 | sql | Bug | Add support for entity fields (label, timeZone) in the `WHERE` clause. |
+| 3888 | sql | Bug | Add support for entity fields `label`, `timeZone` in the `WHERE` clause. |
 | 3881 | sql | Bug | Fixed NullPointerException in queries with aggregation of metrics with decimal datatype. |
 | 3842 | sql | Feature | Add support for column alias in [`CAST`](../../sql#cast) and [ROW_NUMBER](../../sql#row_number-syntax) functions. |
 | 3838 | sql | Bug | Add support for column alias in `ORDER BY` clause |
 | 3963 | client | Bug | Replace `last` with `cache` parameter in series query method within the Java API client. |
 
-### Collector
+## Collector
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
@@ -29,18 +28,14 @@ Weekly Change Log: March 13 - March 19, 2017
 | 3992 | socrata | Bug | Apply encoding to JSON output. |
 | 4004 | socrata | Bug | Handle optional request parameters in the URL wizard. |
 
-### Charts
+## Charts
 
 | Issue| Category    | Type    | Subject                                                                              |
 |------|-------------|---------|--------------------------------------------------------------------------------------|
 | [4006](#issue-4006) | widget-settings | Feature | Add fixed-fraction formatter. |
 | [3997](#issue-3997) | time-chart | Bug | Change legend style for forecast series. |
 
-
-### ATSD
-
 ### Issue 3658
---------------
 
 ```sql
 SELECT metric,
@@ -57,9 +52,11 @@ FROM df.disk_used
 LIMIT 1
 ```
 
+```ls
 | metric | metric.dataType | metric.description | metric.enabled | metric.filter | metric.id | metric.interpolate | metric.invalidValueAction | metric.label | metric.lastInsertTime |
 |---|---|---|---|---|---|---|---|---|---|
 | df.disk_used | FLOAT | null | true | tags.file_system != 'none' | 35 | LINEAR | NONE | null | null |
+```
 
 ```sql
 SELECT metric,
@@ -77,39 +74,32 @@ FROM df.disk_used
 LIMIT 1
 ```
 
+```ls
 | metric | metric.maxValue | metric.minValue | metric.name | metric.persistent | metric.retentionIntervalDays | metric.tags | metric.timePrecision | metric.timeZone | metric.units | metric.versioning |
 |---|---|---|---|---|---|---|---|---|---|---|
 | df.disk_used | null | null | df.disk_used | true | 0 | null | MILLISECONDS | null | null | false |
+```
 
 ### Issue 3907
---------------
 
 See the [guide](https://redash.io/help/data-sources/axibase_tsd.html) on how to integrate Redash with ATSD.
 
-
-### Collector
-
 ### Issue 4001
---------------
 
 Replacement tables are deprecated. Similar functionality is provided by the `LOOKUP` function.
 
 ![](Images/Figure1.png)
 
-### Charts
-
 ### Issue 4006
---------------
 
 | Setting | Description |
 |---------|-------------|
 | format = fixed(n) | Format numbers with the specified number of digits in the fraction portion of a number.<br>Default: 0 fractional digits. |
 
-https://apps.axibase.com/chartlab/b510b820
+[ChartLab](https://apps.axibase.com/chartlab/b510b820)
 
 ### Issue 3997
---------------
 
 ![](Images/Figure2.png)
 
-https://apps.axibase.com/chartlab/075941a0/2/
+[ChartLab](https://apps.axibase.com/chartlab/075941a0/2/)

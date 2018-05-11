@@ -14,14 +14,14 @@ Retrieve property records for the specified entity and type.
 
 | **Name** | **In** | **Description** |
 |:---|:---|:---|
-| entity | path | **[Required]** Entity name. |
-| type | path | **[Required]** Property type. |
+| `entity` | path | **[Required]** Entity name. |
+| `type` | path | **[Required]** Property type. |
 
 ### Fields
 
 None.
 
-## Response 
+## Response
 
 An array of property objects.
 
@@ -29,11 +29,11 @@ An array of property objects.
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| type | string | Property type name. |
-| entity |string | Entity name. |
-| key | object | Object containing `name=value` fields that uniquely identify the property record. <br>Example: `{"file_system": "/","mount_point":"sda1"}`|
-| tags | object | Object containing `name=value` fields that are not part of the key and contain descriptive information about the property record. <br>Example: `{"fs_type": "ext4"}`. |
-| date | string | ISO 8601 date when the property record was last modified. |
+| `type` | string | Property type name. |
+| `entity` |string | Entity name. |
+| `key` | object | Object containing `name=value` fields that uniquely identify the property record. <br>Example: `{"file_system": "/","mount_point":"sda1"}`|
+| `tags` | object | Object containing `name=value` fields that are not part of the key and contain descriptive information about the property record. <br>Example: `{"fs_type": "ext4"}`. |
+| `date` | string | ISO 8601 date when the property record was last modified. |
 
 ## Example
 
@@ -41,14 +41,14 @@ An array of property objects.
 
 #### URI
 
-```elm 
-GET https://atsd_server:8443/api/v1/properties/nurswgvml007/types/disk
+```elm
+GET https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types/disk
 ```
 
 #### curl
 
 ```elm
-curl https://atsd_server:8443/api/v1/properties/nurswgvml007/types/disk \
+curl https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types/disk \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```

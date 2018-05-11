@@ -1,10 +1,15 @@
-#  Series Insert With Tags
+# Series Insert With Tags
+
 ## Request
+
 ### URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/series/insert
+POST https://atsd_hostname:8443/api/v1/series/insert
 ```
+
 ### Payload
+
 ```json
 [{
     "entity": "nurswgvml007",
@@ -14,8 +19,4 @@ POST https://atsd_host:8443/api/v1/series/insert
         { "t": 1462427358127, "v": 22.0 }
     ]
 }]
-```
-
-## Response
-```
 ```

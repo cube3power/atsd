@@ -2,7 +2,7 @@
 
 ## Description
 
-If the tag is not available for the given entity, the value is set to empty string ''. 
+If the tag is not available for the given entity, the value is set to empty string ''.
 
 This can be used to search for entities without the specified tag or to check for the presence of the tag.
 
@@ -11,7 +11,7 @@ This can be used to search for entities without the specified tag or to check fo
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:ame:8443/api/v1/series/query
 ```
 
 ### Payload

@@ -1,7 +1,6 @@
-Weekly Change Log: August 07, 2017 - August 13, 2017
-==================================================
+# Weekly Change Log: August 07, 2017 - August 13, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
@@ -10,19 +9,17 @@ Weekly Change Log: August 07, 2017 - August 13, 2017
 | 4466 | metric | Bug | Add support for `timePrecision`, `persistent`, `retentionIntervalDays` fields in the [metric](../../api/network/metric.md) command. |
 | 4465 | metric | Bug | Add validation for [Invalid Action](../../api/meta/metric/list.md#invalid-actions) field in the [metric](../../api/network/metric.md) command. |
 | [4464](#issue-4464) | api-rest | Feature | Speed up series queries with [tag expressions](../../api/data/series/query.md#tag-expression-filter) such as `tags.mount_point LIKE '/*'`. |
-| 4456 | security | Feature | Update ATSD dependencies (used packages and libraries) to resolve known security issues in netty, Spring, httpclient, xstream, commons-fileupload. |
-| [4454](#issue-4454) | api-rest | Feature | Standardize period alignment when period is measured in years. | 
+| 4456 | security | Feature | Update ATSD dependencies (used packages and libraries) to resolve known security issues in `netty`, `Spring`, `httpclient`, `xstream`, `commons-fileupload`. |
+| [4454](#issue-4454) | api-rest | Feature | Standardize period alignment when period is measured in years. |
 | 4453 | security | Bug | User without necessary entity permissions can view series records on the Search tab. |
 | 4445 | message | Bug | Fixed a bug which caused [message retention](../../api/data/messages/delete.md#description) to not work. |
 | 4434 | security | Feature | Add option for administrators to impersonate another user account. The **Impersonate** button is available on the user's settings page. |
 | 4424 | UI | Bug | Fix XML serialization in backup and export XML files if the database is using a file encoding other than UTF-8. |
 | 4407 | search | Bug | Fix a memory leak in HBase region servers during full search indexing. |
-| [4386](#issue-4386) | sql | Feature | Add support for querying datetime column using standard Timestamp format `yyyy-MM-dd[ HH:mm:SS`. |
+| [4386](#issue-4386) | sql | Feature | Add support for querying `datetime` column using standard Timestamp format `yyyy-MM-dd[ HH:mm:SS]`. |
 | [4382](#issue-4382) | UI | Feature | Unique Values tab added to the Series Statistics page. |
 
-### ATSD
-
-##### Issue 4464
+### Issue 4464
 
 ```json
 [
@@ -38,7 +35,7 @@ Weekly Change Log: August 07, 2017 - August 13, 2017
 ]
 ```
 
-##### Issue 4456
+### Issue 4456
 
 ```json
 [
@@ -61,17 +58,17 @@ Weekly Change Log: August 07, 2017 - August 13, 2017
 ]
 ```
 
-##### Issue 4386
+### Issue 4386
 
 The supported format is `yyyy-MM-dd HH:mm:SS[.NNNNNNNNN]`. The dates are parsed according to the database time zone.
 
 ```sql
 SELECT *
-  FROM cpu_busy 
-WHERE ((datetime >= '2017-07-10 10:06:56.065') AND (datetime <= '2017-07-11 18:49:33.408941')) 
+  FROM cpu_busy
+WHERE ((datetime >= '2017-07-10 10:06:56.065') AND (datetime <= '2017-07-11 18:49:33.408941'))
   LIMIT 5
 ```
 
-##### Issue 4382
+### Issue 4382
 
 ![](Images/issue4382.png)

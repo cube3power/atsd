@@ -7,7 +7,7 @@ The interpolation process transforms an input time series to a regularized serie
 The process consists of the following steps:
 
 1. Load detailed data for the selection interval specified with `startDate` and `endDate` parameters.
-2. If `OUTER` boundary mode is enabled, also load one value before and one value after the selection interval in order to interpolate leading and trailing values.
+2. If `OUTER` boundary mode is enabled, load one value before and one value after the selection interval in order to interpolate leading and trailing values.
 3. Create evenly spaced timestamps within the selection interval. The timestamps can be aligned to the calendar or start/end time of the selection interval.
 4. For each timestamp, calculate the value from the two neighboring samples using a linear or step interpolation function.
 5. If `fill` parameter is enabled, add missing leading and trailing values.
@@ -36,13 +36,11 @@ Examples:
 | **Name** | **Description**   |
 |:---|:---|
 | `LINEAR`  | Calculates the value by adding a difference between neighboring detailed values proportional to their time difference. |
-| `PREVIOUS`  | Sets the value to equal the previous value. |
-| `AUTO`  | Applies the interpolation function specified in the metric's [interpolate](../../meta/metric/list.md#fields) field (set to `LINEAR` by default).  |
+| `PREVIOUS`  | Sets the value equal to the previous value. |
+| `AUTO`  | Applies the interpolation function specified in the metric [interpolate](../../meta/metric/list.md#fields) field. Default: `LINEAR`.  |
 
 > Detailed values with timestamps that are equal interpolated timestamps are returned `as is`, without changes.
-
 > The `LINEAR` function returns an interpolated value only if the preceding and the next value is present.
-
 > The `PREVIOUS` function requires a preceding value to be present. The last detailed value is used to calculate one last interpolated value.
 
 ### boundary
@@ -75,9 +73,9 @@ Examples:
 
 ## Examples
 
-**Dataset**
+Dataset:
 
-```
+```ls
 series e:nurswgvml007 m:cpu_busy=-1 d:2016-12-31T23:30:00Z
 series e:nurswgvml007 m:cpu_busy=0  d:2017-01-01T00:30:00Z
 series e:nurswgvml007 m:cpu_busy=2  d:2017-01-01T02:30:00Z
@@ -109,7 +107,7 @@ series e:nurswgvml007 m:cpu_busy=3  d:2017-01-01T03:30:00Z
 }]
 ```
 
-**Response**
+Response:
 
 In the default `INNER` mode the values outside of the selection interval are ignored.
 
@@ -124,9 +122,9 @@ In the default `INNER` mode the values outside of the selection interval are ign
 ```json
 [{"entity":"nurswgvml007","metric":"cpu_busy","tags":{},"type":"HISTORY","aggregate":{"type":"DETAIL"},
 "data":[
-	{"d":"2017-01-01T01:00:00Z","v":0.5},
-	{"d":"2017-01-01T02:00:00Z","v":1.5},
-	{"d":"2017-01-01T03:00:00Z","v":2.5}
+    {"d":"2017-01-01T01:00:00Z","v":0.5},
+    {"d":"2017-01-01T02:00:00Z","v":1.5},
+    {"d":"2017-01-01T03:00:00Z","v":2.5}
 ]}]
 ```
 
@@ -145,7 +143,7 @@ In the default `INNER` mode the values outside of the selection interval are ign
 }]
 ```
 
-**Response**
+Response:
 
 ```ls
 | datetime         | value |
@@ -174,7 +172,7 @@ In the default `INNER` mode the values outside of the selection interval are ign
 }]
 ```
 
-**Response**
+Response:
 
 In the default `INNER` mode the values outside of the selection interval are ignored.
 
@@ -203,7 +201,7 @@ In the default `INNER` mode the values outside of the selection interval are ign
 }]
 ```
 
-**Response**
+Response:
 
 In the `OUTER` mode the values outside of the selection interval are used to interpolate leading and trailing values.
 
@@ -231,7 +229,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 }]
 ```
 
-**Response**
+Response:
 
 ```ls
 | datetime         | value |
@@ -257,7 +255,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 }]
 ```
 
-**Response**
+Response:
 
 ```ls
 | datetime         | value |
@@ -285,7 +283,7 @@ In the `OUTER` mode the values outside of the selection interval are used to int
 }]
 ```
 
-**Response**
+Response:
 
 ```ls
 | datetime         | value |

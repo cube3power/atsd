@@ -14,13 +14,13 @@ When configuring a command action, you need to provide the executable path or sy
 
 Specify the command name or absolute path to the executable, for example:
 
-```
+```sh
 /home/axibase/disk_cleanup.sh
 ```
 
 It is recommended that the full path is specified even for built-in utilities such as `bash` or `find`. To lookup the command's path, execute `which {command}`, for example `which bash`:
 
-```
+```sh
 $ which bash
 /bin/bash
 ```
@@ -55,7 +55,7 @@ If the executable path is empty, no command will be executed for this status tri
 
 Only **one** command can be executed for each status change. If you need to execute multiple commands, create a wrapper script with multiple commands or launch a spawned shell process with `bash -c` and chain commands using `&&`.
 
-```
+```elm
 /bin/bash
 -c
 docker restart prd_aer && docker exec -it -u axibase prd_aer /home/axibase/aer/start.sh
@@ -65,7 +65,7 @@ The command must complete within the timeout value specified in **Settings > Ser
 
 If the command times out, the script process is terminated with a `SIGTERM` flag and the following text is added to the output:
 
-```
+```txt
 Script terminated on timeout: {current timeout value}
 ```
 
@@ -89,7 +89,7 @@ When 'Log Output' option is enabled, both `system.out` and `system.err` outputs 
 
 The output is limited to 10240 characters.
 
-```
+```txt
 2017-11-30 13:32:26,597;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;
 
 KUIEXC001I: Content of the response file /tmp/itmcmd-atsd.log is:
@@ -125,37 +125,37 @@ A follow-up action, at the `REPEAT` status, can be further configured to cleanup
 
 * Tivoli Enterprise Services User Interface Extensions installed on the ATSD server. To install the component, launch the `install.sh` script and select the `KUE` module from the list.
 
-  ```
+```txt
   ... installing "Tivoli Enterprise Services User Interface Extensions  V06.30.06.00 for Linux x86_64 R2.6, R3.0 (64 bit)"; please wait.
   => installed "Tivoli Enterprise Services User Interface Extensions  V06.30.06.00 for Linux x86_64 R2.6, R3.0 (64 bit)".
   ... Initializing component Tivoli Enterprise Services User Interface Extensions  V06.30.06.00 for Linux x86_64 R2.6, R3.0 (64 bit).
   ... Tivoli Enterprise Services User Interface Extensions  V06.30.06.00 for Linux x86_64 R2.6, R3.0 (64 bit) initialized.
-  ```
+```
 
 * Modify the Hub TEMS configuration file `/opt/IBM/ITM/config/ms.config` and set the following parameter.
 
-  ```
+```txt
   KT1_TEMS_SECURE='YES'
-  ```
+```
 
   > Note that TEMS restart is required to activate this setting.
 
 ### Path
 
-  ```
+```sh
   /bin/bash
-  ```
+```
 
 ### Arguments
 
-  ```
+```sh
   -c
   cat ~/itm.pwd | /opt/IBM/ITM/bin/tacmd login -stdin > /dev/null && /opt/IBM/ITM/bin/tacmd executecommand -m ${upper(entity)}:LZ -o -e -r -l -f ALL -d /tmp/itmcmd-atsd.log -v -c "find /tmp -mtime +15 -type f -delete -print" && /opt/IBM/ITM/bin/tacmd logout > /dev/null
-  ```
+```
 
 ### Output Log
 
-  ```
+```txt
   2017-11-30 14:23:28,647;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;
 
   KUIEXC001I: Content of the response file /tmp/itmcmd-atsd.log is:
@@ -170,7 +170,7 @@ A follow-up action, at the `REPEAT` status, can be further configured to cleanup
   KUIEXC000I: Executecommand request was performed successfully. The return value of the command run on the remote systems is 0
 
   2017-11-30 14:23:28,647;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;Script successful: exit code = 0, cmd: '[/bin/bash, -c, cat ~/itm.pwd | /opt/IBM/ITM/bin/tacmd login -stdin > /dev/null && /opt/IBM/ITM/bin/tacmd executecommand -m NURSWGVML007:LZ -o -e -r -l -f ALL -d /tmp/itmcmd-atsd.log -v -c "find /tmp -mtime +15 -type f -delete -print" && /opt/IBM/ITM/bin/tacmd logout > /dev/null]'
-  ```
+```
 
 ## Example. Store Derived Metrics
 
@@ -180,22 +180,22 @@ The rule is configured to calculate a derived metric for the same entity. The de
 
 ### Path
 
-  ```
+```sh
     /bin/bash
-  ```
+```
 
 ### Arguments
 
-  ```sh
+```sh
   -c
   echo $0 > /dev/tcp/localhost/8081
   series e:${entity} m:derived_cpu_busy=${100-avg()}
-  ```
+```
 
 ### Output Log
 
-  ```
+```txt
   2017-11-30 14:46:50,424;INFO;Exec Default Executor;com.axibase.tsd.service.rule.ExecutionAlertEndpoint;Script successful: exit code = 0, cmd: '[/bin/bash, -c, echo $0 > /dev/tcp/localhost/8081, series e:nurswgvml212 m:derived_cpu_busy=0.5433333317438761]'
-  ```  
+```
 
 ![](images/system-command-derived.png)

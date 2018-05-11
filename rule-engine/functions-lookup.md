@@ -10,17 +10,17 @@ The named collections are listed on the **Data > Named Collections** page.
 
 ## Reference
 
-* [entity_tag](#entity_tag)
-* [entity_tags](#entity_tags)
-* [entity_label](#entity_label)
-* [getEntity](#getentity)
-* [getEntities](#getentities)
-* [getEntityCount](#getentitycount)
-* [getEntityName](#getentityname)
-* [collection](#collection)
-* [lookup](#lookup)
-* [replacementTable](#replacementtable)
-* [property](#property)
+* [`entity_tag`](#entity_tag)
+* [`entity_tags`](#entity_tags)
+* [`entity_label`](#entity_label)
+* [`getEntity`](#getentity)
+* [`getEntities`](#getentities)
+* [`getEntityCount`](#getentitycount)
+* [`getEntityName`](#getentityname)
+* [`collection`](#collection)
+* [`lookup`](#lookup)
+* [`replacementTable`](#replacementtable)
+* [`property`](#property)
 
 ### `entity_tag`
 
@@ -37,6 +37,7 @@ If the tag or the entity is not found, an empty string is returned.
 ```javascript
   entity_tags(string e [, boolean f]) map
 ```
+
 Returns entity tags for entity `e` as a map.
 
 If the entity is not found, an empty map is returned.
@@ -55,7 +56,7 @@ Example:
 entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b')
 ```
 
-```
+```txt
 +-------------------------+----------------------------------------------+
 | Name                    | Value                                        |
 +-------------------------+----------------------------------------------+
@@ -71,7 +72,7 @@ entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b')
 entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b', true)
 ```
 
-```
+```txt
 +-------------------------+----------------------------------------------+
 | Name                    | Value                                        |
 +-------------------------+----------------------------------------------+
@@ -89,7 +90,7 @@ entity_tags('08ac68c080bc2829f9c924949c86f65d2140c3f1253f3510f8a4e2e4d5219e2b', 
   entity_label(string e) string
 ```
 
-Returns label for entity `e`. 
+Returns label for entity `e`.
 
 If the entity is not found or it doesn't have a label, the input string `e` is returned.
 
@@ -98,9 +99,10 @@ If the entity is not found or it doesn't have a label, the input string `e` is r
 ```javascript
   getEntity(string e[,boolean l]) object
 ```
+
 Retrieves an entity object by name. If `l` set to `true` entity will be searched by label if it is not found by name. By default `l` is false.
 
-The object's [fields](entity-fields.md) can be accessed using dot notation, for example `getEntity('nurswgvml007').label`.
+The object [fields](entity-fields.md) can be accessed using dot notation, for example `getEntity('nurswgvml007').label`.
 
 The function returns `null` if the entity `e` is not found.
 
@@ -116,9 +118,10 @@ Example:
 ```javascript
   getEntities(string m, string s, string e, string p) [object]
 ```
-Returns a list of entity **objects** with last insert date for metric `m` between `s` and `e` and matching the specified expression `p`. 
 
-Expression `p` can include entity [fields](../api/meta/entity/list.md#fields) (except `lastInsertDate`) and [window fields](window.md#window-fields). The entity [fields](entity-fields.md) can be refered to using the dot notation.
+Returns a list of entity **objects** with last insert date for metric `m` between `s` and `e` and matching the specified expression `p`.
+
+Expression `p` can include entity [fields](../api/meta/entity/list.md#fields) (except `lastInsertDate`) and [window fields](window.md#window-fields). The entity [fields](entity-fields.md) can be referred to using the dot notation.
 
 Start date `s` and end date `e` is an `iso` date or a [calendar keyword](../shared/calendar.md#keywords).
 
@@ -135,7 +138,7 @@ Examples:
 * Match using entity object field
 
 ```javascript
-  getEntities('df.inodes.used', '2018-01-13T18:08:04Z', '2018-02-13T18:08:04Z', "enabled=true")  
+  getEntities('df.inodes.used', '2018-01-13T18:08:04Z', '2018-02-13T18:08:04Z', "enabled=true")
 ```
 
 * Match using wildcard
@@ -144,7 +147,7 @@ Examples:
   getEntities('jvm_memory_used', 'now - 4*YEAR', 'now', "tags.alias LIKE '00*'")
 ```
 
-* Match using window field 
+* Match using window field
 
 ```javascript
   getEntities('cpu_busy', 'yesterday', 'now', "interpolate = 'LINEAR' && tags.app = '" + entity.tags.app + "'")
@@ -163,7 +166,8 @@ Same as `getEntities(string m, string s, string e, object p).size()`.
 ```javascript
   getEntityName(string e) string
 ```
-Returns normalized (lowercase) entity name for input string `e`. The function searches for entity by name `e` in a case-insensitive manner. If the entity is not found by name, the function attempts to find an entity by label `e` in a case-insensitive manner. 
+
+Returns normalized (lowercase) entity name for input string `e`. The function searches for entity by name `e` in a case-insensitive manner. If the entity is not found by name, the function attempts to find an entity by label `e` in a case-insensitive manner.
 
 If the entity cannot be found, the original input string `e` is returned.
 
@@ -195,7 +199,7 @@ collection('dc-locations').contains(tags.location)
   lookup(string s, string k[, boolean b]) string
 ```
 
-Returns the value for key `k` from the replacement table `s`. 
+Returns the value for key `k` from the replacement table `s`.
 
 The function returns an empty string if the table is not found or if it doesn't contain the specified key.
 
@@ -203,9 +207,9 @@ If the optional boolean `b` parameter is specified and is set to `true`, the fun
 
 Example:
 
-```javascript  
-  /* Returns 'john' if the oncall table doesn't contain an entry for 'john' */
-  lookup('oncall', 'john', true)
+```javascript
+  /* Returns 'john' if the 'on-call' table doesn't contain an entry for 'john' */
+  lookup('on-call', 'john', true)
 ```
 
 ### `replacementTable`
@@ -235,4 +239,3 @@ Example:
 ```
 
 Refer to [property functions](functions-property.md#property) for additional syntax options.
-

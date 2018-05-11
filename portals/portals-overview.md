@@ -12,13 +12,13 @@
 ## Create Portal
 
 * Click on the **Portals** link in the top menu.
-  
+
   ![](resources/creating-and-assigning-portals_1.png)
 
 * Click on **Create**.
 
   ![](resources/creating-and-assigning-portals_2.png)
-    
+
 * Specify portal settings.
 
 | **Property** | **Description** |
@@ -31,7 +31,7 @@
 | Theme | Graphics style to render the widgets: Default or Black. Custom themes can be installed as described [below](#portal-themes).|
 | Content | Portal [configuration](#configure-portal) text specified using the [Charts](https://github.com/axibase/charts#axibase-charts) syntax. |
 
-## Configure Portal  
+## Configure Portal
 
 ### Syntax
 
@@ -61,7 +61,7 @@ The following example creates a grid containing 6 units, with 3 widgets placed i
   # shared widget settings
 [group]
   [widget]
-     # widget settings  
+     # widget settings
      type = chart
      [series]
        # series settings
@@ -94,7 +94,7 @@ Review the following guides describing the basic syntax:
 
 ## Portals Page
 
-The portals are listed on the **Portals** page located at `https://atsd_host:8443/portals/list`. 
+The portals are listed on the **Portals** page located at `https://atsd_hostname:8443/portals/list`.
 
 To access the **Portals** page via ATSD web interface click on **Portals** drop-down at the right upper corner and click on **Configure** button.
 
@@ -120,7 +120,7 @@ The regular portal doesn't depend on external parameters and can be rendered as 
 Sample link for a regular portal:
 
 ```elm
-https://atsd_host:8443/portal/4.xhtml
+https://atsd_hostname:8443/portal/4.xhtml
 ```
 
 Enabled regular portals are listed under the **Portals** link in the top menu.
@@ -129,17 +129,17 @@ Enabled regular portals are listed under the **Portals** link in the top menu.
 
 ### Template Portals
 
-The template portal requires an entity name to be passed as a request parameter. It allows the same parameterized portal to be viewed for all entities of the same type. 
+The template portal requires an entity name to be passed as a request parameter. It allows the same parameterized portal to be viewed for all entities of the same type.
 
 Additional parameters can be passed in the query string to customize the portal as described [below](#request-parameters).
 
 Sample link to a template portal:
 
 ```elm
-https://atsd_host:8443/portal/111.xhtml?entity=nurswgvml013
+https://atsd_hostname:8443/portal/111.xhtml?entity=nurswgvml013
 ```
 
-The above link passes the `entity` parameter to a template portal which substitutes all `${entity}` placeholders in the Configure Portal text. 
+The above link passes the `entity` parameter to a template portal which substitutes all `${entity}` placeholders in the Configure Portal text.
 
 ```ls
 [widget]
@@ -162,7 +162,7 @@ The actual configuration displayed replaces the `${entity}` placeholder with the
 To open a template portal directly in the browser address bar, substitute the `{portal_id}` below with _portal identifier_ displayed at the [Portals Page](#portals-page) and specify a valid entity name in the `{entity}` request parameter.
 
 ```elm
-https://atsd_host:8443/portal/{portal_id}.xhtml?entity={entity}
+https://atsd_hostname:8443/portal/{portal_id}.xhtml?entity={entity}
 ```
 
 Alternatively, assign an entity group to the template portal so that the link to this portal is available on the **Entities** page for all entities that are members of the entity group:
@@ -178,17 +178,17 @@ Alternatively, assign an entity group to the template portal so that the link to
 * Select entity groups to which the portal will be assigned.
 
     ![](resources/creating-and-assigning-portals_9.png)
-    
+
 > Note an entity group can be assigned to the portal from portal editor:
 > ![](resources/creating-and-assigning-portals_10.png)
-    
+
 * Click on **Save** at the bottom of the page.
 * Open the **Entities** page.
-* Select an entity group in the drop-down filter.    
-* Click on the _portals_ icon for an entity and verify that the portal was assigned.    
+* Select an entity group in the drop-down filter.
+* Click on the _portals_ icon for an entity and verify that the portal was assigned.
 
     ![](resources/creating-and-assigning-portals_11.png)
-    
+
     ![](resources/creating-and-assigning-portals_12.png)
 
 ## Portal Links
@@ -198,15 +198,17 @@ The portals are available at the following URLs:
 * Using portal id displayed at the [Portals Page](#portals-page):
 
 ```elm
-https://atsd_host:8443/portal/{portal_id}.xhtml
+https://atsd_hostname:8443/portal/{portal_id}.xhtml
 ```
+
 ![](resources/creating-and-assigning-portals_13.png)
 
 * Using portal name (case-sensitive):
 
 ```elm
-https://atsd_host:8443/portal/name/{name}
+https://atsd_hostname:8443/portal/name/{name}
 ```
+
 > Names containing whitespace and other special properties must be url-encoded.
 
 ![](resources/creating-and-assigning-portals_14.png)
@@ -216,14 +218,14 @@ https://atsd_host:8443/portal/name/{name}
 The template portal requires the `entity` parameter to be present in the query string regardless if the portal is accessed with an identifier or name.
 
 ```elm
-https://atsd_host:8443/portal/name/linux-os?entity=nurswgvml008
+https://atsd_hostname:8443/portal/name/linux-os?entity=nurswgvml008
 ```
 
 Additional parameters can be passed in the query string to customize the portal.
 
 ```elm
 # add extra dtype parameter
-https://atsd_host:8443/portal/name/linux-disk?entity=nurswgvml008&dtype=nfs
+https://atsd_hostname:8443/portal/name/linux-disk?entity=nurswgvml008&dtype=nfs
 ```
 
 Such request parameter values can be referenced with `${parameter_name}` placeholders in the Configure Portal text.
@@ -243,6 +245,6 @@ Such request parameter values can be referenced with `${parameter_name}` placeho
 |---|---|
 | ![](resources/portal_theme_default.png) | ![](resources/portal_theme_dark.png) |
 
-You can install your own themes by modifying the default CSS theme files and uploading them to the `/opt/atsd/conf/portal/themes/` directory. 
+You can install your own themes by modifying the default CSS theme files and uploading them to the `/opt/atsd/conf/portal/themes/` directory.
 
 After you upload your custom theme, it will appear in the list of available themes in the portal editor.

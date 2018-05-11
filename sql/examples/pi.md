@@ -133,7 +133,6 @@ WHERE entity = 'br-1211' AND (text = '800' OR LAG(text) = '800')
 
 * LEAD function [examples](../README.md#lag)
 
-
 ## BETWEEN clause supports subqueries
 
 * The `BETWEEN` clause (Interval condition) accepts subqueries
@@ -233,9 +232,9 @@ WITH INTERPOLATE(1 MINUTE, LINEAR, OUTER, EXTEND, START_TIME)
 | br-1211   | tv6.pack:r04 | 2016-10-04T02:06:10Z | 21.0     | 275.0        | 800           | Proc2          | 800.2        |
 ```
 
-## User-defined timezones in PERIOD
+## User-defined Time Zones in PERIOD
 
-* The PERIOD aggregation supports user-defined timezones.
+* The PERIOD aggregation supports user-defined time zones.
 
 ```sql
 SELECT datetime, date_format(time, 'yyyy-MM-dd HH:mm:ss z', "US/Eastern") AS "Local Date",

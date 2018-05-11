@@ -4,10 +4,10 @@ Period is a repeating time interval used to group samples occurred within each i
 
 | **Name**  | **Type** | **Description** |
 |:---|:---|:---|
-| count  | number | Number of time units contained in the period. |
-| unit  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
-| align | string | Alignment of the period's start time. Default: `CALENDAR`. <br>Possible values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.|
-| timezone | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database timezone.|
+| `count`  | number | Number of time units contained in the period. |
+| `unit`  | string | [Time unit](time-unit.md) such as `MINUTE`, `HOUR`, `DAY`. |
+| `align` | string | Alignment of the period's start time. Default: `CALENDAR`. <br>Possible values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.|
+| `timezone` | string | [Time Zone ID](../../../shared/timezone-list.md) for aligning timestamps in [`CALENDAR`](period.md#calendar-alignment) mode.<br>The default value is equal to the database time zone.|
 
 ## Examples
 
@@ -35,10 +35,10 @@ For example, `1 HOUR` initializes 1-hour long periods starting at `0` minutes of
 
 | **Alignment** | **Description**|
 |:---|:---|
-| CALENDAR | Period start is rounded down to the nearest time unit. |
-| START_TIME | First period begins at start time specified in the query. |
-| FIRST_VALUE_TIME | First period begins at the time of first retrieved value. |
-| END_TIME | Last period ends on end time specified in the query. |
+| `CALENDAR` | Period start is rounded down to the nearest time unit. |
+| `START_TIME` | First period begins at start time specified in the query. |
+| `FIRST_VALUE_TIM`E` | First period begins at the time of first retrieved value. |
+| `END_TIME` | Last period ends on end time specified in the query. |
 
 ### `CALENDAR` Alignment
 
@@ -46,7 +46,7 @@ The `CALENDAR` alignment calculates the initial period according to the rules be
 
 * `startDate` of the selection interval is rounded to calculate the _base time_ using the rule table below.
 * If the _base time_ is within the selection interval, it becomes the initial period.
-* Otherwise, the period starting with _base time_ is incremented (decremented if _base time_ exceeds start time) to find the earliest period starting withing the selection interval. This period becomes the initial period.
+* Otherwise, the period starting with _base time_ is incremented (decremented if _base time_ exceeds start time) to find the earliest period starting within the selection interval. This period becomes the initial period.
 
 **`startDate` Rounding Rules**
 
@@ -64,11 +64,12 @@ The `CALENDAR` alignment calculates the initial period according to the rules be
 
 For example, if period is `2 HOUR`, start date of `2016-06-20 15:08` will be rounded to `2016-06-20 00:00` as the **base** time, and the initial period will start at `2016-06-20 16:00`.
 
-Start of the day for `DAY`, `WEEK`, `MONTH`, `QUARTER`, and `YEAR` units is determined according to the server timezone unless the `timezone` is specified explicitly.
+Start of the day for `DAY`, `WEEK`, `MONTH`, `QUARTER`, and `YEAR` units is determined according to the server time zone unless the `timezone` field is specified explicitly.
 
 #### Example 1
 
-`45 MINUTE`-period with `startDate` of `2016-06-20 15:05` and `endDate` of `2016-06-20 17:30`: [`2016-06-20 15:05` - `2016-06-20 17:30`) .
+`45 MINUTE`-period with `startDate` of `2016-06-20 15:05` and `endDate` of `2016-06-20 17:30`: [`2016-06-20 15:05` - `2016-06-20 17:30`).
+
 * Start time `2016-06-20 15:05` is rounded to `2016-06-20 00:00` as the **base** time.
 * Base time is incremented by 45 minutes until a period start is >= `15:05`: 00:00, 00:45, 01:30, etc.
 * The first period to reach the start of the selection interval is `15:45` or `[2016-06-20 15:45 - 2016-06-20 16:30)`.

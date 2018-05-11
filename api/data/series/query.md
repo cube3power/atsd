@@ -12,7 +12,7 @@ Retrieve time series objects for the specified metric, entity, tag, and interval
 
 The request payload is a JSON document containing an array of query objects.
 
-```
+```sh
 [{
   /* query 1: filter, process, control */
 },{
@@ -28,8 +28,8 @@ Each query contains **filter** fields to find time series in the database, **pro
 
 | **Field** | **Type** | **Description** |
 |---|---|---|
-| metric | string | [**Required**] Metric name. |
-| type | string | Data type: `HISTORY`, `FORECAST`, `FORECAST_DEVIATION`. <br>Default: `HISTORY` |
+| `metric` | string | [**Required**] Metric name. |
+| `type` | string | Data type: `HISTORY`, `FORECAST`, `FORECAST_DEVIATION`. <br>Default: `HISTORY` |
 
 ### Entity Filter
 
@@ -42,9 +42,9 @@ Each query contains **filter** fields to find time series in the database, **pro
 
 | **Field** | **Type** | **Description** |
 |---|---|---|
-| tags | object  | Object with `name:value` fields. <br>Matches series that contain the specified series tags. <br>Tag values support `?` and `*` wildcards. |
-| exactMatch | boolean | `tags` match operator. _Exact_ match if `true`, _partial_ match if `false`. Default: **false** (_partial_ match).<br>_Exact_ match selects series with exactly the same `tags` as requested.<br>_Partial_ match selects series with tags that contain requested tags but may also include additional tags.|
-| tagExpression | string | An expression to include series with tags that satisfy the specified condition. |
+| `tags` | object  | Object with `name:value` fields. <br>Matches series that contain the specified series tags. <br>Tag values support `?` and `*` wildcards. |
+| `exactMatch` | boolean | `tags` match operator. _Exact_ match if `true`, _partial_ match if `false`. Default: **false** (_partial_ match).<br>_Exact_ match selects series with exactly the same `tags` as requested.<br>_Partial_ match selects series with tags that contain requested tags but may also include additional tags.|
+| `tagExpression` | string | An expression to include series with tags that satisfy the specified condition. |
 
 Tag Expression
 
@@ -67,21 +67,20 @@ tags.location LIKE 'nur*'
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-|forecastName| string | Unique forecast name. Identifies a custom forecast by name. If `forecastName` is not set, then the default forecast computed by the database will be returned. `forecastName` is applicable only when `type` is set to `FORECAST` or `FORECAST_DEVIATION`. |
+|`forecastName`| string | Unique forecast name. Identifies a custom forecast by name. If `forecastName` is not set, then the default forecast computed by the database will be returned. `forecastName` is applicable only when `type` is set to `FORECAST` or `FORECAST_DEVIATION`. |
 
 ### Versioning Filter
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| versioned | boolean |Returns version status, source, and change date if the metric is versioned. Default: false. |
-| versionFilter | string | Expression to filter value history (versions) by version status, source or time, for example: `version_status = 'Deleted'` or `version_source LIKE '*user*'`. To filter by version `time`, use `date()` function, for example, `version_time > date('2015-08-11T16:00:00Z')` or `version_time > date('current_day')`. The `date()` function accepts [calendar](../../../shared/calendar.md) keywords.|
+| `versioned` | boolean |Returns version status, source, and change date if the metric is versioned. Default: false. |
+| `versionFilter` | string | Expression to filter value history (versions) by version status, source or time, for example: `version_status = 'Deleted'` or `version_source LIKE '*user*'`. To filter by version `time`, use `date()` function, for example, `version_time > date('2015-08-11T16:00:00Z')` or `version_time > date('current_day')`. The `date()` function accepts [calendar](../../../shared/calendar.md) keywords.|
 
 ### Value Filter
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| valueFilter | string | The field contains a boolean expression applied to detailed samples. Samples that satisfy the condition are included, for example, `value > 100`. Value filter is applied **before** series transformations (interpolation, aggregation, grouping or the rate calculation). The `value` field in the expression refers to the sample value. <br>Examples:<br> `value > 0` - retrieve samples which are positive numbers; <br> `value > 36.4 && value <= 36.7` - retrieve samples within the specified range; <br> `Math.sin(value) < 0.5` - [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported; <br> `Double.isNaN(value)` - only NaN values pass this check.  |
-
+| `valueFilter` | string | The field contains a boolean expression applied to detailed samples. Samples that satisfy the condition are included, for example, `value > 100`. Value filter is applied **before** series transformations (interpolation, aggregation, grouping or the rate calculation). The `value` field in the expression refers to the sample value. <br>Examples:<br> `value > 0` - retrieve samples which are positive numbers; <br> `value > 36.4 && value <= 36.7` - retrieve samples within the specified range; <br> `Math.sin(value) < 0.5` - [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) functions are supported; <br> `Double.isNaN(value)` - only NaN values pass this check.  |
 
 ### Transformation Fields
 
@@ -109,13 +108,13 @@ The default sequence of group/rate/aggregate transformations can be modified by 
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| limit   | integer | Maximum number of `time:value` samples returned for each series. Default: 0 (no limit).<br>The limit is applied from the beginning of the selection interval if the direction is `ASC` and from the end if the direction is `DESC`.<br>For example, `limit=1` with `direction=DESC` returns the most recent last value.<br>Limit is not applied if the parameter value <= 0. |
-| direction| string | Order for applying the `limit` parameter: `ASC` - ascending, `DESC` - descending. Default: `DESC`. <br>The returned data values are sorted in ascending order regardless of direction.<br>`limit=10` means the most recent 10 values.|
-| seriesLimit   | integer | Maximum number of series returned. Default: 0 (no limit).<br>The database will raise a processing error if series count exceeds **10000** for queries that fetch data for an non-versioned metric without `limit`.|
-| cache | boolean | If `true`, execute the query against the Last Insert table, which is the fastest way to retrieve the last value for a query. Default: `false`.<br>Values in the Last Insert table may be delayed up to 15 seconds , controlled with `last.insert.write.period.seconds` setting. Only 1 value is returned for each series.|
-| requestId | string | Optional identifier used to associate `query` object in request with one or multiple `series` objects in response. |
-| timeFormat |string| Time format for a data array. `iso` or `milliseconds`. Default: `iso`. |
-| addMeta | boolean | Include metric and entity metadata (fields and tags) under the `meta` object in the response. Default: `false`.|
+| `limit`   | integer | Maximum number of `time:value` samples returned for each series. Default: 0 (no limit).<br>The limit is applied from the beginning of the selection interval if the direction is `ASC` and from the end if the direction is `DESC`.<br>For example, `limit=1` with `direction=DESC` returns the most recent last value.<br>Limit is not applied if the parameter value <= 0. |
+| `direction`| string | Order for applying the `limit` parameter: `ASC` - ascending, `DESC` - descending. Default: `DESC`. <br>The returned data values are sorted in ascending order regardless of direction.<br>`limit=10` means the most recent 10 values.|
+| `seriesLimit`   | integer | Maximum number of series returned. Default: 0 (no limit).<br>The database will raise a processing error if series count exceeds **10000** for queries that fetch data for an non-versioned metric without `limit`.|
+| `cache` | boolean | If `true`, execute the query against the Last Insert table, which is the fastest way to retrieve the last value for a query. Default: `false`.<br>Values in the Last Insert table may be delayed up to 15 seconds , controlled with `last.insert.write.period.seconds` setting. Only 1 value is returned for each series.|
+| `requestId` | string | Optional identifier used to associate `query` object in request with one or multiple `series` objects in response. |
+| `timeFormat` |string| Time format for a data array. `iso` or `milliseconds`. Default: `iso`. |
+| `addMeta` | boolean | Include metric and entity metadata (fields and tags) under the `meta` object in the response. Default: `false`.|
 
 ## Response
 
@@ -123,26 +122,26 @@ The response contains an array of series objects, each containing series identif
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| entity | string | Entity name |
-| metric | string | Metric name |
-| tags | object | Object containing series tags. |
-| type | string | Type of inserted data: `HISTORY`, `FORECAST`. |
-| aggregate | string | Type of statistical aggregation: `DETAIL`, `AVG`, `MAX`, etc. |
-| data | array | Array of [Value](#value-object) objects.|
-| meta | object | Metric and entity metadata fields, if requested with the `addMeta` parameter. |
+| `entity` | string | Entity name |
+| `metric` | string | Metric name |
+| `tags` | object | Object containing series tags. |
+| `type` | string | Type of inserted data: `HISTORY`, `FORECAST`. |
+| `aggregate` | string | Type of statistical aggregation: `DETAIL`, `AVG`, `MAX`, etc. |
+| `data` | array | Array of [Value](#value-object) objects.|
+| `meta` | object | Metric and entity metadata fields, if requested with the `addMeta` parameter. |
 
-#### Value Object
+### Value Object
 
 * The value object contains a sample time and a numeric (`v` field) and/or text (`x` field) value.
 * The sample time can be specified in Epoch milliseconds (`t` field) or ISO format (`d` field).
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| t | integer | Sample time in Epoch milliseconds.|
-| d | string | Sample time in ISO format. |
-| v | number | Numeric sample value at time `t`/`d`. <br>The field is set to `null` if the value is Not a Number: `{"d":"2017-09-14T17:00:03.000Z","v":null}`|
-| x | string | Text sample value at time `t`/`d`. |
-| version | object | Object containing version source and status fields for versioned metrics. |
+| `t` | integer | Sample time in Epoch milliseconds.|
+| `d` | string | Sample time in ISO format. |
+| `v` | number | Numeric sample value at time `t`/`d`. <br>The field is set to `null` if the value is Not a Number: `{"d":"2017-09-14T17:00:03.000Z","v":null}`|
+| `x` | string | Text sample value at time `t`/`d`. |
+| `version` | object | Object containing version source and status fields for versioned metrics. |
 
 ## Example
 
@@ -151,7 +150,7 @@ The response contains an array of series objects, each containing series identif
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 #### Payload
@@ -169,24 +168,24 @@ POST https://atsd_host:8443/api/v1/series/query
 
 ```json
 [{
-	"entity": "nurswgvml007",
-	"metric": "mpstat.cpu_busy",
-	"tags": {},
-	"type": "HISTORY",
-	"aggregate": {
-	  "type": "DETAIL"
-	},
-	"data": [
-		{"d":"2017-09-14T17:00:03.000Z","v":24.24},
-		{"d":"2017-09-14T17:00:19.000Z","v":39.8},
-		{"d":"2017-09-14T17:00:35.000Z","v":39.18}
-	]
+    "entity": "nurswgvml007",
+    "metric": "mpstat.cpu_busy",
+    "tags": {},
+    "type": "HISTORY",
+    "aggregate": {
+      "type": "DETAIL"
+    },
+    "data": [
+        {"d":"2017-09-14T17:00:03.000Z","v":24.24},
+        {"d":"2017-09-14T17:00:19.000Z","v":39.8},
+        {"d":"2017-09-14T17:00:35.000Z","v":39.18}
+    ]
 }]
 ```
 
 ## `curl` Example
 
-```
+```json
 curl http://localhost:8088/api/v1/series/query \
   -v -u {username}:{password} \
   -H "Content-Type: application/json" \
@@ -204,15 +203,15 @@ curl http://localhost:8088/api/v1/series/query \
 
 * [ISO Start/End Range](examples/query-iso-range.md)
 * [ISO Millisecond Precision](examples/query-iso-range-millis.md)
-* [ISO hh:mm Timezone](examples/query-iso-hhmm-timezone.md)
+* [ISO hh:mm Time Zone](examples/query-iso-hhmm-timezone.md)
 * [ISO: All Data Range](examples/query-iso-range-all.md)
 * [Interval Window](examples/query-interval-window.md)
 * [End Date and Interval](examples/query-end-date-interval.md)
-* [EndTime Syntax](examples/query-endtime-syntax.md)
-* [EndTime Syntax with Expression](examples/query-endtime-syntax-expression.md)
-* [EndTime: Current Day](examples/query-endtime-currentday.md)
-* [EndTime: Previous Hour](examples/query-endtime-previousday.md)
-* [EndTime: Hour Window](examples/query-endtime-hour-window.md)
+* [`EndTime` Syntax](examples/query-endtime-syntax.md)
+* [`EndTime` Syntax with Expression](examples/query-endtime-syntax-expression.md)
+* [`EndTime`: Current Day](examples/query-endtime-currentday.md)
+* [`EndTime`: Previous Hour](examples/query-endtime-previousday.md)
+* [`EndTime`: Hour Window](examples/query-endtime-hour-window.md)
 * [Response Time Format](examples/query-response-time-format.md)
 * [Cache Range](examples/query-range-cache.md)
 
@@ -258,7 +257,7 @@ curl http://localhost:8088/api/v1/series/query \
 ### Regularize / Downsample
 
 * [Interpolate Transformation](interpolate.md)
-* [EndTime: Hour to now](examples/query-regularize.md)
+* [`EndTime`: Hour to now](examples/query-regularize.md)
 
 ### Aggregation
 
@@ -277,7 +276,7 @@ curl http://localhost:8088/api/v1/series/query \
 ### Period
 
 * [Multiple Periods](examples/query-period-multiple.md)
-* [Period Alignment: EndTime](examples/query-period-endtime.md)
+* [Period Alignment: `EndTime`](examples/query-period-endtime.md)
 * [Period Misalignment](examples/query-period-misalignment.md)
 
 ### Group

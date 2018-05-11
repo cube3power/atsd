@@ -1,8 +1,8 @@
 # Rate Processor
 
-## Overview 
+## Overview
 
-Computes difference between consecutive samples per unit of time (rate period). 
+Computes the difference between consecutive samples per unit of time (rate period).
 
 Used to compute rate of change when the underlying metric measures a continuously incrementing counter.
 
@@ -10,9 +10,9 @@ Used to compute rate of change when the underlying metric measures a continuousl
 
 | **Name** | **Type**    | **Description**  |
 |:---|:---|:---|
-| period | object | Rate period. Supports NANOSECOND time unit. |
-| counter | boolean | If true, negative differences between consecutive samples are ignored. Default: true |
-| order         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
+| `period` | object | Rate period. Supports NANOSECOND time unit. |
+| `counter` | boolean | If true, negative differences between consecutive samples are ignored. Default: true |
+| `order`         | integer           | Controls the processing sequence of the `group`, `rate` and `aggregate` stages. The stage with the smallest order is executed first. If the stages have the same order, the default order is: `group`, `rate`, `aggregate`. Default value: `0`.  |
 
 ## Request
 
@@ -38,10 +38,9 @@ Used to compute rate of change when the underlying metric measures a continuousl
 
 ## Rate Period
 
-- If rate period is not specified, the function computes the difference between values of two subsequent series samples. If samples are `(previousTimestamp, previousValue)` and `(timestamp, value)`, then result would be `(timestamp, value - previousValue)`.
+* If rate period is not specified, the function computes the difference between values of two subsequent series samples. If samples are `(previousTimestamp, previousValue)` and `(timestamp, value)`, then result would be `(timestamp, value - previousValue)`.
 
-
-- If rate period is specified, the function computes rate of change for the specified time period: 
+* If rate period is specified, the function computes rate of change for the specified time period:
 
 `(value - previousValue) * ratePeriod / (timestamp - previousTimestamp)`.
 
@@ -55,7 +54,7 @@ Used to compute rate of change when the underlying metric measures a continuousl
 
 ## NANOSECOND Period Example
 
-### Request 
+### Request
 
 ```json
 [

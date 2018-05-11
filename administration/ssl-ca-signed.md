@@ -2,111 +2,137 @@
 
 ## Overview
 
-The following instructions assume that you have obtained the following files from a certificate authority:
+The following instructions assume that you have obtained certificate files in `PEM` format from a certificate authority.
 
-* `example.crt` - SSL сertificate for the DNS name where ATSD is running
-* `example.key` - SSL сertificate key file
-* `example.ca-bundle` - Intermediate SSL сertificates
+* `atsd.company.com.crt` - SSL certificate for the DNS name
+* `atsd.company.com.ca-bundle` - Intermediate and Root CA SSL certificates
+* `atsd.company.com.key` - Private key file
 
-## Combine the Chained Certificates 
+## Combine Chained Certificates
 
-Combine the SSL сertificate for the DNS name and intermediate SSL сertificates into one file.
+Combine the SSL certificates into one file to create a full certificate chain containing both the DNS and intermediate certificates.
 
-```bash
-cat example.crt intermediate.crt [intermediate2.crt]... rootCA.crt > cert-chain.txt
+```sh
+cat atsd.company.com.crt atsd.company.com.ca-bundle > atsd.company.com.fullchain
 ```
 
-Example:
+## Install Certificates in ATSD
 
-```bash
-cat example.crt example.ca-bundle > cert-chain.txt
+The certificates can be either [uploaded](#upload-certificates-to-atsd) into ATSD or installed by [deploying](#deploy-keystore-file) a keystore file on the local file system.
+
+### Upload Certificates to ATSD
+
+If the certificate files are in `PEM` format, you can upload them to ATSD using `curl`.
+
+Alternatively, create a PKCS12 keystore as described [below](#deploy-keystore-file).
+
+Replace `{USR}` with the username, `{PWD}` with the password and `{HOST}` with the hostname or IP address of the target ATSD server in the command below.
+
+```sh
+sudo curl -k -u {USR}:{PWD} https://{HOST}:8443/admin/certificates/import/atsd \
+  -F "privkey=@atsd.company.com.key" \
+  -F "fullchain=@atsd.company.com.fullchain" \
+  -w "\n%{http_code}\n"
 ```
 
-## Create PKCS12 Keystore
+The certificates will be installed without an ATSD restart.
 
-Create a PKCS12 keystore containing the chained certificate file and the private key file.
+### Deploy Keystore File
 
-```bash
-openssl pkcs12 -export -inkey example.key -in cert-chain.txt -out example.pkcs12
+#### Create PKCS12 Keystore
+
+Log in to ATSD server shell.
+
+Create a PKCS12 keystore.
+
+```sh
+openssl pkcs12 -export -inkey atsd.company.com.key -in atsd.company.com.fullchain -out atsd.company.com.pkcs12
 ```
 
-```bash
+```sh
 Enter Export Password: NEW_PASS
 Verifying - Enter Export Password: NEW_PASS
 ```
 
-## Remove Keystore File
+#### Remove Old Keystore File
 
-Delete the current Java keystore file from the configuration directory.
+Backup the current `server.keystore` file.
 
-```bash
-rm /opt/atsd/atsd/conf/server.keystore
+```sh
+mv /opt/atsd/atsd/conf/server.keystore /opt/atsd/atsd/conf/server.keystore.backup
 ```
 
-## Create JKS Keystore	
-	
-Use the keytool to create a new JKS keystore by importing the PKCS12 keystore file.
+#### Create JKS Keystore
 
-```bash
-keytool -importkeystore -srckeystore example.pkcs12 -srcstoretype PKCS12 -alias 1 -destkeystore /opt/atsd/atsd/conf/server.keystore -destalias atsd
+Use the `keytool` command to create a new JKS keystore by importing the PKCS12 keystore file.
+
+```sh
+keytool -importkeystore -srckeystore atsd.company.com.pkcs12 -srcstoretype PKCS12 -alias 1 -destkeystore /opt/atsd/atsd/conf/server.keystore -destalias atsd
 ```
 
-```bash
+```txt
 Enter destination keystore password: NEW_PASS
 Re-enter new password: NEW_PASS
 Enter source keystore password: NEW_PASS
 ```
 
-## Update Keystore Passwords
+#### Update Keystore Passwords
 
 Open `/opt/atsd/atsd/conf/server.properties` file.
 
-```bash
+```sh
 nano /opt/atsd/atsd/conf/server.properties
 ```
 
-Specify the new password (in plain text or [obfuscated](passwords-obfuscation.md)) in `https.keyStorePassword` and `https.keyManagerPassword` settings. Leave `https.trustStorePassword` blank.
+Specify the new password (in plain or [obfuscated](passwords-obfuscation.md) text) in `https.keyStorePassword` and `https.keyManagerPassword` settings.
 
-```properties
-...
+Leave `https.trustStorePassword` blank.
+
+```elm
 https.keyStorePassword=NEW_PASS
 https.keyManagerPassword=NEW_PASS
 https.trustStorePassword=
 ```
 
-## Restart ATSD
+#### Restart ATSD
 
-```bash
+```sh
 /opt/atsd/atsd/bin/stop-atsd.sh
 /opt/atsd/atsd/bin/start-atsd.sh
 ```
 
 ## Verify Certificate
 
-Login into ATSD by entering its DNS name in the browser address bar.
+Log in to ATSD by entering its DNS name in the browser address bar and check its certificate by clicking on the SSL security icon.
 
+Check the status of the new certificate on the **Settings > Certificates** page. The record is highlighted in green if:
+
+* The certificate is trusted by the default trust manager of the Java Runtime Environment.
+* The certificate dates are valid and the expiration date is no earlier than 30 days from now.
 
 ## Troubleshooting
 
 Check the contents of the keystore.
 
-```bash
+```sh
 keytool -list -v -keystore /opt/atsd/atsd/conf/server.keystore
 ```
 
-The output should contain at least 1 entry consisting of the DNS certificate and intermediate certificates.
+The output should contain an entry for `atsd` alias, for example:
 
-```
+```txt
+Enter keystore password:
 Keystore type: JKS
 Keystore provider: SUN
 
-Your keystore contains 1 entries
+Your keystore contains 1 entry
 
 Alias name: atsd
-Creation date: Jan 18, 2017
+Creation date: Apr 18, 2018
 Entry type: PrivateKeyEntry
-Certificate chain length: 4
+Certificate chain length: 2
 Certificate[1]:
-Owner: CN=atsd.customer_domain.com, OU=PositiveSSL Wildcard, OU=Domain Control Validated
+Owner: CN=nur.axibase.com
+Issuer: CN=Let's Encrypt Authority X3, O=Let's Encrypt, C=US
 ...
 ```

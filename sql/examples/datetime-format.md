@@ -1,12 +1,12 @@
-# Datetime Format
+# Date Format
 
-A `datetime` column returns time in ISO format.
+A `datetime` column returns date and time in ISO format.
 
 ## Query
 
 ```sql
 SELECT datetime, time, value
-  FROM "mpstat.cpu_busy" 
+  FROM "mpstat.cpu_busy"
 WHERE entity = 'nurswgvml007'
   AND datetime BETWEEN '2016-04-09T14:00:00Z' AND '2016-04-09T14:05:00Z'
 ```
@@ -34,8 +34,8 @@ WHERE entity = 'nurswgvml007'
 The `date_format` function can print out the `time` column as well as any numeric column containing Epoch milliseconds, formatted with the user-defined format and time zone.
 
 ```sql
-SELECT time, 
-  date_format(time), 
+SELECT time,
+  date_format(time),
   date_format(time, 'yyyy-MM-dd''T''HH:mm:ss''Z'''),
   date_format(time, 'yyyy-MM-dd HH:mm:ss'),
   date_format(time, 'yyyy-MM-dd HH:mm:ss', 'PST'),
@@ -48,27 +48,27 @@ FROM "mpstat.cpu_busy"
 ```
 
 ```ls
-| time          | date_format(time)        | date_format(time,'yyyy-MM-dd''T''HH:mm:ss''Z''') | date_format(time,'yyyy-MM-dd HH:mm:ss') | date_format(time,'yyyy-MM-dd HH:mm:ss','PST') | date_format(time,'yyyy-MM-dd HH:mm:ss','GMT-08:00') | date_format(time,'yyyy-MM-dd HH:mm:ss ZZ','PST') | date_format(time,'yyyy-MM-dd HH:mm:ss ZZ','PST') | 
-|---------------|--------------------------|--------------------------------------------|-----------------------------------------|-----------------------------------------------|-----------------------------------------------------|--------------------------------------------------|--------------------------------------------------| 
-| 1468581897000 | 2016-07-15T11:24:57.000Z | 2016-07-15T11:24:57+0000                   | 2016-07-15 11:24:57                     | 2016-07-15 04:24:57                           | 2016-07-15 03:24:57                                 | 2016-07-15 04:24:57 -07:00                       | 2016-07-15 04:24:57 -07:00                       | 
+| time          | date_format(time)        | date_format(time,'yyyy-MM-dd''T''HH:mm:ss''Z''') | date_format(time,'yyyy-MM-dd HH:mm:ss') | date_format(time,'yyyy-MM-dd HH:mm:ss','PST') | date_format(time,'yyyy-MM-dd HH:mm:ss','GMT-08:00') | date_format(time,'yyyy-MM-dd HH:mm:ss ZZ','PST') | date_format(time,'yyyy-MM-dd HH:mm:ss ZZ','PST') |
+|---------------|--------------------------|--------------------------------------------|-----------------------------------------|-----------------------------------------------|-----------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
+| 1468581897000 | 2016-07-15T11:24:57.000Z | 2016-07-15T11:24:57+0000                   | 2016-07-15 11:24:57                     | 2016-07-15 04:24:57                           | 2016-07-15 03:24:57                                 | 2016-07-15 04:24:57 -07:00                       | 2016-07-15 04:24:57 -07:00                       |
 ```
 
 ```ls
-| format                                                         | date_format value          | 
-|----------------------------------------------------------------|----------------------------| 
-| time                                                           | 1468411675000              | 
-| date_format(time)                                              | 2016-07-13T12:07:55.000Z   | 
-| date_format(time,'yyyy-MM-dd''T''HH:mm:ss.SSS''Z'','UTC')      | 2016-07-13T12:07:55.000Z   | 
-| date_format(time,'yyyy-MM-dd HH:mm:ss')                        | 2016-07-13 12:07:55        | 
-| date_format(time,'yyyy-MM-dd HH:mm:ss','PST')                  | 2016-07-13 05:07:55        | 
-| date_format(time,'yyyy-MM-dd HH:mm:ss','GMT-08:00')            | 2016-07-13 04:07:55        | 
-| date_format(time,'yyyy-MM-dd HH:mm:ssZ','PST')                 | 2016-07-13 05:07:55-0700    | 
-| date_format(time,'yyyy-MM-dd HH:mm:ssZZ','PST')                | 2016-07-13 05:07:55-07:00   | 
+| format                                                         | date_format value          |
+|----------------------------------------------------------------|----------------------------|
+| time                                                           | 1468411675000              |
+| date_format(time)                                              | 2016-07-13T12:07:55.000Z   |
+| date_format(time,'yyyy-MM-dd''T''HH:mm:ss.SSS''Z'','UTC')      | 2016-07-13T12:07:55.000Z   |
+| date_format(time,'yyyy-MM-dd HH:mm:ss')                        | 2016-07-13 12:07:55        |
+| date_format(time,'yyyy-MM-dd HH:mm:ss','PST')                  | 2016-07-13 05:07:55        |
+| date_format(time,'yyyy-MM-dd HH:mm:ss','GMT-08:00')            | 2016-07-13 04:07:55        |
+| date_format(time,'yyyy-MM-dd HH:mm:ssZ','PST')                 | 2016-07-13 05:07:55-0700    |
+| date_format(time,'yyyy-MM-dd HH:mm:ssZZ','PST')                | 2016-07-13 05:07:55-07:00   |
 ```
 
-## `AUTO` timezone
+## `AUTO` Time Zone
 
-The `AUTO` timezone parameter applies the time zone specified for the entity and metric.
+The `AUTO` time zone parameter applies the time zone specified for the entity and metric.
 
 The entity time zone overrides the metric time zone.
 
@@ -87,22 +87,22 @@ Entities:
 ```ls
      nurswgvml006 = CDT
      nurswgvml007 = PDT
-     nurswgvml009 = UTC	 
+     nurswgvml009 = UT
      nurswgvml010 = undefined
 ```
 
 Server Time:
 
-```
+```txt
 UTC
 ```
 
 ### Query
 
-Metric and entity timezone can be included in the `SELECT` expression using `metric.timezone` and `entity.timezone` columns.
+Metric and entity time zone can be included in the `SELECT` expression using `metric.timezone` and `entity.timezone` columns.
 
 ```sql
-SELECT t1.entity, t1.value AS "busy", t2.value AS "sys", t3.value AS "usr", 
+SELECT t1.entity, t1.value AS "busy", t2.value AS "sys", t3.value AS "usr",
   t1.metric.timezone AS "busy.tz", t2.metric.timezone AS "sys.tz", t3.metric.timezone AS "usr.tz",
   t1.entity.timezone AS "entity.tz",
   t1.datetime AS "datetime"
@@ -121,14 +121,10 @@ AND t1.datetime >= '2016-10-10T10:00:00.000Z' and t1.datetime < '2016-10-10T10:0
 ### Query Results
 
 ```ls
-| t1.entity    | busy | sys | usr  | busy.tz | sys.tz | usr.tz | entity.tz | datetime                 | busy.auto_time          | sys.auto_time            | usr.auto_time                 | 
-|--------------|------|-----|------|---------|--------|--------|-----------|--------------------------|-------------------------|--------------------------|-------------------------------| 
+| t1.entity    | busy | sys | usr  | busy.tz | sys.tz | usr.tz | entity.tz | datetime                 | busy.auto_time          | sys.auto_time            | usr.auto_time                 |
+|--------------|------|-----|------|---------|--------|--------|-----------|--------------------------|-------------------------|--------------------------|-------------------------------|
 | nurswgvml006 | 32.3 | 6.4 | 24.7 | EST     | AEST   | null   | CST       | 2016-10-10T10:00:00.000Z | 2016-10-10 05:00:00 CDT | 2016-10-10 05:00:00 CDT  | 2016-10-10 05:00:00 CDT       | <- CDT
 | nurswgvml007 | 31.7 | 6.1 | 23.5 | EST     | AEST   | null   | PST       | 2016-10-10T10:00:00.000Z | 2016-10-10 03:00:00 PDT | 2016-10-10 03:00:00 PDT  | 2016-10-10 03:00:00 PDT       | <- PDT
 | nurswgvml009 | 57.0 | 3.0 | 6.0  | EST     | AEST   | null   | UTC       | 2016-10-10T10:00:00.000Z | 2016-10-10 10:00:00 UTC | 2016-10-10 10:00:00 UTC  | 2016-10-10 10:00:00 UTC       | <- UTC
-| nurswgvml010 | 21.1 | 0.9 | 20.2 | EST     | AEST   | null   | null      | 2016-10-10T10:00:00.000Z | 2016-10-10 06:00:00 EDT | 2016-10-10 21:00:00 AEDT | 2016-10-10 10:00:00 GMT+00:00 | <- nurswgvml010 time zone is undefined, hence apply metric timezone except `cpu_user` which has no t/z.
+| nurswgvml010 | 21.1 | 0.9 | 20.2 | EST     | AEST   | null   | null      | 2016-10-10T10:00:00.000Z | 2016-10-10 06:00:00 EDT | 2016-10-10 21:00:00 AEDT | 2016-10-10 10:00:00 GMT+00:00 | <- nurswgvml010 time zone is undefined, hence apply metric time zone except `cpu_user` which has no t/z.
 ```
-
-
-
-

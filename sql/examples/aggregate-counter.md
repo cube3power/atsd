@@ -8,7 +8,7 @@ The functions returns the sum of the differences between consecutive values in t
 
 ### `COUNTER` function
 
-```
+```javascript
 SUM (v(i) - v(i-1) < 0 ? v(i) : v(i) - v(i-1))
 ```
 
@@ -27,13 +27,13 @@ If the difference between two values is negative, the difference is replaced wit
 
 ### `DELTA` function
 
-```
+```javascript
 SUM (v(i) - v(i-1))
 ```
 
 If the difference between values is always non-negative, the `DELTA` aggregator will produce the same result as the `COUNTER` aggregator.
 
-View [Chartlab](https://apps.axibase.com/chartlab/2f607d1b/17/) examples illustrating the difference between the functions.
+View [ChartLab](https://apps.axibase.com/chartlab/2f607d1b/17/) examples illustrating the difference between the functions.
 
 ## Query - Detailed
 
@@ -161,11 +161,10 @@ GROUP BY period(1 day)
 | 2017-02-05T00:00:00Z | Sunday      | 694730     | 695097     | 367     | 694730       | 695097      | 367        | 3884         |
 ```
 
-
 The same query where filtering is applied to grouped rows (by period) produces daily differences since the first value used by the `DELTA` function is the last value of the previous day.
 
 ```sql
-SELECT datetime, date_format(time, 'EEEE') AS "day-of-week",  
+SELECT datetime, date_format(time, 'EEEE') AS "day-of-week",
   min(value), max(value), max(value)- min(value) AS "max-min", first(value), last(value), last(value)-first(value) AS "last-first", delta(value)
 FROM "so.tags.count"
 WHERE entity = 'stackoverflow-python'

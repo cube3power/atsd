@@ -2,27 +2,27 @@
 
 ## Description
 
-Retrieve a list property types for the entity. 
+Retrieve a list property types for the entity.
 
 ## Request
 
 ## Request
 
-| **Method** | **Path** | 
+| **Method** | **Path** |
 |:---|:---|
 | GET | `/api/v1/entities/{entity}/property-types` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| entity |string|Entity name.|
+| `entity` |string|Entity name.|
 
-### Query Parameters 
+### Query Parameters
 
 | **Parameter** | **Type** | **Description** |
 |:---|:---|:---|
-| minInsertDate | string | Include property types with last collection date at or after the specified date. <br>`minInsertDate` can be specified in ISO format or using the [calendar](../../../shared/calendar.md) keywords. |
+| `minInsertDate` | string | Include property types with last collection date at or after the specified date. <br>`minInsertDate` can be specified in ISO format or using the [calendar](../../../shared/calendar.md) keywords. |
 
 ## Response
 
@@ -32,7 +32,7 @@ An array of strings.
 
 | **Name**       | **Description** |
 |:---|:---|
-| type | Property type name |
+| `type` | Property type name |
 
 ## Example
 
@@ -41,7 +41,7 @@ An array of strings.
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/entities/nurswgvml007/property-types
+GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/property-types
 ```
 
 #### Payload
@@ -51,15 +51,16 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/entities/nurswgvml007/property-types \
+curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/property-types \
   --insecure --verbose --user {username}:{password} \
   --request GET
-  ```
+```
+
 ### Response
 
 ```json
 [
-   "configuration", 
+   "configuration",
    "system",
    "process"
 ]

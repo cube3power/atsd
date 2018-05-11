@@ -53,7 +53,7 @@ List of network commands (series, metric, property, etc.), separated by line fee
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/command
+POST https://atsd_hostname:8443/api/v1/command
 ```
 
 #### Payload
@@ -79,8 +79,8 @@ message e:server001 d:2015-03-04T12:43:20+00:00 t:subject="my subject" m:"Hello,
 
 ### curl
 
-```bash
-curl https://atsd_host:8443/api/v1/command \
+```sh
+curl https://atsd_hostname:8443/api/v1/command \
   --insecure --verbose --user collector:******** \
   --header "Content-Type: text/plain" \
   --request POST \

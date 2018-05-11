@@ -1,6 +1,5 @@
 # Uninstalling
 
-
 In order to uninstall ATSD or prepare the current installation for a
 reinstall please use the commands below.
 

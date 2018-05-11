@@ -1,35 +1,36 @@
-## Overview
+# Overview
 
 The Data API lets you insert and retrieve series, properties, messages, and alerts from the Axibase Time Series Database.
 
 ## Categories
 
 * [Series](series#data-api-series-methods)
-  - [insert](series/insert.md)
-  - [query](series/query.md)
-  - [csv insert](series/csv-insert.md)
-  - [url query](series/url-query.md)
+  * [insert](series/insert.md)
+  * [query](series/query.md)
+  * [csv insert](series/csv-insert.md)
+  * [url query](series/url-query.md)
+  * [delete](series/delete.md)
 * [Properties](properties#data-api-properties-methods)
-  - [insert](properties/insert.md)
-  - [query](properties/query.md)
-  - [url query](properties/url-query.md)
-  - [type query](properties/type-query.md)
-  - [delete](properties/delete.md)
+  * [insert](properties/insert.md)
+  * [query](properties/query.md)
+  * [url query](properties/url-query.md)
+  * [type query](properties/type-query.md)
+  * [delete](properties/delete.md)
 * [Messages](messages#data-api-messages-methods)
-  - [insert](messages/insert.md)
-  - [webhook](messages/webhook.md)
-  - [query](messages/query.md)
-  - [delete](messages/delete.md)  
-  - [statistics](messages/stats-query.md)
+  * [insert](messages/insert.md)
+  * [webhook](messages/webhook.md)
+  * [query](messages/query.md)
+  * [delete](messages/delete.md)
+  * [statistics](messages/stats-query.md)
 * [Alerts](alerts#data-api-alerts-methods)
-  - [query](alerts/query.md)
-  - [update](alerts/update.md)
-  - [delete](alerts/delete.md)
-  - [history query](alerts/history-query.md)
+  * [query](alerts/query.md)
+  * [update](alerts/update.md)
+  * [delete](alerts/delete.md)
+  * [history query](alerts/history-query.md)
 * [Extended](ext#data-api-extended-methods)
-  - [command insert](ext/command.md)
-  - [csv upload](ext/csv-upload.md)
-  - [nmon upload](ext/nmon-upload.md)
+  * [command insert](ext/command.md)
+  * [csv upload](ext/csv-upload.md)
+  * [nmon upload](ext/nmon-upload.md)
 
 ## Request Methods
 
@@ -39,7 +40,7 @@ The API uses the `POST` method to read, write, and delete data except for [serie
 
 When submitting a payload with the `POST` method in JSON format, add the header `Content-Type: application/json`.
 
-For correct Unicode handling, specify the charset `Content-Type: application/json;chartset=UTF-8`.
+For correct Unicode handling, specify the charset `Content-Type: application/json;charset=UTF-8`.
 
 ## URI Encoding
 
@@ -60,12 +61,12 @@ Status Code: 500
 
 Supported date input formats:
 
-* yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'
-* yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh:mm
+* `yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'`
+* `yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh:mm`
 
 Refer to [ISO 8601 date format examples](date-format.md).
 
-* The minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 millisecond from Epoch time.
+* The minimum time that can be stored in the database is **1970-01-01T00:00:00.000Z**, or 0 milliseconds from Epoch time.
 * The maximum date that can be stored by the database is **2106-02-07T06:59:59.999Z**, or 4294969199999 milliseconds from Epoch time.
 * The maximum date that can be specified in ISO format when querying data is **9999-12-31T23:59:59.999** UTC.
 
@@ -80,8 +81,8 @@ Refer to [ISO 8601 date format examples](date-format.md).
 ## Syntax
 
 * Entity name, metric name, property type, and key/tag names must consist of printable characters.
-* Field names are case-insensitive and are converted to lower case when stored in the database.
-* Field values are **case-sensitive** and are stored as submitted, except for entity name, metric name, and property type, which are converted to lower case.
+* Field names are case-insensitive and are converted to lowercase when stored in the database.
+* Field values are **case-sensitive** and are stored as submitted, except for entity name, metric name, and property type, which are converted to lowercase.
 * Values are stripped of starting and trailing line breaks (CR,LF symbols).
 
 ## Limits
@@ -104,7 +105,7 @@ The literal symbols `?` and `*` can be escaped with a single backslash.
 
 * `200` status code if the request is successful.
 * `401` status code in case of an unknown resource.
-* `403` status code in case of access denied error.
+* `403` status code in case of an access denied error.
 * `4xx` status code in case of other client errors.
 * `5xx` status code in case of server error.
 

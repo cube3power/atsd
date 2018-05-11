@@ -6,7 +6,7 @@ Returns 200 status code. Typically used to check connectivity, authentication, a
 
 ## Request
 
-| **Method** | **Path** | 
+| **Method** | **Path** |
 |:---|:---|---:|
 | GET | `/ping` |
 
@@ -23,13 +23,13 @@ None.
 #### URI
 
 ```elm
-GET https://atsd_host:8443/ping
+GET https://atsd_hostname:8443/ping
 ```
 
 #### Payload
 
 None.
-  
+
 ### Response
 
 None.

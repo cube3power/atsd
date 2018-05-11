@@ -7,10 +7,13 @@ Both messages will be persisted since the date is different.
 ## Request
 
 ### URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/messages/insert
+POST https://atsd_hostname:8443/api/v1/messages/insert
 ```
+
 ### Payload
+
 ```json
 [{
     "entity": "nurswgvml007",
@@ -27,8 +30,4 @@ POST https://atsd_host:8443/api/v1/messages/insert
     "source": "atsd",
     "date": "2016-06-13T09:12:00Z"
 }]
-```
-
-## Response
-```
 ```

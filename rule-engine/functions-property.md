@@ -6,12 +6,12 @@ Property functions provide a set of convenience methods to retrieve and compare 
 
 ## Reference
 
-* [property](#property)
-* [property_values](#property_values)
-* [property_compare_except](#property_compare_except)
-* [property_map](#property_map)
-* [property_maps](#property_maps)
-* [getPropertyTypes](#getpropertytypes)
+* [`property`](#property)
+* [`property_values`](#property_values)
+* [`property_compare_except`](#property_compare_except)
+* [`property_map`](#property_map)
+* [`property_maps`](#property_maps)
+* [`getPropertyTypes`](#getpropertytypes)
 
 ### `property`
 
@@ -19,7 +19,7 @@ Property functions provide a set of convenience methods to retrieve and compare 
   property([string e, ]string s[, string d]) string
 ```
 
-Returns the first value in the list of strings returned by the `property_values(string s)` function. 
+Returns the first value in the list of strings returned by the `property_values(string s)` function.
 
 By the default, the search is performed for the current entity that is initialized in the rule window. If the entity `e` is specified explicitly as the first argument, the search is performed for the specified entity instead.
 
@@ -31,7 +31,9 @@ Examples:
 
 ```javascript
   property('docker.container::image')
-  
+```
+
+```javascript
   /* Returns the most recent value if it received later than 2018-01-16T15:38:04.000Z, otherwise returns an empty string */
   property('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
 ```
@@ -56,7 +58,9 @@ Examples:
 
 ```javascript
   property_values('docker.container::image')
-  
+```
+
+```javascript
   /* Returns the second value of the list */
   property_values('docker.container::image')[1]
   property_values('docker.container::image').get(1)
@@ -73,7 +77,9 @@ Examples:
 ```javascript
   /* Returns property tag values received later than 2018-01-16T15:38:04.000Z */
   property_values('nurswgvml007', 'docker.container::image', '2018-01-16T15:38:04.000Z')
-  
+```
+
+```javascript
   /* Returns property tag values received later than 00:00:00 of the current day */
   property_values('nurswgvml007', 'docker.container::image', 'today')
 ```
@@ -82,45 +88,45 @@ Examples:
 
 * `property_compare_except([string k])`
 
-  ```javascript
+```javascript
     property_compare_except([string k]) map
-  ```
+```
 
   Compares previous and current property tags and returns a difference map containing a list of changed tag values.
 
   Sample difference map:
 
-  ```javascript
+```txt
     {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log' -> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
-  ```
+```
 
   The map includes tags that are not present in new property tags and tags that were deleted.
   If the difference map is empty, this means that no changes were identified.
   This comparison is case-insensitive.
 
-  ```java
+```java
     NOT property_compare_except (['name', '*time']).isEmpty()
-  ```
+```
 
   Returns `true` if property tags have changed except for the `name` tag and any tags that end with `time`.
 
 * `property_compare_except([string c], [string e])`
 
-  ```javascript
+```javascript
     property_compare_except([string c], [string e]) map
-  ```
+```
 
   Same as `property_compare_except(keys)` with a list `e` of previous values that are excluded from the difference map.
 
-  ```java
+```java
     NOT property_compare_except(['name', '*time'], ['*Xloggc*']).isEmpty()
-  ```
+```
 
 Returns true if property tags have changed, except for the `name` tag, any tags that end with `time`, and any previous tags with value containing `Xloggc`. The pattern `*Xloggc*` would ignore changes such as:
 
-  ``` java
+```txt
     {inputarguments_19='-Xloggc:/home/axibase/axibase-collector/logs/gc_29286.log'-> '-Xloggc:/home/axibase/axibase-collector/logs/gc_13091.log'}
-  ```
+```
 
 ### `property_map`
 
@@ -150,11 +156,15 @@ Examples:
 ```javascript
   /* Returns map with tags starting with 'cpu' in the 'configuration' type */
   property_map('configuration::cpu*')
-  
+```
+
+```javascript
   /* Returns map of the 'configuration' type for the entity 'nurswgvml007' */
   property_map('nurswgvml007','configuration::')
-  
-  /* Returns map if the most recent propery record received later than 00:00:00 of the current day, otherwise returns an empty map */
+```
+
+```javascript
+  /* Returns map if the most recent property record received later than 00:00:00 of the current day, otherwise returns an empty map */
   property_map('nurswgvml007','configuration::', 'today')
 ```
 
@@ -188,15 +198,21 @@ Examples:
 ```javascript
   /* Returns list of maps with tags starting with 'cpu' in the 'configuration' type */
   property_maps('configuration::cpu*')
-  
+```
+
+```javascript
   /* Returns value of the 'host' key for the first map in the collection */
   property_maps('configuration::cpu*')[0].get('host')
   property_maps('configuration::cpu*').get(0).get('host')
-  
+```
+
+```javascript
   /* Returns list of maps of the 'configuration' type for the entity 'nurswgvml007' */
   property_maps('nurswgvml007','configuration::')
-  
-  /* Returns list of maps of propery records received later than 00:00:00 of the previous day */
+```
+
+```javascript
+  /* Returns list of maps of property records received later than 00:00:00 of the previous day */
   property_maps('nurswgvml007','configuration::', 'yesterday')
 ```
 
@@ -217,14 +233,20 @@ Examples:
 ```javascript
   /* Returns property types for entity nurswgvml007*/
   getPropertyTypes('nurswgvml007')
-  
+```
+
+```javascript
   /* Returns the first property type for entity nurswgvml007*/
   getPropertyTypes('nurswgvml007')[0]
   getPropertyTypes('nurswgvml007').get(0)
-  
+```
+
+```javascript
   /* Returns property types received after 2018-01-23T13:30:04.000Z */
   getPropertyTypes('nurswgvml007','2018-01-23T13:30:04.000Z')
-  
+```
+
+```javascript
   /* Returns property types received after 00:00:00 of the previous day and before 00:00:00 of the current day*/
   getPropertyTypes('nurswgvml007','yesterday', 'today')
 ```

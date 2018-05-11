@@ -14,16 +14,15 @@ The following example demonstrates how query results for different users are fil
 
 | **Username** | **Member Of** | **Allow Entity Group** | Entities |
 |---|---|---|---|
-| joe.bloggs | users-all | * (all) | * (all) |
-| jane.doe | users-aws | srv-aws | nurswg* (5 entities) |
-| john.doe | users-nur | srv-nur | awsswg* (3 entities) |
+| `joe.bloggs` | `users-all` | `*` (all) | `*` (all) |
+| `jane.doe` | `users-aws` | `srv-aws` | `nurswg*` (5 entities) |
+| `john.doe` | `users-nur` | `srv-nur` | `awsswg*` (3 entities) |
 
+The `joe.bloggs` user is a member of the user group that has **'Read: All Entities'** permissions.
 
-The **'joe.bloggs'** user is a member of the user group that has **'Read: All Entities'** permissions.
+The `jane.doe` user is a member of the `users-nur` user group that is allowed to read data for `srv-nur` entity group.
 
-The **'jane.doe'** user is a member of the **'users-nur'** user group that is allowed to read data for **'srv-nur'** entity group.
-
-The **'john.doe'** user is a member of the **'users-aws'** user group that is allowed to read data for **'srv-aws'** entity group.
+The `john.doe` user is a member of the `users-aws` user group that is allowed to read data for `srv-aws` entity group.
 
 ![](images/sql-permissions.png)
 
@@ -33,17 +32,17 @@ The **'john.doe'** user is a member of the **'users-aws'** user group that is al
 
 * All users:
 
-![](images/users.png)
+![users](images/users.png)
 
-* User 'joe.bloggs':
+* User `joe.bloggs`:
 
-![](images/joe-bloggs-user.png)
+![joe-bloggs-user](images/joe-bloggs-user.png)
 
-* User 'jane.doe':
+* User `jane.doe`:
 
 ![](images/jane-doe-user.png)
 
-* User 'john.doe':
+* User `john.doe`:
 
 ![](images/john-doe-user.png)
 
@@ -51,15 +50,15 @@ The **'john.doe'** user is a member of the **'users-aws'** user group that is al
 
 ### User Groups
 
-* User Group 'users-all':
+* User Group `users-all`:
 
 ![](images/users-all.png)
 
-* User Group 'users-nur':
+* User Group `users-nur`:
 
 ![](images/users-nur.png)
 
-* User Group 'users-aws':
+* User Group `users-aws`:
 
 ![](images/users-aws.png)
 
@@ -67,11 +66,11 @@ The **'john.doe'** user is a member of the **'users-aws'** user group that is al
 
 ### Entity Groups
 
-* Entity Group 'srv-nur':
+* Entity Group `srv-nur`:
 
 ![](images/srv-nur.png)
 
-* Entity Group 'srv-aws':
+* Entity Group `srv-aws`:
 
 ![](images/srv-aws.png)
 
@@ -91,14 +90,14 @@ ORDER BY entity
 
 ### Query Results
 
-* Results for user 'joe.bloggs':
+* Results for user `joe.bloggs`:
 
 ![](images/joe-bloggs-sql.png)
 
-* Results for user 'jane.doe':
+* Results for user `jane.doe`:
 
 ![](images/jane-doe-sql.png)
 
-* Results for user 'john.doe':
+* Results for user `john.doe`:
 
 ![](images/john-doe-sql.png)

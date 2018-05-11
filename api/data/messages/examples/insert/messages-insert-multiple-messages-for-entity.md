@@ -7,10 +7,13 @@ One insert request can combine messages for different entities, types, sources, 
 ## Request
 
 ### URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/messages/insert
+POST https://atsd_hostname:8443/api/v1/messages/insert
 ```
+
 ### Payload
+
 ```json
 [{
     "entity": "nurswgvml006",
@@ -25,8 +28,4 @@ POST https://atsd_host:8443/api/v1/messages/insert
     "severity": "MAJOR",
     "source": "atsd"
 }]
-```
-
-## Response
-```
 ```

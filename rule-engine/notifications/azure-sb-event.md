@@ -1,4 +1,4 @@
-## Azure Send Event Example
+# Azure Send Event Example
 
 ## Overview
 
@@ -29,13 +29,13 @@ Enter the Azure key name into the `Key Name` field and the primary key into the 
 
 Modify the `Service Bus Namespace` by replacing the `<EVENT_HUB_NAMESPACE>` value with your namespace, for example:
 
-```
+```txt
 atsd-events
 ```
 
 Modify the `Queue/Topic` by replacing the `<EVENT_HUB>` value with your hub name, for example:
 
-```
+```txt
 alert-hub
 ```
 
@@ -83,9 +83,9 @@ Specify the message text into the `Message` parameter for all triggers.
 
 ## Test
 
-In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
+Test the integration by submitting a sample `series` command on the **Data > Data Entry** page.
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 

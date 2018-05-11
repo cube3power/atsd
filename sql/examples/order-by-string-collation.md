@@ -16,40 +16,40 @@ WHERE entity = 'e-1'
 ### Results
 
 ```ls
-| Tag Value | unicode-1 | unicode-2 | unicode-7 | 
-|-----------|-----------|-----------|-----------| 
-| null      | null      | null      | null      | 
-| .         | U+002E    | null      | null      | 
-| 01        | U+0030    | U+0031    | null      | 
-| 1         | U+0031    | null      | null      | 
-| 10        | U+0031    | U+0030    | null      | 
-| 11        | U+0031    | U+0031    | null      | 
-| 2         | U+0032    | null      | null      | 
-| 20        | U+0032    | U+0030    | null      | 
-| 3         | U+0033    | null      | null      | 
-| 30        | U+0033    | U+0030    | null      | 
-| A         | U+0041    | null      | null      | 
-| AB        | U+0041    | U+0042    | null      | 
-| B         | U+0042    | null      | null      | 
-| Resumes   | U+0052    | U+0065    | U+0073    | 
-| Résumé    | U+0052    | U+00E9    | null      | 
-| a         | U+0061    | null      | null      | 
-| a¨b       | U+0061    | U+00A8    | null      | 
-| resume    | U+0072    | U+0065    | null      | 
-| resumes   | U+0072    | U+0065    | U+0073    | 
-| résumé    | U+0072    | U+00E9    | null      | 
-| résumés   | U+0072    | U+00E9    | U+0073    | 
-| á         | U+00E1    | null      | null      | 
-| ä         | U+00E4    | null      | null      | 
-| äa        | U+00E4    | U+0061    | null      | 
-| äb        | U+00E4    | U+0062    | null      | 
-| äc        | U+00E4    | U+0063    | null      | 
-| é         | U+00E9    | null      | null      | 
-| ÿ         | U+00FF    | null      | null      | 
-| ā         | U+0101    | null      | null      | 
-| ǎ         | U+01CE    | null      | null      | 
-| α         | U+03B1    | null      | null      | 
-| а         | U+0430    | null      | null      | 
+| Tag Value | unicode-1 | unicode-2 | unicode-7 |
+|-----------|-----------|-----------|-----------|
+| null      | null      | null      | null      |
+| .         | U+002E    | null      | null      |
+| 01        | U+0030    | U+0031    | null      |
+| 1         | U+0031    | null      | null      |
+| 10        | U+0031    | U+0030    | null      |
+| 11        | U+0031    | U+0031    | null      |
+| 2         | U+0032    | null      | null      |
+| 20        | U+0032    | U+0030    | null      |
+| 3         | U+0033    | null      | null      |
+| 30        | U+0033    | U+0030    | null      |
+| A         | U+0041    | null      | null      |
+| AB        | U+0041    | U+0042    | null      |
+| B         | U+0042    | null      | null      |
+| Resumes   | U+0052    | U+0065    | U+0073    |
+| Résumé    | U+0052    | U+00E9    | null      |
+| a         | U+0061    | null      | null      |
+| a¨b       | U+0061    | U+00A8    | null      |
+| resume    | U+0072    | U+0065    | null      |
+| resumes   | U+0072    | U+0065    | U+0073    |
+| résumé    | U+0072    | U+00E9    | null      |
+| résumés   | U+0072    | U+00E9    | U+0073    |
+| á         | U+00E1    | null      | null      |
+| ä         | U+00E4    | null      | null      |
+| äa        | U+00E4    | U+0061    | null      |
+| äb        | U+00E4    | U+0062    | null      |
+| äc        | U+00E4    | U+0063    | null      |
+| é         | U+00E9    | null      | null      |
+| ÿ         | U+00FF    | null      | null      |
+| ā         | U+0101    | null      | null      |
+| ǎ         | U+01CE    | null      | null      |
+| α         | U+03B1    | null      | null      |
+| а         | U+0430    | null      | null      |
 ```
 
 ## Query - Descending Order With `LIMIT`
@@ -60,25 +60,25 @@ WHERE entity = 'e-1'
 SELECT tags.'tag-1' AS "Tag Value", tags.'tag-unicode-1' AS "unicode-1", tags.'tag-unicode-2' AS "unicode-2", tags.'tag-unicode-7' AS "unicode-7"
   FROM "m-order"
 WHERE entity = 'e-1'
-  ORDER BY tags.'tag-1' DESC 
+  ORDER BY tags.'tag-1' DESC
 LIMIT 10
 ```
 
 ### Results
 
 ```ls
-| Tag Value | unicode-1 | unicode-2 | unicode-7 | 
-|-----------|-----------|-----------|-----------| 
-| а         | U+0430    | null      | null      | 
-| α         | U+03B1    | null      | null      | 
-| ǎ         | U+01CE    | null      | null      | 
-| ā         | U+0101    | null      | null      | 
-| ÿ         | U+00FF    | null      | null      | 
-| é         | U+00E9    | null      | null      | 
-| äc        | U+00E4    | U+0063    | null      | 
-| äb        | U+00E4    | U+0062    | null      | 
-| äa        | U+00E4    | U+0061    | null      | 
-| ä         | U+00E4    | null      | null      | 
+| Tag Value | unicode-1 | unicode-2 | unicode-7 |
+|-----------|-----------|-----------|-----------|
+| а         | U+0430    | null      | null      |
+| α         | U+03B1    | null      | null      |
+| ǎ         | U+01CE    | null      | null      |
+| ā         | U+0101    | null      | null      |
+| ÿ         | U+00FF    | null      | null      |
+| é         | U+00E9    | null      | null      |
+| äc        | U+00E4    | U+0063    | null      |
+| äb        | U+00E4    | U+0062    | null      |
+| äa        | U+00E4    | U+0061    | null      |
+| ä         | U+00E4    | null      | null      |
 ```
 
 ## Data

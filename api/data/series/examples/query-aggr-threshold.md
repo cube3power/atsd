@@ -13,7 +13,7 @@ Threshold aggregation functions compute threshold violation statistics for each 
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 ### Payload
@@ -26,7 +26,7 @@ POST https://atsd_host:8443/api/v1/series/query
     "entity": "nurswgvml007",
     "metric": "cpu_busy",
     "aggregate": {"period": {"count": 5, "unit": "MINUTE"},
-				  "threshold": {"min": 0, "max": 50},
+                  "threshold": {"min": 0, "max": 50},
                   "types": ["THRESHOLD_COUNT",
                             "THRESHOLD_DURATION",
                             "THRESHOLD_PERCENT"  ]}

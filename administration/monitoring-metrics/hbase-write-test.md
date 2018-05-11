@@ -2,20 +2,18 @@
 
 The HBase Write Test can be run directly from the ATSD user interface under **Settings > Diagnostics > I/O Tests**.
 
-Direct url: `atsd_hostname:8088/admin/hbase-test`
-
 HBase Write Test allows you to:
 
--   Analyze the data being ingested, i.e. the number of unique
+* Analyze the data being ingested, i.e. the number of unique
     metric/entity/tag combinations, and run a write throughput test.
--   Launch an Auto Test to view a matrix of throughput statistics for
+* Launch an Auto Test to view a matrix of throughput statistics for
     different batch sizes and thread count combinations.
--   Apply test results to modify the default configuration parameters in
+* Apply test results to modify the default configuration parameters in
     the ATSD `server.properties` file:
 
-```properties
- series.batch.size = 1024                                                 
- series.queue.pool.size = 4                                               
+```elm
+ series.batch.size = 1024
+ series.queue.pool.size = 4
 ```
 
 Auto Test Example Results:

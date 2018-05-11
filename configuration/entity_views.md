@@ -24,7 +24,7 @@ An entity view table consists several columns: icons, links, text, series values
 
 ## Authorization
 
-The view can be accessed by users with [`read`](user-authorization.md#entity-permissions) permission for the [entity group](entity_groups.md#members) to which the view is linked.
+The view can be accessed by users with [`read`](../administration/user-authorization.md#entity-permissions) permission for the [entity group](entity_groups.md#members) to which the view is linked.
 
 ## Settings
 
@@ -68,7 +68,7 @@ Type | Column type.
 Header | Column name.
 Value | Applicable to _Entity Tag_, _Property Tag_, _Series Value_ and _Last Insert_ [column types](#column-types). Contains entity tag name, [property search expression](../rule-engine/property-search.md) or metric name respectively.
 Link | Specifies if the cell value should also be clickable as a link. See [Links](#links) options.
-Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](http://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If Link is set to 'Entity Property', the text is resolved to the property expression value.
+Link Label | Text value displayed for the link. If `icon-` is specified, the text is replaced with an [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), such as `icon-search`. If Link is set to 'Entity Property', the text is resolved to the property expression value.
 Link Template | Path to a page in the user interface with support for placeholders: `${entity}` and `${value}` (current cell value).
 Formatting | A [function](#formatting) or an expression to round numbers and convert units.
 
@@ -88,23 +88,23 @@ Last Insert | Last insert date for all or one metric collected by the entity wit
 
 #### Last Insert
 
-  * Highlight entities if last insert date for **all** metrics is before `now - 900 seconds`
+* Highlight entities if last insert date for **all** metrics is before `now - 900 seconds`
 
-  ```javascript
+```javascript
   :900
-  ```
+```
 
-  * Highlight entities if last insert date for the metric `cpu_busy` is before `now - 900 seconds`
+* Highlight entities if last insert date for the metric `cpu_busy` is before `now - 900 seconds`
 
-  ```javascript
+```javascript
   cpu_busy:900
-  ```  
+```
 
-  * Display last insert date for the metric `cpu_busy` without highlighting. Note the terminating colon after the metric name.
+* Display last insert date for the metric `cpu_busy` without highlighting. Note the terminating colon after the metric name.
 
-  ```javascript
+```javascript
   cpu_busy:
-  ```    
+```
 
 ### Links
 
@@ -122,42 +122,42 @@ The following functions are available in the 'Formatting' section:
 
 #### Text Functions
 
-* [upper](../rule-engine/functions-text.md#upper)
-* [lower](../rule-engine/functions-text.md#lower)
-* [truncate](../rule-engine/functions-text.md#truncate)
-* [coalesce](../rule-engine/functions-text.md#coalesce)
-* [keepAfter](../rule-engine/functions-text.md#keepafter)
-* [keepAfterLast](../rule-engine/functions-text.md#keepafterlast)
-* [keepBefore](../rule-engine/functions-text.md#keepbefore)
-* [keepBeforeLast](../rule-engine/functions-text.md#keepbeforelast)
-* [replace](../rule-engine/functions-text.md#replace)
-* [capFirst](../rule-engine/functions-text.md#capfirst)
-* [capitalize](../rule-engine/functions-text.md#capitalize)
-* [removeBeginning](../rule-engine/functions-text.md#removebeginning)
-* [removeEnding](../rule-engine/functions-text.md#removeending)
-* [urlencode](../rule-engine/functions-text.md#urlencode)
-* [jsonencode](../rule-engine/functions-text.md#jsonencode)
-* [htmlDecode](../rule-engine/functions-text.md#htmldecode)
-* [unquote](../rule-engine/functions-text.md#unquote)
-* [countMatches](../rule-engine/functions-text.md#countmatches)
-* [abbreviate](../rule-engine/functions-text.md#abbreviate)
-* [indexOf](../rule-engine/functions-text.md#indexof)
-* [locate](../rule-engine/functions-text.md#locate)
-* [trim](../rule-engine/functions-text.md#trim)
-* [length](../rule-engine/functions-text.md#length)
+* [`upper`](../rule-engine/functions-text.md#upper)
+* [`lower`](../rule-engine/functions-text.md#lower)
+* [`truncate`](../rule-engine/functions-text.md#truncate)
+* [`coalesce`](../rule-engine/functions-text.md#coalesce)
+* [`keepAfter`](../rule-engine/functions-text.md#keepafter)
+* [`keepAfterLast`](../rule-engine/functions-text.md#keepafterlast)
+* [`keepBefore`](../rule-engine/functions-text.md#keepbefore)
+* [`keepBeforeLast`](../rule-engine/functions-text.md#keepbeforelast)
+* [`replace`](../rule-engine/functions-text.md#replace)
+* [`capFirst`](../rule-engine/functions-text.md#capfirst)
+* [`capitalize`](../rule-engine/functions-text.md#capitalize)
+* [`removeBeginning`](../rule-engine/functions-text.md#removebeginning)
+* [`removeEnding`](../rule-engine/functions-text.md#removeending)
+* [`urlencode`](../rule-engine/functions-text.md#urlencode)
+* [`jsonencode`](../rule-engine/functions-text.md#jsonencode)
+* [`htmlDecode`](../rule-engine/functions-text.md#htmldecode)
+* [`unquote`](../rule-engine/functions-text.md#unquote)
+* [`countMatches`](../rule-engine/functions-text.md#countmatches)
+* [`abbreviate`](../rule-engine/functions-text.md#abbreviate)
+* [`indexOf`](../rule-engine/functions-text.md#indexof)
+* [`locate`](../rule-engine/functions-text.md#locate)
+* [`trim`](../rule-engine/functions-text.md#trim)
+* [`length`](../rule-engine/functions-text.md#length)
 
 #### Formatting Functions
 
-* [convert](../rule-engine/functions-format.md#convert)
-* [formatNumber](../rule-engine/functions-format.md#formatnumber)
-* [formatBytes](../rule-engine/functions-format.md#formatbytes)
-* [date_format](../rule-engine/functions-format.md#date_format)
-* [formatInterval](../rule-engine/functions-format.md#formatinterval)
-* [formatIntervalShort](../rule-engine/functions-format.md#formatintervalshort)
+* [`convert`](../rule-engine/functions-format.md#convert)
+* [`formatNumber`](../rule-engine/functions-format.md#formatnumber)
+* [`formatBytes`](../rule-engine/functions-format.md#formatbytes)
+* [`date_format`](../rule-engine/functions-format.md#date_format)
+* [`formatInterval`](../rule-engine/functions-format.md#formatinterval)
+* [`formatIntervalShort`](../rule-engine/functions-format.md#formatintervalshort)
 
 #### Time Functions
 
-* [elapsedTime](../rule-engine/functions-time.md#elapsedtime)
+* [`elapsedTime`](../rule-engine/functions-time.md#elapsedtime)
 
 ## Dynamic Filters
 
@@ -168,22 +168,22 @@ Expression | A condition that entities must satisfy when the filter is selected 
 
 Filter expression examples:
 
-```java
+```javascript
 // name column
 name like 'nur*'
 ```
 
-```java
+```javascript
 // entity tag column
 upper(tags.name) LIKE '*SVL*'
 ```
 
-```java
+```javascript
 // entity tag column
 lower(tags.app) LIKE '*hbase*'
 ```
 
-```java
+```javascript
 // property tag column
 tags['configuration::codename'] = 'Santiago'
 ```
@@ -250,14 +250,14 @@ The multi-entity portal is any portal that displays a metric for [multiple entit
 
 Examples by Column Types:
 
-  * [Entity Tag](#entity-tag-examples)
-  * [Property Tag](#property-tag-examples)
-  * [Series Value](#series-value-examples)
-  * [Name Column](#name-column-examples)
-  * [Label Column](#label-column-examples)
-  * [Portals Column](#portals-column-examples)
-  * [Properties Column](#properties-column-examples)
-  * [Last Insert](#last-insert-examples)
+* [Entity Tag](#entity-tag-examples)
+* [Property Tag](#property-tag-examples)
+* [Series Value](#series-value-examples)
+* [Name Column](#name-column-examples)
+* [Label Column](#label-column-examples)
+* [Portals Column](#portals-column-examples)
+* [Properties Column](#properties-column-examples)
+* [Last Insert](#last-insert-examples)
 
 ### Entity Tag Examples
 
@@ -271,28 +271,27 @@ The link displays the value of the entity tag of another entity, which name is s
 
 3. Specify the entity tag of related entity in the 'Link Label' setting.
 
-
-  * Configuration
+* Configuration
 
     ![](images/entity-view-column-entity-tag-related.png)
 
-  * View
+* View
 
     ![](images/entity-view-column-entity-tag-related-view.png)
 
-  * On-click Target
+* On-click Target
 
     ![](images/entity-view-column-entity-tag-related-result.png)
-    
+
 #### Customized Entity Tag
 
 Tag value can be formatted for convenient representation.
 
-  * Configuration
+* Configuration
 
     ![](images/entity_views_19.png)
 
-  * View
+* View
 
     ![](images/entity_views_20.png)
 
@@ -319,16 +318,16 @@ Text displays property tag value with a link to property type.
 * On-click Target
 
   ![](images/entity_views_15.png)
-  
+
 #### Custom Icon Link to Message Search Page with Property Tag
 
-The message search link template contains tag value.  
+The message search link template contains tag value.
 
 1. Set 'Type' setting to Property Tag.
 
 2. Specify [property search expression](../rule-engine/property-search.md) in the 'Value' setting, for example `docker.container.config::hostname`.
 
-3. Set 'Link Label' setting to [icon](http://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-search`.
+3. Set 'Link Label' setting to [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-search`.
 
 4. Specify a portal link in the 'Link Template' setting, for example `/messages?search&entity=${value}`.
 
@@ -342,7 +341,7 @@ The message search link template contains tag value.
 
 * On-click Target
 
-  ![](images/entity_views_18.png)  
+  ![](images/entity_views_18.png)
 
 ### Series Value Examples
 
@@ -356,20 +355,20 @@ The link displays the latest inserted value for the specific metric.
 
 3. Specify an expression in the 'Formatting' setting to display one digit after dot:
 
-    ```ls
+```ls
     formatNumber(value, '0.0')
-    ```
-        
-  * Configuration
-  
+```
+
+* Configuration
+
     ![](images/entity-view-column-series-chart-value-format.png)
-  
-  * View
-  
+
+* View
+
     ![](images/entity-view-column-series-chart-value-view.png)
-  
-  * On-click Target
-  
+
+* On-click Target
+
     ![](images/entity-view-column-series-chart-value-result.png)
 
 ### Name Column Examples
@@ -395,15 +394,14 @@ The displayed entity name can be modified, for example shortened, by specifying 
 * On-click Target
 
   ![](images/entity-view-column-name-format-result.png)
-  
-  
+
 #### Custom Icon Link to Specific Entity Portal
 
-Use the following configuration to specify the custom icon which opens a link to template portal assigned to the selected entity. 
+Use the following configuration to specify the custom icon which opens a link to template portal assigned to the selected entity.
 
 1. Set 'Type' setting to Name Column.
 
-2. Set 'Link Label' setting to [icon](http://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-fire`.
+2. Set 'Link Label' setting to [icon](https://getbootstrap.com/2.3.2/base-css.html#icons), for example `icon-fire`.
 
 3. Specify a portal link in the 'Link Template' setting, for example `/portal/name/collectd?entity=${entity}`.
 
@@ -418,7 +416,7 @@ Use the following configuration to specify the custom icon which opens a link to
 * On-click Target
 
   ![](images/entity_views_9.png)
-    
+
 ### Label Column Examples
 
 #### Text with Entity Label
@@ -432,7 +430,7 @@ Entity labels may be defined for entries. Otherwise, entity name will be display
 * View
 
   ![](images/entity-view-column-label-view.png)
-  
+
 #### Text Link to Entity Editor with Entity Label
 
 The link displays entity label if the label is set. Otherwise, the link displays entity name.
@@ -484,8 +482,7 @@ To display a particular portal by default, specify the portal's name in the 'Val
 * Example
 
   ![](images/entity-view-column-portals-specific-result.png)
-  
-  
+
 ### Properties Column Examples
 
 #### Icon Link to All Entity Properties
@@ -501,7 +498,6 @@ To display a particular portal by default, specify the portal's name in the 'Val
 * On-click Target
 
   ![](images/entity-view-column-prop-result.png)
-  
 
 #### Icon Link to Specific Entity Property
 
@@ -515,16 +511,15 @@ Specify the default property type in the 'Value' setting.
 
   ![](images/entity-view-column-prop-specific.png)
 
-
 * Result
 
   ![](images/entity-view-column-prop-specific-result.png)
 
   The property viewer displays the selected type on initial load:
 
-  ```elm
+```elm
   /entities/123456.../properties?type=docker.info
-  ```
+```
 
 ### Last Insert Examples
 
@@ -538,18 +533,18 @@ The text displays difference `now - lastInsertDate`. The entities are  highlight
 
 3. Specify an expression in the 'Formatting' setting to display difference `now - lastInsertDate`:
 
-    ```ls
+```ls
     formatIntervalShort(elapsedTime(value))
-    ```
-        
-  * Configuration
-  
+```
+
+* Configuration
+
     ![](images/entity_views_10.png)
-  
-  * View
-  
+
+* View
+
     ![](images/entity_views_11.png)
-  
-  * On-click Target
-  
+
+* On-click Target
+
     ![](images/entity_views_12.png)

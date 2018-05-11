@@ -2,7 +2,7 @@
 
 ## Short List
 
-The list is comprised of timezone identifiers consisting of up to 3 characters.
+The list is comprised of time zone identifiers consisting of up to 3 characters.
 
 | **Offset** | **Time Zone ID** | **Time Zone Name** |
 |:---|:---|:---|

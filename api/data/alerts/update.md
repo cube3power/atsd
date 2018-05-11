@@ -6,7 +6,7 @@ Change acknowledgement status of the specified open alerts.
 
 This method can be used to acknowledge and un-acknowledge alerts with the `"acknowledged": true|false` property in the request.
 
-If the `acknowledged` property is not specified, the alert will be un-acknowledged. 
+If the `acknowledged` property is not specified, the alert will be un-acknowledged.
 
 ## Request
 
@@ -44,7 +44,7 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/alerts/update
+POST https://atsd_hostname:8443/api/v1/alerts/update
 ```
 
 #### Payload
@@ -59,7 +59,7 @@ POST https://atsd_host:8443/api/v1/alerts/update
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/alerts/update \
+curl https://atsd_hostname:8443/api/v1/alerts/update \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \
@@ -67,4 +67,5 @@ curl https://atsd_host:8443/api/v1/alerts/update \
 ```
 
 ## Additional Examples
+
 * [Multiple Id Update](examples/update/alerts-update-multiple-id.md)

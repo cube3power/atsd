@@ -1,8 +1,8 @@
 # Weather CSV Example
 
-#### Original CSV File:
+## Original CSV File
 
-```
+```txt
 "Station Name","HALIFAX INTL A"
 "Province","NOVA SCOTIA"
 "Latitude","44.88"
@@ -11,7 +11,7 @@
 "Climate Identifier","8202251"
 "WMO Identifier","71395"
 "TC Identifier","YHZ"
- 
+
 "Legend"
 "A","Accumulated"
 "C","Precipitation occurred, amount uncertain"
@@ -27,7 +27,7 @@
 "^","The value displayed is based on incomplete data"
 "†","Data for this day has undergone only preliminary quality checking"
 "‡","Partner data that is not subject to review by the National Climate Archives"
- 
+
 "Date/Time","Year","Month","Day","Data Quality","Max Temp (°C)","Max Temp Flag","Min Temp (°C)","Min Temp Flag","Mean Temp (°C)","Mean Temp Flag","Heat Deg Days (°C)","Heat Deg Days Flag","Cool Deg Days (°C)","Cool Deg Days Flag","Total Rain (mm)","Total Rain Flag","Total Snow (cm)","Total Snow Flag","Total Precip (mm)","Total Precip Flag","Snow on Grnd (cm)","Snow on Grnd Flag","Dir of Max Gust (10s deg)","Dir of Max Gust Flag","Spd of Max Gust (km/h)","Spd of Max Gust Flag"
 "2015-01-01","2015","01","01","‡","-2.2","","-14.9","","-8.6","","26.6","","0.0","","0.0","","1.6","","1.6","","0","","","M","<31",""
 "2015-01-02","2015","01","02","‡","1.3","","-10.2","","-4.5","","22.5","","0.0","","0.0","","0.4","","0.4","","1","","","M","70",""
@@ -62,21 +62,21 @@
 "2015-01-31","2015","01","31","‡","0.9","","-5.6","","-2.4","","20.4","","0.0","","","M","","M","","M","4","","","M","<31",""
 ```
 
-#### Parser Configuration Screenshot:
+## Parser Configuration Screenshot
 
 ![](resources/csv_halifax_config.png)
 
-#### Parser Configuration Description:
+## Parser Configuration Description
 
-| Field | Setting | Reason | 
-| --- | --- | --- | 
-|  Enabled  |  Set to true  |  Enable parsing of CSV files using this.<br>Also allows use of this parser configuration in Axibase Collector.  | 
-|  Name  |  Unique name – Halifax Weather.  |  Unique name to distinguish this parser from others.<br>Useful when working with Axibase Collector, as parser configurations are referred to by their unique name.  | 
-|  Put Type  |  Metric  |  The CSV file in question contains time series (metrics) weather data.  | 
-|  Delimiter  |  Comma  |  A comma is used to separate columns.  | 
-|  Default Entity  |  Unique entity name – Halifax  |  All data will be written to this unique entity, making it easy to distinguish from others.  | 
-|  Metric Prefix  |  Unique entity prefix- halifax  |  Prefix added at the start of metric name, used to distinguish between metrics with similar or identical names.  | 
-|  Timestamp Columns  |  Date  |  The `Date` column contains the timestamp.  | 
-|  Timestamp Pattern  |  `yyyy-MM-dd`  |  Timestamp Pattern must correspond to the original timestamp in the CSV file: `2015-01-01`.  | 
-|  Filter  |  `timestamp > 0`  |  Only import data that has a timestamp greater than 0 in epoch milliseconds.<br>Timestamps earlier than `1970-01-01T00:00:00Z` will not be imported.  | 
-|  Ignored Columns  |  `Year`<br>`Month`<br>`Day`<br>`Data Quality`<br>`Max Temp Flag`<br>`Min Temp Flag`<br>`Mean Temp Flag`<br>`Heat Deg Days Flag`<br>`Cool Deg Days Flag`<br>`Total Rain Flag`<br>`Total Snow Flag`<br>`Total Precip Flag`<br>`Snow on Grnd Flag`<br>`Dir of Max Gust (10s deg)`<br>`Dir of Max Gust Flag`<br>`Spd of Max Gust (kmh)`<br>`Spd of Max Gust Flag`  |  Columns that will not be imported.<br>Year, Month, Day are irrelevant because Date column is imported as the timestamp.<br>Other listed columns do not contain valuable data or often contain empty values, so its best to discard them.  | 
+| Field | Setting | Reason |
+| --- | --- | --- |
+|  Enabled  |  Set to true  |  Enable parsing of CSV files using this.<br>Also allows use of this parser configuration in Axibase Collector.  |
+|  Name  |  Unique name – Halifax Weather.  |  Unique name to distinguish this parser from others.<br>Useful when working with Axibase Collector, as parser configurations are referred to by their unique name.  |
+|  Put Type  |  Metric  |  The CSV file in question contains time series (metrics) weather data.  |
+|  Delimiter  |  Comma  |  A comma is used to separate columns.  |
+|  Default Entity  |  Unique entity name – Halifax  |  All data will be written to this unique entity, making it easy to distinguish from others.  |
+|  Metric Prefix  |  Unique entity prefix- halifax  |  Prefix added at the start of metric name, used to distinguish between metrics with similar or identical names.  |
+|  Timestamp Columns  |  Date  |  The `Date` column contains the timestamp.  |
+|  Timestamp Pattern  |  `yyyy-MM-dd`  |  Timestamp Pattern must correspond to the original timestamp in the CSV file: `2015-01-01`.  |
+|  Filter  |  `timestamp > 0`  |  Only import data that has a timestamp greater than 0 in epoch milliseconds.<br>Timestamps earlier than `1970-01-01T00:00:00Z` will not be imported.  |
+|  Ignored Columns  |  `Year`<br>`Month`<br>`Day`<br>`Data Quality`<br>`Max Temp Flag`<br>`Min Temp Flag`<br>`Mean Temp Flag`<br>`Heat Deg Days Flag`<br>`Cool Deg Days Flag`<br>`Total Rain Flag`<br>`Total Snow Flag`<br>`Total Precip Flag`<br>`Snow on Grnd Flag`<br>`Dir of Max Gust (10s deg)`<br>`Dir of Max Gust Flag`<br>`Spd of Max Gust (kmh)`<br>`Spd of Max Gust Flag`  |  Columns that will not be imported.<br>Year, Month, Day are irrelevant because Date column is imported as the timestamp.<br>Other listed columns do not contain valuable data or often contain empty values, so its best to discard them.  |

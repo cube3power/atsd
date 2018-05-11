@@ -23,23 +23,23 @@ metric m:{metric} b:{enabled} p:{data-type} l:{label} d:{description} i:{interpo
 
 | **Field** | **Type** | **Description** |
 |:---|:---|:---|
-| m         | string           | **[Required]** Metric name. |
-| b         | boolean          | Enabled status. If the metric is disabled, new data received for this metric is discarded. |
-| l         | string           | Label. |
-| d         | string           | Description. |
-| p         | string           | Data type: short, integer, long, float, double, decimal. Default: float. |
-| i         | string           | Interpolation mode: linear, previous. |
-| u         | string           | Units. |
-| f         | string           | Filter expression. |
-| z         | string           | Time Zone ID, for example `America/New_York` or `EST`.<br>Refer to [Time Zone](../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The timezone is applied by date-formatting functions to return local time in a metric-specific timezone.<br>To reset the time zone to the default value, specify it as a double-quoted empty string `z:""`.|
-| v         | boolean          | Versioning enabled/disabled. |
-| a         | string           | Invalid action. |
-| tp        | string           | Time precision.  |
-| pe        | boolean          | Persistent. |
-| rd        | number           | Retention Interval Days. |
-| min       | number           | Minimum value. |
-| max       | number           | Maximum value. |
-| t         | string           | [Multiple] Metric tag name and value.  |
+| `m`         | string           | **[Required]** Metric name. |
+| `b`         | boolean          | Enabled status. If the metric is disabled, new data received for this metric is discarded. |
+| `l`         | string           | Label. |
+| `d`         | string           | Description. |
+| `p`         | string           | Data type: short, integer, long, float, double, decimal. Default: float. |
+| `i`         | string           | Interpolation mode: linear, previous. |
+| `u`         | string           | Units. |
+| `f`         | string           | Filter expression. |
+| `z`         | string           | Time Zone ID, for example `America/New_York` or `EST`.<br>Refer to [Time Zone](../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The time zone is applied by date-formatting functions to return local time in a metric-specific time zone.<br>To reset the time zone to the default value, specify it as a double-quoted empty string `z:""`.|
+| `v`         | boolean          | Versioning enabled/disabled. |
+| `a`         | string           | Invalid action. |
+| `tp`        | string           | Time precision.  |
+| `pe`        | boolean          | Persistent. |
+| `rd`        | number           | Retention Interval Days. |
+| `min`       | number           | Minimum value. |
+| `max`       | number           | Maximum value. |
+| `t`         | string           | [Multiple] Metric tag name and value.  |
 
 Refer to [Metric API](../meta/metric/list.md#fields) for field descriptions.
 
@@ -47,7 +47,7 @@ Refer to [Metric API](../meta/metric/list.md#fields) for field descriptions.
 
 Rules inherited from [Base ABNF](base-abnf.md).
 
-```properties
+```elm
 command = "metric" MSP metric [MSP enabled] [MSP label] [MSP units] [MSP description] [MSP data-type] [MSP interpolate] [MSP filter] [MSP timezone] [MSP versioning] [MSP invalidAction] [MSP timePrecision] [MSP persistent] [MSP retentionIntervalDays] [MSP minValue] [MSP maxValue] *(MSP tag)
 metric = "m:" NAME
 enabled = "b:" BOOLEAN

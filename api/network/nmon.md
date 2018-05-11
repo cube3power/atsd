@@ -29,7 +29,7 @@ The `f` nmon file name is used to re-read the file header from its copy on the s
 
 Rules inherited from [Base ABNF](base-abnf.md).
 
-```properties
+```elm
   ; parser, entity, and filename are required
 command = "nmon" MSP parser MSP entity MSP filename [MSP timezone] [MSP timeout]
 entity = "e:" entity-name

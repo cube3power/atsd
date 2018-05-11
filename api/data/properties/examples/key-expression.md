@@ -1,13 +1,17 @@
 # Key/Tag Expression
 
-Key/tag expression: Filter out all disks except those starting with `sd*`. Disks dm1, dm2 are excluded
+Key/tag expression: Filter out all disks except those starting with `sd*`. Disks `dm1`, `dm2` are excluded.
 
 ## Request
+
 ### URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/properties/query
+POST https://atsd_hostname:8443/api/v1/properties/query
 ```
+
 ### Payload
+
 ```json
 [
     {

@@ -12,8 +12,8 @@ For testing systems, set swap to 100% of the physical memory.
 
 Check available memory:
 
-```bash
-$ free
+```sh
+free
 ```
 
 ```ls
@@ -36,29 +36,29 @@ sudo dd if=/dev/zero of=/swapfile bs=1024 count=1024000
 Configure the swap file.
 
 ```sh
-sudo chmod 0600 /swapfile                                                
+sudo chmod 0600 /swapfile
 ```
 
 ```sh
-sudo mkswap /swapfile                             
+sudo mkswap /swapfile
 ```
 
 Enable swap.
 
 ```sh
-sudo swapon /swapfile                              
+sudo swapon /swapfile
 ```
 
 Enable swap on boot.
 
 ```sh
-sudo echo "/swapfile swap swap defaults 0 0" >> /etc/fstab              
+sudo echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
 ```
 
 Verify that the swap is enabled.
 
-```bash
-$ free                                                                     
+```sh
+free
 ```
 
 The output should contain a row with Swap total not equal to zero.
@@ -67,5 +67,5 @@ The output should contain a row with Swap total not equal to zero.
              total       used       free     shared    buffers     cached
 Mem:       7697000    6104904    1592096         32      86628    3062424
 -/+ buffers/cache:    2955852    4741148
-Swap:      1023996          0    1023996                          
+Swap:      1023996          0    1023996
 ```

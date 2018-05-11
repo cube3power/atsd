@@ -7,24 +7,24 @@ and copying them to the target machine with similar characteristics for offline 
 
 ## Supported Versions
 
-- SUSE Linux Enterprise Server 12.x
+* SUSE Linux Enterprise Server 12.x
 
 ## Requirements
 
-- Minimum RAM: 2 GB
-- See [Requirements](../administration/requirements.md) for additional information.
+* Minimum RAM: 2 GB
+* See [Requirements](../administration/requirements.md) for additional information.
 
 ## Check Dependencies
 
 Check that required dependencies are present on the target machine
 
-```bash
+```sh
 sudo zypper search -i java-1_8_0-openjdk-devel which net-tools iproute2
 ```
 
 Verify that all of these dependencies were found
 
-```text
+```txt
 S  | Name                     | Summary                                                     | Type
 ---+--------------------------+-------------------------------------------------------------+--------
 i+ | iproute2                 | Linux network configuration utilities                       | package

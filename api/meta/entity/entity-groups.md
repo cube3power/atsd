@@ -6,15 +6,15 @@ Retrieve a list of entity groups to which the specified entity belongs.
 
 ## Request
 
-| **Method** | **Path** | 
+| **Method** | **Path** |
 |:---|:---|
 | GET | `/api/v1/entities/{entity}/groups` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| entity |string|Entity name.|
+| `entity` |string|Entity name.|
 
 ## Response
 
@@ -24,8 +24,8 @@ An array of objects containing the following fields describing an entity group.
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| name | string| Entity group name. |
-| tags | object | Entity group tags. |
+| `name` | string| Entity group name. |
+| `tags` | object | Entity group tags. |
 
 ## Example
 
@@ -34,7 +34,7 @@ An array of objects containing the following fields describing an entity group.
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/entities/nurswgvml007/groups
+GET https://atsd_hostname:8443/api/v1/entities/nurswgvml007/groups
 ```
 
 #### Payload
@@ -44,7 +44,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/entities/nurswgvml007/groups \
+curl https://atsd_hostname:8443/api/v1/entities/nurswgvml007/groups \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```
@@ -99,6 +99,3 @@ curl https://atsd_host:8443/api/v1/entities/nurswgvml007/groups \
 ```
 
 ## Additional examples
-
-
-

@@ -1,5 +1,4 @@
-Weekly Change Log: December 11, 2017 - December 17, 2017
-==================================================
+# Weekly Change Log: December 11, 2017 - December 17, 2017
 
 ## ATSD
 
@@ -8,7 +7,7 @@ Weekly Change Log: December 11, 2017 - December 17, 2017
 | 4809 | admin | Bug | Enforce `UTF-8` file encoding in ATSD start scripts. |
 | [4808](#issue-4808) | rule engine | Feature | Implement [`value('metricName')`](../../rule-engine/functions-value.md) function to access other metrics in the same `series` command by name. |
 | 4798 | rule engine | Feature | Web notifications: add support for [proxy and reverse-proxy](../../rule-engine/web-notifications.md#network-settings) network connections to external cloud services. |
-| [4796](#issue-4796) | rule engine | Feature | Portal: add `freemarker` functions to check user role and group membership. |
+| [4796](#issue-4796) | rule engine | Feature | Portal: add Freemarker functions to check user role and group membership. |
 | [4795](#issue-4795) | rule engine | Feature | Implement [`BETWEEN AND`](../../rule-engine/condition.md#text-operators) clause. |
 | [4794](#issue-4794) | rule engine | Feature | Implement [`random selector`](../../rule-engine/functions.md#random--distribution-functions) functions. |
 | [4793](#issue-4793) | rule engine | Feature | Implement statistical functions [with interval/count](../../rule-engine/functions.md#interval-selection): `avg('1 minute')`, `max(10)`. |

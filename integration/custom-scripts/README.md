@@ -2,31 +2,31 @@
 
 Custom Scripts can be used to write data into the ATSD.
 
-This page contains the installation guide for a custom Axibase Collector Script.
+This page contains the installation guide for custom Axibase Collector scripts.
 
-[Download the Collector Script.](http://axibase.com/ftp/lz/atsd_collectors.tar.gz)
+Download the Collector Scripts using a link provided by Axibase support.
 
-#### Prerequisites
+## Prerequisites
 
-##### 'nc' network utility
+### `nc` network utility
 
 Important: only the BSD version is supported. The GNU version is not supported by collector scripts.
 
-Check if 'nc' is installed:
+Check if `nc` is installed:
 
 ```sh
 nc
 ```
 
-The nc (BSD) output will be as follows:
+The `nc` (BSD) output will be as follows:
 
-```sh
+```txt
 usage: nc [-46DdhklnrStUuvzC] [-i interval] [-p source_port]
 [-s source_ip_address] [-T ToS] [-w timeout] [-X proxy_version]
 [-x proxy_address[:port]] [hostname] [port[s]]
 ```
 
-If nc (BSD) is not available, install the appropriate package using software repositories.
+If `nc` (BSD) is not installed, install the appropriate package using software repositories.
 
 Ubuntu:
 
@@ -40,9 +40,9 @@ RedHat Enterprise Linux (RHEL):
 yum install nc
 ```
 
-##### 'sysstat' utility
+### `sysstat` utility
 
-mpstat and iostat are included in the 'sysstat' package. If this package is not installed in your system by default, install it.
+`mpstat` and `iostat` are included in the `sysstat` package. If this package is not installed in your system by default, install it.
 
 Ubuntu:
 
@@ -56,31 +56,34 @@ RHEL:
 sudo yum install sysstat
 ```
 
-#### Installation
+## Installation
 
-Download the [atsd_collectors.tar.gz](http://axibase.com/ftp/lz/atsd_collectors.tar.gz) archive with collector scripts to the target machine
+Download the Collector Scripts using a link provided by Axibase support to the target machine
 
-##### Unpack the archive:
+### Unpack the archive
 
 ```sh
 tar xzf atsd_collectors.tar.gz
 ```
 
-##### Check that scripts have an executable flag:
+### Check that scripts have an executable flag
 
 ```sh
 cd collectors
+```
+
+```sh
 chmod a+x *
 ```
 
-##### Set ATSD server options:
+#### Set ATSD server options
 
 Edit the script `immortal_nc.sh`. Set the following parameters:
 
 `HOSTNAME` – ATSD server ip or hostname.
 `PORT` – ATSD telnet port.
 
-#### Usage
+## Usage
 
 Run the collectors by executing the script `start-all-collectors.sh`:
 
@@ -92,7 +95,7 @@ Make sure that there is no output as it may indicate missing dependencies or con
 
 After starting the collectors, verify in the ATSD web interface that metrics are coming from the target host.
 
-> https://atsd_host:8443/entities/hostname/metrics
+> `https://atsd_hostname:8443/entities/hostname/metrics`
 
 Each collector script collects metrics with the appropriate prefix.
 

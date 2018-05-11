@@ -32,13 +32,13 @@ Rows can be inserted, removed, and copied by right-clicking on the row index col
 
 The filter matches the window if it satisfies **all** filter columns including:
 
-- Entity group column
-- Entity column
-- Tag columns (optional)
+* Entity group column
+* Entity column
+* Tag columns (optional)
 
 ![](images/override-rule-filter.png)
 
-> In the example above, the rule matches entities with a name beginning with 'nurswg' that are members of the 'disk_prod' group and applies only to windows with  tag 'file_system' equal '/tmp'.
+> In the example above, the rule matches entities with a name beginning with `nurswg` that are members of the 'disk_prod' group and applies only to windows with  tag `file_system` equal `/tmp`.
 
 The tag columns are present when the rule is grouped by tags on the 'Overview' tab.
 
@@ -53,10 +53,10 @@ The entity and the tag columns support `*` as the wildcard character.
 | Entity Group | Entity | Tag1 | Description |
 |---|---|---|---|
 | | `*` | | The rule will match **all** windows.|
-| prod | `*` | | The rule will match entities that are members of the 'prod' entity group.|
-| prod | `nur*`| | The rule will match entities with name starting with 'nur' and which are members of the 'prod' entity group.|
-|  | `*` | abc | The rule will match windows with 'Tag1' equal 'abc'.|
-| prod | `*` | `*cde*` | The rule will match windows for members of the 'prod' entity group **and** with 'Tag1' containing 'cde'.|
+| `prod` | `*` | | The rule will match entities that are members of the `prod` entity group.|
+| `prod` | `nur*`| | The rule will match entities with name starting with `nur` and which are members of the `prod` entity group.|
+|  | `*` | abc | The rule will match windows with `Tag1` equal `abc`.|
+| `prod` | `*` | `*cde*` | The rule will match windows for members of the `prod` entity group **and** with `Tag1` containing `cde`.|
 
 ### Thresholds
 
@@ -85,10 +85,9 @@ If both `ERROR` and `WARNING` conditions are `true`, the `ERROR` level takes pre
 
 ![https://apps.axibase.com/chartlab/32fcae1a](images/severity-over.png)
 
-If no override rule matches the window and the alert is then triggered by the default condtion, it is assigned the severity specified on the 'Logging' tab.
+If no override rule matches the window and the alert is then triggered by the default condition, it is assigned the severity specified on the 'Logging' tab.
 
 ![](images/logging-severity.png)
-
 
 ## Override Example
 
@@ -104,19 +103,18 @@ Override Table
 
 ![](images/override-example.png)
 
-Rule Processing
+Rule Processing:
 
 * Rules are processed from top to bottom. There are 4 rules in the table.
-* Row 1: Since the value cannot be greater than **100%**, this rule effectively disables alerts for 'tmp' file systems.
-* Row 2. This rule will raise `ERROR` alert if disk usage exceeds **50%** for entity 'nurswgvml010'.
-* Row 3. This rule will raise `ERROR` alert if disk usage on `/` mount point exceeds **90%** for entity 'nurswgvml007'. Note that once a rule is matched, the default condition is not evaluated for this window, and therefore an alert will not be raised for `/` on 'nurswgvml007' with disk usage of **85%**.
+* Row 1: Since the value cannot be greater than **100%**, this rule effectively disables alerts for `tmp` file systems.
+* Row 2. This rule will raise `ERROR` alert if disk usage exceeds **50%** for entity `nurswgvml010`.
+* Row 3. This rule will raise `ERROR` alert if disk usage on `/` mount point exceeds **90%** for entity `nurswgvml007`. Note that once a rule is matched, the default condition is not evaluated for this window, and therefore an alert will not be raised for `/` on `nurswgvml007` with disk usage of **85%**.
 * Row 4. Raise `ERROR` alert if disk usage exceeds **60%** for any entity in the 'disk_prod' group. Otherwise, raise `WARNING` alert, if disk usage is greater than **30%** for the same entities.
 * If not rule was matched, evaluate the default condition.
 
 ## Multiple Override Tables
 
 Multiple override tables can be created to trigger different email or web notifications.
-
 
 ## Notifications
 

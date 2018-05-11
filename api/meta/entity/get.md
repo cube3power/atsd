@@ -1,12 +1,12 @@
 # Entity: Get
 
-## Description 
+## Description
 
 Retrieve information about the specified entity including its tags.
 
 ## Request
 
-| **Method** | **Path** | 
+| **Method** | **Path** |
 |:---|:---|
 | GET | `/api/v1/entities/{entity}` |
 
@@ -14,7 +14,7 @@ Retrieve information about the specified entity including its tags.
 
 | **Name** | **Description** |
 |:---|:---|
-| entity | **[Required]** Entity name. |
+| `entity` | **[Required]** Entity name. |
 
 ## Response
 
@@ -29,16 +29,17 @@ Refer to Response Fields in [Entities: List](list.md#fields)
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/entities/nurswgvml006
+GET https://atsd_hostname:8443/api/v1/entities/nurswgvml006
 ```
+
 #### Payload
 
 None.
 
-#### curl 
+#### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/entities/nurswgvml006 \
+curl https://atsd_hostname:8443/api/v1/entities/nurswgvml006 \
  --insecure --verbose --user {username}:{password} \
  --request GET
 ```

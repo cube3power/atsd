@@ -13,7 +13,7 @@
 
 ## Database Schema
 
-The Widget configuration syntax provides a way to load and display data for time series stored in a database. Series values 
+The Widget configuration syntax provides a way to load and display data for time series stored in a database. Series values
 change over time and their history is visualized with different types of graphs.
 
 ```ls
@@ -24,10 +24,9 @@ change over time and their history is visualized with different types of graphs.
 # Series 1 settings
   [series]
 # Series 2 settings
-  ```
-  
-Each series is identified by a composite key which consists of an **metric**, **entity**, and optional key-value pairs 
-called **series tags**, or simply **tags**. 
+```
+
+Each series is identified by a composite key which consists of a **metric**, **entity**, and optional name/value pairs called **series tags**, or simply **tags**.
 
 ```ls
   [series]
@@ -45,14 +44,13 @@ called **series tags**, or simply **tags**.
 
 * A **metric** represents the name of a measurable numeric attribute such as `cpu_busy` or `temperature`.
 
-* **Series Tags** are optional. They provide additional level of detail for measurements, for example the disk’s mount point 
-for the `df.bytes.percentused` metric.
+* **Series Tags** are optional. They provide additional level of detail for measurements, for example the disk’s mount point for the `df.bytes.percentused` metric.
 
 An entity may be measured with a variety of metrics, just as the same metric could be collected for multiple entities.
 
 ## Exploring Series
 
-Available series can be searched on the **Series** tab in the main menu.  
+Available series can be searched on the **Series** tab in the main menu.
 
 Alternatively, if the entity is already known, the metrics and series can be explored via a portal containing drop-down selectors.
 
@@ -85,8 +83,7 @@ To display values for a specific series, the `[series]` section should specify t
 
 ## Selecting Multiple Series with Tags
 
-By default, the database will return all series matching the request, including series with extra tags not enumerated in 
-the request.
+By default, the database will return all series matching the request, including series with extra tags not enumerated in the request.
 
 This enables loading series using only a subset of tags that are still sufficient to uniquely identify the series:
 
@@ -111,10 +108,10 @@ To disable partial tag match, use the `'exact-match = true | false'` setting:
     mount = /
 ```
 
-When partial match is disabled, the database will return series with exactly the same combination of tags as specified in 
+When partial match is disabled, the database will return series with exactly the same combination of tags as specified in
 the request.
 
-The partial match, while making the configuration compact, can produce undetermined results if the partial key matches multiple 
+The partial match, while making the configuration compact, can produce undetermined results if the partial key matches multiple
 series where only one series is expected:
 
 ```ls
@@ -125,7 +122,7 @@ series where only one series is expected:
     fstype = ext4
 ```
 
-In the above example, the response will contain 3 different series with the same file system type ext4 but with different 
+In the above example, the response will contain 3 different series with the same file system type ext4 but with different
 mount points: `/`, `/boot/`, `/media/datadrive`.
 
 The resulting series is merged from 3 underlying different series and provides a meaningless result in this case.
@@ -144,7 +141,7 @@ To control how multiple matched series are processed, use the `'multiple-series 
 
 The `multiple-series` setting can be used to display all series without specifying any tags in widget configuration at all:
 
-```  
+```ls
    # Display all series without merging
      multiple-series = true
      [series]
@@ -167,26 +164,26 @@ The default value of the `multiple-series` setting is `true` in the following ca
 ```ls
 # Select series using tag value wildcards. multiple-series is TRUE
   [tags]
-    fstype = ext4  
+    fstype = ext4
     mount = *media*
- 
+
 # Select series with any value for the specified tag. multiple-series is TRUE
   [tags]
-    fstype = ext4  
+    fstype = ext4
     mount = *
- 
+
 # Select series with any value for the specified tag. multiple-series is FALSE
   [tags]
-    fstype = ext4  
- 
+    fstype = ext4
+
 # Select series with tag values from the specified list. multiple-series is TRUE
   [tags]
     fstype = cifs, autofs
- 
+
 # Select series with tag values matching specified wildcard patterns: multiple-series is TRUE
   [tags]
     fstype = cifs, auto*
- 
+
 # Select series with tags matching an expression: multiple-series is TRUE
   tag-expression = tags.mount NOT LIKE '/m*'
 ```
@@ -195,12 +192,12 @@ The default value of the `multiple-series` setting is `true` in the following ca
 
 ## Merging Series
 
-Merging multiple series into one series could be a useful feature in situations where the underlying series describe the 
+Merging multiple series into one series could be a useful feature in situations where the underlying series describe the
 same object despite having different keys. Often, such series are recorded sequentially and therefore do not overlap.
 
 **Examples**:
 
-* /media/datadrive file system re-mounted on a larger disk and the mount point remains the same.
+* `/media/datadrive` file system re-mounted on a larger disk and the mount point remains the same.
 
 * Containers with different identifiers launched on schedule to perform a daily task.
 
@@ -217,22 +214,22 @@ The `[widget]` syntax provides a number of options to select series for multiple
 ```ls
   # Select specific entity by name
   entity = nurswgvml006
- 
+
   # Select multiple entities by name using ? and * wildcards
   entity = nurswgvml*
- 
+
   # Select all entities
   entity = *
- 
+
   # Select an array of entities by name
   entities = nurswgvml006, nurswgvml007
- 
+
   # Select an array of entities by name or pattern
   entities = nurswgvml111, nurswgvml00*
- 
+
   # Select entities matching an expression referencing name, label, entity tags, properties
   entity-expression = tags.app = 'ATSD'
- 
+
   # Select entities belonging to the specified entity group
   entity-group = nur-collectors
 ```
@@ -254,14 +251,13 @@ Refer to the [Data API](../api/data/filter-entity.md#entity-filter-fields) for a
 
 ## Retrieving Series from the Database
 
-As an alternative to specifying the `[series]` settings manually and using wildcards, the widget syntax provides the `getSeries()` and 
-`getTags()` methods to retrieve the list of existing series from the database.
+As an alternative to specifying the `[series]` settings manually and using wildcards, the widget syntax provides the `getSeries()` and `getTags()` methods to retrieve the list of existing series from the database.
 
 `getTags()`:
 
 ```ls
   var tags = getTags('df.bytes.percentused', 'mount', 'nurswgvml006')
- 
+
   for tagValue in tags
     [series]
       [tags]
@@ -273,7 +269,7 @@ As an alternative to specifying the `[series]` settings manually and using wildc
 
 ```ls
   var seriesList = getSeries('df.bytes.percentused', 'nurswgvml006')
- 
+
   for sobj in seriesList
     [series]
       [tags]
@@ -287,14 +283,14 @@ As an alternative to specifying the `[series]` settings manually and using wildc
 
 ## Controlling Displayed Series
 
-The `series-limit = int` setting enables limiting the number of possible series returned by the database for wildcard queries. 
-Since the limit is applied to an unsorted list of matched series, the results may vary between requests, which makes the setting 
+The `series-limit = int` setting enables limiting the number of possible series returned by the database for wildcard queries.
+Since the limit is applied to matched series before sorting, the results may vary between requests, which makes the setting
 useful when exploring the dataset to prevent the widgets from loading too many series into browser memory.
 
 ```ls
   entity = *
   series-limit = 10
-  [series]    
+  [series]
     [tags]
       fstype = ext4
 ```
@@ -304,14 +300,14 @@ For a more flexible visibility control on the client, use the display and enable
 ```ls
   entity = *
   display = value == top(1) || value == bottom(1)
-  [series]    
+  [series]
     [tags]
       fstype = ext4
 ```
 
 ![](resources/series-display-1.png)
 
-In addition, the `limit = int` setting can reduce the number of samples displayed for each series. It makes queries 
+In addition, the `limit = int` setting can reduce the number of samples displayed for each series. It makes queries
 execute faster when loading data for high-frequency series from the server, in particular during design and validation stages.
 
 [![](resources/button.png)](https://apps.axibase.com/chartlab/cdfb34c5/13/)

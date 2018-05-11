@@ -32,101 +32,102 @@ Variables **cannot** be included in a [filter](filters.md) expression because fi
 
 ### double
 
-  ```javascript
+```javascript
   pival = 3.14
-  ```
+```
 
 ### integer
 
-  ```javascript
+```javascript
   kb = 1024
-  ```  
+```
 
 ### long
 
-  ```javascript
+```javascript
   curtime = 1515758392702
-  ```  
+```
+
 > Classify large integers as Long (64-bit integer) or floating numbers to avoid 32-bit integer overflow. The range of values that a regular 32-bit integer can hold is [-2147483647, 2147483648].
 
 ![](images/variables-large-integers.png)
 
 ### string
 
-Use single or double **quotes** when declaring a string variable. 
+Use single or double **quotes** when declaring a string variable.
 
-  ```javascript
+```javascript
   state = 'CA'
-  ```
+```
 
 Inner quotes can be escaped with backslash.
 
-  ```javascript
+```javascript
   sqlQuery = 'SELECT value AS used_mb FROM "fs.rw" WHERE entity = \'' + entity + '\''
-  ```
+```
 
-  ```javascript
+```javascript
   sqlQuery = "SELECT value AS used_mb FROM \"fs.rw\" WHERE entity = '" + entity + "'"
-  ```
+```
 
 ### collection
 
-  ```javascript
+```javascript
   errorCodes = [401, 403, 404]
-  ```  
-  
+```
+
 A collection can include elements of different types.
 
-Both single and double quotes can be used to specify elements of string type.   
+Both single and double quotes can be used to specify elements of string type.
 
-  ```javascript
+```javascript
   stateList = ['CA', 'WA']
-  ```
+```
 
-  ```javascript
+```javascript
   stateList = ["CA", "WA"]
-  ```  
-  
+```
+
 To check the size of the collection, use the `.size()` method.
 
 To access the n-th element in the collection, use square brackets `[index]` or the `get(index)` method (starting with 0 for the first element).
 
-  ```javascript
+```javascript
   authors = split(tags.authors, ',')
   authors.size() == 0 ? 'n/a' : authors[0]
-  ```  
+```
 
 ### map
 
-  ```javascript
+```javascript
   stateMap = ['CA': 0.8, 'WA': 0.2]
-  ```
+```
 
-  ```javascript
+```javascript
   stateMap = ["CA": 0.8, "WA": 0.2]
-  ```
+```
 
   > Both single and double quotes can be used to specify map keys and values.
 
 ### function
 
-  ```javascript
+```javascript
   last_msg = db_message_last('1 week', 'alert', 'rule-engine')
-  ```
+```
 
-  ```javascript
+```javascript
   since_start = formatIntervalShort(elapsedTime(property('dkr.state::started')))
-  ```  
+```
 
-  ```javascript
+```javascript
   server = upper(keepBefore(entity, ':'))
-  ```  
+```
 
 ### expression
 
-  ```javascript
+```javascript
   annotation = tags.note == null ? 'N/A' : tags.note
-  ```
+```
 
 ## Cross-Reference
 

@@ -1,7 +1,6 @@
-Weekly Change Log: January 16 - January 22, 2017
-================================================
+# Weekly Change Log: January 16 - January 22, 2017
 
-### ATSD
+## ATSD
 
 | Issue| Category        | Type    | Subject                                                                             |
 |------|-----------------|---------|-------------------------------------------------------------------------------------|
@@ -11,28 +10,25 @@ Weekly Change Log: January 16 - January 22, 2017
 | 3786 | statistics      | Bug     | Added the [`LIMIT 100`](../../sql#limiting) clause for pre-defined SQL query on the [series statistics](#issue-3680) page. |
 | 3783 | sql             | Bug     | Removed extra comma if all columns contain `null` (empty string). |
 | 3781 | jdbc            | Bug     | Fixed empty row issue for the JDBC Driver. |
-| 3753 | jdbc            | Bug     | Corrected error in handling metadata when creating a ResultSet. |  
+| 3753 | jdbc            | Bug     | Corrected error in handling metadata when creating a ResultSet. |
 | [3691](#issue-3691) | rule engine     | Feature | Added functions to convert string date to a date object or to epoch time. |
 | [3680](#issue-3680) | statistics      | Feature | Created a page to show series characteristics, such as value and interval statistics and histograms. |
 
-### Collector
+## Collector
 
 | Issue| Category        | Type    | Subject                                                                             |
 |------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [3784](#issue-3784)| jdbc            | Feature | Added the [`${SPLIT_CONDITION}`](https://github.com/axibase/axibase-collector/blob/master/jobs/jdbc.md#job-configuration) placeholder support in the JDBC job to allow fetching large result sets in multiple iterations. |
 | 3656 | socrata         | Bug     | Refactored the Socrata job so that a dataset with more than 100,000 rows or more than 100Mb can be processed without an OutOfMemory error. |
 
-### Charts
+## Charts
 
 | Issue| Category        | Type    | Subject                                                                             |
 |------|-----------------|---------|-------------------------------------------------------------------------------------|
 | [2528](#issue-2528) | property        | Feature | Implemented support for the `column-label-format` setting to transform column headers. |
 | [1926](#issue-1926) | box             | Feature | Added mouse-over tooltips for box charts. |
 
-## ATSD
-
 ### Issue 3797
---------------
 
 Support was added to the [`ROW_NUMBER`](../../sql/examples/partition-row-number.md#partition---row-number) function after the [`GROUP BY`](../../sql#grouping) clause for [`SELECT`](../../sql#syntax) statements.
 
@@ -87,7 +83,6 @@ ORDER BY Diff DESC
 ```
 
 ### Issue 3796
---------------
 
 The [`append`](../../api/network/series.md#text-append) flag applies to text values specified with the `x:` field.
 
@@ -108,7 +103,6 @@ Restart
 ```
 
 ### Issue 3795
---------------
 
 Previously, entity tags were not supported in the `GROUP BY` clause. Now it's possible to group rows by entity tag, for example `GROUP BY entity.tags.{tag-name}`.
 
@@ -129,9 +123,8 @@ GROUP BY entity.tags.app
 ```
 
 ### Issue 3691
---------------
 
-Implemented useful [date functions](../../rule-engine/expression.md#time-functions) in the rule engine to convert an ISO8601 date string into a numeric epoch time or into a [Joda-time](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) date object. These functions can be used in rule expressions.
+Implemented [date functions](../../rule-engine/functions-time.md) in the rule engine to convert an ISO8601 date string into a numeric epoch time or into a [`DateTime`](http://joda-time.sourceforge.net/apidocs/org/joda/time/DateTime.html) date object. These functions can be used in rule expressions.
 
 ```javascript
 /**
@@ -149,23 +142,16 @@ property('config::deleted')).dayOfWeek().get() < 6
 ```
 
 ### Issue 3680
---------------
 
-The series list now inludes a 'Statistics' link to characterize the selected series.
+The series list now includes a 'Statistics' link to characterize the selected series.
 
 The following characteristics are available.
 
-* Value Statistics: provides summary statistics for values of the time series for the specified time interval. There are three tables included within this tab: **Timespan**, **Value Statistics**, and **Value
-  Percentiles**. **Timespan** provides the dates for the the first and last value of the time series and their respective values. **Value Statistics** provides the Count (total number of samples), NaN count (number of Not-a-Number samples), as well as the Average, Standard Deviation, and Sum of all values. **Value Percentiles** provides a list of the maximum and minimum values of the
-  series, with the corresponding percentages of observations which fall beneath the specific listed value (ie 75% of all values in this series fall below 7.1).
+* Value Statistics: provides summary statistics for values of the time series for the specified time interval. There are three tables included within this tab: **Timespan**, **Value Statistics**, and **Value Percentiles**. **Timespan** provides the dates for the first and last value of the time series and their respective values. **Value Statistics** provides the Count (total number of samples), NaN count (number of Not-a-Number samples), as well as the Average, Standard Deviation, and Sum of all values. **Value Percentiles** provides a list of the maximum and minimum values of the series, with the corresponding percentages of observations which fall beneath the specific listed value (ie 75% of all values in this series fall below 7.1).
 
   ![Figure 1](Images/Figure1.png)
 
-* Interval Statistics: provides time duration statistics for values included in the specific time interval. All values are presented in two forms: as milliseconds and in a human readable
-  format (ie, 1d 2h 3m 4s). Two tables are included in under this tab: **Interval Statistics, ms** and **Interval Percentiles, ms**. The **Interval Statistics** table provides a concise
-  summary of the time characteristics of the series, including the Count (number of intervals between the samples), the average interval time, the total time range for the series (difference betweeb last and first value), among
-  several other points. The **Interval Percentiles, ms** table provides a list of the maximum and minimum time intervals of the series, with the corresponding percentages of
-  observations which fall beneath the specific listed value (ie 99.9% of all time intervals in this series fall under 18 seconds).
+* Interval Statistics: provides time duration statistics for values included in the specific time interval. All values are presented in two forms: as milliseconds and in a human readable format (ie, 1d 2h 3m 4s). Two tables are included in under this tab: **Interval Statistics, ms** and **Interval Percentiles, ms**. The **Interval Statistics** table provides a concise summary of the time characteristics of the series, including the Count (number of intervals between the samples), the average interval time, the total time range for the series (difference between last and first value), among several other points. The **Interval Percentiles, ms** table provides a list of the maximum and minimum time intervals of the series, with the corresponding percentages of observations which fall beneath the specific listed value (ie 99.9% of all time intervals in this series fall under 18 seconds).
 
   ![Figure 2](Images/Figure2.png)
 
@@ -192,10 +178,7 @@ The following characteristics are available.
 
   ![Figure 7](Images/Figure7.png)
 
-## Collector
-
 ### Issue 3784
---------------
 
 If a SQL query returns millions of rows, it may be useful to split it into multiple queries. This can be accomplished by including `${SPLIT_CONDITION}` in the query text and specifying multiple split conditions, one per line.
 
@@ -232,31 +215,27 @@ FROM pipoint..pipoint2
 WHERE tag LIKE 'AB%'
 ```
 
-The last condition is typically constructred to select all remaining rows other than those fetched with previous conditions.
+The last condition is typically included to select all remaining rows other than those fetched with previous conditions.
 
 ![Figure 8](Images/Figure8.png)
 
-## Charts
-
 ### Issue 2528
---------------
 
 In order to reduce rename/transform multiple similar column headers with one setting, support was added to the `column-label-format` setting for property and table widgets. For example, in
-order to remove a common prefix from a column label, add the following code snippet to your configuration:  
+order to remove a common prefix from a column label, add the following code snippet to your configuration:
 
 ```javascript
 column-label-format = value.replace(/^systemproperties./, "")
 ```
 
-https://apps.axibase.com/chartlab/1ee27e2e/4/
+[ChartLab](https://apps.axibase.com/chartlab/1ee27e2e/4/)
 
 ![Figure 10](Images/Figure10.png)
 
 ### Issue 1926
---------------
 
 Now upon a mouse over for box charts, metric names are displayed at the top of the box and the distribution of the series (minimum, maximum, count, and value percentiles) is displayed next to its respective series.
 
-https://apps.axibase.com/chartlab/46e8b4ec
+[ChartLab](https://apps.axibase.com/chartlab/46e8b4ec)
 
 ![Figure 9](Images/Figure9.png)

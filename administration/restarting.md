@@ -36,7 +36,7 @@ Examples
 
 ## Processes
 
-Switch to the `axibase` user. 
+Switch to the `axibase` user.
 
 Run the `jps` utility to display Java processes running under the current user.
 
@@ -63,28 +63,27 @@ Run the `jps` utility to display Java processes running under the current user.
 | HBase | HMaster |
 | ATSD | Server |
 
-> HBase installed in the ATSD Docker container is configured to run in non-distributed mode without `RegionServer` and `HQuorumPeer` processes.
+> HBase installed in the ATSD Docker container is configured to run in non-distributed mode without `HRegionServer` and `HQuorumPeer` processes.
 
 ## Restarting All Services
 
 The script will stop ATSD, HBase, and HDFS.
 
-```
+```sh
 /opt/atsd/bin/atsd-all.sh stop
 ```
 
 The script will start HDFS, HBase, and ATSD.
 
-```
+```sh
 /opt/atsd/bin/atsd-all.sh start
 ```
-
 
 ### Docker Container
 
 To restart and update an ATSD instance running in a Docker container, open a `bash` session.
 
-```sh
+```elm
 docker exec -it atsd bash
 ```
 
@@ -100,7 +99,7 @@ Execute scripts as usual.
 
 Stop ATSD.
 
-```
+```sh
 /opt/atsd/bin/atsd-tsd.sh stop
 ```
 
@@ -114,7 +113,7 @@ If the `Server` process is still running, kill it forcefully with `kill -9 {Serv
 
 ### Stop HBase
 
-Stop HBase.
+Stop HBase processes.
 
 ```sh
 /opt/atsd/bin/atsd-hbase.sh stop
@@ -128,14 +127,14 @@ jps
 
 The `jps` output should display only HDFS processes at this time.
 
-```
+```txt
 27392 Jps
 25961 SecondaryNameNode
 25790 DataNode
 25587 NameNode
 ```
 
-If any HBase processes are still running, execute the following commands.
+Stop remaining HBase processes if any of the them are still running.
 
 ```sh
 /opt/atsd/hbase/bin/hbase-daemon.sh stop regionserver
@@ -143,12 +142,10 @@ If any HBase processes are still running, execute the following commands.
 /opt/atsd/hbase/bin/hbase-daemon.sh stop zookeeper
 ```
 
-If HBase processes are still running, kill HBase processes by PID (no flags).
-
-> Make sure you kill only HBase processes `HMaster`, `HRegionServer`, `HQuorumPeer` in this step.
+If the HBase processes fail to stop after executing the above commands, kill HBase processes `HMaster`, `HRegionServer`, and `HQuorumPeer` by PID (no flags).
 
 ```sh
-kill 18494
+kill 11345
 ```
 
 ### Stop HDFS
@@ -195,7 +192,7 @@ Caused by:
   org.apache.hadoop.hbase.TableExistsException: atsd_message
 ```
 
-Execute the command to remove the ephemeral `/hbase` directory from Zookeeper cache.
+Remove the ephemeral `/hbase` directory from the Zookeeper cache.
 
 ```sh
 echo "rmr /hbase" | /opt/atsd/hbase/bin/hbase zkcli
@@ -212,15 +209,15 @@ cat /opt/atsd/hbase/logs/hbase-*-master-*.log | grep -C 5 "Master not active"
 ```ls
 2017-09-15 05:24:43,982 ERROR master.HMasterCommandLine - Master exiting
 java.lang.RuntimeException: Master not active after 30 seconds
-	at org.apache.hadoop.hbase.util.JVMClusterUtil.startup(JVMClusterUtil.java:194)
-	at org.apache.hadoop.hbase.LocalHBaseCluster.startup(LocalHBaseCluster.java:449)
+    at org.apache.hadoop.hbase.util.JVMClusterUtil.startup(JVMClusterUtil.java:194)
+    at org.apache.hadoop.hbase.LocalHBaseCluster.startup(LocalHBaseCluster.java:449)
 ```
 
-Verify that no HBase processes are running with `jps`. 
+Verify that no HBase processes are running with `jps`.
 
-Remove the Zookeper data directory.
+Remove the Zookeeper data directory.
 
-```
+```sh
 rm -rf /opt/atsd/hbase/zookeeper
 ```
 
@@ -230,13 +227,13 @@ Start HBase.
 
 #### JPS
 
-The `/opt/atsd/bin/atsd-all.sh` script relies on the **[jps](http://docs.oracle.com/javase/7/docs/technotes/tools/share/jps.html)** utility to determine that Java processes are started in the correct order.
+The `/opt/atsd/bin/atsd-all.sh` script relies on the **[jps](https://docs.oracle.com/javase/7/docs/technotes/tools/share/jps.html)** utility to determine that Java processes are started in the correct order.
 
 The `jps` utility requires write permissions to the `/tmp/hsperfdata_axibase` directory in order to store temporary files. If permissions to this directory are missing when it is owned by root, `jps` returns an incomplete process list, even if processes are running and can be listed with `ps aux | grep java`.
 
 If `jps` output is incomplete, the `atsd-all.sh` script aborts the startup procedure with the following message:
 
-```
+```txt
 nurswgvml007 atsdService: * [ATSD] DataNode is not running.
 ```
 

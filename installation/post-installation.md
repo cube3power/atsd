@@ -6,12 +6,11 @@
 
 ## Setup Email Client
 
-* See [note](../administration/setting-up-email-client.md).
+* See [note](../administration/mail-client.md).
 
 ## Verify System Time
 
-* Open the **Settings > System Information** tab in the ATSD web interface and verify the
-time and timezone information.
+* Open the **Settings > System Information** tab in the ATSD web interface and verify the time and  time zone information.
 * [Synchronize](../administration/timezone.md#changing-the-time-zone) system time or setup NTP in order to keep the server time accurate.
 
 ![Server\_time](images/server_time.png)

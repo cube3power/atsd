@@ -42,7 +42,7 @@ By default, the ATSD server listens for incoming commands on the following ports
 
 ## Encryption
 
-To encrypt TCP traffic, setup an [SSH tunnel](http://axibase.com/products/axibase-time-series-database/writing-data/nmon/ssh-tunneling/) or create a VPN connection.
+To encrypt TCP traffic, setup an [SSH tunnel](https://axibase.com/products/axibase-time-series-database/writing-data/nmon/ssh-tunneling/) or create a VPN connection.
 
 ## Authentication
 
@@ -56,13 +56,13 @@ Utilize the [HTTP command](../../api/data/ext/command.md) to send plain-text com
 
 To send a single command, connect to an ATSD server, send the command in plain text, and terminate the connection.
 
-* netcat: echo
+* netcat: `echo`
 
 ```ls
 echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z" | nc atsd_host 8081
 ```
 
-* netcat: printf
+* netcat: `printf`
 
 ```ls
 printf 'series e:station_2 m:temperature=32.2 m:humidity=81.4 s:1463271035' | nc atsd_host 8081
@@ -164,7 +164,7 @@ If the connection is terminated due to client error, all valid commands sent pri
 
 Due to the fact that closing the channel due to client error may take some time, the database may also store a few valid commands received after the discarded command.
 
-```
+```txt
 valid command   - stored
 ...             - stored
 valid command   - stored
@@ -240,8 +240,7 @@ Field value:
 * If the field value contains a double-quote (") or equal (=) sign or a non-printable character, it must be enclosed in double quotes. For example: `v:os="Ubuntu 14.04"` or `v:os="Ubuntu=""14"""`
 * Any double quote character in the value must be escaped with another double quote.
 
-Use CSV escaping methods in core libraries where available, for example [StringEscapeUtils.escapeCsv](https://commons.apache.org/proper/commons-lang/javadocs/api-2.6/org/apache/commons/lang/StringEscapeUtils.html#escapeCsv%28java.io.Writer,%20java.lang.String%29) in Java.
-
+Use CSV escaping methods in core libraries where available, for example [`StringEscapeUtils.escapeCsv`](https://commons.apache.org/proper/commons-lang/javadocs/api-2.6/org/apache/commons/lang/StringEscapeUtils.html#escapeCsv%28java.io.Writer,%20java.lang.String%29) in Java.
 
 ### Case Sensitivity
 
@@ -259,7 +258,7 @@ series e:nurswg m:temperature=38.5 t:degrees=Celsius
 
 #### Length Limit
 
-The command length cannot exceed **128 Kb** (1024 * 128 bytes).
+The command length cannot exceed **128 kilobytes**.
 
 The client must split a command that is too long into multiple commands.
 
@@ -280,12 +279,12 @@ The number of tags included in the command cannot exceed the following limit:
 
 |**Type**| **Maximum Identifier**|
 |:---|:---|
-|metric| 16777215 |
-|entity| 16777215 |
-|tag_key| 65535|
-|tag_value| 16777215 |
-|message_type| 65535 |
-|message_source| 65535 |
+|`metric`| 16777215 |
+|`entity`| 16777215 |
+|`tag_key`| 65535|
+|`tag_value`| 16777215 |
+|`message_type`| 65535 |
+|`message_source`| 65535 |
 
 ### Time Field
 
@@ -294,8 +293,8 @@ The timestamp field records the time of an observation or an event as determined
 |**Field**|**Type**|**Description**|
 |:---|:---|:---|
 |ms|long|UNIX milliseconds since 1970-01-01T00:00:00Z |
-|s|int|UNIX seconds since 1970-01-01T00:00:00Z|
-|d|string|[ISO 8601 date format](../../api/data/date-format.md). Supported formats:<br>UTC timezone (Z) = yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z', for example 2016-06-09T16:15:04.005Z<br>Timezone offset = yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh:mm, for example 2016-06-09T12:15:04.005-04:00<br>Time zone +hh:mm is ahead of UTC and timezone -hh:mm is behind UTC.|
+|s|integer|UNIX seconds since 1970-01-01T00:00:00Z|
+|d|string|[ISO 8601 date format](../../api/data/date-format.md). Supported formats:<br>UTC time zone (Z) = `yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'`, for example 2016-06-09T16:15:04.005Z<br>Time zone offset = `yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh:mm`, for example 2016-06-09T12:15:04.005-04:00<br>Time zone `+hh:mm` is ahead of UTC and time zone `-hh:mm` is behind UTC.|
 
 Date limits:
 

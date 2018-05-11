@@ -38,13 +38,13 @@ If the field is not specified, the search is performed for all fields.
 
 | **Field** | **Description** | **Example** |
 |---|---|---|
-| entity | Entity name. | `entity:nurswgvml007` |
-| entity.label | Entity label. | `entity.label:nur*007` |
-| metric | Metric name. | `metric:mpstat.cpu_busy` |
-| metric.label | Metric label. | `metric.label:"cpu busy"` |
-| date | Last insert date `yyyy-MM-dd`. | `date:2017-06-25` |
-| {tag.name} | Series/metric/entity tag name. | `location:nur` |
-| contents | All fields. | `nurswgvml007` or `contents:nurswgvml007` |
+| `entity` | Entity name. | `entity:nurswgvml007` |
+| `entity.label` | Entity label. | `entity.label:nur*007` |
+| `metric` | Metric name. | `metric:mpstat.cpu_busy` |
+| `metric.label` | Metric label. | `metric.label:"cpu busy"` |
+| `date` | Last insert date `yyyy-MM-dd`. | `date:2017-06-25` |
+| `{tag.name}` | Series/metric/entity tag name. | `location:nur` |
+| `contents` | All fields. | `nurswgvml007` or `contents:nurswgvml007` |
 
 ### Operators
 
@@ -79,7 +79,7 @@ Keywords support both single and multiple character wildcards.
 he*
 ```
 
- * "?" symbol matches one character.
+* "?" symbol matches one character.
 
 ```ls
 h?llo
@@ -113,37 +113,37 @@ Search is case-insensitive.
 
 ```ls
 /* Search for 'nurswgvml007' entity */
-entity:nurswgvml007     
+entity:nurswgvml007
 
 /* Search for entities starting with 'nurswgvml' */
-entity:nurswgvml*     
+entity:nurswgvml*
 
 /* Search for entities starting with 'nur' and ending with '007' */
-entity:nur*007     
+entity:nur*007
 
 /* Search for 'mpstat.cpu_busy' metric */
-metric:mpstat.cpu_busy     
+metric:mpstat.cpu_busy
 
 /* Search for metrics starting with 'mpstat.cpu' */
-metric:mpstat.cpu*     
+metric:mpstat.cpu*
 
 /* Search for metrics starting with 'mpstat.' and containing 'cpu' */
-metric:mpstat.*cpu*     
+metric:mpstat.*cpu*
 
 /* Search for any field name or value containing the keyword 'location' */
-location     
+location
 
 /* Search for any field name or value starting with 'location' */
-location*     
+location*
 
 /* Search for any field name or value containing keywords 'location' or 'Baltimore' */
-location baltimore     
+location baltimore
 
 /* Search for any field name or value containing both keywords 'location' and 'baltimore' */
-location AND baltimore     
+location AND baltimore
 
 /* Search for series with series tag, metric tag or entity tag named 'location' containing the keyword 'baltimore' */
-location:baltimore     
+location:baltimore
 
 /* Search for series with series tag, metric tag or entity tag named 'location' starting with 'balt' */
 location:balt*
@@ -157,7 +157,7 @@ date:2017-06-*
 
 ### Scheduling
 
-The search index is continuosly refreshed on schedule and as such it may not reflect the latest changes such as a new series or modifications to an existing series that have occurred since the most recent refresh.
+The search index is continuously refreshed on schedule and as such it may not reflect the latest changes such as a new series or modifications to an existing series that have occurred since the most recent refresh.
 
 The frequency of incremental refreshes can be controlled with the `search.indexing.incremental.schedule` setting. Each refresh operation takes up to 10 seconds.
 

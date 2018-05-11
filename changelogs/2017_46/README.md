@@ -1,15 +1,14 @@
-Weekly Change Log: November 13, 2017 - November 19, 2017
-==================================================
+# Weekly Change Log: November 13, 2017 - November 19, 2017
 
 ## ATSD
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| [4718](#issue-4718) | data-api | Feature | Add support for additional [percentile functions](../api/data/aggregation.md) in the [series query](../api/data/series/query.md) method:<br>PERCENTILE_25 = 25% percentile<br>PERCENTILE_10 = 10% percentile<br>PERCENTILE_5 =  5% percentile<br>PERCENTILE_1 = 1% percentile<br>PERCENTILE_05 = 0.5% percentile<br>PERCENTILE_01 = 0.1% percentile |
-| [4714](#issue-4714) | data-api | Bug | Fix error when the [series query](../api/data/series/query.md) request includes two queries with aggregations using different periods. |
-| 4709 | portal | Support | Upgrade the built-in portals to the latest syntax by removing freemarker functions where possible. |
+| [4718](#issue-4718) | data-api | Feature | Add support for additional [percentile functions](../../api/data/aggregation.md) in the [series query](../../api/data/series/query.md) method:<br>PERCENTILE_25 = 25% percentile<br>PERCENTILE_10 = 10% percentile<br>PERCENTILE_5 =  5% percentile<br>PERCENTILE_1 = 1% percentile<br>PERCENTILE_05 = 0.5% percentile<br>PERCENTILE_01 = 0.1% percentile |
+| [4714](#issue-4714) | data-api | Bug | Fix error when the [series query](../../api/data/series/query.md) request includes two queries with aggregations using different periods. |
+| 4709 | portal | Support | Upgrade the built-in portals to the latest syntax by removing Freemarker functions where possible. |
 | [4708](#issue-4708) | sql | Bug | `LIMIT` clause not applied correctly with `ORDER BY datetime DESC`. |
-| [4707](#issue-4707) | ui | Feature | Multiple user interface enhancements. |
+| [4707](#issue-4707) |UI| Feature | Multiple user interface enhancements. |
 | [4706](#issue-4706) | install | Feature | Add support for JVM environment variables in the ATSD [Docker image](https://github.com/axibase/dockers#environment-variables). |
 | [4588](#issue-4588) | sql | Feature | Allow referencing the entity column in the `atsd_series` metric filter. |
 
@@ -70,7 +69,7 @@ Weekly Change Log: November 13, 2017 - November 19, 2017
       "period": { "count": 1, "unit": "MINUTE"},
       "type": "MAX"
     }
-  }  
+  }
 ]
 ```
 
@@ -118,7 +117,6 @@ GROUP BY metric, entity, tags
   HAVING MAX(time) < NOW - 24 * HOUR -- condition to exclude series that have recent data
 ```
 
-
 ---
 
 ### Issue 4611
@@ -161,5 +159,5 @@ This applies to derived series which will be placed into the same column along w
 
 Examples:
 
-* https://apps.axibase.com/chartlab/6e37edc8/2/
-* https://apps.axibase.com/chartlab/1b8d6e3f/1/
+* [ChartLab](https://apps.axibase.com/chartlab/6e37edc8/2/)
+* [ChartLab](https://apps.axibase.com/chartlab/1b8d6e3f/1/)

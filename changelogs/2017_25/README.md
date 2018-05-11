@@ -1,7 +1,6 @@
-Weekly Change Log: June 19, 2017 - June 25, 2017
-==================================================
+# Weekly Change Log: June 19, 2017 - June 25, 2017
 
-### ATSD 
+## ATSD
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
@@ -10,4 +9,4 @@ Weekly Change Log: June 19, 2017 - June 25, 2017
 | 4284 | core | Feature | Collect aggregate data table size metrics. |
 | 4259 | sql | Bug | Return a meaningful error if the `WHERE` clause doesn't select metrics as expected from the reserved `atsd_series` table. |
 | 4139 | installation | Feature | Add yum installer flag (--prefix) to override the default installation directory |
-| 4035 | sql | Bug | Fix `NULL` value returned in metric.lastInsertTime field for newly inserted metrics. |
+| 4035 | sql | Bug | Fix `NULL` value returned in `metric.lastInsertTime` field for newly inserted metrics. |

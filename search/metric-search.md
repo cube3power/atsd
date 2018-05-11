@@ -16,11 +16,10 @@ The `*` wildcard is automatically appended to the `name-filter`, thereby includi
 
 If the search expression contains a tag name, such tags are displayed in the results table.
 
-
 ## Wildcards
 
 * `*` matches any number of characters.
-* `?` matches any one characher.
+* `?` matches any one character.
 
 ## Match
 
@@ -48,13 +47,11 @@ cpu*
 
 * Find metrics with tag `frequency` set to `Daily`
 
-
 ```ls
 frequency:Daily
 ```
 
 * Find metrics with any value for tag `frequency` (display `frequency` column)
-
 
 ```ls
 frequency:*
@@ -62,13 +59,11 @@ frequency:*
 
 * Find metrics with non-empty value for tag `frequency`
 
-
 ```ls
 frequency:
 ```
 
 * Find metrics starting with `cpu` **and** tag `frequency` set to `Daily`
-
 
 ```ls
 cpu frequency:Daily

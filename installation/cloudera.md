@@ -4,7 +4,7 @@
 
 Create an `axibase` user on the server where ATSD will be running.
 
-```
+```sh
 sudo adduser axibase
 ```
 
@@ -14,9 +14,15 @@ sudo adduser axibase
 
 Add the `JAVA_HOME` path to the `axibase` user environment in `.bashrc`.
 
-```
+```sh
 sudo su axibase
+```
+
+```sh
 jp=`dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"`; sed -i "s,^export JAVA_HOME=.*,export JAVA_HOME=$jp,g" ~/.bashrc ; echo $jp
+```
+
+```sh
 exit
 ```
 
@@ -24,8 +30,11 @@ exit
 
 Check connection from the ATSD server to the Zookeeper service.
 
-```
+```sh
 telnet zookeeper-host 2181
+```
+
+```txt
 Trying 10.102.0.6...
 Connected to zookeeper-host.
 Escape character is '^]'.
@@ -40,13 +49,13 @@ The Zookeeper client port is specified in:
 
 ### CDH (Cloudera Distribution Hadoop) 5.5.x
 
-```
+```sh
 curl -O https://www.axibase.com/public/atsd_ee_hbase_1.0.3.tar.gz
 ```
 
 ## Extract Files
 
-```
+```sh
 sudo tar -xzvf atsd_ee_hbase_1.0.3.tar.gz -C /opt
 sudo chown -R axibase:axibase /opt/atsd
 ```
@@ -57,8 +66,11 @@ To obtain a license key, contact Axibase support with the following information 
 
 * Output of the `ip addr` command.
 
+```sh
+ip addr
 ```
-[axibase@NURSWGVML007 ~]$ ip addr
+
+```txt
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436 qdisc noqueue state UNKNOWN
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
@@ -75,19 +87,21 @@ To obtain a license key, contact Axibase support with the following information 
 
 * Output of the `hostname -f` command.
 
+```sh
+hostname -f
 ```
-[axibase@NURSWGVML007 ~]$ hostname -f
+
+```txt
 NURSWGVML007
 ```
 
 Email output of the above commands to Axibase support and copy the provided key to `/opt/atsd/atsd/conf/license/key.properties`.
 
-
 ## Configure HBase Connection
 
 Open the `hadoop.properties` file.
 
-```
+```sh
 nano /opt/atsd/atsd/conf/hadoop.properties
 ```
 
@@ -97,7 +111,7 @@ If Zookeeper client port is different from 2181, set `hbase.zookeeper.property.c
 
 If Zookeeper Znode parent is not `/hbase`, set `zookeeper.znode.parent` to the actual value.
 
-```ls
+```elm
 hbase.zookeeper.quorum = zookeeper-host
 hbase.zookeeper.property.clientPort = 2181
 zookeeper.znode.parent = /hbase
@@ -134,37 +148,37 @@ If the HBase Secure Authorization is disabled you can access HBase as is. Procee
 
 Otherwise, you need to allow the newly created `axibase` principal to access HBase using one of the following options:
 
-1. Add the `axibase` principal to the HBase superusers via HBase Configuration. 
+#### Option 1. Add the `axibase` principal to the HBase super users via HBase Configuration
 
 > Don't forget to deploy updated configuration and restart HBase.
 
- ![](images/cloudera-manager-superuser.png)
+![](images/cloudera-manager-superuser.png)
 
-2. Grant **RWXC** (read,write,execute,create) permissions to the `axibase` principal.
+#### Option 2. Grant **RWXC** (read,write,execute,create) permissions to the `axibase` principal
 
 Login into the HMaster server and locate the `hbase.keytab` file.
 
-```bash
+```sh
 find / -name "hbase.keytab" | xargs ls -la
 -rw------- 1 hbase        hbase        448 Jul 29 16:44 /var/run/cloudera-scm-agent/process/30-hbase-MASTER/hbase.keytab
 ```
 
 Obtain the fully qualified hostname of the HMaster server.
 
-```bash
+```sh
 hostname -f
 ```
 
 Authenticate with Kerberos using the `hbase.keytab` file and HMaster full hostname.
 
-```bash
+```sh
 kinit -k -t /var/run/cloudera-scm-agent/process/30-hbase-MASTER/hbase.keytab hbase/{master_full_hostname}
 ```
 
-Open HBase shell and execute the `grant` command to grant **RWXC** permissions to `axibase` principal.
+Grant **RWXC** permissions to `axibase` principal in HBase shell.
 
-```bash
-echo "grant 'axibase', 'RWXC'" | hbase shell  
+```sh
+echo "grant 'axibase', 'RWXC'" | hbase shell
 ```
 
 ### Configure Kerberos Configuration Information in `krb5.conf` File
@@ -218,7 +232,6 @@ kerberos.keytab.path=/opt/atsd/atsd/conf/axibase.keytab
 ```
 
 > The `keytab` file needs to be updated whenever the password is changed.
-
 > For added security, ensure that the `keytab` file has 400 permission (read by owner).
 
 ### `hbase-site.xml` File
@@ -242,7 +255,7 @@ Remove comments in the `/opt/atsd/atsd/conf/hbase-site.xml` file and replace the
 
 ### Authentication Log Messages
 
-```
+```txt
 2016-07-24 13:28:41,468;INFO;main;com.axibase.tsd.hbase.KerberosBean;Setting up kerberos auth: login:axibase@HADOOP.AXIBASE.COM keytab:/opt/atsd/atsd/conf/axibase.keytab
 2016-07-24 13:28:41,723;INFO;main;com.axibase.tsd.hbase.KerberosBean;Login user from keytab starting...
 2016-07-24 13:28:41,811;INFO;main;org.apache.hadoop.security.UserGroupInformation;Login successful for user axibase@HADOOP.AXIBASE.COM using keytab file /opt/atsd/atsd/conf/axibase.keytab
@@ -265,7 +278,7 @@ Kerberos debugging can be enabled in the ATSD environment settings file `/opt/at
 
 Kerberos debug output will be redirected to the `${outLog}` file, which is set to `/opt/atsd/atsd/logs/out.log` by default.
 
-```
+```txt
 5921 [main] INFO  com.axibase.tsd.hbase.KerberosBean - Setting up kerberos auth: login:axibase@HADOOP.AXIBASE.COM keytab:/opt/atsd/atsd/conf/axibase.keytab
 Java config name: null
 Native config name: /etc/krb5.conf
@@ -308,9 +321,9 @@ Copy `/opt/atsd/hbase/lib/atsd.jar` to the `/usr/lib/hbase/lib` directory on eac
 
 Open Cloudera Manager, select the target HBase cluster/service, open Configuration tab, search for the setting `hbase.coprocessor.region.classes` and enter the following names.
 
-* com.axibase.tsd.hbase.coprocessor.CompactRawDataEndpoint
-* com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint
-* com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint
+* `com.axibase.tsd.hbase.coprocessor.CompactRawDataEndpoint`
+* `com.axibase.tsd.hbase.coprocessor.DeleteDataEndpoint`
+* `com.axibase.tsd.hbase.coprocessor.MessagesStatsEndpoint`
 
 ![](images/cloudera-manager-coprocessor-config.png)
 
@@ -322,13 +335,13 @@ Open Cloudera Manager, select the target HBase cluster/service, open Configurati
 
 ## Check for Port Conflicts
 
-```
+```sh
 sudo netstat -tulpn | grep "8081\|8082\|8084\|8088\|8443"
 ```
 
 If some of the above ports are taken, open the `/opt/atsd/atsd/conf/server.properties` file and change ATSD listening ports accordingly.
 
-```ls
+```txt
 http.port = 8088
 input.port = 8081
 udp.input.port = 8082
@@ -346,8 +359,8 @@ Since major compactions may overload the cluster, it is recommended to trigger t
 
 To disable built-in compaction of data tables, adjust the following settings on the **Settings > Server Properties** page:
 
-```
-#this will compact only 'entity' table once a week on Saturday
+```txt
+# this will compact only 'entity' table once a week on Saturday
 hbase.compaction.list = entity
 hbase.compaction.schedule = 0 0 12 * * SAT
 ```
@@ -380,16 +393,15 @@ Similarly, enable the `hbase.rpc.protection` property on the HBase cluster:
 
 ![](images/rpc-hbase.png)
 
-
 ## Start ATSD
 
-```
+```sh
 /opt/atsd/atsd/bin/start-atsd.sh
 ```
 
 Review the start log for any errors:
 
-```
+```sh
 tail -f /opt/atsd/atsd/logs/atsd.log
 ```
 
@@ -397,11 +409,11 @@ You should see a **ATSD start completed** message at the end of the `start.log`.
 
 Web interface is accessible on port 8088 (http) and 8443 (https).
 
-## Enable ATSD Autostart
+## Enable ATSD Auto-Start
 
 To configure ATSD for automated restart on server reboot, add the following line to `/etc/rc.local` before the `return 0` line.
 
-```
+```sh
 su - axibase -c /opt/atsd/atsd/bin/start-atsd.sh
 ```
 
@@ -420,58 +432,58 @@ su - axibase -c /opt/atsd/atsd/bin/start-atsd.sh
 
 ## Updating ATSD
 
-### Option 1. Co-processor Update is NOT Required.
+### Option 1. Co-processor Update is NOT Required
 
-- Login as an `axibase` user into the server where ATSD is installed.
+Login as an `axibase` user into the server where ATSD is installed.
 
-- Download the latest ATSD release, or a specific version based on the link provided by Axibase support.
+Download the latest ATSD release, or a specific version based on the link provided by Axibase support.
 
-```bash
+```sh
 cd ~
 curl -O https://axibase.com/public/atsd_ee_hbase_1.0.3.tar.gz
 ```
 
-- Extract the files.
+Extract the files.
 
-```bash
+```sh
 tar -xvf atsd_ee_hbase_1.0.3.tar.gz
 ```
 
-- Stop the ATSD process.
+Stop the ATSD process.
 
-```bash
+```sh
 /opt/atsd/atsd/bin/stop-atsd.sh
 ```
 
-- Update start/script files. Required for ATSD installations older than revision 15060.
+Update start/script files. Required for ATSD installations older than revision 15060.
 
-```bash
+```sh
 sed -i 's~^atsd_executable="$atsd_home/bin/atsd.*~atsd_executable=`ls $atsd_home/bin/atsd*.jar`~g' /opt/atsd/atsd/bin/stop-atsd.sh
 sed -i 's~^atsd_executable="$atsd_home/bin/atsd.*~atsd_executable=`ls $atsd_home/bin/atsd*.jar`~g' /opt/atsd/atsd/bin/start-atsd.sh
 ```
 
-- Delete previous ATSD jar files on the ATSD server.
+Delete previous ATSD jar files on the ATSD server.
 
-```bash
+```sh
 rm /opt/atsd/atsd/bin/atsd*.jar
 ```
 
-- Copy new ATSD jar files on the ATSD server.
+Copy new ATSD jar files on the ATSD server.
 
-```bash
+```sh
 cp atsd/atsd/bin/atsd*.jar /opt/atsd/atsd/bin/
 ```
 
-- Compare atsd-hbase jar revision with the revision installed on HBase region servers
+Compare atsd-hbase jar revision with the revision installed on HBase region servers
 
-```bash
+```sh
 ls atsd/hbase/lib/atsd-hbase.*.jar
 ```
 
 Compare the displayed revision with atsd-hbase file revision in `/usr/lib/hbase/lib` directory located on the HBase region servers. If the revision is the same, skip HBase region server upgrades. Otherwise, if the new file's revision is greater than what's installed on HBase region servers, shutdown each region server and replace old versions of the jar file with the current copy.
 
-- Start ATSD process.
+Start ATSD process.
 
-```bash
+```sh
 /opt/atsd/atsd/bin/start-atsd.sh
 ```

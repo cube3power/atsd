@@ -4,14 +4,14 @@
 
 Select data between 00:00 today and now using [calendar](../../../../shared/calendar.md) keywords.
 
-Note that DAY, WEEK, MONTH, QUARTER, and YEAR start times are computed according to server timezone in calendar calculations.
+Note that DAY, WEEK, MONTH, QUARTER, and YEAR start times are computed according to server time zone in calendar calculations.
 
 ## Request
 
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 ### Payload

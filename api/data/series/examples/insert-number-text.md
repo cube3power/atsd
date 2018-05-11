@@ -2,17 +2,18 @@
 
 ## Description
 
-Insert text value along with numeric value. 
+Insert text value along with numeric value.
 
 ## Request
 
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/insert
+POST https://atsd_hostname:8443/api/v1/series/insert
 ```
 
 ### Payload
+
 ```json
 [
     {
@@ -27,9 +28,4 @@ POST https://atsd_host:8443/api/v1/series/insert
         ]
     }
 ]
-```
-
-## Response 
-
-```
 ```

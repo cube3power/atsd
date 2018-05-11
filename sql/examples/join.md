@@ -4,7 +4,6 @@
 
 The `JOIN` operation merges rows with the same timestamp, entity, and tags. Rows that have different timestamps are excluded from the results.
 
-
 ```sql
 SELECT t1.entity, t1.datetime, t1.value, t2.value
   FROM "mpstat.cpu_busy" t1

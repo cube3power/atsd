@@ -37,7 +37,7 @@ Enter the Zendesk user name into the `Username` field and the password into the 
 
 Enter the following text into the `Body` field:
 
-```
+```json
 {
   "request": {
     "comment": {
@@ -47,7 +47,7 @@ Enter the following text into the `Body` field:
 }
 ```
 
-The `html_body` text contains placeholders that will be substituted with actual values when the notification is triggered. 
+The `html_body` text contains placeholders that will be substituted with actual values when the notification is triggered.
 
 Placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
@@ -59,7 +59,7 @@ Create a new rule or import the [rule template](resources/custom-zendesk-rule.xm
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
-Specify the key settings on the **Overview** tab. 
+Specify the key settings on the **Overview** tab.
 
 | **Name** | **Value** |
 | :-------- | :---- |
@@ -85,7 +85,7 @@ The request ID placeholder in the request URL as well as payload placeholders wi
 
 `https://axibase.zendesk.com/api/v2/requests/1.json`
 
-```
+```json
 {
   "request": {
     "comment": {
@@ -97,9 +97,9 @@ The request ID placeholder in the request URL as well as payload placeholders wi
 
 ## Test
 
-To test for successful integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
+Test the integration by submitting a sample `series` command on the **Data > Data Entry** page.
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 

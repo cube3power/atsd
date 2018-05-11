@@ -1,6 +1,7 @@
-Weekly Change Log: May 15, 2017 - May 21, 2017
-==================================================
-### ATSD
+# Weekly Change Log: May 15, 2017 - May 21, 2017
+
+## ATSD
+
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | 4207 | core | Bug | Add missing `HOST` tags to all internal ATSD metrics.|
@@ -14,26 +15,24 @@ Weekly Change Log: May 15, 2017 - May 21, 2017
 | [4179](#issue-4179) | sql | Feature | Add an option to exclude queries from the SQL query statistics page using `!` as the negation symbol. |
 | 4178 | export | Bug | Fixed a bug with email notifications when Output Path was not specified. |
 | 4175 | sql | Bug | Incorrect period start calculated for YEAR period and END_TIME alignment.  |
-| 4169 | rule engine | Bug | Fix FileNotFoundException when /tmp/atsd/alert.log was removed by the operating system. |
+| 4169 | rule engine | Bug | Fix FileNotFoundException when `/tmp/atsd/alert.log` was removed by the operating system. |
 | 4161 | sql | Bug | Apply syntax highlighting prior to displaying the result set in the SQL console. |
 | 4132 | collectd | Feature | Force [`collectd`](https://github.com/axibase/atsd-collectd-plugin) to use a short hostname instead of a Fully Qualified Domain Name when FQDN is `localhost`.  |
 | 4115 | UI | Bug | Fix localization issue with submit buttons without the value attribute. |
 
-#### ATSD
-
-##### Issue 4196
+### Issue 4196
 
 Sample curl command:
 
-```
- curl -X POST --data-binary @command.txt.gz http://server-name:8088/api/v1/command --header "Content-Encoding:gzip" --header "Content-Type:text/plain;charset=UTF-8"
+```sh
+ curl -k -X POST --data-binary @command.txt.gz http://atsd_hostname:8443/api/v1/command --header "Content-Encoding:gzip" --header "Content-Type:text/plain;charset=UTF-8"
 ```
 
-##### Issue 4184
+### Issue 4184
 
 ![4184](Images/4184.png)
 
-##### Issue 4179
+### Issue 4179
 
 In SQL Console > Query Statistics
 

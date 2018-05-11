@@ -2,7 +2,7 @@
 
 ## Description
 
-Delete the specified metric. 
+Delete the specified metric.
 
 Data collected for the metric will be removed asynchronously in the background.
 
@@ -12,11 +12,11 @@ Data collected for the metric will be removed asynchronously in the background.
 |:---|:---|---:|
 | DELETE | `/api/v1/metrics/{metric}` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| metric |string|Metric name.|
+| `metric` |string|Metric name.|
 
 ## Response
 
@@ -31,7 +31,7 @@ None.
 #### URI
 
 ```elm
-DELETE https://atsd_host:8443/api/v1/metrics/my-metric
+DELETE https://atsd_hostname:8443/api/v1/metrics/my-metric
 ```
 
 #### Payload
@@ -41,7 +41,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics/my-metric \
+curl https://atsd_hostname:8443/api/v1/metrics/my-metric \
   --insecure --verbose --user {username}:{password} \
   --request DELETE
 ```
@@ -49,10 +49,3 @@ curl https://atsd_host:8443/api/v1/metrics/my-metric \
 ### Response
 
 None.
-
-## Additional Examples
-
-
-
-
-

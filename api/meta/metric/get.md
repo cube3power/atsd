@@ -14,7 +14,7 @@ Retrieve properties and tags for the specified metric.
 
 | **Name** | **Description** |
 |:---|:---|
-| metric | **[Required]** Metric name. |
+| `metric` | **[Required]** Metric name. |
 
 ## Response
 
@@ -29,7 +29,7 @@ Refer to Response Fields in [Metrics: List](list.md#fields)
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/metrics/cpu_busy
+GET https://atsd_hostname:8443/api/v1/metrics/cpu_busy
 ```
 
 #### Payload
@@ -39,7 +39,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics/cpu_busy \
+curl https://atsd_hostname:8443/api/v1/metrics/cpu_busy \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```

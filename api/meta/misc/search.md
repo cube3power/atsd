@@ -12,17 +12,17 @@ Refer to [expression reference](../../../search/README.md) for syntax, available
 | :--------- | :--------------- |
 | GET        | `/api/v1/search` |
 
-### Query Parameters:
+### Query Parameters
 
 | **Parameter** | **Type** | **Description**                                                                                   |
 | :------------ | :------- | :------------- |
-| query  | string   | **[Required]** Search query according to [expression reference](../../../search/README.md). |
-| limit  | positive<br>integer   | Maximum number of records to be returned by the server. Default: 100. |
-| offset | positive<br>integer   | Number of records to skip before beginning to return data. |
-| metricTags | string   | Comma-separated list of metric tag names to be included in the response.<br>For example, `metricTags=OS,location`. <br>Specify `metricTags=*` to include all metric tags. |
-| metricFields | string   | Comma-separated list of [metric field names](../metric/list.md#fields) to be included in the response.<br>For example, `metricFields=dataType,units`. <br>Specify `metricFields=*` to include all metric fields. |
-| entityTags | string   | Comma-separated list of entity tag names to be included in the response.<br>For example, `entityTags=OS,location`. <br>Specify `entityTags=*` to include all entity tags. |
-| entityFields | string   | Comma-separated list of [entity field names](../entity/list.md#fields) to be included in the response.<br>For example, `entityFields=timeZone,interpolate`. <br>Specify `entityFields=*` to include all entity fields. |
+| `query`  | string   | **[Required]** Search query according to [expression reference](../../../search/README.md). |
+| `limit`  | positive<br>integer   | Maximum number of records to be returned by the server. Default: 100. |
+| `offset` | positive<br>integer   | Number of records to skip before beginning to return data. |
+| `metricTags` | string   | Comma-separated list of metric tag names to be included in the response.<br>For example, `metricTags=OS,location`. <br>Specify `metricTags=*` to include all metric tags. |
+| `metricFields` | string   | Comma-separated list of [metric field names](../metric/list.md#fields) to be included in the response.<br>For example, `metricFields=dataType,units`. <br>Specify `metricFields=*` to include all metric fields. |
+| `entityTags` | string   | Comma-separated list of entity tag names to be included in the response.<br>For example, `entityTags=OS,location`. <br>Specify `entityTags=*` to include all entity tags. |
+| `entityFields` | string   | Comma-separated list of [entity field names](../entity/list.md#fields) to be included in the response.<br>For example, `entityFields=timeZone,interpolate`. <br>Specify `entityFields=*` to include all entity fields. |
 
 ## Response
 
@@ -30,10 +30,10 @@ Refer to [expression reference](../../../search/README.md) for syntax, available
 
 | **Name**        | **Type** | **Description**                              |
 | :-------------- | :------- | :------------------------------------------- |
-| recordsTotal    | number   | Total number of series in the database as of last index update.  |
-| recordsFiltered | number   | Total number of series that matched the specified expression. |
-| time            | number   | Query execution time, in milliseconds. |
-| data            | array    | Array of [series records](#series-record). |
+| `recordsTotal`    | number   | Total number of series in the database as of last index update.  |
+| `recordsFiltered` | number   | Total number of series that matched the specified expression. |
+| `time`            | number   | Query execution time, in milliseconds. |
+| `data`            | array    | Array of [series records](#series-record). |
 
 ### Series Record
 
@@ -73,7 +73,7 @@ None.
 #### curl
 
 ```elm
-curl 'https://atsd_host:8443/api/v1/search?query=inflation*&limit=2&metricTags=*&metricFields=units,dataType&entityTags=*&entityFields=timeZone' \
+curl 'https://atsd_hostname:8443/api/v1/search?query=inflation*&limit=2&metricTags=*&metricFields=units,dataType&entityTags=*&entityFields=timeZone' \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```
@@ -83,7 +83,7 @@ curl 'https://atsd_host:8443/api/v1/search?query=inflation*&limit=2&metricTags=*
 ```json
 {
   "query": "contents:inflation.cpi.categories*",
-  "recordsTotal": 496621,	
+  "recordsTotal": 496621,
   "recordsFiltered": 20,
   "time": 136,
   "data": [
@@ -93,7 +93,7 @@ curl 'https://atsd_host:8443/api/v1/search?query=inflation*&limit=2&metricTags=*
       {
         "units": "million",
         "dataType": "LONG"
-      },			
+      },
       {
         "pricebase": "Current prices",
         "seasonaladjustment": "Seasonally Adjusted",
@@ -103,7 +103,7 @@ curl 'https://atsd_host:8443/api/v1/search?query=inflation*&limit=2&metricTags=*
       "U.S. FED",
       {
         "timeZone": "US/Eastern"
-      },				
+      },
       {
         "source": "FRED"
       },
@@ -118,7 +118,7 @@ curl 'https://atsd_host:8443/api/v1/search?query=inflation*&limit=2&metricTags=*
       {
         "units": "million",
         "dataType": "LONG"
-      },			
+      },
       {
         "pricebase": "Current prices",
         "seasonaladjustment": "Seasonally Adjusted",
@@ -128,7 +128,7 @@ curl 'https://atsd_host:8443/api/v1/search?query=inflation*&limit=2&metricTags=*
       "U.S. FED",
       {
         "timeZone": "US/Eastern"
-      },				
+      },
       {
         "source": "FRED"
       },
@@ -147,44 +147,44 @@ curl 'https://atsd_host:8443/api/v1/search?query=inflation*&limit=2&metricTags=*
     [
       // metric name
       "inflation.cpi.categories.price",
-      
+
       // metric label
       "CPI - Non-negotiable",
-      
+
       // metric fields
       {
         "units": "million",
         "dataType": "LONG"
       },
-      
+
       // metric tags
       {
         "pricebase": "Current prices",
         "seasonaladjustment": "Seasonally Adjusted",
         "source": "CBS"
       },
-      
+
       // entity name
       "fed",
-      
+
       // entity label
       "U.S. FED",
-      
+
       // entity fields
       {
         "timeZone": "US/Eastern"
       },
-      
+
       // entity tags
       {
         "source": "FRED"
       },
-      
+
       // series tags
       {
         "category": "Health"
       },
-      
+
       // relevance score
       1.5
     ]

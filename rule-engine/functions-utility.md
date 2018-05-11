@@ -2,15 +2,15 @@
 
 ## Reference
 
-* [ifEmpty](#ifempty)
-* [toBoolean](#toboolean)
-* [getURLHost](#geturlhost)
-* [getURLPort](#geturlport)
-* [getURLProtocol](#geturlprotocol)
-* [getURLPath](#geturlpath)
-* [getURLQuery](#geturlquery)
-* [getURLUserInfo](#geturluserinfo)
-* [printObject](#printobject)
+* [`ifEmpty`](#ifempty)
+* [`toBoolean`](#toboolean)
+* [`getURLHost`](#geturlhost)
+* [`getURLPort`](#geturlport)
+* [`getURLProtocol`](#geturlprotocol)
+* [`getURLPath`](#geturlpath)
+* [`getURLQuery`](#geturlquery)
+* [`getURLUserInfo`](#geturluserinfo)
+* [`printObject`](#printobject)
 
 ### `ifEmpty`
 
@@ -22,20 +22,21 @@ The function returns `b` if `a` is either `null` or an empty string.
 
 Examples:
 
-  ```javascript
-    /* Returns 2 */  
+```javascript
+    /* Returns 2 */
     ifEmpty(null, 2)
-    
-    /* Returns hello */  
+
+    /* Returns hello */
     ifEmpty('hello', 'world')
-  ```
+```
+
 ### `toBoolean`
 
 ```javascript
   toBoolean(object a) boolean
 ```
 
-Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is  a string "true", "yes", "on", "1" (case-INsensisitve) or if `a` is equal to the number `1`.
+Converts the input string or number `a` to a boolean value. `true` is returned by the function if the input `a` is  a string "true", "yes", "on", "1" (case-**IN**sensitive) or if `a` is equal to the number `1`.
 
 Value table:
 
@@ -48,24 +49,24 @@ on | string | true
 1 | number | true
 no | string | false
 NO | string | false
-hello | string | false 
+hello | string | false
 0 | string | false
 0 | number | false
 3 | number | false
-  
+
 Examples:
 
 ```javascript
-  // Returns false 
-  
-  toBoolean('hello')  
+  // Returns false
+  toBoolean('hello')
   toBoolean(0)
-  toBoolean('off')  
-  
-  // Returns true 
-  
-  toBoolean('YES')    
-  toBoolean(1)  
+  toBoolean('off')
+```
+
+```javascript
+  // Returns true
+  toBoolean('YES')
+  toBoolean(1)
   toBoolean('On')
 ```
 
@@ -79,19 +80,19 @@ The function prints the input object `o` as a two-column table in the specified 
 
 Supported formats:
 
-* 'markdown'
-* 'ascii'
-* 'property'
-* 'csv'
-* 'html'
+* `markdown`
+* `ascii`
+* `property`
+* `csv`
+* `html`
 
 The first column in the table contains field names, whereas the second column contains corresponding field values.
 
 Object `o` can be an 'Entity' or a 'Window' object which can be retrieved as follows:
 
-* [getEntity](functions-lookup.md#getentity)
-* [rule_window](functions-rules.md#rule_window)
-* [rule_windows](functions-rules.md#rule_windows)
+* [`getEntity`](functions-lookup.md#getentity)
+* [`rule_window`](functions-rules.md#rule_window)
+* [`rule_windows`](functions-rules.md#rule_windows)
 
 An empty string is returned if the object `o` is `null`.
 
@@ -116,11 +117,11 @@ Examples:
 | tags                     | {container=axibase/atsd:latest}    |
 | timeZone                 | null                               |
 ...
-``` 
+```
 
 ```javascript
   printObject(rule_window('jvm_derived'), 'csv')
-``` 
+```
 
 ```ls
 Name,Value
@@ -129,11 +130,11 @@ lastText,null
 status,OPEN
 windowStatus,OPEN
 ...
-```  
+```
 
 ```javascript
   printObject(rule_windows('jvm_derived', "tags != ''").get(1), 'markdown')
-``` 
+```
 
 ```ls
 | **Name** | **Value**  |
@@ -143,7 +144,7 @@ windowStatus,OPEN
 | status | REPEAT |
 | windowStatus | REPEAT |
 ...
-``` 
+```
 
 ### `getURLHost`
 
@@ -155,10 +156,10 @@ Retrieves the **host** from URL string `u`. If the URL `u` is null, empty or inv
 
 Example:
 
-  ```javascript
-    /* Returns "axibase.com" */  
+```javascript
+    /* Returns "axibase.com" */
     getURLHost('https://axibase.com/en/products?type=database&status=1')
-  ```
+```
 
 ### `getURLPort`
 
@@ -168,57 +169,60 @@ Example:
 
 Retrieves the **port** from URL string `u`. If the URL `u` is `null`, empty or invalid, an exception is thrown.
 
-If the the URL `u` doesn't contain a port, the function returns the default value for the protocol, for example port 443 for `https` and port 80 for `http`.
+If the URL `u` doesn't contain a port, the function returns the default value for the protocol, for example port 443 for `https` and port 80 for `http`.
 
 Example:
 
-  ```javascript
-    /* Returns 443 */  
+```javascript
+    /* Returns 443 */
     getURLPort('https://axibase.com/en/products?type=database&status=1')
-  ```
+```
 
 ### `getURLProtocol`
 
 ```javascript
   getURLProtocol(string u) string
 ```
+
 Retrieves the **protocol** from URL string `u`. If the URL `u` is null, empty or invalid, exception is thrown.
 
 Example:
 
-  ```javascript
-    /* Returns "https" */  
+```javascript
+    /* Returns "https" */
     getURLProtocol('https://axibase.com/en/products?type=database&status=1')
-  ```
+```
 
 ### `getURLPath`
 
 ```javascript
   getURLPath(string u) string
 ```
+
 Retrieves the **path** from URL string `u`. If the URL `u` is null, empty or invalid, an exception is thrown.
 
 Example:
 
-  ```javascript
-    /* Returns "/en/products" */  
+```javascript
+    /* Returns "/en/products" */
     getURLPath('https://axibase.com/en/products?type=database&status=1')
-  ```
-  
+```
+
 ### `getURLQuery`
 
 ```javascript
   getURLQuery(string u) string
 ```
+
 Retrieves the **query string** from URL string `u`. If the URL `u` is null, empty or invalid, an exception is thrown.
 
 Example:
 
-  ```javascript
-    /* Returns "type=database&status=1" */  
+```javascript
+    /* Returns "type=database&status=1" */
     getURLQuery('https://axibase.com/en/products?type=database&status=1')
-  ```
-  
+```
+
 ### `getURLUserInfo`
 
 ```javascript
@@ -229,11 +233,10 @@ Retrieves the `user:password` from URL string `u`. If the URL `u` is null, empty
 
 Example:
 
-  ```javascript
-    /* Returns null */  
+```javascript
+    /* Returns null */
     getURLUserInfo('https://axibase.com/en/products?type=database&status=1')
-    
-    /* Returns "atsd_user:atsd_password" */  
+
+    /* Returns "atsd_user:atsd_password" */
     getURLUserInfo('https://atsd_user:atsd_password@axibase.com/en/products?type=database&status=1')
-  ```
-  
+```

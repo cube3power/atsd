@@ -147,9 +147,9 @@ re-occurring.
 
 In order to minimize the number of rules with manual thresholds, the rule engine provides the following capabilities:
 
-- Condition [overrides](overrides.md).
-- Comparison of windows with different lengths.
-- Automated thresholds determined by the `forecast()` function.
+* Condition [overrides](overrides.md).
+* Comparison of windows with different lengths.
+* Automated thresholds determined by the `forecast()` function.
 
 ## Setting Thresholds
 
@@ -176,7 +176,6 @@ To reduce a possible distortion caused by a small number of observations (outlie
 ```
 
 Alternatively, use the `minimum` or a below-median percentile function with the reversed comparator to check that all samples in the window exceed the threshold. This is equivalent to checking that the last *N* consecutive samples are above the threshold.
-
 
 ```javascript
   min() > 90 -- all samples are above 90
@@ -263,12 +262,12 @@ In order to trigger a notification by an SQL query:
 
 * Develop a query such that it returns an empty result if the situation is normal.
 
-  ```sql
+```sql
     SELECT entity, tags, percentile(90, value) FROM page_views
       WHERE datetime >= current_day
       GROUP BY entity, tags, period(1 DAY)
     HAVING percentile(90, value) > 1000 -- HAVING clause acts as a filter
-  ```
+```
 
 * Create a scheduled SQL query.
 * Set **Send Empty Report** parameter to `No`.

@@ -38,7 +38,7 @@ Examples:
 
  The returned number can be used to filter rows within each partition.
 
- * `WITH ROW_NUMBER(entity ORDER BY datetime) <= 1`
+* `WITH ROW_NUMBER(entity ORDER BY datetime) <= 1`
 
 ## `ROW_NUMBER` column
 

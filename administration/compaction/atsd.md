@@ -27,11 +27,11 @@ Date,Time,Open,High,Low,Close,Volume
 
 The records be downloaded from the following url: [http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest](http://api.kibot.com/?action=history&symbol=IBM&interval=1&unadjusted=0&bp=1&user=guest).
 
-The file contains over 2 million lines. The OHLC metrics contain values with up to four decimal places. The volume metric is an integer. The dates are recorded in the `US/Eastern` timezone.
+The file contains over 2 million lines. The OHLC metrics contain values with up to four decimal places. The volume metric is an integer. The dates are recorded in the `US/Eastern` time zone.
 
 Each row consists of 5 metrics for a given 1-minute interval:
 
-```
+```txt
 09/08/2017,15:42,142.53,142.5399,142.49,142.49,10031
 ...
 time   = 09/08/2017 15:42
@@ -48,7 +48,7 @@ The database automatically manages schema for the inserted data.
 
 ## Compression Algorithms
 
-The storage efficiency in ATSD is a product of standard compressions algorithms such as GZIP or LZO and built-in codecs. For the purpose of this test, the compression algorithm is set to GZIP and the default ATSD codec is enabled.
+The storage efficiency in ATSD is a product of standard compressions algorithms such as `GZIP` or `LZO` and built-in codecs. For the purpose of this test, the compression algorithm is set to `GZIP` and the default ATSD codec is enabled.
 
 ## Executing Tests
 
@@ -67,7 +67,7 @@ Verify the row count:
 wc -l IBM_adjusted.txt
 ```
 
-```
+```txt
 2045514 IBM_adjusted.txt
 ```
 
@@ -75,18 +75,18 @@ wc -l IBM_adjusted.txt
 
 Start container with a pre-configured administrator account and port 8443 open for access.
 
-```properties
+```sh
 docker run -d --name=atsd_test -p 8443:8443 \
     -e ADMIN_USER_NAME=axibase -e ADMIN_USER_PASSWORD=axibase axibase/atsd:latest
 ```
 
-Watch the startup log until the the list of open ports is displayed.
+Watch the startup log until the list of open ports is displayed.
 
 ```sh
 docker logs -f atsd_test
 ```
 
-```
+```txt
 [ATSD] Waiting for ATSD to accept requests on port 8088 ... ( 5 / 60 )
 [ATSD] ATSD user interface:
 [ATSD] http://127.0.0.1:8088
@@ -129,13 +129,11 @@ Execute the test script by specifying the ATSD container name.
 
 ### Results
 
-```
+```txt
 Connecting to https://localhost:8443 as 'axibase'. Container: atsd_test
 
 ============
-
 CSV parser imported
-
 ============
 
 Uploading data file IBM_adjusted.txt

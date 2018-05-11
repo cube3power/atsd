@@ -19,7 +19,7 @@ If the search expression contains a tag name, such tags are displayed in the res
 ## Wildcards
 
 * `*` matches any number of characters.
-* `?` matches any one characher.
+* `?` matches any one character.
 
 ## Match
 
@@ -47,13 +47,11 @@ nur*
 
 * Find entities with tag `location` set to `SVL`
 
-
 ```ls
 location:SVL
 ```
 
 * Find entities with any value for tag `location` (display `location` column).
-
 
 ```ls
 location:*
@@ -61,13 +59,11 @@ location:*
 
 * Find entities with non-empty value for tag `location`.
 
-
 ```ls
 location:*
 ```
 
 * Find entities starting with `nur` **and** tag `location` set to `SVL`
-
 
 ```ls
 nur location:SVL

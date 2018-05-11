@@ -4,18 +4,21 @@
 
 Supported [ISO date](../../../../../api/data#datetime-formats) formats:
 
-* yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'
-* yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh:mm
+* `yyyy-MM-dd'T'HH:mm:ss[.SSS]'Z'`
+* `yyyy-MM-dd'T'HH:mm:ss[.SSS]±hh:mm`
 
 Milliseconds are optional.
 
 ## Request
 
 ### URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/messages/insert
+POST https://atsd_hostname:8443/api/v1/messages/insert
 ```
+
 ### Payload
+
 ```json
 [{
     "entity": "nurswgvml007",
@@ -24,8 +27,4 @@ POST https://atsd_host:8443/api/v1/messages/insert
     "source": "atsd",
     "date": "2016-06-14T09:12:00.412Z"
 }]
-```
-
-## Response
-```
 ```

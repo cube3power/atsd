@@ -20,16 +20,16 @@ csv p:{parser} e:{entity} r:{metric_prefix} z:{timezone} t:{timeout}
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| p         | yes          | **[Required]** Parser name from `Configuration> Parsers: CSV` page. |
-| e         | string       | Default entity name. |
-| ep        | string       | Entity prefix applied to all entity names in the file. |
-| et        | string       | Entity tags.<br>Comma separated list of entity tags added as series, message, or property tags to parsed commands. |
-| m         | string       | Default metric name. |
-| mp        | string       | Metric prefix applied to all metric names in the file. |
-| mt        | string       | Metric tags.<br>Comma separated list of metric tags added as series, message, or property tags to parsed commands. |
-| z         | string       | Timezone applied when parsing dates specified in local time, for example GMT.<br>[Time Zone ID](../../shared/timezone-abnf.md)  |
-| o         | integer      | Server read timeout in seconds, for example `o:60` |
-| t         | string       | One or multiple series tag key=value pairs, for example: `t:location=SVL` |
+| `p`         | yes          | **[Required]** Parser name from `Configuration> Parsers: CSV` page. |
+| `e`         | string       | Default entity name. |
+| `ep`        | string       | Entity prefix applied to all entity names in the file. |
+| `et`        | string       | Entity tags.<br>Comma separated list of entity tags added as series, message, or property tags to parsed commands. |
+| `m`         | string       | Default metric name. |
+| `mp`        | string       | Metric prefix applied to all metric names in the file. |
+| `mt`        | string       | Metric tags.<br>Comma separated list of metric tags added as series, message, or property tags to parsed commands. |
+| `z`         | string       | Time zone applied when parsing dates specified in local time, for example GMT.<br>[Time Zone ID](../../shared/timezone-abnf.md)  |
+| `o`         | integer      | Server read timeout in seconds, for example `o:60` |
+| `t`         | string       | One or multiple series tag key=value pairs, for example: `t:location=SVL` |
 
 > Tags specified in `t:` fields override `Default Tags` with the same name specified in the CSV parser configuration.
 
@@ -37,10 +37,10 @@ csv p:{parser} e:{entity} r:{metric_prefix} z:{timezone} t:{timeout}
 
 Rules inherited from [Base ABNF](base-abnf.md).
 
-```properties
-command = "csv" MSP parser [MSP entity] [MSP entity-prefix] [MSP entity-tags] 
-                           [MSP metric] [MSP metric-prefix] [MSP metric-tags] 
-						   [MSP timezone] [MSP timeout] *(MSP tag)
+```elm
+command = "csv" MSP parser [MSP entity] [MSP entity-prefix] [MSP entity-tags]
+                           [MSP metric] [MSP metric-prefix] [MSP metric-tags]
+                           [MSP timezone] [MSP timeout] *(MSP tag)
 parser = "p:" NAME
 entity = "e:" NAME
 entity-prefix = "ep:" NAME

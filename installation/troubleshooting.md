@@ -8,12 +8,11 @@ Verify that the target server meets hardware and OS [requirements](../administra
 
 ATSD is listening on the following ports by default:
 
-* 1099/tcp
-* 8081/tcp
-* 8082/udp
-* 8084/tcp
-* 8088/tcp
-* 8443/tcp
+* `1099/tcp` - JMX
+* `8081/tcp` - Network API (TCP)
+* `8082/udp` - Network API (UDP)
+* `8088/tcp` - Web Interface/API (http)
+* `8443/tcp` - Web Interface/API (https)
 
 In case you're not able to connect to an ATSD network service, make sure that: a) the service is listening and b) the firewall is configured to allow access to the target port(s).
 
@@ -35,7 +34,7 @@ Connected to atsd_host.
 Escape character is '^]'.
 ```
 
-```
+```txt
 $ netcat -z -v atsd_host 8081
 Connection to atsd_host 8081 port [tcp/tproxy] succeeded!
 ```

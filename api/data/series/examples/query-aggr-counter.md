@@ -2,14 +2,14 @@
 
 ## Description
 
-Chartlab Example: http://apps.axibase.com/chartlab/2f607d1b/17/
+[ChartLab](https://apps.axibase.com/chartlab/2f607d1b/17/)
 
 ## Request
 
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 ### Payload
@@ -217,5 +217,3 @@ POST https://atsd_host:8443/api/v1/series/query
   }
 ]
 ```
-
-

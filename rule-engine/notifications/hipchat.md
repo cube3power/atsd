@@ -86,8 +86,8 @@ In addition to the room ID, you can search by room name, for example `test-axiba
 * Click on an existing `HIPCHAT` template, or click the **Create** button and select the `HIPCHAT`type.
 * Specify the unique `Name` of the notification.
 
-    ![](images/hipchat_1.png) 
-    
+    ![](images/hipchat_1.png)
+
 * Specify the `Endpoint URL`.
 * Copy the `Token` from the HipChat Data Center client into the `Auth Token` field of the configuration form.
 * Copy the room ID or room name from the HipChat Data Center client into the `Room ID` field in the configuration form.
@@ -99,7 +99,7 @@ In addition to the room ID, you can search by room name, for example `test-axiba
 
    ![](images/hipchat_2.png)
 
-* If test is passed, set the status to **Enabled** and click **Save**.  
+* If test is passed, set the status to **Enabled** and click **Save**.
 
 ## Proxy Settings
 
@@ -109,8 +109,8 @@ If the HipChat API server is not directly accessible from the ATSD server, open 
 
 |**Parameter**|**Description**|
 |---|---|
-|Auth Token|Auth Token bearing 'message' and 'notifications' scopes.|
-|Bot Nickname|Append a phrase to your bot's username.|
+|`Auth Token`|Authorization Token with 'message' and 'notifications' scopes.|
+|Bot Nickname|Set a name for the bot.|
 |Room ID|ID or name of the room.|
 |Message|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
 |Message Format|Change how messages are formatted. See [message_format](https://www.hipchat.com/docs/apiv2/method/send_room_notification). To ensure that the references returned by the [link placeholders](../links.md#reference) and the [link functions](../functions-link.md#reference) are automatically inlined, specify `html` format.|

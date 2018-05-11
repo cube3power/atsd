@@ -6,7 +6,7 @@ packets per second or more.
 ## Increase the maximum receiving buffer on the operating system
 
 ```sh
- sudo sysctl -w net.core.rmem_max=8388608                                 
+ sudo sysctl -w net.core.rmem_max=8388608
 ```
 
 This setting would allow the operating system and ATSD to buffer up to 8
@@ -20,14 +20,14 @@ UDP datagrams dropped due to buffer overflow.
 
 Add the following property to `server.properties` file:
 
-```
+```txt
 # default value is 8192
 udp.receive.buffer.size.kb = 20000
 ```
 
 ## Restart ATSD
 
-```bash
+```sh
 /opt/atsd/bin/atsd-all.sh stop
 /opt/atsd/bin/atsd-all.sh start
 ```

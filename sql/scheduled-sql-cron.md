@@ -18,21 +18,20 @@ Fields in a cron expression have the following order:
 * day-of-week
 * year **(optional)**
 
-
 For example, `0 0 8 * * ? *` means that the query will be executed at 08:00:00 every day.
 
-```
+```txt
 seconds minutes hours day-of-month month day-of-week year
    0       0      8        *         *        ?        *
 ```
 
-![Cron Expressions](http://axibase.com/wp-content/uploads/2016/03/cron_expressions.png)
+![Cron Expressions](https://axibase.com/wp-content/uploads/2016/03/cron_expressions.png)
 
  > Either '0' or '7' can be used for Sunday in the day-of-week field.
 
 ## Time Zone
 
-The `cron` expression is evaluated based on the timezone of the server where the database is running. The timezone is displayed on the **Admin: System Information** page.
+The `cron` expression is evaluated based on the time zone of the server where the database is running. The time zone is displayed on the **Admin: System Information** page.
 
 ## Examples
 

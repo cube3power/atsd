@@ -10,10 +10,13 @@ See the `write_atsd` plugin [documentation](https://github.com/axibase/atsd-coll
 ### Ubuntu 14.04
 
 Download package
+
 ```sh
 wget https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7/collectd_ubuntu_14.04_amd64.deb
 ```
+
 Install package
+
 ```sh
 sudo dpkg -i collectd_ubuntu_14.04_amd64.deb
 ```
@@ -21,40 +24,49 @@ sudo dpkg -i collectd_ubuntu_14.04_amd64.deb
 ### Ubuntu 16.04
 
 Download package
+
 ```sh
 wget https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7/collectd_ubuntu_16.04_amd64.deb
 ```
+
 Install package
+
 ```sh
 sudo dpkg -i collectd_ubuntu_16.04_amd64.deb
 ```
 
-### Centos 6.x and RHEL 6.x
+### CentOS 6.x and RHEL 6.x
 
 Download package
+
 ```sh
 curl -L --output collectd.rpm \
     https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7/collectd_rhel_6_amd64.rpm
 ```
+
 Install package
+
 ```sh
 sudo yum install collectd.rpm
 ```
 
-### Centos 7.x and RHEL 7.x
+### CentOS 7.x and RHEL 7.x
 
 Download package
+
 ```sh
 curl -L --output collectd.rpm \
     https://github.com/axibase/atsd-collectd-plugin/releases/download/5.7.2-7/collectd_rhel_7_amd64.rpm
 ```
 
 Install collectd with utility for managing SELinux policies
+
 ```sh
 sudo yum install collectd.rpm policycoreutils-python
 ```
 
 Persist updated SELinux policy to allow TCP connections for collectd
+
 ```sh
 setsebool -P collectd_tcp_network_connect on
 ```
@@ -63,7 +75,7 @@ setsebool -P collectd_tcp_network_connect on
 
 Edit `/ect/collect.conf` by replacing atsd_host with ATSD IP address or host name, specify protocol and port. Example
 
-```
+```xml
 ...
 <Plugin write_atsd>
      <Node "atsd">
@@ -74,8 +86,7 @@ Edit `/ect/collect.conf` by replacing atsd_host with ATSD IP address or host nam
 ...
 ```
 
-Description of `write_atsd` plugin options below
-
+Description of `write_atsd` plugin options is provided below
 
  **Setting**      | **Required** | **Description**                                                                                                                                        | **Default Value**
 ------------------|:-------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------
@@ -90,9 +101,9 @@ Description of `write_atsd` plugin options below
 
 More information about collectd configuration in [collectd.conf.5](https://collectd.org/documentation/manpages/collectd.conf.5.shtml) manual page.
 
-## Autostart
+## Auto-Start
 
-Add collectd to autostart.
+Enable auto-start for collectd.
 
 On Ubuntu 14.04
 
@@ -100,13 +111,13 @@ On Ubuntu 14.04
 sudo update-rc.d collectd-axibase defaults 90 10
 ```
 
-On Centos 6.x and RHEL 6.x
+On CentOS 6.x and RHEL 6.x
 
 ```sh
 sudo chkconfig --add collectd-axibase
 ```
 
-On Ubuntu 16.04, Centos 7.x and RHEL 7.x
+On Ubuntu 16.04, CentOS 7.x and RHEL 7.x
 
 ```sh
 sudo systemctl enable collectd-axibase
@@ -116,13 +127,13 @@ sudo systemctl enable collectd-axibase
 
 Launch live collectd Portal in Axibase Chart Lab.
 
-[Launch](https://axibase.com/chartlab/ff756c10)
+[Launch](https://apps.axibase.com/chartlab/ff756c10)
 
 ![](resources/collectd_portal.png)
 
 ## Collected Metrics
 
-```css
+```elm
 collectd.aggregation.cpu.idle
 collectd.aggregation.cpu.interrupt
 collectd.aggregation.cpu.nice

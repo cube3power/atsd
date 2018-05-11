@@ -14,27 +14,31 @@ Retrieve a list of metrics matching the specified filters.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| expression |string|Include metrics that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators. Supported wildcards: `*` and `?`.|
-| minInsertDate |string|Include metrics with `lastInsertDate` equal or greater than `minInsertDate`.<br>The parameter can be specified in ISO-8601 format or using [calendar](../../../shared/calendar.md) keyword.|
-| maxInsertDate |string|Include metrics with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>The parameter can be specified in ISO format or using [calendar](../../../shared/calendar.md) keyword.|
-| limit |integer|Maximum number of metrics to retrieve, ordered by name.|
-| tags |string|Comma-separated list of metric tag names to include in the response, for example, `tags=table,frequency`.<br>Specify `tags=*` to include all metric tags.<br>Specify `tags=env.*` to include all metric tags starting with `env.`.|
+| `expression` |string|Include metrics that match a filter [expression](../../../api/meta/expression.md) consisting of fields and operators. Example: `name LIKE 'cpu*'`.<br>Supported wildcards: `*` and `?`.|
+| `minInsertDate` |string|Include metrics with `lastInsertDate` equal or greater than `minInsertDate`.<br>ISO-8601 date or a [calendar](../../../shared/calendar.md) expression.|
+| `maxInsertDate` |string|Include metrics with `lastInsertDate` less than `maxInsertDate`, including metrics without `lastInsertDate`.<br>ISO-8601 date or a [calendar](../../../shared/calendar.md) expression.|
+| `limit` |integer|Maximum number of metrics to retrieve, ordered by name.|
+| `tags` |string|Comma-separated list of metric tag names to include in the response, for example, `tags=table,frequency`.<br>Specify `tags=*` to include all metric tags.<br>Specify `tags=env.*` to include all metric tags starting with `env.`.|
 
 #### Expression
 
-The expression can include all fields listed below except `lastInsertDate`.
+The expression can include any field listed below, such as `name`, `label`, and `minValue`, except the `lastInsertDate` field which can be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
+
+String literals must be enclosed in single or double quotes.
 
 Examples:
 
-```java
-name LIKE 'meminfo.*'  
-
-name NOT LIKE 'cpu*' AND createdDate > '2017-10-01T00:00:00Z'
-
-retentionDays > 0 OR seriesRetentionDays > 0
+```javascript
+name LIKE 'meminfo.*'
 ```
 
-The `lastInsertDate` field should be filtered using `minInsertDate` and `maxInsertDate` parameters for performance reasons.
+```javascript
+name NOT LIKE 'cpu*' AND createdDate > '2017-10-01T00:00:00Z'
+```
+
+```javascript
+retentionDays > 0 OR seriesRetentionDays > 0
+```
 
 ## Response
 
@@ -42,26 +46,26 @@ The `lastInsertDate` field should be filtered using `minInsertDate` and `maxInse
 
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-|name| string | Metric name.|
-|label| string | Metric label.|
-|description | string | Metric description.|
-|tags| object | An object containing tags as names and values.<br>For example, `"tags": {"table": "axibase-collector"}`|
-|dataType| string | [Data Type](#data-types).|
-|interpolate| string | Interpolation mode: `LINEAR` or `PREVIOUS`. <br>Used in SQL `WITH INTERPOLATE` clause when interpolation mode is set to `AUTO`, for example, `WITH INTERPOLATE(1 MINUTE, AUTO)`. |
-|units| string | Measurement units. |
-|timeZone| string | Time Zone ID, for example `America/New_York` or `EST`.<br>Refer to [Time Zone](../../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The timezone is applied by date-formatting functions to return local time in metric-specific timezone.|
-|timePrecision| string | Time precision: SECONDS or MILLISECONDS.|
-|enabled| boolean | Enabled status. Incoming data is discarded for disabled metrics.|
-|persistent | boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
-|filter | string | Persistence filter [expression](../../../api/meta/expression.md). Discards series that do not match this filter.|
-|createdDate| string | Date when this metric was created in ISO-8601 format.|
-|lastInsertDate| string | Last time a value was received for this metric by any series in ISO-8601 format.|
-|retentionDays| integer | Number of days to store the values for this metric. Samples with insert date earlier than current time minus retention days are removed on schedule.|
-|seriesRetentionDays| integer | Number of days to retain series. Expired series with last insert date earlier than current time minus series retention days are removed on schedule.|
-|versioned| boolean | If set to true, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
-|minValue| double | Minimum value for [Invalid Action](#invalid-actions) trigger.|
-|maxValue| double | Maximum value for [Invalid Action](#invalid-actions) trigger.|
-|invalidAction | string | [Invalid Action](#invalid-actions) type.|
+|`name`| string | Metric name.|
+|`label`| string | Metric label.|
+|`description` | string | Metric description.|
+|`tags`| object | An object containing tags as names and values.<br>For example, `"tags": {"table": "axibase-collector"}`|
+|`dataType`| string | [Data Type](#data-types).|
+|`interpolate`| string | Interpolation mode: `LINEAR` or `PREVIOUS`. <br>Used in SQL `WITH INTERPOLATE` clause when interpolation mode is set to `AUTO`, for example, `WITH INTERPOLATE(1 MINUTE, AUTO)`. |
+|`units`| string | Measurement units. |
+|`timeZone`| string | Time Zone ID, for example `America/New_York` or `EST`.<br>Refer to [Time Zone](../../../shared/timezone-list.md) table for a list of supported Time Zone IDs.<br>The time zone is applied by date-formatting functions to return local time in metric-specific time zone.|
+|`timePrecision`| string | Time precision: SECONDS or MILLISECONDS.|
+|`enabled`| boolean | Enabled status. Incoming data is discarded for disabled metrics.|
+|`persistent` | boolean | Persistence status. Non-persistent metrics are not stored in the database and are only processed by the rule engine.|
+|`filter` | string | Persistence filter [expression](../../../api/meta/expression.md). Discards series that do not match this filter.|
+|`createdDate`| string | Date when this metric was created in ISO-8601 format.|
+|`lastInsertDate`| string | Last time a value was received for this metric by any series in ISO-8601 format.|
+|`retentionDays`| integer | Number of days to store the values for this metric. Samples with insert date earlier than current time minus retention days are removed on schedule.|
+|`seriesRetentionDays`| integer | Number of days to retain series. Expired series with last insert date earlier than current time minus series retention days are removed on schedule.|
+|`versioned`| boolean | If set to true, enables versioning for the specified metric. <br>When metrics are versioned, the database retains the history of series value changes for the same timestamp along with `version_source` and `version_status`.|
+|`minValue`| double | Minimum value for [Invalid Action](#invalid-actions) trigger.|
+|`maxValue`| double | Maximum value for [Invalid Action](#invalid-actions) trigger.|
+|`invalidAction` | string | [Invalid Action](#invalid-actions) type.|
 
 ### Data Types
 
@@ -78,7 +82,7 @@ Default data type for new metrics, when auto-created, is **float**.
 
 ### Invalid Actions
 
- Invalid Action is triggered if the received series value is less than the Minimum value, or if it's greater than the Maximum value.
+Invalid Action is triggered if the received series value is less than the Minimum value, or if it's greater than the Maximum value.
 
 |**Action**|**Description**|
 |:---|:---|
@@ -109,7 +113,7 @@ Default data type for new metrics, when auto-created, is **float**.
 #### URI
 
 ```elm
-https://atsd_host:8443/api/v1/metrics?limit=2
+https://atsd_hostname:8443/api/v1/metrics?limit=2
 ```
 
 #### Payload
@@ -119,7 +123,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics?limit=2 \
+curl https://atsd_hostname:8443/api/v1/metrics?limit=2 \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```
@@ -161,7 +165,7 @@ curl https://atsd_host:8443/api/v1/metrics?limit=2 \
 
 Expression text:
 
-```text
+```javascript
 name != "" OR tags.keyName != "" OR label! = "" OR description != "" OR enabled = true OR persistent=true OR persistenceFilter != "" OR retentionDays=0 OR dataType="FLOAT" OR timePrecision="MILLISECONDS" OR versioning=false AND invalidAction="NONE" OR timeZone="" OR interpolate="LINEAR"
 ```
 
@@ -170,7 +174,7 @@ name != "" OR tags.keyName != "" OR label! = "" OR description != "" OR enabled 
 #### URI
 
 ```elm
-https://atsd_host:8443/api/v1/metrics?tags=*&expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22
+https://atsd_hostname:8443/api/v1/metrics?tags=*&expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22
 ```
 
 #### Payload
@@ -180,7 +184,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics?expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22 \
+curl https://atsd_hostname:8443/api/v1/metrics?expression=versioning=true%20and%20retentionDays%3E0%20and%20dataType=%22FLOAT%22 \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```
@@ -210,7 +214,7 @@ curl https://atsd_host:8443/api/v1/metrics?expression=versioning=true%20and%20re
 * [List metrics by name using wildcards](examples/list-metrics-by-name-wildcards.md)
 * [List metrics by name and tag](examples/list-metrics-by-name-and-tag.md)
 * [List metrics with tag `table`](examples/list-metrics-with-tag-table.md)
-* [List metrics by maxInsertDate](examples/list-metrics-by-maxinsertdate.md)
-* [List metrics by minInsertDate](examples/list-metrics-by-mininsertdate.md)
+* [List metrics by Max Insert Date](examples/list-metrics-by-maxinsertdate.md)
+* [List metrics by Min Insert Date](examples/list-metrics-by-mininsertdate.md)
 * [List metrics for last insert range](examples/list-metrics-for-last-insert-range.md)
 * [List metrics without last insert date](examples/list-metrics-without-last-insert-date.md)

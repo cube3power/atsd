@@ -25,7 +25,7 @@ The message payload can be signed with the `SHA1` algorithm by filling out the `
 
 This header contains the lower-cased `HMAC-SHA1` hex digest of the payload.
 
-```
+```txt
 x-axi-signature: sha1=232c3cd1dedf9f5a5ac42bf63275b8b686ae53b6
 ```
 
@@ -43,17 +43,17 @@ The response status code and response content is recorded in `atsd.log` if the `
 
 ## Testing
 
-Click the `Test` button in the web notification form to send a test alert payload to the specified endpoint.
+Click the `Test` button in the web notification form to send a sample request to the specified endpoint.
 
-In order to view the actual payload, create a sample rule, and enable the selected webhook on the `Web Notifications` tab.
+In order to test the actual payload, create a sample rule, and enable notifications on the `Web Notifications` tab.
 
-You can use online resources such as [https://webhook.site](https://webhook.site) for additional testing.
+You can use online resources such as `https://webhook.site` for troubleshooting.
 
 ## Examples
 
 ### Sample Headers
 
-```
+```ls
 | Header Name      | Header Value                                  |
 |------------------|-----------------------------------------------|
 | accept-encoding  | gzip,deflate                                  |
@@ -134,7 +134,7 @@ You can use online resources such as [https://webhook.site](https://webhook.site
     "container-name": "db-test-db2-10.5.0.5",
     "external-port": "48002",
     "host": "172.17.0.12",
-    "port": "50000"    
+    "port": "50000"
   },
   "value": 1,
   "window": "length(1)",

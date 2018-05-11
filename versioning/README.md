@@ -1,6 +1,6 @@
 # Versioning
 
-Versioning enables tracking of time-series value changes for the purpose of audit trail and data reconciliation. 
+Versioning enables tracking of time-series value changes for the purpose of audit trail and data reconciliation.
 
 The capability is required for vertical applications such as Energy Data Management.
 
@@ -8,17 +8,17 @@ The capability is required for vertical applications such as Energy Data Managem
 
 Once enabled, the database tracks changes made to stored values with the following versioning fields:
 
-| Field Name | Description | 
-| --- | --- | 
-|  Version Time  |  Timestamp when insert command was received. Set automatically by ATSD server with millisecond precision.  | 
-|  Version Source  |  User-defined field to track sources (origins) of change events such as username, device id, or IP address. <br>Set to `user:{username}` by default for changes made through the [web interface](#updating-series-value).| 
-|  Version Status  |  User-defined field to classify change events. <br> Set to 'invalid' for `NaN` and out of range values by default if **Invalid Value Action = `SET_VERSION_STATUS`** | 
+| Field Name | Description |
+| --- | --- |
+|  Version Time  |  Timestamp when insert command was received. Set automatically by ATSD server with millisecond precision.  |
+|  Version Source  |  User-defined field to track sources (origins) of change events such as username, device id, or IP address. <br>Set to `user:{username}` by default for changes made through the [web interface](#updating-series-value).|
+|  Version Status  |  User-defined field to classify change events. <br> Set to 'invalid' for `NaN` and out of range values by default if **Invalid Value Action = `SET_VERSION_STATUS`** |
 
 > The ability to specify custom fields with server-side business logic such as change locking, is under development.
 
 ## Enabling Versioning
 
-Versioning is **disabled** by default. 
+Versioning is **disabled** by default.
 
 It can be enabled for specific metrics via [Meta API](../api/meta/metric/update.md), by setting the **Versioning** drop-down to 'Yes' in the multi-record editor, or by enabling **Versioning** on the Metric Editor page:
 
@@ -30,10 +30,10 @@ In addition, **Invalid Value Action** may be set to `SET_VERSION_STATUS` to init
 
 To insert versioning fields along with the modified value, use the reserved tags:
 
- * `$version_source` 
- * `$version_status`
+* `$version_source`
+* `$version_status`
 
-These tags will be converted to the corresponding [versioning fields](#versioning-fields). Note that `$version_status` tag overrides 'invalid' value set by `SET_VERSION_STATUS` trigger. 
+These tags will be converted to the corresponding [versioning fields](#versioning-fields). Note that `$version_status` tag overrides 'invalid' value set by `SET_VERSION_STATUS` trigger.
 
 Options to insert versioned series:
 
@@ -66,7 +66,7 @@ Versioned samples can be added by opening **Data > Data Entry > Series** form an
 
 ![](resources/8.png)
 
-> Note: _Metric_ field must reference an existing metric with _Versioning = Yes_ 
+> Note: _Metric_ field must reference an existing metric with _Versioning = Yes_
 
 ### CSV Parser using Default Tags
 
@@ -76,6 +76,7 @@ To apply the same versioning fields to all records in a CSV file, specify them i
 $version_status={status}
 $version_source={source}
 ```
+
 ![](resources/2.png)
 
 > Note:
@@ -87,7 +88,6 @@ $version_source={source}
 To extract versioning fields from CSV content, add the version tags to the **Tag Columns** field and specify mappings between the original column names and version tag names in the **Renamed Columns** field.
 
 ![](resources/3.png)
-
 
 > Note:
 > * Request to insert versioned value for a **non-versioned** metric will cause a validation error.
@@ -103,9 +103,9 @@ Open the **Filters** section and enable **Display Versions** setting on export p
 
 ![](resources/4.png)
 
-- Records with version history are highlighted with _blue_ and _brown_-colored borders: _blue_ border represents the latest value, _brown_ border represents a historical, overwritten value.
-- `NaN` represents deleted values. 
-- Aggregation functions and other calculations ignore historical and deleted values.
+* Records with version history are highlighted with _blue_ and _brown_-colored borders: _blue_ border represents the latest value, _brown_ border represents a historical, overwritten value.
+* `NaN` represents deleted values.
+* Aggregation functions and other calculations ignore historical and deleted values.
 
 #### Version Filters
 
@@ -118,25 +118,28 @@ Examples:
 
 * Match using wildcards
 
-    ```ls
+```ls
     version_source LIKE 'col*'
-    ```
+```
+
     ![](resources/5.png)
 
 * Match using date function
 
-    ```ls
+```ls
     version_time > date('2018-03-21 10:41:00') AND version_time < date('now')
-    ```
+```
+
     ![](resources/6.png)
-    
+
 * Match using exact value
 
-    ```ls 
+```ls
     version_status = 'OK'
-    ```
+```
+
     ![](resources/7.png)
-    
+
 * Display only modified values
 
     ![](resources/17.png)
@@ -149,7 +152,7 @@ Click on timestamp for the selected record to open the **Data Entry** page.
 
 ![](resources/9.png)
 
-Change version _Status_ and _Source_, change the _Value_ and click **Update**.
+Change version _Status_ and _Source_, change the `Value` and click **Update**.
 
 ![](resources/10.png)
 
@@ -163,7 +166,7 @@ Click the timestamp for the selected record to open the **Data Entry** page.
 
 ![](resources/9.png)
 
-Change version _Status_ and _Source_, change the _Value_ and click **Delete**.
+Change version _Status_ and _Source_, change the `Value` and click **Delete**.
 
 ![](resources/12.png)
 

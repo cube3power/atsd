@@ -2,7 +2,7 @@
 
 ## Description
 
-Insert data for an entity, metric (no tags) with sample times specified in ISO format.  
+Insert data for an entity, metric (no tags) with sample times specified in ISO format.
 
 Millisecond precision is optional.
 
@@ -11,7 +11,7 @@ Millisecond precision is optional.
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/insert
+POST https://atsd_hostname:8443/api/v1/series/insert
 ```
 
 ### Payload
@@ -25,9 +25,4 @@ POST https://atsd_host:8443/api/v1/series/insert
       { "d": "2016-06-05T05:49:25.127Z", "v": 14.0 }
     ]
 }]
-```
-
-## Response
-
-```
 ```

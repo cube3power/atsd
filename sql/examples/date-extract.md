@@ -2,7 +2,6 @@
 
 ## EXTRACT
 
-
 ```sql
 SELECT datetime,
   EXTRACT(year FROM datetime) AS "year",

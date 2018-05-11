@@ -49,7 +49,7 @@ series e:default d:2016-10-11T15:38:00Z m:Memory_Avail_MBytes=6139.2 t:_index=3
 series e:default d:2016-10-11T15:38:01Z m:Memory_Avail_MBytes=6141.0
 series e:default d:2016-08-24T15:02:55Z x:BA:ACTIVE.1="" t:status_text="Pt Created" t:status=-253
 series e:default d:2016-08-24T15:03:17Z x:BA:ACTIVE.1=Inactive
-series e:default d:2016-08-24T15:04:17Z x:BA:ACTIVE.1=Active  
+series e:default d:2016-08-24T15:04:17Z x:BA:ACTIVE.1=Active
 series e:default d:2016-08-24T16:15:17Z x:BA:ACTIVE.1=Inactive
 series e:default d:2016-08-24T15:01:09Z m:CDEP158=NaN t:status_text="Shutdown" t:status=-254
 series e:default d:2016-08-24T15:03:17Z m:CDEP158=0
@@ -238,7 +238,7 @@ WHERE t1.datetime >= '2016-10-04T02:00:00Z' AND t2.datetime <= '2016-10-04T02:10
   AND entity = 'br-1470'
   AND t5.text = '1414'
 WITH INTERPOLATE(60 SECOND, AUTO, OUTER, EXTEND, START_TIME)
- ```
+```
 
 ```ls
 | t1.datetime          | t1.entity | t1.value | t2.value | t3.value | t4.value | t5.value | t5.text | t6.text    |

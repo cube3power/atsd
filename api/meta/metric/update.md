@@ -2,7 +2,7 @@
 
 ## Description
 
-Update fields and tags of the specified metric. 
+Update fields and tags of the specified metric.
 
 Unlike the [replace method](create-or-replace.md), fields and tags that are **not** specified in the request are left unchanged.
 
@@ -14,11 +14,11 @@ Similarly, fields that are set to `null` are ignored and are left unchanged.
 |:---|:---|---:|
 | PATCH | `/api/v1/metrics/{metric}` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| metric |string|Metric name.|
+| `metric` |string|Metric name.|
 
 ### Fields
 
@@ -39,7 +39,7 @@ None.
 #### URI
 
 ```elm
-PATCH https://atsd_host:8443/api/v1/metrics/cpu_busy
+PATCH https://atsd_hostname:8443/api/v1/metrics/cpu_busy
 ```
 
 #### Payload
@@ -56,7 +56,7 @@ PATCH https://atsd_host:8443/api/v1/metrics/cpu_busy
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics/cpu_busy \
+curl https://atsd_hostname:8443/api/v1/metrics/cpu_busy \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PATCH \

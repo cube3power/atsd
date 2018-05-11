@@ -2,22 +2,22 @@
 
 ## Description
 
-Compute the rate of change (first derivative) by dividing the change in value by the change in time (milliseconds). 
+Compute the rate of change (first derivative) by dividing the change in value by the change in time (milliseconds).
 
 If a [period](../../../../api/data/series/period.md) is specified, the `rate` function returns change per period duration. The rate is computed for each sample, except 1st.
 
 ### Data
 
 ```ls
-| datetime                 | value         | 
-|--------------------------|---------------| 
+| datetime                 | value         |
+|--------------------------|---------------|
 | 2016-06-27T14:10:06.000Z | 2416571149884 | no rate return
 | 2016-06-27T14:10:21.000Z | 2416575751447 | rate at 14:10:21
-| 2016-06-27T14:10:36.000Z | 2416579173021 |    
-| 2016-06-27T14:10:51.000Z | 2416581490451 | 
+| 2016-06-27T14:10:36.000Z | 2416579173021 |
+| 2016-06-27T14:10:51.000Z | 2416581490451 |
 ```
 
-Rate at 14:10:21: 
+Rate at 14:10:21:
 
 ```ls
 (2416575751447 - 2416571149884)/(2016-06-27T14:10:21.000Z - 2016-06-27T14:10:06.000Z) =
@@ -30,7 +30,7 @@ Rate at 14:10:21:
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 ### Payload
@@ -44,7 +44,7 @@ POST https://atsd_host:8443/api/v1/series/query
     "metric": "net_tx_bytes",
     "rate": {
         "period": {"count": 1, "unit": "SECOND"}
-    }      
+    }
   }
 ]
 ```
@@ -55,13 +55,13 @@ POST https://atsd_host:8443/api/v1/series/query
 
 ```json
 [{"entity":"nurswgvml007","metric":"net_tx_bytes",
-	"tags":{"name":"eth1"},"type":"HISTORY",
-	"aggregate":{"type":"DETAIL"},
-	"rate":{"period":{"count":1,"unit":"SECOND"},"counter":true},
+    "tags":{"name":"eth1"},"type":"HISTORY",
+    "aggregate":{"type":"DETAIL"},
+    "rate":{"period":{"count":1,"unit":"SECOND"},"counter":true},
 "data":[
-	{"d":"2016-06-27T14:10:21.000Z","v":306770.86666666664},
-	{"d":"2016-06-27T14:10:36.000Z","v":228104.93333333332},
-	{"d":"2016-06-27T14:10:51.000Z","v":154495.33333333334}
+    {"d":"2016-06-27T14:10:21.000Z","v":306770.86666666664},
+    {"d":"2016-06-27T14:10:36.000Z","v":228104.93333333332},
+    {"d":"2016-06-27T14:10:51.000Z","v":154495.33333333334}
 ]}]
 ```
 
@@ -78,7 +78,7 @@ If the interval between samples is equidistant, no period would be equivalent to
     "endDate":   "2016-06-27T14:11:00Z",
     "entity": "nurswgvml007",
     "metric": "net_tx_bytes",
-    "rate": { }      
+    "rate": { }
   }
 ]
 ```
@@ -87,13 +87,13 @@ If the interval between samples is equidistant, no period would be equivalent to
 
 ```json
 [{"entity":"nurswgvml007","metric":"net_tx_bytes",
-	"tags":{"name":"eth1"},"type":"HISTORY",
-	"aggregate":{"type":"DETAIL"},
-	"rate":{"period":{"count":1,"unit":"SECOND"},"counter":true},
+    "tags":{"name":"eth1"},"type":"HISTORY",
+    "aggregate":{"type":"DETAIL"},
+    "rate":{"period":{"count":1,"unit":"SECOND"},"counter":true},
 "data":[
-	{"d":"2016-06-27T14:10:21.000Z","v":4601563.0},
-	{"d":"2016-06-27T14:10:36.000Z","v":3421574.0},
-	{"d":"2016-06-27T14:10:51.000Z","v":2317430.0}
+    {"d":"2016-06-27T14:10:21.000Z","v":4601563.0},
+    {"d":"2016-06-27T14:10:36.000Z","v":3421574.0},
+    {"d":"2016-06-27T14:10:51.000Z","v":2317430.0}
 ]}]
 ```
 
@@ -102,16 +102,16 @@ If the interval between samples is equidistant, no period would be equivalent to
 With counter mode OFF, the rate returns delta between consecutive samples regardless if the change was positive or negative.
 
 ```ls
-| datetime                 | value         | 
-|--------------------------|---------------| 
-| 2016-02-16T12:11:13.000Z | 6021313083414 | 
-| 2016-02-16T12:11:28.000Z | 6021315128131 | 
-| 2016-02-16T12:11:43.000Z | 6021316614529 | 
-| 2016-02-16T12:11:58.000Z | 6021317932602 | 
+| datetime                 | value         |
+|--------------------------|---------------|
+| 2016-02-16T12:11:13.000Z | 6021313083414 |
+| 2016-02-16T12:11:28.000Z | 6021315128131 |
+| 2016-02-16T12:11:43.000Z | 6021316614529 |
+| 2016-02-16T12:11:58.000Z | 6021317932602 |
 | 2016-02-16T12:35:12.000Z | 1591585       | + reset +
-| 2016-02-16T12:35:27.000Z | 2065410       | 
-| 2016-02-16T12:35:43.000Z | 3380806       | 
-| 2016-02-16T12:35:58.000Z | 7144214       | 
+| 2016-02-16T12:35:27.000Z | 2065410       |
+| 2016-02-16T12:35:43.000Z | 3380806       |
+| 2016-02-16T12:35:58.000Z | 7144214       |
 ```
 
 ### Request
@@ -135,13 +135,13 @@ With counter mode OFF, the rate returns delta between consecutive samples regard
 "aggregate":{"type":"DETAIL"},
 "rate":{"period":{"count":0,"unit":"SECOND"},"counter":false},
 "data":[
-	{"d":"2016-02-16T12:11:28.000Z","v":2044717.0},
-	{"d":"2016-02-16T12:11:43.000Z","v":1486398.0},
-	{"d":"2016-02-16T12:11:58.000Z","v":1318073.0},
-	{"d":"2016-02-16T12:35:12.000Z","v":-6.021316341017E12},
-	{"d":"2016-02-16T12:35:27.000Z","v":473825.0},
-	{"d":"2016-02-16T12:35:43.000Z","v":1315396.0},
-	{"d":"2016-02-16T12:35:58.000Z","v":3763408.0}
+    {"d":"2016-02-16T12:11:28.000Z","v":2044717.0},
+    {"d":"2016-02-16T12:11:43.000Z","v":1486398.0},
+    {"d":"2016-02-16T12:11:58.000Z","v":1318073.0},
+    {"d":"2016-02-16T12:35:12.000Z","v":-6.021316341017E12},
+    {"d":"2016-02-16T12:35:27.000Z","v":473825.0},
+    {"d":"2016-02-16T12:35:43.000Z","v":1315396.0},
+    {"d":"2016-02-16T12:35:58.000Z","v":3763408.0}
 ]}]
 ```
 
@@ -174,11 +174,11 @@ The default behavior counter is ON.
 "aggregate":{"type":"DETAIL"},
 "rate":{"period":{"count":0,"unit":"SECOND"},"counter":false},
 "data":[
-	{"d":"2016-02-16T12:11:28.000Z","v":2044717.0},
-	{"d":"2016-02-16T12:11:43.000Z","v":1486398.0},
-	{"d":"2016-02-16T12:11:58.000Z","v":1318073.0},
-	{"d":"2016-02-16T12:35:27.000Z","v":473825.0},
-	{"d":"2016-02-16T12:35:43.000Z","v":1315396.0},
-	{"d":"2016-02-16T12:35:58.000Z","v":3763408.0}
+    {"d":"2016-02-16T12:11:28.000Z","v":2044717.0},
+    {"d":"2016-02-16T12:11:43.000Z","v":1486398.0},
+    {"d":"2016-02-16T12:11:58.000Z","v":1318073.0},
+    {"d":"2016-02-16T12:35:27.000Z","v":473825.0},
+    {"d":"2016-02-16T12:35:43.000Z","v":1315396.0},
+    {"d":"2016-02-16T12:35:58.000Z","v":3763408.0}
 ]}]
 ```

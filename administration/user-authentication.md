@@ -54,34 +54,33 @@ The following password rules apply to **Local** accounts:
 
 * Password can contain the following characters:
 
-    - Unicode character categorized as an alphanumeric character.
+  * Unicode character categorized as an alphanumeric character.
 
-    - Special characters:
+  * Special characters:
 
-```
+```txt
       ~!@#$%^&*_-+=`|\(){}[]:;”‘<>,.?/"'
 ```
 
 ## Built-in Account
 
--   When accessed for the first time after the installation, the database presents a web page for configuring the default administrator account. This account is granted an `ADMIN` role which has `All Entities: Read / Write` permissions.
+* When accessed for the first time after the installation, the database presents a web page for configuring the default administrator account. This account is granted an `ADMIN` role which has `All Entities: Read / Write` permissions.
 
 ## Changing the Password
 
--   Users with Local accounts can modify their password by clicking on the user icon in the top menu.
+* Users with Local accounts can modify their password by clicking on the user icon in the top menu.
 
--   Users are not allowed to change their own type, roles, group membership, or entity permissions.
+* Users are not allowed to change their own type, roles, group membership, or entity permissions.
 
 ## Resetting Password
 
 * User passwords for Local accounts are stored as hashcodes. As a result, recovering a lost password is not supported.
 
 * To reset the password for a user account:
-
-    - Open the `server.properties` file.
-    - Add `user.password.reset.username={username}` and `user.password.reset.password={new-password}` settings and save the file.
-	  - Restart ATSD.
-	  - Remove the above settings from the `server.properties` file to prevent password resets on subsequent restarts.
+  * Open the `server.properties` file.
+  * Add `user.password.reset.username={username}` and `user.password.reset.password={new-password}` settings and save the file.
+    * Restart ATSD.
+    * Remove the above settings from the `server.properties` file to prevent password resets on subsequent restarts.
 
 * If the account being reset is configured as LDAP type, the type will be changed to Local.
 
@@ -110,20 +109,20 @@ SQL query results can be published to all visitors by checking 'Guest Access' fi
 * Java Example:
 
 ```java
-	URL url = new URL("http://10.102.0.6:8088/api/v1/series");
-	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-	conn.setDoOutput(true);
-	conn.setRequestMethod("POST");
-	conn.setRequestProperty("charset", "utf-8");
+    URL url = new URL("http://10.102.0.6:8088/api/v1/series");
+    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+    conn.setDoOutput(true);
+    conn.setRequestMethod("POST");
+    conn.setRequestProperty("charset", "utf-8");
 
-	String authString = userName + ":" + password;
-	String authEncoded = DatatypeConverter.printBase64Binary(authString.getBytes());
-	conn.setRequestProperty("Authorization", "Basic " + authEncoded);
+    String authString = userName + ":" + password;
+    String authEncoded = DatatypeConverter.printBase64Binary(authString.getBytes());
+    conn.setRequestProperty("Authorization", "Basic " + authEncoded);
 ```
 
 * `curl` Example:
 
-```bash
+```sh
 curl http://10.102.0.6:8088/api/v1/properties/query \
   --user {username}:{password} \
   --header "Content-Type: application/json" \

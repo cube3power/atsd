@@ -20,11 +20,11 @@ Retrieve a list of entities that are members of the specified entity group and a
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| expression |string|Expression to include entities by name or by entity tags. Use the `name` field for entity name. The wildcard `*` is supported.|
-| minInsertDate |string|Include entities with last insert date at or greater than specified time. <br>`minInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
-| maxInsertDate |string|Include entities with last insert date less than specified time.<br>`maxInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
-| limit |integer|Maximum number of entities to retrieve, ordered by name.|
-| tags |string|Comma-separated list of entity tag names to include in the response, for example, `tags=OS,location`.<br>Specify `tags=*` to include all entity tags.<br>Specify `tags=env.*` to include all metric tags starting with `env.`.|
+| `expression` |string|Expression to include entities by name or by entity tags. Use the `name` field for entity name. The wildcard `*` is supported.|
+| `minInsertDate` |string|Include entities with last insert date at or greater than specified time. <br>`minInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
+| `maxInsertDate` |string|Include entities with last insert date less than specified time.<br>`maxInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
+| `limit` |integer|Maximum number of entities to retrieve, ordered by name.|
+| `tags` |string|Comma-separated list of entity tag names to include in the response, for example, `tags=OS,location`.<br>Specify `tags=*` to include all entity tags.<br>Specify `tags=env.*` to include all metric tags starting with `env.`.|
 
 ## Response
 
@@ -39,7 +39,7 @@ Refer to fields specified in [Entity List](../../../api/meta/entity/list.md#fiel
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/entity-groups/nur-entities-name/entities?tags=*&limit=3
+GET https://atsd_hostname:8443/api/v1/entity-groups/nur-entities-name/entities?tags=*&limit=3
 ```
 
 #### Payload
@@ -49,17 +49,17 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/entity-groups/nur-entities-name/entities?tags=*&limit=3 \
+curl https://atsd_hostname:8443/api/v1/entity-groups/nur-entities-name/entities?tags=*&limit=3 \
   --insecure --verbose --user {username}:{password} \
   --request GET
-  ```
+```
 
 ### Response
 
 ```json
 [
     {
-        "name": "atsd_server",
+        "name": "atsd_hostname",
         "enabled": true,
         "tags": {}
     },

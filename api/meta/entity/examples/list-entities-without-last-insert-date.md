@@ -2,14 +2,14 @@
 
 List entities without `lastInsertDate`. This can occur when the data collected by the entity was subsequently deleted, for example when all metrics collected by this entity were deleted, or when old data was pruned according to retention day or series retention day parameters.
 
-To retrieve entities without `lastInsertDate`, set maxInsertDate to `1970-01-01T00:00:00Z` or earlier.
+To retrieve entities without `lastInsertDate`, set `maxInsertDate` to `1970-01-01T00:00:00Z` or earlier.
 
 ## Request
 
 ### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/entities?maxInsertDate=1970-01-01T00:00:00Z&limit=3
+GET https://atsd_hostname:8443/api/v1/entities?maxInsertDate=1970-01-01T00:00:00Z&limit=3
 ```
 
 ## Response

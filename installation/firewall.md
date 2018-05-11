@@ -20,7 +20,7 @@ iptables -I INPUT -p tcp --dport 8443 -j ACCEPT
 
 #### Install the iptables-persistent Package
 
-```
+```sh
 apt-get install iptables-persistent
 ```
 
@@ -34,12 +34,12 @@ The saved rules can be updated:
 
 * By executing the `iptables-save` commands:
 
-```
+```sh
 iptables-save > /etc/iptables/rules.v4
 ip6tables-save > /etc/iptables/rules.v6
 ```
 
-### RHEL / Centos
+### RHEL / CentOS
 
 ```sh
 sed -i "s/IPTABLES_SAVE_ON_STOP=\"no\"/IPTABLES_SAVE_ON_STOP=\"yes\"/g" /etc/sysconfig/iptables-config
@@ -49,7 +49,7 @@ sed -i "s/IPTABLES_SAVE_ON_RESTART=\"no\"/IPTABLES_SAVE_ON_RESTART=\"yes\"/g" /e
 
 ### SUSE
 
-```
+```sh
 echo "FW_SERVICES_EXT_TCP=\"8081 8082 8088 8443\"" >> /etc/sysconfig/SuSEfirewall2
 /sbin/SuSEfirewall2
 ```

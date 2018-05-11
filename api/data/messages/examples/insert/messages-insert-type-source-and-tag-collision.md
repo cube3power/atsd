@@ -7,15 +7,18 @@ The message tags `{"type": "hello", "source": "world"}` are discarded since they
 ## Request
 
 ### URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/messages/insert
+POST https://atsd_hostname:8443/api/v1/messages/insert
 ```
+
 ### Payload
+
 ```json
 [{
     "entity": "nurswgvml007",
     "type": "application",
-	"source": "atsd",
+    "source": "atsd",
     "message": "NURSWGVML007 ssh: error: connect_to localhost port 8882: failed.",
     "tags": {"type": "hello", "source": "world"}
 }]
@@ -24,10 +27,13 @@ POST https://atsd_host:8443/api/v1/messages/insert
 ## Response
 
 ### URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/messages/query
+POST https://atsd_hostname:8443/api/v1/messages/query
 ```
+
 ### Payload
+
 ```json
 [
   {

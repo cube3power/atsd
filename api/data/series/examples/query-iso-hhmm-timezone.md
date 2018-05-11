@@ -1,4 +1,4 @@
-# Series Query: Timezone Formats
+# Series Query: Time Zone Formats
 
 ## Description
 
@@ -16,7 +16,7 @@ Time zone offset can be specified with Z (UTC time), or with the `±hh:mm` forma
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 ### Payload

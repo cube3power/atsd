@@ -10,46 +10,41 @@ By default, ATSD ignores two series tags collected by scollector: environment an
 
 You can change this setting by editing the `server.properties` file:
 
-```
+```txt
 /opt/atsd/atsd/conf/server.properties
 ```
 
 Edit or comment out the following line:
 
-```
+```elm
 scollector.ignore.tags = environment role
 ```
 
 Restart ATSD for the changes to take effect.
 
-#### Default Entity Groups and Portals for scollector in ATSD
+## Default Entity Groups and Portals for scollector in ATSD
 
 Entities collecting scollector data are automatically grouped in ATSD:
 
 Entity Groups:
 
-
-- `scollector-linux`
-- `scollector-windows`
-- `scollector-dotnet`
-- `scollector-iis`
-- `scollector-mssql`
-
+* `scollector-linux`
+* `scollector-windows`
+* `scollector-dotnet`
+* `scollector-iis`
+* `scollector-mssql`
 
 Default portals are assigned to scollector entity groups.
 
 Portals:
 
+* `scollector-Linux`
+* `scollector-Windows`
+* `scollector-IIS`
+* `scollector-.NET`
+* `scollector-MS SQL`
 
-- `scollector-Linux`
-- `scollector-Windows`
-- `scollector-IIS`
-- `scollector-.NET`
-- `scollector-MS SQL`
-
-
-##### scollector-Linux Portal:
-
+### scollector-Linux Portal
 
 Launch a live scollector-Linux portal in Axibase Chart Lab.
 
@@ -57,8 +52,7 @@ Launch a live scollector-Linux portal in Axibase Chart Lab.
 
 ![](resources/scollector-Linux1.png)
 
-##### scollector-Windows Portal:
-
+### scollector-Windows Portal
 
 Launch live scollector-Windows portal in Axibase Chart Lab.
 
@@ -66,8 +60,7 @@ Launch live scollector-Windows portal in Axibase Chart Lab.
 
 ![](resources/scollector-Windows1.png)
 
-##### scollector-MS SQL Portal:
-
+### scollector-MS SQL Portal
 
 Launch live scollector-MS SQL portal in Axibase Chart Lab.
 
@@ -75,8 +68,7 @@ Launch live scollector-MS SQL portal in Axibase Chart Lab.
 
 ![](resources/scollector_mssql_portal1.png)
 
-##### scollector-.NET Portal:
-
+### scollector-.NET Portal
 
 Launch live scollector-.NET portal in Axibase Chart Lab.
 
@@ -84,15 +76,15 @@ Launch live scollector-.NET portal in Axibase Chart Lab.
 
 ![](resources/scollector_dotnetl_portal.png)
 
-##### scollector-IIS Portal:
+### scollector-IIS Portal
 
 ![](resources/scollector_iis_portal.png)
 
-#### Collected Metrics
+## Collected Metrics
 
-#### Linux
+### Linux
 
-```
+```txt
 linux.cpu
 linux.cpu.clock
 linux.cpu.percpu
@@ -560,9 +552,9 @@ scollector.collect.sent
 scollector.version
 ```
 
-#### Windows
+### Windows
 
-```
+```txt
 dsc.lcm.configured
 os.cpu
 os.cpu.clock

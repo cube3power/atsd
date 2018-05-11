@@ -1,12 +1,12 @@
 # Metric: Series Tags
 
-## Description 
+## Description
 
-Returns unique **series** tags values for the specified metric. 
+Returns unique **series** tags values for the specified metric.
 
 ## Request
 
-| **Method** | **Path** | 
+| **Method** | **Path** |
 |:---|:---|
 | GET | `/api/v1/metrics/{metric}/series/tags` |
 
@@ -14,17 +14,17 @@ Returns unique **series** tags values for the specified metric.
 
 | **Name** | **Description** |
 |:---|:---|
-| metric | **[Required]** Metric name. |
+| `metric` | **[Required]** Metric name. |
 
 ### Query Parameters
 
 | **Parameter** |**Type**| **Description** |
 |:---|:---|:---|
-| entity | string| Filter series for the specified entity name. |
-| tags.{tag-name} | string | Filter series with the specified series tag value.<br>Supported wildcards: `*`.<br>Examples: `&tags.site=ABC` or `&tags.site=AB*&tags.location=*`. |
-| tags | string | Include specified series tags in the response.<br>Supported wildcards: `*`. Default value: `*` (all tags).<br>Example: `tags=si*` or `tags=site,location`|
-| minInsertDate |string|Include series with `lastInsertDate` equal or greater than `minInsertDate`.<br>`minInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keyword.|
-| maxInsertDate |string|Include series with `lastInsertDate` less than `maxInsertDate`.<br>`maxInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keyword.|
+| `entity` | string| Filter series for the specified entity name. |
+| `tags.{tag-name}` | string | Filter series with the specified series tag value.<br>Supported wildcards: `*`.<br>Examples: `&tags.site=ABC` or `&tags.site=AB*&tags.location=*`. |
+| `tags` | string | Include specified series tags in the response.<br>Supported wildcards: `*`. Default value: `*` (all tags).<br>Example: `tags=si*` or `tags=site,location`|
+| `minInsertDate` |string|Include series with `lastInsertDate` equal or greater than `minInsertDate`.<br>`minInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keyword.|
+| `maxInsertDate` |string|Include series with `lastInsertDate` less than `maxInsertDate`.<br>`maxInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keyword.|
 
 ## Response
 
@@ -45,7 +45,7 @@ None.
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/metrics/disk_used/series/tags?entity=nurswgvml006
+GET https://atsd_hostname:8443/api/v1/metrics/disk_used/series/tags?entity=nurswgvml006
 ```
 
 #### Payload
@@ -55,7 +55,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics/disk_used/series/tags?entity=nurswgvml006 \
+curl https://atsd_hostname:8443/api/v1/metrics/disk_used/series/tags?entity=nurswgvml006 \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```
@@ -74,7 +74,7 @@ curl https://atsd_host:8443/api/v1/metrics/disk_used/series/tags?entity=nurswgvm
 * Include only `mount_point` tag in the response.
 
 ```elm
-https://atsd_host:8443/api/v1/metrics/disk_used/series/tags?file_system=/&tags=mount_point
+https://atsd_hostname:8443/api/v1/metrics/disk_used/series/tags?file_system=/&tags=mount_point
 ```
 
 ```json
@@ -82,7 +82,3 @@ https://atsd_host:8443/api/v1/metrics/disk_used/series/tags?file_system=/&tags=m
   "mount_point":["/","/app","/dev","/media/datadrive","/mnt/u113452"]
 }
 ```
-
-
-
-

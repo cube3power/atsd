@@ -1,24 +1,24 @@
 # StatsD
 
-[StatsD](https://github.com/etsy/statsd) is a network daemon that runs on the Node.js platform and listens for statistics, like counters and timers, sent over UDP or TCP and sends aggregates to one or more pluggable backend services.
+[StatsD](https://github.com/etsy/statsd) is a network daemon that runs on the Node.js platform and listens for statistics, like counters and timers, sent over UDP or TCP and sends aggregates to one or more pluggable back-end services.
 
-[Setup the Axibase Time Series Database StatsD Backend.](statsd-backend.md)
+[Setup the Axibase Time Series Database StatsD Back-end.](statsd-backend.md)
 
-ATSD is able to ingest informaton from the StatsD format.
+The StatsD format is supported in ATSD.
 
 Basic Format:
 
-```
+```ls
 {metricname}:{value}|{type}
 ```
 
 Extended Format:
 
-```
+```ls
 metric.name:value|type|@sample_rate|#tag1:value,tag2
 ```
 
-#### StatsD Installation and Configuration
+## StatsD Installation and Configuration
 
 Download and install StatsD:
 
@@ -65,7 +65,7 @@ Start StatsD:
 sudo service statsd start
 ```
 
-#### StatsD WordPress Example
+## StatsD WordPress Example
 
 Go to the Plugins menu on your WordPress administration page:
 
@@ -95,7 +95,7 @@ define('STATSD_PORT', xxxx);
 
 Metrics collected by StatsD from WordPress:
 
-```
+```txt
 Logins (success, fails, logout)
 Password resets (attempts/successes)
 User count (guage)

@@ -6,7 +6,7 @@ The following example demonstrates how to send a message to an [Amazon SQS](http
 
 The request is automatically signed with **AWS Signature, v4**, implemented by this notification type, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
 
-The example invokes the [Amazon SQS API](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) `SendMessage` action.
+The example invokes the [Amazon SQS API](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) `SendMessage` action.
 
 ## Configuration
 
@@ -27,9 +27,9 @@ Enter a name and specify the following parameters:
 | Secret Access Key | `<AWS_SECRET_ACCESS_KEY>` |
 | Action | `SendMessage`|
 
-Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your [Amazon SQS region](http://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region), for example:
+Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your [Amazon SQS region](https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region), for example:
 
-```
+```elm
 https://sqs.us-east-1.amazonaws.com
 ```
 
@@ -39,8 +39,8 @@ Add required parameters for `SendMessage` action:
 
 | **Name** | **Value** |
 | :--- | :--- |
-| MessageBody | `<MESSAGE_TEXT>` |
-| QueueUrl | `<AWS_SQS_QUEUE_URL>` |
+| `MessageBody` | `<MESSAGE_TEXT>` |
+| `QueueUrl` | `<AWS_SQS_QUEUE_URL>` |
 
 Modify the `MessageBody` by replacing the `<MESSAGE_TEXT>` value with your text, for example:
 
@@ -58,7 +58,7 @@ The `MessageBody` text contains placeholders that will be substituted with actua
 
 Modify the `QueueUrl` by replacing the `<AWS_SQS_QUEUE_URL>` value with your url, for example:
 
-```
+```elm
 https://sqs.us-east-1.amazonaws.com/568708720055/test
 ```
 
@@ -70,7 +70,7 @@ Create a new rule or import the [rule template](resources/aws-api-sqs-rule.xml) 
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
-Specify the key settings on the **Overview** tab. 
+Specify the key settings on the **Overview** tab.
 
 | **Name** | **Value** |
 | :-------- | :---- |
@@ -92,9 +92,9 @@ Specify the message text into the `MessageBody` parameter for all triggers.
 
 ## Test
 
-In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
+Test the integration by submitting a sample `series` command on the **Data > Data Entry** page.
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 

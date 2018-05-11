@@ -1,14 +1,13 @@
-Monthly Change Log: February 2018
-==================================================
+# Monthly Change Log: February 2018
 
 ## ATSD
 
-Issue| Category    | Type    | Subject              
+Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
 5047 | rule engine | Bug | [`CANCEL`](../../rule-engine/window.md#cancel-status) window doesn't display user variables.
 5044 | security | Feature | User [permissions](../../administration/user-authorization.md#user-authorization) page: add group-level details.
 5041 | rule engine | Bug | [Telegram](../../rule-engine/notifications/telegram.md) doesn't support `<br>` when parse_mode is `html`.
-5040 | rule engine | Bug | [Entity-ungrouped](../../rule-engine/grouping.md) rule windows are missing.
+5040 | rule engine | Bug | [Entity non-grouped](../../rule-engine/grouping.md) rule windows are missing.
 5039 | rule engine | Feature | Modify [convert](../../rule-engine/functions-format.md#convert) function unit processing, implement [`formatBytes`](../../rule-engine/functions-format.md#formatbytes) function.
 5036 | admin | Feature | Restore multiple record types from archived XML backup files.
 5034 | data-in | Feature | Internal [timer](../../rule-engine/window.md#timers) metrics.
@@ -18,7 +17,7 @@ Issue| Category    | Type    | Subject
 5025 | rule engine | Bug | Modify [`alert_duration`](../../rule-engine/window.md#time-fields) value.
 5024 | rule engine | Feature | Implement wildcards in key section of the [property search](../../rule-engine/property-search.md#property-search-syntax) expression.
 5022 | entity_views | Bug | Export to XML incomplete.
-5021 | sql | Bug | [`LAST(datetime)`](../../sql#aggregation-functions) displays UNIX time instead of datetime.
+5021 | sql | Bug | [`LAST(datetime)`](../../sql#aggregation-functions) displays UNIX time instead of `datetime` format.
 5017 | rule engine | Bug | Display [window details](../../rule-engine/window.md#window-fields) even if window is in [`CANCEL`](../../rule-engine/window.md#cancel-status) status.
 5015 | rule engine | Bug | Quote escaping with [backslash](../../rule-engine/variables.md#string).
 5014 | rule engine | Bug | [HipChat](../../rule-engine/notifications/hipchat.md) notification: inline links in portal description message.
@@ -77,7 +76,7 @@ Issue| Category    | Type    | Subject
 
 ## Collector
 
-Issue| Category    | Type    | Subject              
+Issue| Category    | Type    | Subject
 -----|-------------|---------|----------------------
 5052 | [docker](https://github.com/axibase/axibase-collector/blob/master/jobs/docker.md) | Bug | `docker.fs.total.size.rw` sampling frequency irregularity.
 5043 | core | Bug | Collector CPU is abnormally high.

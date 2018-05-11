@@ -7,22 +7,25 @@ One of the messages will be discarded since all of the key fields (entity, type,
 ## Request
 
 ### URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/messages/insert
+POST https://atsd_hostname:8443/api/v1/messages/insert
 ```
+
 ### Payload
+
 ```json
 [{
     "entity": "nurswgvml007",
     "type": "application",
-	"source": "atsd",
+    "source": "atsd",
     "message": "ssh: error: connect_to localhost port 7777: failed.",
     "severity": "MAJOR"
 },{
     "entity": "nurswgvml007",
     "type": "application",
-	"source": "atsd",
-	"date": "2016-06-14T14:52:00Z",
+    "source": "atsd",
+    "date": "2016-06-14T14:52:00Z",
     "message": "connect to localhost port 8888: failed.",
     "severity": "INFO"
 }]
@@ -31,10 +34,13 @@ POST https://atsd_host:8443/api/v1/messages/insert
 ## Response
 
 ### URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/messages/query
+POST https://atsd_hostname:8443/api/v1/messages/query
 ```
+
 ### Payload
+
 ```json
 [
   {

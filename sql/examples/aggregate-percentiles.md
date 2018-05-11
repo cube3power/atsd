@@ -1,6 +1,6 @@
 # Aggregate Percentiles
 
-Percentiles for a given entity. 
+Percentiles for a given entity.
 
 `median(value)` is equivalent to `percentile(50, value)`.
 
@@ -19,14 +19,14 @@ SELECT percentile(25, value) AS "p25",
   percentile(99.9, value) AS "p99.9",
   percentile(99.99, value) AS "p99.99"
   FROM "mpstat.cpu_busy"
-WHERE entity = 'nurswgvml007' 
+WHERE entity = 'nurswgvml007'
  AND datetime >= current_day
 ```
 
 ## Results
 
 ```ls
-| p25   | p50   | median(value) | p75   | p90    | p95    | p97.5  | p99    | p99.5  | p99.9  | p99.99 | 
-|-------|-------|---------------|-------|--------|--------|--------|--------|--------|--------|--------| 
-| 4.040 | 6.060 | 6.060         | 9.380 | 23.064 | 42.404 | 55.299 | 82.163 | 93.837 | 98.997 | 99.010 | 
+| p25   | p50   | median(value) | p75   | p90    | p95    | p97.5  | p99    | p99.5  | p99.9  | p99.99 |
+|-------|-------|---------------|-------|--------|--------|--------|--------|--------|--------|--------|
+| 4.040 | 6.060 | 6.060         | 9.380 | 23.064 | 42.404 | 55.299 | 82.163 | 93.837 | 98.997 | 99.010 |
 ```

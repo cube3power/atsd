@@ -16,13 +16,13 @@ Add entities as members to the specified entity group.
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| group |string|Entity group name.|
+| `group` |string|Entity group name.|
 
 ### Query Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| createEntities | boolean | Automatically create new entities from the submitted list if such entities don't exist. Default: true. |
+| `createEntities` | boolean | Automatically create new entities from the submitted list if such entities don't exist. Default: `true`. |
 
 ### Payload
 
@@ -43,7 +43,7 @@ None.
 
 ### Response
 
-If createEntities is false, and the request contains a non-existing entity, the following error will be raised:
+If `createEntities` is `false`, and the request contains a non-existing entity, the following error will be raised:
 
 ```json
 {"error":"com.axibase.tsd.service.DictionaryNotFoundException: ENTITY not found for name: 'e-111'"}
@@ -56,7 +56,7 @@ If createEntities is false, and the request contains a non-existing entity, the 
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/add
+POST https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/add
 ```
 
 #### Payload
@@ -71,12 +71,12 @@ POST https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/add
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/entity-groups/nmon-aix/entities/add \
+curl https://atsd_hostname:8443/api/v1/entity-groups/nmon-aix/entities/add \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \
   --data '["nurswgvml010", "nurswgvml011"]'
-  ```
+```
 
 ### Response
 

@@ -1,19 +1,18 @@
-Weekly Change Log: December 12-18, 2016
-=======================================
+# Weekly Change Log: December 12-18, 2016
 
-### ATSD
+## ATSD
 
 | Issue    | Category        | Type            | Subject                                                   |
 |----------|-----------------|-----------------|-----------------------------------------------------------|
 | 3710     | install         | Feature         | Added support for an embedded collector account with All Entities: read/write permission.                                      |
 | [3704](#issue-3704)     | sql             | Bug             | Fixed 50% percentile division error where percentile was specified in denominator.                              |
-| [3702](#issue-3702)     | sql             | Bug             | Modified syntax error message in case an ungrouped column is included in a `SELECT` expression.                          |
+| [3702](#issue-3702)     | sql             | Bug             | Modified syntax error message in case an non-grouped column is included in a `SELECT` expression.                          |
 | [3701](#issue-3701)     | sql             | Feature         | Optimized processing of partitioning queries using the Last Insert table.                        |
 | [3325](#issue-3325)     | sql             | Bug             | Allowed for columns other than `value` and `*` in the `COUNT` function.                                  |
 
 ### Collector
 
-| Issue    | Category        | Type            | Subject                                                   |       
+| Issue    | Category        | Type            | Subject                                                   |
 |----------|-----------------|-----------------|-----------------------------------------------------------|
 | [3717](#issue-3717)     | docker          | Feature         | Set container label from environment variable `CONTAINER_NAME` for Mesos compatibility. |
 | 3716     | docker          | Bug             | Fixed malformed label for images without a parent image. |
@@ -23,10 +22,7 @@ Weekly Change Log: December 12-18, 2016
 | [3685](#issue-3685)     | docker          | Feature         | Added a setting to remove deleted records from ATSD after a period of time. Containers can be removed after a certain number of days, images/volumes/networks can removed instantly. |
 | 3684     | UI              | Bug             | Added Enable/Disable/Run buttons on the job list page to change status or run multiple jobs at a time using check boxes.                             |
 
-## ATSD
-
 ### Issue 3704
---------------
 
 ```sql
 SELECT tavg.tags.type,
@@ -42,7 +38,6 @@ GROUP BY tavg.tags.type
 ```
 
 ### Issue 3702
---------------
 
 ```sql
 SELECT date_format(time, 'yyyy-MM-dd') as 'date',
@@ -55,7 +50,6 @@ ORDER BY sum(value) desc
 ```
 
 ### Issue 3701
---------------
 
 In this issue, we took a look at optimizing [partitioning queries](../../sql#partitioning), leveraging the fact that we can narrow the start and end date for a scan based on the last times in the Last
 Insert Table. Let's take the below query as an example.
@@ -77,7 +71,6 @@ only need the last value for each combination of tags. We can therefore skip val
 Check out our article on [SQL queries for U.S. death statistics](https://github.com/axibase/atsd-use-cases/blob/master/USMortality/README.md).
 
 ### Issue 3325
---------------
 
 ```sql
 SELECT count(*), count(value), count(entity) FROM cpu_busy WHERE datetime > previous_minute GROUP BY entity
@@ -86,11 +79,10 @@ SELECT count(*), count(value), count(entity) FROM cpu_busy WHERE datetime > prev
 ## Collector
 
 ### Issue 3717
---------------
 
 While Axibase Collector gathers container properties and statistics using full Docker identifiers, it sends container names as entity labels into ATSD. This makes it possible to refer
 to human-readable container names in graphs and alerts. There are however several orchestration frameworks which use container names to store their own identifiers, for
-instance [Mesos](http://mesos.apache.org/):
+instance [Mesos](https://mesos.apache.org/):
 
 * Mesos Container ID:
 
@@ -152,7 +144,6 @@ Docker `inspect` snippet for a Mesos-managed container:
 ```
 
 ### Issue 3685
---------------
 
 Recently added to the [`docker`](https://github.com/axibase/axibase-collector/blob/master/jobs/docker.md#docker-job) job in Collector is the ability to remove deleted records in ATSD for objects that no longer exist in Docker itself.
 

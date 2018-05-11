@@ -80,7 +80,7 @@ In `local_settings.py` change the `SECRET_KEY` setting to a random number.
 
 Configure your finders:
 
-In the `local_settings.py` file specify the storage finders, ATSD hostname/IP, ATSD port, ATSD username, and ATSD password ([as described here](https://axibase.com/products/axibase-time-series-database/writing-data/graphite-format/storage-finder/)):
+In the `local_settings.py` file specify the storage finders, ATSD hostname/IP, ATSD port, ATSD username, and ATSD password ([as described here](storage-finder.md)):
 
 ```python
 STORAGE_FINDERS = (
@@ -92,13 +92,13 @@ STORAGE_FINDERS = (
 
 ```json
 ATSD_CONF = {
-    'url': 'http://atsd_server:8088',
+    'url': 'http://atsd_hostname:8088',
     'username': 'atsd_username',
     'password': 'secret_pwd',
 }
 ```
 
-Configure Apache2 wsgi:
+Configure Apache2 `wsgi`:
 
 ```sh
 cd /opt/graphite/examples
@@ -117,7 +117,7 @@ Enable graphite-web site configuration:
 sudo a2ensite graphite-web
 ```
 
-Setup django database schema:
+Setup Django database schema:
 
 ```sh
 sudo PYTHONPATH=/opt/graphite/webapp django-admin.py syncdb --settings=graphite.settings

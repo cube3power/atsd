@@ -34,7 +34,7 @@ The file contains over 2 million lines. The OHLC metrics contain values with up 
 
 Each row consists of 5 metrics for a given 1-minute interval:
 
-```
+```txt
 09/08/2017,15:42,142.53,142.5399,142.49,142.49,10031
 ...
 time   = 09/08/2017 15:42
@@ -62,27 +62,28 @@ The **Universal Table** schema allows adding new metrics without altering the ta
 
 ```sql
 DESCRIBE TradeHistory;
+```
 
- Name				     Null?    Type
+```txt
+ Name                     Null?    Type
  ----------------------------------- -------- ------------------------
- INSTRUMENT			     NOT NULL NUMBER(7)
- OPEN					      NUMBER(7,4)
- HIGH					      NUMBER(7,4)
- LOW					      NUMBER(7,4)
- CLOSE					      NUMBER(7,4)
- VOLUME 				      NUMBER(8)
- TIME				     NOT NULL TIMESTAMP(0)
-
+ INSTRUMENT                 NOT NULL NUMBER(7)
+ OPEN                          NUMBER(7,4)
+ HIGH                          NUMBER(7,4)
+ LOW                          NUMBER(7,4)
+ CLOSE                          NUMBER(7,4)
+ VOLUME                       NUMBER(8)
+ TIME                     NOT NULL TIMESTAMP(0)
 
 SELECT * FROM TradeHistory FETCH FIRST 5 ROWS ONLY;
 
-INSTRUMENT|	 OPEN|	    HIGH|	LOW|	 CLOSE|    VOLUME|TIME
+INSTRUMENT|     OPEN|        HIGH|    LOW|     CLOSE|    VOLUME|TIME
 ----------|----------|----------|----------|----------|----------|----------------------
-	 1|	104.5|	   104.5|     104.5|	 104.5|     67000|02-JAN-98 09.30.00 AM
-	 1|    104.38|	   104.5|    104.38|	104.38|     10800|02-JAN-98 09.31.00 AM
-	 1|    104.44|	   104.5|    104.38|	 104.5|     13300|02-JAN-98 09.32.00 AM
-	 1|    104.44|	   104.5|    104.38|	104.38|     16800|02-JAN-98 09.33.00 AM
-	 1|    104.38|	   104.5|    104.38|	104.38|      4801|02-JAN-98 09.34.00 AM
+     1|    104.5|       104.5|     104.5|     104.5|     67000|02-JAN-98 09.30.00 AM
+     1|    104.38|       104.5|    104.38|    104.38|     10800|02-JAN-98 09.31.00 AM
+     1|    104.44|       104.5|    104.38|     104.5|     13300|02-JAN-98 09.32.00 AM
+     1|    104.44|       104.5|    104.38|    104.38|     16800|02-JAN-98 09.33.00 AM
+     1|    104.38|       104.5|    104.38|    104.38|      4801|02-JAN-98 09.34.00 AM
 
 ```
 
@@ -91,17 +92,16 @@ INSTRUMENT|	 OPEN|	    HIGH|	LOW|	 CLOSE|    VOLUME|TIME
 ```sql
 DESCRIBE Instruments;
 
- Name			 Null?	  Type
+ Name             Null?      Type
  ----------------------- -------- ----------------
- ID			 NOT NULL NUMBER(7)
- NAME				  VARCHAR2(20)
-
+ ID             NOT NULL NUMBER(7)
+ NAME                  VARCHAR2(20)
 
 SELECT * FROM Instruments;
 
-	ID|NAME
+    ID|NAME
 ----------|--------------------
-	 1|IBM
+     1|IBM
 ```
 
 ### **Universal Table** Schema
@@ -111,23 +111,22 @@ SELECT * FROM Instruments;
 ```sql
 DESCRIBE UniversalHistory;
 
-Name				     Null?    Type
+Name                     Null?    Type
  ----------------------------------- -------- ------------------------
- INSTRUMENT			     NOT NULL NUMBER(7)
- METRIC 			     NOT NULL NUMBER(7)
- TIME				     NOT NULL TIMESTAMP(0)
- VALUE					      NUMBER(12,4)
-
+ INSTRUMENT                 NOT NULL NUMBER(7)
+ METRIC                  NOT NULL NUMBER(7)
+ TIME                     NOT NULL TIMESTAMP(0)
+ VALUE                          NUMBER(12,4)
 
 SELECT * FROM UniversalHistory FETCH FIRST 5 ROWS ONLY;
 
-INSTRUMENT|    METRIC|TIME									 |     VALUE
+INSTRUMENT|    METRIC|TIME                                     |     VALUE
 ----------|----------|---------------------------------------------------------------------------|----------
-	 1|	    1|02-JAN-98 09.30.00 AM							 |     104.5
-	 1|	    1|02-JAN-98 09.31.00 AM							 |    104.38
-	 1|	    1|02-JAN-98 09.32.00 AM							 |    104.44
-	 1|	    1|02-JAN-98 09.33.00 AM							 |    104.44
-	 1|	    1|02-JAN-98 09.34.00 AM							 |    104.38
+     1|        1|02-JAN-98 09.30.00 AM                             |     104.5
+     1|        1|02-JAN-98 09.31.00 AM                             |    104.38
+     1|        1|02-JAN-98 09.32.00 AM                             |    104.44
+     1|        1|02-JAN-98 09.33.00 AM                             |    104.44
+     1|        1|02-JAN-98 09.34.00 AM                             |    104.38
 ```
 
 * Instruments Table
@@ -135,16 +134,16 @@ INSTRUMENT|    METRIC|TIME									 |     VALUE
 ```sql
 DESCRIBE Instruments;
 
-Name				     Null?    Type
+Name                     Null?    Type
  ----------------------------------- -------- ------------------------
- ID				     NOT NULL NUMBER(7)
- NAME					      VARCHAR2(20)
+ ID                     NOT NULL NUMBER(7)
+ NAME                          VARCHAR2(20)
 
 SELECT * FROM Instruments;
 
-	ID|NAME
+    ID|NAME
 ----------|--------------------
-	 1|IBM
+     1|IBM
 ```
 
 * Metrics Table
@@ -152,21 +151,20 @@ SELECT * FROM Instruments;
 ```sql
 DESCRIBE Metrics;
 
-Name				     Null?    Type
+Name                     Null?    Type
  ----------------------------------- -------- ------------------------
- ID				     NOT NULL NUMBER(7)
- NAME					      VARCHAR2(20)
-
+ ID                     NOT NULL NUMBER(7)
+ NAME                          VARCHAR2(20)
 
 SELECT * FROM Metrics;
 
-	ID|NAME
+    ID|NAME
 ----------|--------------------
-	 1|Open
-	 2|High
-	 3|Low
-	 4|Close
-	 5|Volume
+     1|Open
+     2|High
+     3|Low
+     4|Close
+     5|Volume
 ```
 
 ## Executing Tests
@@ -192,16 +190,16 @@ Verify the row count:
 wc -l IBM_adjusted.txt
 ```
 
-```
+```txt
 2045514 IBM_adjusted.txt
 ```
 
 ### Launch Oracle Database Container
 
 Build a Oracle EE 12c 12.2.0.1 container as described [here](https://github.com/oracle/docker-images/tree/master/OracleDatabase).
-Mount `/tmp/test` directory to the container and start using following command.
+Start the container with `/tmp/test` directory.
 
-```properties
+```elm
 docker run --name oracle \
   -e ORACLE_SID=axibase \
   -e ORACLE_PWD=axibase \
@@ -209,7 +207,7 @@ docker run --name oracle \
   -d oracle/database:12.2.0.1-ee
 ```
 
-### Execute SQL scripts for the **Trade Table** Schema.
+### Execute SQL scripts for the **Trade Table** Schema
 
 ```sh
 curl -o /tmp/test/oracle-trade-table.sql \
@@ -223,33 +221,32 @@ docker exec -u root oracle bash -c "chmod 777 /data" && \
 ```
 
 ```sh
-SEGMENT_NAME		  |	BYTES
+SEGMENT_NAME          |    BYTES
 --------------------------|----------
-TRADEHISTORY		  |  92274688
+TRADEHISTORY          |  92274688
 
-SEGMENT_NAME		  |	BYTES
+SEGMENT_NAME          |    BYTES
 --------------------------|----------
-TRADEHISTORY_PK 	  |  45088768
+TRADEHISTORY_PK       |  45088768
 
 TABLE_NAME  |ROWS_COUNT
 ------------|----------
-TRADEHISTORY|	2045514
+TRADEHISTORY|    2045514
 
-
-SEGMENT_NAME		  |	BYTES
+SEGMENT_NAME          |    BYTES
 --------------------------|----------
 TRADEHISTORY_COMPRESSED   |  53477376
 
-SEGMENT_NAME		  |	BYTES
+SEGMENT_NAME          |    BYTES
 --------------------------|----------
 TRADEHISTORY_COMPRESSED_PK|  42991616
 
-TABLE_NAME	       |ROWS_COUNT
+TABLE_NAME           |ROWS_COUNT
 -----------------------|----------
 TRADEHISTORY_COMPRESSED|   2045514
 ```
 
-### Execute SQL scripts for the **Universal Table** Schema.
+### Execute SQL scripts for the **Universal Table** Schema
 
 ```sh
 curl -o /tmp/test/oracle-universal-table.sql \
@@ -263,29 +260,27 @@ docker exec -u root oracle bash -c "chmod 777 /data" && \
 ```
 
 ```sh
-SEGMENT_NAME		      |     BYTES
+SEGMENT_NAME              |     BYTES
 ------------------------------|----------
-UNIVERSALHISTORY	      | 276824064
+UNIVERSALHISTORY          | 276824064
 
-SEGMENT_NAME		      |     BYTES
+SEGMENT_NAME              |     BYTES
 ------------------------------|----------
-UNIVERSALHISTORY_PK	      | 260046848
+UNIVERSALHISTORY_PK          | 260046848
 
-TABLE_NAME	|ROWS_COUNT
+TABLE_NAME    |ROWS_COUNT
 ----------------|----------
 UNIVERSALHISTORY|  10227570
 
-
-
-SEGMENT_NAME		      |     BYTES
+SEGMENT_NAME              |     BYTES
 ------------------------------|----------
 UNIVERSALHISTORY_COMPRESSED   | 184549376
 
-SEGMENT_NAME		      |     BYTES
+SEGMENT_NAME              |     BYTES
 ------------------------------|----------
 UNIVERSALHISTORY_COMPRESSED_PK| 218103808
 
-TABLE_NAME		   |ROWS_COUNT
+TABLE_NAME           |ROWS_COUNT
 ---------------------------|----------
 UNIVERSALHISTORY_COMPRESSED|  10227570
 ```

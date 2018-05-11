@@ -7,10 +7,13 @@ Messages with persistence disabled will not be stored in the database; however t
 ## Request
 
 ### URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/messages/insert
+POST https://atsd_hostname:8443/api/v1/messages/insert
 ```
+
 ### Payload
+
 ```json
 [{
     "entity": "nurswgvml007",
@@ -19,8 +22,4 @@ POST https://atsd_host:8443/api/v1/messages/insert
     "source": "atsd",
     "persist": false
 }]
-```
-
-## Response
-```
 ```

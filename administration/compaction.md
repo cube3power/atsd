@@ -10,7 +10,7 @@ The space savings in ATSD are achieved by its built-in compression codes as well
 
 ## ATSD Compression
 
-ATSD compression codecs are built-in and are applied automatically when the data is copied from the raw column family to the compressed column family in a process called Compaction. 
+ATSD compression codecs are built-in and are applied automatically when the data is copied from the raw column family to the compressed column family in a process called Compaction.
 
 The compaction is executed daily on schedule and its status is available on the **Settings > Diagnostics > Compaction** page.
 
@@ -18,17 +18,17 @@ The compaction is executed daily on schedule and its status is available on the 
 
 HBase compression is enabled with `hbase.compression.type` setting in `/opt/atsd/atsd/conf/server.properties` file.
 
-```sh
+```txt
 hbase.compression.type = gz
 ```
 
 The following compression codecs are supported.
 
-* none
-* gz
-* lzo
+* `none`
+* `gz`
+* `lzo`
 
-> The lzo codec requires installation of additional packages on the HBase region servers.
+> The `lzo` codec requires installation of additional packages on the HBase region servers.
 
 Changing the existing codec is supported however it will be applied only to new files and files re-written by HBase during a major compaction.
 A change in codec requires ATSD restart.

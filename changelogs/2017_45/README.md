@@ -1,21 +1,20 @@
-Weekly Change Log: November 06, 2017 - November 12, 2017
-==================================================
+# Weekly Change Log: November 06, 2017 - November 12, 2017
 
 ## ATSD
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
 | [4675](#issue-4675) | rule-engine | Feature | Attach charts to email notifications. |
-| [4658](#issue-4658) | ui | Feature | Redesign icon selector in the entity view editor. |
+| [4658](#issue-4658) |UI| Feature | Redesign icon selector in the entity view editor. |
 | [4600](#issue-4600) | security | Feature | Stored login history. |
-| [4585](#issue-4585) | ui | Feature | Multiple layout enhancements. |
+| [4585](#issue-4585) |UI| Feature | Multiple layout enhancements. |
 | [3269](#issue-3269) | sql | Feature | `LIMIT n` optimization for descending date queries. |
 
 ## Axibase Collector
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4673 | jdbc | Bug | Fix incorrect ATSD jdbc driver URL. |
+| 4673 | jdbc | Bug | Fix incorrect ATSD JDBC driver URL. |
 
 ## Charts
 
@@ -60,7 +59,7 @@ Successful user authentication requests are stored in the database and can be re
 
 ### Issue 3269
 
-Speed up SQL queries that select more than 1 row with descending datetime order.
+Speed up SQL queries that select more than 1 row with descending `datetime` order.
 
 ```sql
 SELECT *

@@ -28,9 +28,9 @@ Refer to message [query](query.md#message-filter-fields) fields.
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-|metric|string | [**Required**] Must be set to `message-count`. |
-|groupKeys|array | Array of message tags used for grouping: `type`, `source`, `entity`, etc, for example `"groupKeys": ["entity", "type"]` |
-|aggregate|object | Period [aggregator](../../../api/data/series/aggregate.md). Only `COUNT` type is supported. <br>`"aggregate":{"type":"COUNT", "period":{"count":1,"unit":"HOUR"}}` |
+|`metric`|string | [**Required**] Must be set to `message-count`. |
+|`groupKeys`|array | Array of message tags used for grouping: `type`, `source`, `entity`, etc, for example `"groupKeys": ["entity", "type"]` |
+|`aggregate`|object | Period [aggregator](../../../api/data/series/aggregate.md). Only `COUNT` type is supported. <br>`"aggregate":{"type":"COUNT", "period":{"count":1,"unit":"HOUR"}}` |
 
 #### Entity Filter Fields
 
@@ -46,10 +46,10 @@ Refer to message [query](query.md#message-filter-fields) fields.
 
 | **Name**  | **Type** | **Description**  |
 |:---|:---|:---|
-| requestId | string | Optional identifier used to associate `query` object in request with `series` objects in response. |
-| timeFormat |string| Time format for data array. `iso` or `milliseconds`. Default: `iso`. |
+| `requestId` | string | Optional identifier used to associate `query` object in request with `series` objects in response. |
+| `timeFormat` |string| Time format for data array. `iso` or `milliseconds`. Default: `iso`. |
 
-## Response 
+## Response
 
 An array of `series` objects containing message filter fields and message counter fields.
 
@@ -70,8 +70,9 @@ None.
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/messages/stats/query
+POST https://atsd_hostname:8443/api/v1/messages/stats/query
 ```
+
 #### Payload
 
 ```json
@@ -95,13 +96,13 @@ POST https://atsd_host:8443/api/v1/messages/stats/query
 #### curl
 
 ```elm
-curl  https://atsd_host:8443/api/v1/messages/stats/query \
+curl  https://atsd_hostname:8443/api/v1/messages/stats/query \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request POST \
   --data @file.json
-  ```
-  
+```
+
 ### Response
 
 #### Payload
@@ -203,6 +204,7 @@ curl  https://atsd_host:8443/api/v1/messages/stats/query \
 ```
 
 ## Additional Examples
+
 * [Counting all Messages for an Entity](examples/stats-query/messages-stats-query-counting-all-messages-for-entity.md)
 * [Multiple Entities Counted as 1 Series, no Grouping](examples/stats-query/messages-stats-query-multiple-entities-counted-series.md)
 * [Entity Array with Message Counts Grouped by Entity](examples/stats-query/messages-stats-query-entity-array-with-message-counts-grouped.md)
@@ -210,5 +212,5 @@ curl  https://atsd_host:8443/api/v1/messages/stats/query \
 * [Message Counts Grouped by Type](examples/stats-query/messages-stats-query-message-counts-grouped-type.md)
 * [Message Count per Period](examples/stats-query/messages-stats-query-message-count-per-period.md)
 * [Interpolate Counts for Missing Periods with 0 value](examples/stats-query/messages-stats-query-interpolate-counts-for-missing-periods.md)
-* [Milliseconds timeFormat](examples/stats-query/messages-stats-query-with-milliseconds-time-format.md)
+* [Milliseconds `timeFormat`](examples/stats-query/messages-stats-query-with-milliseconds-time-format.md)
 * [Multiple Queries for Different Message Types](examples/stats-query/messages-stats-query-multiple-queries-different-message-types.md)

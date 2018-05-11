@@ -6,18 +6,18 @@
 
 ## Reference
 
- * [Prerequisites](#prerequisites)
- * [Create Workspace](#create-workspace)
- * [Create Channel](#create-channel)
- * [Create ATSD Slack Bot](#create-atsd-slack-bot)
- * [Add Bot to Channel](#add-bot-to-channel)
- * [Get Channel Id](#get-channel-id)
- * [Configure Web Notification in ATSD](#configure-web-notification-in-atsd)
- * [Proxy Settings](#proxy-settings)
- * [Notification Settings](#notification-settings)
- * [Reacting to Bot Messages](#reacting-to-bot-messages)
- * [Testing Notification Rule](#testing-notification-rule)
- * [Notifications Examples](#notifications-examples)
+* [Prerequisites](#prerequisites)
+* [Create Workspace](#create-workspace)
+* [Create Channel](#create-channel)
+* [Create ATSD Slack Bot](#create-atsd-slack-bot)
+* [Add Bot to Channel](#add-bot-to-channel)
+* [Get Channel Id](#get-channel-id)
+* [Configure Web Notification in ATSD](#configure-web-notification-in-atsd)
+* [Proxy Settings](#proxy-settings)
+* [Notification Settings](#notification-settings)
+* [Reacting to Bot Messages](#reacting-to-bot-messages)
+* [Testing Notification Rule](#testing-notification-rule)
+* [Notifications Examples](#notifications-examples)
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ Install and configure the [Web Driver](web-driver.md) in order to send chart scr
 
 ## Create Workspace
 
-If necessary, go to https://slack.com/create and follow the prompts to create a new workspace.
+Create a Slack [workspace](https://slack.com/create), if necessary.
 
 ## Create Channel
 
@@ -35,7 +35,7 @@ If necessary, create new channel as described [here](https://get.slack.help/hc/e
 
 Slack Bot is a special account created specifically for automation purposes.
 
-* Open https://api.slack.com/apps/
+* Open [Slack Apps](https://api.slack.com/apps/)
 
    ![](images/outgoing_webhook_slack_1.png)
 
@@ -43,39 +43,39 @@ Slack Bot is a special account created specifically for automation purposes.
 
 * Create a bot user.
 
-    * Click on **Bot Users**.
+  * Click on **Bot Users**.
 
-        ![](images/outgoing_webhook_slack_2.png)
+       ![](images/outgoing_webhook_slack_2.png)
 
-    * Click on **Add a Bot User**.
+  * Click on **Add a Bot User**.
 
        ![](images/outgoing_webhook_slack_3.png)
 
-    * Review Settings, click on **Add Bot User**.
+  * Review Settings, click on **Add Bot User**.
 
-        ![](images/outgoing_webhook_slack_4.png)
+       ![](images/outgoing_webhook_slack_4.png)
 
-    * Click on **Save Changes**.
-    
+  * Click on **Save Changes**.
+
 ## Add Bot to Channel
 
 * Click on **Install App**.
 
     ![](images/slack_3.png)
-    
+
 * Click on **Install App to Workspace**.
 
    ![](images/outgoing_webhook_slack_12.png)
-   
+
 * Review permissions, click **Authorize**.
 
    ![](images/outgoing_webhook_slack_13.png)
-   
+
 * Copy the **Bot User OAuth Access Token** for future reference.
 
    ![](images/slack_4.png)
-   
-* Go to Slack workspace https://my.slack.com/, click on bot name in the **Apps** section.
+
+* Open Slack [workspace](https://my.slack.com/), click on bot name in the **Apps** section.
 
    ![](images/outgoing_webhook_slack_14.png)
 
@@ -86,14 +86,14 @@ Slack Bot is a special account created specifically for automation purposes.
 * Select the channel, click on **Add**.
 
     ![](images/slack_6.png)
-    
+
 ## Get Channel Id
 
- * Click on the target IM/public/private channel to display the channel URL, for example `messages/D822261LK/team/U81D8UY64/`.
+* Click on the target IM/public/private channel to display the channel URL, for example `messages/D822261LK/team/U81D8UY64/`.
 
      ![](images/slack_channel_id.png)
 
- * Copy the channel ID, which is specified between the `messages/` and `/team` parts, for example `D822261LK`.
+* Copy the channel ID, which is specified between the `messages/` and `/team` parts, for example `D822261LK`.
 
 When sending messages to either a public or private channel you can just use the name of the channel instead of its ID, for example `devops` or `general`.
 
@@ -103,12 +103,12 @@ When sending messages to either a public or private channel you can just use the
 * Click on an existing `SLACK` template, or click the **Create** button below and select the `SLACK` type.
 * Specify the unique `Name` of the notification.
 
-    ![](images/slack_1.png) 
+    ![](images/slack_1.png)
 
 * Specify the `Auth Token` and `Channels` parameters. See parameter descriptions below.
 * Select **Test Portal** to verify screenshot delivery.
 
-    ![](images/slack-settings.png)   
+    ![](images/slack-settings.png)
 
 * Click **Test**
 
@@ -122,7 +122,7 @@ If the Slack API server is not directly accessible from the ATSD server, open th
 
 NGINX API Gateway Path for Slack:
 
-```
+```ls
   location /api/chat.postMessage {
       proxy_pass https://slack.com/api/chat.postMessage;
   }
@@ -135,16 +135,16 @@ NGINX API Gateway Path for Slack:
 
 |**Setting**|**Description**|
 |---|---|
-|Auth Token|Bot API authentication token (see above).|
-|Bot Username|Set your bot's user name.|
-|Channels|Comma-separated list of channels, private groups, or IM channels to send message to. Each entry can be a name or an encoded ID.|
-|Text|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
-|Parse Mode|Change how messages are formatted. See [Basic message formatting](https://api.slack.com/docs/message-formatting) for more information.|
-|Names as Links|Find and link channel names and usernames.|
+|`Auth Token`|Bot API authentication token (see above).|
+|`Bot Username`|Set your bot user name.|
+|`Channels`|Comma-separated list of channels, private groups, or IM channels to send message to. Each entry can be a name or an encoded ID.|
+|`Text`|Message text to be sent. This field should be left blank so it can be customized in the rule editor.|
+|`Parse Mode`|Change how messages are formatted. See [Basic message formatting](https://api.slack.com/docs/message-formatting) for more information.|
+|`Names as Links`|Find and link channel names and usernames.|
 
 ## Reacting to Bot Messages
 
-The bot account can be used both to deliver notifications to end users, as well as to react to messages received by the bot itself. 
+The bot account can be used both to deliver notifications to end users, as well as to react to messages received by the bot itself.
 
 In order to receive incoming messages, configure an [outgoing webhook](outgoing-webhook-slack.md). The [webhook](outgoing-webhook-slack.md) integration requires ATSD server to be reachable from Slack API servers.
 
@@ -174,6 +174,7 @@ In order to receive incoming messages, configure an [outgoing webhook](outgoing-
   ![](images/slack_7.png)
 
 * The rule will create new windows based on incoming data.
+
 It may take a few seconds for the first commands to arrive and trigger notifications. You can open and refresh the **Alerts > Open Alerts** page to verify that an alert is open for your rule.
 
 ## Example

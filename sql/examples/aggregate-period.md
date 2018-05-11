@@ -36,7 +36,6 @@ WHERE entity = 'nurswgvml007'
 
 Display the period start and end time using the `date_format` function.
 
-
 ```sql
 SELECT datetime AS period_start, date_format(time+60*60000) AS period_end, avg(value)
   FROM "mpstat.cpu_busy"
@@ -53,10 +52,9 @@ GROUP BY PERIOD(1 HOUR)
 | 2016-08-25T02:00:00Z | 2016-08-25T03:00:00Z | 6.7        |
 ```
 
+## Period Aligned to Custom Time Zone
 
-## Period Aligned to Custom Timezone
-
-The server timezone is "Europe/Berlin".
+The server time zone is "Europe/Berlin".
 
 * Default time zone. The day periods are aligned to 0:00 server time zone which is 2 hours ahead of UTC.
 
@@ -102,7 +100,7 @@ series e:e1 d:2017-04-15T02:00:00Z m:m1=2
 series e:e1 d:2017-04-15T03:00:00Z m:m1=3
 ```
 
-## Period Aligned to Custom Timezone
+## Period Aligned to Custom Time Zone
 
 ```sql
 SELECT datetime, date_format(time, 'yyyy-MM-dd HH:mm:ss z', 'US/Pacific') AS local_datetime,
@@ -111,10 +109,10 @@ FROM tmz1
   GROUP BY PERIOD(1 DAY, 'US/Pacific')
 ```
 
-```
-| datetime            | local_datetime          | min(value) | max(value) | count(value) | first(value) | last(value) | 
-|---------------------|-------------------------|------------|------------|--------------|--------------|-------------| 
-| 2017-04-14 07:00:00 | 2017-04-14 00:00:00 PDT | 0.0        | 23.0       | 7            | 21.0         | 3.0         | 
+```ls
+| datetime            | local_datetime          | min(value) | max(value) | count(value) | first(value) | last(value) |
+|---------------------|-------------------------|------------|------------|--------------|--------------|-------------|
+| 2017-04-14 07:00:00 | 2017-04-14 00:00:00 PDT | 0.0        | 23.0       | 7            | 21.0         | 3.0         |
 ```
 
 * Data
@@ -129,24 +127,23 @@ series e:e1 d:2017-04-15T02:00:00Z m:tmz1=2
 series e:e1 d:2017-04-15T03:00:00Z m:tmz1=3
 ```
 
-## Period Aligned to Entity Timezone
+## Period Aligned to Entity Time Zone
 
 ```sql
 SELECT entity, entity.timeZone,
   AVG(value),
-  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "Period Start: UTC datetime", 
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "Period Start: UTC datetime",
   date_format(time, 'yyyy-MM-dd HH:mm z', entity.timeZone) AS "Period Start: Local datetime"
 FROM "mpstat.cpu_busy"
-  WHERE datetime >= ENDTIME(PREVIOUS_DAY, entity.timeZone) 
+  WHERE datetime >= ENDTIME(PREVIOUS_DAY, entity.timeZone)
     AND datetime < ENDTIME(CURRENT_DAY, entity.timeZone)
 GROUP BY entity, PERIOD(1 DAY, entity.timeZone)
 ```
 
+```ls
+| entity       | entity.timeZone | avg(value) | Period Start: UTC datetime | Period Start: Local datetime |
+|--------------|-----------------|------------|----------------------------|------------------------------|
+| nurswgvml007 | PST             | 12.3       | 2017-08-17 07:00 UTC       | 2017-08-17 00:00 PDT         |
+| nurswgvml006 | US/Mountain     | 9.2        | 2017-08-17 06:00 UTC       | 2017-08-17 00:00 MDT         |
+| nurswgvml010 | null            | 5.8        | 2017-08-17 00:00 UTC       | 2017-08-17 00:00 GMT         |
 ```
-| entity       | entity.timeZone | avg(value) | Period Start: UTC datetime | Period Start: Local datetime | 
-|--------------|-----------------|------------|----------------------------|------------------------------| 
-| nurswgvml007 | PST             | 12.3       | 2017-08-17 07:00 UTC       | 2017-08-17 00:00 PDT         | 
-| nurswgvml006 | US/Mountain     | 9.2        | 2017-08-17 06:00 UTC       | 2017-08-17 00:00 MDT         | 
-| nurswgvml010 | null            | 5.8        | 2017-08-17 00:00 UTC       | 2017-08-17 00:00 GMT         | 
-```
-

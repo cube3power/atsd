@@ -22,7 +22,7 @@ Install Python on Ubuntu 16.04.
 sudo apt install python
 ```
 
-Install Python on Centos 6.x/7.x and RHEL 6.x/7.x.
+Install Python on CentOS 6.x/7.x and RHEL 6.x/7.x.
 
 ```sh
 sudo yum install python
@@ -47,7 +47,7 @@ Start tcollector from the installation directory. Replace `atsd_hostname` with t
 sudo ./tcollector start --host atsd_hostname --port 8081
 ```
 
-### Autostart
+### Auto-Start
 
 Create `tcollector.conf` file in the tcollector home directory.
 
@@ -73,7 +73,7 @@ Make the script executable.
 sudo chmod u+x /etc/init.d/tcollector
 ```
 
-Add tcollector to autostart.
+Enable auto-start for tcollector.
 
 ```sh
 sudo update-rc.d tcollector defaults
@@ -85,7 +85,7 @@ Start tcollector.
 sudo service tcollector start
 ```
 
-#### Centos 6.x and RHEL 6.x
+#### CentOS 6.x and RHEL 6.x
 
 Download [init script](resources/tcollector) and copy it into `/etc/init.d` directory.
 Set `TCOLLECTOR_HOME` variable to tcollector home directory, for example
@@ -100,7 +100,7 @@ Make the script executable.
 sudo chmod u+x /etc/init.d/tcollector
 ```
 
-Add tcollector to autostart.
+Enable auto-start for tcollector.
 
 ```sh
 sudo chkconfig --add tcollector
@@ -112,7 +112,7 @@ Start tcollector.
 sudo service tcollector start
 ```
 
-#### Ubuntu 16.04, Centos 7.x, RHEL 7.x
+#### Ubuntu 16.04, CentOS 7.x, RHEL 7.x
 
 Download [init script](resources/tcollector) and place it into tcollector **home** directory, name it `tcollector-wrapper`.
 
@@ -132,7 +132,7 @@ ExecStop=/home/axibase/tcollector/tcollector-wrapper stop
 ExecReload=/home/axibase/tcollector/tcollector-wrapper restart
 ```
 
-Enable autostart.
+Enable auto-start.
 
 ```sh
 sudo systemctl enable tcollector
@@ -144,7 +144,7 @@ Start tcollector.
 sudo systemctl start tcollector
 ```
 
-### Autostart as a non-root user
+### Auto-Start as a non-root user
 
 Add `LOGFILE` and `PIDFILE` options to `tcollector.conf`.
 
@@ -155,7 +155,7 @@ PIDFILE=pid_file_path
 
 `log_file_path` and `pid_file_path` must be absolute paths to files in existing directory (or directories), where user has write access to.
 
-#### Ubuntu 14.04, Centos 6.x, RHEL 6.x
+#### Ubuntu 14.04, CentOS 6.x, RHEL 6.x
 
 Add `RUN_AS_USER` option to tcollector config.
 
@@ -165,7 +165,7 @@ RUN_AS_USER=user_name
 
 Replace `user_name` with user name.
 
-#### Ubuntu 16.04, Centos 7.x, RHEL 7.x
+#### Ubuntu 16.04, CentOS 7.x, RHEL 7.x
 
 Add `User` option to `[Service]` section in `/lib/systemd/system/tcollector.service` file.
 
@@ -197,139 +197,139 @@ Launch live tcollector portal in Axibase Chart Lab.
 
 ## List of tcollector metrics
 
-```css
-df.bytes.free	
-df.bytes.percentused	
-df.bytes.total	
-df.bytes.used	
-df.inodes.free	
-df.inodes.percentused	
-df.inodes.total	
-df.inodes.used	
-iostat.disk.await	
-iostat.disk.ios_in_progress	
-iostat.disk.msec_read	
-iostat.disk.msec_total	
-iostat.disk.msec_weighted_total	
-iostat.disk.msec_write	
-iostat.disk.r_await	
-iostat.disk.read_merged	
-iostat.disk.read_requests	
-iostat.disk.read_sectors	
-iostat.disk.svctm	
-iostat.disk.util	
-iostat.disk.w_await	
-iostat.disk.write_merged	
-iostat.disk.write_requests	
-iostat.disk.write_sectors	
-iostat.part.ios_in_progress	
-iostat.part.msec_read	
-iostat.part.msec_total	
-iostat.part.msec_weighted_total	
-iostat.part.msec_write	
-iostat.part.read_merged	
-iostat.part.read_requests	
-iostat.part.read_sectors	
-iostat.part.write_merged	
-iostat.part.write_requests	
-iostat.part.write_sectors	
-net.sockstat.ipfragqueues	
-net.sockstat.memory	
-net.sockstat.num_orphans	
-net.sockstat.num_sockets	
-net.sockstat.num_timewait	
-net.sockstat.sockets_inuse	
-net.stat.tcp.abort	
-net.stat.tcp.abort.failed	
-net.stat.tcp.congestion.recovery	
-net.stat.tcp.delayedack	
-net.stat.tcp.failed_accept	
-net.stat.tcp.invalid_sack	
-net.stat.tcp.memory.pressure	
-net.stat.tcp.memory.prune	
-net.stat.tcp.packetloss.recovery	
-net.stat.tcp.receive.queue.full	
-net.stat.tcp.reording	
-net.stat.tcp.retransmit	
-net.stat.tcp.syncookies	
-net.stat.udp.datagrams	
+```txt
+df.bytes.free
+df.bytes.percentused
+df.bytes.total
+df.bytes.used
+df.inodes.free
+df.inodes.percentused
+df.inodes.total
+df.inodes.used
+iostat.disk.await
+iostat.disk.ios_in_progress
+iostat.disk.msec_read
+iostat.disk.msec_total
+iostat.disk.msec_weighted_total
+iostat.disk.msec_write
+iostat.disk.r_await
+iostat.disk.read_merged
+iostat.disk.read_requests
+iostat.disk.read_sectors
+iostat.disk.svctm
+iostat.disk.util
+iostat.disk.w_await
+iostat.disk.write_merged
+iostat.disk.write_requests
+iostat.disk.write_sectors
+iostat.part.ios_in_progress
+iostat.part.msec_read
+iostat.part.msec_total
+iostat.part.msec_weighted_total
+iostat.part.msec_write
+iostat.part.read_merged
+iostat.part.read_requests
+iostat.part.read_sectors
+iostat.part.write_merged
+iostat.part.write_requests
+iostat.part.write_sectors
+net.sockstat.ipfragqueues
+net.sockstat.memory
+net.sockstat.num_orphans
+net.sockstat.num_sockets
+net.sockstat.num_timewait
+net.sockstat.sockets_inuse
+net.stat.tcp.abort
+net.stat.tcp.abort.failed
+net.stat.tcp.congestion.recovery
+net.stat.tcp.delayedack
+net.stat.tcp.failed_accept
+net.stat.tcp.invalid_sack
+net.stat.tcp.memory.pressure
+net.stat.tcp.memory.prune
+net.stat.tcp.packetloss.recovery
+net.stat.tcp.receive.queue.full
+net.stat.tcp.reording
+net.stat.tcp.retransmit
+net.stat.tcp.syncookies
+net.stat.udp.datagrams
 net.stat.udp.errors
-sys.numa.allocation	
-sys.numa.foreign_allocs	
-sys.numa.interleave	
-sys.numa.zoneallocs	
-tcollector.collector.lines_invalid	
-tcollector.collector.lines_received	
-tcollector.collector.lines_sent	
-tcollector.reader.lines_collected	
+sys.numa.allocation
+sys.numa.foreign_allocs
+sys.numa.interleave
+sys.numa.zoneallocs
+tcollector.collector.lines_invalid
+tcollector.collector.lines_received
+tcollector.collector.lines_sent
+tcollector.reader.lines_collected
 tcollector.reader.lines_dropped
 ```
 
-```
-proc.interrupts	
-proc.kernel.entropy_avail	
-proc.loadavg.15min	
-proc.loadavg.1min	
-proc.loadavg.5min	
-proc.loadavg.runnable	
-proc.loadavg.total_threads	
-proc.meminfo.active	
-proc.meminfo.anonhugepages	
-proc.meminfo.anonpages	
-proc.meminfo.bounce	
-proc.meminfo.buffers	
-proc.meminfo.cached	
-proc.meminfo.commitlimit	
-proc.meminfo.committed_as	
-proc.meminfo.directmap2m	
-proc.meminfo.directmap4k	
-proc.meminfo.dirty	
-proc.meminfo.hardwarecorrupted	
-proc.meminfo.hugepagesize	
-proc.meminfo.inactive	
-proc.meminfo.kernelstack	
-proc.meminfo.mapped	
-proc.meminfo.memfree	
-proc.meminfo.memtotal	
-proc.meminfo.mlocked	
-proc.meminfo.nfs_unstable	
-proc.meminfo.pagetables	
-proc.meminfo.shmem	
-proc.meminfo.slab	
-proc.meminfo.sreclaimable	
-proc.meminfo.sunreclaim	
-proc.meminfo.swapcached	
-proc.meminfo.swapfree	
-proc.meminfo.swaptotal	
-proc.meminfo.unevictable	
-proc.meminfo.vmallocchunk	
-proc.meminfo.vmalloctotal	
-proc.meminfo.vmallocused	
-proc.meminfo.writeback	
-proc.meminfo.writebacktmp	
-proc.net.bytes	
-proc.net.carrier.errs	
-proc.net.collisions	
-proc.net.compressed	
-proc.net.dropped	
-proc.net.errs	
-proc.net.fifo.errs	
-proc.net.frame.errs	
-proc.net.multicast	
-proc.net.packets	
-proc.net.tcp	
-proc.stat.cpu	
-proc.stat.cpu.percpu	
-proc.stat.ctxt	
-proc.stat.intr	
-proc.stat.processes	
-proc.stat.procs_blocked	
-proc.uptime.now	
-proc.uptime.total	
-proc.vmstat.pgfault	
-proc.vmstat.pgmajfault	
-proc.vmstat.pgpgin	
-proc.vmstat.pgpgout	
-proc.vmstat.pswpin	
+```txt
+proc.interrupts
+proc.kernel.entropy_avail
+proc.loadavg.15min
+proc.loadavg.1min
+proc.loadavg.5min
+proc.loadavg.runnable
+proc.loadavg.total_threads
+proc.meminfo.active
+proc.meminfo.anonhugepages
+proc.meminfo.anonpages
+proc.meminfo.bounce
+proc.meminfo.buffers
+proc.meminfo.cached
+proc.meminfo.commitlimit
+proc.meminfo.committed_as
+proc.meminfo.directmap2m
+proc.meminfo.directmap4k
+proc.meminfo.dirty
+proc.meminfo.hardwarecorrupted
+proc.meminfo.hugepagesize
+proc.meminfo.inactive
+proc.meminfo.kernelstack
+proc.meminfo.mapped
+proc.meminfo.memfree
+proc.meminfo.memtotal
+proc.meminfo.mlocked
+proc.meminfo.nfs_unstable
+proc.meminfo.pagetables
+proc.meminfo.shmem
+proc.meminfo.slab
+proc.meminfo.sreclaimable
+proc.meminfo.sunreclaim
+proc.meminfo.swapcached
+proc.meminfo.swapfree
+proc.meminfo.swaptotal
+proc.meminfo.unevictable
+proc.meminfo.vmallocchunk
+proc.meminfo.vmalloctotal
+proc.meminfo.vmallocused
+proc.meminfo.writeback
+proc.meminfo.writebacktmp
+proc.net.bytes
+proc.net.carrier.errs
+proc.net.collisions
+proc.net.compressed
+proc.net.dropped
+proc.net.errs
+proc.net.fifo.errs
+proc.net.frame.errs
+proc.net.multicast
+proc.net.packets
+proc.net.tcp
+proc.stat.cpu
+proc.stat.cpu.percpu
+proc.stat.ctxt
+proc.stat.intr
+proc.stat.processes
+proc.stat.procs_blocked
+proc.uptime.now
+proc.uptime.total
+proc.vmstat.pgfault
+proc.vmstat.pgmajfault
+proc.vmstat.pgpgin
+proc.vmstat.pgpgout
+proc.vmstat.pswpin
 proc.vmstat.pswpout
 ```

@@ -70,7 +70,7 @@ If the operation succeeds, an authorization token will be present in the `token`
   ],
   "fingerprint": null
 }
-``` 
+```
 
 #### Generate Authorization Token using UI
 
@@ -98,13 +98,13 @@ Your new token will be available on the **Personal access tokens** page. Copy th
 
 Enter the following text into the `Body` field:
 
-```
+```json
 {
   "body": "${message}\n\n[Chart](${chartLink})\n\n${markdownDetailsTable}"
 }
 ```
 
-The `body` text contains placeholders that will be substituted with actual values when the notification is triggered. 
+The `body` text contains placeholders that will be substituted with actual values when the notification is triggered.
 
 The placeholders specified in the payload and the URL are visible as editable parameters in the rule editor.
 
@@ -116,7 +116,7 @@ Create a new rule or import the [rule template](resources/custom-github-rule.xml
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
-Specify the key settings on the **Overview** tab. 
+Specify the key settings on the **Overview** tab.
 
 | **Name** | **Value** |
 | :-------- | :---- |
@@ -130,7 +130,7 @@ Open the **Web Notifications** tab.
 
 Set **Enabled** to **Yes** and choose the previously created web notification from the **Endpoint** drop-down.
 
-Enable **Open**, **Repeat** and **Cancel** triggers. Set the **Repeat Interval** to **All**. Leave **chartLink** and **markdownDetailsTable** empty.
+Enable **Open**, **Repeat** and **Cancel** triggers. Set the **Repeat Interval** to **All**. Leave `chartLink` and `markdownDetailsTable` empty.
 
 Specify the following settings for **Open** trigger:
 
@@ -158,7 +158,7 @@ When the notification is executed, all placeholders in the request URL will be r
 
 `https://api.github.com/repos/username/github_repository/issues/1/comments`
 
-```
+```json
 {
   "body": "[OPEN] Github for test_e {}\n\n[Chart](chart link)\n\n| **Name** | **Value**|..."
 }
@@ -166,9 +166,9 @@ When the notification is executed, all placeholders in the request URL will be r
 
 ## Test
 
-In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
+Test the integration by submitting a sample `series` command on the **Data > Data Entry** page.
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 

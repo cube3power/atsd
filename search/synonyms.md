@@ -2,9 +2,9 @@
 
 ## Overview
 
-Synonym search allows finding series with metadata fields containing values with a similar meaning in the original or other languages. 
+Synonym search allows finding series with metadata fields containing values with a similar meaning in the original or other languages.
 
-For example, a user searching for series with 'currency' keyword might be interested in locating series with keywords 'money', 'cash' as well as 'geld' (German) and 'dinero' (Spanish).
+For example, a user searching for series with 'currency' keyword might be interested in locating series with keywords `money`, `cash` as well as `geld` (German) and `dinero` (Spanish).
 
 The synonyms can be created for all [metadata fields](README.md/#overview).
 
@@ -47,8 +47,8 @@ The same results will be displayed if the 'currency' keyword is searched as well
 location => place, site, Ort, место
 ```
 
-Searching for 'location' would match the below series since it has an entity tag 'location'.
-Likewise, searching for 'ort' would match the same series since 'ort' is a synonym of 'location', which is one of the entity tags.
+Searching for `location` would match the below series since it has an entity tag `location`.
+Likewise, searching for `ort` would match the same series since `ort` is a synonym of `location`, which is one of the entity tags.
 
 ```sql
 student_count         -- metric

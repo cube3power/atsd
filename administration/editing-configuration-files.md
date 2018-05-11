@@ -1,6 +1,5 @@
 # Editing Configuration Files
 
-
 The Configuration File Editor allows the editing of ATSD configuration
 files directly in the user interface. Only files that are located in the
 `/opt/atsd/atsd/conf` directory can be edited.

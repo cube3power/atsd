@@ -16,8 +16,8 @@ The CSV header should include a leading time column and one or multiple numeric 
 
 | **Name** | **In** | **Description** |
 |:---|:---|:---|
-| entity | path | **[Required]** Entity name. |
-| tag | query | `tag=value` parameter pairs. |
+| `entity` | path | **[Required]** Entity name. |
+| `tag` | query | `tag=value` parameter pairs. |
 
 ### Payload
 
@@ -45,7 +45,7 @@ date,metric-1,metric-2,...,metric-N
 2016-05-16T00:14:45.012Z,5.0,2.1,...,10.4
 ```
 
-## Response 
+## Response
 
 ### Fields
 
@@ -58,14 +58,14 @@ None.
 * "First header must be 'time' (specified in Unix milliseconds) or 'date' (ISO 8601 date)" if the name of the first column in the header is neither `time` nor `date`.
 * "No data" if the number of data rows is 0.
 
-## Example 
+## Example
 
-### Request 
+### Request
 
 #### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/csv/nurswgvml007
+POST https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007
 ```
 
 #### Payload
@@ -79,7 +79,7 @@ time,cpu_user,cpu_system,waitio
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/series/csv/nurswgvml007 \
+curl https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007 \
  --insecure --verbose --user {username}:{password} \
  --header "Content-Type: text/csv" \
  --request POST \
@@ -89,7 +89,7 @@ curl https://atsd_host:8443/api/v1/series/csv/nurswgvml007 \
 > `--data-binary $` is used to prevent `curl` from dropping line feed characters.
 
 ```elm
-curl https://atsd_host:8443/api/v1/series/csv/nurswgvml007 \
+curl https://atsd_hostname:8443/api/v1/series/csv/nurswgvml007 \
  --insecure --verbose --user {username}:{password} \
  --header "Content-Type: text/csv" \
  --request POST \

@@ -2,35 +2,45 @@
 
 ## Linux
 
-### Script Installation
-
- ```sh
- mkdir scollector
- cd scollector
- wget https://github.com/bosun-monitor/bosun/releases/download/0.6.0-beta1/scollector-linux-amd64
- # replace username and password with actual credentials
- echo 'Host = "http://username:password@atsd_hostname:8088/"' > scollector.toml
- chmod 700 scollector-linux-amd64
- nohup ./scollector-linux-amd64 &
- ```
-
 ### Manual Installation
 
-Download the binary file from: [http://bosun.org/scollector/](http://bosun.org/scollector/).
+Download scollector binary for Linux.
 
-Navigate to the directory with binary files and create the `scollector.toml` file.
+```sh
+ mkdir scollector
+```
 
-Add `Host` setting to `scollector.toml`:
+```sh
+ cd scollector
+```
 
- ```toml
- Host = "http://username:password@atsd_hostname:8088/"
- ```
+```sh
+ wget https://github.com/bosun-monitor/bosun/releases/download/0.6.0-beta1/scollector-linux-amd64
+```
 
-scollector does not support untrusted SSL certificates. If you installed a CA-signed SSL certificate into ATSD, you can change the above setting to connect to the secure https endpoint.
+```sh
+ chmod 700 scollector-linux-amd64
+```
 
- ```toml
- Host = "https://username:password@atsd_hostname:8443/"
- ```
+Replace username, password, hostname and port number with actual connection parameters.
+
+```sh
+ echo 'Host = "http://username:password@atsd_hostname:8088/"' > scollector.toml
+```
+
+The default ATSD http port is `8088`, https port is `8443`.
+
+scollector does not support untrusted SSL certificates. If ATSD is running on a CA-signed SSL certificate, you can specify the secure connection.
+
+```sh
+ echo 'Host = "https://username:password@atsd_hostname:8443/"' > scollector.toml
+```
+
+Start scollector.
+
+```sh
+ nohup ./scollector-linux-amd64 &
+```
 
 ### Auto-start under sudo user
 
@@ -38,7 +48,9 @@ scollector does not support untrusted SSL certificates. If you installed a CA-si
 
 #### Ubuntu 14.04
 
-Create `/etc/init.d/scollector` file by running the following command in the scollector installation directory.
+Change to the scollector installation directory.
+
+Create `/etc/init.d/scollector` file:
 
 ```sh
 sudo cat <<EOF > /etc/init.d/scollector
@@ -53,29 +65,31 @@ sudo cat <<EOF > /etc/init.d/scollector
 # Short-Description: start scollector
 # Description:
 ### END INIT INFO
- 
+
 SCOLLECTOR_BIN=$(pwd)/scollector-linux-amd64
 SCOLLECTOR_CONF=$(pwd)/scollector.toml
- 
+
 "\$SCOLLECTOR_BIN" -conf="\$SCOLLECTOR_CONF"
 EOF
 ```
- 
+
 Make the `/etc/init.d/scollector` file executable.
- 
-  ```sh
+
+```sh
   chmod a+x /etc/init.d/scollector
-  ```
+```
 
 Enable scollector launch when the system is started.
 
-  ```sh
+```sh
   sudo update-rc.d scollector defaults 90 10
-  ```
+```
 
-#### Centos 6.x and RHEL 6.x
+#### CentOS 6.x and RHEL 6.x
 
-Create `/etc/init.d/scollector` file by running the following command in the scollector installation directory.
+Change to the scollector installation directory.
+
+Create `/etc/init.d/scollector` file:
 
 ```sh
 sudo cat <<EOF > /etc/init.d/scollector
@@ -90,10 +104,10 @@ sudo cat <<EOF > /etc/init.d/scollector
 # Short-Description: start scollector
 # Description:
 ### END INIT INFO
- 
+
 SCOLLECTOR_BIN=$(pwd)/scollector-linux-amd64
 SCOLLECTOR_CONF=$(pwd)/scollector.toml
- 
+
 "\$SCOLLECTOR_BIN" -conf="\$SCOLLECTOR_CONF"
 EOF
 ```
@@ -110,9 +124,11 @@ Enable scollector launch when the system is started.
 sudo chkconfig --add scollector
 ```
 
-#### Ubuntu 16.04, Centos 7.x and RHEL 7.x
+#### Ubuntu 16.04, CentOS 7.x and RHEL 7.x
 
-Create service file for scollector `/lib/systemd/system/scollector.service` by running the following command in the scollector installation directory.
+Change to the scollector installation directory.
+
+Create a service file for scollector `/lib/systemd/system/scollector.service`:
 
 ```sh
 sudo cat <<EOF > /lib/systemd/system/scollector.service
@@ -137,11 +153,11 @@ sudo systemctl enable scollector
 
 ### Auto-start scollector as a non-sudo user
 
-#### Ubuntu 14.04, Centos 6.x and RHEL 6.x
+#### Ubuntu 14.04, CentOS 6.x and RHEL 6.x
 
-Modify the `/etc/init.d/tcollector` content
+Modify the `/etc/init.d/tcollector` file:
 
-```
+```txt
 #chkconfig: 2345 90 10
 #description: collect OS metrics and store them in ATSD
 ### BEGIN INIT INFO
@@ -153,7 +169,7 @@ Modify the `/etc/init.d/tcollector` content
 # Short-Description: start scollector
 # Description:
 ### END INIT INFO
- 
+
 SCOLLECTOR_BIN=/home/axibase/scollector-linux-amd64
 SCOLLECTOR_CONF=/home/axibase/scollector.toml
 SCOLLECTOR_USER=axibase
@@ -165,10 +181,10 @@ else
 fi
 ```
 
-Be sure to change `SCOLLECTOR_BIN` and `SCOLLECTOR_CONF` to the actual scollector directory path.
+Change `SCOLLECTOR_BIN` and `SCOLLECTOR_CONF` to the actual scollector directory path.
 Set `SCOLLECTOR_USER` to the user that will run scollector.
 
-#### Ubuntu 16.04, Centos 7.x and RHEL 7.x
+#### Ubuntu 16.04, CentOS 7.x and RHEL 7.x
 
 Add `User` option to `[Service]` section of the service file
 
@@ -187,27 +203,27 @@ Navigate to the directory with the `exe` file and create a `scollector.toml` fil
 
 Add `Host` setting to `scollector.toml`:
 
- ```toml
+```toml
  Host = "http://username:password@atsd_hostname:8088/"
- ```
+```
 
 scollector does not support untrusted SSL certificates. If you installed a CA-signed SSL certificate into ATSD, you can change the above setting to connect to the secure https endpoint.
 
- ```toml
+```toml
  Host = "https://username:password@atsd_hostname:8443/"
- ```
+```
 
-Open the prompt as Administrator and create an scollector service with automated startup by executing the following command:
+Open the prompt as Administrator and create an scollector service with automated startup:
 
- ```
+```txt
  scollector-windows-amd64.exe -winsvc=install
- ```
+```
 
-Start scollector service by executing the following command:
+Start scollector service:
 
- ```
+```txt
  scollector-windows-amd64.exe -winsvc=start
- ```
+```
 
 If the service exits a few seconds after startup, check the following:
 
@@ -218,5 +234,3 @@ If the service exits a few seconds after startup, check the following:
 Open Windows event log and review the scollector service startup error.
 
 If the service is running but there are no `scollector` metrics in ATSD, verify the protocol, url, and user credentials specified in the `scollector.toml` file.
-
-

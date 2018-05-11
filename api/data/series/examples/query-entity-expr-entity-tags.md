@@ -10,16 +10,16 @@ Entity object provides the following parameters that can be referenced in `entit
 
 |**Parameter**|**Description**|
 |:---|:---|
-|name|Entity id.|
-|id|Entity id.|
-|tags.{name}|Value of the entity tag `{name}`. If tag is not available for the given entity, the value is set to empty string ''|
+|`name`|Entity id.|
+|`id`|Entity id.|
+|`tags.{name}`|Value of the entity tag `{name}`. If tag is not available for the given entity, the value is set to empty string ''|
 
 ## Request
 
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 ### Payload

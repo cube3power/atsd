@@ -2,7 +2,7 @@
 
 ## Description
 
-Query detailed data for defined tags. 
+Query detailed data for defined tags.
 
 The query may return multiple series, including series with additional series tags, that contain the specified tag.
 
@@ -11,7 +11,7 @@ The query may return multiple series, including series with additional series ta
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 ### Payload
@@ -23,7 +23,7 @@ POST https://atsd_host:8443/api/v1/series/query
         "endDate":   "2016-02-22T13:35:00Z",
         "entity": "nurswgvml007",
         "metric": "df.disk_used_percent",
-        "tags": {"file_system": "/dev/mapper/vg_nurswgvml007-lv_root", 
+        "tags": {"file_system": "/dev/mapper/vg_nurswgvml007-lv_root",
                  "mount_point": "/"}
     }
 ]

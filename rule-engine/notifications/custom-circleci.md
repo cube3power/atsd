@@ -37,10 +37,10 @@ Keep the `${project_name}` and `${branch}` placeholders in the URL path so that 
 
 The web notification can be configured to send a JSON document to the Circle CI endpoint in order to pass extended build parameters and the `Body` field can include the following text:
 
-```
+```json
 {
   "parallel": "${parallel}",
-  "build_parameters": { 
+  "build_parameters": {
     "RUN_EXTRA_TESTS": "${run_extra_tests}",
     "timezone": "${timezone}"
   }
@@ -59,7 +59,7 @@ Create a new rule or import the [rule template](resources/custom-circleci-rule.x
 
 To create a new rule, open the page **Alerts > Rules** and click **Create**.
 
-Specify the key settings on the **Overview** tab. 
+Specify the key settings on the **Overview** tab.
 
 | **Name** | **Value** |
 | :-------- | :---- |
@@ -79,11 +79,11 @@ Specify the same settings for the **Open** and **Repeat** triggers:
 
 | **Name** | **Value** |
 | :-------- | :---- |
-| branch | master |
-| parallel | 4 |
-| project_name | atsd-api-java |
-| run_extra_tests  | false |
-| timezone  | Etc/UTC |
+| `branch` | master |
+| `parallel` | 4 |
+| `project_name` | atsd-api-java |
+| `run_extra_tests`  | false |
+| `timezone`  | Etc/UTC |
 
 ![](images/circle_rule_notification.png)
 
@@ -96,7 +96,7 @@ When the notification is executed, all placeholders in the request URL and the p
 ```json
 {
   "parallel": "4",
-  "build_parameters": { 
+  "build_parameters": {
     "RUN_EXTRA_TESTS": "false",
     "timezone": "Etc/UTC"
   }
@@ -107,9 +107,9 @@ If the placeholder is not found, it will be replaced with an empty string.
 
 ## Test
 
-In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
+Test the integration by submitting a sample `series` command on the **Data > Data Entry** page.
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 

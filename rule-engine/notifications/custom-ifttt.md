@@ -58,7 +58,7 @@ Choose **Send me an SMS**.
 
 Enter following text into **Message** field and click **Create action**.
 
-```
+```ls
 [{{Value1}}] {{Value2}} for {{Value3}}
 ```
 
@@ -101,7 +101,7 @@ Keep the `${webhook_name}` placeholder in the URL path so that it can be customi
 
 Enter the following text into the `Body` field:
 
-```
+```json
 {
   "value1": "${status}",
   "value2": "${rule}",
@@ -109,7 +109,7 @@ Enter the following text into the `Body` field:
 }
 ```
 
-The `body` text contains placeholders that will be substituted with actual values when the notification is triggered. 
+The `body` text contains placeholders that will be substituted with actual values when the notification is triggered.
 
 Only `valueN` naming convention for JSON fields is supported by the IFTTT platform.
 
@@ -123,7 +123,7 @@ Create a new rule or import the [rule template](resources/custom-ifttt-rule.xml)
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
-Specify the key settings on the **Overview** tab. 
+Specify the key settings on the **Overview** tab.
 
 | **Name** | **Value** |
 | :-------- | :---- |
@@ -147,7 +147,7 @@ The `webhook_name` placeholder in the request URL as well as payload placeholder
 
 `https://maker.ifttt.com/trigger/atsd_custom_trigger/with/key/111111`
 
-```
+```json
 {
   "value1": "OPEN",
   "value2": "IFTTT",
@@ -157,7 +157,7 @@ The `webhook_name` placeholder in the request URL as well as payload placeholder
 
 ## Test
 
-In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
+Test the integration by submitting a sample `series` command on the **Data > Data Entry** page.
 
 ```ls
   series e:test_e m:test_m=2

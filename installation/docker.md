@@ -13,14 +13,14 @@
 
 ## Start Container
 
-```properties
+```elm
 docker run -d --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
   axibase/atsd:latest
 ```
 
 To automatically create an [account](../administration/collector-account.md) for data collection agents, replace `cuser` and `cpassword` credential variables in the command below.
 
-```properties
+```elm
 docker run -d --name=atsd -p 8088:8088 -p 8443:8443 -p 8081:8081 -p 8082:8082/udp \
   --env COLLECTOR_USER_NAME=cuser \
   --env COLLECTOR_USER_PASSWORD=cpassword \
@@ -34,13 +34,13 @@ The password is subject to the following [requirements](../administration/user-a
 
 ## Check Installation
 
-```
+```elm
 docker logs -f atsd
 ```
 
-You should see an **ATSD start completed** message once the database is ready.
+You should see an `ATSD start completed` message once the database is ready.
 
-```
+```txt
 [ATSD] Waiting for ATSD to accept requests on port 8088 ... ( 4 / 60 )
 [ATSD] ATSD user interface:
 [ATSD] http://172.17.0.2:8088
@@ -70,7 +70,7 @@ The ATSD user interface is accessible on port 8443/https.
 |`COLLECTOR_USER_NAME` | No | User name for a data collector account. |
 |`COLLECTOR_USER_PASSWORD` | No | [Password](../administration/user-authentication.md#password-requirements) for a data collector account.|
 |`COLLECTOR_USER_TYPE` | No | User group for a data collector account, default value is `writer`.|
-|`DB_TIMEZONE` | No | Database [timezone identifier](../shared/timezone-list.md).|
+|`DB_TIMEZONE` | No | Database [time zone identifier](../shared/timezone-list.md).|
 |`JAVA_OPTS` | No | Additional arguments to be passed to ATSD JVM process. |
 |`HADOOP_OPTS` | No | Additional arguments to be passed to Hadoop/HDFS JVM processes. |
 |`HBASE_OPTS` | No | Additional arguments to be passed to HBase JVM processes. |
@@ -93,7 +93,7 @@ Cannot start container <container_id>: failed to create endpoint atsd on network
 Bind for 0.0.0.0:8088 failed: port is already allocated
 ```
 
-```properties
+```elm
 docker run -d --name=atsd \
   --publish 9088:8088 \
   --publish 9443:8443 \

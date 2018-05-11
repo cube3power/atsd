@@ -2,17 +2,18 @@
 
 List metrics without `lastInsertDate`. This can occur when the data collected for the metric was subsequently deleted, for example when all entities collecting this metric were deleted, or when old data was pruned according to retention day or series retention day parameters.
 
-To retrieve metrics without `lastInsertDate`, set maxInsertDate to `1970-01-01T00:00:00Z` or earlier.
+To retrieve metrics without `lastInsertDate`, set `maxInsertDate` to `1970-01-01T00:00:00Z` or earlier.
 
 ## Request
 
 ### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/metrics?maxInsertDate=1970-01-01T00:00:00Z&limit=3
+GET https://atsd_hostname:8443/api/v1/metrics?maxInsertDate=1970-01-01T00:00:00Z&limit=3
 ```
 
 ## Response
+
 ```json
 [{
    "name": "%a",

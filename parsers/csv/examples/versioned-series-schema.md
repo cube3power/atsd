@@ -1,6 +1,6 @@
 # Versioned Series
 
-#### Input File
+## Input File
 
 ```csv
 "Station Name","HALIFAX INTL A"
@@ -9,11 +9,11 @@
 2015-10-15,          32.5,                  1,        60.0,               1,        -1,               0
 ```
 
-#### Parser Settings
+## Parser Settings
 
 `Timestamp Pattern:  yyyy-MM-dd`      # Used to parse Measurement Time column values
 
-#### Schema
+## Schema
 
 ```javascript
 select('#row=4-*').select('#col=2-*!2').
@@ -24,11 +24,10 @@ timestamp(cell(row, 1)).
 tag('$version_status', cell(row, col+1));
 ```
 
-#### Commands
+## Commands
 
 ```ls
 series e:nova_scotia d:2015-10-15T00:00:00Z m:temperature=32.5 t:$version_status=1
 series e:nova_scotia d:2015-10-15T00:00:00Z m:humidity=60.0 t:$version_status=1
 series e:nova_scotia d:2015-10-15T00:00:00Z m:pressure=-1 t:$version_status=0
 ```
-

@@ -2,17 +2,17 @@
 
 ## Supported Versions
 
-- Ubuntu 16.04
-- Debian 8.x/9.x
+* Ubuntu 16.04
+* Debian 8.x/9.x
 
 ## Requirements
 
-- Minimum RAM: 2 GB
-- See [Requirements](../administration/requirements.md) for additional information.
+* Minimum RAM: 2 GB
+* See [Requirements](../administration/requirements.md) for additional information.
 
 ## Installation Steps
 
-#### Add backports repository
+### Add `backports` repository
 
 This step is required only for Debian 8.x (jessie)
 
@@ -20,13 +20,13 @@ This step is required only for Debian 8.x (jessie)
 sudo sh -c 'echo deb http://ftp.debian.org/debian jessie-backports main >> /etc/apt/sources.list.d/backports.list'
 ```
 
-#### Update Repositories
+### Update Repositories
 
 ```sh
 sudo apt-get update
 ```
 
-#### Add `axibase.com/public/repository/deb/` Repository
+### Add `axibase.com/public/repository/deb/` Repository
 
 ```sh
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
@@ -38,7 +38,7 @@ sudo sh -c 'echo "deb [arch=amd64] http://axibase.com/public/repository/deb/ ./"
 >> /etc/apt/sources.list.d/axibase.list'
 ```
 
-#### Update Repositories and Install ATSD
+### Update Repositories and Install ATSD
 
 Follow the prompts to install ATSD:
 

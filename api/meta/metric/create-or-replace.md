@@ -1,6 +1,6 @@
 # Metric: Create or Replace
 
-## Description 
+## Description
 
 Create a metric with specified fields and tags or replace the fields and tags of an existing metric.
 
@@ -18,11 +18,11 @@ The replace request for an existing metric doesn't affect any series data since 
 |:---|:---|---:|
 | PUT | `/api/v1/metrics/{metric}` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| metric |string|Metric name.|
+| `metric` |string|Metric name.|
 
 ### Fields
 
@@ -43,7 +43,7 @@ None.
 #### URI
 
 ```elm
-PUT https://atsd_host:8443/api/v1/metrics/my-metric
+PUT https://atsd_hostname:8443/api/v1/metrics/my-metric
 ```
 
 #### Payload
@@ -62,7 +62,7 @@ PUT https://atsd_host:8443/api/v1/metrics/my-metric
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics/my-metric \
+curl https://atsd_hostname:8443/api/v1/metrics/my-metric \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PUT \

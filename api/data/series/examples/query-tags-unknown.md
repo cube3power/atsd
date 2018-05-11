@@ -2,14 +2,14 @@
 
 ## Description
 
-Query data for series that have the specified tag, whereas the tag does not exist in the database. 
+Query data for series that have the specified tag, whereas the tag does not exist in the database.
 
 ## Request
 
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 ### Payload

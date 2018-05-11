@@ -2,7 +2,7 @@
 
 ## Overview
 
-Axibase Time Series Database can be deployed on HBase using [AWS S3](http://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase-s3.html) as the underlying file system.
+Axibase Time Series Database can be deployed on HBase using [AWS S3](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-hbase-s3.html) as the underlying file system.
 
 ## Operational Advantages
 
@@ -57,7 +57,7 @@ Verify that the jar file is stored in S3:
 aws s3 ls --summarize --human-readable --recursive s3://atsd/hbase-root/lib
 ```
 
-```
+```txt
   2017-08-31 21:43:24  555.1 KiB hbase-root/lib/atsd-hbase.jar
 
   Total Objects: 1
@@ -110,20 +110,20 @@ The `<subnet>` parameter is required when launching particular instance types. T
 
 ### Specify Initial Cluster Size
 
-Adjust EC2 instance types and total instance count for the `RegionServers` group as appropriate. Review [AWS documentation](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs-launch-sample-cluster.html) for additional commands.
+Adjust EC2 instance types and total instance count for the `RegionServers` group as appropriate. Review [AWS documentation](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs-launch-sample-cluster.html) for additional commands.
 
 The cluster size can be adjusted at runtime.
 
 The minimum number of nodes in each instance group is 1, therefore the smallest cluster can have two EC2 instances:
 
-```
+```sh
   Name=Master,InstanceCount=1,InstanceGroupType=MASTER,InstanceType=m4.large        \
   Name=Region,InstanceCount=1,InstanceGroupType=CORE,InstanceType=m4.large          \
 ```
 
 ### Enable Consistent S3 View
 
-For long-running production clusters, enable [EMR Consistent View](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-consistent-view.html) which identifies inconsistencies in S3 object listings and resolves them using retries with expotential timeouts. When this option is enabled, the HBase metadata is also stored in a [DynamoDB](http://docs.aws.amazon.com/emr/latest/ManagementGuide/emrfs-metadata.html) table.
+For long-running production clusters, enable [EMR Consistent View](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-consistent-view.html) which identifies inconsistencies in S3 object listings and resolves them using retries with exponential timeouts. When this option is enabled, the HBase metadata is also stored in a [DynamoDB](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emrfs-metadata.html) table.
 
 The checks are enabled by adding the `Consistent` setting to the launch command.
 
@@ -151,7 +151,7 @@ watch 'aws emr describe-cluster --cluster-id $CLUSTER_ID | grep MasterPublic | c
 
 Determine public IP address of the HBase Master node.
 
-```
+```sh
 export MASTER_IP=$(aws emr describe-cluster --cluster-id $CLUSTER_ID | grep MasterPublic | cut -d "\"" -f 4) \
 && echo $MASTER_IP
 ```
@@ -168,7 +168,7 @@ Wait until HBase services are running on the HMaster node.
 watch 'initctl list | grep hbase'
 ```
 
-```
+```txt
   hbase-thrift start/running, process 8137
   hbase-rest start/running, process 7842
   hbase-master start/running, process 7987
@@ -176,14 +176,13 @@ watch 'initctl list | grep hbase'
 
 Verify HBase version (1.2.3+) and rerun the status command until the cluster becomes operational.
 
-
 ```sh
 echo "status" | hbase shell
 ```
 
 Wait until the cluster is initialized and the "Master is initializing" error is no longer displayed.
 
-```
+```txt
 status
 1 active master, 0 backup masters, 4 servers, 0 dead, 1.0000 average load
 ```
@@ -196,7 +195,7 @@ Log in to the server where ATSD will be installed.
 ssh -i /path/to/<key-name>.pem ec2-user@$PUBLIC_IP
 ```
 
-> For testing and development, you can install ATSD on the the HMaster node.
+> For testing and development, you can install ATSD on the HMaster node.
 
 Verify that [JDK 8](../administration/migration/install-java-8.md) is installed on the server.
 
@@ -277,13 +276,13 @@ Start ATSD.
 
 Monitor startup progress using the log file.
 
-```
+```sh
 tail -f atsd/atsd/logs/atsd.log
 ```
 
 It may take ATSD several minutes to create tables after initializing the system.
 
-```
+```txt
 ...
 2017-08-31 22:10:37,890;INFO;main;org.springframework.web.servlet.DispatcherServlet;FrameworkServlet 'dispatcher': initialization completed in 3271 ms
 ...
@@ -292,8 +291,7 @@ It may take ATSD several minutes to create tables after initializing the system.
 2017-08-31 22:10:37,950;INFO;main;org.eclipse.jetty.server.AbstractConnector;Started SslSelectChannelConnector@0.0.0.0:9443
 ```
 
-Login to the ATSD web interface on https://atsd_hostname:8443. Modify the port to `9443` if port settings were previously replaced.
-
+Login to the ATSD web interface on `https://atsd_hostname:8443`. Modify the port to `9443` if port settings were previously replaced.
 
 ## Troubleshooting
 
@@ -301,7 +299,7 @@ Login to the ATSD web interface on https://atsd_hostname:8443. Modify the port t
 
 Make sure that the Security Group associated with the EC2 instance where ATSD is running allows access to ATSD listening ports.
 
-If necessary, add security group rules to open inbound access to ports 8081, 8082/udp, 8084, 8088, 8443 or 9081, 9082/udp, 9084, 9088, 9443 respectively.
+If necessary, add security group rules to open inbound access to ports `8081`, `8082/udp`, `8084`, `8088`, `8443` or `9081`, `9082/udp`, `9084`, `9088`, `9443` respectively.
 
 ### ATSD Shutdown
 
@@ -336,7 +334,7 @@ Check that the file is present in S3.
 aws s3 ls --summarize --human-readable --recursive s3://atsd/hbase-root/lib
 ```
 
-```
+```txt
   2017-08-31 21:43:24  555.1 KiB hbase-root/lib/atsd-hbase.jar
 
   Total Objects: 1

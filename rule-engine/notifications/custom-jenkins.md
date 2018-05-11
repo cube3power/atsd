@@ -11,7 +11,7 @@ The integration relies on the following [Jenkins API](https://wiki.jenkins.io/di
 
 ## Configuration
 
-Create a new `CUSTOM` web notification from scratch or import the following [template](resources/custom-jenkins-notification.xml), used in this example. 
+Create a new `CUSTOM` web notification from scratch or import the following [template](resources/custom-jenkins-notification.xml), used in this example.
 
 To import the XML template file, open the **Alerts > Web Notifications** page, select **Import** in the multi-action button located below the table and follow the prompts.
 
@@ -32,7 +32,7 @@ Enter a name and specify the following parameters:
 
 If the Jenkins job is not parameterized, use the `https://jenkins.example.org/job/${job_name}/build` url.
 
-Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address. 
+Replace `jenkins.example.org` in the `Endpoint URL` parameter with the actual Jenkins address.
 
 Keep the `${job_name}` placeholder in the URL path so that one can customize it in the rule editor. This would allow you to trigger different jobs using the same web notification.
 
@@ -52,7 +52,7 @@ Your token is displayed in the `API Token` field.
 
 ### Payload
 
-If your Jenkins job is parameterized, you can send the additional parameters in the request payload. 
+If your Jenkins job is parameterized, you can send the additional parameters in the request payload.
 
 To inspect which parameters are exposed by the project, open the job configuration page in Jenkins.
 
@@ -76,7 +76,7 @@ Create a new rule or import the [rule template](resources/custom-jenkins-rule.xm
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
-Specify the key settings on the **Overview** tab. 
+Specify the key settings on the **Overview** tab.
 
 | **Name** | **Value** |
 | :-------- | :---- |
@@ -96,9 +96,9 @@ Specify the same settings for the **Open** and **Repeat** triggers:
 
 | **Name** | **Value** |
 | :-------- | :---- |
-| job_name  | atsd-api-test |
-| run_extra_tests  | false |
-| timezone | Etc/UTC |
+| `job_name`  | atsd-api-test |
+| `run_extra_tests`  | false |
+| `timezone` | Etc/UTC |
 
 ![](images/jenkins_rule_notification.png)
 
@@ -108,7 +108,7 @@ When the notification is executed, all placeholders will be resolved as follows:
 
 `https://jenkins.example.org/job/atsd-api-test/buildWithParameters`
 
-```
+```txt
 timezone=Etc/UTC
 run_extra_tests=false
 ```
@@ -117,9 +117,9 @@ If the placeholder is not found, it will be replaced with an empty string.
 
 ## Test
 
-In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the page **Data > Data Entry** and submit the following command:
+Test the integration by submitting a sample `series` command on the **Data > Data Entry** page.
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 

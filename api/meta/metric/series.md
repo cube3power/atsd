@@ -16,17 +16,17 @@ Each series is identified by metric name, entity name, and optional series tags.
 
 | **Name** | **Description** |
 |:---|:---|
-| metric | **[Required]** Metric name. |
+| `metric` | **[Required]** Metric name. |
 
 ### Query Parameters
 
 | **Parameter** |**Type**| **Description** |
 |:---|:---|:---|
-| entity | string| Filter series collected by the specified entity name. |
-| tags.{tag=name} | string | Filter series that contain the specified series tag values.<br>Example: `?tags.mount_point=/` or `?entity=nurswgvml007&tags.mount_point=/`|
-| minInsertDate |string|Filter series with `lastInsertDate` equal or greater than `minInsertDate`.<br>`minInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
-| maxInsertDate |string|Filter series with `lastInsertDate` less than `maxInsertDate`.<br>`maxInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
-| addMeta | boolean | Include metric and entity metadata (fields and tags) under the `meta` object in the response. Default: `false`.|
+| `entity` | string| Filter series collected by the specified entity name. |
+| `tags.{tag=name}` | string | Filter series that contain the specified series tag values.<br>Example: `?tags.mount_point=/` or `?entity=nurswgvml007&tags.mount_point=/`|
+| `minInsertDate` |string|Filter series with `lastInsertDate` equal or greater than `minInsertDate`.<br>`minInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
+| `maxInsertDate` |string|Filter series with `lastInsertDate` less than `maxInsertDate`.<br>`maxInsertDate` can be specified in ISO format or using [calendar](../../../shared/calendar.md) keywords.|
+| `addMeta` | boolean | Include metric and entity metadata (fields and tags) under the `meta` object in the response. Default: `false`.|
 
 ## Response
 
@@ -34,10 +34,10 @@ Each series is identified by metric name, entity name, and optional series tags.
 
 | **Field** | **Description** |
 |:---|:---|
-| metric | Metric name.  |
-| entity | Entity name.  |
-| tags | An object containing **series** tag names and values.<br>For example, `"tags": {"file_system": "/dev/sda"}` |
-| lastInsertDate |Last time a value was received for this series. ISO date.|
+| `metric` | Metric name.  |
+| `entity` | Entity name.  |
+| `tags` | An object containing **series** tag names and values.<br>For example, `"tags": {"file_system": "/dev/sda"}` |
+| `lastInsertDate` |Last time a value was received for this series. ISO date.|
 
 ### Errors
 
@@ -50,7 +50,7 @@ None.
 #### URI
 
 ```elm
-GET https://atsd_host:8443/api/v1/metrics/disk_used/series
+GET https://atsd_hostname:8443/api/v1/metrics/disk_used/series
 ```
 
 #### Payload
@@ -60,7 +60,7 @@ None.
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/metrics/disk_used/series \
+curl https://atsd_hostname:8443/api/v1/metrics/disk_used/series \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```
@@ -69,21 +69,21 @@ curl https://atsd_host:8443/api/v1/metrics/disk_used/series \
 
 ```json
 [{
-	"metric": "disk_used",
-	"entity": "nurswgvml007",
-	"tags": {
-		"file_system": "/dev/mapper/vg_nurswgvml007-lv_root",
-		"mount_point": "/"
-	},
-	"lastInsertDate": "2016-05-23T11:54:36.000Z"
+    "metric": "disk_used",
+    "entity": "nurswgvml007",
+    "tags": {
+        "file_system": "/dev/mapper/vg_nurswgvml007-lv_root",
+        "mount_point": "/"
+    },
+    "lastInsertDate": "2016-05-23T11:54:36.000Z"
 }, {
-	"metric": "disk_used",
-	"entity": "nurswgvml006",
-	"tags": {
-		"file_system": "10.102.0.2:/home/store/share",
-		"mount_point": "/mnt/share"
-	},
-	"lastInsertDate": "2015-12-25T14:09:49.000Z"
+    "metric": "disk_used",
+    "entity": "nurswgvml006",
+    "tags": {
+        "file_system": "10.102.0.2:/home/store/share",
+        "mount_point": "/mnt/share"
+    },
+    "lastInsertDate": "2015-12-25T14:09:49.000Z"
 }]
 ```
 

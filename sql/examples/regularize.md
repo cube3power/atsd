@@ -4,7 +4,7 @@ The **WITH INTERPOLATE** clause provides a way to transform unevenly spaced time
 
 The underlying transformation calculates values at regular intervals using linear or step interpolation.
 
-Unlike the `GROUP BY PERIOD` clause with the `LINEAR` option, which interpolates missing periods, the `WITH INTERPOLATE` clause operates using raw values. Here is an example in [Chartlab](https://apps.axibase.com/chartlab/471a2a40) that illustrates the difference between interpolating raw and aggregated values.
+Unlike the `GROUP BY PERIOD` clause with the `LINEAR` option, which interpolates missing periods, the `WITH INTERPOLATE` clause operates using raw values. Here is an example in [ChartLab](https://apps.axibase.com/chartlab/471a2a40) that illustrates the difference between interpolating raw and aggregated values.
 
 Similar to the original series, the regularized series can be used in `JOIN` queries, `WHERE` condition, `ORDER BY` and `GROUP BY` clauses.
 
@@ -18,7 +18,7 @@ The interpolated values are calculated based on two adjacent values.
 
 If a raw value exists at the regularized timestamp, it is used "as is" irrespective of neighboring values.
 
-### Irregular Series:
+### Irregular Series
 
 ```ls
 | time                 | value |
@@ -94,7 +94,6 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:06:00Z'
 ```
 
 > A value at 08:00:00 is not returned because there is no prior value in the `INNER` mode to interpolate between it and the value at 08:00:18.
-
 > Values at 08:05:00 and 08:05:30 are not returned because there is no value after 08:04:48 in the `INNER` mode.
 
 ```ls
@@ -313,7 +312,7 @@ If the period doesn't have any values, the period is omitted from the results.
 
 An optional `LINEAR` directive for the `GROUP BY PERIOD()` clause changes the default behavior and returns results for missing periods by applying linear interpolation between values of the neighboring periods.
 
-* [Chartlab examples](https://apps.axibase.com/chartlab/471a2a40)
+* [ChartLab examples](https://apps.axibase.com/chartlab/471a2a40)
 
 ![Interpolation Options](../images/aggregation_vs_interpolation.png)
 
@@ -350,7 +349,6 @@ AND datetime >= '2016-09-17T08:00:00Z' AND datetime < '2016-09-17T08:02:00Z'
 #### `WITH INTERPOLATE`
 
 The `WITH INTERPOLATE` clause, on the other hand, calculates values at calendar-aligned timestamps using neighboring raw values.
-
 
 ```sql
 SELECT datetime, value FROM metric1
@@ -549,9 +547,9 @@ The default time zone can be customized by specifying a [time zone identifier](.
 
 * Custom Time Zone
 
-```
+```sql
 SELECT entity, value,
-  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "UTC datetime", 
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "UTC datetime",
   date_format(time, 'yyyy-MM-dd HH:mm z', 'US/Pacific') AS "Local datetime"
 FROM "mpstat.cpu_busy"
   WHERE datetime >= NOW - 2*DAY
@@ -559,12 +557,12 @@ WITH INTERPOLATE(1 DAY, LINEAR, INNER, FALSE, CALENDAR, 'US/Pacific')
 ```
 
 ```ls
-| entity       | value | UTC datetime         | Local datetime       | 
-|--------------|-------|----------------------|----------------------| 
-| nurswgvml007 | 65.5  | 2017-08-17 07:00 UTC | 2017-08-17 00:00 PDT | 
-| nurswgvml007 | 38.5  | 2017-08-18 07:00 UTC | 2017-08-18 00:00 PDT | 
-| nurswgvml006 | 33.2  | 2017-08-17 07:00 UTC | 2017-08-17 00:00 PDT | 
-| nurswgvml006 | 33.3  | 2017-08-18 07:00 UTC | 2017-08-18 00:00 PDT | 
+| entity       | value | UTC datetime         | Local datetime       |
+|--------------|-------|----------------------|----------------------|
+| nurswgvml007 | 65.5  | 2017-08-17 07:00 UTC | 2017-08-17 00:00 PDT |
+| nurswgvml007 | 38.5  | 2017-08-18 07:00 UTC | 2017-08-18 00:00 PDT |
+| nurswgvml006 | 33.2  | 2017-08-17 07:00 UTC | 2017-08-17 00:00 PDT |
+| nurswgvml006 | 33.3  | 2017-08-18 07:00 UTC | 2017-08-18 00:00 PDT |
 ```
 
 * Entity or Metric Time Zone
@@ -572,7 +570,7 @@ WITH INTERPOLATE(1 DAY, LINEAR, INNER, FALSE, CALENDAR, 'US/Pacific')
 ```sql
 SELECT entity, entity.timeZone,
   value,
-  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "UTC datetime", 
+  date_format(time, 'yyyy-MM-dd HH:mm z', 'UTC') AS "UTC datetime",
   date_format(time, 'yyyy-MM-dd HH:mm z', entity.timeZone) AS "Local datetime"
 FROM "mpstat.cpu_busy"
   WHERE datetime >= NOW - 2*DAY
@@ -580,14 +578,14 @@ WITH INTERPOLATE(1 DAY, LINEAR, INNER, FALSE, CALENDAR, entity.timeZone)
 ```
 
 ```ls
-| entity       | entity.timeZone | value | UTC datetime         | Local datetime       | 
-|--------------|-----------------|-------|----------------------|----------------------| 
-| nurswgvml007 | PST             | 65.5  | 2017-08-17 07:00 UTC | 2017-08-17 00:00 PDT | 
-| nurswgvml007 | PST             | 38.5  | 2017-08-18 07:00 UTC | 2017-08-18 00:00 PDT | 
-| nurswgvml006 | US/Mountain     | 31.1  | 2017-08-17 06:00 UTC | 2017-08-17 00:00 MDT | 
-| nurswgvml006 | US/Mountain     | 3.0   | 2017-08-18 06:00 UTC | 2017-08-18 00:00 MDT | 
-| nurswgvml010 | null            | 0.4   | 2017-08-17 00:00 UTC | 2017-08-17 00:00 GMT | 
-| nurswgvml010 | null            | 22.5  | 2017-08-18 00:00 UTC | 2017-08-18 00:00 GMT | 
+| entity       | entity.timeZone | value | UTC datetime         | Local datetime       |
+|--------------|-----------------|-------|----------------------|----------------------|
+| nurswgvml007 | PST             | 65.5  | 2017-08-17 07:00 UTC | 2017-08-17 00:00 PDT |
+| nurswgvml007 | PST             | 38.5  | 2017-08-18 07:00 UTC | 2017-08-18 00:00 PDT |
+| nurswgvml006 | US/Mountain     | 31.1  | 2017-08-17 06:00 UTC | 2017-08-17 00:00 MDT |
+| nurswgvml006 | US/Mountain     | 3.0   | 2017-08-18 06:00 UTC | 2017-08-18 00:00 MDT |
+| nurswgvml010 | null            | 0.4   | 2017-08-17 00:00 UTC | 2017-08-17 00:00 GMT |
+| nurswgvml010 | null            | 22.5  | 2017-08-18 00:00 UTC | 2017-08-18 00:00 GMT |
 ```
 
 ## Multiple Intervals
@@ -619,7 +617,6 @@ WHERE entity = 'nurswgvml006'
 | 2016-09-18T14:04:45Z | 82.4  |
 | 2016-09-18T14:05:00Z | 5.8   | [14:04-14:05] interval END
 ```
-
 
 ### Input Commands
 

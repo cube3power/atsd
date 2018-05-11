@@ -7,20 +7,19 @@ Message primary key is entity, type, source, and time. Tags and message are exte
 ## Request
 
 ### URI
+
 ```elm
-POST https://atsd_host:8443/api/v1/messages/insert
+POST https://atsd_hostname:8443/api/v1/messages/insert
 ```
+
 ### Payload
+
 ```json
 [{
     "entity": "nurswgvml007",
     "type": "application",
-	"source": "atsd",
+    "source": "atsd",
     "message": "NURSWGVML007 ssh: error: connect_to localhost port 8881: failed.",
     "tags": {"path": "/", "name": "sda"}
 }]
-```
-
-## Response
-```
 ```

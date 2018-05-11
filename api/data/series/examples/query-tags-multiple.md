@@ -9,7 +9,7 @@ Query detailed data for an array of tag values for a given tag.
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 ### Payload
@@ -21,9 +21,9 @@ POST https://atsd_host:8443/api/v1/series/query
         "endDate":   "2016-02-22T13:35:00Z",
         "entity": "nurswgvml007",
         "metric": "disk_used_percent",
-        "tags": { 
+        "tags": {
             "mount_point": ["/", "/mnt/u113452"]
-		}
+        }
     }
 ]
 ```

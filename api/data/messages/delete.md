@@ -2,7 +2,7 @@
 
 ## Description
 
-The ability to delete specific message records via the Data API is not implemented. 
+The ability to delete specific message records via the Data API is not implemented.
 
 ## TTL
 
@@ -20,7 +20,7 @@ Login into the ATSD server and execute the following administrative commands in 
 
 > The procedure is different in distributed installations.
 
-```bash
+```sh
 echo "disable 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
 
 echo "alter 'atsd_message', NAME => 'c', TTL => 1209600, MIN_VERSIONS => 0" | /opt/atsd/hbase/bin/hbase shell
@@ -39,15 +39,13 @@ echo "major_compact 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
 
 The response should look as follows:
 
-```
+```txt
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell
 Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 UTC 2015
 
 disable 'atsd_message'
 0 row(s) in 1.4720 seconds
-
-
 
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell
@@ -59,8 +57,6 @@ Updating all regions with the new schema...
 Done.
 0 row(s) in 1.4390 seconds
 
-
-
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell
 Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 UTC 2015
@@ -70,8 +66,6 @@ Updating all regions with the new schema...
 1/1 regions updated.
 Done.
 0 row(s) in 1.3900 seconds
-
-
 
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell
@@ -83,8 +77,6 @@ Updating all regions with the new schema...
 Done.
 0 row(s) in 1.3870 seconds
 
-
-
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell
 Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 UTC 2015
@@ -95,16 +87,12 @@ Updating all regions with the new schema...
 Done.
 0 row(s) in 1.4120 seconds
 
-
-
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell
 Version 0.94.27, rfb434617716493eac82b55180b0bbd653beb90bf, Thu Mar 19 06:17:55 UTC 2015
 
 enable 'atsd_message'
 0 row(s) in 1.3640 seconds
-
-
 
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell
@@ -116,8 +104,8 @@ major_compact 'atsd_message'
 
 ## Deleting All Messages
 
-Execute the following administrative command in HBase shell to truncate the 'atsd_message' table which will cause all records to be removed.
+Truncate the 'atsd_message' table which will cause all records to be removed.
 
-```bash
+```sh
 echo "truncate 'atsd_message'" | /opt/atsd/hbase/bin/hbase shell
 ```

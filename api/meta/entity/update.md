@@ -1,8 +1,8 @@
-## Entity: Update
+# Entity: Update
 
 ## Description
 
-Update fields and tags of the specified entity. 
+Update fields and tags of the specified entity.
 
 Unlike the [replace method](create-or-replace.md), fields and tags that are **not** specified in the request are left unchanged.
 
@@ -14,11 +14,11 @@ Similarly, fields that are set to `null` are ignored and are left unchanged.
 |:---|:---|---:|
 | PATCH | `/api/v1/entities/{entity}` | `application/json` |
 
-### Path Parameters 
+### Path Parameters
 
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
-| entity |string|Entity name.|
+| `entity` |string|Entity name.|
 
 ### Fields
 
@@ -39,7 +39,7 @@ None.
 #### URI
 
 ```elm
-PATCH https://atsd_host:8443/api/v1/entities/{entity}
+PATCH https://atsd_hostname:8443/api/v1/entities/{entity}
 ```
 
 #### Payload
@@ -55,12 +55,12 @@ PATCH https://atsd_host:8443/api/v1/entities/{entity}
 #### curl
 
 ```elm
-curl https://atsd_host:8443/api/v1/entities/nurswgvml006 \
+curl https://atsd_hostname:8443/api/v1/entities/nurswgvml006 \
   --insecure --verbose --user {username}:{password} \
   --header "Content-Type: application/json" \
   --request PUT \
   --data '{"tags": {"alias": "vmware_host"}}'
-  ```
+```
 
 ### Response
 

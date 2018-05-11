@@ -1,19 +1,18 @@
-Weekly Change Log: October 16, 2017 - October 22, 2017
-==================================================
+# Weekly Change Log: October 16, 2017 - October 22, 2017
 
 ## ATSD
 
 | Issue| Category    | Type    | Subject              |
 |------|-------------|---------|----------------------|
-| 4653 | ui | Bug | HTML entities inside editable fields are not escaped. |
+| 4653 |UI| Bug | HTML entities inside editable fields are not escaped. |
 | 4648 | sql | Bug | `WHERE tags LIKE` causes an NPE. |
 | 4644 | api-rest | Bug | Unicode patterns are not escaped in entity expressions. |
 | [4643](#issue-4643) | email | Feature | Split email notification message into multiple tables. |
 | [4635](#issue-4635) | api-rest | Feature | Add support for limits in series query with ascending order. |
-| 4632 | ui | Bug | Export page - aggregate function drop down broken. |
+| 4632 |UI| Bug | Export page - aggregate function drop down broken. |
 | 4631 | sql | Bug | Metrics not filtered if specified with `WHERE metric.name = {name}` syntax. |
-| 4629 | ui | Bug | Export page fails to display tag values when aggregator is selected. |
-| 4615 | rule-engine | Feature | Add support for `metric.label` and other `entity.*` and `metric.*` fields in the [rule engine](../../rule-engine/expression.md). |
+| 4629 |UI| Bug | Export page fails to display tag values when aggregator is selected. |
+| 4615 | rule-engine | Feature | Add support for `metric.label` and other `entity.*` and `metric.*` fields in the [rule engine](../../rule-engine/window-fields.md). |
 | 4614 | rule-engine | Bug | `entity_tags` placeholder doesn't work. |
 | [4590](#issue-4590) | client | Feature | Python API client examples. |
 | 4555 | sql | Bug | Fix SQL `datetime NOT BETWEEN` condition. |
@@ -69,7 +68,7 @@ In the example above, the underscore is evaluated as a regular character (not as
 
 Refer to [API documentation](../../api/meta/misc/search.md) for additional details.
 
-```
+```elm
 GET /api/v1/search?query=inflation*&limit=2&metricTags=*&metricFields=units,dataType&entityTags=*&entityFields=timeZone
 ```
 
@@ -86,7 +85,7 @@ GET /api/v1/search?query=inflation*&limit=2&metricTags=*&metricFields=units,data
       {
         "units": "million",
         "dataType": "LONG"
-      },			
+      },
       {
         "pricebase": "Current prices",
         "seasonaladjustment": "Seasonally Adjusted",
@@ -96,7 +95,7 @@ GET /api/v1/search?query=inflation*&limit=2&metricTags=*&metricFields=units,data
       "U.S. FED",
       {
         "timeZone": "US/Eastern"
-      },				
+      },
       {
         "source": "FRED"
       },
@@ -111,7 +110,7 @@ GET /api/v1/search?query=inflation*&limit=2&metricTags=*&metricFields=units,data
       {
         "units": "million",
         "dataType": "LONG"
-      },			
+      },
       {
         "pricebase": "Current prices",
         "seasonaladjustment": "Seasonally Adjusted",
@@ -121,7 +120,7 @@ GET /api/v1/search?query=inflation*&limit=2&metricTags=*&metricFields=units,data
       "U.S. FED",
       {
         "timeZone": "US/Eastern"
-      },				
+      },
       {
         "source": "FRED"
       },

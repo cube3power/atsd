@@ -2,15 +2,17 @@
 
 List metrics starting with `nmon` and with tag `table` starting with `CPU`
 
-## Request 
-### URI 
+## Request
+
+### URI
+
 ```elm
-GET https://atsd_host:8443/api/v1/metrics?tags=table&limit=2&expression=name%20like%20%27nmon*%27%20and%20tags.table%20like%20%27*CPU*%27
+GET https://atsd_hostname:8443/api/v1/metrics?tags=table&limit=2&expression=name%20like%20%27nmon*%27%20and%20tags.table%20like%20%27*CPU*%27
 ```
 
 ### Expression
 
-```
+```javascript
 name LIKE 'nmon*' and tags.table LIKE '*CPU*'
 ```
 

@@ -1,12 +1,15 @@
-# List Active Metrics 
+# List Active Metrics
 
 ## Request
+
 ### URI
+
 ```elm
-GET https://atsd_host:8443/api/v1/metrics?active=true&timeFormat=iso
+GET https://atsd_hostname:8443/api/v1/metrics?active=true&timeFormat=iso
 ```
 
 ## Response
+
 ```json
 [
    {

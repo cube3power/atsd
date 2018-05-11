@@ -44,7 +44,7 @@ Copy the token.
 
 Enter the following text into the `Body` field:
 
-```
+```json
 {
   "incident": {
     "type": "incident",
@@ -61,7 +61,7 @@ Enter the following text into the `Body` field:
 }
 ```
 
-The `body` text contains placeholders that will be substituted with actual values when the notification is triggered. 
+The `body` text contains placeholders that will be substituted with actual values when the notification is triggered.
 
 The placeholders specified in the payload are visible as editable parameters in the rule editor.
 
@@ -73,7 +73,7 @@ Create a new rule or import the [rule template](resources/custom-pagerduty-rule.
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
-Specify the key settings on the **Overview** tab. 
+Specify the key settings on the **Overview** tab.
 
 | **Name** | **Value** |
 | :-------- | :---- |
@@ -87,18 +87,18 @@ Open the **Web Notifications** tab.
 
 Set **Enabled** to **Yes** and choose the previously created web notification from the **Endpoint** drop-down.
 
-Enable **Open**, **Repeat** and **Cancel** triggers. Set the **Repeat Interval** to **All**. Leave **detailsTable('ascii')** empty.
+Enable **Open**, **Repeat** and **Cancel** triggers. Set the **Repeat Interval** to **All**. Leave `detailsTable('ascii')` empty.
 
 Specify the following settings for the **Open** trigger:
 
 | **Name** | **Value** |
 | :-------- | :---- |
-| service_id | `<SERVICE_ID>` |
-| incident_name | `[${status}] ${rule} for ${entity} ${tags}` |
+| `service_id` | `<SERVICE_ID>` |
+| `incident_name` | `[${status}] ${rule} for ${entity} ${tags}` |
 
 ![](images/pagerduty_rule_notification_open.png)
 
-The `service_id` parameter indicates which service is affected by the incident. You can obtain the service ID on the PagerDuty **Services** page. 
+The `service_id` parameter indicates which service is affected by the incident. You can obtain the service ID on the PagerDuty **Services** page.
 
 Click **Configuration > Services**.
 
@@ -114,7 +114,7 @@ Get an ID from url.
 
 Payload placeholders will automatically be resolved when the notification is triggered:
 
-```
+```json
 {
   "incident": {
     "type": "incident",
@@ -133,7 +133,7 @@ Payload placeholders will automatically be resolved when the notification is tri
 
 ## Test
 
-In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
+Test the integration by submitting a sample `series` command on the **Data > Data Entry** page.
 
 ```ls
   series e:test_e m:test_m=2

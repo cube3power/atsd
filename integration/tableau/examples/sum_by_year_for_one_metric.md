@@ -10,12 +10,12 @@ Report showing annual exports.
 
 ## Steps
 
-- Drag-and-drop the table to Canvas area
-- Press **Sheet 1**
-- Press **OK** to acknowledge the warning about limitations
-- Drag _Datetime_ onto the columns field
-- Drag _Value_ onto the rows field
-- Optionally add [drop lines](comparision_of_two_metrics_at_one_bar_graph.md#drop-lines)
+* Drag-and-drop the table to Canvas area
+* Press **Sheet 1**
+* Press **OK** to acknowledge the warning about limitations
+* Drag `Datetime` onto the columns field
+* Drag `Value` onto the rows field
+* Optionally add [drop lines](comparison_of_two_metrics_at_one_bar_graph.md#drop-lines)
 
 ## Results
 

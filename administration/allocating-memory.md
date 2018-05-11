@@ -1,6 +1,5 @@
 # Allocating Memory to Components
 
-
 ## Change Maximum ATSD Heap Memory
 
 Open the ATSD environment file and modify the -Xmx parameter.
@@ -60,7 +59,6 @@ Restart all services:
 
 ## Verify Settings
 
-
-```
+```sh
 ps aux | grep Xmx
 ```

@@ -9,7 +9,7 @@ Query detailed data for the specified time range and return data in UNIX epoch m
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 ### Payload
@@ -21,7 +21,7 @@ POST https://atsd_host:8443/api/v1/series/query
         "endDate":   "2016-02-22T13:35:00Z",
         "entity": "nurswgvml007",
         "metric": "mpstat.cpu_busy",
-		"timeFormat": "milliseconds"
+        "timeFormat": "milliseconds"
     }
 ]
 ```

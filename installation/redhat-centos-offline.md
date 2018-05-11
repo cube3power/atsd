@@ -1,4 +1,4 @@
-# RedHat/Centos: Offline
+# RedHat/CentOS: Offline
 
 ## Overview
 
@@ -7,13 +7,13 @@ and copying them to the target machine with similar characteristics for offline 
 
 ## Supported Versions
 
-- RedHat Enterprise Linux 7.x
-- CentOS 7.x
+* RedHat Enterprise Linux 7.x
+* CentOS 7.x
 
 ## Requirements
 
-- Minimum RAM: 2 GB
-- See [Requirements](../administration/requirements.md) for additional information.
+* Minimum RAM: 2 GB
+* See [Requirements](../administration/requirements.md) for additional information.
 
 ## Configuration
 
@@ -39,7 +39,6 @@ sudo yumdownloader --resolve java-1.8.0-openjdk-devel which hostname net-tools i
 ```
 
 > See the RedHat [note](https://access.redhat.com/solutions/10154) on using yum to download packages without installation.
-
 > If some of the above dependencies are not found, for example in case of installation on new systems, run `sudo yum update` to upgrade all packages on your operating system to the latest versions.
 
 Copy the downloaded *.rpm packages to the target machine and install them as follows:

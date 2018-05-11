@@ -15,7 +15,7 @@ Samples for each series are always sorted by time in ascending order.
 ### URI
 
 ```elm
-POST https://atsd_host:8443/api/v1/series/query
+POST https://atsd_hostname:8443/api/v1/series/query
 ```
 
 ### Payload
@@ -27,7 +27,7 @@ POST https://atsd_host:8443/api/v1/series/query
         "endDate":   "2016-02-22T13:31:00Z",
         "entity": "nurswgvml007",
         "metric": "cpu_busy",
-		"limit": 1
+        "limit": 1
     }
 ]
 ```

@@ -7,34 +7,34 @@ These functions return URLs to ATSD pages based on the database URL (set the `se
 The URLs are automatically [inlined](links.md#inline-links) in email notifications and in web notifications that support inline links.
 
 The inline links can be also assembled manually using the syntax supported by the notification channel:
-	
-* `markdown`	
-	
-```markdown	
-[Error Messages](${serverLink}/messages?entity=${entity})	
-```	
-	
-* `pipe` (used by Slack)	
-	
-```ls	
-<${serverLink}/messages?entity=${entity}|Error Messages>	
-```	
-	
+
+* `markdown`
+
+```markdown
+[Error Messages](${serverLink}/messages?entity=${entity})
+```
+
+* `pipe` (used by Slack)
+
+```ls
+<${serverLink}/messages?entity=${entity}|Error Messages>
+```
+
 * `html`
-	
-```html	
-<a href="${serverLink}/messages?entity=${entity}">Error Messages</a>	
+
+```html
+<a href="${serverLink}/messages?entity=${entity}">Error Messages</a>
 ```
 
 ## Reference
 
-* [getEntityLink](#getentitylink)
-* [getPropertyLink](#getpropertylink)
-* [getRuleLink](#getrulelink)
-* [getCsvExportLink](#getcsvexportlink)
-* [getHtmlExportLink](#gethtmlexportlink)
-* [getChartLink](#getchartlink)
-* [addLink](#addlink)
+* [`getEntityLink`](#getentitylink)
+* [`getPropertyLink`](#getpropertylink)
+* [`getRuleLink`](#getrulelink)
+* [`getCsvExportLink`](#getcsvexportlink)
+* [`getHtmlExportLink`](#gethtmlexportlink)
+* [`getChartLink`](#getchartlink)
+* [`addLink`](#addlink)
 
 ### `getEntityLink`
 
@@ -57,7 +57,7 @@ getEntityLink('nurswgvml007')
 The returned link includes the path to the entity page on the target database server:
 
 ```elm
-https://atsd_host:8443/entities/nurswgvml007
+https://atsd_hostname:8443/entities/nurswgvml007
 ```
 
 The above URL could also be assembled manually:
@@ -89,7 +89,7 @@ getPropertyLink('nurswgvml007', 'configuration', false, 'markdown')
 Returned inline link:
 
 ```elm
-[configuration](https://atsd_host:8443/entities/nurswgvml007/properties?type=configuration)
+[configuration](https://atsd_hostname:8443/entities/nurswgvml007/properties?type=configuration)
 ```
 
 ### `getRuleLink`
@@ -151,10 +151,11 @@ Example:
 ```javascript
 getChartLink('markdown')
 ```
+
 The following inline link is returned:
 
 ```elm
-[Default](https://atsd_host:8443/portals/series?metric=docker&entity=nurswgvml007...)
+[Default](https://atsd_hostname:8443/portals/series?metric=docker&entity=nurswgvml007...)
 ```
 
 ### `addLink`
@@ -178,7 +179,7 @@ addLink('Error Messages', serverLink + '/messages?entity=' + entity)
 The following inline link is returned:
 
 ```markdown
-[Error Messages](https://atsd_host:8443/messages?entity=nurswgvml007)
+[Error Messages](https://atsd_hostname:8443/messages?entity=nurswgvml007)
 ```
 
 * `pipe` (Slack):
@@ -190,7 +191,7 @@ addLink('Error Messages', serverLink + '/messages?entity=' + entity)
 The following inline link is returned:
 
 ```ls
-<https://atsd_host:8443/messages?entity=nurswgvml007|Error Messages>
+<https://atsd_hostname:8443/messages?entity=nurswgvml007|Error Messages>
 ```
 
 * `html` (Email, HipChat, Discord):
@@ -202,5 +203,5 @@ addLink('Error Messages', serverLink + '/messages?entity=' + entity)
 The following inline link is returned:
 
 ```html
-<a href="https://atsd_host:8443/messages?entity=nurswgvml007">Error Messages</a>
+<a href="https://atsd_hostname:8443/messages?entity=nurswgvml007">Error Messages</a>
 ```

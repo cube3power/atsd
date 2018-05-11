@@ -2,13 +2,13 @@
 
 SQL client provides a convenient way to query the Axibase Time Series Database using SQL and export results to a file or standard output in a variety of formats.
 
-The client is a bash script that parses and validates input parameters and executes an http/s request to `/api/sql` API endpoint in the database using credentials stored in the `atsd.config` file. 
+The client is a bash script that parses and validates input parameters and executes an http/s request to `/api/sql` API endpoint in the database using credentials stored in the `atsd.config` file.
 
 ## Security
 
 Make sure that `sql.sh` has execution permissions.
 
-```
+```sh
 chmod +x sql.sh
 ```
 
@@ -31,17 +31,16 @@ password=********
 
 ## Parameters
 
-
 | **Name** | **Type** | **Description** |
 |:---|:---|:---|
-| -o, --output | string | Output file to store the result set. If not specified, results are printed to stdout. |
+| -o, --output | string | Output file to store the result set. If not specified, results are printed to `stdout`. |
 | -i, --input | string | Input file containing SQL query to execute. |
 | -q, --query | string | SQL query text enclosed with double quotes. Ignored if query is read from input file. <br>Double quotes contained in query text can be escaped with a backslash.|
 | -f, --format | string | Format. Default: `csv`. Supported options: `csv`, `json`. |
 
 ## Examples
 
-Execute inline query and print results to stdout.
+Execute inline query and print results to `stdout`.
 
 ```ls
 ./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE datetime > now - 1*minute LIMIT 3"
@@ -61,19 +60,19 @@ Execute query specified in the `query.sql` file and write CSV results to `/tmp/r
 
 Execute inline query and redirect output to a file.
 
-```
+```sh
 ./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE datetime > now-1*hour LIMIT 2" > /tmp/test.csv
 ```
 
 Execute inline query with escaped double quotes.
 
-```
+```sh
 ./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE datetime > now-1*hour LIMIT 5"
 ```
 
 Execute a multi-line query.
 
-```
-./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE 
+```sh
+./sql.sh -q "SELECT * FROM \"mpstat.cpu_busy\" WHERE
                datetime > now-1*hour LIMIT 5"
 ```

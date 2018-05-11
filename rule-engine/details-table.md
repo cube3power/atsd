@@ -41,7 +41,7 @@ The examples below were written to a log file via the **Logging** tab and mainta
 detailsTable('ascii')
 ```
 
-```
+```txt
 +-------------------+------------------------------+
 | Name              | Value                        |
 +-------------------+------------------------------+
@@ -91,7 +91,7 @@ detailsTable('ascii')
 detailsTable('markdown')
 ```
 
-```
+```txt
 | **Name** | **Value** |
 |:---|:---|
 | name | atsd |
@@ -139,7 +139,7 @@ detailsTable('markdown')
 detailsTable('csv')
 ```
 
-```
+```txt
 Name,Value
 name,atsd
 label,Axibase Time Series Database
@@ -186,7 +186,7 @@ intercept,-1.8922e8
 detailsTable('html')
 ```
 
-```
+```html
 <table style="font-family: monospace, consolas, sans-serif; border-collapse: collapse;"><tbody><tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">name</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;"><a href="https://atsd_host/entities/atsd">atsd</a></td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">label</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">Axibase Time Series Database</td></tr>
 <tr><td bgcolor="#f0f0f0" align="right" style="font-weight: bold;border: 1px solid #d0d0d0;padding: 4px;">app</td><td align="left" style="border: 1px solid #d0d0d0;padding: 4px;">ATSD</td></tr>
@@ -234,7 +234,7 @@ detailsTable('html')
 detailsTable('property')
 ```
 
-```
+```txt
 name=atsd
 label=Axibase Time Series Database
 app=ATSD

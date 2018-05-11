@@ -2,10 +2,10 @@
 
 ## Overview
 
-ATSD adapter in Axibase Enterprise Reporter and Axibase Fabrica creates a hierarchical representation of metrics 
+ATSD adapter in Axibase Enterprise Reporter and Axibase Fabrica creates a hierarchical representation of metrics
 collected in ATSD and makes them available for querying in reports.
 
-In order for the Axibase Server to group ATSD metrics into virtual tables, metrics need to be tagged with the `table` tag. 
+In order for the Axibase Server to group ATSD metrics into virtual tables, metrics need to be tagged with the `table` tag.
 
 ## Enable the `table` Tag in the Metrics List
 
@@ -49,11 +49,10 @@ In order for the Axibase Server to group ATSD metrics into virtual tables, metri
 
 ## Configure ATSD Proxy
 
-Configure the Axibase Server to serve as an ATSD proxy so that widgets stored in the Axibase Server can optionally query data in ATSD transparently. In this configuration, the Axibase Server redirects an API request received from the client, and executes the request. 
+Configure the Axibase Server to serve as an ATSD proxy so that widgets stored in the Axibase Server can optionally query data in ATSD transparently. In this configuration, the Axibase Server redirects an API request received from the client, and executes the request.
 
 * Open the **Admin:Settings:** page in the Axibase Server and expand the `SERVER` section.
-* Enter a full URL to ATSD into the `REDIRECT URL` field, including username and password as follows:
-`schema://atsd_user:atsd_user_password@atsd_host:atsd_port`
+* Enter a full URL to ATSD into the `REDIRECT URL` field, including username and password as follows: `schema://atsd_user:atsd_user_password@atsd_hostname:atsd_port`
 
 Example:
 
@@ -66,16 +65,16 @@ Example:
 
 ```ls
 [configuration]
-  title = Performance/Daily 
+  title = Performance/Daily
   width-units = 4
   height-units = 3
   url = /proxy
-  
+
   [group]
   [widget]
     type = chart
     /*
-    	Query entities and metrics defined in ATSD, even if not exposed in Axibase Server
+        Query entities and metrics defined in ATSD, even if not exposed in Axibase Server
     */
     metric = mpstat.cpu_busy
     entity = nurswghbs001

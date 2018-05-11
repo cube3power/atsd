@@ -6,7 +6,7 @@ The following example demonstrates how to create an [Amazon CloudWatch](https://
 
 The request is automatically signed with **AWS Signature, v4**, implemented by this notification type, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
 
-The example invokes the [Amazon CloudWatch Events API](http://docs.aws.amazon.com/AmazonCloudWatchEvents/latest/APIReference/API_PutEvents.html) `PutEvents` action.
+The example invokes the [Amazon CloudWatch Events API](https://docs.aws.amazon.com/AmazonCloudWatchEvents/latest/APIReference/API_PutEvents.html) `PutEvents` action.
 
 ## Configuration
 
@@ -27,9 +27,9 @@ Enter a name and specify the following parameters:
 | Secret Access Key | `<AWS_SECRET_ACCESS_KEY>` |
 | Body | `<MESSAGE_TEXT>` |
 
-Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your [Amazon CloudWatch Events region](http://docs.aws.amazon.com/general/latest/gr/rande.html#cwe_region), for example:
+Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with your [Amazon CloudWatch Events region](https://docs.aws.amazon.com/general/latest/gr/rande.html#cwe_region), for example:
 
-```
+```elm
 https://events.us-east-1.amazonaws.com
 ```
 
@@ -39,8 +39,8 @@ Add required headers for `PutEvents` action:
 
 | **Name** | **Value** |
 | :--- | :--- |
-| Content-Type | `application/x-amz-json-1.1` |
-| X-Amz-Target | `AWSEvents.PutEvents` |
+| `Content-Type` | `application/x-amz-json-1.1` |
+| `X-Amz-Target` | `AWSEvents.PutEvents` |
 
 Modify the `Body` by replacing the `<MESSAGE_TEXT>` value with your text, for example:
 

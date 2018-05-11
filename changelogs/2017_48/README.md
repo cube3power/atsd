@@ -1,5 +1,4 @@
-Weekly Change Log: November 27, 2017 - December 3, 2017
-==================================================
+# Weekly Change Log: November 27, 2017 - December 3, 2017
 
 ## ATSD
 
@@ -8,7 +7,7 @@ Weekly Change Log: November 27, 2017 - December 3, 2017
 | 4774 | rule engine | Bug | Invalid URL validation error for `.site` domain. |
 | 4769 | rule engine | Bug | Rule does not update when the linked web notification changes. |
 | 4767 | rule engine | Bug | [`CUSTOM`](../../rule-engine/notifications/custom.md) web notification: timeout waiting for connection from pool. |
-| 4764 | rule engine | Bug | Do not show entity information in entity-ungrouped alert details. |
+| 4764 | rule engine | Bug | Do not show entity information in entity non-grouped alert details. |
 | 4762 | rule engine | Feature | Simplify [`DISCORD`](../../rule-engine/notifications/discord.md) web notification configuration. |
 | 4761 | rule editor | Bug | 'Add override' link not creating a row in the [Overrides](../../rule-engine/overrides.md) table. |
 | 4760 | api-rest | Bug | [`series query`](../../api/data/series/query.md) method: entity expression error when using `name` field. |

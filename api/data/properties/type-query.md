@@ -2,7 +2,7 @@
 
 ## Description
 
-Returns an array of property types for the entity. 
+Returns an array of property types for the entity.
 
 ## Request
 
@@ -14,7 +14,7 @@ Returns an array of property types for the entity.
 
 | **Name** | **In** | **Description** |
 |:---|:---|:---|
-| entity | path | **[Required]** Entity name. |
+| `entity` | path | **[Required]** Entity name. |
 
 ## Response
 
@@ -24,7 +24,7 @@ An array of property type names.
 
 | **Field** | **Description** |
 |:---|:---|
-| type | Property type name. |
+| `type` | Property type name. |
 
 ### Errors
 
@@ -35,13 +35,13 @@ An array of property type names.
 #### URI
 
 ```elm
-GET https://atsd_server:8443/api/v1/properties/nurswgvml007/types
+GET https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types
 ```
 
 #### curl
 
 ```elm
-curl  https://atsd_server:8443/api/v1/properties/nurswgvml007/types \
+curl  https://atsd_hostname:8443/api/v1/properties/nurswgvml007/types \
   --insecure --verbose --user {username}:{password} \
   --request GET
 ```
@@ -55,4 +55,3 @@ curl  https://atsd_server:8443/api/v1/properties/nurswgvml007/types \
     "nmon.process"
 ]
 ```
-

@@ -6,7 +6,7 @@ The following example demonstrates how to start an [AWS Batch](https://aws.amazo
 
 The request is automatically signed with **AWS Signature, v4**, implemented by this notification type, which allows submitting requests to **any** AWS endpoint that accepts **AWS Signature, v4**.
 
-The example described below invokes the [AWS Batch API](http://docs.aws.amazon.com/batch/latest/APIReference/API_SubmitJob.html) `SubmitJob` action.
+The example described below invokes the [AWS Batch API](https://docs.aws.amazon.com/batch/latest/APIReference/API_SubmitJob.html) `SubmitJob` action.
 
 ## Configuration
 
@@ -27,9 +27,9 @@ Enter a name and specify the following parameters:
 | Secret Access Key | `<AWS_SECRET_ACCESS_KEY>` |
 | Body | `<JSON_CONTENT>` |
 
-Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with the target [region](http://docs.aws.amazon.com/general/latest/gr/rande.html#batch_region), for example:
+Modify the `Endpoint URL` by replacing the `<AWS_REGION>` value with the target [region](https://docs.aws.amazon.com/general/latest/gr/rande.html#batch_region), for example:
 
-```
+```elm
 https://batch.us-east-1.amazonaws.com/v1/submitjob
 ```
 
@@ -53,7 +53,7 @@ Create a new rule or import the [rule template](resources/aws-api-batch-rule.xml
 
 To create a new rule, open the **Alerts > Rules** page and click **Create**.
 
-Specify the key settings on the **Overview** tab. 
+Specify the key settings on the **Overview** tab.
 
 | **Name** | **Value** |
 | :-------- | :---- |
@@ -73,9 +73,9 @@ Enable **Open** trigger.
 
 ## Test
 
-In order to test the integration, submit sample data for the `test_m` metric into ATSD. For example, open the **Data > Data Entry** page and submit the following command:
+Test the integration by submitting a sample `series` command on the **Data > Data Entry** page.
 
-```
+```ls
   series e:test_e m:test_m=2
 ```
 
