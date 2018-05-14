@@ -144,7 +144,7 @@ Set _Data Type_ setting to 'Forecast', optionally specify the forecast name:
 
 Data API provides a way to [query](../api/data/series/query.md#forecast-filter) and [insert](../api/data/series/insert.md#fields) forecast values. The `insert` capability can be used to populate the database with custom forecast values calculated externally.
 
-A sample forecast JSON query](../api/data/series/examples/query-named-forecast.md):
+A sample forecast [JSON query](../api/data/series/examples/query-named-forecast.md):
 
 ```json
 [
@@ -212,6 +212,30 @@ Will generate the response:
             {
                 "d": "2015-06-24T00:00:00.000Z",
                 "v": 0
+            }
+        ]
+    }
+]
+```
+
+Insert a forecast into ATSD using POST method:
+
+```elm
+POST https://atsd_hostname:8443/api/v1/series/insert
+```
+
+This will deliver the JSON payload:
+
+```json
+[
+    {
+        "entity": "nurswgvml007",
+        "metric": "mpstat.cpu_busy",
+        "type": "FORECAST",
+        "data": [
+            {
+                "t": 1462427358127,
+                "v": 52
             }
         ]
     }
