@@ -30,7 +30,7 @@ Forecast settings can be configured on the **Data > Forecasts** page.
 
 | Setting | Description |
 | --- | --- |
-|Enabled| Enabled Settings are executed according to a _Schedule_.|
+|Enabled| Enabled Settings are executed according to a Schedule.|
 |Schedule|[Cron](https://github.com/axibase/axibase-collector/blob/master/scheduling.md#cron-expressions) expression for calculating and storing forecasts.<br>The expression is evaluated based on local server time.<br> Examples:`0 0 2 * * MON-FRI` - 02:00 on workdays<br>`0 5 0 * *` - at 00:05 daily.|
 |Retention Interval|Specifies how long a forecast should be stored in the database. Forecasts that are older than `current time` (or [`End Time`](#selection-settings), if specified) minus `Retention Interval` are deleted.|
 
@@ -44,11 +44,11 @@ Forecast settings can be configured on the **Data > Forecasts** page.
 |Entity  |If selected, forecasts will be limited to the specified entity. Supersedes Entity Group selector. If neither entity nor entity group is specified, forecasts will be prepared for all entities.|
 |Entity Group  |If selected, forecasts will be limited to entities contained in the specified entity group.|
 |Tags  |Limit the selected historical data to specified series tags.|
-|End Time  |End time of the _Data Selection Interval_ and _Series Selection Interval_. This field supports [calendar](../shared/calendar.md) expressions, for example 'current_day'. If `End Time` is not defined, it is set to the time the job is run.|
-|Data Selection Interval  |Time frame for selecting detailed data that will be used as forecast input. End of the _Selection Interval_ can be optionally specified in the _End Time_ field, otherwise it is set to current time.|
-|Series Selection Interval  |Ignore series with Last Insert Time which differs from _End Time_ by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
+|End Time  |End time of the Data Selection Interval and Series Selection Interval. This field supports [calendar](../shared/calendar.md) expressions, for example 'current_day'. If `End Time` is not defined, it is set to the time the job is run.|
+|Data Selection Interval  |Time frame for selecting detailed data that will be used as forecast input. End of the Selection Interval can be optionally specified in the End Time field, otherwise it is set to current time.|
+|Series Selection Interval  |Ignore series with Last Insert Time which differs from End Time by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
 |Calendar  |Ignore detailed values within the time intervals listed in the calendar.|
-|Empty Period Threshold  |Ignore series if percentage of empty periods exceeds the specified threshold. Calculated as 100 * (number of empty periods before interpolation)/(total number of aggregation periods in _Data Selection Interval_).|
+|Empty Period Threshold  |Ignore series if percentage of empty periods exceeds the specified threshold. Calculated as 100 * (number of empty periods before interpolation)/(total number of aggregation periods in Data Selection Interval).|
 
 ### Aggregation Settings
 
@@ -68,7 +68,7 @@ Forecast settings can be configured on the **Data > Forecasts** page.
 | Setting | Description |
 | --- | --- |
 |Algorithm |Holt-Winters or ARIMA forecasting algorithms.|
-|Score Interval |Part of _Data Selection Interval_ that will be used to compute variance between observed values and forecast to rank forecasts by variance. The shorter the _Score Interval_, the more weight assigned to recently observed values.|
+|Score Interval |Part of Data Selection Interval that will be used to compute variance between observed values and forecast to rank forecasts by variance. The shorter the Score Interval, the more weight assigned to recently observed values.|
 |Auto Period |Let server automatically identify seasonality of the underlying series that produces the most accurate forecast, defined as having the lowest variance from observed historical data.|
 |Period |Specify seasonality of the underlying series.|
 |Auto Parameters |Let server automatically identify algorithm parameters that produce the most accurate forecast, defined as having the lowest variance from observed historical data.|
@@ -136,7 +136,7 @@ This setting compares the actual [average value](https://github.com/axibase/atsd
 
 ### Ad hoc Export
 
-Set _Data Type_ setting to 'Forecast', optionally specify the forecast name:
+Set Data Type setting to 'Forecast', optionally specify the forecast name:
 
 ![](resources/forecasts_15.png)
 
