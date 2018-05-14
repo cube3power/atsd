@@ -2,10 +2,7 @@
 
 ## Overview
 
-- Axibase Time Series Database (ATSD) includes built-in forecasting algorithms that predict abnormalities based on historical data.
-- The accuracy of these predictions and the percentage of false positives / negatives depends on the frequency of data collection, the retention interval selected, and the algorithms used.
-- Built-in auto-regressive time series extrapolation algorithms (Holt-Winters, ARIMA) in ATSD can [predict failures](../administration/monitoring-metrics/rule-engine.md) at early stages.
-- Dynamic predictions eliminate the need to set manual thresholds.
+Axibase Time Series Database includes built-in forecasting algorithms that predict future values based on historical data. The accuracy of these predictions depends on the frequency of data collection, the selection interval, and the algorithms used. Supported algorithms for auto-regressive time series extrapolation include **Holt-Winters**, **ARIMA**.
 
 **Forecasting Example with Abnormal Deviation**:
 
@@ -13,7 +10,7 @@
 
 ![](resources/forecasts_2.png)
 
-Open the **Data** menu and select **Forecasts** to configure a new Forecast or modify an existing one.
+Forecast settings can be configured on the **Data > Forecasts** page.
 
 ![](resources/forecasts_3.png)
 
@@ -22,10 +19,8 @@ Open the **Data** menu and select **Forecasts** to configure a new Forecast or m
 ## Reference
 
 - [Editor Settings](#editor-settings)
-- [Tools](#tools)
-- [View Forecast Data](#view-forecast-data)
-- [Data API](#data-api)
-- [Chart Settings](#chart-settings)
+- [Editor Tools](#editor-tools)
+- [Using Forecasts](#using-forecasts)
 
 ## Editor Settings
 
@@ -36,10 +31,10 @@ Open the **Data** menu and select **Forecasts** to configure a new Forecast or m
 | Setting | Description |
 | --- | --- |
 |Enabled| Enabled Settings are executed according to a _Schedule_.|
-|Schedule|[Cron](https://github.com/axibase/axibase-collector/blob/master/scheduling.md#cron-expressions) expression for calculating and storing forecasts.<br>The expression is evaluated based on local server time.<br> Examples:<br>0 0 2 * * MON-FRI</b> - 02:00 on workdays<br>0 5 0 * *</b> - at 00:05 daily"|
-|Retention Interval|Specifies how long a forecast should be stored in the database. Forecasts that are older than `current time` (or [_End Time_](#selection-settings), if specified) minus `Retention Interval` are deleted.|
+|Schedule|[Cron](https://github.com/axibase/axibase-collector/blob/master/scheduling.md#cron-expressions) expression for calculating and storing forecasts.<br>The expression is evaluated based on local server time.<br> Examples:`0 0 2 * * MON-FRI` - 02:00 on workdays<br>`0 5 0 * *` - at 00:05 daily.|
+|Retention Interval|Specifies how long a forecast should be stored in the database. Forecasts that are older than `current time` (or [`End Time`](#selection-settings), if specified) minus `Retention Interval` are deleted.|
 
-### Filter Settings
+### Data Selection Settings
 
 ![](resources/forecasts_5.png)
 
@@ -49,7 +44,7 @@ Open the **Data** menu and select **Forecasts** to configure a new Forecast or m
 |Entity  |If selected, forecasts will be limited to the specified entity. Supersedes Entity Group selector. If neither entity nor entity group is specified, forecasts will be prepared for all entities.|
 |Entity Group  |If selected, forecasts will be limited to entities contained in the specified entity group.|
 |Tags  |Limit the selected historical data to specified series tags.|
-|End Time  |End time of the _Data Selection Interval_ and _Series Selection Interval_. This field supports [calendar](../shared/calendar.md) syntax,for example 'current_day'. If End Time is not defined, it is set to the time the job is run.|
+|End Time  |End time of the _Data Selection Interval_ and _Series Selection Interval_. This field supports [calendar](../shared/calendar.md) expressions, for example 'current_day'. If `End Time` is not defined, it is set to the time the job is run.|
 |Data Selection Interval  |Time frame for selecting detailed data that will be used as forecast input. End of the _Selection Interval_ can be optionally specified in the _End Time_ field, otherwise it is set to current time.|
 |Series Selection Interval  |Ignore series with Last Insert Time which differs from _End Time_ by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
 |Calendar  |Ignore detailed values within the time intervals listed in the calendar.|
@@ -66,7 +61,7 @@ Open the **Data** menu and select **Forecasts** to configure a new Forecast or m
 |Aggregation Period |Period of time over which the detailed samples are aggregated.|
 |Aggregate Statistic |Aggregation function applied to raw data in order to regularize the series. Aggregate values for empty periods without detailed data are interpolated as values of aggregate functions for previous periods.|
 
-### Algorithm Settings
+### Algorithm Parameters
 
 ![](resources/forecasts_7.png)
 
@@ -78,7 +73,7 @@ Open the **Data** menu and select **Forecasts** to configure a new Forecast or m
 |Period |Specify seasonality of the underlying series.|
 |Auto Parameters |Let server automatically identify algorithm parameters that produce the most accurate forecast, defined as having the lowest variance from observed historical data.|
 
-### Storing Settings
+### Persistence Settings
 
 ![](resources/forecasts_8.png)
 
@@ -89,9 +84,9 @@ Open the **Data** menu and select **Forecasts** to configure a new Forecast or m
 |Forecast Range |Minimum and Maximum constraints applied to the stored forecast values to ensure that such values are within the specified range. Constraints are applied to the winning forecast after scoring stage.|
 |Forecast Interval |The length of time into the future for which forecasts are to be prepared and stored in the database. Can be rounded upwards to the nearest forecast period.|
 
-## Tools
+## Editor Tools
 
-Forecast Settings Editor provides a set of following tools:
+Forecast Settings Editor provides the following tools:
 
 ![](resources/forecasts_9.png)
 
@@ -127,32 +122,30 @@ Split button on the **Data > Forecasts** page may be used to specify [Exceptions
 
 ![](resources/forecasts_10.png)
 
-## View Forecast Data
+## Using Forecasts
 
-Forecast data may be retrieved on the [Ad hoc Export](../reporting/ad-hoc-exporting.md) page, via a scheduled [Export Job](../reporting/scheduled-exporting.md) and using [Data API](#data-api).
+### Rule Engine
 
-### Ad hoc Export page
+### Ad hoc Export
 
 Set _Data Type_ setting to 'Forecast', optionally specify the forecast name:
 
 ![](resources/forecasts_15.png)
 
-## Data API
+### Data API
 
-Data API provides a way to [insert](../api/data/series/insert.md#fields) and [query](../api/data/series/query.md#forecast-filter) forecast values.
+Data API provides a way to [query](../api/data/series/query.md#forecast-filter) and [insert](../api/data/series/insert.md#fields) forecast values. The `insert` capability can be used to populate the database with custom forecast values calculated externally.
 
 Examples:
 
+- [Query Named Forecast](../api/data/series/examples/query-named-forecast.md)
 - [Insert Forecast](../api/data/series/examples/insert-forecast.md)
 - [Insert Named Forecast](../api/data/series/examples/insert-named-forecast.md)
 - [Insert Forecast Deviation](../api/data/series/examples/insert-forecast-deviation.md)
-- [Query Named Forecast](../api/data/series/examples/query-named-forecast.md)
 
-## Chart Settings
+### Charts
 
-To display forecast values in time charts use the following settings:
-
-### [series] section
+Load forecasts data by setting `data-type = forecast` in the `[series]` section.
 
 ```ls
 [series]
@@ -161,23 +154,11 @@ To display forecast values in time charts use the following settings:
     data-type = forecast
 ```
 
-|Name|Example|Description|Chart Lab|
+|Name|Example|Description|Example|
 |---|---|---|---|
 |data-type|`data-type = forecast`|Data type for the current series.<br>Possible values: historical, forecast, forecast_deviation, lower_confidence, upper_confidence.|[View](https://apps.axibase.com/chartlab/f80b8e53)|
 |forecast-name|`forecast-name = hw5`|Unique identifier of the forecast.<br>Useful when creating multiple forecasts for the same series.<br>If no forecast name is set, the default forecast will be loaded.|[View](https://apps.axibase.com/chartlab/92b7e471/3/)|
 |style|`style = stroke-dasharray: none;`|Remove dashes from forecast line on the chart.|[View](https://apps.axibase.com/chartlab/92b7e471/4/)|
 |value|`value = (1 - forecast('free') / forecast('total')) * 100`|Returns forecast for the underlying series.|[View](https://apps.axibase.com/chartlab/da03b8a5/11/)|
 |load-future-data|`load-future-data = true`|Load future series values.<br>Usually used to view imported forecasts generated with 3rd party tools, like R Language.<br>Possible values: true, false.|[View](https://apps.axibase.com/chartlab/87c197be)|
-
-### [widget] section
-
-```ls
-[widget]
-    type = chart
-    statistics = average
-    forecast-style = stroke: magenta;
-```
-
-|Name|Example|Description|Chart Lab|
-|---|---|---|---|
 |forecast-style|`forecast-style = stroke: magenta;`|CSS styles applied to forecasts in column and column-stack modes.|[View](https://apps.axibase.com/chartlab/37c39d18/3/)|
