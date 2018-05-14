@@ -218,7 +218,7 @@ Will generate the response:
 ]
 ```
 
-Insert a forecast into ATSD using POST method:
+[Insert a forecast](../api/data/series/examples/insert-forecast.md) into ATSD using POST method:
 
 ```elm
 POST https://atsd_hostname:8443/api/v1/series/insert
@@ -244,7 +244,6 @@ This will deliver the JSON payload:
 
 Additional examples:
 
-- [Insert Forecast](../api/data/series/examples/insert-forecast.md)
 - [Insert Named Forecast](../api/data/series/examples/insert-named-forecast.md)
 - [Insert Forecast Deviation](../api/data/series/examples/insert-forecast-deviation.md)
 
