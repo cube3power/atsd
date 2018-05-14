@@ -2,8 +2,8 @@
 
 ## Overview
 
-- Axibase Time Series Database (ATSD) includes built-in forecasting algorithms that can predict abnormalities based on historical data.
-- The accuracy of predictions and the percentage of false positives/negatives depends on the frequency of data collection, the retention interval, and algorithms.
+- Axibase Time Series Database (ATSD) includes built-in forecasting algorithms that predict abnormalities based on historical data.
+- The accuracy of these predictions and the percentage of false positives / negatives depends on the frequency of data collection, the retention interval selected, and the algorithms used.
 - Built-in auto-regressive time series extrapolation algorithms (Holt-Winters, ARIMA) in ATSD can [predict failures](../administration/monitoring-metrics/rule-engine.md) at early stages.
 - Dynamic predictions eliminate the need to set manual thresholds.
 
@@ -13,7 +13,7 @@
 
 ![](resources/forecasts_2.png)
 
-Forecasts are accessible under the **Data > Forecasts** tab.
+Open the **Data** menu and select **Forecasts** to configure a new Forecast or modify an existing one.
 
 ![](resources/forecasts_3.png)
 
@@ -35,9 +35,9 @@ Forecasts are accessible under the **Data > Forecasts** tab.
 
 | Setting | Description |
 | --- | --- |
-|Enabled| Enabled Settings are executed on _Schedule_.|
-|Schedule|[Cron](https://github.com/axibase/axibase-collector/blob/master/scheduling.md#cron-expressions) expression for calculating and storing forecasts on schedule.<br>The expression is evaluated based on local server time.<br> Examples:<br>0 0 2 * * MON-FRI</b> - 02:00 on workdays<br>0 5 0 * *</b> - at 00:05 daily"|
-|Retention Interval|Specifies for how long the forecasts should be stored in the database. Forecasts that are older than `current time` (or [_End Time_](#selection-settings), if specified) minus `Retention Interval` are deleted on schedule.|
+|Enabled| Enabled Settings are executed according to a _Schedule_.|
+|Schedule|[Cron](https://github.com/axibase/axibase-collector/blob/master/scheduling.md#cron-expressions) expression for calculating and storing forecasts.<br>The expression is evaluated based on local server time.<br> Examples:<br>0 0 2 * * MON-FRI</b> - 02:00 on workdays<br>0 5 0 * *</b> - at 00:05 daily"|
+|Retention Interval|Specifies how long a forecast should be stored in the database. Forecasts that are older than `current time` (or [_End Time_](#selection-settings), if specified) minus `Retention Interval` are deleted.|
 
 ### Filter Settings
 
@@ -49,9 +49,9 @@ Forecasts are accessible under the **Data > Forecasts** tab.
 |Entity  |If selected, forecasts will be limited to the specified entity. Supersedes Entity Group selector. If neither entity nor entity group is specified, forecasts will be prepared for all entities.|
 |Entity Group  |If selected, forecasts will be limited to entities contained in the specified entity group.|
 |Tags  |Limit the selected historical data to specified series tags.|
-|End Time  |End time of the _Data Selection Interval_ and _Series Selection Interval_. This field supports [calendar](../shared/calendar.md) syntax,for example 'current_day'. If End Time is not defined, it is set to current time at the time the job is run.|
-|Data Selection Interval  |Time frame for selecting detailed data that will be used as forecast input. End of the _Selection Interval_ can be optionally specified in _End Time_ field, otherwise it is set to current time.|
-|Series Selection Interval  |Ignore series with Last Insert Time different from _End Time_ by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
+|End Time  |End time of the _Data Selection Interval_ and _Series Selection Interval_. This field supports [calendar](../shared/calendar.md) syntax,for example 'current_day'. If End Time is not defined, it is set to the time the job is run.|
+|Data Selection Interval  |Time frame for selecting detailed data that will be used as forecast input. End of the _Selection Interval_ can be optionally specified in the _End Time_ field, otherwise it is set to current time.|
+|Series Selection Interval  |Ignore series with Last Insert Time which differs from _End Time_ by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
 |Calendar  |Ignore detailed values within the time intervals listed in the calendar.|
 |Empty Period Threshold  |Ignore series if percentage of empty periods exceeds the specified threshold. Calculated as 100 * (number of empty periods before interpolation)/(total number of aggregation periods in _Data Selection Interval_).|
 
@@ -61,8 +61,8 @@ Forecasts are accessible under the **Data > Forecasts** tab.
 
 | Setting | Description |
 | --- | --- |
-|Group By |Grouping key for merging multiple series into one series. Detailed data for multiple series sharing the same grouping key are merged into one array prior to computing aggregate statistic.|
-|Auto Aggregate|Let server automatically identify an aggregation period that produces the most accurate forecast - forecast with minimal variance from observed historical data.|
+|Group By |Grouping key for merging multiple series into one. Detailed data for multiple series sharing the same grouping key are merged into one array prior to computing aggregate statistics.|
+|Auto Aggregate|Let server automatically identify an aggregation period that produces the most accurate forecast, defined as having the lowest variance from observed historical data.|
 |Aggregation Period |Period of time over which the detailed samples are aggregated.|
 |Aggregate Statistic |Aggregation function applied to raw data in order to regularize the series. Aggregate values for empty periods without detailed data are interpolated as values of aggregate functions for previous periods.|
 
@@ -73,10 +73,10 @@ Forecasts are accessible under the **Data > Forecasts** tab.
 | Setting | Description |
 | --- | --- |
 |Algorithm |Holt-Winters or ARIMA forecasting algorithms.|
-|Score Interval |Part of _Data Selection Interval_ that will be used to compute variance between observed values and forecast to rank forecasts by variance. The shorter the _Score Interval_ - the more weight is assigned to the recently observed values.|
-|Auto Period |Let server automatically identify seasonality of the underlying series that produces the most accurate forecast - forecast with minimum variance from observed historical data.|
+|Score Interval |Part of _Data Selection Interval_ that will be used to compute variance between observed values and forecast to rank forecasts by variance. The shorter the _Score Interval_, the more weight assigned to recently observed values.|
+|Auto Period |Let server automatically identify seasonality of the underlying series that produces the most accurate forecast, defined as having the lowest variance from observed historical data.|
 |Period |Specify seasonality of the underlying series.|
-|Auto Parameters |Let server automatically identify algorithm parameters that produce the most accurate forecast - forecast with minimum variance from observed historical data.|
+|Auto Parameters |Let server automatically identify algorithm parameters that produce the most accurate forecast, defined as having the lowest variance from observed historical data.|
 
 ### Storing Settings
 
@@ -85,7 +85,7 @@ Forecasts are accessible under the **Data > Forecasts** tab.
 | Setting | Description |
 | --- | --- |
 |Forecast Name |An optional name that can be used to differentiate forecasts for the same underlying series prepared with different forecast settings.<br>Use cases:<br> &bull; [`forecastName`](../api/data/series/query.md#forecast-filter) field in Data API<br>&bull; [`forecast(name)`](../rule-engine/functions-forecast.md#forecaststring-n) Rule Engine function<br>&bull; [`forecast-name`](#chart-settings) Chart setting |
-|Default Forecast |Use these settings instead of default settings when calculating on-demand forecast. On-demand forecast is calculated at request time in case pre-stored forecast is not available.|
+|Default Forecast |Use these settings instead of default settings when calculating on-demand forecast. On-demand forecast is calculated at request time if a pre-stored forecast is not available.|
 |Forecast Range |Minimum and Maximum constraints applied to the stored forecast values to ensure that such values are within the specified range. Constraints are applied to the winning forecast after scoring stage.|
 |Forecast Interval |The length of time into the future for which forecasts are to be prepared and stored in the database. Can be rounded upwards to the nearest forecast period.|
 
@@ -97,13 +97,13 @@ Forecast Settings Editor provides a set of following tools:
 
 - **Calculate Parameters**
 
-  This option allows to calculate algorithm parameters:
+  This option calculates algorithm parameters:
 
   ![](resources/forecasts_11.png)
 
 - **Run**
 
-  This option runs the forecast job. It can be used for tests:
+  This option runs the forecast job and may be used for tests:
 
   ![](resources/forecasts_12.png)
 
@@ -123,13 +123,13 @@ Forecast Settings Editor provides a set of following tools:
 
    Metadata is stored with the forecast. Collection interval is an interval within the real data were extracted to build the forecast.
 
-_Create_ drop-down in the **Data > Forecasts** page allows to specify [Exceptions](calendar_exceptions_testing.md#exceptions) and perform [Testing](calendar_exceptions_testing.md#testing):
+Split button on the **Data > Forecasts** page may be used to specify [Exceptions](calendar_exceptions_testing.md#exceptions) and perform [Testing](calendar_exceptions_testing.md#testing):
 
 ![](resources/forecasts_10.png)
 
 ## View Forecast Data
 
-Forecast data can be retrieved on the [Ad hoc Export](../reporting/ad-hoc-exporting.md) page, via a scheduled [Export Job](../reporting/scheduled-exporting.md) and using [Data API](#data-api).
+Forecast data may be retrieved on the [Ad hoc Export](../reporting/ad-hoc-exporting.md) page, via a scheduled [Export Job](../reporting/scheduled-exporting.md) and using [Data API](#data-api).
 
 ### Ad hoc Export page
 
@@ -139,7 +139,7 @@ Set _Data Type_ setting to 'Forecast', optionally specify the forecast name:
 
 ## Data API
 
-Data API provides the way to [insert](../api/data/series/insert.md#fields) and [query](../api/data/series/query.md#forecast-filter) forecast values.
+Data API provides a way to [insert](../api/data/series/insert.md#fields) and [query](../api/data/series/query.md#forecast-filter) forecast values.
 
 Examples:
 
