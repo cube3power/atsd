@@ -126,6 +126,14 @@ Split button on the **Data > Forecasts** page may be used to specify [Exceptions
 
 ### Rule Engine
 
+Forecast values may be used as [thresholds](https://github.com/axibase/atsd/tree/master/rule-engine#forecast-thresholds) for rules to trigger an alert if actual values deviate from forecast values by some amount. Forecast values may be compared to actual values using [statistical functions](https://github.com/axibase/atsd/blob/master/rule-engine/functions-forecast.md) such as standard deviation as well as raw value.
+
+```javascript
+abs(avg() - forecast()) > 25
+```
+
+This setting compares the actual [average value](https://github.com/axibase/atsd/blob/master/rule-engine/functions-statistical.md#avg) of some metric to the forecast metric value and alerts if the [absolute value](https://github.com/axibase/atsd/blob/master/rule-engine/functions-math.md#abs) of the difference exceeds 25.
+
 ### Ad hoc Export
 
 Set _Data Type_ setting to 'Forecast', optionally specify the forecast name:
@@ -136,9 +144,82 @@ Set _Data Type_ setting to 'Forecast', optionally specify the forecast name:
 
 Data API provides a way to [query](../api/data/series/query.md#forecast-filter) and [insert](../api/data/series/insert.md#fields) forecast values. The `insert` capability can be used to populate the database with custom forecast values calculated externally.
 
-Examples:
+A sample forecast JSON query](../api/data/series/examples/query-named-forecast.md):
 
-- [Query Named Forecast](../api/data/series/examples/query-named-forecast.md)
+```json
+[
+    {
+        "entity": "duckduckgo",
+        "metric": "direct.queries",
+        "forecastName": "DuckDuckGo1",
+        "type": "FORECAST",
+        "startDate": "2015-05-01T00:00:00Z",
+        "endDate": "2015-07-30T00:00:00Z"
+    }
+]
+```
+
+Will generate the response:
+
+```json
+[
+    {
+        "entity": "duckduckgo",
+        "metric": "direct.queries",
+        "type": "FORECAST",
+        "aggregate": {
+            "type": "DETAIL"
+        },
+        "forecastName": "DuckDuckGo1",
+        "meta": {
+            "timestamp": "2015-06-26T00:00:00Z",
+            "averagingInterval": 86400000,
+            "alpha": 0.1,
+            "beta": 0.2,
+            "gamma": 0,
+            "period": "WEEKLY",
+            "stdDev": 874884.3451501856
+        },
+        "data": [
+            {
+                "d": "2015-06-17T00:00:00.000Z",
+                "v": 9497228.587367011
+            },
+            {
+                "d": "2015-06-18T00:00:00.000Z",
+                "v": 9517253.496233052
+            },
+            {
+                "d": "2015-06-19T00:00:00.000Z",
+                "v": 9227410.099153783
+            },
+            {
+                "d": "2015-06-20T00:00:00.000Z",
+                "v": 8481158.872775367
+            },
+            {
+                "d": "2015-06-21T00:00:00.000Z",
+                "v": 8921320.873833349
+            },
+            {
+                "d": "2015-06-22T00:00:00.000Z",
+                "v": 10065887.391646788
+            },
+            {
+                "d": "2015-06-23T00:00:00.000Z",
+                "v": 9989231.479620669
+            },
+            {
+                "d": "2015-06-24T00:00:00.000Z",
+                "v": 0
+            }
+        ]
+    }
+]
+```
+
+Additional examples:
+
 - [Insert Forecast](../api/data/series/examples/insert-forecast.md)
 - [Insert Named Forecast](../api/data/series/examples/insert-named-forecast.md)
 - [Insert Forecast Deviation](../api/data/series/examples/insert-forecast-deviation.md)
