@@ -28,7 +28,7 @@ Forecast settings can be configured on the **Data > Forecasts** page.
 
 ![](resources/forecasts_4.png)
 
-Forecasts may be run on schedule according to `cron` expressions. See [**Scheduling**](/./shared/scheduling.md) for configuration instructions and examples.
+Forecasts may be run on schedule according to `cron` expressions. See [**Scheduling**](../shared/scheduling.md) for configuration instructions and examples.
 
 |Setting|Description|
 |-|-|
@@ -128,13 +128,13 @@ Split button on the **Data > Forecasts** page may be used to specify [Exceptions
 
 ### Rule Engine
 
-Forecast values may be used as [thresholds](/./rule-engine/README.md#forecast-thresholds) for rules to trigger an alert if actual values deviate from forecast values by some amount. Forecast values may be compared to actual values using [statistical functions](/./rule-engine/README.md#functions-forecast.md) such as standard deviation as well as raw value.
+Forecast values may be used as [thresholds](../rule-engine/README.md#forecast-thresholds) for rules to trigger an alert if actual values deviate from forecast values by some amount. Forecast values may be compared to actual values using [statistical functions](../rule-engine/README.md#functions-forecast.md) such as standard deviation as well as raw value.
 
 ```javascript
 abs(avg() - forecast()) > 25
 ```
 
-This setting compares the actual [average value](/./rule-engine/functions-statistical.md#avg) of some metric to the forecast metric value and alerts if the [absolute value](/./rule-engine/functions-math.md#abs) of the difference exceeds 25.
+This setting compares the actual [average value](../rule-engine/functions-statistical.md#avg) of some metric to the forecast metric value and alerts if the [absolute value](../rule-engine/functions-math.md#abs) of the difference exceeds 25.
 
 ### Ad hoc Export
 

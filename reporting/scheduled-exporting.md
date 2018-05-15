@@ -6,7 +6,7 @@ Scheduled exporting enables exporting of historical data and forecasts to the lo
 
 ### Schedule
 
-Scheduled exporting may be controlled via `cron` expression. See [Scheduling](/./shared/scheduling.md) for example and instructions about scheduling export jobs.
+Scheduled exporting may be controlled via `cron` expression. See [Scheduling](../shared/scheduling.md) for example and instructions about scheduling export jobs.
 
 Concurrent execution for the same job is not allowed.
 
