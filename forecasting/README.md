@@ -28,10 +28,10 @@ Forecast settings can be configured on the **Data > Forecasts** page.
 
 ![](resources/forecasts_4.png)
 
-| Setting | Description |
-| --- | --- |
-|Enabled| Enabled Settings are executed according to a Schedule.|
-|Schedule|[Cron](https://github.com/axibase/axibase-collector/blob/master/scheduling.md#cron-expressions) expression for calculating and storing forecasts.<br>The expression is evaluated based on local server time.<br> Examples:`0 0 2 * * MON-FRI` - 02:00 on workdays<br>`0 5 0 * *` - at 00:05 daily.|
+Forecasts may be run on schedule according to `cron` expressions. See [**Scheduling**](/./shared/scheduling.md) for configuration instructions and examples.
+
+|Setting|Description|
+|-|-|
 |Retention Interval|Specifies how long a forecast should be stored in the database. Forecasts that are older than `current time` (or [`End Time`](#selection-settings), if specified) minus `Retention Interval` are deleted.|
 
 ### Data Selection Settings
@@ -46,9 +46,11 @@ Forecast settings can be configured on the **Data > Forecasts** page.
 |Tags  |Limit the selected historical data to specified series tags.|
 |End Time  |End time of the Data Selection Interval and Series Selection Interval. This field supports [calendar](../shared/calendar.md) expressions, for example 'current_day'. If `End Time` is not defined, it is set to the time the job is run.|
 |Data Selection Interval  |Time frame for selecting detailed data that will be used as forecast input. End of the Selection Interval can be optionally specified in the End Time field, otherwise it is set to current time.|
-|Series Selection Interval  |Ignore series with Last Insert Time which differs from End Time by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
+|Series Selection Interval  |Ignore any series with Last Insert Time before End Time by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
 |Calendar  |Ignore detailed values within the time intervals listed in the calendar.|
 |Empty Period Threshold  |Ignore series if percentage of empty periods exceeds the specified threshold. Calculated as 100 * (number of empty periods before interpolation)/(total number of aggregation periods in Data Selection Interval).|
+
+For data exclusion options, see [Calender Exception Settings](calendar_exceptions_testing.md).
 
 ### Aggregation Settings
 
@@ -126,13 +128,13 @@ Split button on the **Data > Forecasts** page may be used to specify [Exceptions
 
 ### Rule Engine
 
-Forecast values may be used as [thresholds](https://github.com/axibase/atsd/tree/master/rule-engine#forecast-thresholds) for rules to trigger an alert if actual values deviate from forecast values by some amount. Forecast values may be compared to actual values using [statistical functions](https://github.com/axibase/atsd/blob/master/rule-engine/functions-forecast.md) such as standard deviation as well as raw value.
+Forecast values may be used as [thresholds](/./rule-engine/README.md#forecast-thresholds) for rules to trigger an alert if actual values deviate from forecast values by some amount. Forecast values may be compared to actual values using [statistical functions](/./rule-engine/README.md#functions-forecast.md) such as standard deviation as well as raw value.
 
 ```javascript
 abs(avg() - forecast()) > 25
 ```
 
-This setting compares the actual [average value](https://github.com/axibase/atsd/blob/master/rule-engine/functions-statistical.md#avg) of some metric to the forecast metric value and alerts if the [absolute value](https://github.com/axibase/atsd/blob/master/rule-engine/functions-math.md#abs) of the difference exceeds 25.
+This setting compares the actual [average value](/./rule-engine/functions-statistical.md#avg) of some metric to the forecast metric value and alerts if the [absolute value](/./rule-engine/functions-math.md#abs) of the difference exceeds 25.
 
 ### Ad hoc Export
 
@@ -149,74 +151,94 @@ A sample forecast [JSON query](../api/data/series/examples/query-named-forecast.
 ```json
 [
     {
-        "entity": "duckduckgo",
-        "metric": "direct.queries",
-        "forecastName": "DuckDuckGo1",
+        "entity": "nurswgvml007",
+        "metric": "cpu_busy",
         "type": "FORECAST",
-        "startDate": "2015-05-01T00:00:00Z",
-        "endDate": "2015-07-30T00:00:00Z"
+        "endDate": "now + 2 * hour",
+        "startDate": "now "
     }
 ]
 ```
 
-Will generate the response:
+<details><summary>Open collapsed menu to view response.</summary>
 
 ```json
 [
-    {
-        "entity": "duckduckgo",
-        "metric": "direct.queries",
-        "type": "FORECAST",
-        "aggregate": {
-            "type": "DETAIL"
-        },
-        "forecastName": "DuckDuckGo1",
-        "meta": {
-            "timestamp": "2015-06-26T00:00:00Z",
-            "averagingInterval": 86400000,
-            "alpha": 0.1,
-            "beta": 0.2,
-            "gamma": 0,
-            "period": "WEEKLY",
-            "stdDev": 874884.3451501856
-        },
-        "data": [
-            {
-                "d": "2015-06-17T00:00:00.000Z",
-                "v": 9497228.587367011
-            },
-            {
-                "d": "2015-06-18T00:00:00.000Z",
-                "v": 9517253.496233052
-            },
-            {
-                "d": "2015-06-19T00:00:00.000Z",
-                "v": 9227410.099153783
-            },
-            {
-                "d": "2015-06-20T00:00:00.000Z",
-                "v": 8481158.872775367
-            },
-            {
-                "d": "2015-06-21T00:00:00.000Z",
-                "v": 8921320.873833349
-            },
-            {
-                "d": "2015-06-22T00:00:00.000Z",
-                "v": 10065887.391646788
-            },
-            {
-                "d": "2015-06-23T00:00:00.000Z",
-                "v": 9989231.479620669
-            },
-            {
-                "d": "2015-06-24T00:00:00.000Z",
-                "v": 0
-            }
-        ]
-    }
+  {
+    "entity": "nurswgvml007",
+    "metric": "cpu_busy",
+    "tags": {},
+    "type": "FORECAST",
+    "aggregate": {
+      "type": "DETAIL"
+    },
+    "meta": {
+      "timestamp": "2018-05-15T08:20:00.000Z",
+      "averagingInterval": 600000,
+      "alpha": 0,
+      "beta": 0.4,
+      "gamma": 0.4,
+      "period": {
+        "count": 1,
+        "unit": "DAY"
+      },
+      "stdDev": 7.224603272075089
+    },
+    "data": [
+      {
+        "d": "2018-05-15T08:20:00.000Z",
+        "v": 11.604692968987015
+      },
+      {
+        "d": "2018-05-15T08:30:00.000Z",
+        "v": 14.052095586152106
+      },
+      {
+        "d": "2018-05-15T08:40:00.000Z",
+        "v": 15.715682104344845
+      },
+      {
+        "d": "2018-05-15T08:50:00.000Z",
+        "v": 11.604018743609409
+      },
+      {
+        "d": "2018-05-15T09:00:00.000Z",
+        "v": 12.507966355503251
+      },
+      {
+        "d": "2018-05-15T09:10:00.000Z",
+        "v": 12.59619153186056
+      },
+      {
+        "d": "2018-05-15T09:20:00.000Z",
+        "v": 11.092825413101579
+      },
+      {
+        "d": "2018-05-15T09:30:00.000Z",
+        "v": 11.747112803805937
+      },
+      {
+        "d": "2018-05-15T09:40:00.000Z",
+        "v": 11.137962830355074
+      },
+      {
+        "d": "2018-05-15T09:50:00.000Z",
+        "v": 11.40358025413789
+      },
+      {
+        "d": "2018-05-15T10:00:00.000Z",
+        "v": 16.728103701429056
+      },
+      {
+        "d": "2018-05-15T10:10:00.000Z",
+        "v": 12.75646043607565
+      }
+    ]
+  }
 ]
 ```
+
+</details>
 
 [Insert a forecast](../api/data/series/examples/insert-forecast.md) into ATSD using POST method:
 

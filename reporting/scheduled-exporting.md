@@ -6,21 +6,7 @@ Scheduled exporting enables exporting of historical data and forecasts to the lo
 
 ### Schedule
 
-| Field | Description |
-| --- | --- |
-|  Enabled  |  Enable the current scheduled export job.  |
-|  Schedule  |  Cron expression specifying when the export job will be executed.<br>Field order: `seconds minutes hours day-of-month month day-of-week year`.<br>By default all export jobs are executed daily at 02:00 AM local server time: `0 0 2 * * *`.  |
-
-### Schedule Syntax Examples
-
-| Schedule | Expression |
-| --- | --- |
-|  Every 15 minutes  |  `0 0/15 * * * *`  |
-|  Every hour  |  `0 0 * * * *`  |
-|  Every 4 hours  |  `0 0 0/4 * * *`  |
-|  Once per day at 02:00 server time  |  `0 0 2 * * *`  |
-|  Every Monday at 02:00 server time  |  `0 0 2 * * MON`  |
-|  First day of each month at 02:00 server time  |  `0 0 2 1 * *`  |
+Scheduled exporting may be controlled via `cron` expression. See [Scheduling](/./shared/scheduling.md) for example and instructions about scheduling export jobs.
 
 Concurrent execution for the same job is not allowed.
 
