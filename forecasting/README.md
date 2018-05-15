@@ -50,7 +50,7 @@ Forecasts may be run on schedule according to `cron` expressions. See [**Schedul
 |Calendar  |Ignore detailed values within the time intervals listed in the calendar.|
 |Empty Period Threshold  |Ignore series if percentage of empty periods exceeds the specified threshold. Calculated as 100 * (number of empty periods before interpolation)/(total number of aggregation periods in Data Selection Interval).|
 
-For data exclusion options, see [Calender Exception Settings](calendar_exceptions_testing.md).
+For data exclusion options, see [Calendar Exception Settings](calendar_exceptions_testing.md).
 
 ### Aggregation Settings
 
