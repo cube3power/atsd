@@ -1,17 +1,10 @@
 # Scheduling
 
-Forecasts, SQL queries, data export jobs, and other administrative tasks may be run on schedule according to Cron expression. Use these instructions to configure the expression and execute forecasts, on schedule.
+Forecasts, SQL queries, data export jobs, and administrative tasks may be run on schedule according to a `cron` expression.
 
-| Setting | Description |
-| --- | --- |
-|Enabled| Enabled Settings are executed according to a Schedule.|
-|Schedule|[`Cron`](https://github.com/axibase/axibase-collector/blob/master/scheduling.md#cron-expressions) expression for scheduling tasks.<br>The expression is evaluated based on local server time.<br> Examples:`0 0 2 * * MON-FRI` - 02:00 on workdays<br>`0 5 0 * *` - at 00:05 daily.|
+## Syntax
 
-## Cron Expression
-
-### Syntax
-
-Fields in a cron expression have the following order:
+Fields in a `cron` expression have the following order:
 
 * seconds
 * minutes
@@ -21,22 +14,24 @@ Fields in a cron expression have the following order:
 * day-of-week
 * year **(optional)**
 
-For example, `0 0 8 * * ? *` means that the query will be executed at 08:00:00 every day.
+For example, `0 0 8 * * ? *` means that the task will be executed at `08:00:00` every day.
 
 ```txt
 seconds minutes hours day-of-month month day-of-week year
    0       0      8        *         *        ?        *
 ```
 
+Either '0' or '7' can be used for Sunday in the `day-of-week` field.
+
 ![Cron Expressions](https://axibase.com/wp-content/uploads/2016/03/cron_expressions.png)
 
- > Either '0' or '7' can be used for Sunday in the day-of-week field.
+## Time Zone
 
-### Time Zone
+The `cron` expression is evaluated based on the time zone of the server where the database is running.
 
-The `cron` expression is evaluated based on the time zone of the server where the database is running. The time zone is displayed on the **Admin: System Information** page.
+The time zone is displayed on the **Settings > System Information** page.
 
-### Example
+## Examples
 
 **Expression** | **Description**
 :---|:---

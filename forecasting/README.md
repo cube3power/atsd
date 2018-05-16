@@ -2,19 +2,15 @@
 
 ## Overview
 
-Axibase Time Series Database includes built-in forecasting algorithms that predict future values based on historical data. The accuracy of these predictions depends on the frequency of data collection, the selection interval, and the algorithms used. Supported algorithms for auto-regressive time series extrapolation include **Holt-Winters**, **ARIMA**.
+Axibase Time Series Database includes built-in forecasting algorithms that predict future values based on historical data. The accuracy of these predictions depends on the frequency of data collection, the selection interval, and the algorithms used.
+
+Supported algorithms for auto-regressive time series extrapolation include **Holt-Winters** and **ARIMA**.
 
 **Forecasting Example with Abnormal Deviation**:
 
 ![](resources/forecasts.png)
 
 ![](resources/forecasts_2.png)
-
-Forecast settings can be configured on the **Data > Forecasts** page.
-
-![](resources/forecasts_3.png)
-
-![](resources/forecasts_1.png)
 
 ## Reference
 
@@ -24,11 +20,17 @@ Forecast settings can be configured on the **Data > Forecasts** page.
 
 ## Editor Settings
 
+Forecasting can be enabled on the **Data > Forecasts** page.
+
+![](resources/forecasts_3.png)
+
+![](resources/forecasts_1.png)
+
 ### General Settings
 
 ![](resources/forecasts_4.png)
 
-Forecasts may be run on schedule according to `cron` expressions. See [**Scheduling**](../shared/scheduling.md) for configuration instructions and examples.
+Enabled forecasts are prepared by background jobs on schedule according to `cron` [expressions](../shared/scheduling.md). Forecasting jobs are typically executed during off-peak hours.
 
 |Setting|Description|
 |-|-|
@@ -41,14 +43,14 @@ Forecasts may be run on schedule according to `cron` expressions. See [**Schedul
 | Setting | Description |
 | --- | --- |
 |Metric |Metric name for which forecasts will be calculated.|
-|Entity  |If selected, forecasts will be limited to the specified entity. Supersedes Entity Group selector. If neither entity nor entity group is specified, forecasts will be prepared for all entities.|
+|Entity  |If selected, forecasts will be limited to the specified entity. Supersedes `Entity Group` selector. If neither entity nor entity group is specified, forecasts will be prepared for **all** entities.|
 |Entity Group  |If selected, forecasts will be limited to entities contained in the specified entity group.|
-|Tags  |Limit the selected historical data to specified series tags.|
-|End Time  |End time of the Data Selection Interval and Series Selection Interval. This field supports [calendar](../shared/calendar.md) expressions, for example 'current_day'. If `End Time` is not defined, it is set to the time the job is run.|
-|Data Selection Interval  |Time frame for selecting detailed data that will be used as forecast input. End of the Selection Interval can be optionally specified in the End Time field, otherwise it is set to current time.|
-|Series Selection Interval  |Ignore any series with Last Insert Time before End Time by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
+|Tags  |Prepare forecasts only for series containing the specified series tags.|
+|End Time  |End time of the `Data Selection Interval` and `Series Selection Interval`. This field supports [calendar](../shared/calendar.md) expressions, for example `current_day`. If `End Time` is not defined, it is set to the time the job is run.|
+|Data Selection Interval  |Time frame for selecting detailed data that will be used as forecast input. The end of the interval can be specified in the `End Time` field, otherwise it is set to current time.|
+|Series Selection Interval  |Ignore any series with Last Insert Time before `End Time` by more than the specified interval. The option can be used to ignore series which have not been updated for a long time.|
 |Calendar  |Ignore detailed values within the time intervals listed in the calendar.|
-|Empty Period Threshold  |Ignore series if percentage of empty periods exceeds the specified threshold. Calculated as 100 * (number of empty periods before interpolation)/(total number of aggregation periods in Data Selection Interval).|
+|Empty Period Threshold  |Ignore series if percentage of empty periods exceeds the specified threshold. Calculated as `100 * (number of empty periods before interpolation)/(total number of aggregation periods in Data Selection Interval)`.|
 
 For data exclusion options, see [Calendar Exception Settings](calendar_exceptions_testing.md).
 
@@ -70,7 +72,7 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 | Setting | Description |
 | --- | --- |
 |Algorithm |Holt-Winters or ARIMA forecasting algorithms.|
-|Score Interval |Part of Data Selection Interval that will be used to compute variance between observed values and forecast to rank forecasts by variance. The shorter the Score Interval, the more weight assigned to recently observed values.|
+|Score Interval |Part of `Data Selection Interval` that will be used to compute variance between observed values and forecast to rank forecasts by variance. The shorter the `Score Interval`, the more weight is assigned to recently observed values.|
 |Auto Period |Let server automatically identify seasonality of the underlying series that produces the most accurate forecast, defined as having the lowest variance from observed historical data.|
 |Period |Specify seasonality of the underlying series.|
 |Auto Parameters |Let server automatically identify algorithm parameters that produce the most accurate forecast, defined as having the lowest variance from observed historical data.|
@@ -81,7 +83,7 @@ For data exclusion options, see [Calendar Exception Settings](calendar_exception
 
 | Setting | Description |
 | --- | --- |
-|Forecast Name |An optional name that can be used to differentiate forecasts for the same underlying series prepared with different forecast settings.<br>Use cases:<br> &bull; [`forecastName`](../api/data/series/query.md#forecast-filter) field in Data API<br>&bull; [`forecast(name)`](../rule-engine/functions-forecast.md#forecaststring-n) Rule Engine function<br>&bull; [`forecast-name`](#chart-settings) Chart setting |
+|Forecast Name |An optional name that can be used to differentiate forecasts for the same underlying series prepared with different forecast settings.<br>Use cases:<br>- [`forecastName`](../api/data/series/query.md#forecast-filter) field in Data API<br>- [`forecast(name)`](../rule-engine/functions-forecast.md#forecaststring-n) Rule Engine function<br>- [`forecast-name`](#chart-settings) Chart setting |
 |Default Forecast |Use these settings instead of default settings when calculating on-demand forecast. On-demand forecast is calculated at request time if a pre-stored forecast is not available.|
 |Forecast Range |Minimum and Maximum constraints applied to the stored forecast values to ensure that such values are within the specified range. Constraints are applied to the winning forecast after scoring stage.|
 |Forecast Interval |The length of time into the future for which forecasts are to be prepared and stored in the database. Can be rounded upwards to the nearest forecast period.|
@@ -128,7 +130,7 @@ Split button on the **Data > Forecasts** page may be used to specify [Exceptions
 
 ### Rule Engine
 
-Forecast values may be used as [thresholds](../rule-engine/README.md#forecast-thresholds) for rules to trigger an alert if actual values deviate from forecast values by some amount. Forecast values may be compared to actual values using [statistical functions](../rule-engine/README.md#functions-forecast.md) such as standard deviation as well as raw value.
+Pre-computed forecast values may be used as [thresholds](../rule-engine/README.md#forecast-thresholds) for rules to trigger an alert if actual values deviate from forecast values by some amount. Forecast values may be compared to actual values using [statistical functions](../rule-engine/README.md#functions-forecast.md) such as standard deviation as well as raw value.
 
 ```javascript
 abs(avg() - forecast()) > 25
@@ -246,7 +248,7 @@ A sample forecast [JSON query](../api/data/series/examples/query-named-forecast.
 POST https://atsd_hostname:8443/api/v1/series/insert
 ```
 
-This will deliver the JSON payload:
+Payload:
 
 ```json
 [
