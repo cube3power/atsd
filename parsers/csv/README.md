@@ -1,31 +1,12 @@
-# Uploading CSV Files into Axibase Time Series Database
+# Uploading CSV Files
 
 ## Overview
 
-CSV files can be [uploaded](uploading-csv-files.md) into the Axibase Time Series Database via HTTP API or manually through the user interface.
+CSV files can be [uploaded](uploading-csv-files.md) via HTTP API or manually through the user interface.
 
 ![](resources/csv.gif)
 
-Uploaded CSV files are processed by a user-defined CSV parser, which converts the text into a tabular model and creates series, properties, and message commands from cell values depending on the column name.
-
-In addition to column-based parsing, ATSD supports [schema-based](csv-schema.md) parsing using [RFC 7111](https://tools.ietf.org/html/rfc7111#section-2) selections:
-
-```javascript
-select("#row=2-*").select("#col=3-*").
-addSeries().
-metric(cell(1, col)).
-entity(cell(row, 2)).
-tag(cell(1, 3),cell(row, 3)).
-timestamp(cell(row, 1));
-```
-
-Produced series commands:
-
-```ls
-series e:nurswgvml007 d:2015-11-15T00:00:00Z m:space_used_%=72.2 t:disk=/dev/sda
-series e:nurswgvml007 d:2015-11-15T00:00:00Z m:space_used_%=14.5 t:disk=/dev/sdb
-series e:nurswgvml001 d:2015-11-15T00:00:00Z m:space_used_%=14.4 t:disk=/dev/sda1
-```
+To process a CSV file you need to create a CSV parser, which splits the file into lines (rows) consisting of multiple columns and converts the lines into series, properties, and message commands.
 
 ### Configuration Settings
 
@@ -78,12 +59,33 @@ Columns contained in the CSV file that are not specified in any field in the par
 
 ![](resources/csv_parser_example.png)
 
-### Column-based Parser Examples
+### Column-based Examples
 
 * [Weather Data](examples/weather.md)
 * [Air Quality](examples/air-quality.md)
 
-### Schema-based Parser Examples
+### Schema-based Parsing
+
+In addition to column-based parsing described above, the database supports [schema-based](csv-schema.md) parsing using [RFC 7111](https://tools.ietf.org/html/rfc7111#section-2) selections:
+
+```javascript
+select("#row=2-*").select("#col=3-*").
+addSeries().
+metric(cell(1, col)).
+entity(cell(row, 2)).
+tag(cell(1, 3),cell(row, 3)).
+timestamp(cell(row, 1));
+```
+
+Produced series commands:
+
+```ls
+series e:nurswgvml007 d:2015-11-15T00:00:00Z m:space_used_%=72.2 t:disk=/dev/sda
+series e:nurswgvml007 d:2015-11-15T00:00:00Z m:space_used_%=14.5 t:disk=/dev/sdb
+series e:nurswgvml001 d:2015-11-15T00:00:00Z m:space_used_%=14.4 t:disk=/dev/sda1
+```
+
+#### Schema-based Examples
 
 * [Basic Example](examples/basic.md)
 * [Columnar Format](examples/columnar-schema.md)
