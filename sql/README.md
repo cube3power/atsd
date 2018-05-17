@@ -1262,9 +1262,9 @@ WITH INTERPOLATE (1 MINUTE, LINEAR, OUTER, VALUE NAN, START_TIME)
 | `alignment` | Aligns regular timestamps based on calendar or start time. Default: `CALENDAR`. |
 | `timezone` | Time zone applied in `CALENDAR` alignment to periods equal or greater than 1 day. |
 
-[![](images/chartlab.png)](https://apps.axibase.com/chartlab/712f37cb)
+[![](./images/chartlab.png)](https://apps.axibase.com/chartlab/712f37cb)
 
-![INTERPOLATE Parameters](images/regularize_sinusoid.png)
+![INTERPOLATE Parameters](./images/regularize_sinusoid.png)
 
 ### Interpolation Period
 
@@ -3065,7 +3065,7 @@ The `sql.tmp.storage.max_rows_in_memory` limit is shared by concurrently executi
 
 **Example**. Temporary Table Grouping and In-Memory Ordering
 
-![Temp Table Grouping and In-Memory Ordering](images/in-memory-ordering.png)
+![Temp Table Grouping and In-Memory Ordering](./images/in-memory-ordering.png)
 
 ## API Endpoint
 
@@ -3118,7 +3118,7 @@ The list can be filtered by user, source, status, query part, and elapsed time. 
 
 Users with an `ADMIN` role are authorized to view and cancel all queries whereas non-administrative users are restricted to viewing and cancelling only their own queries.
 
-![Query Reporting](images/sql-query-reporting.png)
+![Query Reporting](./images/sql-query-reporting.png)
 
 Query Detail Fields:
 
@@ -3144,7 +3144,7 @@ Query Detail Fields:
 | `Regions Scanned` | Number of regions scanned. |
 | `Regions Not Serving` | Number of `NotServingRegionException` instances caught. |
 
-![Query Details](images/sql-query-details.png)
+![Query Details](./images/sql-query-details.png)
 
 ### Cancelling Queries
 

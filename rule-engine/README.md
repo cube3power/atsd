@@ -39,7 +39,7 @@ A [condition](condition.md) can operate on a single metric defined in the curren
 
 The incoming data is processed by the rule engine in-memory, before the data is stored on a disk.
 
-![](images/atsd_rule_engine.png)
+![](./images/atsd_rule_engine.png)
 
 The data is maintained in [windows](window.md) which are in-memory structures initialized for each unique combination of metric, entity, and grouping tags extracted from incoming commands.
 
@@ -61,9 +61,9 @@ Once the sample passes through the filter chain, it is added to matching [window
 
 The commands can be associated with windows in a 1-to-1 fashion by enumerating all series tags as the [grouping](grouping.md) tags.
 
-![](images/grouping-tags.png)
+![](./images/grouping-tags.png)
 
-![](images/grouping-series-tags.png)
+![](./images/grouping-series-tags.png)
 
 If the 'Group by Entity' option is unchecked, the window is grouped only by metric and optional tags.
 
@@ -101,7 +101,7 @@ When the condition returns `false`, the window status is reverted to `CANCEL`.
 
 Window status can be accessed on the **Alerts > Rule Windows** page.
 
-![](images/rule-windows.png)
+![](./images/rule-windows.png)
 
 ## Actions
 
@@ -233,7 +233,7 @@ As an alternative, use the [`value(metric)`](functions-value.md) function to acc
 
 The default baseline can be adjusted for particular series using the [Overrides](overrides.md) table.
 
-![](images/override-example.png)
+![](./images/override-example.png)
 
 ## Alert Severity
 
@@ -252,7 +252,7 @@ Status changes can be [logged](logging.md) in a customizable format to separate 
 
 Open alerts are displayed on the **Alerts > Open Alerts** page. The list of alerts can be retrieved with [`Data API`](../api/data/alerts/README.md) and incorporated into portals using the console widget.
 
-![](images/open-alerts.png)
+![](./images/open-alerts.png)
 
 ## Analyzing Data with SQL
 
@@ -275,4 +275,4 @@ In order to trigger a notification by an SQL query:
 
 As a result, the query will trigger actions only when it returns at least one row.
 
-![](images/sql-scheduled.png)
+![](./images/sql-scheduled.png)

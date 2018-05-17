@@ -4,7 +4,7 @@
 
 CSV files can be [uploaded](uploading-csv-files.md) into the Axibase Time Series Database via HTTP API or manually through the user interface.
 
-![](resources/csv.gif)
+![](./resources/csv.gif)
 
 Uploaded CSV files are processed by a user-defined CSV parser, which converts the text into a tabular model and creates series, properties, and message commands from cell values depending on the column name.
 
@@ -76,7 +76,7 @@ Columns contained in the CSV file that are not specified in any field in the par
 |  Ignore Line Errors  |  If enabled, any errors while parsing the given line are ignored, including date parse errors, number parse errors, split errors, mismatch of rows, and header column counts.  |
 |  Ignore Header Lines  |  Ignore Top-N lines from the file header  |
 
-![](resources/csv_parser_example.png)
+![](./resources/csv_parser_example.png)
 
 ### Column-based Parser Examples
 

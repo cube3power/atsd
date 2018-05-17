@@ -41,7 +41,7 @@ series e:e3 t:t1=v4 t:t2=v3 m:m1=50
 * Group by entity.
 * Group by all tags (`t1`, `t2`).
 
-![](images/group-by-all-form.png)
+![](./images/group-by-all-form.png)
 
 | Data Type | Metric | Entity | Tags | Grouping Key |
 |---|---|---|:---|:---|
@@ -49,7 +49,7 @@ series e:e3 t:t1=v4 t:t2=v3 m:m1=50
 | series | m1 | e1 | t1=v1 t2=v3 | series-m1-e1-t1=v1-t2=v3 |
 | series | m1 | e3 | t1=v4 t2=v3 | series-m1-e3-t1=v4-t2=v3 |
 
-![](images/group-by-all.png)
+![](./images/group-by-all.png)
 
 ### Example: Group By Entity
 
@@ -57,7 +57,7 @@ series e:e3 t:t1=v4 t:t2=v3 m:m1=50
 * Group by entity.
 * Do not group by any tags.
 
-![](images/group-by-no-tags-form.png)
+![](./images/group-by-no-tags-form.png)
 
 | Data Type | Metric | Entity | Tags | Grouping Key |
 |---|---|---|:---|:---|
@@ -65,7 +65,7 @@ series e:e3 t:t1=v4 t:t2=v3 m:m1=50
 | series | m1 | e1 | t1=v1 t2=v3 | series-m1-e1 |
 | series | m1 | e3 | t1=v4 t2=v3 | series-m1-e3 |
 
-![](images/group-by-no-tags.png)
+![](./images/group-by-no-tags.png)
 
 ### Example: Group By Entity and Tag `t1`
 
@@ -73,7 +73,7 @@ series e:e3 t:t1=v4 t:t2=v3 m:m1=50
 * Group by entity.
 * Group by one of the tags (`t1`).
 
-![](images/group-by-entity-tag-t1-form.png)
+![](./images/group-by-entity-tag-t1-form.png)
 
 | Data Type | Metric | Entity | Tags | Grouping Key |
 |---|---|---|:---|:---|
@@ -81,7 +81,7 @@ series e:e3 t:t1=v4 t:t2=v3 m:m1=50
 | series | m1 | e1 | t1=v1 t2=v3 | series-m1-e1-t1=v1 |
 | series | m1 | e3 | t1=v4 t2=v3 | series-m1-e3-t1=v4 |
 
-![](images/group-by-entity-tag-t1.png)
+![](./images/group-by-entity-tag-t1.png)
 
 ### Example: Group By Tag `t1`
 
@@ -89,7 +89,7 @@ series e:e3 t:t1=v4 t:t2=v3 m:m1=50
 * Do not group by entity.
 * Group by one of the tags (`t1`).
 
-![](images/group-by-tag-t1-form.png)
+![](./images/group-by-tag-t1-form.png)
 
 | Data Type | Metric | Entity | Tags | Grouping Key |
 |---|---|---|:---|:---|
@@ -97,7 +97,7 @@ series e:e3 t:t1=v4 t:t2=v3 m:m1=50
 | series | m1 | e1 | t1=v1 t2=v3 | series-m1-t1=v1 |
 | series | m1 | e3 | t1=v4 t2=v3 | series-m1-t1=v4 |
 
-![](images/group-by-tag-t1.png)
+![](./images/group-by-tag-t1.png)
 
 ### Example: Group By Tag `t2`
 
@@ -105,7 +105,7 @@ series e:e3 t:t1=v4 t:t2=v3 m:m1=50
 * Do not group by entity.
 * Group by one of the tags (`t2`).
 
-![](images/group-by-tag-t2-form.png)
+![](./images/group-by-tag-t2-form.png)
 
 | Data Type | Metric | Entity | Tags | Grouping Key |
 |---|---|---|:---|:---|
@@ -113,4 +113,4 @@ series e:e3 t:t1=v4 t:t2=v3 m:m1=50
 | series | m1 | e1 | t1=v1 t2=v3 | series-m1-t2=v3 |
 | series | m1 | e3 | t1=v4 t2=v3 | series-m1-t2=v3 |
 
-![](images/group-by-tag-t2.png)
+![](./images/group-by-tag-t2.png)

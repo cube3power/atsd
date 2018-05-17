@@ -131,7 +131,7 @@ echo "list" | /opt/atsd/hbase/bin/hbase shell 2>/dev/null | grep -v "\["
 
 The output should contain a list of ATSD tables, all starting with `atsd_`:
 
-![](images/atsd_tables.png "atsd_tables")
+![](./images/atsd_tables.png "atsd_tables")
 
 **MASTER: the following steps must be executed only on the
 master machine.**
@@ -184,7 +184,7 @@ Verify that ATSD tables are present: list tables
 
 Output should contain a list of ATSD tables, all starting with `atsd_`:
 
-![](images/atsd_tables.png "atsd_tables")
+![](./images/atsd_tables.png "atsd_tables")
 
 ## Enabling Replication for New Tables
 
@@ -266,7 +266,7 @@ master machine.**
 
 Open ATSD user interface and navigate to **Configuration > Rules** page.
 
-![](images/atsd_rules_new.png)
+![](./images/atsd_rules_new.png)
 
 Click the [CREATE] button to create a new rule. Complete the following
 fields as specified below:
@@ -279,7 +279,7 @@ fields as specified below:
 
 Then click SAVE.
 
-![](images/rule_editor.png "rule_editor")
+![](./images/rule_editor.png "rule_editor")
 
 Scan the `atsd_rule` table and note down the amount of line contained in the
 table:
@@ -290,7 +290,7 @@ echo "scan 'atsd_rule'" | /opt/atsd/hbase/bin/hbase shell
 
 Output:
 
-![](images/atsd_rule_table_scan1.png)
+![](./images/atsd_rule_table_scan1.png)
 
 **SLAVE: the following steps must be executed only on the slave
 machine.**
@@ -304,4 +304,4 @@ echo "scan 'atsd_rule'" | /opt/atsd/hbase/bin/hbase shell
 
 The output should contain the same amount of rows as on the master:
 
-![](images/atsd_rule_table_scan1.png "atsd_rule_table_scan")
+![](./images/atsd_rule_table_scan1.png "atsd_rule_table_scan")
