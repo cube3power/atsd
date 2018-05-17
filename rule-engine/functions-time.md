@@ -15,6 +15,12 @@ Time functions perform various operations on dates, timestamps, and intervals.
 * [`elapsedTime`](#elapsedtime)
 * [`date_parse`](#date_parse)
 
+## Related Formatting Functions
+
+* [`date_format`](functions-format.md#date_format)
+* [`formatInterval`](functions-format.md#formatinterval)
+* [`formatIntervalShort`](functions-format.md#formatintervalshort)
+
 ### `now`
 
 ```javascript

@@ -112,6 +112,8 @@ Converts timestamp `t` to a string according to the specified [date pattern](htt
 
 The input timestamp is specified as UNIX milliseconds.
 
+Related date parsing function: [`date_parse`](functions-time.md#date_parse).
+
 Example:
 
 ```javascript
